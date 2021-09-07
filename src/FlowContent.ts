@@ -19,7 +19,23 @@ import { TextRun } from "./TextRun";
 import { TextStyle } from "./TextStyle";
 
 const NodeArrayType = arrayType(flowNodeType);
-const Props = { nodes: NodeArrayType.frozen() };
+const RestrictedNodeArrayType = NodeArrayType
+    .frozen()
+    .restrict(
+        "Flow content cannot contain empty text runs or adjacent text runs that should be merged",
+        value => !value.some((node, index) => (
+            TextRun.classType.test(node) &&
+            (
+                node.size === 0 ||
+                (
+                    index > 0 &&
+                    TextRun.classType.test(value[index - 1]) &&
+                    TextRun.shouldMerge(value[index - 1] as TextRun, node)
+                )
+            )
+        )),
+    );
+const Props = { nodes: RestrictedNodeArrayType };
 const PropsType: RecordType<FlowContentProps> = recordType(Props);
 const propsToData = ({nodes}: FlowContentProps): FlowContentData => nodes;
 const EMPTY_PROPS: FlowContentProps = Object.freeze({ nodes: Object.freeze([]) });
@@ -51,7 +67,7 @@ export class FlowContent extends BASE implements Readonly<FlowContentProps> {
     public static readonly classType = recordClassType(() => FlowContent);
 
     public static fromData(@type(NodeArrayType) data: FlowContentData): FlowContent {
-        const props: FlowContentProps = { nodes: Object.freeze(data) };
+        const props: FlowContentProps = { nodes: Object.freeze(Array.from(FlowContent.merge(data))) };
         return new FlowContent(props);
     }
 
@@ -192,9 +208,9 @@ export class FlowContent extends BASE implements Readonly<FlowContentProps> {
                     continue;
                 }
 
-                // Merge text runs with equal styles
-                if (pending.style.equals(current.style)) {
-                    pending = pending.append(current.text);
+                // Merge text runs that should be merged
+                if (TextRun.shouldMerge(pending, current)) {
+                    pending = TextRun.merge(pending, current);
                     continue;
                 }
 

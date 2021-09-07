@@ -355,8 +355,12 @@ export class TextRun extends BASE_8 implements Readonly<TextRunProps> {
     getParagraphStyle(): null;
     // (undocumented)
     getTextStyle(): TextStyle;
+    // @internal (undocumented)
+    static merge(first: TextRun, second: TextRun): TextRun;
     // (undocumented)
     static normalizeText(value: unknown): string;
+    // @internal (undocumented)
+    static shouldMerge(first: TextRun, second: TextRun): boolean;
     // (undocumented)
     readonly size: number;
     // (undocumented)

@@ -143,6 +143,16 @@ export class TextRun extends BASE implements Readonly<TextRunProps> {
         ];
     }
 
+    /** @internal */
+    public static shouldMerge(first: TextRun, second: TextRun): boolean {
+        return first.style.equals(second.style);
+    }
+
+    /** @internal */
+    public static merge(first: TextRun, second: TextRun): TextRun {
+        return first.append(second.text);
+    }
+
     #assertSplitPosition(position: number): void {
         if (position < 0 || position > this.size) {
             throw new RangeError("Text run cannot be split outside of its boundary");
