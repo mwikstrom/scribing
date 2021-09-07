@@ -88,6 +88,8 @@ export class FlowCursor {
 export abstract class FlowNode {
     abstract formatParagraph(style: ParagraphStyle): FlowNode;
     abstract formatText(style: TextStyle): FlowNode;
+    // (undocumented)
+    static fromJsonValue(value: JsonValue): FlowNode;
     // @internal (undocumented)
     abstract getParagraphStyle(): ParagraphStyle | null;
     // @internal (undocumented)
@@ -195,7 +197,41 @@ export interface InsertContentProps {
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class ParagraphBreak extends BASE_6 implements ParagraphBreakProps {
+export class LineBreak extends BASE_6 implements LineBreakProps {
+    constructor(props?: LineBreakProps);
+    // (undocumented)
+    static readonly classType: Type<LineBreak>;
+    // (undocumented)
+    formatParagraph(): LineBreak;
+    // (undocumented)
+    formatText(style: TextStyle): FlowNode;
+    // (undocumented)
+    static fromData(data: LineBreakData): LineBreak;
+    // (undocumented)
+    getParagraphStyle(): null;
+    // (undocumented)
+    getTextStyle(): TextStyle;
+    // (undocumented)
+    readonly size = 1;
+}
+
+// @public
+export interface LineBreakData {
+    // (undocumented)
+    break: "line";
+    // (undocumented)
+    style?: TextStyle;
+}
+
+// @public
+export interface LineBreakProps {
+    style: TextStyle;
+}
+
+// Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
+//
+// @public @sealed
+export class ParagraphBreak extends BASE_7 implements ParagraphBreakProps {
     constructor(props?: ParagraphBreakProps);
     // (undocumented)
     static readonly classType: Type<ParagraphBreak>;
@@ -297,7 +333,7 @@ export interface RemoveRangeProps {
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class TextRun extends BASE_7 implements Readonly<TextRunProps> {
+export class TextRun extends BASE_8 implements Readonly<TextRunProps> {
     constructor(props?: TextRunProps);
     // (undocumented)
     after(position: number): TextRun;

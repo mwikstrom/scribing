@@ -17,6 +17,7 @@ Model for collaborative rich text editing
 |  [FlowOperation](./scribing.flowoperation.md) | An abstraction of an operation that updates flow content. |
 |  [FlowRange](./scribing.flowrange.md) | Represents a range of flow content |
 |  [InsertContent](./scribing.insertcontent.md) | Represents an operation that insert flow content. |
+|  [LineBreak](./scribing.linebreak.md) | Represents a line break. |
 |  [ParagraphBreak](./scribing.paragraphbreak.md) | Represents a paragraph break. |
 |  [ParagraphStyle](./scribing.paragraphstyle.md) | Represents the styling that is applied to paragraph content. |
 |  [RemoveRange](./scribing.removerange.md) | Represents an operation that removes a range of flow. |
@@ -32,6 +33,8 @@ Model for collaborative rich text editing
 |  [FlowRangeProps](./scribing.flowrangeprops.md) | Non-computed properties of a [FlowRange](./scribing.flowrange.md) |
 |  [InsertContentData](./scribing.insertcontentdata.md) | Data of insert content operations |
 |  [InsertContentProps](./scribing.insertcontentprops.md) | Properties of insert content operations |
+|  [LineBreakData](./scribing.linebreakdata.md) | Data of line break nodes |
+|  [LineBreakProps](./scribing.linebreakprops.md) | Properties of line break nodes |
 |  [ParagraphBreakData](./scribing.paragraphbreakdata.md) | Data of paragraph break nodes |
 |  [ParagraphBreakProps](./scribing.paragraphbreakprops.md) | Properties of paragraph break nodes |
 |  [ParagraphStyleProps](./scribing.paragraphstyleprops.md) | Style properties for paragraph content |
