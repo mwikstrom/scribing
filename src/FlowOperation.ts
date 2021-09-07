@@ -8,6 +8,10 @@ import { flowOperationType } from "./internal/operation-registry";
  * @public
  */
 export abstract class FlowOperation {
+    public static fromJsonValue(value: JsonValue): FlowOperation {
+        return flowOperationType.fromJsonValue(value);
+    }
+
     /**
      * Returns an operation that negates the effect of the current operation.
      *

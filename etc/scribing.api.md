@@ -108,6 +108,8 @@ export abstract class FlowOperation {
     // @internal (undocumented)
     abstract afterRemoval(other: FlowRange): FlowOperation | null;
     abstract apply(state: FlowContent): FlowContent;
+    // (undocumented)
+    static fromJsonValue(value: JsonValue): FlowOperation;
     abstract invert(state: FlowContent): FlowOperation | null;
     // (undocumented)
     abstract toData(): unknown;
