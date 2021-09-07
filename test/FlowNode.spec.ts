@@ -1,4 +1,4 @@
-import { FlowNode, ParagraphBreak, TextRun } from "../src";
+import { FlowNode, LineBreak, ParagraphBreak, TextRun } from "../src";
 
 describe("FlowNode", () => {
     it("can deserialize plain text run", () => {
@@ -31,5 +31,20 @@ describe("FlowNode", () => {
         }) as ParagraphBreak;
         expect(node).toBeInstanceOf(ParagraphBreak);
         expect(node.style.toData()).toMatchObject({ alignment: "center" });
+    });
+
+    it("can deserialize plain line break", () => {
+        const node = FlowNode.fromJsonValue({ break: "line" }) as LineBreak;
+        expect(node).toBeInstanceOf(LineBreak);
+        expect(node.style.isEmpty).toBe(true);
+    });
+
+    it("can deserialize styled line break", () => {
+        const node = FlowNode.fromJsonValue({
+            break: "line",
+            style: { bold: true }
+        }) as LineBreak;
+        expect(node).toBeInstanceOf(LineBreak);
+        expect(node.style.toData()).toMatchObject({ bold: true });
     });
 });

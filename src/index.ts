@@ -16,6 +16,7 @@ export * from "./FlowRange";
 
 // Nodes
 export * from "./FlowNode";
+export * from "./LineBreak";
 export * from "./ParagraphBreak";
 export * from "./TextRun";
 
