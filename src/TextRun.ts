@@ -92,12 +92,12 @@ export class TextRun extends BASE implements Readonly<TextRunProps> {
         if (typeof data === "string") {
             data = { text: data };
         }
-        const { text, style = TextStyle.empty} = data;
+        const { text: given, style = TextStyle.empty} = data;
+        const text = TextRun.normalizeText(given);
         const props: TextRunProps = { text, style };
         return new TextRun(props);
     }
 
-    // TODO: a generic way for normalizing input (maybe use for FlowContent's merge too?)
     constructor(props: TextRunProps = EMPTY_PROPS()) {
         super(props);
         this.size = props.text.length;
