@@ -8,6 +8,10 @@ import { TextStyle } from "./TextStyle";
  * @public
  */
 export abstract class FlowNode {
+    public static fromJsonValue(value: JsonValue): FlowNode {
+        return flowNodeType.fromJsonValue(value);
+    }
+    
     /**
      * Size of the current node.
      * 
