@@ -90,4 +90,17 @@ describe("InsertContent", () => {
         const after = before.afterRemoval(FlowRange.at(122, 1));
         expect(after).toBeNull();
     });
+
+    it("can be undone", () => {
+        const original = FlowContent.fromData([TextRun.fromData("hello!")]);
+        const op = InsertContent.fromData({
+            insert: FlowContent.fromData([TextRun.fromData(" world")]),
+            at: 5,
+        });
+        const inv = op.invert();
+        const done = op.applyTo(original);
+        expect(done.toJsonValue()).toMatchObject(["hello world!"]);
+        const undone = inv?.applyTo(done);
+        expect(undone?.toJsonValue()).toMatchObject(["hello!"]);
+    });
 });

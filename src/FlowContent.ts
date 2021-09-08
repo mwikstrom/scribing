@@ -169,7 +169,7 @@ export class FlowContent extends BASE implements Readonly<FlowContentProps> {
     remove(@type(FlowRange.classType) range: FlowRange): FlowContent {
         const { before } = this.peek(range.first);
         const { after } = this.peek(range.last);
-        const merged = Array.from(FlowContent.merge(before, after));
+        const merged = Object.freeze(Array.from(FlowContent.merge(before, after)));
         return this.set("nodes", merged);
     }
 
