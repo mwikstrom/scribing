@@ -80,7 +80,7 @@ export class FlowBatch extends BASE implements Readonly<FlowBatchProps> {
             newOperations.unshift(inverted);
         }
 
-        return this.set("operations", newOperations);
+        return this.set("operations", Object.freeze(newOperations));
     }
 
     /** 
@@ -142,7 +142,7 @@ export class FlowBatch extends BASE implements Readonly<FlowBatchProps> {
         } else if (result.length === 0) {
             return new FlowBatch();
         } else {
-            return this.set("operations", result);
+            return this.set("operations", Object.freeze(result));
         }
     }
 }
