@@ -138,9 +138,9 @@ export class InsertContent extends BASE implements InsertContentProps {
     }
 
     /** 
-     * {@inheritDoc FlowOperation.apply}
+     * {@inheritDoc FlowOperation.applyTo}
      */
-    apply(container: FlowContent): FlowContent {
+    applyTo(container: FlowContent): FlowContent {
         // TODO: Merge formatting (both text and para) from existing content?!
         return container.insert(this.position, ...this.content.nodes);
     }

@@ -40,7 +40,7 @@ export abstract class FlowOperation {
      * 
      * @param state - The flow content that shall be updated.
      */
-    abstract apply(state: FlowContent): FlowContent;
+    abstract applyTo(state: FlowContent): FlowContent;
 
     abstract toData(): unknown;
 

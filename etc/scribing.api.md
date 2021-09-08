@@ -19,7 +19,7 @@ export class FlowBatch extends BASE_3 implements Readonly<FlowBatchProps> {
     afterInsertion(other: FlowRange): FlowOperation | null;
     // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
-    apply(container: FlowContent): FlowContent;
+    applyTo(container: FlowContent): FlowContent;
     // (undocumented)
     static readonly classType: Type<FlowBatch>;
     static fromData(data: FlowBatchData): FlowBatch;
@@ -109,7 +109,7 @@ export abstract class FlowOperation {
     abstract afterInsertion(other: FlowRange): FlowOperation | null;
     // @internal (undocumented)
     abstract afterRemoval(other: FlowRange): FlowOperation | null;
-    abstract apply(state: FlowContent): FlowContent;
+    abstract applyTo(state: FlowContent): FlowContent;
     // (undocumented)
     static fromJsonValue(value: JsonValue): FlowOperation;
     abstract invert(state: FlowContent): FlowOperation | null;
@@ -167,7 +167,7 @@ export class InsertContent extends BASE_4 implements InsertContentProps {
     afterInsertion(other: FlowRange): FlowOperation | null;
     // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
-    apply(container: FlowContent): FlowContent;
+    applyTo(container: FlowContent): FlowContent;
     // (undocumented)
     static readonly classType: Type<InsertContent>;
     // (undocumented)
@@ -309,7 +309,7 @@ export class RemoveRange extends BASE_5 implements Readonly<RemoveRangeProps> {
     // @override (undocumented)
     afterRemoval(other: FlowRange): RemoveRange | null;
     // @override
-    apply(container: FlowContent): FlowContent;
+    applyTo(container: FlowContent): FlowContent;
     // (undocumented)
     static readonly classType: Type<RemoveRange>;
     // (undocumented)

@@ -76,7 +76,7 @@ export class FlowBatch extends BASE implements Readonly<FlowBatchProps> {
                 return null;
             }
 
-            state = op.apply(state);
+            state = op.applyTo(state);
             newOperations.unshift(inverted);
         }
 
@@ -98,11 +98,11 @@ export class FlowBatch extends BASE implements Readonly<FlowBatchProps> {
     }
 
     /** 
-     * {@inheritDoc FlowOperation.apply}
+     * {@inheritDoc FlowOperation.applyTo}
      */
-    apply(container: FlowContent): FlowContent {
+    applyTo(container: FlowContent): FlowContent {
         for (const op of this.operations) {
-            container = op.apply(container);
+            container = op.applyTo(container);
         }
         return container;
     }

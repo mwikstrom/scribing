@@ -16,7 +16,7 @@ export declare abstract class FlowOperation
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [apply(state)](./scribing.flowoperation.apply.md) |  | Applies the current operation on the specified content and returns the updated result. |
+|  [applyTo(state)](./scribing.flowoperation.applyto.md) |  | Applies the current operation on the specified content and returns the updated result. |
 |  [fromJsonValue(value)](./scribing.flowoperation.fromjsonvalue.md) | <code>static</code> |  |
 |  [invert(state)](./scribing.flowoperation.invert.md) |  | Returns an operation that negates the effect of the current operation. |
 |  [toData()](./scribing.flowoperation.todata.md) |  |  |
