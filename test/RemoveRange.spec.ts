@@ -1,4 +1,4 @@
-import { FlowRange, RemoveRange } from "../src";
+import { FlowContent, FlowRange, RemoveRange, TextRun } from "../src";
 
 describe("RemoveRange", () => {
     it("is not affected by empty insertion", () => {
@@ -89,5 +89,15 @@ describe("RemoveRange", () => {
         const before = RemoveRange.fromData({ remove: FlowRange.at(123, 10) });
         const after = before.afterRemoval(FlowRange.at(120, 15));
         expect(after).toBeNull();
+    });
+
+    it("can be undone", () => {
+        const original = FlowContent.fromData([TextRun.fromData("hello world!")]);
+        const op = RemoveRange.fromData({remove: FlowRange.fromData([5, 11])});
+        const inv = op.invert(original);
+        const done = op.applyTo(original);
+        expect(done.toJsonValue()).toMatchObject(["hello!"]);
+        const undone = inv?.applyTo(done);
+        expect(undone?.toJsonValue()).toMatchObject(["hello world!"]);
     });
 });
