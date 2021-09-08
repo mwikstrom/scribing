@@ -1,4 +1,5 @@
 import { FlowBatch, FlowOperation, InsertContent, RemoveRange } from "../src";
+import { FormatText } from "../src/FormatText";
 
 describe("FlowOperation", () => {
     it("can deserialize insert content operation", () => {
@@ -40,5 +41,17 @@ describe("FlowOperation", () => {
         expect(op2.position).toBe(123);
         expect(op2.content.nodes.length).toBe(1);
         expect(op2.content.nodes[0].toData()).toBe("foobar");
+    });
+
+    it("can deserialize format text operation", () => {
+        const op = FlowOperation.fromJsonValue({
+            format: "text",
+            range: [123, 456],
+            style: { bold: true },
+        }) as FormatText;
+        expect(op).toBeInstanceOf(FormatText);
+        expect(op.range.anchor).toBe(123);
+        expect(op.range.focus).toBe(456);
+        expect(op.style.toData()).toMatchObject({ bold: true });
     });
 });
