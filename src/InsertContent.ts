@@ -95,8 +95,8 @@ export class InsertContent extends BASE implements InsertContentProps {
             return this;
         }
 
-        // Not affected when removed range is after op's insertion point,
-        if (other.first > this.position) {
+        // Not affected when removed range is at or after op's insertion point,
+        if (other.first >= this.position) {
             return this;
         }
 
