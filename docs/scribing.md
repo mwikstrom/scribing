@@ -16,6 +16,7 @@ Model for collaborative rich text editing
 |  [FlowNode](./scribing.flownode.md) | A piece of flow content. |
 |  [FlowOperation](./scribing.flowoperation.md) | An abstraction of an operation that updates flow content. |
 |  [FlowRange](./scribing.flowrange.md) | Represents a range of flow content |
+|  [FormatText](./scribing.formattext.md) | Represents an operation that applies a text style to a range of flow content. |
 |  [InsertContent](./scribing.insertcontent.md) | Represents an operation that insert flow content. |
 |  [LineBreak](./scribing.linebreak.md) | Represents a line break. |
 |  [ParagraphBreak](./scribing.paragraphbreak.md) | Represents a paragraph break. |
@@ -31,6 +32,8 @@ Model for collaborative rich text editing
 |  [FlowBatchProps](./scribing.flowbatchprops.md) | Properties of [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowContentProps](./scribing.flowcontentprops.md) | Flow content properties |
 |  [FlowRangeProps](./scribing.flowrangeprops.md) | Non-computed properties of a [FlowRange](./scribing.flowrange.md) |
+|  [FormatTextData](./scribing.formattextdata.md) | Data of format text operations |
+|  [FormatTextProps](./scribing.formattextprops.md) | Properties of format text operations |
 |  [InsertContentData](./scribing.insertcontentdata.md) | Data of insert content operations |
 |  [InsertContentProps](./scribing.insertcontentprops.md) | Properties of insert content operations |
 |  [LineBreakData](./scribing.linebreakdata.md) | Data of line break nodes |

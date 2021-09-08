@@ -1,5 +1,4 @@
-import { FlowBatch, FlowOperation, InsertContent, RemoveRange } from "../src";
-import { FormatText } from "../src/FormatText";
+import { FlowBatch, FlowOperation, FormatText, InsertContent, RemoveRange } from "../src";
 
 describe("FlowOperation", () => {
     it("can deserialize insert content operation", () => {

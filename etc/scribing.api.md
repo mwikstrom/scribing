@@ -162,7 +162,41 @@ export type FlowRangeTuple = [number, number];
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class InsertContent extends BASE_4 implements InsertContentProps {
+export class FormatText extends BASE_4 implements Readonly<FormatTextProps> {
+    // @override
+    applyTo(container: FlowContent): FlowContent;
+    // (undocumented)
+    static readonly classType: Type<FormatText>;
+    // (undocumented)
+    static fromData(data: FormatTextData): FormatText;
+    // @override
+    invert(state: FlowContent): FormatText;
+    // @override
+    transform(other: FlowOperation): FlowOperation | null;
+}
+
+// @public
+export interface FormatTextData {
+    // (undocumented)
+    format: "text";
+    // (undocumented)
+    range: FlowRange;
+    // (undocumented)
+    style: TextStyle;
+}
+
+// @public
+export interface FormatTextProps {
+    // (undocumented)
+    range: FlowRange;
+    // (undocumented)
+    style: TextStyle;
+}
+
+// Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
+//
+// @public @sealed
+export class InsertContent extends BASE_5 implements InsertContentProps {
     // (undocumented)
     afterInsertion(other: FlowRange): FlowOperation | null;
     // (undocumented)
@@ -199,7 +233,7 @@ export interface InsertContentProps {
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class LineBreak extends BASE_6 implements LineBreakProps {
+export class LineBreak extends BASE_7 implements LineBreakProps {
     constructor(props?: LineBreakProps);
     // (undocumented)
     static readonly classType: Type<LineBreak>;
@@ -233,7 +267,7 @@ export interface LineBreakProps {
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class ParagraphBreak extends BASE_7 implements ParagraphBreakProps {
+export class ParagraphBreak extends BASE_8 implements ParagraphBreakProps {
     constructor(props?: ParagraphBreakProps);
     // (undocumented)
     static readonly classType: Type<ParagraphBreak>;
@@ -303,11 +337,7 @@ export interface ParagraphStyleProps {
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class RemoveRange extends BASE_5 implements Readonly<RemoveRangeProps> {
-    // @override (undocumented)
-    afterInsertion(other: FlowRange): RemoveRange;
-    // @override (undocumented)
-    afterRemoval(other: FlowRange): RemoveRange | null;
+export class RemoveRange extends BASE_6 implements Readonly<RemoveRangeProps> {
     // @override
     applyTo(container: FlowContent): FlowContent;
     // (undocumented)
@@ -335,7 +365,7 @@ export interface RemoveRangeProps {
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class TextRun extends BASE_8 implements Readonly<TextRunProps> {
+export class TextRun extends BASE_9 implements Readonly<TextRunProps> {
     constructor(props?: TextRunProps);
     // (undocumented)
     after(position: number): TextRun;

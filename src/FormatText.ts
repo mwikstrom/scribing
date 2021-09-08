@@ -33,7 +33,7 @@ const propsToData = ({range, style}: FormatTextProps): FormatTextData => ({ form
 const BASE = RecordClass(PropsType, UpdateRange, DataType, propsToData);
 
 /**
- * Properties of remove range opertions
+ * Properties of format text operations
  * @public
  */
 export interface FormatTextProps {
@@ -42,7 +42,7 @@ export interface FormatTextProps {
 }
 
 /**
- * Data of remove range operations
+ * Data of format text operations
  * @public
  */
 export interface FormatTextData {
@@ -52,7 +52,7 @@ export interface FormatTextData {
 }
 
 /**
- * Represents an operation that applis a text style to a range of flow content.
+ * Represents an operation that applies a text style to a range of flow content.
  * @sealed
  * @public
  */

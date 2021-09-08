@@ -6,6 +6,7 @@
 // Operations
 export * from "./FlowOperation";
 export * from "./FlowBatch";
+export * from "./FormatText";
 export * from "./InsertContent";
 export * from "./RemoveRange";
 
