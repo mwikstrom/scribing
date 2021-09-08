@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-formatParagraph(style: ParagraphStyle): FlowNode;
+formatParagraph(style: ParagraphStyle): this;
 ```
 
 ## Parameters
@@ -18,5 +18,5 @@ formatParagraph(style: ParagraphStyle): FlowNode;
 
 <b>Returns:</b>
 
-[FlowNode](./scribing.flownode.md)
+this
 

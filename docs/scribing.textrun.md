@@ -36,11 +36,7 @@ export declare class TextRun extends BASE implements Readonly<TextRunProps>
 |  [after(position)](./scribing.textrun.after.md) |  |  |
 |  [append(value)](./scribing.textrun.append.md) |  |  |
 |  [before(position)](./scribing.textrun.before.md) |  |  |
-|  [formatParagraph()](./scribing.textrun.formatparagraph.md) |  |  |
-|  [formatText(style)](./scribing.textrun.formattext.md) |  |  |
 |  [fromData(data)](./scribing.textrun.fromdata.md) | <code>static</code> |  |
-|  [getParagraphStyle()](./scribing.textrun.getparagraphstyle.md) |  |  |
-|  [getTextStyle()](./scribing.textrun.gettextstyle.md) |  |  |
 |  [normalizeText(value)](./scribing.textrun.normalizetext.md) | <code>static</code> |  |
 |  [split(position)](./scribing.textrun.split.md) |  |  |
 

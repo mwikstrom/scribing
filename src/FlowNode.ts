@@ -39,6 +39,12 @@ export abstract class FlowNode {
         return flowNodeType.toJsonValue(this);
     }
 
+    /**
+     * Unapplies the specified text style from the current node and returns the updated node.
+     * @param style - The text style to unapply
+     */
+    abstract unformatText(style: TextStyle): FlowNode;
+
     /** @internal */
     abstract getTextStyle(): TextStyle | null;
 

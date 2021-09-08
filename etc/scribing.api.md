@@ -54,6 +54,7 @@ export class FlowContent extends BASE implements Readonly<FlowContentProps> {
     get size(): number;
     // (undocumented)
     toJsonValue(): JsonValue;
+    unformatText(range: FlowRange, style: TextStyle): FlowContent;
 }
 
 // @public
@@ -101,6 +102,7 @@ export abstract class FlowNode {
     abstract toData(): unknown;
     // (undocumented)
     toJsonValue(): JsonValue;
+    abstract unformatText(style: TextStyle): FlowNode;
 }
 
 // @public
@@ -110,6 +112,8 @@ export abstract class FlowOperation {
     // @internal (undocumented)
     abstract afterRemoval(other: FlowRange): FlowOperation | null;
     abstract applyTo(state: FlowContent): FlowContent;
+    // @internal (undocumented)
+    static batch(operations: FlowOperation[]): FlowOperation | null;
     // (undocumented)
     static fromJsonValue(value: JsonValue): FlowOperation;
     abstract invert(state: FlowContent): FlowOperation | null;
@@ -163,6 +167,10 @@ export type FlowRangeTuple = [number, number];
 //
 // @public @sealed
 export class FormatText extends BASE_4 implements Readonly<FormatTextProps> {
+    // (undocumented)
+    afterInsertion(other: FlowRange): FlowOperation | null;
+    // (undocumented)
+    afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
     applyTo(container: FlowContent): FlowContent;
     // (undocumented)
@@ -170,7 +178,7 @@ export class FormatText extends BASE_4 implements Readonly<FormatTextProps> {
     // (undocumented)
     static fromData(data: FormatTextData): FormatText;
     // @override
-    invert(state: FlowContent): FormatText;
+    invert(state: FlowContent): FlowOperation | null;
     // @override
     transform(other: FlowOperation): FlowOperation | null;
 }
@@ -238,15 +246,7 @@ export class LineBreak extends BASE_7 implements LineBreakProps {
     // (undocumented)
     static readonly classType: Type<LineBreak>;
     // (undocumented)
-    formatParagraph(): LineBreak;
-    // (undocumented)
-    formatText(style: TextStyle): FlowNode;
-    // (undocumented)
     static fromData(data: LineBreakData): LineBreak;
-    // (undocumented)
-    getParagraphStyle(): null;
-    // (undocumented)
-    getTextStyle(): TextStyle;
     // (undocumented)
     readonly size = 1;
 }
@@ -272,9 +272,9 @@ export class ParagraphBreak extends BASE_8 implements ParagraphBreakProps {
     // (undocumented)
     static readonly classType: Type<ParagraphBreak>;
     // (undocumented)
-    formatParagraph(style: ParagraphStyle): FlowNode;
+    formatParagraph(style: ParagraphStyle): this;
     // (undocumented)
-    formatText(): FlowNode;
+    formatText(): this;
     // (undocumented)
     static fromData(data: ParagraphBreakData): ParagraphBreak;
     // (undocumented)
@@ -283,6 +283,8 @@ export class ParagraphBreak extends BASE_8 implements ParagraphBreakProps {
     getTextStyle(): null;
     // (undocumented)
     readonly size = 1;
+    // (undocumented)
+    unformatText(): this;
 }
 
 // @public
@@ -338,6 +340,10 @@ export interface ParagraphStyleProps {
 //
 // @public @sealed
 export class RemoveRange extends BASE_6 implements Readonly<RemoveRangeProps> {
+    // (undocumented)
+    afterInsertion(other: FlowRange): FlowOperation | null;
+    // (undocumented)
+    afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
     applyTo(container: FlowContent): FlowContent;
     // (undocumented)
@@ -376,15 +382,7 @@ export class TextRun extends BASE_9 implements Readonly<TextRunProps> {
     // (undocumented)
     static readonly classType: Type<TextRun>;
     // (undocumented)
-    formatParagraph(): FlowNode;
-    // (undocumented)
-    formatText(style: TextStyle): FlowNode;
-    // (undocumented)
     static fromData(data: TextRunData): TextRun;
-    // (undocumented)
-    getParagraphStyle(): null;
-    // (undocumented)
-    getTextStyle(): TextStyle;
     // @internal (undocumented)
     static merge(first: TextRun, second: TextRun): TextRun;
     // (undocumented)

@@ -177,6 +177,19 @@ export class FlowContent extends BASE implements Readonly<FlowContentProps> {
         return FlowContent.classType.toJsonValue(this);
     }
     
+    /**
+     * Unapplies text style to a range
+     * @param range - The range to format
+     * @param style - The style to unapply
+     * @returns The updated flow content
+     */
+    unformatText(
+        @type(FlowRange.classType) range: FlowRange,
+        @type(TextStyle.classType) style: TextStyle
+    ): FlowContent {
+        return this.set("nodes", this.#formatRange(range, node => node.unformatText(style)));
+    }
+
     #formatRange(range: FlowRange, formatter: (node: FlowNode) => FlowNode): readonly FlowNode[] {
         const first = this.peek(range.first);
         const before = first.before;

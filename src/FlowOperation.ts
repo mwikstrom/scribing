@@ -1,4 +1,5 @@
 import { JsonValue } from "paratype";
+import { FlowBatch } from "./FlowBatch";
 import { FlowContent } from "./FlowContent";
 import { FlowRange } from "./FlowRange";
 import { flowOperationType } from "./internal/operation-registry";
@@ -10,6 +11,18 @@ import { flowOperationType } from "./internal/operation-registry";
 export abstract class FlowOperation {
     public static fromJsonValue(value: JsonValue): FlowOperation {
         return flowOperationType.fromJsonValue(value);
+    }
+
+    /** @internal */
+    static batch(operations: FlowOperation[]): FlowOperation | null {
+        if (operations.length === 0) {
+            return null;
+        } else if (operations.length === 1) {
+            return operations[0];
+        } else {
+            Object.freeze(operations);
+            return new FlowBatch({ operations });
+        }
     }
 
     /**

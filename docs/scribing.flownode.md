@@ -27,4 +27,5 @@ export declare abstract class FlowNode
 |  [fromJsonValue(value)](./scribing.flownode.fromjsonvalue.md) | <code>static</code> |  |
 |  [toData()](./scribing.flownode.todata.md) |  |  |
 |  [toJsonValue()](./scribing.flownode.tojsonvalue.md) |  |  |
+|  [unformatText(style)](./scribing.flownode.unformattext.md) |  | Unapplies the specified text style from the current node and returns the updated node. |
 

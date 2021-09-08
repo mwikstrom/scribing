@@ -9,7 +9,7 @@ import {
     type,
     validating
 } from "paratype";
-import { FlowNode } from "./FlowNode";
+import { InlineNode } from "./InlineNode";
 import { registerNode } from "./internal/node-registry";
 import { TextStyle } from "./TextStyle";
 
@@ -24,7 +24,7 @@ const PropsType: RecordType<LineBreakProps> = recordType(Props);
 const DataType: RecordType<LineBreakData> = recordType(Data).withOptional("style");
 const propsToData = ({style}: LineBreakProps): LineBreakData => ({break: "line", style});
 const EMPTY_PROPS = (): LineBreakProps => Object.freeze({ style: TextStyle.empty });
-const BASE = RecordClass(PropsType, FlowNode, DataType, propsToData);
+const BASE = RecordClass(PropsType, InlineNode, DataType, propsToData);
 
 /**
  * Properties of line break nodes
@@ -66,23 +66,5 @@ export class LineBreak extends BASE implements LineBreakProps {
 
     constructor(props: LineBreakProps = EMPTY_PROPS()) {
         super(props);
-    }
-
-    public formatText(@type(Props.style) style: TextStyle): FlowNode {
-        return this.set("style", this.style.merge(style));
-    }
-
-    public formatParagraph(): LineBreak {
-        return this;
-    }
-
-    /** {@inheritdoc FlowNode.getTextStyle} */
-    getTextStyle(): TextStyle {
-        return this.style;
-    }
-
-    /** {@inheritdoc FlowNode.getParagraphStyle} */
-    getParagraphStyle(): null {
-        return null;
     }
 }

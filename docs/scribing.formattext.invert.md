@@ -10,7 +10,7 @@ Returns an operation that negates the effect of the current operation.
 
 ```typescript
 /** @override */
-invert(state: FlowContent): FormatText;
+invert(state: FlowContent): FlowOperation | null;
 ```
 
 ## Parameters
@@ -21,7 +21,7 @@ invert(state: FlowContent): FormatText;
 
 <b>Returns:</b>
 
-[FormatText](./scribing.formattext.md)
+[FlowOperation](./scribing.flowoperation.md) \| null
 
 An inverse of the current operation, or `null` when the current operation cannot be inverted with respect to the supplied state.
 

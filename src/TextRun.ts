@@ -12,7 +12,7 @@ import {
     unionType, 
     validating
 } from "paratype";
-import { FlowNode } from "./FlowNode";
+import { InlineNode } from "./InlineNode";
 import { registerNode } from "./internal/node-registry";
 import { TextStyle } from "./TextStyle";
 
@@ -48,7 +48,7 @@ const propsToData = (props: TextRunProps): TextRunData => (
     props.style.isEmpty ? props.text : props
 );
 const EMPTY_PROPS = (): TextRunProps => Object.freeze({ text: "", style: TextStyle.empty });
-const BASE = RecordClass(PropsType, FlowNode, DataType, propsToData);
+const BASE = RecordClass(PropsType, InlineNode, DataType, propsToData);
 
 /**
  * Properties of a text run
@@ -105,24 +105,6 @@ export class TextRun extends BASE implements Readonly<TextRunProps> {
 
     public append(@type(stringType) value: string): TextRun {
         return this.set("text", this.text + value);
-    }
-
-    public formatText(@type(Props.style) style: TextStyle): FlowNode {
-        return this.set("style", this.style.merge(style));
-    }
-
-    public formatParagraph(): FlowNode {
-        return this;
-    }
-
-    /** {@inheritdoc FlowNode.getTextStyle} */
-    getTextStyle(): TextStyle {
-        return this.style;
-    }
-
-    /** {@inheritdoc FlowNode.getParagraphStyle} */
-    getParagraphStyle(): null {
-        return null;
     }
 
     public before(@type(integerType) position: number): TextRun {

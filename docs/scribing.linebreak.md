@@ -33,9 +33,5 @@ export declare class LineBreak extends BASE implements LineBreakProps
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [formatParagraph()](./scribing.linebreak.formatparagraph.md) |  |  |
-|  [formatText(style)](./scribing.linebreak.formattext.md) |  |  |
 |  [fromData(data)](./scribing.linebreak.fromdata.md) | <code>static</code> |  |
-|  [getParagraphStyle()](./scribing.linebreak.getparagraphstyle.md) |  |  |
-|  [getTextStyle()](./scribing.linebreak.gettextstyle.md) |  |  |
 

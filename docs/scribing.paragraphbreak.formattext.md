@@ -7,9 +7,9 @@
 <b>Signature:</b>
 
 ```typescript
-formatText(): FlowNode;
+formatText(): this;
 ```
 <b>Returns:</b>
 
-[FlowNode](./scribing.flownode.md)
+this
 

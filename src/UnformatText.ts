@@ -12,13 +12,13 @@ import {
 import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
+import { FormatText } from "./FormatText";
 import { registerOperation } from "./internal/operation-registry";
 import { 
     transformEdgeInflatingRangeOpAfterInsertion, 
     transformRangeOpAfterRemoval
 } from "./internal/transform-helpers";
 import { TextStyle } from "./TextStyle";
-import { UnformatText } from "./UnformatText";
 
 const Props = {
     range: FlowRange.classType,
@@ -26,31 +26,31 @@ const Props = {
 };
 
 const Data = {
-    format: constType("text"),
+    unformat: constType("text"),
     range: Props.range,
     style: TextStyle.classType,
 };
 
-const PropsType: RecordType<FormatTextProps> = recordType(Props);
-const DataType: RecordType<FormatTextData> = recordType(Data);
-const propsToData = ({range, style}: FormatTextProps): FormatTextData => ({ format: "text", range, style });
+const PropsType: RecordType<UnformatTextProps> = recordType(Props);
+const DataType: RecordType<UnformatTextData> = recordType(Data);
+const propsToData = ({range, style}: UnformatTextProps): UnformatTextData => ({ unformat: "text", range, style });
 const BASE = RecordClass(PropsType, FlowOperation, DataType, propsToData);
 
 /**
- * Properties of format text operations
+ * Properties of unformat text operations
  * @public
  */
-export interface FormatTextProps {
+export interface UnformatTextProps {
     range: FlowRange;
     style: TextStyle;
 }
 
 /**
- * Data of format text operations
+ * Data of unformat text operations
  * @public
  */
-export interface FormatTextData {
-    format: "text",
+export interface UnformatTextData {
+    unformat: "text",
     range: FlowRange;
     style: TextStyle;
 }
@@ -63,13 +63,13 @@ export interface FormatTextData {
 @frozen
 @validating
 @registerOperation
-export class FormatText extends BASE implements Readonly<FormatTextProps> {
-    public static readonly classType = recordClassType(() => FormatText);
+export class UnformatText extends BASE implements Readonly<UnformatTextProps> {
+    public static readonly classType = recordClassType(() => UnformatText);
 
-    public static fromData(@type(DataType) data: FormatTextData): FormatText {
+    public static fromData(@type(DataType) data: UnformatTextData): UnformatText {
         const { range, style } = data;
-        const props: FormatTextProps = { range, style };
-        return new FormatText(props);
+        const props: UnformatTextProps = { range, style };
+        return new UnformatText(props);
     }
 
     /**
@@ -84,23 +84,13 @@ export class FormatText extends BASE implements Readonly<FormatTextProps> {
             const nodeStyle = node.getTextStyle();
 
             if (nodeStyle !== null) {
-                const unformat = new Map();
                 const format = new Map();
 
                 for (const key of this.style.assigned) {
                     const nodeValue = nodeStyle.get(key);
-                    if (nodeValue === void(0)) {
-                        unformat.set(key, this.style.get(key));
-                    } else {
+                    if (nodeValue !== void(0)) {
                         format.set(key, nodeValue);
                     }
-                }
-
-                if (unformat.size > 0) {
-                    operations.push(new UnformatText({
-                        range: FlowRange.at(position, node.size),
-                        style: new TextStyle(Object.fromEntries(format)),
-                    }));
                 }
 
                 if (format.size > 0) {
@@ -131,7 +121,7 @@ export class FormatText extends BASE implements Readonly<FormatTextProps> {
      * @override
      */
     applyTo(container: FlowContent): FlowContent {
-        return container.formatText(this.range, this.style);
+        return container.unformatText(this.range, this.style);
     }
 
     /** 
