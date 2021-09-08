@@ -38,6 +38,74 @@ describe("FlowCursor", () => {
         });
     });
 
+    it("can move to start of node", () => {
+        const content = FlowContent.classType.fromJsonValue(data);
+        
+        const p1 = content.peek(19);
+        expect(p1.position).toBe(19);
+        expect(p1.index).toBe(4);
+        expect(p1.offset).toBe(6);
+
+        const p2 = p1.moveToStartOfNode();
+        expect(p2.position).toBe(13);
+        expect(p2.index).toBe(4);
+        expect(p2.offset).toBe(0);
+    });
+
+    it("can move to start of prev node", () => {
+        const content = FlowContent.classType.fromJsonValue(data);
+        
+        const p1 = content.peek(19);
+        expect(p1.position).toBe(19);
+        expect(p1.index).toBe(4);
+        expect(p1.offset).toBe(6);
+
+        const p2 = p1.moveToStartOfPreviousNode();
+        expect(p2?.position).toBe(12);
+        expect(p2?.index).toBe(3);
+        expect(p2?.offset).toBe(0);
+
+        const p3 = p2?.moveToStartOfPreviousNode();
+        expect(p3?.position).toBe(11);
+        expect(p3?.index).toBe(2);
+        expect(p3?.offset).toBe(0);
+
+        const p4 = p3?.moveToStartOfPreviousNode();
+        expect(p4?.position).toBe(6);
+        expect(p4?.index).toBe(1);
+        expect(p4?.offset).toBe(0);
+
+        const p5 = p4?.moveToStartOfPreviousNode();
+        expect(p5?.position).toBe(0);
+        expect(p5?.index).toBe(0);
+        expect(p5?.offset).toBe(0);
+
+        const p6 = p5?.moveToStartOfPreviousNode();
+        expect(p6).toBeNull();
+    });
+
+    it("can move to start of next node", () => {
+        const content = FlowContent.classType.fromJsonValue(data);
+        
+        const p1 = content.peek(19);
+        expect(p1.position).toBe(19);
+        expect(p1.index).toBe(4);
+        expect(p1.offset).toBe(6);
+
+        const p2 = p1.moveToStartOfNextNode();
+        expect(p2?.position).toBe(21);
+        expect(p2?.index).toBe(5);
+        expect(p2?.offset).toBe(0);
+
+        const p3 = p2?.moveToStartOfNextNode();
+        expect(p3?.position).toBe(27);
+        expect(p3?.index).toBe(6);
+        expect(p3?.offset).toBe(0);
+
+        const p4 = p3?.moveToStartOfNextNode();
+        expect(p4).toBeNull();
+    });
+
     it("validates ctor arg", () => {
         expect(() => new FlowCursor("bad" as unknown as FlowContent)).toThrow(
             "new FlowCursor(...): Invalid argument: Must be an instance of FlowContent"

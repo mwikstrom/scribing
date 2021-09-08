@@ -143,7 +143,7 @@ export class FlowCursor {
     moveToStartOfPreviousNode(): FlowCursor | null {
         const index = this.#index - 1;
 
-        if (index <= 0) {
+        if (index < 0) {
             return null;
         }
 
