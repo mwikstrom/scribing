@@ -30,7 +30,7 @@ export abstract class FlowOperation {
      * @remarks
      * The specified operation is returned when it is unaffected by the change implied by the current operation.
      * 
-     * `null` is returned when the intent of the other operation is invalidated by the change implied by
+     * `null` is returned when the intent of the other operation is cancelled by the change implied by
      * the current operation.
      */
     abstract transform(other: FlowOperation): FlowOperation | null;
