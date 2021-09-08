@@ -22,6 +22,10 @@ export abstract class InlineNode extends FlowNode {
         return this.set("style", this.style.unmerge(style));
     }
 
+    public unformatParagraph(): this {
+        return this;
+    }
+
     /** {@inheritdoc FlowNode.getTextStyle} */
     getTextStyle(): TextStyle {
         return this.style;

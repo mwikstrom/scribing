@@ -54,6 +54,7 @@ export class FlowContent extends BASE implements Readonly<FlowContentProps> {
     get size(): number;
     // (undocumented)
     toJsonValue(): JsonValue;
+    unformatParagraph(range: FlowRange, style: ParagraphStyle): FlowContent;
     unformatText(range: FlowRange, style: TextStyle): FlowContent;
 }
 
@@ -102,6 +103,7 @@ export abstract class FlowNode {
     abstract toData(): unknown;
     // (undocumented)
     toJsonValue(): JsonValue;
+    abstract unformatParagraph(style: ParagraphStyle): FlowNode;
     abstract unformatText(style: TextStyle): FlowNode;
 }
 
@@ -166,7 +168,45 @@ export type FlowRangeTuple = [number, number];
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class FormatText extends BASE_4 implements Readonly<FormatTextProps> {
+export class FormatParagraph extends BASE_4 implements Readonly<FormatParagraphProps> {
+    // (undocumented)
+    afterInsertion(other: FlowRange): FlowOperation | null;
+    // (undocumented)
+    afterRemoval(other: FlowRange): FlowOperation | null;
+    // @override
+    applyTo(container: FlowContent): FlowContent;
+    // (undocumented)
+    static readonly classType: Type<FormatParagraph>;
+    // (undocumented)
+    static fromData(data: FormatParagraphData): FormatParagraph;
+    // @override
+    invert(state: FlowContent): FlowOperation | null;
+    // @override
+    transform(other: FlowOperation): FlowOperation | null;
+}
+
+// @public
+export interface FormatParagraphData {
+    // (undocumented)
+    format: "para";
+    // (undocumented)
+    range: FlowRange;
+    // (undocumented)
+    style: ParagraphStyle;
+}
+
+// @public
+export interface FormatParagraphProps {
+    // (undocumented)
+    range: FlowRange;
+    // (undocumented)
+    style: ParagraphStyle;
+}
+
+// Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
+//
+// @public @sealed
+export class FormatText extends BASE_5 implements Readonly<FormatTextProps> {
     // (undocumented)
     afterInsertion(other: FlowRange): FlowOperation | null;
     // (undocumented)
@@ -204,7 +244,7 @@ export interface FormatTextProps {
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class InsertContent extends BASE_5 implements InsertContentProps {
+export class InsertContent extends BASE_6 implements InsertContentProps {
     // (undocumented)
     afterInsertion(other: FlowRange): FlowOperation | null;
     // (undocumented)
@@ -241,7 +281,7 @@ export interface InsertContentProps {
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class LineBreak extends BASE_7 implements LineBreakProps {
+export class LineBreak extends BASE_10 implements LineBreakProps {
     constructor(props?: LineBreakProps);
     // (undocumented)
     static readonly classType: Type<LineBreak>;
@@ -267,7 +307,7 @@ export interface LineBreakProps {
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class ParagraphBreak extends BASE_8 implements ParagraphBreakProps {
+export class ParagraphBreak extends BASE_11 implements ParagraphBreakProps {
     constructor(props?: ParagraphBreakProps);
     // (undocumented)
     static readonly classType: Type<ParagraphBreak>;
@@ -283,6 +323,8 @@ export class ParagraphBreak extends BASE_8 implements ParagraphBreakProps {
     getTextStyle(): null;
     // (undocumented)
     readonly size = 1;
+    // (undocumented)
+    unformatParagraph(style: ParagraphStyle): this;
     // (undocumented)
     unformatText(): this;
 }
@@ -339,7 +381,7 @@ export interface ParagraphStyleProps {
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class RemoveRange extends BASE_6 implements Readonly<RemoveRangeProps> {
+export class RemoveRange extends BASE_7 implements Readonly<RemoveRangeProps> {
     // (undocumented)
     afterInsertion(other: FlowRange): FlowOperation | null;
     // (undocumented)
@@ -371,7 +413,7 @@ export interface RemoveRangeProps {
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class TextRun extends BASE_9 implements Readonly<TextRunProps> {
+export class TextRun extends BASE_12 implements Readonly<TextRunProps> {
     constructor(props?: TextRunProps);
     // (undocumented)
     after(position: number): TextRun;
@@ -447,6 +489,82 @@ export interface TextStyleProps {
     italic?: boolean;
     strike?: boolean;
     underline?: boolean;
+}
+
+// Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
+//
+// @public @sealed
+export class UnformatParagraph extends BASE_8 implements Readonly<UnformatParagraphProps> {
+    // (undocumented)
+    afterInsertion(other: FlowRange): FlowOperation | null;
+    // (undocumented)
+    afterRemoval(other: FlowRange): FlowOperation | null;
+    // @override
+    applyTo(container: FlowContent): FlowContent;
+    // (undocumented)
+    static readonly classType: Type<UnformatParagraph>;
+    // (undocumented)
+    static fromData(data: UnformatParagraphData): UnformatParagraph;
+    // @override
+    invert(state: FlowContent): FlowOperation | null;
+    // @override
+    transform(other: FlowOperation): FlowOperation | null;
+}
+
+// @public
+export interface UnformatParagraphData {
+    // (undocumented)
+    range: FlowRange;
+    // (undocumented)
+    style: ParagraphStyle;
+    // (undocumented)
+    unformat: "para";
+}
+
+// @public
+export interface UnformatParagraphProps {
+    // (undocumented)
+    range: FlowRange;
+    // (undocumented)
+    style: ParagraphStyle;
+}
+
+// Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
+//
+// @public @sealed
+export class UnformatText extends BASE_9 implements Readonly<UnformatTextProps> {
+    // (undocumented)
+    afterInsertion(other: FlowRange): FlowOperation | null;
+    // (undocumented)
+    afterRemoval(other: FlowRange): FlowOperation | null;
+    // @override
+    applyTo(container: FlowContent): FlowContent;
+    // (undocumented)
+    static readonly classType: Type<UnformatText>;
+    // (undocumented)
+    static fromData(data: UnformatTextData): UnformatText;
+    // @override
+    invert(state: FlowContent): FlowOperation | null;
+    // @override
+    transform(other: FlowOperation): FlowOperation | null;
+}
+
+// @public
+export interface UnformatTextData {
+    // (undocumented)
+    range: FlowRange;
+    // (undocumented)
+    style: TextStyle;
+    // (undocumented)
+    unformat: "text";
+}
+
+// @public
+export interface UnformatTextProps {
+    // (undocumented)
+    range: FlowRange;
+    // (undocumented)
+    style: TextStyle;
 }
 
 ```

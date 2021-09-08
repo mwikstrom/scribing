@@ -16,6 +16,7 @@ Model for collaborative rich text editing
 |  [FlowNode](./scribing.flownode.md) | A piece of flow content. |
 |  [FlowOperation](./scribing.flowoperation.md) | An abstraction of an operation that updates flow content. |
 |  [FlowRange](./scribing.flowrange.md) | Represents a range of flow content |
+|  [FormatParagraph](./scribing.formatparagraph.md) | Represents an operation that applies a paragraph style to a range of flow content. |
 |  [FormatText](./scribing.formattext.md) | Represents an operation that applies a text style to a range of flow content. |
 |  [InsertContent](./scribing.insertcontent.md) | Represents an operation that insert flow content. |
 |  [LineBreak](./scribing.linebreak.md) | Represents a line break. |
@@ -24,6 +25,8 @@ Model for collaborative rich text editing
 |  [RemoveRange](./scribing.removerange.md) | Represents an operation that removes a range of flow. |
 |  [TextRun](./scribing.textrun.md) | A run of text with uniform styling |
 |  [TextStyle](./scribing.textstyle.md) | Represents the styling that is applied to text. |
+|  [UnformatParagraph](./scribing.unformatparagraph.md) | Represents an operation that unapplies a paragraph style to a range of flow content. |
+|  [UnformatText](./scribing.unformattext.md) | Represents an operation that unapplies a text style to a range of flow content. |
 
 ## Interfaces
 
@@ -32,6 +35,8 @@ Model for collaborative rich text editing
 |  [FlowBatchProps](./scribing.flowbatchprops.md) | Properties of [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowContentProps](./scribing.flowcontentprops.md) | Flow content properties |
 |  [FlowRangeProps](./scribing.flowrangeprops.md) | Non-computed properties of a [FlowRange](./scribing.flowrange.md) |
+|  [FormatParagraphData](./scribing.formatparagraphdata.md) | Data of format paragraph operations |
+|  [FormatParagraphProps](./scribing.formatparagraphprops.md) | Properties of format paragraph operations |
 |  [FormatTextData](./scribing.formattextdata.md) | Data of format text operations |
 |  [FormatTextProps](./scribing.formattextprops.md) | Properties of format text operations |
 |  [InsertContentData](./scribing.insertcontentdata.md) | Data of insert content operations |
@@ -45,6 +50,10 @@ Model for collaborative rich text editing
 |  [RemoveRangeProps](./scribing.removerangeprops.md) | Properties of remove range opertions |
 |  [TextRunProps](./scribing.textrunprops.md) | Properties of a text run |
 |  [TextStyleProps](./scribing.textstyleprops.md) | Style properties for [text](./scribing.textrun.md) |
+|  [UnformatParagraphData](./scribing.unformatparagraphdata.md) | Data of unformat paragraph operations |
+|  [UnformatParagraphProps](./scribing.unformatparagraphprops.md) | Properties of unformat paragraph operations |
+|  [UnformatTextData](./scribing.unformattextdata.md) | Data of unformat text operations |
+|  [UnformatTextProps](./scribing.unformattextprops.md) | Properties of unformat text operations |
 
 ## Type Aliases
 

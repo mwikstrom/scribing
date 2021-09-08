@@ -68,12 +68,16 @@ export class ParagraphBreak extends BASE implements ParagraphBreakProps {
         super(props);
     }
 
+    public formatParagraph(@type(Props.style) style: ParagraphStyle): this {
+        return this.set("style", this.style.merge(style));
+    }
+
     public formatText(): this {
         return this;
     }
 
-    public formatParagraph(@type(Props.style) style: ParagraphStyle): this {
-        return this.set("style", this.style.merge(style));
+    public unformatParagraph(@type(Props.style) style: ParagraphStyle): this {
+        return this.set("style", this.style.unmerge(style));
     }
 
     public unformatText(): this {

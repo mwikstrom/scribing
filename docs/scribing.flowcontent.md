@@ -42,5 +42,6 @@ export declare class FlowContent extends BASE implements Readonly<FlowContentPro
 |  [peek(position)](./scribing.flowcontent.peek.md) |  | Gets a cursor |
 |  [remove(range)](./scribing.flowcontent.remove.md) |  | Removes a range of flow content |
 |  [toJsonValue()](./scribing.flowcontent.tojsonvalue.md) |  |  |
+|  [unformatParagraph(range, style)](./scribing.flowcontent.unformatparagraph.md) |  | Unapplies paragraph style to a range |
 |  [unformatText(range, style)](./scribing.flowcontent.unformattext.md) |  | Unapplies text style to a range |
 

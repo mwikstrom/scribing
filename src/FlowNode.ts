@@ -40,6 +40,12 @@ export abstract class FlowNode {
     }
 
     /**
+     * Unapplies the specified paragraph style from the current node and returns the updated node.
+     * @param style - The paragraph style to unapply
+     */
+    abstract unformatParagraph(style: ParagraphStyle): FlowNode;
+
+    /**
      * Unapplies the specified text style from the current node and returns the updated node.
      * @param style - The text style to unapply
      */

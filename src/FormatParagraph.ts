@@ -12,64 +12,64 @@ import {
 import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
-import { FormatText } from "./FormatText";
 import { registerOperation } from "./internal/operation-registry";
 import { 
     transformEdgeInflatingRangeOpAfterInsertion, 
     transformRangeOpAfterRemoval
 } from "./internal/transform-helpers";
-import { TextStyle } from "./TextStyle";
+import { ParagraphStyle } from "./ParagraphStyle";
+import { UnformatParagraph } from "./UnformatParagraph";
 
 const Props = {
     range: FlowRange.classType,
-    style: TextStyle.classType,
+    style: ParagraphStyle.classType,
 };
 
 const Data = {
-    unformat: constType("text"),
+    format: constType("para"),
     range: Props.range,
-    style: TextStyle.classType,
+    style: ParagraphStyle.classType,
 };
 
-const PropsType: RecordType<UnformatTextProps> = recordType(Props);
-const DataType: RecordType<UnformatTextData> = recordType(Data);
-const propsToData = ({range, style}: UnformatTextProps): UnformatTextData => ({ unformat: "text", range, style });
+const PropsType: RecordType<FormatParagraphProps> = recordType(Props);
+const DataType: RecordType<FormatParagraphData> = recordType(Data);
+const propsToData = ({range, style}: FormatParagraphProps): FormatParagraphData => ({ format: "para", range, style });
 const BASE = RecordClass(PropsType, FlowOperation, DataType, propsToData);
 
 /**
- * Properties of unformat text operations
+ * Properties of format paragraph operations
  * @public
  */
-export interface UnformatTextProps {
+export interface FormatParagraphProps {
     range: FlowRange;
-    style: TextStyle;
+    style: ParagraphStyle;
 }
 
 /**
- * Data of unformat text operations
+ * Data of format paragraph operations
  * @public
  */
-export interface UnformatTextData {
-    unformat: "text",
+export interface FormatParagraphData {
+    format: "para",
     range: FlowRange;
-    style: TextStyle;
+    style: ParagraphStyle;
 }
 
 /**
- * Represents an operation that unapplies a text style to a range of flow content.
+ * Represents an operation that applies a paragraph style to a range of flow content.
  * @sealed
  * @public
  */
 @frozen
 @validating
 @registerOperation
-export class UnformatText extends BASE implements Readonly<UnformatTextProps> {
-    public static readonly classType = recordClassType(() => UnformatText);
+export class FormatParagraph extends BASE implements Readonly<FormatParagraphProps> {
+    public static readonly classType = recordClassType(() => FormatParagraph);
 
-    public static fromData(@type(DataType) data: UnformatTextData): UnformatText {
+    public static fromData(@type(DataType) data: FormatParagraphData): FormatParagraph {
         const { range, style } = data;
-        const props: UnformatTextProps = { range, style };
-        return new UnformatText(props);
+        const props: FormatParagraphProps = { range, style };
+        return new FormatParagraph(props);
     }
 
     /**
@@ -81,22 +81,32 @@ export class UnformatText extends BASE implements Readonly<UnformatTextProps> {
         const operations: FlowOperation[] = [];
 
         for (const node of state.peek(position).range(this.range.size)) {
-            const nodeStyle = node.getTextStyle();
+            const nodeStyle = node.getParagraphStyle();
 
             if (nodeStyle !== null) {
+                const unformat = new Map();
                 const format = new Map();
 
                 for (const key of this.style.assigned) {
                     const nodeValue = nodeStyle.get(key);
-                    if (nodeValue !== void(0)) {
+                    if (nodeValue === void(0)) {
+                        unformat.set(key, this.style.get(key));
+                    } else {
                         format.set(key, nodeValue);
                     }
                 }
 
-                if (format.size > 0) {
-                    operations.push(new FormatText({
+                if (unformat.size > 0) {
+                    operations.push(new UnformatParagraph({
                         range: FlowRange.at(position, node.size),
-                        style: new TextStyle(Object.fromEntries(format)),
+                        style: new ParagraphStyle(Object.fromEntries(format)),
+                    }));
+                }
+
+                if (format.size > 0) {
+                    operations.push(new FormatParagraph({
+                        range: FlowRange.at(position, node.size),
+                        style: new ParagraphStyle(Object.fromEntries(format)),
                     }));
                 }
             }
@@ -121,7 +131,7 @@ export class UnformatText extends BASE implements Readonly<UnformatTextProps> {
      * @override
      */
     applyTo(container: FlowContent): FlowContent {
-        return container.unformatText(this.range, this.style);
+        return container.formatParagraph(this.range, this.style);
     }
 
     /** 

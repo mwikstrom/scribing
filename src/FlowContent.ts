@@ -178,6 +178,20 @@ export class FlowContent extends BASE implements Readonly<FlowContentProps> {
     }
     
     /**
+     * Unapplies paragraph style to a range
+     * 
+     * @param range - The range to format
+     * @param style - The style to unapply
+     * @returns The updated flow content
+     */
+    unformatParagraph(
+        @type(FlowRange.classType) range: FlowRange, 
+        @type(ParagraphStyle.classType) style: ParagraphStyle
+    ): FlowContent {
+        return this.set("nodes", this.#formatRange(range, node => node.unformatParagraph(style)));
+    }
+
+    /**
      * Unapplies text style to a range
      * @param range - The range to format
      * @param style - The style to unapply

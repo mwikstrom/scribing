@@ -38,5 +38,6 @@ export declare class ParagraphBreak extends BASE implements ParagraphBreakProps
 |  [fromData(data)](./scribing.paragraphbreak.fromdata.md) | <code>static</code> |  |
 |  [getParagraphStyle()](./scribing.paragraphbreak.getparagraphstyle.md) |  |  |
 |  [getTextStyle()](./scribing.paragraphbreak.gettextstyle.md) |  |  |
+|  [unformatParagraph(style)](./scribing.paragraphbreak.unformatparagraph.md) |  |  |
 |  [unformatText()](./scribing.paragraphbreak.unformattext.md) |  |  |
 
