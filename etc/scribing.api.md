@@ -43,7 +43,7 @@ export class FlowContent extends BASE implements Readonly<FlowContentProps> {
     append(...nodes: readonly FlowNode[]): FlowContent;
     // (undocumented)
     static readonly classType: Type<FlowContent>;
-    copy(range: FlowRange): FlowNode[];
+    copy(range: FlowRange): FlowContent;
     formatParagraph(range: FlowRange, style: ParagraphStyle): FlowContent;
     formatText(range: FlowRange, style: TextStyle): FlowContent;
     // (undocumented)
@@ -52,6 +52,8 @@ export class FlowContent extends BASE implements Readonly<FlowContentProps> {
     peek(position?: number): FlowCursor;
     remove(range: FlowRange): FlowContent;
     get size(): number;
+    // (undocumented)
+    toJsonValue(): JsonValue;
 }
 
 // @public
@@ -172,8 +174,6 @@ export class InsertContent extends BASE_4 implements InsertContentProps {
     static fromData(data: InsertContentData): InsertContent;
     invert(): FlowOperation | null;
     // (undocumented)
-    get size(): number;
-    // (undocumented)
     toData(): InsertContentData;
     transform(other: FlowOperation): FlowOperation | null;
     // @internal (undocumented)
@@ -185,13 +185,13 @@ export interface InsertContentData {
     // (undocumented)
     at: number;
     // (undocumented)
-    insert: readonly FlowNode[];
+    insert: FlowContent;
 }
 
 // @public
 export interface InsertContentProps {
     // (undocumented)
-    nodes: readonly FlowNode[];
+    content: FlowContent;
     // (undocumented)
     position: number;
 }

@@ -17,5 +17,5 @@ export interface InsertContentData
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [at](./scribing.insertcontentdata.at.md) | number |  |
-|  [insert](./scribing.insertcontentdata.insert.md) | readonly [FlowNode](./scribing.flownode.md)<!-- -->\[\] |  |
+|  [insert](./scribing.insertcontentdata.insert.md) | [FlowContent](./scribing.flowcontent.md) |  |
 

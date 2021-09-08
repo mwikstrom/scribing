@@ -9,7 +9,7 @@ Extracts a range of flow content
 <b>Signature:</b>
 
 ```typescript
-copy(range: FlowRange): FlowNode[];
+copy(range: FlowRange): FlowContent;
 ```
 
 ## Parameters
@@ -20,5 +20,5 @@ copy(range: FlowRange): FlowNode[];
 
 <b>Returns:</b>
 
-[FlowNode](./scribing.flownode.md)<!-- -->\[\]
+[FlowContent](./scribing.flowcontent.md)
 

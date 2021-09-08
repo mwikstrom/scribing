@@ -21,7 +21,6 @@ export declare class InsertContent extends BASE implements InsertContentProps
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [classType](./scribing.insertcontent.classtype.md) | <code>static</code> | import("paratype").Type&lt;[InsertContent](./scribing.insertcontent.md)<!-- -->&gt; |  |
-|  [size](./scribing.insertcontent.size.md) |  | number |  |
 
 ## Methods
 

@@ -16,6 +16,6 @@ export interface InsertContentProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [nodes](./scribing.insertcontentprops.nodes.md) | readonly [FlowNode](./scribing.flownode.md)<!-- -->\[\] |  |
+|  [content](./scribing.insertcontentprops.content.md) | [FlowContent](./scribing.flowcontent.md) |  |
 |  [position](./scribing.insertcontentprops.position.md) | number |  |
 

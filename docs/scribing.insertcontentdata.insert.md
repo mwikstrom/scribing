@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-insert: readonly FlowNode[];
+insert: FlowContent;
 ```

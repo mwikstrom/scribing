@@ -41,4 +41,5 @@ export declare class FlowContent extends BASE implements Readonly<FlowContentPro
 |  [insert(position, nodes)](./scribing.flowcontent.insert.md) |  | Inserts the specified nodes at the specified position |
 |  [peek(position)](./scribing.flowcontent.peek.md) |  | Gets a cursor |
 |  [remove(range)](./scribing.flowcontent.remove.md) |  | Removes a range of flow content |
+|  [toJsonValue()](./scribing.flowcontent.tojsonvalue.md) |  |  |
 
