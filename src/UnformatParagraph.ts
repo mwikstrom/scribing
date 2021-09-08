@@ -13,12 +13,13 @@ import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
 import { FormatParagraph } from "./FormatParagraph";
+import { invertUnformatOp } from "./internal/format-helpers";
 import { registerOperation } from "./internal/operation-registry";
 import { 
     transformEdgeInflatingRangeOpAfterInsertion, 
     transformRangeOpAfterRemoval
 } from "./internal/transform-helpers";
-import { ParagraphStyle } from "./ParagraphStyle";
+import { ParagraphStyle, ParagraphStyleProps } from "./ParagraphStyle";
 
 const Props = {
     range: FlowRange.classType,
@@ -81,34 +82,15 @@ export class UnformatParagraph extends BASE implements Readonly<UnformatParagrap
      * @override
      */
     invert(state: FlowContent): FlowOperation | null {
-        let position = this.range.first;
-        const operations: FlowOperation[] = [];
-
-        for (const node of state.peek(position).range(this.range.size)) {
-            const nodeStyle = node.getParagraphStyle();
-
-            if (nodeStyle !== null) {
-                const format = new Map();
-
-                for (const key of this.style.assigned) {
-                    const nodeValue = nodeStyle.get(key);
-                    if (nodeValue !== void(0)) {
-                        format.set(key, nodeValue);
-                    }
-                }
-
-                if (format.size > 0) {
-                    operations.push(new FormatParagraph({
-                        range: FlowRange.at(position, node.size),
-                        style: new ParagraphStyle(Object.fromEntries(format)),
-                    }));
-                }
-            }
-
-            position += node.size;
-        }
-
-        return FlowOperation.batch(operations);
+        const { range, style } = this;
+        return invertUnformatOp<ParagraphStyle, ParagraphStyleProps>({
+            state,
+            range,
+            style,
+            getStyle: node => node.getParagraphStyle(),
+            makeStyle: props => new ParagraphStyle(props),
+            makeFormatOp: props => new FormatParagraph(props),
+        });
     }
 
     /**

@@ -12,12 +12,13 @@ import {
 import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
+import { invertFormatOp } from "./internal/format-helpers";
 import { registerOperation } from "./internal/operation-registry";
 import { 
     transformEdgeInflatingRangeOpAfterInsertion, 
     transformRangeOpAfterRemoval
 } from "./internal/transform-helpers";
-import { ParagraphStyle } from "./ParagraphStyle";
+import { ParagraphStyle, ParagraphStyleProps } from "./ParagraphStyle";
 import { UnformatParagraph } from "./UnformatParagraph";
 
 const Props = {
@@ -77,44 +78,16 @@ export class FormatParagraph extends BASE implements Readonly<FormatParagraphPro
      * @override
      */
     invert(state: FlowContent): FlowOperation | null {
-        let position = this.range.first;
-        const operations: FlowOperation[] = [];
-
-        for (const node of state.peek(position).range(this.range.size)) {
-            const nodeStyle = node.getParagraphStyle();
-
-            if (nodeStyle !== null) {
-                const unformat = new Map();
-                const format = new Map();
-
-                for (const key of this.style.assigned) {
-                    const nodeValue = nodeStyle.get(key);
-                    if (nodeValue === void(0)) {
-                        unformat.set(key, this.style.get(key));
-                    } else {
-                        format.set(key, nodeValue);
-                    }
-                }
-
-                if (unformat.size > 0) {
-                    operations.push(new UnformatParagraph({
-                        range: FlowRange.at(position, node.size),
-                        style: new ParagraphStyle(Object.fromEntries(format)),
-                    }));
-                }
-
-                if (format.size > 0) {
-                    operations.push(new FormatParagraph({
-                        range: FlowRange.at(position, node.size),
-                        style: new ParagraphStyle(Object.fromEntries(format)),
-                    }));
-                }
-            }
-
-            position += node.size;
-        }
-
-        return FlowOperation.batch(operations);
+        const { range, style } = this;
+        return invertFormatOp<ParagraphStyle, ParagraphStyleProps>({
+            state,
+            range,
+            style,
+            getStyle: node => node.getParagraphStyle(),
+            makeStyle: props => new ParagraphStyle(props),
+            makeFormatOp: props => new FormatParagraph(props),
+            makeUnformatOp: props => new UnformatParagraph(props),
+        });
     }
 
     /**

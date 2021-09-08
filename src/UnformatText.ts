@@ -13,12 +13,13 @@ import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
 import { FormatText } from "./FormatText";
+import { invertUnformatOp } from "./internal/format-helpers";
 import { registerOperation } from "./internal/operation-registry";
 import { 
     transformEdgeInflatingRangeOpAfterInsertion, 
     transformRangeOpAfterRemoval
 } from "./internal/transform-helpers";
-import { TextStyle } from "./TextStyle";
+import { TextStyle, TextStyleProps } from "./TextStyle";
 
 const Props = {
     range: FlowRange.classType,
@@ -77,34 +78,15 @@ export class UnformatText extends BASE implements Readonly<UnformatTextProps> {
      * @override
      */
     invert(state: FlowContent): FlowOperation | null {
-        let position = this.range.first;
-        const operations: FlowOperation[] = [];
-
-        for (const node of state.peek(position).range(this.range.size)) {
-            const nodeStyle = node.getTextStyle();
-
-            if (nodeStyle !== null) {
-                const format = new Map();
-
-                for (const key of this.style.assigned) {
-                    const nodeValue = nodeStyle.get(key);
-                    if (nodeValue !== void(0)) {
-                        format.set(key, nodeValue);
-                    }
-                }
-
-                if (format.size > 0) {
-                    operations.push(new FormatText({
-                        range: FlowRange.at(position, node.size),
-                        style: new TextStyle(Object.fromEntries(format)),
-                    }));
-                }
-            }
-
-            position += node.size;
-        }
-
-        return FlowOperation.batch(operations);
+        const { range, style } = this;
+        return invertUnformatOp<TextStyle, TextStyleProps>({
+            state,
+            range,
+            style,
+            getStyle: node => node.getTextStyle(),
+            makeStyle: props => new TextStyle(props),
+            makeFormatOp: props => new FormatText(props),
+        });
     }
 
     /**
