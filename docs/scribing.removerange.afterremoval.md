@@ -9,7 +9,7 @@
 
 ```typescript
 /** @override */
-afterRemoval(other: FlowRange): RemoveRange;
+afterRemoval(other: FlowRange): RemoveRange | null;
 ```
 
 ## Parameters
@@ -20,5 +20,5 @@ afterRemoval(other: FlowRange): RemoveRange;
 
 <b>Returns:</b>
 
-[RemoveRange](./scribing.removerange.md)
+[RemoveRange](./scribing.removerange.md) \| null
 

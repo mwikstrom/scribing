@@ -19,7 +19,7 @@ describe("InsertContent", () => {
         expect(after).toBe(before);
     });
 
-    it("is affected by other insertion at same position", () => {
+    it("is translated by other insertion at same position", () => {
         const before = InsertContent.fromData({
             insert: FlowContent.fromData([ TextRun.fromData("foobar") ]),
             at: 123,
@@ -31,7 +31,7 @@ describe("InsertContent", () => {
         });
     });
 
-    it("is affected by other insertion at earlier position", () => {
+    it("is translated by other insertion at earlier position", () => {
         const before = InsertContent.fromData({
             insert: FlowContent.fromData([ TextRun.fromData("foobar") ]),
             at: 123,
@@ -67,13 +67,10 @@ describe("InsertContent", () => {
             at: 123,
         });
         const after = before.afterRemoval(FlowRange.at(123, 10));
-        expect(after?.toJsonValue()).toMatchObject({
-            insert: ["foobar"],
-            at: 123,
-        });
+        expect(after).toBe(before);
     });
 
-    it("is affected by removal at earlier position", () => {
+    it("is translated by removal at earlier position", () => {
         const before = InsertContent.fromData({
             insert: FlowContent.fromData([ TextRun.fromData("foobar") ]),
             at: 123,

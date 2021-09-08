@@ -72,7 +72,7 @@ export class RemoveRange extends BASE implements Readonly<RemoveRangeProps> {
         }
 
         // Inflated when insertion was made inside
-        if (other.last < this.range.last) {
+        if (other.first < this.range.last) {
             return this.set("range", this.range.inflate(other.size));
         }
         
@@ -84,20 +84,31 @@ export class RemoveRange extends BASE implements Readonly<RemoveRangeProps> {
      * {@inheritDoc FlowOperation.afterRemoval}
      * @override
      */
-    afterRemoval(other: FlowRange): RemoveRange {
-        // Translated when other removal was made before start
-        if (other.first < this.range.first) {
-            return this.set("range", this.range.translate(-other.size));
+    afterRemoval(other: FlowRange): RemoveRange | null {
+        let { range } = this;
+
+        // Unaffected when other remove was made at or after end
+        if (other.first >= range.last) {
+            return this;
         }
 
         // Deflated when other removal insersect with this
-        const intersection = this.range.intersect(other); 
+        const intersection = range.intersect(other); 
         if (intersection.size > 0) {
-            return this.set("range", this.range.deflate(intersection.size));
+            range = range.deflate(intersection.size);
+
+            // Cancelled when deflated to nothing
+            if (range.isCollapsed) {
+                return null;
+            }
         }       
 
-        // Otherwise, unaffected
-        return this;
+        // Translated when other removal was made before start
+        if (other.first < range.first) {
+            range = range.translate(intersection.size - other.size);
+        }
+
+        return this.set("range", range);
     }
 
     /**

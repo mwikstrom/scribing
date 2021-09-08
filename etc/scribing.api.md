@@ -307,7 +307,7 @@ export class RemoveRange extends BASE_5 implements Readonly<RemoveRangeProps> {
     // @override (undocumented)
     afterInsertion(other: FlowRange): RemoveRange;
     // @override (undocumented)
-    afterRemoval(other: FlowRange): RemoveRange;
+    afterRemoval(other: FlowRange): RemoveRange | null;
     // @override
     apply(container: FlowContent): FlowContent;
     // (undocumented)
