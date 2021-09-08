@@ -1,4 +1,13 @@
-import { FlowBatch, FlowOperation, FormatText, InsertContent, RemoveRange } from "../src";
+import { 
+    FlowBatch,
+    FlowOperation, 
+    FormatParagraph, 
+    FormatText, 
+    InsertContent, 
+    RemoveRange, 
+    UnformatParagraph, 
+    UnformatText 
+} from "../src";
 
 describe("FlowOperation", () => {
     it("can deserialize insert content operation", () => {
@@ -53,4 +62,39 @@ describe("FlowOperation", () => {
         expect(op.range.focus).toBe(456);
         expect(op.style.toData()).toMatchObject({ bold: true });
     });
-});
+
+    it("can deserialize unformat text operation", () => {
+        const op = FlowOperation.fromJsonValue({
+            unformat: "text",
+            range: [123, 456],
+            style: { bold: true },
+        }) as UnformatText;
+        expect(op).toBeInstanceOf(UnformatText);
+        expect(op.range.anchor).toBe(123);
+        expect(op.range.focus).toBe(456);
+        expect(op.style.toData()).toMatchObject({ bold: true });
+    });
+
+    it("can deserialize format paragraph operation", () => {
+        const op = FlowOperation.fromJsonValue({
+            format: "para",
+            range: [123, 456],
+            style: { type: "h1" },
+        }) as FormatParagraph;
+        expect(op).toBeInstanceOf(FormatParagraph);
+        expect(op.range.anchor).toBe(123);
+        expect(op.range.focus).toBe(456);
+        expect(op.style.toData()).toMatchObject({ type: "h1" });
+    });
+
+    it("can deserialize unformat paragraph operation", () => {
+        const op = FlowOperation.fromJsonValue({
+            unformat: "para",
+            range: [123, 456],
+            style: { type: "h1" },
+        }) as UnformatParagraph;
+        expect(op).toBeInstanceOf(UnformatParagraph);
+        expect(op.range.anchor).toBe(123);
+        expect(op.range.focus).toBe(456);
+        expect(op.style.toData()).toMatchObject({ type: "h1" });
+    });});
