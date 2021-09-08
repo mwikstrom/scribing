@@ -4,7 +4,7 @@ describe("FlowContent", () => {
     it("can copy partial text run", () => {
         const content = FlowContent.classType.fromJsonValue(["foobar"]);
         const nodes = content.copy(FlowRange.at(2, 3));
-        expect(nodes.map(n => n.toJsonValue())).toMatchObject(["oba"]);
+        expect(nodes.toJsonValue()).toMatchObject(["oba"]);
     });
 
     it("can copy cross text runs", () => {
@@ -13,7 +13,7 @@ describe("FlowContent", () => {
             { text: "bar", style: { bold: true }}
         ]);
         const nodes = content.copy(FlowRange.at(2, 3));
-        expect(nodes.map(n => n.toJsonValue())).toMatchObject([
+        expect(nodes.toJsonValue()).toMatchObject([
             "o", 
             { text: "ba", style: { bold: true }}
         ]);
@@ -25,7 +25,7 @@ describe("FlowContent", () => {
             { text: "bar", style: { bold: true }}
         ]);
         const nodes = content.copy(FlowRange.at(0, 3));
-        expect(nodes.map(n => n.toJsonValue())).toMatchObject([
+        expect(nodes.toJsonValue()).toMatchObject([
             "foo", 
         ]);
     });
@@ -36,7 +36,7 @@ describe("FlowContent", () => {
             { text: "bar", style: { bold: true }}
         ]);
         const nodes = content.copy(FlowRange.at(3, 3));
-        expect(nodes.map(n => n.toJsonValue())).toMatchObject([
+        expect(nodes.toJsonValue()).toMatchObject([
             { text: "bar", style: { bold: true }}
         ]);
     });

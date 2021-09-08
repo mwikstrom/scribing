@@ -1,6 +1,7 @@
 import { 
     arrayType, 
     frozen, 
+    JsonValue, 
     nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
@@ -105,9 +106,9 @@ export class FlowContent extends BASE implements Readonly<FlowContentProps> {
      * Extracts a range of flow content
      * @param range - The range to be extracted
      */
-    copy(@type(FlowRange.classType) range: FlowRange): FlowNode[] {
+    copy(@type(FlowRange.classType) range: FlowRange): FlowContent {
         const cursor = this.peek(range.first);
-        return Array.from(cursor.range(range.size));
+        return this.set("nodes", Object.freeze(Array.from(cursor.range(range.size))));
     }
 
     /**
@@ -170,6 +171,10 @@ export class FlowContent extends BASE implements Readonly<FlowContentProps> {
         const { after } = this.peek(range.last);
         const merged = Array.from(FlowContent.merge(before, after));
         return this.set("nodes", merged);
+    }
+
+    toJsonValue(): JsonValue {
+        return FlowContent.classType.toJsonValue(this);
     }
     
     #formatRange(range: FlowRange, formatter: (node: FlowNode) => FlowNode): readonly FlowNode[] {

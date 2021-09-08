@@ -8,8 +8,8 @@ describe("FlowOperation", () => {
         }) as InsertContent;
         expect(op).toBeInstanceOf(InsertContent);
         expect(op.position).toBe(123);
-        expect(op.nodes.length).toBe(1);
-        expect(op.nodes[0].toData()).toBe("foobar");
+        expect(op.content.nodes.length).toBe(1);
+        expect(op.content.nodes[0].toData()).toBe("foobar");
     });
 
     it("can deserialize remove range operation", () => {
@@ -38,7 +38,7 @@ describe("FlowOperation", () => {
         const op2 = batch.operations[1] as InsertContent;
         expect(op2).toBeInstanceOf(InsertContent);
         expect(op2.position).toBe(123);
-        expect(op2.nodes.length).toBe(1);
-        expect(op2.nodes[0].toData()).toBe("foobar");
+        expect(op2.content.nodes.length).toBe(1);
+        expect(op2.content.nodes[0].toData()).toBe("foobar");
     });
 });

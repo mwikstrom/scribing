@@ -105,7 +105,7 @@ export class RemoveRange extends BASE implements Readonly<RemoveRangeProps> {
      * @override
      */
     invert(state: FlowContent): InsertContent {
-        return new InsertContent({ position: this.range.first, nodes: state.copy(this.range) });
+        return new InsertContent({ position: this.range.first, content: state.copy(this.range) });
     }
 
     /**
