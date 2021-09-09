@@ -154,10 +154,18 @@ describe("FlowCursor", () => {
 
     it("can get paragraph style", () => {
         const content = FlowContent.classType.fromJsonValue(data);
-        expect(content.peek(0).getParagraphStyle()?.toData()).toMatchObject({ alignment: "center", type: "normal"});
-        expect(content.peek(10).getParagraphStyle()?.toData()).toMatchObject({ alignment: "center", type: "normal"});
-        expect(content.peek(12).getParagraphStyle()?.toData()).toMatchObject({ alignment: "center", type: "normal"});
+        expect(content.peek(0).getParagraphStyle()?.toData()).toMatchObject({ alignment: "center", type: "normal" });
+        expect(content.peek(10).getParagraphStyle()?.toData()).toMatchObject({ alignment: "center", type: "normal" });
+        expect(content.peek(12).getParagraphStyle()?.toData()).toMatchObject({ alignment: "center", type: "normal" });
         expect(content.peek(13).getParagraphStyle()).toBe(null);
         expect(content.peek(20).getParagraphStyle()).toBe(null);
+    });
+
+    it("can get text style", () => {
+        const content = FlowContent.classType.fromJsonValue(data);
+        expect(content.peek(0).getTextStyle()?.toData()).toMatchObject({ italic: true });
+        expect(content.peek(10).getTextStyle()?.toData()).toMatchObject({ underline: true });
+        expect(content.peek(12).getTextStyle()?.toData()).toMatchObject({});
+        expect(content.peek(13).getTextStyle()?.toData()).toMatchObject({});
     });
 });

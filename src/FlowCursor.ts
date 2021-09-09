@@ -4,6 +4,7 @@ import { FlowContent } from "./FlowContent";
 import { FlowNode } from "./FlowNode";
 import { ParagraphStyle } from "./ParagraphStyle";
 import { TextRun } from "./TextRun";
+import { TextStyle } from "./TextStyle";
 
 /**
  * Represents a position in flow content
@@ -88,11 +89,38 @@ export class FlowCursor {
      * Gets the paragraph style at the current position
      */
     getParagraphStyle(): ParagraphStyle | null {
-        return (
-            this.node?.getParagraphStyle() || 
-            this.moveToStartOfNextNode()?.getParagraphStyle() ||
-            null
-        );
+        const { nodes } = this.#content;
+        let index = this.#index;
+        let result: ParagraphStyle | null = null;
+
+        while (index < nodes.length && !result) {
+            result = nodes[index]?.getParagraphStyle() ?? null;
+            ++index;
+        }
+
+        return result;
+    }
+
+    /**
+     * Gets the text style at the current position
+     */
+    getTextStyle(): TextStyle | null {
+        const { nodes } = this.#content;
+        let index = this.#index;
+        let result: TextStyle | null = null;
+        let breakAtPara = false;
+
+        while (index >= 0 && !result) {
+            const node = nodes[index];
+            if (breakAtPara && node?.getParagraphStyle()) {
+                break;
+            }
+            result = node?.getTextStyle() ?? null;
+            --index;
+            breakAtPara = true;
+        }
+
+        return result;
     }
 
     /**
