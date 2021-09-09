@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 import { JsonValue } from "paratype";
 import { flowNodeType } from "./internal/node-registry";
 import { ParagraphStyle } from "./ParagraphStyle";
@@ -8,6 +9,8 @@ import { TextStyle } from "./TextStyle";
  * @public
  */
 export abstract class FlowNode {
+    public readonly transientKey = nanoid();
+
     public static fromJsonValue(value: JsonValue): FlowNode {
         return flowNodeType.fromJsonValue(value);
     }

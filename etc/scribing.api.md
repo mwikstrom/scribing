@@ -105,6 +105,8 @@ export abstract class FlowNode {
     abstract toData(): unknown;
     // (undocumented)
     toJsonValue(): JsonValue;
+    // (undocumented)
+    readonly transientKey: string;
     abstract unformatParagraph(style: ParagraphStyle): FlowNode;
     abstract unformatText(style: TextStyle): FlowNode;
 }
