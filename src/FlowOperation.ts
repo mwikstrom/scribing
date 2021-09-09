@@ -13,8 +13,7 @@ export abstract class FlowOperation {
         return flowOperationType.fromJsonValue(value);
     }
 
-    /** @internal */
-    static batch(operations: FlowOperation[]): FlowOperation | null {
+    static fromArray(operations: FlowOperation[]): FlowOperation | null {
         if (operations.length === 0) {
             return null;
         } else if (operations.length === 1) {

@@ -69,5 +69,5 @@ const coreInvertFormatOp = <S extends RecordObject<T>, T>(
         position += node.size;
     }
 
-    return FlowOperation.batch(operations);
+    return FlowOperation.fromArray(operations);
 };
