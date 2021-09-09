@@ -2,6 +2,7 @@
 import { frozen, integerType, type, validating } from "paratype";
 import { FlowContent } from "./FlowContent";
 import { FlowNode } from "./FlowNode";
+import { ParagraphStyle } from "./ParagraphStyle";
 import { TextRun } from "./TextRun";
 
 /**
@@ -81,6 +82,17 @@ export class FlowCursor {
      */
     get after(): Iterable<FlowNode> {
         return this.range(this.#content.size - this.#position);
+    }
+
+    /**
+     * Gets the paragraph style at the current position
+     */
+    getParagraphStyle(): ParagraphStyle | null {
+        return (
+            this.node?.getParagraphStyle() || 
+            this.moveToStartOfNextNode()?.getParagraphStyle() ||
+            null
+        );
     }
 
     /**

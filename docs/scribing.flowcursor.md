@@ -33,6 +33,7 @@ The constructor for this class is marked as internal. Third-party code should no
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [getParagraphStyle()](./scribing.flowcursor.getparagraphstyle.md) |  | Gets the paragraph style at the current position |
 |  [move(distance)](./scribing.flowcursor.move.md) |  | Gets a new cursor that represents the position at the specified distance from the current position |
 |  [moveToStartOfNextNode()](./scribing.flowcursor.movetostartofnextnode.md) |  |  |
 |  [moveToStartOfNode()](./scribing.flowcursor.movetostartofnode.md) |  |  |

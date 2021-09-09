@@ -74,6 +74,7 @@ export class FlowCursor {
     constructor(content: FlowContent, symbol: symbol, index: number, offset: number, position: number);
     get after(): Iterable<FlowNode>;
     get before(): Iterable<FlowNode>;
+    getParagraphStyle(): ParagraphStyle | null;
     get index(): number;
     move(distance: number): FlowCursor;
     // (undocumented)
