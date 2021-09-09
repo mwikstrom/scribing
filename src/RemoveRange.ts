@@ -82,8 +82,8 @@ export class RemoveRange extends BASE implements Readonly<RemoveRangeProps> {
      * {@inheritDoc FlowOperation.applyTo}
      * @override
      */
-    applyTo(container: FlowContent): FlowContent {
-        return container.remove(this.range);
+    applyTo(content: FlowContent): FlowContent {
+        return content.remove(this.range);
     }
 
     /** 

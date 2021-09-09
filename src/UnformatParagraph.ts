@@ -106,8 +106,8 @@ export class UnformatParagraph extends BASE implements Readonly<UnformatParagrap
      * {@inheritDoc FlowOperation.applyTo}
      * @override
      */
-    applyTo(container: FlowContent): FlowContent {
-        return container.unformatParagraph(this.range, this.style);
+    applyTo(content: FlowContent): FlowContent {
+        return content.unformatParagraph(this.range, this.style);
     }
 
     /** 

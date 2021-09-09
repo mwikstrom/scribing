@@ -103,8 +103,8 @@ export class FormatText extends BASE implements Readonly<FormatTextProps> {
      * {@inheritDoc FlowOperation.applyTo}
      * @override
      */
-    applyTo(container: FlowContent): FlowContent {
-        return container.formatText(this.range, this.style);
+    applyTo(content: FlowContent): FlowContent {
+        return content.formatText(this.range, this.style);
     }
 
     /** 

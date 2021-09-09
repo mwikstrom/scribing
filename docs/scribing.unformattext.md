@@ -28,7 +28,7 @@ export declare class UnformatText extends BASE implements Readonly<UnformatTextP
 |  --- | --- | --- |
 |  [afterInsertion(other)](./scribing.unformattext.afterinsertion.md) |  |  |
 |  [afterRemoval(other)](./scribing.unformattext.afterremoval.md) |  |  |
-|  [applyTo(container)](./scribing.unformattext.applyto.md) |  | Applies the current operation on the specified content and returns the updated result. |
+|  [applyTo(content)](./scribing.unformattext.applyto.md) |  | Applies the current operation on the specified content and returns the updated result. |
 |  [fromData(data)](./scribing.unformattext.fromdata.md) | <code>static</code> |  |
 |  [invert(state)](./scribing.unformattext.invert.md) |  | Returns an operation that negates the effect of the current operation. |
 |  [transform(other)](./scribing.unformattext.transform.md) |  | Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation. |

@@ -28,7 +28,7 @@ export declare class UnformatParagraph extends BASE implements Readonly<Unformat
 |  --- | --- | --- |
 |  [afterInsertion(other)](./scribing.unformatparagraph.afterinsertion.md) |  |  |
 |  [afterRemoval(other)](./scribing.unformatparagraph.afterremoval.md) |  |  |
-|  [applyTo(container)](./scribing.unformatparagraph.applyto.md) |  | Applies the current operation on the specified content and returns the updated result. |
+|  [applyTo(content)](./scribing.unformatparagraph.applyto.md) |  | Applies the current operation on the specified content and returns the updated result. |
 |  [fromData(data)](./scribing.unformatparagraph.fromdata.md) | <code>static</code> |  |
 |  [invert(state)](./scribing.unformatparagraph.invert.md) |  | Returns an operation that negates the effect of the current operation. |
 |  [transform(other)](./scribing.unformatparagraph.transform.md) |  | Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation. |

@@ -28,7 +28,7 @@ export declare class InsertContent extends BASE implements InsertContentProps
 |  --- | --- | --- |
 |  [afterInsertion(other)](./scribing.insertcontent.afterinsertion.md) |  |  |
 |  [afterRemoval(other)](./scribing.insertcontent.afterremoval.md) |  |  |
-|  [applyTo(container)](./scribing.insertcontent.applyto.md) |  | Applies the current operation on the specified content and returns the updated result. |
+|  [applyTo(content)](./scribing.insertcontent.applyto.md) |  | Applies the current operation on the specified content and returns the updated result. |
 |  [fromData(data)](./scribing.insertcontent.fromdata.md) | <code>static</code> |  |
 |  [invert()](./scribing.insertcontent.invert.md) |  | Returns an operation that negates the effect of the current operation. |
 |  [toData()](./scribing.insertcontent.todata.md) |  |  |

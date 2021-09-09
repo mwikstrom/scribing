@@ -100,11 +100,11 @@ export class FlowBatch extends BASE implements Readonly<FlowBatchProps> {
     /** 
      * {@inheritDoc FlowOperation.applyTo}
      */
-    applyTo(container: FlowContent): FlowContent {
+    applyTo(content: FlowContent): FlowContent {
         for (const op of this.operations) {
-            container = op.applyTo(container);
+            content = op.applyTo(content);
         }
-        return container;
+        return content;
     }
 
     /** 

@@ -102,8 +102,8 @@ export class UnformatText extends BASE implements Readonly<UnformatTextProps> {
      * {@inheritDoc FlowOperation.applyTo}
      * @override
      */
-    applyTo(container: FlowContent): FlowContent {
-        return container.unformatText(this.range, this.style);
+    applyTo(content: FlowContent): FlowContent {
+        return content.unformatText(this.range, this.style);
     }
 
     /** 

@@ -19,7 +19,7 @@ export class FlowBatch extends BASE_3 implements Readonly<FlowBatchProps> {
     afterInsertion(other: FlowRange): FlowOperation | null;
     // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
-    applyTo(container: FlowContent): FlowContent;
+    applyTo(content: FlowContent): FlowContent;
     // (undocumented)
     static readonly classType: Type<FlowBatch>;
     static fromData(data: FlowBatchData): FlowBatch;
@@ -75,6 +75,7 @@ export class FlowCursor {
     get after(): Iterable<FlowNode>;
     get before(): Iterable<FlowNode>;
     getParagraphStyle(): ParagraphStyle | null;
+    getTextStyle(): TextStyle | null;
     get index(): number;
     move(distance: number): FlowCursor;
     // (undocumented)
@@ -175,7 +176,7 @@ export class FormatParagraph extends BASE_4 implements Readonly<FormatParagraphP
     // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
-    applyTo(container: FlowContent): FlowContent;
+    applyTo(content: FlowContent): FlowContent;
     // (undocumented)
     static readonly classType: Type<FormatParagraph>;
     // (undocumented)
@@ -213,7 +214,7 @@ export class FormatText extends BASE_5 implements Readonly<FormatTextProps> {
     // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
-    applyTo(container: FlowContent): FlowContent;
+    applyTo(content: FlowContent): FlowContent;
     // (undocumented)
     static readonly classType: Type<FormatText>;
     // (undocumented)
@@ -270,7 +271,7 @@ export class InsertContent extends BASE_6 implements InsertContentProps {
     afterInsertion(other: FlowRange): FlowOperation | null;
     // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
-    applyTo(container: FlowContent): FlowContent;
+    applyTo(content: FlowContent): FlowContent;
     // (undocumented)
     static readonly classType: Type<InsertContent>;
     // (undocumented)
@@ -408,7 +409,7 @@ export class RemoveRange extends BASE_7 implements Readonly<RemoveRangeProps> {
     // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
-    applyTo(container: FlowContent): FlowContent;
+    applyTo(content: FlowContent): FlowContent;
     // (undocumented)
     static readonly classType: Type<RemoveRange>;
     // (undocumented)
@@ -521,7 +522,7 @@ export class UnformatParagraph extends BASE_8 implements Readonly<UnformatParagr
     // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
-    applyTo(container: FlowContent): FlowContent;
+    applyTo(content: FlowContent): FlowContent;
     // (undocumented)
     static readonly classType: Type<UnformatParagraph>;
     // (undocumented)
@@ -559,7 +560,7 @@ export class UnformatText extends BASE_9 implements Readonly<UnformatTextProps> 
     // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
-    applyTo(container: FlowContent): FlowContent;
+    applyTo(content: FlowContent): FlowContent;
     // (undocumented)
     static readonly classType: Type<UnformatText>;
     // (undocumented)

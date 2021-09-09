@@ -103,8 +103,8 @@ export class FormatParagraph extends BASE implements Readonly<FormatParagraphPro
      * {@inheritDoc FlowOperation.applyTo}
      * @override
      */
-    applyTo(container: FlowContent): FlowContent {
-        return container.formatParagraph(this.range, this.style);
+    applyTo(content: FlowContent): FlowContent {
+        return content.formatParagraph(this.range, this.style);
     }
 
     /** 

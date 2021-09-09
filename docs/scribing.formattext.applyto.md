@@ -10,14 +10,14 @@ Applies the current operation on the specified content and returns the updated r
 
 ```typescript
 /** @override */
-applyTo(container: FlowContent): FlowContent;
+applyTo(content: FlowContent): FlowContent;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  container | [FlowContent](./scribing.flowcontent.md) |  |
+|  content | [FlowContent](./scribing.flowcontent.md) |  |
 
 <b>Returns:</b>
 
