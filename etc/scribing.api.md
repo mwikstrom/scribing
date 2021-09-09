@@ -241,6 +241,26 @@ export interface FormatTextProps {
     style: TextStyle;
 }
 
+// @public
+export abstract class InlineNode extends FlowNode {
+    // (undocumented)
+    formatParagraph(): this;
+    // (undocumented)
+    formatText(style: TextStyle): this;
+    // (undocumented)
+    getParagraphStyle(): null;
+    // (undocumented)
+    getTextStyle(): TextStyle;
+    // (undocumented)
+    abstract set(key: "style", value: TextStyle): this;
+    // (undocumented)
+    abstract readonly style: TextStyle;
+    // (undocumented)
+    unformatParagraph(): this;
+    // (undocumented)
+    unformatText(style: TextStyle): this;
+}
+
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed

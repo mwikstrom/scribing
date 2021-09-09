@@ -18,6 +18,7 @@ Model for collaborative rich text editing
 |  [FlowRange](./scribing.flowrange.md) | Represents a range of flow content |
 |  [FormatParagraph](./scribing.formatparagraph.md) | Represents an operation that applies a paragraph style to a range of flow content. |
 |  [FormatText](./scribing.formattext.md) | Represents an operation that applies a text style to a range of flow content. |
+|  [InlineNode](./scribing.inlinenode.md) | Represents an inline node |
 |  [InsertContent](./scribing.insertcontent.md) | Represents an operation that insert flow content. |
 |  [LineBreak](./scribing.linebreak.md) | Represents a line break. |
 |  [ParagraphBreak](./scribing.paragraphbreak.md) | Represents a paragraph break. |
