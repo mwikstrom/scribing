@@ -141,7 +141,27 @@ export class InsertContent extends BASE implements InsertContentProps {
      * {@inheritDoc FlowOperation.applyTo}
      */
     applyTo(content: FlowContent): FlowContent {
-        // TODO: Merge formatting (both text and para) from existing content?!
-        return content.insert(this.position, ...this.content.nodes);
+        const cursor = content.peek(this.position);
+        const paraStyle = cursor.getParagraphStyle();
+        let textStyle = cursor.getTextStyle();
+        const nodes = [...this.content.nodes];
+
+        for (let i = 0; i < nodes.length; ++i) {
+            const n = nodes[i];
+
+            if (textStyle !== null) {
+                if (n.getParagraphStyle() !== null) {
+                    textStyle = null;
+                } else {
+                    nodes[i] = n.formatText(textStyle);
+                }
+            }
+
+            if (paraStyle !== null) {
+                nodes[i] = n.formatParagraph(paraStyle);
+            }
+        }
+
+        return content.insert(this.position, ...nodes);
     }
 }

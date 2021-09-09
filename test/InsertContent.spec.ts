@@ -1,4 +1,4 @@
-import { FlowContent, FlowRange, InsertContent, TextRun } from "../src";
+import { FlowContent, FlowRange, InsertContent, ParagraphBreak, ParagraphStyle, TextRun, TextStyle } from "../src";
 
 describe("InsertContent", () => {
     it("is not affected by other empty insertion", () => {
@@ -102,5 +102,57 @@ describe("InsertContent", () => {
         expect(done.toJsonValue()).toMatchObject(["hello world!"]);
         const undone = inv?.applyTo(done);
         expect(undone?.toJsonValue()).toMatchObject(["hello!"]);
+    });
+
+    it("current paragraph style is kept when inserting", () => {
+        const original = FlowContent.fromData([
+            TextRun.fromData("ab"),
+            new ParagraphBreak({ style: new ParagraphStyle({ alignment: "center" })}),
+        ]);
+        const op = InsertContent.fromData({ 
+            insert: FlowContent.fromData([
+                TextRun.fromData("X"),
+                new ParagraphBreak(),
+                TextRun.fromData("Y"),
+                new ParagraphBreak(),
+            ]), 
+            at: 1 
+        });
+        const changed = op.applyTo(original);
+        expect(changed.toJsonValue()).toMatchObject([
+            "aX",
+            { break: "para", style: { alignment: "center" }},
+            "Y",
+            { break: "para", style: { alignment: "center" }},
+            "b",
+            { break: "para", style: { alignment: "center" }},
+        ]);
+    });
+
+    it("current text style is kept when inserting", () => {
+        const original = FlowContent.fromData([TextRun.fromData({ text: "ab", style: new TextStyle({ bold: true })})]);
+        const op = InsertContent.fromData({ insert: FlowContent.fromData([TextRun.fromData("X")]), at: 1 });
+        const changed = op.applyTo(original);
+        expect(changed.toJsonValue()).toMatchObject([
+            { text: "aXb", style: { bold: true } }
+        ]);
+    });
+
+    it("current text style is not kept after para-brak when inserting", () => {
+        const original = FlowContent.fromData([TextRun.fromData({ text: "ab", style: new TextStyle({ bold: true })})]);
+        const op = InsertContent.fromData({
+            insert: FlowContent.fromData([
+                TextRun.fromData("X"),
+                new ParagraphBreak(),
+                TextRun.fromData("Y"),
+            ]), 
+            at: 1 });
+        const changed = op.applyTo(original);
+        expect(changed.toJsonValue()).toMatchObject([
+            { text: "aX", style: { bold: true } },
+            { break: "para" },
+            "Y",
+            { text: "b", style: { bold: true } },
+        ]);
     });
 });
