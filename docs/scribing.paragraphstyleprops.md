@@ -16,7 +16,7 @@ export interface ParagraphStyleProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [alignment?](./scribing.paragraphstyleprops.alignment.md) | "start" \| "center" \| "end" \| "justified" | <i>(Optional)</i> The alignment for paragraph content. |
+|  [alignment?](./scribing.paragraphstyleprops.alignment.md) | "start" \| "center" \| "end" \| "justify" | <i>(Optional)</i> The alignment for paragraph content. |
 |  [direction?](./scribing.paragraphstyleprops.direction.md) | "ltr" \| "rtl" | <i>(Optional)</i> The reading direction of paragraph content. |
 |  [line\_spacing?](./scribing.paragraphstyleprops.line_spacing.md) | number | <i>(Optional)</i> The amount of space between lines, as a percentage of normal, where normal is represented as <code>100</code>. |
 |  [type?](./scribing.paragraphstyleprops.type.md) | "normal" \| "title" \| "subtitle" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" | <i>(Optional)</i> The style type of the paragraph. |

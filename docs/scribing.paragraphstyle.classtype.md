@@ -8,17 +8,17 @@
 
 ```typescript
 static readonly classType: import("paratype").Type<import("paratype").RecordObject<Partial<{
-        alignment: "start" | "center" | "end" | "justified";
+        alignment: "start" | "center" | "end" | "justify";
         direction: "ltr" | "rtl";
         type: "normal" | "title" | "subtitle" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
         line_spacing: number;
     }>, Partial<{
-        alignment: "start" | "center" | "end" | "justified";
+        alignment: "start" | "center" | "end" | "justify";
         direction: "ltr" | "rtl";
         type: "normal" | "title" | "subtitle" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
         line_spacing: number;
     }>> & import("paratype").Equatable & Readonly<Partial<{
-        alignment: "start" | "center" | "end" | "justified";
+        alignment: "start" | "center" | "end" | "justify";
         direction: "ltr" | "rtl";
         type: "normal" | "title" | "subtitle" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
         line_spacing: number;

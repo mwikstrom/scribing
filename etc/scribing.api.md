@@ -373,17 +373,17 @@ export class ParagraphStyle extends ParagraphStyle_base implements Readonly<Para
     constructor(props?: ParagraphStyleProps);
     // (undocumented)
     static readonly classType: Type<RecordObject<Partial<{
-    alignment: "start" | "center" | "end" | "justified";
+    alignment: "start" | "center" | "end" | "justify";
     direction: "ltr" | "rtl";
     type: "normal" | "title" | "subtitle" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
     line_spacing: number;
     }>, Partial<{
-    alignment: "start" | "center" | "end" | "justified";
+    alignment: "start" | "center" | "end" | "justify";
     direction: "ltr" | "rtl";
     type: "normal" | "title" | "subtitle" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
     line_spacing: number;
     }>> & Equatable & Readonly<Partial<{
-    alignment: "start" | "center" | "end" | "justified";
+    alignment: "start" | "center" | "end" | "justify";
     direction: "ltr" | "rtl";
     type: "normal" | "title" | "subtitle" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
     line_spacing: number;
@@ -396,7 +396,7 @@ export class ParagraphStyle extends ParagraphStyle_base implements Readonly<Para
 
 // @public
 export interface ParagraphStyleProps {
-    alignment?: "start" | "center" | "end" | "justified";
+    alignment?: "start" | "center" | "end" | "justify";
     direction?: "ltr" | "rtl";
     line_spacing?: number;
     type?: "normal" | "title" | "subtitle" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";

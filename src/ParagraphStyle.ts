@@ -14,9 +14,9 @@ export interface ParagraphStyleProps {
      * 
      * - `end`: The paragraph is aligned to the end of the line. Right-aligned for LTR text, left-aligned otherwise.
      * 
-     * - `justified`: The paragraph is justified.
+     * - `justify`: The paragraph is justify.
      */
-    alignment?: "start" | "center" | "end" | "justified";
+    alignment?: "start" | "center" | "end" | "justify";
 
     /**
      * The reading direction of paragraph content.
@@ -55,7 +55,7 @@ export interface ParagraphStyleProps {
 }
 
 const Props = {
-    alignment: enumType(["start", "center", "end", "justified"]),
+    alignment: enumType(["start", "center", "end", "justify"]),
     direction: enumType(["ltr", "rtl"]),
     type: enumType(["normal", "title", "subtitle", "h1", "h2", "h3", "h4", "h5", "h6"]),
     line_spacing: integerType.restrict(

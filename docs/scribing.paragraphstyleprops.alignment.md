@@ -9,7 +9,7 @@ The alignment for paragraph content.
 <b>Signature:</b>
 
 ```typescript
-alignment?: "start" | "center" | "end" | "justified";
+alignment?: "start" | "center" | "end" | "justify";
 ```
 
 ## Remarks
@@ -20,5 +20,5 @@ alignment?: "start" | "center" | "end" | "justified";
 
 - `end`<!-- -->: The paragraph is aligned to the end of the line. Right-aligned for LTR text, left-aligned otherwise.
 
-- `justified`<!-- -->: The paragraph is justified.
+- `justify`<!-- -->: The paragraph is justify.
 
