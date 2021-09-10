@@ -26,6 +26,7 @@ export default [
         ],
         plugins: [
             pluginTypescript({
+                target: "ES2019",
                 include: [ "src/**/*.ts" ],
             }),
             pluginCommonjs({
