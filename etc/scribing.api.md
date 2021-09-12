@@ -13,7 +13,7 @@ import { Type } from 'paratype';
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class FlowBatch extends BASE_3 implements Readonly<FlowBatchProps> {
+export class FlowBatch extends BASE_6 implements Readonly<FlowBatchProps> {
     constructor(props?: FlowBatchProps);
     // (undocumented)
     afterInsertion(other: FlowRange): FlowOperation | null;
@@ -22,6 +22,8 @@ export class FlowBatch extends BASE_3 implements Readonly<FlowBatchProps> {
     applyTo(content: FlowContent): FlowContent;
     // (undocumented)
     static readonly classType: Type<FlowBatch>;
+    // (undocumented)
+    static fromArray(operations: FlowOperation[]): FlowOperation | null;
     static fromData(data: FlowBatchData): FlowBatch;
     invert(state: FlowContent): FlowOperation | null;
     transform(other: FlowOperation): FlowOperation | null;
@@ -38,7 +40,7 @@ export interface FlowBatchProps {
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class FlowContent extends BASE implements Readonly<FlowContentProps> {
+export class FlowContent extends BASE_5 implements Readonly<FlowContentProps> {
     constructor(props?: FlowContentProps);
     append(...nodes: readonly FlowNode[]): FlowContent;
     // (undocumented)
@@ -119,8 +121,6 @@ export abstract class FlowOperation {
     abstract afterRemoval(other: FlowRange): FlowOperation | null;
     abstract applyTo(state: FlowContent): FlowContent;
     // (undocumented)
-    static fromArray(operations: FlowOperation[]): FlowOperation | null;
-    // (undocumented)
     static fromJsonValue(value: JsonValue): FlowOperation;
     abstract invert(state: FlowContent): FlowOperation | null;
     // (undocumented)
@@ -133,7 +133,7 @@ export abstract class FlowOperation {
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public
-export class FlowRange extends BASE_2 implements Readonly<FlowRangeProps> {
+export class FlowRange extends BASE implements Readonly<FlowRangeProps> {
     static at(position: number, distance?: number): FlowRange;
     static readonly classType: Type<FlowRange>;
     contains(position: number): boolean;
@@ -172,7 +172,7 @@ export type FlowRangeTuple = [number, number];
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class FormatParagraph extends BASE_4 implements Readonly<FormatParagraphProps> {
+export class FormatParagraph extends BASE_7 implements Readonly<FormatParagraphProps> {
     // (undocumented)
     afterInsertion(other: FlowRange): FlowOperation | null;
     // (undocumented)
@@ -210,7 +210,7 @@ export interface FormatParagraphProps {
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class FormatText extends BASE_5 implements Readonly<FormatTextProps> {
+export class FormatText extends BASE_9 implements Readonly<FormatTextProps> {
     // (undocumented)
     afterInsertion(other: FlowRange): FlowOperation | null;
     // (undocumented)
@@ -268,7 +268,7 @@ export abstract class InlineNode extends FlowNode {
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class InsertContent extends BASE_6 implements InsertContentProps {
+export class InsertContent extends BASE_11 implements InsertContentProps {
     // (undocumented)
     afterInsertion(other: FlowRange): FlowOperation | null;
     // (undocumented)
@@ -305,7 +305,7 @@ export interface InsertContentProps {
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class LineBreak extends BASE_10 implements LineBreakProps {
+export class LineBreak extends BASE_2 implements LineBreakProps {
     constructor(props?: LineBreakProps);
     // (undocumented)
     static readonly classType: Type<LineBreak>;
@@ -331,7 +331,7 @@ export interface LineBreakProps {
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class ParagraphBreak extends BASE_11 implements ParagraphBreakProps {
+export class ParagraphBreak extends BASE_3 implements ParagraphBreakProps {
     constructor(props?: ParagraphBreakProps);
     // (undocumented)
     static readonly classType: Type<ParagraphBreak>;
@@ -405,7 +405,7 @@ export interface ParagraphStyleProps {
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class RemoveRange extends BASE_7 implements Readonly<RemoveRangeProps> {
+export class RemoveRange extends BASE_12 implements Readonly<RemoveRangeProps> {
     // (undocumented)
     afterInsertion(other: FlowRange): FlowOperation | null;
     // (undocumented)
@@ -437,7 +437,7 @@ export interface RemoveRangeProps {
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class TextRun extends BASE_12 implements Readonly<TextRunProps> {
+export class TextRun extends BASE_4 implements Readonly<TextRunProps> {
     constructor(props?: TextRunProps);
     // (undocumented)
     after(position: number): TextRun;
@@ -556,7 +556,7 @@ export interface UnformatParagraphProps {
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
-export class UnformatText extends BASE_9 implements Readonly<UnformatTextProps> {
+export class UnformatText extends BASE_10 implements Readonly<UnformatTextProps> {
     // (undocumented)
     afterInsertion(other: FlowRange): FlowOperation | null;
     // (undocumented)

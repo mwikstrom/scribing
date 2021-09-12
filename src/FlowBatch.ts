@@ -55,6 +55,17 @@ export class FlowBatch extends BASE implements Readonly<FlowBatchProps> {
         return new FlowBatch(props);
     }
 
+    public static fromArray(operations: FlowOperation[]): FlowOperation | null {
+        if (operations.length === 0) {
+            return null;
+        } else if (operations.length === 1) {
+            return operations[0];
+        } else {
+            Object.freeze(operations);
+            return new FlowBatch({ operations });
+        }
+    }
+
     /**
      * Constructs a new {@link FlowBatch} instance with the specified properties.
      * @param props - The properties to assign

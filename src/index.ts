@@ -3,20 +3,12 @@
  * @packageDocumentation
  */
 
-// Operations
-export * from "./FlowOperation";
-export * from "./FlowBatch";
-export * from "./FormatParagraph";
-export * from "./FormatText";
-export * from "./InsertContent";
-export * from "./RemoveRange";
-export * from "./UnformatParagraph";
-export * from "./UnformatText";
-
-// Content
-export * from "./FlowContent";
-export * from "./FlowCursor";
+// Range
 export * from "./FlowRange";
+
+// Styles
+export * from "./ParagraphStyle";
+export * from "./TextStyle";
 
 // Nodes
 export * from "./FlowNode";
@@ -25,6 +17,16 @@ export * from "./LineBreak";
 export * from "./ParagraphBreak";
 export * from "./TextRun";
 
-// Styles
-export * from "./ParagraphStyle";
-export * from "./TextStyle";
+// Content
+export * from "./FlowCursor";
+export * from "./FlowContent";
+
+// Operations
+export * from "./FlowOperation";
+export * from "./FlowBatch";
+export * from "./FormatParagraph";
+export * from "./UnformatParagraph";
+export * from "./FormatText";
+export * from "./UnformatText";
+export * from "./InsertContent";
+export * from "./RemoveRange";

@@ -1,4 +1,5 @@
 import { RecordObject } from "paratype";
+import { FlowBatch } from "../FlowBatch";
 import { FlowContent } from "../FlowContent";
 import { FlowNode } from "../FlowNode";
 import { FlowOperation } from "../FlowOperation";
@@ -69,5 +70,5 @@ const coreInvertFormatOp = <S extends RecordObject<T>, T>(
         position += node.size;
     }
 
-    return FlowOperation.fromArray(operations);
+    return FlowBatch.fromArray(operations);
 };
