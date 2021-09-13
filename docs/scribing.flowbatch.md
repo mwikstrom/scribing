@@ -39,4 +39,5 @@ export declare class FlowBatch extends BASE implements Readonly<FlowBatchProps>
 |  [fromData(data)](./scribing.flowbatch.fromdata.md) | <code>static</code> | Gets a [FlowBatch](./scribing.flowbatch.md) from the specified data |
 |  [invert(content)](./scribing.flowbatch.invert.md) |  | Returns an operation that negates the effect of the current operation. |
 |  [transform(other)](./scribing.flowbatch.transform.md) |  | Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation. |
+|  [updateSelection(selection, mine)](./scribing.flowbatch.updateselection.md) |  | Applies the current operation on the specified selection range and returns the updated result. |
 

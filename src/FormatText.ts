@@ -107,6 +107,15 @@ export class FormatText extends BASE implements Readonly<FormatTextProps> {
         return content.formatText(this.range, this.style);
     }
 
+    /**
+     * {@inheritDoc FlowOperation.updateSelection}
+     * @override
+     */
+    updateSelection(selection: FlowRange): FlowRange {
+        // Formatting does not affect selection
+        return selection;
+    }
+
     /** 
      * {@inheritDoc FlowOperation.afterInsertion}
      */

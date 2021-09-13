@@ -106,6 +106,15 @@ export class UnformatText extends BASE implements Readonly<UnformatTextProps> {
         return content.unformatText(this.range, this.style);
     }
 
+    /**
+     * {@inheritDoc FlowOperation.updateSelection}
+     * @override
+     */
+    updateSelection(selection: FlowRange): FlowRange {
+        // Formatting does not affect selection
+        return selection;
+    }
+
     /** 
      * {@inheritDoc FlowOperation.afterInsertion}
      */

@@ -12,6 +12,7 @@ import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
 import { registerOperation } from "./internal/operation-registry";
+import { transformRangeAfterInsertion } from "./internal/transform-helpers";
 import { RemoveRange } from "./RemoveRange";
 
 const Props = {
@@ -163,5 +164,17 @@ export class InsertContent extends BASE implements InsertContentProps {
         }
 
         return content.insert(this.position, ...nodes);
+    }
+
+    /**
+     * {@inheritDoc FlowOperation.updateSelection}
+     * @override
+     */
+    updateSelection(range: FlowRange, mine: boolean): FlowRange | null {
+        if (mine && range.isCollapsed && range.focus === this.position) {
+            return range.translate(this.content.size);
+        } else {
+            return transformRangeAfterInsertion(range, FlowRange.at(this.position, this.content.size));
+        }        
     }
 }

@@ -27,6 +27,8 @@ export class FlowBatch extends BASE_6 implements Readonly<FlowBatchProps> {
     static fromData(data: FlowBatchData): FlowBatch;
     invert(content: FlowContent): FlowOperation | null;
     transform(other: FlowOperation): FlowOperation | null;
+    // @override
+    updateSelection(selection: FlowRange, mine: boolean): FlowRange | null;
 }
 
 // @public
@@ -128,6 +130,7 @@ export abstract class FlowOperation {
     // (undocumented)
     toJsonValue(): JsonValue;
     abstract transform(other: FlowOperation): FlowOperation | null;
+    abstract updateSelection(selection: FlowRange, mine: boolean): FlowRange | null;
 }
 
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
@@ -187,6 +190,8 @@ export class FormatParagraph extends BASE_7 implements Readonly<FormatParagraphP
     invert(content: FlowContent): FlowOperation | null;
     // @override
     transform(other: FlowOperation): FlowOperation | null;
+    // @override
+    updateSelection(selection: FlowRange): FlowRange;
 }
 
 // @public
@@ -225,6 +230,8 @@ export class FormatText extends BASE_9 implements Readonly<FormatTextProps> {
     invert(content: FlowContent): FlowOperation | null;
     // @override
     transform(other: FlowOperation): FlowOperation | null;
+    // @override
+    updateSelection(selection: FlowRange): FlowRange;
 }
 
 // @public
@@ -284,6 +291,8 @@ export class InsertContent extends BASE_11 implements InsertContentProps {
     transform(other: FlowOperation): FlowOperation | null;
     // @internal (undocumented)
     translate(distance: number): InsertContent;
+    // @override
+    updateSelection(range: FlowRange, mine: boolean): FlowRange | null;
 }
 
 // @public
@@ -420,6 +429,8 @@ export class RemoveRange extends BASE_12 implements Readonly<RemoveRangeProps> {
     invert(content: FlowContent): InsertContent;
     // @override
     transform(other: FlowOperation): FlowOperation | null;
+    // @override
+    updateSelection(range: FlowRange): FlowRange | null;
 }
 
 // @public
@@ -533,6 +544,8 @@ export class UnformatParagraph extends BASE_8 implements Readonly<UnformatParagr
     invert(content: FlowContent): FlowOperation | null;
     // @override
     transform(other: FlowOperation): FlowOperation | null;
+    // @override
+    updateSelection(selection: FlowRange): FlowRange;
 }
 
 // @public
@@ -571,6 +584,8 @@ export class UnformatText extends BASE_10 implements Readonly<UnformatTextProps>
     invert(content: FlowContent): FlowOperation | null;
     // @override
     transform(other: FlowOperation): FlowOperation | null;
+    // @override
+    updateSelection(selection: FlowRange): FlowRange;
 }
 
 // @public

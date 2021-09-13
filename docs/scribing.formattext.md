@@ -32,4 +32,5 @@ export declare class FormatText extends BASE implements Readonly<FormatTextProps
 |  [fromData(data)](./scribing.formattext.fromdata.md) | <code>static</code> |  |
 |  [invert(content)](./scribing.formattext.invert.md) |  | Returns an operation that negates the effect of the current operation. |
 |  [transform(other)](./scribing.formattext.transform.md) |  | Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation. |
+|  [updateSelection(selection)](./scribing.formattext.updateselection.md) |  | Applies the current operation on the specified selection range and returns the updated result. |
 

@@ -32,4 +32,5 @@ export declare class UnformatText extends BASE implements Readonly<UnformatTextP
 |  [fromData(data)](./scribing.unformattext.fromdata.md) | <code>static</code> |  |
 |  [invert(content)](./scribing.unformattext.invert.md) |  | Returns an operation that negates the effect of the current operation. |
 |  [transform(other)](./scribing.unformattext.transform.md) |  | Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation. |
+|  [updateSelection(selection)](./scribing.unformattext.updateselection.md) |  | Applies the current operation on the specified selection range and returns the updated result. |
 

@@ -33,4 +33,5 @@ export declare class InsertContent extends BASE implements InsertContentProps
 |  [invert()](./scribing.insertcontent.invert.md) |  | Returns an operation that negates the effect of the current operation. |
 |  [toData()](./scribing.insertcontent.todata.md) |  |  |
 |  [transform(other)](./scribing.insertcontent.transform.md) |  | Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation. |
+|  [updateSelection(range, mine)](./scribing.insertcontent.updateselection.md) |  | Applies the current operation on the specified selection range and returns the updated result. |
 

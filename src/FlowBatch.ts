@@ -118,6 +118,21 @@ export class FlowBatch extends BASE implements Readonly<FlowBatchProps> {
         return content;
     }
 
+    /**
+     * {@inheritDoc FlowOperation.updateSelection}
+     * @override
+     */
+    updateSelection(selection: FlowRange, mine: boolean): FlowRange | null {
+        for (const op of this.operations) {
+            const updated = op.updateSelection(selection, mine);
+            if (updated === null) {
+                return null;
+            }
+            selection = updated;
+        }
+        return selection;
+    }
+
     /** 
      * {@inheritDoc FlowOperation.afterInsertion}
      */

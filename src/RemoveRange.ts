@@ -14,7 +14,11 @@ import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
 import { InsertContent } from "./InsertContent";
 import { registerOperation } from "./internal/operation-registry";
-import { transformRangeOpAfterInsertion, transformRangeOpAfterRemoval } from "./internal/transform-helpers";
+import { 
+    transformRangeAfterRemoval, 
+    transformRangeOpAfterInsertion, 
+    transformRangeOpAfterRemoval 
+} from "./internal/transform-helpers";
 
 const Props = {
     range: lazyType(() => FlowRange.classType),
@@ -84,6 +88,14 @@ export class RemoveRange extends BASE implements Readonly<RemoveRangeProps> {
      */
     applyToContent(content: FlowContent): FlowContent {
         return content.remove(this.range);
+    }
+
+    /**
+     * {@inheritDoc FlowOperation.updateSelection}
+     * @override
+     */
+    updateSelection(range: FlowRange): FlowRange | null {
+        return transformRangeAfterRemoval(range, this.range);
     }
 
     /** 

@@ -42,6 +42,15 @@ export abstract class FlowOperation {
      */
     abstract applyToContent(content: FlowContent): FlowContent;
 
+    /**
+     * Applies the current operation on the specified selection range and returns the updated result.
+     * 
+     * @param selection - The flow range that represent the selection that shall be updated.
+     * @param mine - Specifies whether the current operation is executed by the same user that owns
+     *               the selection.
+     */
+    abstract updateSelection(selection: FlowRange, mine: boolean): FlowRange | null;
+
     abstract toData(): unknown;
 
     toJsonValue(): JsonValue {

@@ -107,6 +107,15 @@ export class FormatParagraph extends BASE implements Readonly<FormatParagraphPro
         return content.formatParagraph(this.range, this.style);
     }
 
+    /**
+     * {@inheritDoc FlowOperation.updateSelection}
+     * @override
+     */
+    updateSelection(selection: FlowRange): FlowRange {
+        // Formatting does not affect selection
+        return selection;
+    }
+
     /** 
      * {@inheritDoc FlowOperation.afterInsertion}
      */

@@ -22,4 +22,5 @@ export declare abstract class FlowOperation
 |  [toData()](./scribing.flowoperation.todata.md) |  |  |
 |  [toJsonValue()](./scribing.flowoperation.tojsonvalue.md) |  |  |
 |  [transform(other)](./scribing.flowoperation.transform.md) |  | Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation. |
+|  [updateSelection(selection, mine)](./scribing.flowoperation.updateselection.md) |  | Applies the current operation on the specified selection range and returns the updated result. |
 
