@@ -10,14 +10,14 @@ Returns an operation that negates the effect of the current operation.
 
 ```typescript
 /** @override */
-invert(state: FlowContent): FlowOperation | null;
+invert(content: FlowContent): FlowOperation | null;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  state | [FlowContent](./scribing.flowcontent.md) | The state, before the current operation is applied, that shall be used to compute an inverse. |
+|  content | [FlowContent](./scribing.flowcontent.md) | The state, before the current operation is applied, that shall be used to compute an inverse. |
 
 <b>Returns:</b>
 

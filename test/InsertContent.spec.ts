@@ -98,9 +98,9 @@ describe("InsertContent", () => {
             at: 5,
         });
         const inv = op.invert();
-        const done = op.applyTo(original);
+        const done = op.applyToContent(original);
         expect(done.toJsonValue()).toMatchObject(["hello world!"]);
-        const undone = inv?.applyTo(done);
+        const undone = inv?.applyToContent(done);
         expect(undone?.toJsonValue()).toMatchObject(["hello!"]);
     });
 
@@ -118,7 +118,7 @@ describe("InsertContent", () => {
             ]), 
             at: 1 
         });
-        const changed = op.applyTo(original);
+        const changed = op.applyToContent(original);
         expect(changed.toJsonValue()).toMatchObject([
             "aX",
             { break: "para", style: { alignment: "center" }},
@@ -132,7 +132,7 @@ describe("InsertContent", () => {
     it("current text style is kept when inserting", () => {
         const original = FlowContent.fromData([TextRun.fromData({ text: "ab", style: new TextStyle({ bold: true })})]);
         const op = InsertContent.fromData({ insert: FlowContent.fromData([TextRun.fromData("X")]), at: 1 });
-        const changed = op.applyTo(original);
+        const changed = op.applyToContent(original);
         expect(changed.toJsonValue()).toMatchObject([
             { text: "aXb", style: { bold: true } }
         ]);
@@ -147,7 +147,7 @@ describe("InsertContent", () => {
                 TextRun.fromData("Y"),
             ]), 
             at: 1 });
-        const changed = op.applyTo(original);
+        const changed = op.applyToContent(original);
         expect(changed.toJsonValue()).toMatchObject([
             { text: "aX", style: { bold: true } },
             { break: "para" },

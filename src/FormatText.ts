@@ -77,10 +77,10 @@ export class FormatText extends BASE implements Readonly<FormatTextProps> {
      * {@inheritDoc FlowOperation.invert}
      * @override
      */
-    invert(state: FlowContent): FlowOperation | null {
+    invert(content: FlowContent): FlowOperation | null {
         const { range, style } = this;
         return invertFormatOp<TextStyle, TextStyleProps>({
-            state,
+            content,
             range,
             style,
             getStyle: node => node.getTextStyle(),
@@ -100,10 +100,10 @@ export class FormatText extends BASE implements Readonly<FormatTextProps> {
     }
 
     /**
-     * {@inheritDoc FlowOperation.applyTo}
+     * {@inheritDoc FlowOperation.applyToContent}
      * @override
      */
-    applyTo(content: FlowContent): FlowContent {
+    applyToContent(content: FlowContent): FlowContent {
         return content.formatText(this.range, this.style);
     }
 

@@ -81,10 +81,10 @@ export class UnformatParagraph extends BASE implements Readonly<UnformatParagrap
      * {@inheritDoc FlowOperation.invert}
      * @override
      */
-    invert(state: FlowContent): FlowOperation | null {
+    invert(content: FlowContent): FlowOperation | null {
         const { range, style } = this;
         return invertUnformatOp<ParagraphStyle, ParagraphStyleProps>({
-            state,
+            content,
             range,
             style,
             getStyle: node => node.getParagraphStyle(),
@@ -103,10 +103,10 @@ export class UnformatParagraph extends BASE implements Readonly<UnformatParagrap
     }
 
     /**
-     * {@inheritDoc FlowOperation.applyTo}
+     * {@inheritDoc FlowOperation.applyToContent}
      * @override
      */
-    applyTo(content: FlowContent): FlowContent {
+    applyToContent(content: FlowContent): FlowContent {
         return content.unformatParagraph(this.range, this.style);
     }
 

@@ -13,7 +13,7 @@ export interface FormatOpProps<S> {
 
 /** @internal */
 export interface InvertFormatOptions<S extends RecordObject<T>, T> {
-    state: FlowContent;
+    content: FlowContent;
     range: FlowRange;
     style: S;
     getStyle: (node: FlowNode) => S | null;
@@ -38,7 +38,7 @@ const coreInvertFormatOp = <S extends RecordObject<T>, T>(
         Partial<Pick<InvertFormatOptions<S, T>, "makeUnformatOp">>
     )
 ): FlowOperation | null => {
-    const { state, range, style, getStyle, makeStyle, makeFormatOp, makeUnformatOp } = options;
+    const { content, range, style, getStyle, makeStyle, makeFormatOp, makeUnformatOp } = options;
     let position = range.first;
     const operations: FlowOperation[] = [];
 
@@ -46,7 +46,7 @@ const coreInvertFormatOp = <S extends RecordObject<T>, T>(
         operations.push(makeUnformatOp({range, style}));
     }
 
-    for (const node of state.peek(position).range(range.size)) {
+    for (const node of content.peek(position).range(range.size)) {
         const nodeStyle = getStyle(node);
 
         if (nodeStyle !== null) {

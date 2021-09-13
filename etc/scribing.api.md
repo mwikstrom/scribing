@@ -19,13 +19,13 @@ export class FlowBatch extends BASE_6 implements Readonly<FlowBatchProps> {
     afterInsertion(other: FlowRange): FlowOperation | null;
     // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
-    applyTo(content: FlowContent): FlowContent;
+    applyToContent(content: FlowContent): FlowContent;
     // (undocumented)
     static readonly classType: Type<FlowBatch>;
     // (undocumented)
     static fromArray(operations: FlowOperation[]): FlowOperation | null;
     static fromData(data: FlowBatchData): FlowBatch;
-    invert(state: FlowContent): FlowOperation | null;
+    invert(content: FlowContent): FlowOperation | null;
     transform(other: FlowOperation): FlowOperation | null;
 }
 
@@ -119,10 +119,10 @@ export abstract class FlowOperation {
     abstract afterInsertion(other: FlowRange): FlowOperation | null;
     // @internal (undocumented)
     abstract afterRemoval(other: FlowRange): FlowOperation | null;
-    abstract applyTo(state: FlowContent): FlowContent;
+    abstract applyToContent(content: FlowContent): FlowContent;
     // (undocumented)
     static fromJsonValue(value: JsonValue): FlowOperation;
-    abstract invert(state: FlowContent): FlowOperation | null;
+    abstract invert(content: FlowContent): FlowOperation | null;
     // (undocumented)
     abstract toData(): unknown;
     // (undocumented)
@@ -178,13 +178,13 @@ export class FormatParagraph extends BASE_7 implements Readonly<FormatParagraphP
     // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
-    applyTo(content: FlowContent): FlowContent;
+    applyToContent(content: FlowContent): FlowContent;
     // (undocumented)
     static readonly classType: Type<FormatParagraph>;
     // (undocumented)
     static fromData(data: FormatParagraphData): FormatParagraph;
     // @override
-    invert(state: FlowContent): FlowOperation | null;
+    invert(content: FlowContent): FlowOperation | null;
     // @override
     transform(other: FlowOperation): FlowOperation | null;
 }
@@ -216,13 +216,13 @@ export class FormatText extends BASE_9 implements Readonly<FormatTextProps> {
     // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
-    applyTo(content: FlowContent): FlowContent;
+    applyToContent(content: FlowContent): FlowContent;
     // (undocumented)
     static readonly classType: Type<FormatText>;
     // (undocumented)
     static fromData(data: FormatTextData): FormatText;
     // @override
-    invert(state: FlowContent): FlowOperation | null;
+    invert(content: FlowContent): FlowOperation | null;
     // @override
     transform(other: FlowOperation): FlowOperation | null;
 }
@@ -273,7 +273,7 @@ export class InsertContent extends BASE_11 implements InsertContentProps {
     afterInsertion(other: FlowRange): FlowOperation | null;
     // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
-    applyTo(content: FlowContent): FlowContent;
+    applyToContent(content: FlowContent): FlowContent;
     // (undocumented)
     static readonly classType: Type<InsertContent>;
     // (undocumented)
@@ -411,13 +411,13 @@ export class RemoveRange extends BASE_12 implements Readonly<RemoveRangeProps> {
     // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
-    applyTo(content: FlowContent): FlowContent;
+    applyToContent(content: FlowContent): FlowContent;
     // (undocumented)
     static readonly classType: Type<RemoveRange>;
     // (undocumented)
     static fromData(data: RemoveRangeData): RemoveRange;
     // @override
-    invert(state: FlowContent): InsertContent;
+    invert(content: FlowContent): InsertContent;
     // @override
     transform(other: FlowOperation): FlowOperation | null;
 }
@@ -524,13 +524,13 @@ export class UnformatParagraph extends BASE_8 implements Readonly<UnformatParagr
     // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
-    applyTo(content: FlowContent): FlowContent;
+    applyToContent(content: FlowContent): FlowContent;
     // (undocumented)
     static readonly classType: Type<UnformatParagraph>;
     // (undocumented)
     static fromData(data: UnformatParagraphData): UnformatParagraph;
     // @override
-    invert(state: FlowContent): FlowOperation | null;
+    invert(content: FlowContent): FlowOperation | null;
     // @override
     transform(other: FlowOperation): FlowOperation | null;
 }
@@ -562,13 +562,13 @@ export class UnformatText extends BASE_10 implements Readonly<UnformatTextProps>
     // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
-    applyTo(content: FlowContent): FlowContent;
+    applyToContent(content: FlowContent): FlowContent;
     // (undocumented)
     static readonly classType: Type<UnformatText>;
     // (undocumented)
     static fromData(data: UnformatTextData): UnformatText;
     // @override
-    invert(state: FlowContent): FlowOperation | null;
+    invert(content: FlowContent): FlowOperation | null;
     // @override
     transform(other: FlowOperation): FlowOperation | null;
 }

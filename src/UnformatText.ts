@@ -77,10 +77,10 @@ export class UnformatText extends BASE implements Readonly<UnformatTextProps> {
      * {@inheritDoc FlowOperation.invert}
      * @override
      */
-    invert(state: FlowContent): FlowOperation | null {
+    invert(content: FlowContent): FlowOperation | null {
         const { range, style } = this;
         return invertUnformatOp<TextStyle, TextStyleProps>({
-            state,
+            content,
             range,
             style,
             getStyle: node => node.getTextStyle(),
@@ -99,10 +99,10 @@ export class UnformatText extends BASE implements Readonly<UnformatTextProps> {
     }
 
     /**
-     * {@inheritDoc FlowOperation.applyTo}
+     * {@inheritDoc FlowOperation.applyToContent}
      * @override
      */
-    applyTo(content: FlowContent): FlowContent {
+    applyToContent(content: FlowContent): FlowContent {
         return content.unformatText(this.range, this.style);
     }
 

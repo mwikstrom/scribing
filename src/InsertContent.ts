@@ -138,9 +138,9 @@ export class InsertContent extends BASE implements InsertContentProps {
     }
 
     /** 
-     * {@inheritDoc FlowOperation.applyTo}
+     * {@inheritDoc FlowOperation.applyToContent}
      */
-    applyTo(content: FlowContent): FlowContent {
+    applyToContent(content: FlowContent): FlowContent {
         const cursor = content.peek(this.position);
         const paraStyle = cursor.getParagraphStyle();
         let textStyle = cursor.getTextStyle();

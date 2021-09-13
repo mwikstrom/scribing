@@ -77,17 +77,17 @@ export class FlowBatch extends BASE implements Readonly<FlowBatchProps> {
     /** 
      * {@inheritDoc FlowOperation.invert}
      */
-    invert(state: FlowContent): FlowOperation | null {
+    invert(content: FlowContent): FlowOperation | null {
         const newOperations: FlowOperation[] = [];
 
         for (const op of this.operations) {
-            const inverted = op.invert(state);
+            const inverted = op.invert(content);
 
             if (inverted === null) {
                 return null;
             }
 
-            state = op.applyTo(state);
+            content = op.applyToContent(content);
             newOperations.unshift(inverted);
         }
 
@@ -109,11 +109,11 @@ export class FlowBatch extends BASE implements Readonly<FlowBatchProps> {
     }
 
     /** 
-     * {@inheritDoc FlowOperation.applyTo}
+     * {@inheritDoc FlowOperation.applyToContent}
      */
-    applyTo(content: FlowContent): FlowContent {
+    applyToContent(content: FlowContent): FlowContent {
         for (const op of this.operations) {
-            content = op.applyTo(content);
+            content = op.applyToContent(content);
         }
         return content;
     }

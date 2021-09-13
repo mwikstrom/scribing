@@ -19,9 +19,9 @@ describe("FlowBatch", () => {
             RemoveRange.fromData({ remove: FlowRange.fromData([7, 8])}),
         ]);
         const inv = op.invert(original);
-        const done = op.applyTo(original);
+        const done = op.applyToContent(original);
         expect(done.toJsonValue()).toMatchObject(["hej där!"]);
-        const undone = inv?.applyTo(done);
+        const undone = inv?.applyToContent(done);
         expect(undone?.toJsonValue()).toMatchObject(["hello there!"]);
     });
 
@@ -38,14 +38,14 @@ describe("FlowBatch", () => {
             RemoveRange.fromData({ remove: FlowRange.fromData([7, 8])}),
         ]);
 
-        const result1 = batch1.applyTo(original);
-        const result2 = batch2.applyTo(original);
+        const result1 = batch1.applyToContent(original);
+        const result2 = batch2.applyToContent(original);
 
         expect(result1?.toJsonValue()).toMatchObject(["Hello there?!"]);
         expect(result2?.toJsonValue()).toMatchObject(["hej där!"]);
 
         const transformedBatch = batch1.transform(batch2);
-        const transformedResult = transformedBatch?.applyTo(result1);
+        const transformedResult = transformedBatch?.applyToContent(result1);
         expect(transformedResult?.toJsonValue()).toMatchObject(["Hej där?!"]);
     });
 });

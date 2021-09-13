@@ -66,8 +66,8 @@ export class RemoveRange extends BASE implements Readonly<RemoveRangeProps> {
      * {@inheritDoc FlowOperation.invert}
      * @override
      */
-    invert(state: FlowContent): InsertContent {
-        return new InsertContent({ position: this.range.first, content: state.copy(this.range) });
+    invert(content: FlowContent): InsertContent {
+        return new InsertContent({ position: this.range.first, content: content.copy(this.range) });
     }
 
     /**
@@ -79,10 +79,10 @@ export class RemoveRange extends BASE implements Readonly<RemoveRangeProps> {
     }
 
     /**
-     * {@inheritDoc FlowOperation.applyTo}
+     * {@inheritDoc FlowOperation.applyToContent}
      * @override
      */
-    applyTo(content: FlowContent): FlowContent {
+    applyToContent(content: FlowContent): FlowContent {
         return content.remove(this.range);
     }
 

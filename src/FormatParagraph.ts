@@ -77,10 +77,10 @@ export class FormatParagraph extends BASE implements Readonly<FormatParagraphPro
      * {@inheritDoc FlowOperation.invert}
      * @override
      */
-    invert(state: FlowContent): FlowOperation | null {
+    invert(content: FlowContent): FlowOperation | null {
         const { range, style } = this;
         return invertFormatOp<ParagraphStyle, ParagraphStyleProps>({
-            state,
+            content,
             range,
             style,
             getStyle: node => node.getParagraphStyle(),
@@ -100,10 +100,10 @@ export class FormatParagraph extends BASE implements Readonly<FormatParagraphPro
     }
 
     /**
-     * {@inheritDoc FlowOperation.applyTo}
+     * {@inheritDoc FlowOperation.applyToContent}
      * @override
      */
-    applyTo(content: FlowContent): FlowContent {
+    applyToContent(content: FlowContent): FlowContent {
         return content.formatParagraph(this.range, this.style);
     }
 

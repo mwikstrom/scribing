@@ -28,8 +28,8 @@ export declare class FormatText extends BASE implements Readonly<FormatTextProps
 |  --- | --- | --- |
 |  [afterInsertion(other)](./scribing.formattext.afterinsertion.md) |  |  |
 |  [afterRemoval(other)](./scribing.formattext.afterremoval.md) |  |  |
-|  [applyTo(content)](./scribing.formattext.applyto.md) |  | Applies the current operation on the specified content and returns the updated result. |
+|  [applyToContent(content)](./scribing.formattext.applytocontent.md) |  | Applies the current operation on the specified content and returns the updated result. |
 |  [fromData(data)](./scribing.formattext.fromdata.md) | <code>static</code> |  |
-|  [invert(state)](./scribing.formattext.invert.md) |  | Returns an operation that negates the effect of the current operation. |
+|  [invert(content)](./scribing.formattext.invert.md) |  | Returns an operation that negates the effect of the current operation. |
 |  [transform(other)](./scribing.formattext.transform.md) |  | Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation. |
 

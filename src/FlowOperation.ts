@@ -15,11 +15,11 @@ export abstract class FlowOperation {
     /**
      * Returns an operation that negates the effect of the current operation.
      *
-     * @param state - The state, before the current operation is applied, that shall be used to compute an inverse.
+     * @param content - The state, before the current operation is applied, that shall be used to compute an inverse.
      * @returns An inverse of the current operation, or `null` when the current operation cannot be inverted with
      *          respect to the supplied state.
      */
-    abstract invert(state: FlowContent): FlowOperation | null;
+    abstract invert(content: FlowContent): FlowOperation | null;
 
     /**
      * Transforms the specified operation to with respect to change implied by the current operation so that
@@ -38,9 +38,9 @@ export abstract class FlowOperation {
     /**
      * Applies the current operation on the specified content and returns the updated result.
      * 
-     * @param state - The flow content that shall be updated.
+     * @param content - The flow content that shall be updated.
      */
-    abstract applyTo(state: FlowContent): FlowContent;
+    abstract applyToContent(content: FlowContent): FlowContent;
 
     abstract toData(): unknown;
 

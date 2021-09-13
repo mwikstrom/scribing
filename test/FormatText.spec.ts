@@ -15,7 +15,7 @@ describe("FormatText", () => {
         });
 
         const inv = op.invert(original);
-        const done = op.applyTo(original);
+        const done = op.applyToContent(original);
 
         expect(done.toJsonValue()).toMatchObject([
             "hello ",
@@ -26,7 +26,7 @@ describe("FormatText", () => {
             { text: " end", style: { bold: true } },
         ]);
 
-        const undone = inv?.applyTo(done);
+        const undone = inv?.applyToContent(done);
 
         expect(undone?.toJsonValue()).toMatchObject([
             "hello there ",

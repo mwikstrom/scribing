@@ -95,9 +95,9 @@ describe("RemoveRange", () => {
         const original = FlowContent.fromData([TextRun.fromData("hello world!")]);
         const op = RemoveRange.fromData({remove: FlowRange.fromData([5, 11])});
         const inv = op.invert(original);
-        const done = op.applyTo(original);
+        const done = op.applyToContent(original);
         expect(done.toJsonValue()).toMatchObject(["hello!"]);
-        const undone = inv?.applyTo(done);
+        const undone = inv?.applyToContent(done);
         expect(undone?.toJsonValue()).toMatchObject(["hello world!"]);
     });
 });
