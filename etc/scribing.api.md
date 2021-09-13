@@ -430,7 +430,7 @@ export class RemoveRange extends BASE_12 implements Readonly<RemoveRangeProps> {
     // @override
     transform(other: FlowOperation): FlowOperation | null;
     // @override
-    updateSelection(range: FlowRange): FlowRange | null;
+    updateSelection(range: FlowRange, mine: boolean): FlowRange | null;
 }
 
 // @public

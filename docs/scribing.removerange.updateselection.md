@@ -10,7 +10,7 @@ Applies the current operation on the specified selection range and returns the u
 
 ```typescript
 /** @override */
-updateSelection(range: FlowRange): FlowRange | null;
+updateSelection(range: FlowRange, mine: boolean): FlowRange | null;
 ```
 
 ## Parameters
@@ -18,6 +18,7 @@ updateSelection(range: FlowRange): FlowRange | null;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  range | [FlowRange](./scribing.flowrange.md) |  |
+|  mine | boolean | Specifies whether the current operation is executed by the same user that owns the selection. |
 
 <b>Returns:</b>
 
