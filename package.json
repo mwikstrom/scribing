@@ -1,6 +1,6 @@
 {
   "name": "scribing",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "Model for collaborative rich text editing",
   "main": "./dist/scribing.js",
   "typings": "./dist/scribing.d.ts",
