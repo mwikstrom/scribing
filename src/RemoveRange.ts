@@ -98,7 +98,7 @@ export class RemoveRange extends BASE implements Readonly<RemoveRangeProps> {
         if (mine && range.equals(this.range)) {
             return FlowRange.at(range.first);
         } else {
-            return transformRangeAfterRemoval(range, this.range);
+            return transformRangeAfterRemoval(range, this.range, mine);
         }
     }
 

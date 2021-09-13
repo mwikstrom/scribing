@@ -64,7 +64,8 @@ export const transformRangeAfterInsertion = (
 /** @internal */
 export const transformRangeAfterRemoval = (
     target: FlowRange,
-    removed: FlowRange
+    removed: FlowRange,
+    allowCollapse = false,
 ): FlowRange | null => {
     // Unaffected when removal was made at or after end
     if (removed.first >= target.last) {
@@ -77,7 +78,7 @@ export const transformRangeAfterRemoval = (
         target = target.deflate(intersection.size);
 
         // Cancelled when deflated to nothing
-        if (target.isCollapsed) {
+        if (target.isCollapsed && !allowCollapse) {
             return null;
         }
     }       
