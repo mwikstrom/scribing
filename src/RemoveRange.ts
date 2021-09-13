@@ -94,8 +94,12 @@ export class RemoveRange extends BASE implements Readonly<RemoveRangeProps> {
      * {@inheritDoc FlowOperation.updateSelection}
      * @override
      */
-    updateSelection(range: FlowRange): FlowRange | null {
-        return transformRangeAfterRemoval(range, this.range);
+    updateSelection(range: FlowRange, mine: boolean): FlowRange | null {
+        if (mine) {
+            return FlowRange.at(range.focus);
+        } else {
+            return transformRangeAfterRemoval(range, this.range);
+        }
     }
 
     /** 
