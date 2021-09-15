@@ -30,3 +30,7 @@ export * from "./FormatText";
 export * from "./UnformatText";
 export * from "./InsertContent";
 export * from "./RemoveRange";
+
+// Selection
+export * from "./FlowSelection";
+export * from "./RangeSelection";

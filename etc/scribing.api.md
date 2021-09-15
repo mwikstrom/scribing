@@ -172,6 +172,22 @@ export interface FlowRangeProps {
 // @public
 export type FlowRangeTuple = [number, number];
 
+// @public (undocumented)
+export abstract class FlowSelection {
+    // (undocumented)
+    abstract formatParagraph(style: ParagraphStyle): FlowOperation | null;
+    // (undocumented)
+    abstract formatText(style: TextStyle): FlowOperation | null;
+    // (undocumented)
+    abstract insert(content: FlowContent): FlowOperation | null;
+    // (undocumented)
+    abstract remove(): FlowOperation | null;
+    // (undocumented)
+    abstract unformatParagraph(style: ParagraphStyle): FlowOperation | null;
+    // (undocumented)
+    abstract unformatText(style: TextStyle): FlowOperation | null;
+}
+
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
 //
 // @public @sealed
@@ -409,6 +425,25 @@ export interface ParagraphStyleProps {
     direction?: "ltr" | "rtl";
     line_spacing?: number;
     type?: "normal" | "title" | "subtitle" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+}
+
+// @public @sealed (undocumented)
+export class RangeSelection extends FlowSelection {
+    constructor(range: FlowRange);
+    // (undocumented)
+    formatParagraph(style: ParagraphStyle): FlowOperation | null;
+    // (undocumented)
+    formatText(style: TextStyle): FlowOperation | null;
+    // (undocumented)
+    insert(content: FlowContent): FlowOperation | null;
+    // (undocumented)
+    readonly range: FlowRange;
+    // (undocumented)
+    remove(): FlowOperation | null;
+    // (undocumented)
+    unformatParagraph(style: ParagraphStyle): FlowOperation | null;
+    // (undocumented)
+    unformatText(style: TextStyle): FlowOperation | null;
 }
 
 // Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
