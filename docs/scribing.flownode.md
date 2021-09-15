@@ -17,7 +17,6 @@ export declare abstract class FlowNode
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [size](./scribing.flownode.size.md) |  | number | Size of the current node. |
-|  [transientKey](./scribing.flownode.transientkey.md) |  | string |  |
 
 ## Methods
 
