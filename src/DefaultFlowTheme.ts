@@ -10,7 +10,7 @@ import {
 } from "paratype";
 import { FlowTheme } from "./FlowTheme";
 import { FlowThemeRegistry } from "./internal/class-registry";
-import { ParagraphStyle, ParagraphStyleVariant } from "./ParagraphStyle";
+import { ParagraphStyle } from "./ParagraphStyle";
 import { TextStyle } from "./TextStyle";
 
 const Data = "default" as const;
@@ -36,10 +36,18 @@ export class DefaultFlowTheme extends DefaultFlowThemeBase {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => DefaultFlowTheme);
 
+    /** Gets a cached instance of the default flow theme */
+    public static get instance(): DefaultFlowTheme {
+        if (!CACHED) {
+            CACHED = new DefaultFlowTheme();
+        }
+        return CACHED;
+    }
+
     constructor() { super({}); }
 
     /** {@inheritdoc FlowTheme.getParagraphTheme} */
-    getParagraphTheme(variant: ParagraphStyleVariant): FlowTheme {
+    getParagraphTheme(): FlowTheme {
         // TODO: Implement DefaultFlowTheme.getParagraphTheme
         return this;
     }
@@ -56,3 +64,5 @@ export class DefaultFlowTheme extends DefaultFlowThemeBase {
         return ParagraphStyle.empty;
     }
 }
+
+let CACHED: DefaultFlowTheme | undefined;

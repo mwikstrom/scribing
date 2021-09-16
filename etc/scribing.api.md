@@ -11,6 +11,19 @@ import { RecordObject } from 'paratype';
 import { Type } from 'paratype';
 
 // @public @sealed
+export class DefaultFlowTheme extends DefaultFlowThemeBase {
+    constructor();
+    static readonly classType: Type<RecordObject<    {}, "default"> & Equatable & Readonly<{}> & DefaultFlowTheme>;
+    getAmbientParagraphStyle(): ParagraphStyle;
+    getAmbientTextStyle(): TextStyle;
+    getParagraphTheme(): FlowTheme;
+    static get instance(): DefaultFlowTheme;
+}
+
+// @public
+export const DefaultFlowThemeBase: RecordConstructor<    {}, FlowTheme, "default">;
+
+// @public @sealed
 export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps> {
     constructor(props?: FlowBatchProps);
     afterInsertion(other: FlowRange): FlowOperation | null;

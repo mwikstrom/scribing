@@ -19,8 +19,11 @@ export * from "./TextRun";
 
 // Content
 export * from "./FlowCursor";
-export * from "./FlowTheme";
 export * from "./FlowContent";
+
+// Theme
+export * from "./FlowTheme";
+export * from "./DefaultFlowTheme";
 
 // Operations
 export * from "./FlowOperation";
