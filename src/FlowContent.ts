@@ -306,8 +306,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
         theme = theme.getParagraphTheme(p);
         for (let i = 0; i < nodes.length; ++i) {
             const n = nodes[i];
-            //result.push(n.unformatAmbient(theme));
-            result.push(n);
+            result.push(n.unformatAmbient(theme));
             if (p === n) {
                 p = FlowContent.findParagraphBreak(nodes, i + 1);
                 theme = theme.getParagraphTheme(p);

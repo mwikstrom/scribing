@@ -1,4 +1,5 @@
 import { FlowNode } from "./FlowNode";
+import { FlowTheme } from "./FlowTheme";
 import { TextStyle } from "./TextStyle";
 
 /**
@@ -30,6 +31,11 @@ export abstract class InlineNode extends FlowNode {
      * instance is returned instead.
      */
     public abstract set(key: "style", value: TextStyle): this;
+
+    /** {@inheritdoc FlowNode.unformatAmbient} */
+    public unformatAmbient(theme: FlowTheme): this {
+        return this.unformatText(theme.getAmbientTextStyle());
+    }
 
     /** {@inheritdoc FlowNode.unformatText} */
     public unformatText(style: TextStyle): this {

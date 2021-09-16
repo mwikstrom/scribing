@@ -26,6 +26,7 @@ export declare abstract class InlineNode extends FlowNode
 |  [formatParagraph()](./scribing.inlinenode.formatparagraph.md) |  | Applies the specified paragraph style on the current node and returns the updated node. |
 |  [formatText(style)](./scribing.inlinenode.formattext.md) |  | Applies the specified text style on the current node and returns the updated node. |
 |  [set(key, value)](./scribing.inlinenode.set.md) |  | Returns a copy of the current object with the specified property merged in |
+|  [unformatAmbient(theme)](./scribing.inlinenode.unformatambient.md) |  | Unapplies the ambient style of the specified theme from the current node and returns the updated node. |
 |  [unformatParagraph()](./scribing.inlinenode.unformatparagraph.md) |  | Unapplies the specified paragraph style from the current node and returns the updated node. |
 |  [unformatText(style)](./scribing.inlinenode.unformattext.md) |  | Unapplies the specified text style from the current node and returns the updated node. |
 

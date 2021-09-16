@@ -1,4 +1,5 @@
 import { JsonValue } from "paratype";
+import { FlowTheme } from "./FlowTheme";
 import { flowNodeType } from "./internal/node-registry";
 import { ParagraphStyle } from "./ParagraphStyle";
 import { TextStyle } from "./TextStyle";
@@ -41,6 +42,12 @@ export abstract class FlowNode {
     toJsonValue(): JsonValue {
         return flowNodeType.toJsonValue(this);
     }
+
+    /**
+     * Unapplies the ambient style of the specified theme from the current node and returns the updated node.
+     * @param theme - The theme that provides ambient styling
+     */
+    abstract unformatAmbient(theme: FlowTheme): FlowNode;
 
     /**
      * Unapplies the specified paragraph style from the current node and returns the updated node.

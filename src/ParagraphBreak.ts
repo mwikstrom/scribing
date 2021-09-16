@@ -10,6 +10,7 @@ import {
     validating
 } from "paratype";
 import { FlowNode } from "./FlowNode";
+import { FlowTheme } from "./FlowTheme";
 import { registerNode } from "./internal/node-registry";
 import { ParagraphStyle } from "./ParagraphStyle";
 
@@ -88,6 +89,11 @@ export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreak
     /** {@inheritdoc FlowNode.formatText} */
     public formatText(): this {
         return this;
+    }
+
+    /** {@inheritdoc FlowNode.unformatAmbient} */
+    public unformatAmbient(theme: FlowTheme): this {
+        return this.unformatParagraph(theme.getAmbientParagraphStyle());
     }
 
     /** {@inheritdoc FlowNode.unformatParagraph} */

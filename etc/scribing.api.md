@@ -96,6 +96,7 @@ export abstract class FlowNode {
     abstract readonly size: number;
     abstract toData(): unknown;
     toJsonValue(): JsonValue;
+    abstract unformatAmbient(theme: FlowTheme): FlowNode;
     abstract unformatParagraph(style: ParagraphStyle): FlowNode;
     abstract unformatText(style: TextStyle): FlowNode;
 }
@@ -164,6 +165,8 @@ export abstract class FlowSelection {
 
 // @public
 export abstract class FlowTheme {
+    abstract getAmbientParagraphStyle(): ParagraphStyle;
+    abstract getAmbientTextStyle(): TextStyle;
     abstract getParagraphTheme(breakNode: ParagraphBreak | null): FlowTheme;
 }
 
@@ -233,6 +236,7 @@ export abstract class InlineNode extends FlowNode {
     formatText(style: TextStyle): this;
     abstract set(key: "style", value: TextStyle): this;
     abstract readonly style: TextStyle;
+    unformatAmbient(theme: FlowTheme): this;
     unformatParagraph(): this;
     unformatText(style: TextStyle): this;
 }
@@ -301,6 +305,7 @@ export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreak
     formatText(): this;
     static fromData(data: ParagraphBreakData): ParagraphBreak;
     readonly size = 1;
+    unformatAmbient(theme: FlowTheme): this;
     unformatParagraph(style: ParagraphStyle): this;
     unformatText(): this;
 }
