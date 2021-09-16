@@ -123,7 +123,7 @@ export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps>
     /** 
      * {@inheritDoc FlowOperation.applyToContent}
      */
-    applyToContent(content: FlowContent, theme: FlowTheme): FlowContent {
+    applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent {
         for (const op of this.operations) {
             content = op.applyToContent(content, theme);
         }

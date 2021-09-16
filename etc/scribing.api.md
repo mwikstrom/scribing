@@ -15,7 +15,7 @@ export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps>
     constructor(props?: FlowBatchProps);
     afterInsertion(other: FlowRange): FlowOperation | null;
     afterRemoval(other: FlowRange): FlowOperation | null;
-    applyToContent(content: FlowContent): FlowContent;
+    applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent;
     // @override
     applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null;
     static readonly classType: Type<FlowBatch>;

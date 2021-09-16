@@ -34,7 +34,7 @@ export declare class FlowBatch extends FlowBatchBase implements Readonly<FlowBat
 |  --- | --- | --- |
 |  [afterInsertion(other)](./scribing.flowbatch.afterinsertion.md) |  | Transforms the current operation so that its intent is preserved after the specified range was inserted. |
 |  [afterRemoval(other)](./scribing.flowbatch.afterremoval.md) |  | Transforms the current operation so that its intent is preserved after the specified range was removed. |
-|  [applyToContent(content)](./scribing.flowbatch.applytocontent.md) |  | Applies the current operation on the specified content and returns the updated result. |
+|  [applyToContent(content, theme)](./scribing.flowbatch.applytocontent.md) |  | Applies the current operation on the specified content and returns the updated result. |
 |  [applyToSelection(selection, mine)](./scribing.flowbatch.applytoselection.md) |  | Applies the current operation on the specified selection and returns the updated result. |
 |  [fromArray(operations)](./scribing.flowbatch.fromarray.md) | <code>static</code> | Gets a single operation that represents the specified array of operations, or <code>null</code> when the specified array is empty. |
 |  [fromData(data)](./scribing.flowbatch.fromdata.md) | <code>static</code> | Gets a [FlowBatch](./scribing.flowbatch.md) from the specified data |
