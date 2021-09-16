@@ -18,5 +18,5 @@ export declare abstract class FlowTheme
 |  --- | --- | --- |
 |  [getAmbientParagraphStyle()](./scribing.flowtheme.getambientparagraphstyle.md) |  | Gets the ambient paragraph style |
 |  [getAmbientTextStyle()](./scribing.flowtheme.getambienttextstyle.md) |  | Gets the ambient text style |
-|  [getParagraphTheme(breakNode)](./scribing.flowtheme.getparagraphtheme.md) |  | Gets a flow theme for the specified paragraph break |
+|  [getParagraphTheme(variant)](./scribing.flowtheme.getparagraphtheme.md) |  | Gets a flow theme for the specified paragraph variant |
 

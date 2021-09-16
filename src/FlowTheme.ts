@@ -1,4 +1,4 @@
-import { ParagraphBreak } from "./ParagraphBreak";
+import { ParagraphStyleVariant } from ".";
 import { ParagraphStyle } from "./ParagraphStyle";
 import { TextStyle } from "./TextStyle";
 
@@ -7,8 +7,8 @@ import { TextStyle } from "./TextStyle";
  * @public
  */
 export abstract class FlowTheme {
-    /** Gets a flow theme for the specified paragraph break */
-    abstract getParagraphTheme(breakNode: ParagraphBreak | null): FlowTheme;
+    /** Gets a flow theme for the specified paragraph variant */
+    abstract getParagraphTheme(variant: ParagraphStyleVariant): FlowTheme;
 
     /** Gets the ambient text style */
     abstract getAmbientTextStyle(): TextStyle;

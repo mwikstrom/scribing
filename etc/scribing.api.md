@@ -167,7 +167,7 @@ export abstract class FlowSelection {
 export abstract class FlowTheme {
     abstract getAmbientParagraphStyle(): ParagraphStyle;
     abstract getAmbientTextStyle(): TextStyle;
-    abstract getParagraphTheme(breakNode: ParagraphBreak | null): FlowTheme;
+    abstract getParagraphTheme(variant: ParagraphStyleVariant): FlowTheme;
 }
 
 // @public @sealed

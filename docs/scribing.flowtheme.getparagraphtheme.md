@@ -4,19 +4,19 @@
 
 ## FlowTheme.getParagraphTheme() method
 
-Gets a flow theme for the specified paragraph break
+Gets a flow theme for the specified paragraph variant
 
 <b>Signature:</b>
 
 ```typescript
-abstract getParagraphTheme(breakNode: ParagraphBreak | null): FlowTheme;
+abstract getParagraphTheme(variant: ParagraphStyleVariant): FlowTheme;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  breakNode | [ParagraphBreak](./scribing.paragraphbreak.md) \| null |  |
+|  variant | [ParagraphStyleVariant](./scribing.paragraphstylevariant.md) |  |
 
 <b>Returns:</b>
 

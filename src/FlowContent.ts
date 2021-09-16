@@ -303,13 +303,16 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     private static unformatAmbient(nodes: readonly FlowNode[], theme: FlowTheme): FlowNode[] {
         const result: FlowNode[] = [];
         let p = FlowContent.findParagraphBreak(nodes);
-        theme = theme.getParagraphTheme(p);
+        let t: FlowTheme | undefined;
         for (let i = 0; i < nodes.length; ++i) {
             const n = nodes[i];
-            result.push(n.unformatAmbient(theme));
+            if (!t) {
+                t = theme.getParagraphTheme(p?.style.variant ?? "normal");
+            }
+            result.push(n.unformatAmbient(t));
             if (p === n) {
                 p = FlowContent.findParagraphBreak(nodes, i + 1);
-                theme = theme.getParagraphTheme(p);
+                t = undefined;
             }
         }
         return result;
