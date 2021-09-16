@@ -48,7 +48,10 @@ export const UnformatTextBase = RecordClass(PropsType, FlowOperation, DataType, 
  * @public
  */
 export interface UnformatTextProps {
+    /** The range that shall be unformatted */
     range: FlowRange;
+
+    /** The style to unformat */
     style: TextStyle;
 }
 
@@ -56,10 +59,9 @@ export interface UnformatTextProps {
  * Data of unformat text operations
  * @public
  */
-export interface UnformatTextData {
+export interface UnformatTextData extends UnformatTextProps {
+    /** Data classifier */
     unformat: "text",
-    range: FlowRange;
-    style: TextStyle;
 }
 
 /**

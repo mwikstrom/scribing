@@ -48,7 +48,10 @@ export const FormatParagraphBase = RecordClass(PropsType, FlowOperation, DataTyp
  * @public
  */
 export interface FormatParagraphProps {
+    /** The range that shall be formatted */
     range: FlowRange;
+
+    /** The style to apply */
     style: ParagraphStyle;
 }
 
@@ -56,10 +59,9 @@ export interface FormatParagraphProps {
  * Data of format paragraph operations
  * @public
  */
-export interface FormatParagraphData {
+export interface FormatParagraphData extends FormatParagraphProps {
+    /** Data classifier */
     format: "para",
-    range: FlowRange;
-    style: ParagraphStyle;
 }
 
 /**

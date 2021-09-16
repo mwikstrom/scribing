@@ -4,6 +4,8 @@
 
 ## FormatParagraphData.format property
 
+Data classifier
+
 <b>Signature:</b>
 
 ```typescript

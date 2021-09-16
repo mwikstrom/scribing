@@ -4,6 +4,8 @@
 
 ## FlowNode.fromJsonValue() method
 
+Converts the specified JSON value to a flow node
+
 <b>Signature:</b>
 
 ```typescript

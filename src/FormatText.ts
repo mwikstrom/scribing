@@ -48,7 +48,10 @@ export const FormatTextBase = RecordClass(PropsType, FlowOperation, DataType, pr
  * @public
  */
 export interface FormatTextProps {
+    /** The range that shall be formatted */
     range: FlowRange;
+
+    /** The style to apply */
     style: TextStyle;
 }
 
@@ -56,10 +59,9 @@ export interface FormatTextProps {
  * Data of format text operations
  * @public
  */
-export interface FormatTextData {
+export interface FormatTextData extends FormatTextProps {
+    /** Data classifier */
     format: "text",
-    range: FlowRange;
-    style: TextStyle;
 }
 
 /**

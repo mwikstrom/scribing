@@ -27,7 +27,7 @@ export declare class LineBreak extends LineBreakBase implements LineBreakProps
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [classType](./scribing.linebreak.classtype.md) | <code>static</code> | import("paratype").Type&lt;[LineBreak](./scribing.linebreak.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [size](./scribing.linebreak.size.md) |  | (not declared) |  |
+|  [size](./scribing.linebreak.size.md) |  | (not declared) | Size of the current node. |
 
 ## Methods
 

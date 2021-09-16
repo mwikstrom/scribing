@@ -15,12 +15,14 @@ import { UnformatParagraph } from "./UnformatParagraph";
 import { UnformatText } from "./UnformatText";
 
 /**
+ * Represents a range of selected flow content
  * @public
  * @sealed
  */
 @frozen
 @validating
 export class RangeSelection extends FlowSelection {
+    /** The selected range */
     public readonly range: FlowRange;
 
     public constructor(@type(FlowRange.classType) range: FlowRange) {

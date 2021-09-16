@@ -4,6 +4,7 @@
 
 ## RangeSelection class
 
+Represents a range of selected flow content
 
 <b>Signature:</b>
 
@@ -23,7 +24,7 @@ export declare class RangeSelection extends FlowSelection
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [range](./scribing.rangeselection.range.md) |  | [FlowRange](./scribing.flowrange.md) |  |
+|  [range](./scribing.rangeselection.range.md) |  | [FlowRange](./scribing.flowrange.md) | The selected range |
 
 ## Methods
 

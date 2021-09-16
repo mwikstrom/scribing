@@ -60,7 +60,10 @@ export const TextRunBase = RecordClass(PropsType, InlineNode, DataType, propsToD
  * @public
  */
 export interface TextRunProps {
+    /** The text characters */
     text: string;
+
+    /** The text style */
     style: TextStyle;
 }
 
@@ -68,10 +71,10 @@ export interface TextRunProps {
  * Data contract for a text run
  * @public
  */
-export type TextRunData = string | {
-    text: string;
-    style?: TextStyle;
-};
+export type TextRunData = string | (
+    Pick<TextRunProps, "text"> &
+    Partial<Omit<TextRunProps, "text">>
+);
 
 /**
  * A run of text with uniform styling
@@ -84,8 +87,11 @@ export type TextRunData = string | {
 export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => TextRun);
+
+    /** {@inheritdoc FlowNode.size} */
     public readonly size: number;
 
+    /** Normalizes the specified string value */
     public static normalizeText(value: unknown): string {
         return String(value)
             .normalize()
@@ -148,12 +154,18 @@ export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
         ];
     }
 
-    /** @internal */
+    /**
+     * Determines whether the specified text runs should be merged into one
+     * @internal
+     */
     public static shouldMerge(first: TextRun, second: TextRun): boolean {
         return first.style.equals(second.style);
     }
 
-    /** @internal */
+    /**
+     * Merges the specified text runs into one
+     * @internal
+     */
     public static merge(first: TextRun, second: TextRun): TextRun {
         return first.append(second.text);
     }

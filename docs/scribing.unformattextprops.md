@@ -16,6 +16,6 @@ export interface UnformatTextProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [range](./scribing.unformattextprops.range.md) | [FlowRange](./scribing.flowrange.md) |  |
-|  [style](./scribing.unformattextprops.style.md) | [TextStyle](./scribing.textstyle.md) |  |
+|  [range](./scribing.unformattextprops.range.md) | [FlowRange](./scribing.flowrange.md) | The range that shall be unformatted |
+|  [style](./scribing.unformattextprops.style.md) | [TextStyle](./scribing.textstyle.md) | The style to unformat |
 

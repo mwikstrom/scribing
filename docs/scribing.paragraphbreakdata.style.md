@@ -4,6 +4,8 @@
 
 ## ParagraphBreakData.style property
 
+Style for the preceding paragraph
+
 <b>Signature:</b>
 
 ```typescript

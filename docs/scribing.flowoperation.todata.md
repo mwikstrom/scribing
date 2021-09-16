@@ -4,6 +4,8 @@
 
 ## FlowOperation.toData() method
 
+Converts the current operation to data
+
 <b>Signature:</b>
 
 ```typescript

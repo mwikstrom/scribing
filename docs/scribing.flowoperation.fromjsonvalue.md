@@ -4,6 +4,8 @@
 
 ## FlowOperation.fromJsonValue() method
 
+Converts the specified JSON value to a flow operation
+
 <b>Signature:</b>
 
 ```typescript

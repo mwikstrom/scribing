@@ -4,6 +4,8 @@
 
 ## InsertContentProps.position property
 
+The insertion position
+
 <b>Signature:</b>
 
 ```typescript

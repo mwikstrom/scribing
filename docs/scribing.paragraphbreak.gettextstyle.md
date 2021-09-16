@@ -4,6 +4,8 @@
 
 ## ParagraphBreak.getTextStyle() method
 
+Gets text style from the current node
+
 <b>Signature:</b>
 
 ```typescript

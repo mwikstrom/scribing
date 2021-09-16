@@ -4,6 +4,8 @@
 
 ## UnformatTextProps.range property
 
+The range that shall be unformatted
+
 <b>Signature:</b>
 
 ```typescript

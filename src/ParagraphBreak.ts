@@ -47,7 +47,10 @@ export interface ParagraphBreakProps {
  * @public
  */
 export interface ParagraphBreakData {
+    /** Data classifier */
     break: "para";
+
+    /** {@inheritdoc ParagraphBreakProps.style} */
     style?: ParagraphStyle;
 }
 
@@ -62,6 +65,8 @@ export interface ParagraphBreakData {
 export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreakProps {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => ParagraphBreak);
+
+    /** {@inheritdoc FlowNode.size} */
     public readonly size = 1;
 
     /** Gets an instance of the current class from the specified data */

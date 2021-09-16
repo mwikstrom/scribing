@@ -4,6 +4,8 @@
 
 ## InlineNode.set() method
 
+Returns a copy of the current object with the specified property merged in
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,10 +16,14 @@ abstract set(key: "style", value: TextStyle): this;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  key | "style" |  |
-|  value | [TextStyle](./scribing.textstyle.md) |  |
+|  key | "style" | Key of the property to merge in |
+|  value | [TextStyle](./scribing.textstyle.md) | Property value to merge in |
 
 <b>Returns:</b>
 
 this
+
+## Remarks
+
+If the resulting object would be equal to the current instance, then the current instance is returned instead.
 

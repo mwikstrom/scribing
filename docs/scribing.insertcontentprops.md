@@ -16,6 +16,6 @@ export interface InsertContentProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [content](./scribing.insertcontentprops.content.md) | [FlowContent](./scribing.flowcontent.md) |  |
-|  [position](./scribing.insertcontentprops.position.md) | number |  |
+|  [content](./scribing.insertcontentprops.content.md) | [FlowContent](./scribing.flowcontent.md) | The content to be inserted |
+|  [position](./scribing.insertcontentprops.position.md) | number | The insertion position |
 

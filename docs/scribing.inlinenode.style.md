@@ -4,6 +4,8 @@
 
 ## InlineNode.style property
 
+The text style of the current node
+
 <b>Signature:</b>
 
 ```typescript

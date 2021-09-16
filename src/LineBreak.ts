@@ -47,7 +47,10 @@ export interface LineBreakProps {
  * @public
  */
 export interface LineBreakData {
+    /** Data classifier */
     break: "line";
+
+    /** {@inheritdoc LineBreakProps.style} */
     style?: TextStyle;
 }
 
@@ -62,6 +65,8 @@ export interface LineBreakData {
 export class LineBreak extends LineBreakBase implements LineBreakProps {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => LineBreak);
+
+    /** {@inheritdoc FlowNode.size} */
     public readonly size = 1;
 
     /** Gets an instance of the current class from the specified data */

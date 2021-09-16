@@ -4,6 +4,8 @@
 
 ## FormatTextProps.style property
 
+The style to apply
+
 <b>Signature:</b>
 
 ```typescript

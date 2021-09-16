@@ -4,8 +4,15 @@
 
 ## ParagraphBreak.size property
 
+Size of the current node.
+
 <b>Signature:</b>
 
 ```typescript
 readonly size = 1;
 ```
+
+## Remarks
+
+The size of flow content is measured in UTF-16 characters and all nodes, except [text runs](./scribing.textrun.md)<!-- -->, are defined to have size 1.
+

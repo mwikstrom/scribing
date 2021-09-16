@@ -9,14 +9,13 @@ Data of format text operations
 <b>Signature:</b>
 
 ```typescript
-export interface FormatTextData 
+export interface FormatTextData extends FormatTextProps 
 ```
+<b>Extends:</b> [FormatTextProps](./scribing.formattextprops.md)
 
 ## Properties
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [format](./scribing.formattextdata.format.md) | "text" |  |
-|  [range](./scribing.formattextdata.range.md) | [FlowRange](./scribing.flowrange.md) |  |
-|  [style](./scribing.formattextdata.style.md) | [TextStyle](./scribing.textstyle.md) |  |
+|  [format](./scribing.formattextdata.format.md) | "text" | Data classifier |
 

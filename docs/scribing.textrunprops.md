@@ -16,6 +16,6 @@ export interface TextRunProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [style](./scribing.textrunprops.style.md) | [TextStyle](./scribing.textstyle.md) |  |
-|  [text](./scribing.textrunprops.text.md) | string |  |
+|  [style](./scribing.textrunprops.style.md) | [TextStyle](./scribing.textstyle.md) | The text style |
+|  [text](./scribing.textrunprops.text.md) | string | The text characters |
 

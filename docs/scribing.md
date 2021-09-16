@@ -24,7 +24,7 @@ Model for collaborative rich text editing
 |  [LineBreak](./scribing.linebreak.md) | Represents a line break. |
 |  [ParagraphBreak](./scribing.paragraphbreak.md) | Represents a paragraph break. |
 |  [ParagraphStyle](./scribing.paragraphstyle.md) | Represents the styling that is applied to paragraph content. |
-|  [RangeSelection](./scribing.rangeselection.md) |  |
+|  [RangeSelection](./scribing.rangeselection.md) | Represents a range of selected flow content |
 |  [RemoveRange](./scribing.removerange.md) | Represents an operation that removes a range of flow. |
 |  [TextRun](./scribing.textrun.md) | A run of text with uniform styling |
 |  [TextStyle](./scribing.textstyle.md) | Represents the styling that is applied to text. |

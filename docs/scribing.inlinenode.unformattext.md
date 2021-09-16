@@ -4,6 +4,8 @@
 
 ## InlineNode.unformatText() method
 
+Unapplies the specified text style from the current node and returns the updated node.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ unformatText(style: TextStyle): this;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  style | [TextStyle](./scribing.textstyle.md) |  |
+|  style | [TextStyle](./scribing.textstyle.md) | The text style to unapply |
 
 <b>Returns:</b>
 

@@ -9,6 +9,7 @@ import { flowOperationType } from "./internal/operation-registry";
  * @public
  */
 export abstract class FlowOperation {
+    /** Converts the specified JSON value to a flow operation */
     public static fromJsonValue(value: JsonValue): FlowOperation {
         return flowOperationType.fromJsonValue(value);
     }
@@ -52,8 +53,10 @@ export abstract class FlowOperation {
      */
     abstract applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null;
 
+    /** Converts the current operation to data */
     abstract toData(): unknown;
 
+    /** Converts the current operation to a JSON value */
     toJsonValue(): JsonValue {
         return flowOperationType.toJsonValue(this);
     }

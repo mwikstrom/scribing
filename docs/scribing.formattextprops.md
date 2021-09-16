@@ -16,6 +16,6 @@ export interface FormatTextProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [range](./scribing.formattextprops.range.md) | [FlowRange](./scribing.flowrange.md) |  |
-|  [style](./scribing.formattextprops.style.md) | [TextStyle](./scribing.textstyle.md) |  |
+|  [range](./scribing.formattextprops.range.md) | [FlowRange](./scribing.flowrange.md) | The range that shall be formatted |
+|  [style](./scribing.formattextprops.style.md) | [TextStyle](./scribing.textstyle.md) | The style to apply |
 

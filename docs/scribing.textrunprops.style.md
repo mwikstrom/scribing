@@ -4,6 +4,8 @@
 
 ## TextRunProps.style property
 
+The text style
+
 <b>Signature:</b>
 
 ```typescript

@@ -9,14 +9,13 @@ Data of format paragraph operations
 <b>Signature:</b>
 
 ```typescript
-export interface FormatParagraphData 
+export interface FormatParagraphData extends FormatParagraphProps 
 ```
+<b>Extends:</b> [FormatParagraphProps](./scribing.formatparagraphprops.md)
 
 ## Properties
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [format](./scribing.formatparagraphdata.format.md) | "para" |  |
-|  [range](./scribing.formatparagraphdata.range.md) | [FlowRange](./scribing.flowrange.md) |  |
-|  [style](./scribing.formatparagraphdata.style.md) | [ParagraphStyle](./scribing.paragraphstyle.md) |  |
+|  [format](./scribing.formatparagraphdata.format.md) | "para" | Data classifier |
 

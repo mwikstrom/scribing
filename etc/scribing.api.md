@@ -77,11 +77,8 @@ export class FlowCursor {
     getTextStyle(): TextStyle | null;
     get index(): number;
     move(distance: number): FlowCursor;
-    // (undocumented)
     moveToStartOfNextNode(): FlowCursor | null;
-    // (undocumented)
     moveToStartOfNode(): FlowCursor;
-    // (undocumented)
     moveToStartOfPreviousNode(): FlowCursor | null;
     get node(): FlowNode | null;
     get offset(): number;
@@ -93,16 +90,13 @@ export class FlowCursor {
 export abstract class FlowNode {
     abstract formatParagraph(style: ParagraphStyle): FlowNode;
     abstract formatText(style: TextStyle): FlowNode;
-    // (undocumented)
     static fromJsonValue(value: JsonValue): FlowNode;
-    // @internal (undocumented)
+    // @internal
     abstract getParagraphStyle(): ParagraphStyle | null;
-    // @internal (undocumented)
+    // @internal
     abstract getTextStyle(): TextStyle | null;
     abstract readonly size: number;
-    // (undocumented)
     abstract toData(): unknown;
-    // (undocumented)
     toJsonValue(): JsonValue;
     abstract unformatParagraph(style: ParagraphStyle): FlowNode;
     abstract unformatText(style: TextStyle): FlowNode;
@@ -116,12 +110,9 @@ export abstract class FlowOperation {
     abstract afterRemoval(other: FlowRange): FlowOperation | null;
     abstract applyToContent(content: FlowContent): FlowContent;
     abstract applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null;
-    // (undocumented)
     static fromJsonValue(value: JsonValue): FlowOperation;
     abstract invert(content: FlowContent): FlowOperation | null;
-    // (undocumented)
     abstract toData(): unknown;
-    // (undocumented)
     toJsonValue(): JsonValue;
     abstract transform(other: FlowOperation): FlowOperation | null;
 }
@@ -193,20 +184,13 @@ export class FormatParagraph extends FormatParagraphBase implements Readonly<For
 export const FormatParagraphBase: RecordConstructor<FormatParagraphProps, FlowOperation, FormatParagraphData>;
 
 // @public
-export interface FormatParagraphData {
-    // (undocumented)
+export interface FormatParagraphData extends FormatParagraphProps {
     format: "para";
-    // (undocumented)
-    range: FlowRange;
-    // (undocumented)
-    style: ParagraphStyle;
 }
 
 // @public
 export interface FormatParagraphProps {
-    // (undocumented)
     range: FlowRange;
-    // (undocumented)
     style: ParagraphStyle;
 }
 
@@ -230,40 +214,25 @@ export class FormatText extends FormatTextBase implements Readonly<FormatTextPro
 export const FormatTextBase: RecordConstructor<FormatTextProps, FlowOperation, FormatTextData>;
 
 // @public
-export interface FormatTextData {
-    // (undocumented)
+export interface FormatTextData extends FormatTextProps {
     format: "text";
-    // (undocumented)
-    range: FlowRange;
-    // (undocumented)
-    style: TextStyle;
 }
 
 // @public
 export interface FormatTextProps {
-    // (undocumented)
     range: FlowRange;
-    // (undocumented)
     style: TextStyle;
 }
 
 // @public
 export abstract class InlineNode extends FlowNode {
-    // (undocumented)
     formatParagraph(): this;
-    // (undocumented)
     formatText(style: TextStyle): this;
-    // (undocumented)
     getParagraphStyle(): null;
-    // (undocumented)
     getTextStyle(): TextStyle;
-    // (undocumented)
     abstract set(key: "style", value: TextStyle): this;
-    // (undocumented)
     abstract readonly style: TextStyle;
-    // (undocumented)
     unformatParagraph(): this;
-    // (undocumented)
     unformatText(style: TextStyle): this;
 }
 
@@ -277,11 +246,10 @@ export class InsertContent extends InsertContentBase implements InsertContentPro
     static readonly classType: Type<InsertContent>;
     static fromData(data: InsertContentData): InsertContent;
     invert(): FlowOperation | null;
-    // (undocumented)
     toData(): InsertContentData;
     transform(other: FlowOperation): FlowOperation | null;
-    // @internal (undocumented)
-    translate(distance: number): InsertContent;
+    // @internal
+    translate(delta: number): InsertContent;
 }
 
 // @public
@@ -289,17 +257,13 @@ export const InsertContentBase: RecordConstructor<InsertContentProps, FlowOperat
 
 // @public
 export interface InsertContentData {
-    // (undocumented)
     at: number;
-    // (undocumented)
     insert: FlowContent;
 }
 
 // @public
 export interface InsertContentProps {
-    // (undocumented)
     content: FlowContent;
-    // (undocumented)
     position: number;
 }
 
@@ -308,7 +272,6 @@ export class LineBreak extends LineBreakBase implements LineBreakProps {
     constructor(props?: LineBreakProps);
     static readonly classType: Type<LineBreak>;
     static fromData(data: LineBreakData): LineBreak;
-    // (undocumented)
     readonly size = 1;
 }
 
@@ -317,9 +280,7 @@ export const LineBreakBase: RecordConstructor<LineBreakProps, InlineNode, LineBr
 
 // @public
 export interface LineBreakData {
-    // (undocumented)
     break: "line";
-    // (undocumented)
     style?: TextStyle;
 }
 
@@ -335,11 +296,8 @@ export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreak
     formatParagraph(style: ParagraphStyle): this;
     formatText(): this;
     static fromData(data: ParagraphBreakData): ParagraphBreak;
-    // (undocumented)
     getParagraphStyle(): ParagraphStyle;
-    // (undocumented)
     getTextStyle(): null;
-    // (undocumented)
     readonly size = 1;
     unformatParagraph(style: ParagraphStyle): this;
     unformatText(): this;
@@ -350,9 +308,7 @@ export const ParagraphBreakBase: RecordConstructor<ParagraphBreakProps, FlowNode
 
 // @public
 export interface ParagraphBreakData {
-    // (undocumented)
     break: "para";
-    // (undocumented)
     style?: ParagraphStyle;
 }
 
@@ -405,7 +361,7 @@ export interface ParagraphStyleProps {
     type?: "normal" | "title" | "subtitle" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
-// @public @sealed (undocumented)
+// @public @sealed
 export class RangeSelection extends FlowSelection {
     constructor(range: FlowRange);
     // @override
@@ -418,7 +374,6 @@ export class RangeSelection extends FlowSelection {
     formatText(style: TextStyle): FlowOperation | null;
     // @override
     insert(content: FlowContent): FlowOperation | null;
-    // (undocumented)
     readonly range: FlowRange;
     // @override
     remove(): FlowOperation | null;
@@ -449,13 +404,11 @@ export const RemoveRangeBase: RecordConstructor<RemoveRangeProps, FlowOperation,
 
 // @public
 export interface RemoveRangeData {
-    // (undocumented)
     remove: FlowRange;
 }
 
 // @public
 export interface RemoveRangeProps {
-    // (undocumented)
     range: FlowRange;
 }
 
@@ -467,13 +420,11 @@ export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
     before(position: number): TextRun;
     static readonly classType: Type<TextRun>;
     static fromData(data: TextRunData): TextRun;
-    // @internal (undocumented)
+    // @internal
     static merge(first: TextRun, second: TextRun): TextRun;
-    // (undocumented)
     static normalizeText(value: unknown): string;
-    // @internal (undocumented)
+    // @internal
     static shouldMerge(first: TextRun, second: TextRun): boolean;
-    // (undocumented)
     readonly size: number;
     split(position: number): [TextRun, TextRun];
 }
@@ -482,16 +433,11 @@ export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
 export const TextRunBase: RecordConstructor<TextRunProps, InlineNode, TextRunData>;
 
 // @public
-export type TextRunData = string | {
-    text: string;
-    style?: TextStyle;
-};
+export type TextRunData = string | (Pick<TextRunProps, "text"> & Partial<Omit<TextRunProps, "text">>);
 
 // @public
 export interface TextRunProps {
-    // (undocumented)
     style: TextStyle;
-    // (undocumented)
     text: string;
 }
 
@@ -565,20 +511,13 @@ export class UnformatParagraph extends UnformatParagraphBase implements Readonly
 export const UnformatParagraphBase: RecordConstructor<UnformatParagraphProps, FlowOperation, UnformatParagraphData>;
 
 // @public
-export interface UnformatParagraphData {
-    // (undocumented)
-    range: FlowRange;
-    // (undocumented)
-    style: ParagraphStyle;
-    // (undocumented)
+export interface UnformatParagraphData extends UnformatParagraphProps {
     unformat: "para";
 }
 
 // @public
 export interface UnformatParagraphProps {
-    // (undocumented)
     range: FlowRange;
-    // (undocumented)
     style: ParagraphStyle;
 }
 
@@ -602,20 +541,13 @@ export class UnformatText extends UnformatTextBase implements Readonly<UnformatT
 export const UnformatTextBase: RecordConstructor<UnformatTextProps, FlowOperation, UnformatTextData>;
 
 // @public
-export interface UnformatTextData {
-    // (undocumented)
-    range: FlowRange;
-    // (undocumented)
-    style: TextStyle;
-    // (undocumented)
+export interface UnformatTextData extends UnformatTextProps {
     unformat: "text";
 }
 
 // @public
 export interface UnformatTextProps {
-    // (undocumented)
     range: FlowRange;
-    // (undocumented)
     style: TextStyle;
 }
 

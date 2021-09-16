@@ -4,6 +4,8 @@
 
 ## InlineNode.formatParagraph() method
 
+Applies the specified paragraph style on the current node and returns the updated node.
+
 <b>Signature:</b>
 
 ```typescript

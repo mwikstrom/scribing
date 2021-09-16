@@ -180,6 +180,10 @@ export class FlowCursor {
         return new FlowCursor(this.#content, PRIVATE, index, offset, position);
     }
 
+    /**
+     * Gets a new cursor that is positioned at the start of the previous node, or
+     * `null` when the current cursor is positioned at the first node.
+     */
     moveToStartOfPreviousNode(): FlowCursor | null {
         const index = this.#index - 1;
 
@@ -192,6 +196,10 @@ export class FlowCursor {
         return new FlowCursor(this.#content, PRIVATE, index, 0, position);
     }
 
+    /**
+     * Gets a new cursor that is positioned at the start of the next node, or
+     * `null` when the current cursor is positioned at the last node.
+     */
     moveToStartOfNextNode(): FlowCursor | null {
         const index = this.#index + 1;
 
@@ -203,6 +211,9 @@ export class FlowCursor {
         return new FlowCursor(this.#content, PRIVATE, index, 0, position);
     }
 
+    /**
+     * Gets a cursor that is positioned at the start of the current node.
+     */
     moveToStartOfNode(): FlowCursor {
         return this.move(-this.#offset);
     }

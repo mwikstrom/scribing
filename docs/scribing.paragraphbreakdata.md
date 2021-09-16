@@ -16,6 +16,6 @@ export interface ParagraphBreakData
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [break](./scribing.paragraphbreakdata.break.md) | "para" |  |
-|  [style?](./scribing.paragraphbreakdata.style.md) | [ParagraphStyle](./scribing.paragraphstyle.md) | <i>(Optional)</i> |
+|  [break](./scribing.paragraphbreakdata.break.md) | "para" | Data classifier |
+|  [style?](./scribing.paragraphbreakdata.style.md) | [ParagraphStyle](./scribing.paragraphstyle.md) | <i>(Optional)</i> Style for the preceding paragraph |
 

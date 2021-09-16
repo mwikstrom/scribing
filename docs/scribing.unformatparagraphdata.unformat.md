@@ -4,6 +4,8 @@
 
 ## UnformatParagraphData.unformat property
 
+Data classifier
+
 <b>Signature:</b>
 
 ```typescript

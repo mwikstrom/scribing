@@ -4,6 +4,8 @@
 
 ## InsertContentData.insert property
 
+The content to be inserted
+
 <b>Signature:</b>
 
 ```typescript

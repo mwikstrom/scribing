@@ -16,6 +16,6 @@ export interface LineBreakData
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [break](./scribing.linebreakdata.break.md) | "line" |  |
-|  [style?](./scribing.linebreakdata.style.md) | [TextStyle](./scribing.textstyle.md) | <i>(Optional)</i> |
+|  [break](./scribing.linebreakdata.break.md) | "line" | Data classifier |
+|  [style?](./scribing.linebreakdata.style.md) | [TextStyle](./scribing.textstyle.md) | <i>(Optional)</i> Text style for the line break |
 

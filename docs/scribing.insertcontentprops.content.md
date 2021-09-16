@@ -4,6 +4,8 @@
 
 ## InsertContentProps.content property
 
+The content to be inserted
+
 <b>Signature:</b>
 
 ```typescript

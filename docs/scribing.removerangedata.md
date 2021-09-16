@@ -16,5 +16,5 @@ export interface RemoveRangeData
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [remove](./scribing.removerangedata.remove.md) | [FlowRange](./scribing.flowrange.md) |  |
+|  [remove](./scribing.removerangedata.remove.md) | [FlowRange](./scribing.flowrange.md) | The range that shall be removed |
 

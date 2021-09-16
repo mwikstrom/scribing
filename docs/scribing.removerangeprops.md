@@ -16,5 +16,5 @@ export interface RemoveRangeProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [range](./scribing.removerangeprops.range.md) | [FlowRange](./scribing.flowrange.md) |  |
+|  [range](./scribing.removerangeprops.range.md) | [FlowRange](./scribing.flowrange.md) | The range that shall be removed |
 

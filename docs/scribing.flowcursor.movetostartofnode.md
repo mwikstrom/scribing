@@ -4,6 +4,8 @@
 
 ## FlowCursor.moveToStartOfNode() method
 
+Gets a cursor that is positioned at the start of the current node.
+
 <b>Signature:</b>
 
 ```typescript

@@ -9,14 +9,13 @@ Data of unformat text operations
 <b>Signature:</b>
 
 ```typescript
-export interface UnformatTextData 
+export interface UnformatTextData extends UnformatTextProps 
 ```
+<b>Extends:</b> [UnformatTextProps](./scribing.unformattextprops.md)
 
 ## Properties
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [range](./scribing.unformattextdata.range.md) | [FlowRange](./scribing.flowrange.md) |  |
-|  [style](./scribing.unformattextdata.style.md) | [TextStyle](./scribing.textstyle.md) |  |
-|  [unformat](./scribing.unformattextdata.unformat.md) | "text" |  |
+|  [unformat](./scribing.unformattextdata.unformat.md) | "text" | Data classifier |
 

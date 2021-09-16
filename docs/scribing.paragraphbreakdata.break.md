@@ -4,6 +4,8 @@
 
 ## ParagraphBreakData.break property
 
+Data classifier
+
 <b>Signature:</b>
 
 ```typescript

@@ -17,17 +17,17 @@ export declare abstract class InlineNode extends FlowNode
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [style](./scribing.inlinenode.style.md) |  | [TextStyle](./scribing.textstyle.md) |  |
+|  [style](./scribing.inlinenode.style.md) |  | [TextStyle](./scribing.textstyle.md) | The text style of the current node |
 
 ## Methods
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [formatParagraph()](./scribing.inlinenode.formatparagraph.md) |  |  |
-|  [formatText(style)](./scribing.inlinenode.formattext.md) |  |  |
-|  [getParagraphStyle()](./scribing.inlinenode.getparagraphstyle.md) |  |  |
-|  [getTextStyle()](./scribing.inlinenode.gettextstyle.md) |  |  |
-|  [set(key, value)](./scribing.inlinenode.set.md) |  |  |
-|  [unformatParagraph()](./scribing.inlinenode.unformatparagraph.md) |  |  |
-|  [unformatText(style)](./scribing.inlinenode.unformattext.md) |  |  |
+|  [formatParagraph()](./scribing.inlinenode.formatparagraph.md) |  | Applies the specified paragraph style on the current node and returns the updated node. |
+|  [formatText(style)](./scribing.inlinenode.formattext.md) |  | Applies the specified text style on the current node and returns the updated node. |
+|  [getParagraphStyle()](./scribing.inlinenode.getparagraphstyle.md) |  | Gets paragraph style from the current node |
+|  [getTextStyle()](./scribing.inlinenode.gettextstyle.md) |  | Gets text style from the current node |
+|  [set(key, value)](./scribing.inlinenode.set.md) |  | Returns a copy of the current object with the specified property merged in |
+|  [unformatParagraph()](./scribing.inlinenode.unformatparagraph.md) |  | Unapplies the specified paragraph style from the current node and returns the updated node. |
+|  [unformatText(style)](./scribing.inlinenode.unformattext.md) |  | Unapplies the specified text style from the current node and returns the updated node. |
 

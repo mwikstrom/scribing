@@ -4,6 +4,8 @@
 
 ## RemoveRangeProps.range property
 
+The range that shall be removed
+
 <b>Signature:</b>
 
 ```typescript

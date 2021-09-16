@@ -4,6 +4,8 @@
 
 ## RangeSelection.range property
 
+The selected range
+
 <b>Signature:</b>
 
 ```typescript

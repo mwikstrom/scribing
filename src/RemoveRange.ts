@@ -40,6 +40,7 @@ export const RemoveRangeBase = RecordClass(PropsType, FlowOperation, DataType, p
  * @public
  */
 export interface RemoveRangeProps {
+    /** The range that shall be removed */
     range: FlowRange;
 }
 
@@ -48,6 +49,7 @@ export interface RemoveRangeProps {
  * @public
  */
 export interface RemoveRangeData {
+    /** {@inheritdoc RemoveRangeProps.range} */
     remove: FlowRange;
 }
 

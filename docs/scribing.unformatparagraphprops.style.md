@@ -4,6 +4,8 @@
 
 ## UnformatParagraphProps.style property
 
+The style to unformat
+
 <b>Signature:</b>
 
 ```typescript

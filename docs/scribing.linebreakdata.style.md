@@ -4,6 +4,8 @@
 
 ## LineBreakData.style property
 
+Text style for the line break
+
 <b>Signature:</b>
 
 ```typescript

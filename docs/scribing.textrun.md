@@ -27,7 +27,7 @@ export declare class TextRun extends TextRunBase implements Readonly<TextRunProp
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [classType](./scribing.textrun.classtype.md) | <code>static</code> | Type&lt;[TextRun](./scribing.textrun.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [size](./scribing.textrun.size.md) |  | number |  |
+|  [size](./scribing.textrun.size.md) |  | number | Size of the current node. |
 
 ## Methods
 
@@ -37,6 +37,6 @@ export declare class TextRun extends TextRunBase implements Readonly<TextRunProp
 |  [append(value)](./scribing.textrun.append.md) |  | Appends the specified text to the current text run |
 |  [before(position)](./scribing.textrun.before.md) |  | Splits the current text run a the specified position and returns the resulting text run before the split position. |
 |  [fromData(data)](./scribing.textrun.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
-|  [normalizeText(value)](./scribing.textrun.normalizetext.md) | <code>static</code> |  |
+|  [normalizeText(value)](./scribing.textrun.normalizetext.md) | <code>static</code> | Normalizes the specified string value |
 |  [split(position)](./scribing.textrun.split.md) |  | Splits the current text run a the specified position and returns a tuple with the resulting text runs. |
 

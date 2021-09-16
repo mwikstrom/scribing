@@ -4,6 +4,8 @@
 
 ## InlineNode.formatText() method
 
+Applies the specified text style on the current node and returns the updated node.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ formatText(style: TextStyle): this;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  style | [TextStyle](./scribing.textstyle.md) |  |
+|  style | [TextStyle](./scribing.textstyle.md) | The text style to apply |
 
 <b>Returns:</b>
 

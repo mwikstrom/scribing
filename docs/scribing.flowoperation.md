@@ -18,9 +18,9 @@ export declare abstract class FlowOperation
 |  --- | --- | --- |
 |  [applyToContent(content)](./scribing.flowoperation.applytocontent.md) |  | Applies the current operation on the specified content and returns the updated result. |
 |  [applyToSelection(selection, mine)](./scribing.flowoperation.applytoselection.md) |  | Applies the current operation on the specified selection and returns the updated result. |
-|  [fromJsonValue(value)](./scribing.flowoperation.fromjsonvalue.md) | <code>static</code> |  |
+|  [fromJsonValue(value)](./scribing.flowoperation.fromjsonvalue.md) | <code>static</code> | Converts the specified JSON value to a flow operation |
 |  [invert(content)](./scribing.flowoperation.invert.md) |  | Returns an operation that negates the effect of the current operation. |
-|  [toData()](./scribing.flowoperation.todata.md) |  |  |
-|  [toJsonValue()](./scribing.flowoperation.tojsonvalue.md) |  |  |
+|  [toData()](./scribing.flowoperation.todata.md) |  | Converts the current operation to data |
+|  [toJsonValue()](./scribing.flowoperation.tojsonvalue.md) |  | Converts the current operation to a JSON value |
 |  [transform(other)](./scribing.flowoperation.transform.md) |  | Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation. |
 

@@ -8,6 +8,7 @@ import { TextStyle } from "./TextStyle";
  * @public
  */
 export abstract class FlowNode {
+    /** Converts the specified JSON value to a flow node */
     public static fromJsonValue(value: JsonValue): FlowNode {
         return flowNodeType.fromJsonValue(value);
     }
@@ -33,8 +34,10 @@ export abstract class FlowNode {
      */
     abstract formatText(style: TextStyle): FlowNode;
 
+    /** Converts the current flow node to data */
     abstract toData(): unknown;
 
+    /** Converts the current flow node to a JSON value */
     toJsonValue(): JsonValue {
         return flowNodeType.toJsonValue(this);
     }
@@ -51,9 +54,15 @@ export abstract class FlowNode {
      */
     abstract unformatText(style: TextStyle): FlowNode;
 
-    /** @internal */
+    /**
+     * Gets text style from the current node
+     * @internal
+     */
     abstract getTextStyle(): TextStyle | null;
 
-    /** @internal */
+    /**
+     * Gets paragraph style from the current node
+     * @internal
+     */
     abstract getParagraphStyle(): ParagraphStyle | null;
 }

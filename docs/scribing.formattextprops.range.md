@@ -4,6 +4,8 @@
 
 ## FormatTextProps.range property
 
+The range that shall be formatted
+
 <b>Signature:</b>
 
 ```typescript

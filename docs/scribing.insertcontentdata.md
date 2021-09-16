@@ -16,6 +16,6 @@ export interface InsertContentData
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [at](./scribing.insertcontentdata.at.md) | number |  |
-|  [insert](./scribing.insertcontentdata.insert.md) | [FlowContent](./scribing.flowcontent.md) |  |
+|  [at](./scribing.insertcontentdata.at.md) | number | The insertion position |
+|  [insert](./scribing.insertcontentdata.insert.md) | [FlowContent](./scribing.flowcontent.md) | The content to be inserted |
 

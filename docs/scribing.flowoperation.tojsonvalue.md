@@ -4,6 +4,8 @@
 
 ## FlowOperation.toJsonValue() method
 
+Converts the current operation to a JSON value
+
 <b>Signature:</b>
 
 ```typescript

@@ -52,7 +52,10 @@ export const UnformatParagraphBase = RecordClass(PropsType, FlowOperation, DataT
  * @public
  */
 export interface UnformatParagraphProps {
+    /** The range that shall be unformatted */
     range: FlowRange;
+
+    /** The style to unformat */
     style: ParagraphStyle;
 }
 
@@ -60,10 +63,9 @@ export interface UnformatParagraphProps {
  * Data of unformat paragraph operations
  * @public
  */
-export interface UnformatParagraphData {
+export interface UnformatParagraphData extends UnformatParagraphProps {
+    /** Data classifier */
     unformat: "para",
-    range: FlowRange;
-    style: ParagraphStyle;
 }
 
 /**

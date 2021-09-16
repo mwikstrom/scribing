@@ -4,6 +4,8 @@
 
 ## TextRun.normalizeText() method
 
+Normalizes the specified string value
+
 <b>Signature:</b>
 
 ```typescript

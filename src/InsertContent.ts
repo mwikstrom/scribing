@@ -43,7 +43,10 @@ export const InsertContentBase = RecordClass(PropsType, FlowOperation, DataType,
  * @public
  */
 export interface InsertContentProps {
+    /** The insertion position */
     position: number;
+
+    /** The content to be inserted */
     content: FlowContent;
 }
 
@@ -52,7 +55,10 @@ export interface InsertContentProps {
  * @public
  */
 export interface InsertContentData {
+    /** {@inheritdoc InsertContentProps.content} */
     insert: FlowContent;
+
+    /** {@inheritdoc InsertContentProps.position} */
     at: number;
 }
 
@@ -138,10 +144,11 @@ export class InsertContent extends InsertContentBase implements InsertContentPro
     }
 
     /**
+     * Moves the position of the current insertion operation by the specified delta
      * @internal
      */
-    translate(distance: number): InsertContent {
-        return this.set("position", this.position + distance);
+    translate(delta: number): InsertContent {
+        return this.set("position", this.position + delta);
     }
 
     /** 

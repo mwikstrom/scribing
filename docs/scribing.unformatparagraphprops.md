@@ -16,6 +16,6 @@ export interface UnformatParagraphProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [range](./scribing.unformatparagraphprops.range.md) | [FlowRange](./scribing.flowrange.md) |  |
-|  [style](./scribing.unformatparagraphprops.style.md) | [ParagraphStyle](./scribing.paragraphstyle.md) |  |
+|  [range](./scribing.unformatparagraphprops.range.md) | [FlowRange](./scribing.flowrange.md) | The range that shall be unformatted |
+|  [style](./scribing.unformatparagraphprops.style.md) | [ParagraphStyle](./scribing.paragraphstyle.md) | The style to unformat |
 

@@ -16,6 +16,6 @@ export interface FormatParagraphProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [range](./scribing.formatparagraphprops.range.md) | [FlowRange](./scribing.flowrange.md) |  |
-|  [style](./scribing.formatparagraphprops.style.md) | [ParagraphStyle](./scribing.paragraphstyle.md) |  |
+|  [range](./scribing.formatparagraphprops.range.md) | [FlowRange](./scribing.flowrange.md) | The range that shall be formatted |
+|  [style](./scribing.formatparagraphprops.style.md) | [ParagraphStyle](./scribing.paragraphstyle.md) | The style to apply |
 

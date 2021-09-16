@@ -9,14 +9,13 @@ Data of unformat paragraph operations
 <b>Signature:</b>
 
 ```typescript
-export interface UnformatParagraphData 
+export interface UnformatParagraphData extends UnformatParagraphProps 
 ```
+<b>Extends:</b> [UnformatParagraphProps](./scribing.unformatparagraphprops.md)
 
 ## Properties
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [range](./scribing.unformatparagraphdata.range.md) | [FlowRange](./scribing.flowrange.md) |  |
-|  [style](./scribing.unformatparagraphdata.style.md) | [ParagraphStyle](./scribing.paragraphstyle.md) |  |
-|  [unformat](./scribing.unformatparagraphdata.unformat.md) | "para" |  |
+|  [unformat](./scribing.unformatparagraphdata.unformat.md) | "para" | Data classifier |
 

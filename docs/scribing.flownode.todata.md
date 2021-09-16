@@ -4,6 +4,8 @@
 
 ## FlowNode.toData() method
 
+Converts the current flow node to data
+
 <b>Signature:</b>
 
 ```typescript

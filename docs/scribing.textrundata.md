@@ -9,10 +9,7 @@ Data contract for a text run
 <b>Signature:</b>
 
 ```typescript
-export declare type TextRunData = string | {
-    text: string;
-    style?: TextStyle;
-};
+export declare type TextRunData = string | (Pick<TextRunProps, "text"> & Partial<Omit<TextRunProps, "text">>);
 ```
-<b>References:</b> [TextStyle](./scribing.textstyle.md)
+<b>References:</b> [TextRunProps](./scribing.textrunprops.md)
 
