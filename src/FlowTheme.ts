@@ -1,4 +1,6 @@
+import { JsonValue } from "paratype";
 import { ParagraphStyleVariant } from ".";
+import { FlowThemeRegistry } from "./internal/class-registry";
 import { ParagraphStyle } from "./ParagraphStyle";
 import { TextStyle } from "./TextStyle";
 
@@ -7,6 +9,16 @@ import { TextStyle } from "./TextStyle";
  * @public
  */
 export abstract class FlowTheme {
+    /** Converts the specified JSON value to a flow theme */
+    public static fromJsonValue(value: JsonValue): FlowTheme {
+        return FlowThemeRegistry.type.fromJsonValue(value);
+    }
+
+    /** Converts the current theme to a JSON value */
+    public toJsonValue(): JsonValue {
+        return FlowThemeRegistry.type.toJsonValue(this);
+    }
+
     /** Gets a flow theme for the specified paragraph variant */
     abstract getParagraphTheme(variant: ParagraphStyleVariant): FlowTheme;
 

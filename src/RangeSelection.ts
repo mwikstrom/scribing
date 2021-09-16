@@ -44,7 +44,7 @@ export interface RangeSelectionProps {
 @frozen
 @validating
 @FlowSelectionRegistry.register
-export class RangeSelection  extends RangeSelectionBase implements Readonly<RangeSelectionProps> {
+export class RangeSelection extends RangeSelectionBase implements Readonly<RangeSelectionProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => RangeSelection);
 

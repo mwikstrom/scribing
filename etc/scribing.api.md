@@ -167,9 +167,11 @@ export abstract class FlowSelection {
 
 // @public
 export abstract class FlowTheme {
+    static fromJsonValue(value: JsonValue): FlowTheme;
     abstract getAmbientParagraphStyle(): ParagraphStyle;
     abstract getAmbientTextStyle(): TextStyle;
     abstract getParagraphTheme(variant: ParagraphStyleVariant): FlowTheme;
+    toJsonValue(): JsonValue;
 }
 
 // @public @sealed
