@@ -1,5 +1,6 @@
 import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
+import { FlowRange } from "./FlowRange";
 import { ParagraphStyle } from "./ParagraphStyle";
 import { TextStyle } from "./TextStyle";
 
@@ -18,4 +19,10 @@ export abstract class FlowSelection {
     public abstract unformatParagraph(style: ParagraphStyle): FlowOperation | null;
 
     public abstract unformatText(style: TextStyle): FlowOperation | null;
+
+    /** @internal */
+    abstract afterInsertion(range: FlowRange, mine: boolean): FlowSelection | null;
+
+    /** @internal */
+    abstract afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
 }

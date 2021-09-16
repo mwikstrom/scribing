@@ -35,9 +35,9 @@ export declare class FlowBatch extends BASE implements Readonly<FlowBatchProps>
 |  [afterInsertion(other)](./scribing.flowbatch.afterinsertion.md) |  |  |
 |  [afterRemoval(other)](./scribing.flowbatch.afterremoval.md) |  |  |
 |  [applyToContent(content)](./scribing.flowbatch.applytocontent.md) |  | Applies the current operation on the specified content and returns the updated result. |
+|  [applyToSelection(selection, mine)](./scribing.flowbatch.applytoselection.md) |  | Applies the current operation on the specified selection and returns the updated result. |
 |  [fromArray(operations)](./scribing.flowbatch.fromarray.md) | <code>static</code> |  |
 |  [fromData(data)](./scribing.flowbatch.fromdata.md) | <code>static</code> | Gets a [FlowBatch](./scribing.flowbatch.md) from the specified data |
 |  [invert(content)](./scribing.flowbatch.invert.md) |  | Returns an operation that negates the effect of the current operation. |
 |  [transform(other)](./scribing.flowbatch.transform.md) |  | Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation. |
-|  [updateSelection(selection, mine)](./scribing.flowbatch.updateselection.md) |  | Applies the current operation on the specified selection range and returns the updated result. |
 

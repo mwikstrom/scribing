@@ -4,9 +4,11 @@
 
 ## RangeSelection.insert() method
 
+
 <b>Signature:</b>
 
 ```typescript
+/** @override */
 insert(content: FlowContent): FlowOperation | null;
 ```
 

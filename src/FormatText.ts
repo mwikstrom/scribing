@@ -12,6 +12,7 @@ import {
 import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
+import { FlowSelection } from "./FlowSelection";
 import { invertFormatOp } from "./internal/format-helpers";
 import { registerOperation } from "./internal/operation-registry";
 import { 
@@ -108,10 +109,10 @@ export class FormatText extends BASE implements Readonly<FormatTextProps> {
     }
 
     /**
-     * {@inheritDoc FlowOperation.updateSelection}
+     * {@inheritDoc FlowOperation.applyToSelection}
      * @override
      */
-    updateSelection(selection: FlowRange): FlowRange {
+    applyToSelection(selection: FlowSelection): FlowSelection {
         // Formatting does not affect selection
         return selection;
     }

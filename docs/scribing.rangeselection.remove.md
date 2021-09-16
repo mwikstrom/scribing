@@ -4,9 +4,11 @@
 
 ## RangeSelection.remove() method
 
+
 <b>Signature:</b>
 
 ```typescript
+/** @override */
 remove(): FlowOperation | null;
 ```
 <b>Returns:</b>

@@ -1,4 +1,5 @@
 import { JsonValue } from "paratype";
+import { FlowSelection } from "./FlowSelection";
 import { FlowContent } from "./FlowContent";
 import { FlowRange } from "./FlowRange";
 import { flowOperationType } from "./internal/operation-registry";
@@ -43,13 +44,13 @@ export abstract class FlowOperation {
     abstract applyToContent(content: FlowContent): FlowContent;
 
     /**
-     * Applies the current operation on the specified selection range and returns the updated result.
+     * Applies the current operation on the specified selection and returns the updated result.
      * 
-     * @param selection - The flow range that represent the selection that shall be updated.
+     * @param selection - The selection that shall be updated.
      * @param mine - Specifies whether the current operation is executed by the same user that owns
      *               the selection.
      */
-    abstract updateSelection(selection: FlowRange, mine: boolean): FlowRange | null;
+    abstract applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null;
 
     abstract toData(): unknown;
 

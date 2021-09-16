@@ -12,13 +12,10 @@ import {
 import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
+import { FlowSelection } from "./FlowSelection";
 import { InsertContent } from "./InsertContent";
 import { registerOperation } from "./internal/operation-registry";
-import { 
-    transformRangeAfterRemoval, 
-    transformRangeOpAfterInsertion, 
-    transformRangeOpAfterRemoval 
-} from "./internal/transform-helpers";
+import {  transformRangeOpAfterInsertion, transformRangeOpAfterRemoval } from "./internal/transform-helpers";
 
 const Props = {
     range: lazyType(() => FlowRange.classType),
@@ -91,15 +88,11 @@ export class RemoveRange extends BASE implements Readonly<RemoveRangeProps> {
     }
 
     /**
-     * {@inheritDoc FlowOperation.updateSelection}
+     * {@inheritDoc FlowOperation.applyToSelection}
      * @override
      */
-    updateSelection(range: FlowRange, mine: boolean): FlowRange | null {
-        if (mine && range.equals(this.range)) {
-            return FlowRange.at(range.first);
-        } else {
-            return transformRangeAfterRemoval(range, this.range, mine);
-        }
+    applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null {
+        return selection.afterRemoval(this.range, mine);
     }
 
     /** 

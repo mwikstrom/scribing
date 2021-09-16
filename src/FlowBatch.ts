@@ -8,6 +8,7 @@ import {
     type, 
     validating, 
 } from "paratype";
+import { FlowSelection } from "./FlowSelection";
 import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
@@ -119,12 +120,12 @@ export class FlowBatch extends BASE implements Readonly<FlowBatchProps> {
     }
 
     /**
-     * {@inheritDoc FlowOperation.updateSelection}
+     * {@inheritDoc FlowOperation.applyToSelection}
      * @override
      */
-    updateSelection(selection: FlowRange, mine: boolean): FlowRange | null {
+    applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null {
         for (const op of this.operations) {
-            const updated = op.updateSelection(selection, mine);
+            const updated = op.applyToSelection(selection, mine);
             if (updated === null) {
                 return null;
             }

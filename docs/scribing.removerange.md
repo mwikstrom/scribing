@@ -29,8 +29,8 @@ export declare class RemoveRange extends BASE implements Readonly<RemoveRangePro
 |  [afterInsertion(other)](./scribing.removerange.afterinsertion.md) |  |  |
 |  [afterRemoval(other)](./scribing.removerange.afterremoval.md) |  |  |
 |  [applyToContent(content)](./scribing.removerange.applytocontent.md) |  | Applies the current operation on the specified content and returns the updated result. |
+|  [applyToSelection(selection, mine)](./scribing.removerange.applytoselection.md) |  | Applies the current operation on the specified selection and returns the updated result. |
 |  [fromData(data)](./scribing.removerange.fromdata.md) | <code>static</code> |  |
 |  [invert(content)](./scribing.removerange.invert.md) |  | Returns an operation that negates the effect of the current operation. |
 |  [transform(other)](./scribing.removerange.transform.md) |  | Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation. |
-|  [updateSelection(range, mine)](./scribing.removerange.updateselection.md) |  | Applies the current operation on the specified selection range and returns the updated result. |
 

@@ -12,6 +12,7 @@ import {
 import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
+import { FlowSelection } from "./FlowSelection";
 import { FormatText } from "./FormatText";
 import { invertUnformatOp } from "./internal/format-helpers";
 import { registerOperation } from "./internal/operation-registry";
@@ -107,10 +108,10 @@ export class UnformatText extends BASE implements Readonly<UnformatTextProps> {
     }
 
     /**
-     * {@inheritDoc FlowOperation.updateSelection}
+     * {@inheritDoc FlowOperation.applyToSelection}
      * @override
      */
-    updateSelection(selection: FlowRange): FlowRange {
+    applyToSelection(selection: FlowSelection): FlowSelection {
         // Formatting does not affect selection
         return selection;
     }

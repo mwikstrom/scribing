@@ -29,6 +29,8 @@ export declare class RangeSelection extends FlowSelection
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [afterInsertion(range, mine)](./scribing.rangeselection.afterinsertion.md) |  |  |
+|  [afterRemoval(range, mine)](./scribing.rangeselection.afterremoval.md) |  |  |
 |  [formatParagraph(style)](./scribing.rangeselection.formatparagraph.md) |  |  |
 |  [formatText(style)](./scribing.rangeselection.formattext.md) |  |  |
 |  [insert(content)](./scribing.rangeselection.insert.md) |  |  |

@@ -4,9 +4,11 @@
 
 ## RangeSelection.formatParagraph() method
 
+
 <b>Signature:</b>
 
 ```typescript
+/** @override */
 formatParagraph(style: ParagraphStyle): FlowOperation | null;
 ```
 
