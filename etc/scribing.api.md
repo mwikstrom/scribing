@@ -15,9 +15,7 @@ import { Type } from 'paratype';
 // @public @sealed
 export class FlowBatch extends BASE_6 implements Readonly<FlowBatchProps> {
     constructor(props?: FlowBatchProps);
-    // (undocumented)
     afterInsertion(other: FlowRange): FlowOperation | null;
-    // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
     applyToContent(content: FlowContent): FlowContent;
     // @override
@@ -115,9 +113,9 @@ export abstract class FlowNode {
 
 // @public
 export abstract class FlowOperation {
-    // @internal (undocumented)
+    // @internal
     abstract afterInsertion(other: FlowRange): FlowOperation | null;
-    // @internal (undocumented)
+    // @internal
     abstract afterRemoval(other: FlowRange): FlowOperation | null;
     abstract applyToContent(content: FlowContent): FlowContent;
     abstract applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null;
@@ -170,23 +168,17 @@ export interface FlowRangeProps {
 // @public
 export type FlowRangeTuple = [number, number];
 
-// @public (undocumented)
+// @public
 export abstract class FlowSelection {
-    // @internal (undocumented)
+    // @internal
     abstract afterInsertion(range: FlowRange, mine: boolean): FlowSelection | null;
-    // @internal (undocumented)
+    // @internal
     abstract afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
-    // (undocumented)
     abstract formatParagraph(style: ParagraphStyle): FlowOperation | null;
-    // (undocumented)
     abstract formatText(style: TextStyle): FlowOperation | null;
-    // (undocumented)
     abstract insert(content: FlowContent): FlowOperation | null;
-    // (undocumented)
     abstract remove(): FlowOperation | null;
-    // (undocumented)
     abstract unformatParagraph(style: ParagraphStyle): FlowOperation | null;
-    // (undocumented)
     abstract unformatText(style: TextStyle): FlowOperation | null;
 }
 
@@ -194,9 +186,7 @@ export abstract class FlowSelection {
 //
 // @public @sealed
 export class FormatParagraph extends BASE_7 implements Readonly<FormatParagraphProps> {
-    // (undocumented)
     afterInsertion(other: FlowRange): FlowOperation | null;
-    // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
     applyToContent(content: FlowContent): FlowContent;
@@ -234,9 +224,7 @@ export interface FormatParagraphProps {
 //
 // @public @sealed
 export class FormatText extends BASE_9 implements Readonly<FormatTextProps> {
-    // (undocumented)
     afterInsertion(other: FlowRange): FlowOperation | null;
-    // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
     applyToContent(content: FlowContent): FlowContent;
@@ -294,9 +282,7 @@ export abstract class InlineNode extends FlowNode {
 //
 // @public @sealed
 export class InsertContent extends BASE_11 implements InsertContentProps {
-    // (undocumented)
     afterInsertion(other: FlowRange): FlowOperation | null;
-    // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
     applyToContent(content: FlowContent): FlowContent;
     // @override
@@ -432,23 +418,23 @@ export interface ParagraphStyleProps {
 // @public @sealed (undocumented)
 export class RangeSelection extends FlowSelection {
     constructor(range: FlowRange);
-    // @override (undocumented)
+    // @override
     afterInsertion(range: FlowRange, mine: boolean): FlowSelection | null;
-    // @override (undocumented)
+    // @override
     afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
-    // @override (undocumented)
+    // @override
     formatParagraph(style: ParagraphStyle): FlowOperation | null;
-    // @override (undocumented)
+    // @override
     formatText(style: TextStyle): FlowOperation | null;
-    // @override (undocumented)
+    // @override
     insert(content: FlowContent): FlowOperation | null;
     // (undocumented)
     readonly range: FlowRange;
-    // @override (undocumented)
+    // @override
     remove(): FlowOperation | null;
-    // @override (undocumented)
+    // @override
     unformatParagraph(style: ParagraphStyle): FlowOperation | null;
-    // @override (undocumented)
+    // @override
     unformatText(style: TextStyle): FlowOperation | null;
 }
 
@@ -456,9 +442,7 @@ export class RangeSelection extends FlowSelection {
 //
 // @public @sealed
 export class RemoveRange extends BASE_12 implements Readonly<RemoveRangeProps> {
-    // (undocumented)
     afterInsertion(other: FlowRange): FlowOperation | null;
-    // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
     applyToContent(content: FlowContent): FlowContent;
@@ -571,9 +555,7 @@ export interface TextStyleProps {
 //
 // @public @sealed
 export class UnformatParagraph extends BASE_8 implements Readonly<UnformatParagraphProps> {
-    // (undocumented)
     afterInsertion(other: FlowRange): FlowOperation | null;
-    // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
     applyToContent(content: FlowContent): FlowContent;
@@ -611,9 +593,7 @@ export interface UnformatParagraphProps {
 //
 // @public @sealed
 export class UnformatText extends BASE_10 implements Readonly<UnformatTextProps> {
-    // (undocumented)
     afterInsertion(other: FlowRange): FlowOperation | null;
-    // (undocumented)
     afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
     applyToContent(content: FlowContent): FlowContent;

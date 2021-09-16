@@ -29,12 +29,12 @@ export declare class RangeSelection extends FlowSelection
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [afterInsertion(range, mine)](./scribing.rangeselection.afterinsertion.md) |  |  |
-|  [afterRemoval(range, mine)](./scribing.rangeselection.afterremoval.md) |  |  |
-|  [formatParagraph(style)](./scribing.rangeselection.formatparagraph.md) |  |  |
-|  [formatText(style)](./scribing.rangeselection.formattext.md) |  |  |
-|  [insert(content)](./scribing.rangeselection.insert.md) |  |  |
-|  [remove()](./scribing.rangeselection.remove.md) |  |  |
-|  [unformatParagraph(style)](./scribing.rangeselection.unformatparagraph.md) |  |  |
-|  [unformatText(style)](./scribing.rangeselection.unformattext.md) |  |  |
+|  [afterInsertion(range, mine)](./scribing.rangeselection.afterinsertion.md) |  | Transforms the current selection so that its intended boundary is preserved after the specified range was inserted. |
+|  [afterRemoval(range, mine)](./scribing.rangeselection.afterremoval.md) |  | Transforms the current selection so that its intended boundary is preserved after the specified range was inserted. |
+|  [formatParagraph(style)](./scribing.rangeselection.formatparagraph.md) |  | Creates an operation that applies the specified paragraph style on the current selection |
+|  [formatText(style)](./scribing.rangeselection.formattext.md) |  | Creates an operation that applies the specified text style on the current selection |
+|  [insert(content)](./scribing.rangeselection.insert.md) |  | Creates an operation that inserts the specified content into the current selection |
+|  [remove()](./scribing.rangeselection.remove.md) |  | Creates an operation that removes the content of the current selection |
+|  [unformatParagraph(style)](./scribing.rangeselection.unformatparagraph.md) |  | Creates an operation that unapplies the specified paragraph style on the current selection |
+|  [unformatText(style)](./scribing.rangeselection.unformattext.md) |  | Creates an operation that unapplies the specified text style on the current selection |
 

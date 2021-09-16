@@ -4,6 +4,7 @@
 
 ## RangeSelection.unformatText() method
 
+Creates an operation that unapplies the specified text style on the current selection
 
 <b>Signature:</b>
 
@@ -16,9 +17,13 @@ unformatText(style: TextStyle): FlowOperation | null;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  style | [TextStyle](./scribing.textstyle.md) |  |
+|  style | [TextStyle](./scribing.textstyle.md) | The style to unapply |
 
 <b>Returns:</b>
 
 [FlowOperation](./scribing.flowoperation.md) \| null
+
+## Remarks
+
+`null` is returns when the operation would be a no-op or not applicable on the current selection.
 

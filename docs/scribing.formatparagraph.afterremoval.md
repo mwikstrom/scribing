@@ -4,6 +4,8 @@
 
 ## FormatParagraph.afterRemoval() method
 
+Transforms the current operation so that its intent is preserved after the specified range was removed.
+
 <b>Signature:</b>
 
 ```typescript

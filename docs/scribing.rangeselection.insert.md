@@ -4,6 +4,7 @@
 
 ## RangeSelection.insert() method
 
+Creates an operation that inserts the specified content into the current selection
 
 <b>Signature:</b>
 
@@ -16,9 +17,13 @@ insert(content: FlowContent): FlowOperation | null;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  content | [FlowContent](./scribing.flowcontent.md) |  |
+|  content | [FlowContent](./scribing.flowcontent.md) | The content to be inserted |
 
 <b>Returns:</b>
 
 [FlowOperation](./scribing.flowoperation.md) \| null
+
+## Remarks
+
+`null` is returns when the operation would be a no-op or not applicable on the current selection.
 

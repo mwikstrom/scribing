@@ -4,6 +4,7 @@
 
 ## RangeSelection.remove() method
 
+Creates an operation that removes the content of the current selection
 
 <b>Signature:</b>
 
@@ -14,4 +15,8 @@ remove(): FlowOperation | null;
 <b>Returns:</b>
 
 [FlowOperation](./scribing.flowoperation.md) \| null
+
+## Remarks
+
+`null` is returns when the operation would be a no-op or not applicable on the current selection.
 

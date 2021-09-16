@@ -26,8 +26,8 @@ export declare class FormatParagraph extends BASE implements Readonly<FormatPara
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [afterInsertion(other)](./scribing.formatparagraph.afterinsertion.md) |  |  |
-|  [afterRemoval(other)](./scribing.formatparagraph.afterremoval.md) |  |  |
+|  [afterInsertion(other)](./scribing.formatparagraph.afterinsertion.md) |  | Transforms the current operation so that its intent is preserved after the specified range was inserted. |
+|  [afterRemoval(other)](./scribing.formatparagraph.afterremoval.md) |  | Transforms the current operation so that its intent is preserved after the specified range was removed. |
 |  [applyToContent(content)](./scribing.formatparagraph.applytocontent.md) |  | Applies the current operation on the specified content and returns the updated result. |
 |  [applyToSelection(selection)](./scribing.formatparagraph.applytoselection.md) |  | Applies the current operation on the specified selection and returns the updated result. |
 |  [fromData(data)](./scribing.formatparagraph.fromdata.md) | <code>static</code> |  |

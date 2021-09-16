@@ -4,6 +4,7 @@
 
 ## FlowSelection class
 
+Represents a selection of flow content
 
 <b>Signature:</b>
 
@@ -15,10 +16,10 @@ export declare abstract class FlowSelection
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [formatParagraph(style)](./scribing.flowselection.formatparagraph.md) |  |  |
-|  [formatText(style)](./scribing.flowselection.formattext.md) |  |  |
-|  [insert(content)](./scribing.flowselection.insert.md) |  |  |
-|  [remove()](./scribing.flowselection.remove.md) |  |  |
-|  [unformatParagraph(style)](./scribing.flowselection.unformatparagraph.md) |  |  |
-|  [unformatText(style)](./scribing.flowselection.unformattext.md) |  |  |
+|  [formatParagraph(style)](./scribing.flowselection.formatparagraph.md) |  | Creates an operation that applies the specified paragraph style on the current selection |
+|  [formatText(style)](./scribing.flowselection.formattext.md) |  | Creates an operation that applies the specified text style on the current selection |
+|  [insert(content)](./scribing.flowselection.insert.md) |  | Creates an operation that inserts the specified content into the current selection |
+|  [remove()](./scribing.flowselection.remove.md) |  | Creates an operation that removes the content of the current selection |
+|  [unformatParagraph(style)](./scribing.flowselection.unformatparagraph.md) |  | Creates an operation that unapplies the specified paragraph style on the current selection |
+|  [unformatText(style)](./scribing.flowselection.unformattext.md) |  | Creates an operation that unapplies the specified text style on the current selection |
 

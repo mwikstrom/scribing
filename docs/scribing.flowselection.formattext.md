@@ -4,6 +4,8 @@
 
 ## FlowSelection.formatText() method
 
+Creates an operation that applies the specified text style on the current selection
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,9 +16,13 @@ abstract formatText(style: TextStyle): FlowOperation | null;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  style | [TextStyle](./scribing.textstyle.md) |  |
+|  style | [TextStyle](./scribing.textstyle.md) | The style to apply |
 
 <b>Returns:</b>
 
 [FlowOperation](./scribing.flowoperation.md) \| null
+
+## Remarks
+
+`null` is returns when the operation would be a no-op or not applicable on the current selection.
 

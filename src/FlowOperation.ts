@@ -58,9 +58,17 @@ export abstract class FlowOperation {
         return flowOperationType.toJsonValue(this);
     }
 
-    /** @internal */
+    /**
+     * Transforms the current operation so that its intent is preserved after the specified
+     * range was inserted.
+     * @internal
+     */
     abstract afterInsertion(other: FlowRange): FlowOperation | null;
 
-    /** @internal */
-    abstract afterRemoval(other: FlowRange): FlowOperation | null;
+    /**
+     * Transforms the current operation so that its intent is preserved after the specified
+     * range was removed.
+     * @internal
+     */
+     abstract afterRemoval(other: FlowRange): FlowOperation | null;
 }

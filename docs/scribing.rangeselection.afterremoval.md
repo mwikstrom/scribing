@@ -4,6 +4,7 @@
 
 ## RangeSelection.afterRemoval() method
 
+Transforms the current selection so that its intended boundary is preserved after the specified range was inserted.
 
 <b>Signature:</b>
 

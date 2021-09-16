@@ -4,6 +4,8 @@
 
 ## RemoveRange.afterInsertion() method
 
+Transforms the current operation so that its intent is preserved after the specified range was inserted.
+
 <b>Signature:</b>
 
 ```typescript

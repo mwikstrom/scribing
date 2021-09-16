@@ -4,6 +4,8 @@
 
 ## FlowSelection.unformatParagraph() method
 
+Creates an operation that unapplies the specified paragraph style on the current selection
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,9 +16,13 @@ abstract unformatParagraph(style: ParagraphStyle): FlowOperation | null;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  style | [ParagraphStyle](./scribing.paragraphstyle.md) |  |
+|  style | [ParagraphStyle](./scribing.paragraphstyle.md) | The style to unapply |
 
 <b>Returns:</b>
 
 [FlowOperation](./scribing.flowoperation.md) \| null
+
+## Remarks
+
+`null` is returns when the operation would be a no-op or not applicable on the current selection.
 
