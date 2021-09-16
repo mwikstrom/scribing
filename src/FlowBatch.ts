@@ -1,6 +1,7 @@
 import { 
     arrayType, 
     frozen, 
+    lazyType, 
     RecordClass, 
     recordClassType, 
     RecordType, 
@@ -12,10 +13,10 @@ import { FlowSelection } from "./FlowSelection";
 import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
-import { flowOperationType, registerOperation } from "./internal/operation-registry";
 import { FlowTheme } from "./FlowTheme";
+import { FlowOperationRegistry } from "./internal/class-registry";
 
-const DataType = arrayType(flowOperationType);
+const DataType = arrayType(lazyType(() => FlowOperationRegistry.type));
 const Props = { operations: DataType.frozen() };
 const PropsType: RecordType<FlowBatchProps> = recordType(Props);
 const propsToData = (props: FlowBatchProps): FlowBatchData => props.operations;
@@ -49,7 +50,7 @@ export type FlowBatchData = readonly FlowOperation[];
  */
 @frozen
 @validating
-@registerOperation
+@FlowOperationRegistry.register
 export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => FlowBatch);
@@ -169,7 +170,7 @@ export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps>
                 modified = true;
                 continue;
             }
-            if (!modified && !flowOperationType.equals(before, after)) {
+            if (!modified && !FlowOperationRegistry.type.equals(before, after)) {
                 modified = true;
             }
             result.push(after);

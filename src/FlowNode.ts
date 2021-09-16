@@ -1,6 +1,6 @@
 import { JsonValue } from "paratype";
 import { FlowTheme } from "./FlowTheme";
-import { flowNodeType } from "./internal/node-registry";
+import { FlowNodeRegistry } from "./internal/class-registry";
 import { ParagraphStyle } from "./ParagraphStyle";
 import { TextStyle } from "./TextStyle";
 
@@ -11,7 +11,7 @@ import { TextStyle } from "./TextStyle";
 export abstract class FlowNode {
     /** Converts the specified JSON value to a flow node */
     public static fromJsonValue(value: JsonValue): FlowNode {
-        return flowNodeType.fromJsonValue(value);
+        return FlowNodeRegistry.type.fromJsonValue(value);
     }
     
     /**
@@ -40,7 +40,7 @@ export abstract class FlowNode {
 
     /** Converts the current flow node to a JSON value */
     toJsonValue(): JsonValue {
-        return flowNodeType.toJsonValue(this);
+        return FlowNodeRegistry.type.toJsonValue(this);
     }
 
     /**

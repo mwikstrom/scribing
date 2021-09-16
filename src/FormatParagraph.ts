@@ -13,8 +13,8 @@ import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
 import { FlowSelection } from "./FlowSelection";
+import { FlowOperationRegistry } from "./internal/class-registry";
 import { invertFormatOp } from "./internal/format-helpers";
-import { registerOperation } from "./internal/operation-registry";
 import { 
     transformEdgeInflatingRangeOpAfterInsertion, 
     transformRangeOpAfterRemoval
@@ -72,7 +72,7 @@ export interface FormatParagraphData extends FormatParagraphProps {
  */
 @frozen
 @validating
-@registerOperation
+@FlowOperationRegistry.register
 export class FormatParagraph extends FormatParagraphBase implements Readonly<FormatParagraphProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => FormatParagraph);

@@ -2,8 +2,8 @@ import { JsonValue } from "paratype";
 import { FlowSelection } from "./FlowSelection";
 import { FlowContent } from "./FlowContent";
 import { FlowRange } from "./FlowRange";
-import { flowOperationType } from "./internal/operation-registry";
 import { FlowTheme } from "./FlowTheme";
+import { FlowOperationRegistry } from "./internal/class-registry";
 
 /**
  * An abstraction of an operation that updates flow content.
@@ -12,7 +12,7 @@ import { FlowTheme } from "./FlowTheme";
 export abstract class FlowOperation {
     /** Converts the specified JSON value to a flow operation */
     public static fromJsonValue(value: JsonValue): FlowOperation {
-        return flowOperationType.fromJsonValue(value);
+        return FlowOperationRegistry.type.fromJsonValue(value);
     }
 
     /**
@@ -60,7 +60,7 @@ export abstract class FlowOperation {
 
     /** Converts the current operation to a JSON value */
     toJsonValue(): JsonValue {
-        return flowOperationType.toJsonValue(this);
+        return FlowOperationRegistry.type.toJsonValue(this);
     }
 
     /**

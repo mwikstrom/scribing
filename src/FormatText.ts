@@ -14,8 +14,8 @@ import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
 import { FlowSelection } from "./FlowSelection";
 import { InlineNode } from "./InlineNode";
+import { FlowOperationRegistry } from "./internal/class-registry";
 import { invertFormatOp } from "./internal/format-helpers";
-import { registerOperation } from "./internal/operation-registry";
 import { 
     transformEdgeInflatingRangeOpAfterInsertion, 
     transformRangeOpAfterRemoval
@@ -72,7 +72,7 @@ export interface FormatTextData extends FormatTextProps {
  */
 @frozen
 @validating
-@registerOperation
+@FlowOperationRegistry.register
 export class FormatText extends FormatTextBase implements Readonly<FormatTextProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => FormatText);

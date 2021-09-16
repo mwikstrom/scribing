@@ -2,6 +2,7 @@ import {
     arrayType, 
     frozen, 
     JsonValue, 
+    lazyType, 
     nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
@@ -14,13 +15,13 @@ import { FlowCursor } from "./FlowCursor";
 import { FlowNode } from "./FlowNode";
 import { FlowRange } from "./FlowRange";
 import { FlowTheme } from "./FlowTheme";
-import { flowNodeType } from "./internal/node-registry";
+import { FlowNodeRegistry } from "./internal/class-registry";
 import { ParagraphBreak } from "./ParagraphBreak";
 import { ParagraphStyle } from "./ParagraphStyle";
 import { TextRun } from "./TextRun";
 import { TextStyle } from "./TextStyle";
 
-const NodeArrayType = arrayType(flowNodeType);
+const NodeArrayType = arrayType(lazyType(() => FlowNodeRegistry.type));
 const RestrictedNodeArrayType = NodeArrayType
     .frozen()
     .restrict(

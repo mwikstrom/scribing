@@ -14,8 +14,8 @@ import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
 import { FlowSelection } from "./FlowSelection";
 import { FormatParagraph } from "./FormatParagraph";
+import { FlowOperationRegistry } from "./internal/class-registry";
 import { invertUnformatOp } from "./internal/format-helpers";
-import { registerOperation } from "./internal/operation-registry";
 import { 
     transformEdgeInflatingRangeOpAfterInsertion, 
     transformRangeOpAfterRemoval
@@ -76,7 +76,7 @@ export interface UnformatParagraphData extends UnformatParagraphProps {
  */
 @frozen
 @validating
-@registerOperation
+@FlowOperationRegistry.register
 export class UnformatParagraph extends UnformatParagraphBase implements Readonly<UnformatParagraphProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => UnformatParagraph);

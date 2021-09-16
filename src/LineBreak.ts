@@ -10,7 +10,7 @@ import {
     validating
 } from "paratype";
 import { InlineNode } from "./InlineNode";
-import { registerNode } from "./internal/node-registry";
+import { FlowNodeRegistry } from "./internal/class-registry";
 import { TextStyle } from "./TextStyle";
 
 const Props = {
@@ -61,7 +61,7 @@ export interface LineBreakData {
  */
 @frozen
 @validating
-@registerNode
+@FlowNodeRegistry.register
 export class LineBreak extends LineBreakBase implements LineBreakProps {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => LineBreak);

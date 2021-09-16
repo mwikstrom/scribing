@@ -16,9 +16,9 @@ import { FlowRange } from "./FlowRange";
 import { FlowTheme } from "./FlowTheme";
 import { FlowSelection } from "./FlowSelection";
 import { InlineNode } from "./InlineNode";
-import { registerOperation } from "./internal/operation-registry";
 import { ParagraphBreak } from "./ParagraphBreak";
 import { RemoveRange } from "./RemoveRange";
+import { FlowOperationRegistry } from "./internal/class-registry";
 
 const Props = {
     position: nonNegativeIntegerType,
@@ -74,7 +74,7 @@ export interface InsertContentData {
  */
 @frozen
 @validating
-@registerOperation
+@FlowOperationRegistry.register
 export class InsertContent extends InsertContentBase implements InsertContentProps {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => InsertContent);

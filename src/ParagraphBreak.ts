@@ -11,7 +11,7 @@ import {
 } from "paratype";
 import { FlowNode } from "./FlowNode";
 import { FlowTheme } from "./FlowTheme";
-import { registerNode } from "./internal/node-registry";
+import { FlowNodeRegistry } from "./internal/class-registry";
 import { ParagraphStyle } from "./ParagraphStyle";
 
 const Props = {
@@ -62,7 +62,7 @@ export interface ParagraphBreakData {
  */
 @frozen
 @validating
-@registerNode
+@FlowNodeRegistry.register
 export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreakProps {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => ParagraphBreak);

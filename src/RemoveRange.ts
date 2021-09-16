@@ -14,7 +14,7 @@ import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
 import { FlowSelection } from "./FlowSelection";
 import { InsertContent } from "./InsertContent";
-import { registerOperation } from "./internal/operation-registry";
+import { FlowOperationRegistry } from "./internal/class-registry";
 import {  transformRangeOpAfterInsertion, transformRangeOpAfterRemoval } from "./internal/transform-helpers";
 
 const Props = {
@@ -60,7 +60,7 @@ export interface RemoveRangeData {
  */
 @frozen
 @validating
-@registerOperation
+@FlowOperationRegistry.register
 export class RemoveRange extends RemoveRangeBase implements Readonly<RemoveRangeProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => RemoveRange);

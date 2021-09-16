@@ -15,8 +15,8 @@ import { FlowRange } from "./FlowRange";
 import { FlowSelection } from "./FlowSelection";
 import { FormatText } from "./FormatText";
 import { InlineNode } from "./InlineNode";
+import { FlowOperationRegistry } from "./internal/class-registry";
 import { invertUnformatOp } from "./internal/format-helpers";
-import { registerOperation } from "./internal/operation-registry";
 import { 
     transformEdgeInflatingRangeOpAfterInsertion, 
     transformRangeOpAfterRemoval
@@ -72,7 +72,7 @@ export interface UnformatTextData extends UnformatTextProps {
  */
 @frozen
 @validating
-@registerOperation
+@FlowOperationRegistry.register
 export class UnformatText extends UnformatTextBase implements Readonly<UnformatTextProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => UnformatText);

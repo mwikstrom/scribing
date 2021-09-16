@@ -13,7 +13,7 @@ import {
     validating
 } from "paratype";
 import { InlineNode } from "./InlineNode";
-import { registerNode } from "./internal/node-registry";
+import { FlowNodeRegistry } from "./internal/class-registry";
 import { TextStyle } from "./TextStyle";
 
 const MAX_CHARS = 10000;
@@ -83,7 +83,7 @@ export type TextRunData = string | (
  */
 @frozen
 @validating
-@registerNode
+@FlowNodeRegistry.register
 export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => TextRun);
