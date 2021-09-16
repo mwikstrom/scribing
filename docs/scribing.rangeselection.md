@@ -10,21 +10,17 @@ Represents a range of selected flow content
 
 ```typescript
 /** @sealed */
-export declare class RangeSelection extends FlowSelection 
+export declare class RangeSelection extends RangeSelectionBase implements Readonly<RangeSelectionProps> 
 ```
-<b>Extends:</b> [FlowSelection](./scribing.flowselection.md)
+<b>Extends:</b> RangeSelectionBase
 
-## Constructors
-
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(range)](./scribing.rangeselection._constructor_.md) |  | Constructs a new instance of the <code>RangeSelection</code> class |
+<b>Implements:</b> Readonly&lt;[RangeSelectionProps](./scribing.rangeselectionprops.md)<!-- -->&gt;
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [range](./scribing.rangeselection.range.md) |  | [FlowRange](./scribing.flowrange.md) | The selected range |
+|  [classType](./scribing.rangeselection.classtype.md) | <code>static</code> | import("paratype").Type&lt;import("paratype").RecordObject&lt;[RangeSelectionProps](./scribing.rangeselectionprops.md)<!-- -->, [RangeSelectionProps](./scribing.rangeselectionprops.md)<!-- -->&gt; &amp; import("paratype").Equatable &amp; Readonly&lt;[RangeSelectionProps](./scribing.rangeselectionprops.md)<!-- -->&gt; &amp; [RangeSelection](./scribing.rangeselection.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

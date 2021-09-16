@@ -18,8 +18,10 @@ export declare abstract class FlowSelection
 |  --- | --- | --- |
 |  [formatParagraph(style)](./scribing.flowselection.formatparagraph.md) |  | Creates an operation that applies the specified paragraph style on the current selection |
 |  [formatText(style)](./scribing.flowselection.formattext.md) |  | Creates an operation that applies the specified text style on the current selection |
+|  [fromJsonValue(value)](./scribing.flowselection.fromjsonvalue.md) | <code>static</code> | Converts the specified JSON value to a flow selection |
 |  [insert(content)](./scribing.flowselection.insert.md) |  | Creates an operation that inserts the specified content into the current selection |
 |  [remove()](./scribing.flowselection.remove.md) |  | Creates an operation that removes the content of the current selection |
+|  [toJsonValue()](./scribing.flowselection.tojsonvalue.md) |  | Converts the current selection to a JSON value |
 |  [unformatParagraph(style)](./scribing.flowselection.unformatparagraph.md) |  | Creates an operation that unapplies the specified paragraph style on the current selection |
 |  [unformatText(style)](./scribing.flowselection.unformattext.md) |  | Creates an operation that unapplies the specified text style on the current selection |
 

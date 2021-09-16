@@ -50,6 +50,7 @@ Model for collaborative rich text editing
 |  [ParagraphBreakData](./scribing.paragraphbreakdata.md) | Data of paragraph break nodes |
 |  [ParagraphBreakProps](./scribing.paragraphbreakprops.md) | Properties of paragraph break nodes |
 |  [ParagraphStyleProps](./scribing.paragraphstyleprops.md) | Style properties for paragraph content |
+|  [RangeSelectionProps](./scribing.rangeselectionprops.md) | Properties of range selections |
 |  [RemoveRangeData](./scribing.removerangedata.md) | Data of remove range operations |
 |  [RemoveRangeProps](./scribing.removerangeprops.md) | Properties of remove range opertions |
 |  [TextRunProps](./scribing.textrunprops.md) | Properties of a text run |
@@ -74,6 +75,7 @@ Model for collaborative rich text editing
 |  [ParagraphBreakBase](./scribing.paragraphbreakbase.md) | The base record class for [ParagraphBreak](./scribing.paragraphbreak.md) |
 |  [ParagraphStyleBase](./scribing.paragraphstylebase.md) | The base record class for [ParagraphStyle](./scribing.paragraphstyle.md) |
 |  [ParagraphStyleVariantType](./scribing.paragraphstylevarianttype.md) | The run-time type that matches paragraph style variant values |
+|  [RangeSelectionBase](./scribing.rangeselectionbase.md) | The base record class for [RangeSelection](./scribing.rangeselection.md) |
 |  [RemoveRangeBase](./scribing.removerangebase.md) | The base record class for [RemoveRange](./scribing.removerange.md) |
 |  [TextRunBase](./scribing.textrunbase.md) | The base record class for [TextRun](./scribing.textrun.md) |
 |  [TextStyleBase](./scribing.textstylebase.md) | The base record class for [TextStyle](./scribing.textstyle.md) |

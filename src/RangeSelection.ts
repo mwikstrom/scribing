@@ -1,4 +1,4 @@
-import { frozen, type, validating } from "paratype";
+import { frozen, lazyType, RecordClass, recordClassType, recordType, RecordType, type, validating } from "paratype";
 import { FlowBatch } from "./FlowBatch";
 import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
@@ -7,12 +7,34 @@ import { FlowSelection } from "./FlowSelection";
 import { FormatParagraph } from "./FormatParagraph";
 import { FormatText } from "./FormatText";
 import { InsertContent } from "./InsertContent";
+import { FlowSelectionRegistry } from "./internal/class-registry";
 import { transformRangeAfterInsertion, transformRangeAfterRemoval } from "./internal/transform-helpers";
 import { ParagraphStyle } from "./ParagraphStyle";
 import { RemoveRange } from "./RemoveRange";
 import { TextStyle } from "./TextStyle";
 import { UnformatParagraph } from "./UnformatParagraph";
 import { UnformatText } from "./UnformatText";
+
+const Props = {
+    range: lazyType(() => FlowRange.classType),
+};
+
+const PropsType: RecordType<RangeSelectionProps> = recordType(Props);
+
+/**
+ * The base record class for {@link RangeSelection}
+ * @public
+ */
+export const RangeSelectionBase = RecordClass(PropsType, FlowSelection);
+
+/**
+ * Properties of range selections
+ * @public
+ */
+export interface RangeSelectionProps {
+    /** The selected range */
+    range: FlowRange;
+}
 
 /**
  * Represents a range of selected flow content
@@ -21,14 +43,10 @@ import { UnformatText } from "./UnformatText";
  */
 @frozen
 @validating
-export class RangeSelection extends FlowSelection {
-    /** The selected range */
-    public readonly range: FlowRange;
-
-    public constructor(@type(FlowRange.classType) range: FlowRange) {
-        super();
-        this.range = range;
-    }
+@FlowSelectionRegistry.register
+export class RangeSelection  extends RangeSelectionBase implements Readonly<RangeSelectionProps> {
+    /** The run-time type that represents this class */
+    public static readonly classType = recordClassType(() => RangeSelection);
 
     /**
      * {@inheritDoc FlowSelection.formatParagraph}
@@ -99,11 +117,11 @@ export class RangeSelection extends FlowSelection {
     afterInsertion(range: FlowRange, mine: boolean): FlowSelection | null {
         // Translate when insertion is mine and occurs at the current carent (collapsed selection)
         if (mine && this.range.isCollapsed && this.range.focus === range.first) {
-            return new RangeSelection(FlowRange.at(range.last));
+            return this.set("range", FlowRange.at(range.last));
         }
 
         const updated = transformRangeAfterInsertion(this.range, range);
-        return new RangeSelection(updated);
+        return this.set("range", updated);
     }
 
     /**
@@ -115,7 +133,7 @@ export class RangeSelection extends FlowSelection {
         if (updated === null) {
             return null;
         } else {
-            return new RangeSelection(updated);
+            return this.set("range", updated);
         }
     }
 }

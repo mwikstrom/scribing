@@ -1,6 +1,8 @@
+import { JsonValue } from "paratype";
 import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
+import { FlowSelectionRegistry } from "./internal/class-registry";
 import { ParagraphStyle } from "./ParagraphStyle";
 import { TextStyle } from "./TextStyle";
 
@@ -9,6 +11,16 @@ import { TextStyle } from "./TextStyle";
  * @public
  */
 export abstract class FlowSelection {
+    /** Converts the specified JSON value to a flow selection */
+    public static fromJsonValue(value: JsonValue): FlowSelection {
+        return FlowSelectionRegistry.type.fromJsonValue(value);
+    }
+
+    /** Converts the current selection to a JSON value */
+    public toJsonValue(): JsonValue {
+        return FlowSelectionRegistry.type.toJsonValue(this);
+    }
+
     /**
      * Creates an operation that applies the specified paragraph style on the current selection
      * @param style - The style to apply

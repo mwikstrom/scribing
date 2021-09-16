@@ -157,8 +157,10 @@ export abstract class FlowSelection {
     abstract afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
     abstract formatParagraph(style: ParagraphStyle): FlowOperation | null;
     abstract formatText(style: TextStyle): FlowOperation | null;
+    static fromJsonValue(value: JsonValue): FlowSelection;
     abstract insert(content: FlowContent): FlowOperation | null;
     abstract remove(): FlowOperation | null;
+    toJsonValue(): JsonValue;
     abstract unformatParagraph(style: ParagraphStyle): FlowOperation | null;
     abstract unformatText(style: TextStyle): FlowOperation | null;
 }
@@ -375,25 +377,32 @@ export type ParagraphStyleVariant = (typeof PARAGRAPH_STYLE_VARIANTS)[number];
 export const ParagraphStyleVariantType: Type<ParagraphStyleVariant>;
 
 // @public @sealed
-export class RangeSelection extends FlowSelection {
-    constructor(range: FlowRange);
+export class RangeSelection extends RangeSelectionBase implements Readonly<RangeSelectionProps> {
     // @override
     afterInsertion(range: FlowRange, mine: boolean): FlowSelection | null;
     // @override
     afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
+    static readonly classType: Type<RecordObject<RangeSelectionProps, RangeSelectionProps> & Equatable & Readonly<RangeSelectionProps> & RangeSelection>;
     // @override
     formatParagraph(style: ParagraphStyle): FlowOperation | null;
     // @override
     formatText(style: TextStyle): FlowOperation | null;
     // @override
     insert(content: FlowContent): FlowOperation | null;
-    readonly range: FlowRange;
     // @override
     remove(): FlowOperation | null;
     // @override
     unformatParagraph(style: ParagraphStyle): FlowOperation | null;
     // @override
     unformatText(style: TextStyle): FlowOperation | null;
+}
+
+// @public
+export const RangeSelectionBase: RecordConstructor<RangeSelectionProps, FlowSelection, RangeSelectionProps>;
+
+// @public
+export interface RangeSelectionProps {
+    range: FlowRange;
 }
 
 // @public @sealed
