@@ -10,9 +10,9 @@ Represents an operation that unapplies a text style to a range of flow content.
 
 ```typescript
 /** @sealed */
-export declare class UnformatText extends BASE implements Readonly<UnformatTextProps> 
+export declare class UnformatText extends UnformatTextBase implements Readonly<UnformatTextProps> 
 ```
-<b>Extends:</b> BASE
+<b>Extends:</b> UnformatTextBase
 
 <b>Implements:</b> Readonly&lt;[UnformatTextProps](./scribing.unformattextprops.md)<!-- -->&gt;
 

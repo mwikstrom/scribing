@@ -19,7 +19,12 @@ const Props = { operations: DataType.frozen() };
 const PropsType: RecordType<FlowBatchProps> = recordType(Props);
 const propsToData = (props: FlowBatchProps): FlowBatchData => props.operations;
 const EMPTY_PROPS: FlowBatchProps = Object.freeze({ operations: Object.freeze([]) });
-const BASE = RecordClass(PropsType, FlowOperation, DataType, propsToData);
+
+/**
+ * The base record class for {@link FlowBatch}
+ * @public
+ */
+export const FlowBatchBase = RecordClass(PropsType, FlowOperation, DataType, propsToData);
 
 /**
  * Properties of {@link FlowBatch}
@@ -44,7 +49,7 @@ export type FlowBatchData = readonly FlowOperation[];
 @frozen
 @validating
 @registerOperation
-export class FlowBatch extends BASE implements Readonly<FlowBatchProps> {
+export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps> {
     public static readonly classType = recordClassType(() => FlowBatch);
 
     /**

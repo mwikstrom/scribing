@@ -67,6 +67,12 @@ const Props = {
 const PropsType = recordType(Props).asPartial();
 
 /**
+ * The base record class for {@link ParagraphStyle}
+ * @public
+ */
+export const ParagraphStyleBase = RecordClass(PropsType);
+ 
+/**
  * Represents the styling that is applied to paragraph content.
  * 
  * @public
@@ -74,7 +80,7 @@ const PropsType = recordType(Props).asPartial();
  */
 @frozen
 @validating
-export class ParagraphStyle extends RecordClass(PropsType) implements Readonly<ParagraphStyleProps> {
+export class ParagraphStyle extends ParagraphStyleBase implements Readonly<ParagraphStyleProps> {
     public static readonly classType = recordClassType(() => ParagraphStyle);
     public static get empty(): ParagraphStyle {
         if (!EMPTY_CACHE) {

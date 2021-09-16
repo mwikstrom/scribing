@@ -9,9 +9,9 @@ Represents a range of flow content
 <b>Signature:</b>
 
 ```typescript
-export declare class FlowRange extends BASE implements Readonly<FlowRangeProps> 
+export declare class FlowRange extends FlowRangeBase implements Readonly<FlowRangeProps> 
 ```
-<b>Extends:</b> BASE
+<b>Extends:</b> FlowRangeBase
 
 <b>Implements:</b> Readonly&lt;[FlowRangeProps](./scribing.flowrangeprops.md)<!-- -->&gt;
 

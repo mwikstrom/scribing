@@ -10,9 +10,9 @@ Represents an operation that applies a text style to a range of flow content.
 
 ```typescript
 /** @sealed */
-export declare class FormatText extends BASE implements Readonly<FormatTextProps> 
+export declare class FormatText extends FormatTextBase implements Readonly<FormatTextProps> 
 ```
-<b>Extends:</b> BASE
+<b>Extends:</b> FormatTextBase
 
 <b>Implements:</b> Readonly&lt;[FormatTextProps](./scribing.formattextprops.md)<!-- -->&gt;
 

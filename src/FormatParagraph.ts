@@ -36,7 +36,12 @@ const Data = {
 const PropsType: RecordType<FormatParagraphProps> = recordType(Props);
 const DataType: RecordType<FormatParagraphData> = recordType(Data);
 const propsToData = ({range, style}: FormatParagraphProps): FormatParagraphData => ({ format: "para", range, style });
-const BASE = RecordClass(PropsType, FlowOperation, DataType, propsToData);
+
+/**
+ * The base record class for {@link FormatParagraph}
+ * @public
+ */
+export const FormatParagraphBase = RecordClass(PropsType, FlowOperation, DataType, propsToData);
 
 /**
  * Properties of format paragraph operations
@@ -65,7 +70,7 @@ export interface FormatParagraphData {
 @frozen
 @validating
 @registerOperation
-export class FormatParagraph extends BASE implements Readonly<FormatParagraphProps> {
+export class FormatParagraph extends FormatParagraphBase implements Readonly<FormatParagraphProps> {
     public static readonly classType = recordClassType(() => FormatParagraph);
 
     public static fromData(@type(DataType) data: FormatParagraphData): FormatParagraph {

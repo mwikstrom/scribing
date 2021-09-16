@@ -10,9 +10,9 @@ Represents the styling that is applied to paragraph content.
 
 ```typescript
 /** @sealed */
-export declare class ParagraphStyle extends ParagraphStyle_base implements Readonly<ParagraphStyleProps> 
+export declare class ParagraphStyle extends ParagraphStyleBase implements Readonly<ParagraphStyleProps> 
 ```
-<b>Extends:</b> ParagraphStyle\_base
+<b>Extends:</b> ParagraphStyleBase
 
 <b>Implements:</b> Readonly&lt;[ParagraphStyleProps](./scribing.paragraphstyleprops.md)<!-- -->&gt;
 

@@ -10,9 +10,9 @@ Represents a line break.
 
 ```typescript
 /** @sealed */
-export declare class LineBreak extends BASE implements LineBreakProps 
+export declare class LineBreak extends LineBreakBase implements LineBreakProps 
 ```
-<b>Extends:</b> BASE
+<b>Extends:</b> LineBreakBase
 
 <b>Implements:</b> [LineBreakProps](./scribing.linebreakprops.md)
 

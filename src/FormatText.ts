@@ -36,7 +36,12 @@ const Data = {
 const PropsType: RecordType<FormatTextProps> = recordType(Props);
 const DataType: RecordType<FormatTextData> = recordType(Data);
 const propsToData = ({range, style}: FormatTextProps): FormatTextData => ({ format: "text", range, style });
-const BASE = RecordClass(PropsType, FlowOperation, DataType, propsToData);
+
+/**
+ * The base record class for {@link FormatText}
+ * @public
+ */
+export const FormatTextBase = RecordClass(PropsType, FlowOperation, DataType, propsToData);
 
 /**
  * Properties of format text operations
@@ -65,7 +70,7 @@ export interface FormatTextData {
 @frozen
 @validating
 @registerOperation
-export class FormatText extends BASE implements Readonly<FormatTextProps> {
+export class FormatText extends FormatTextBase implements Readonly<FormatTextProps> {
     public static readonly classType = recordClassType(() => FormatText);
 
     public static fromData(@type(DataType) data: FormatTextData): FormatText {

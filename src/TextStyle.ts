@@ -49,6 +49,12 @@ const Props = {
 const PropsType = recordType(Props).asPartial();
 
 /**
+ * The base record class for {@link TextStyle}
+ * @public
+ */
+export const TextStyleBase = RecordClass(PropsType);
+
+/**
  * Represents the styling that is applied to text.
  * 
  * @public
@@ -56,7 +62,7 @@ const PropsType = recordType(Props).asPartial();
  */
 @frozen
 @validating
-export class TextStyle extends RecordClass(PropsType) implements Readonly<TextStyleProps> {
+export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps> {
     public static readonly classType = recordClassType(() => TextStyle);
     public static get empty(): TextStyle {
         if (!EMPTY_CACHE) {

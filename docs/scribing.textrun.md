@@ -10,9 +10,9 @@ A run of text with uniform styling
 
 ```typescript
 /** @sealed */
-export declare class TextRun extends BASE implements Readonly<TextRunProps> 
+export declare class TextRun extends TextRunBase implements Readonly<TextRunProps> 
 ```
-<b>Extends:</b> BASE
+<b>Extends:</b> TextRunBase
 
 <b>Implements:</b> Readonly&lt;[TextRunProps](./scribing.textrunprops.md)<!-- -->&gt;
 

@@ -24,7 +24,12 @@ const PropsType: RecordType<LineBreakProps> = recordType(Props);
 const DataType: RecordType<LineBreakData> = recordType(Data).withOptional("style");
 const propsToData = ({style}: LineBreakProps): LineBreakData => ({break: "line", style});
 const EMPTY_PROPS = (): LineBreakProps => Object.freeze({ style: TextStyle.empty });
-const BASE = RecordClass(PropsType, InlineNode, DataType, propsToData);
+
+/**
+ * The base record class for {@link LineBreak}
+ * @public
+ */
+export const LineBreakBase = RecordClass(PropsType, InlineNode, DataType, propsToData);
 
 /**
  * Properties of line break nodes
@@ -54,7 +59,7 @@ export interface LineBreakData {
 @frozen
 @validating
 @registerNode
-export class LineBreak extends BASE implements LineBreakProps {
+export class LineBreak extends LineBreakBase implements LineBreakProps {
     public static readonly classType = recordClassType(() => LineBreak);
     public readonly size = 1;
 

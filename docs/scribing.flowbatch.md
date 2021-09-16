@@ -10,9 +10,9 @@ Represents a batch of flow operations that are applied sequentially and atomical
 
 ```typescript
 /** @sealed */
-export declare class FlowBatch extends BASE implements Readonly<FlowBatchProps> 
+export declare class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps> 
 ```
-<b>Extends:</b> BASE
+<b>Extends:</b> FlowBatchBase
 
 <b>Implements:</b> Readonly&lt;[FlowBatchProps](./scribing.flowbatchprops.md)<!-- -->&gt;
 

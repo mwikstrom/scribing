@@ -10,10 +10,8 @@ import { RecordConstructor } from 'paratype';
 import { RecordObject } from 'paratype';
 import { Type } from 'paratype';
 
-// Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
-//
 // @public @sealed
-export class FlowBatch extends BASE_6 implements Readonly<FlowBatchProps> {
+export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps> {
     constructor(props?: FlowBatchProps);
     afterInsertion(other: FlowRange): FlowOperation | null;
     afterRemoval(other: FlowRange): FlowOperation | null;
@@ -30,6 +28,9 @@ export class FlowBatch extends BASE_6 implements Readonly<FlowBatchProps> {
 }
 
 // @public
+export const FlowBatchBase: RecordConstructor<FlowBatchProps, FlowOperation, FlowBatchData>;
+
+// @public
 export type FlowBatchData = readonly FlowOperation[];
 
 // @public
@@ -37,10 +38,8 @@ export interface FlowBatchProps {
     operations: readonly FlowOperation[];
 }
 
-// Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
-//
 // @public @sealed
-export class FlowContent extends BASE_5 implements Readonly<FlowContentProps> {
+export class FlowContent extends FlowContentBase implements Readonly<FlowContentProps> {
     constructor(props?: FlowContentProps);
     append(...nodes: readonly FlowNode[]): FlowContent;
     // (undocumented)
@@ -59,6 +58,9 @@ export class FlowContent extends BASE_5 implements Readonly<FlowContentProps> {
     unformatParagraph(range: FlowRange, style: ParagraphStyle): FlowContent;
     unformatText(range: FlowRange, style: TextStyle): FlowContent;
 }
+
+// @public
+export const FlowContentBase: RecordConstructor<FlowContentProps, Object, FlowContentData>;
 
 // @public
 export type FlowContentData = readonly FlowNode[];
@@ -129,10 +131,8 @@ export abstract class FlowOperation {
     abstract transform(other: FlowOperation): FlowOperation | null;
 }
 
-// Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
-//
 // @public
-export class FlowRange extends BASE implements Readonly<FlowRangeProps> {
+export class FlowRange extends FlowRangeBase implements Readonly<FlowRangeProps> {
     static at(position: number, distance?: number): FlowRange;
     static readonly classType: Type<FlowRange>;
     contains(position: number): boolean;
@@ -160,6 +160,9 @@ export class FlowRange extends BASE implements Readonly<FlowRangeProps> {
 }
 
 // @public
+export const FlowRangeBase: RecordConstructor<FlowRangeProps, Object, FlowRangeTuple>;
+
+// @public
 export interface FlowRangeProps {
     anchor: number;
     focus: number;
@@ -182,10 +185,8 @@ export abstract class FlowSelection {
     abstract unformatText(style: TextStyle): FlowOperation | null;
 }
 
-// Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
-//
 // @public @sealed
-export class FormatParagraph extends BASE_7 implements Readonly<FormatParagraphProps> {
+export class FormatParagraph extends FormatParagraphBase implements Readonly<FormatParagraphProps> {
     afterInsertion(other: FlowRange): FlowOperation | null;
     afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
@@ -201,6 +202,9 @@ export class FormatParagraph extends BASE_7 implements Readonly<FormatParagraphP
     // @override
     transform(other: FlowOperation): FlowOperation | null;
 }
+
+// @public
+export const FormatParagraphBase: RecordConstructor<FormatParagraphProps, FlowOperation, FormatParagraphData>;
 
 // @public
 export interface FormatParagraphData {
@@ -220,10 +224,8 @@ export interface FormatParagraphProps {
     style: ParagraphStyle;
 }
 
-// Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
-//
 // @public @sealed
-export class FormatText extends BASE_9 implements Readonly<FormatTextProps> {
+export class FormatText extends FormatTextBase implements Readonly<FormatTextProps> {
     afterInsertion(other: FlowRange): FlowOperation | null;
     afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
@@ -239,6 +241,9 @@ export class FormatText extends BASE_9 implements Readonly<FormatTextProps> {
     // @override
     transform(other: FlowOperation): FlowOperation | null;
 }
+
+// @public
+export const FormatTextBase: RecordConstructor<FormatTextProps, FlowOperation, FormatTextData>;
 
 // @public
 export interface FormatTextData {
@@ -278,10 +283,8 @@ export abstract class InlineNode extends FlowNode {
     unformatText(style: TextStyle): this;
 }
 
-// Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
-//
 // @public @sealed
-export class InsertContent extends BASE_11 implements InsertContentProps {
+export class InsertContent extends InsertContentBase implements InsertContentProps {
     afterInsertion(other: FlowRange): FlowOperation | null;
     afterRemoval(other: FlowRange): FlowOperation | null;
     applyToContent(content: FlowContent): FlowContent;
@@ -300,6 +303,9 @@ export class InsertContent extends BASE_11 implements InsertContentProps {
 }
 
 // @public
+export const InsertContentBase: RecordConstructor<InsertContentProps, FlowOperation, InsertContentData>;
+
+// @public
 export interface InsertContentData {
     // (undocumented)
     at: number;
@@ -315,10 +321,8 @@ export interface InsertContentProps {
     position: number;
 }
 
-// Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
-//
 // @public @sealed
-export class LineBreak extends BASE_2 implements LineBreakProps {
+export class LineBreak extends LineBreakBase implements LineBreakProps {
     constructor(props?: LineBreakProps);
     // (undocumented)
     static readonly classType: Type<LineBreak>;
@@ -327,6 +331,9 @@ export class LineBreak extends BASE_2 implements LineBreakProps {
     // (undocumented)
     readonly size = 1;
 }
+
+// @public
+export const LineBreakBase: RecordConstructor<LineBreakProps, InlineNode, LineBreakData>;
 
 // @public
 export interface LineBreakData {
@@ -341,10 +348,8 @@ export interface LineBreakProps {
     style: TextStyle;
 }
 
-// Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
-//
 // @public @sealed
-export class ParagraphBreak extends BASE_3 implements ParagraphBreakProps {
+export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreakProps {
     constructor(props?: ParagraphBreakProps);
     // (undocumented)
     static readonly classType: Type<ParagraphBreak>;
@@ -367,6 +372,9 @@ export class ParagraphBreak extends BASE_3 implements ParagraphBreakProps {
 }
 
 // @public
+export const ParagraphBreakBase: RecordConstructor<ParagraphBreakProps, FlowNode, ParagraphBreakData>;
+
+// @public
 export interface ParagraphBreakData {
     // (undocumented)
     break: "para";
@@ -379,10 +387,8 @@ export interface ParagraphBreakProps {
     style: ParagraphStyle;
 }
 
-// Warning: (ae-forgotten-export) The symbol "ParagraphStyle_base" needs to be exported by the entry point index.d.ts
-//
 // @public @sealed
-export class ParagraphStyle extends ParagraphStyle_base implements Readonly<ParagraphStyleProps> {
+export class ParagraphStyle extends ParagraphStyleBase implements Readonly<ParagraphStyleProps> {
     constructor(props?: ParagraphStyleProps);
     // (undocumented)
     static readonly classType: Type<RecordObject<Partial<{
@@ -406,6 +412,19 @@ export class ParagraphStyle extends ParagraphStyle_base implements Readonly<Para
     // (undocumented)
     get isEmpty(): boolean;
 }
+
+// @public
+export const ParagraphStyleBase: RecordConstructor<Partial<{
+alignment: "start" | "center" | "end" | "justify";
+direction: "ltr" | "rtl";
+type: "normal" | "title" | "subtitle" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+line_spacing: number;
+}>, Object, Partial<{
+alignment: "start" | "center" | "end" | "justify";
+direction: "ltr" | "rtl";
+type: "normal" | "title" | "subtitle" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+line_spacing: number;
+}>>;
 
 // @public
 export interface ParagraphStyleProps {
@@ -438,10 +457,8 @@ export class RangeSelection extends FlowSelection {
     unformatText(style: TextStyle): FlowOperation | null;
 }
 
-// Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
-//
 // @public @sealed
-export class RemoveRange extends BASE_12 implements Readonly<RemoveRangeProps> {
+export class RemoveRange extends RemoveRangeBase implements Readonly<RemoveRangeProps> {
     afterInsertion(other: FlowRange): FlowOperation | null;
     afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
@@ -459,6 +476,9 @@ export class RemoveRange extends BASE_12 implements Readonly<RemoveRangeProps> {
 }
 
 // @public
+export const RemoveRangeBase: RecordConstructor<RemoveRangeProps, FlowOperation, RemoveRangeData>;
+
+// @public
 export interface RemoveRangeData {
     // (undocumented)
     remove: FlowRange;
@@ -470,10 +490,8 @@ export interface RemoveRangeProps {
     range: FlowRange;
 }
 
-// Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
-//
 // @public @sealed
-export class TextRun extends BASE_4 implements Readonly<TextRunProps> {
+export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
     constructor(props?: TextRunProps);
     // (undocumented)
     after(position: number): TextRun;
@@ -498,6 +516,9 @@ export class TextRun extends BASE_4 implements Readonly<TextRunProps> {
 }
 
 // @public
+export const TextRunBase: RecordConstructor<TextRunProps, InlineNode, TextRunData>;
+
+// @public
 export type TextRunData = string | {
     text: string;
     style?: TextStyle;
@@ -511,10 +532,8 @@ export interface TextRunProps {
     text: string;
 }
 
-// Warning: (ae-forgotten-export) The symbol "TextStyle_base" needs to be exported by the entry point index.d.ts
-//
 // @public @sealed
-export class TextStyle extends TextStyle_base implements Readonly<TextStyleProps> {
+export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps> {
     constructor(props?: TextStyleProps);
     // (undocumented)
     static readonly classType: Type<RecordObject<Partial<{
@@ -543,6 +562,21 @@ export class TextStyle extends TextStyle_base implements Readonly<TextStyleProps
 }
 
 // @public
+export const TextStyleBase: RecordConstructor<Partial<{
+bold: boolean;
+italic: boolean;
+underline: boolean;
+strike: boolean;
+baseline: "normal" | "sub" | "super";
+}>, Object, Partial<{
+bold: boolean;
+italic: boolean;
+underline: boolean;
+strike: boolean;
+baseline: "normal" | "sub" | "super";
+}>>;
+
+// @public
 export interface TextStyleProps {
     baseline?: "normal" | "sub" | "super";
     bold?: boolean;
@@ -551,10 +585,8 @@ export interface TextStyleProps {
     underline?: boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
-//
 // @public @sealed
-export class UnformatParagraph extends BASE_8 implements Readonly<UnformatParagraphProps> {
+export class UnformatParagraph extends UnformatParagraphBase implements Readonly<UnformatParagraphProps> {
     afterInsertion(other: FlowRange): FlowOperation | null;
     afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
@@ -570,6 +602,9 @@ export class UnformatParagraph extends BASE_8 implements Readonly<UnformatParagr
     // @override
     transform(other: FlowOperation): FlowOperation | null;
 }
+
+// @public
+export const UnformatParagraphBase: RecordConstructor<UnformatParagraphProps, FlowOperation, UnformatParagraphData>;
 
 // @public
 export interface UnformatParagraphData {
@@ -589,10 +624,8 @@ export interface UnformatParagraphProps {
     style: ParagraphStyle;
 }
 
-// Warning: (ae-forgotten-export) The symbol "BASE" needs to be exported by the entry point index.d.ts
-//
 // @public @sealed
-export class UnformatText extends BASE_10 implements Readonly<UnformatTextProps> {
+export class UnformatText extends UnformatTextBase implements Readonly<UnformatTextProps> {
     afterInsertion(other: FlowRange): FlowOperation | null;
     afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
@@ -608,6 +641,9 @@ export class UnformatText extends BASE_10 implements Readonly<UnformatTextProps>
     // @override
     transform(other: FlowOperation): FlowOperation | null;
 }
+
+// @public
+export const UnformatTextBase: RecordConstructor<UnformatTextProps, FlowOperation, UnformatTextData>;
 
 // @public
 export interface UnformatTextData {

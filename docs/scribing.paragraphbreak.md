@@ -10,9 +10,9 @@ Represents a paragraph break.
 
 ```typescript
 /** @sealed */
-export declare class ParagraphBreak extends BASE implements ParagraphBreakProps 
+export declare class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreakProps 
 ```
-<b>Extends:</b> BASE
+<b>Extends:</b> ParagraphBreakBase
 
 <b>Implements:</b> [ParagraphBreakProps](./scribing.paragraphbreakprops.md)
 

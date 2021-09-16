@@ -10,9 +10,9 @@ Represents an operation that unapplies a paragraph style to a range of flow cont
 
 ```typescript
 /** @sealed */
-export declare class UnformatParagraph extends BASE implements Readonly<UnformatParagraphProps> 
+export declare class UnformatParagraph extends UnformatParagraphBase implements Readonly<UnformatParagraphProps> 
 ```
-<b>Extends:</b> BASE
+<b>Extends:</b> UnformatParagraphBase
 
 <b>Implements:</b> Readonly&lt;[UnformatParagraphProps](./scribing.unformatparagraphprops.md)<!-- -->&gt;
 

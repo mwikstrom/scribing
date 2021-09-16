@@ -10,9 +10,9 @@ Represents an operation that insert flow content.
 
 ```typescript
 /** @sealed */
-export declare class InsertContent extends BASE implements InsertContentProps 
+export declare class InsertContent extends InsertContentBase implements InsertContentProps 
 ```
-<b>Extends:</b> BASE
+<b>Extends:</b> InsertContentBase
 
 <b>Implements:</b> [InsertContentProps](./scribing.insertcontentprops.md)
 

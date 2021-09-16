@@ -10,9 +10,9 @@ Represents an operation that removes a range of flow.
 
 ```typescript
 /** @sealed */
-export declare class RemoveRange extends BASE implements Readonly<RemoveRangeProps> 
+export declare class RemoveRange extends RemoveRangeBase implements Readonly<RemoveRangeProps> 
 ```
-<b>Extends:</b> BASE
+<b>Extends:</b> RemoveRangeBase
 
 <b>Implements:</b> Readonly&lt;[RemoveRangeProps](./scribing.removerangeprops.md)<!-- -->&gt;
 

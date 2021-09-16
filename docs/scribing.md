@@ -58,6 +58,25 @@ Model for collaborative rich text editing
 |  [UnformatTextData](./scribing.unformattextdata.md) | Data of unformat text operations |
 |  [UnformatTextProps](./scribing.unformattextprops.md) | Properties of unformat text operations |
 
+## Variables
+
+|  Variable | Description |
+|  --- | --- |
+|  [FlowBatchBase](./scribing.flowbatchbase.md) | The base record class for [FlowBatch](./scribing.flowbatch.md) |
+|  [FlowContentBase](./scribing.flowcontentbase.md) | The base record class for [FlowContent](./scribing.flowcontent.md) |
+|  [FlowRangeBase](./scribing.flowrangebase.md) | The base record class for [FlowRange](./scribing.flowrange.md) |
+|  [FormatParagraphBase](./scribing.formatparagraphbase.md) | The base record class for [FormatParagraph](./scribing.formatparagraph.md) |
+|  [FormatTextBase](./scribing.formattextbase.md) | The base record class for [FormatText](./scribing.formattext.md) |
+|  [InsertContentBase](./scribing.insertcontentbase.md) | The base record class for [InsertContent](./scribing.insertcontent.md) |
+|  [LineBreakBase](./scribing.linebreakbase.md) | The base record class for [LineBreak](./scribing.linebreak.md) |
+|  [ParagraphBreakBase](./scribing.paragraphbreakbase.md) | The base record class for [ParagraphBreak](./scribing.paragraphbreak.md) |
+|  [ParagraphStyleBase](./scribing.paragraphstylebase.md) | The base record class for [ParagraphStyle](./scribing.paragraphstyle.md) |
+|  [RemoveRangeBase](./scribing.removerangebase.md) | The base record class for [RemoveRange](./scribing.removerange.md) |
+|  [TextRunBase](./scribing.textrunbase.md) | The base record class for [TextRun](./scribing.textrun.md) |
+|  [TextStyleBase](./scribing.textstylebase.md) | The base record class for [TextStyle](./scribing.textstyle.md) |
+|  [UnformatParagraphBase](./scribing.unformatparagraphbase.md) | The base record class for [UnformatParagraph](./scribing.unformatparagraph.md) |
+|  [UnformatTextBase](./scribing.unformattextbase.md) | The base record class for [UnformatText](./scribing.unformattext.md) |
+
 ## Type Aliases
 
 |  Type Alias | Description |

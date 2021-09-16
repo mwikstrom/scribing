@@ -28,7 +28,12 @@ const Data = {
 const PropsType: RecordType<RemoveRangeProps> = recordType(Props);
 const DataType: RecordType<RemoveRangeData> = recordType(Data);
 const propsToData = ({range}: RemoveRangeProps): RemoveRangeData => ({ remove: range });
-const BASE = RecordClass(PropsType, FlowOperation, DataType, propsToData);
+
+/**
+ * The base record class for {@link RemoveRange}
+ * @public
+ */
+export const RemoveRangeBase = RecordClass(PropsType, FlowOperation, DataType, propsToData);
 
 /**
  * Properties of remove range opertions
@@ -54,7 +59,7 @@ export interface RemoveRangeData {
 @frozen
 @validating
 @registerOperation
-export class RemoveRange extends BASE implements Readonly<RemoveRangeProps> {
+export class RemoveRange extends RemoveRangeBase implements Readonly<RemoveRangeProps> {
     public static readonly classType = recordClassType(() => RemoveRange);
 
     public static fromData(@type(DataType) data: RemoveRangeData): RemoveRange {

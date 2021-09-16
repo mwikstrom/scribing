@@ -10,9 +10,9 @@ Flow content
 
 ```typescript
 /** @sealed */
-export declare class FlowContent extends BASE implements Readonly<FlowContentProps> 
+export declare class FlowContent extends FlowContentBase implements Readonly<FlowContentProps> 
 ```
-<b>Extends:</b> BASE
+<b>Extends:</b> FlowContentBase
 
 <b>Implements:</b> Readonly&lt;[FlowContentProps](./scribing.flowcontentprops.md)<!-- -->&gt;
 

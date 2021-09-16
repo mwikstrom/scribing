@@ -40,7 +40,12 @@ const propsToData = ({range, style}: UnformatParagraphProps): UnformatParagraphD
     range, 
     style 
 });
-const BASE = RecordClass(PropsType, FlowOperation, DataType, propsToData);
+
+/**
+ * The base record class for {@link UnformatParagraph}
+ * @public
+ */
+export const UnformatParagraphBase = RecordClass(PropsType, FlowOperation, DataType, propsToData);
 
 /**
  * Properties of unformat paragraph operations
@@ -69,7 +74,7 @@ export interface UnformatParagraphData {
 @frozen
 @validating
 @registerOperation
-export class UnformatParagraph extends BASE implements Readonly<UnformatParagraphProps> {
+export class UnformatParagraph extends UnformatParagraphBase implements Readonly<UnformatParagraphProps> {
     public static readonly classType = recordClassType(() => UnformatParagraph);
 
     public static fromData(@type(DataType) data: UnformatParagraphData): UnformatParagraph {

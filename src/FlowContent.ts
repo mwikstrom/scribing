@@ -40,7 +40,12 @@ const Props = { nodes: RestrictedNodeArrayType };
 const PropsType: RecordType<FlowContentProps> = recordType(Props);
 const propsToData = ({nodes}: FlowContentProps): FlowContentData => nodes;
 const EMPTY_PROPS: FlowContentProps = Object.freeze({ nodes: Object.freeze([]) });
-const BASE = RecordClass(PropsType, Object, NodeArrayType, propsToData);
+
+/**
+ * The base record class for {@link FlowContent}
+ * @public
+ */
+export const FlowContentBase = RecordClass(PropsType, Object, NodeArrayType, propsToData);
 
 /**
  * Flow content properties
@@ -64,7 +69,7 @@ export type FlowContentData = readonly FlowNode[];
  */
 @frozen
 @validating
-export class FlowContent extends BASE implements Readonly<FlowContentProps> {
+export class FlowContent extends FlowContentBase implements Readonly<FlowContentProps> {
     public static readonly classType = recordClassType(() => FlowContent);
 
     public static fromData(@type(NodeArrayType) data: FlowContentData): FlowContent {

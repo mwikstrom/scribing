@@ -18,7 +18,12 @@ const Props = {
 const PropsType: RecordType<FlowRangeProps> = recordType(Props);
 const DataType: Type<FlowRangeTuple> = tupleType(Props.anchor, Props.focus);
 const propsToData = ({anchor, focus}: FlowRangeProps): FlowRangeTuple => ([ anchor, focus ]);
-const BASE =  RecordClass(PropsType, Object, DataType, propsToData);
+
+/**
+ * The base record class for {@link FlowRange}
+ * @public
+ */
+export const FlowRangeBase =  RecordClass(PropsType, Object, DataType, propsToData);
 
 /**
  * Non-computed properties of a {@link FlowRange}
@@ -49,7 +54,7 @@ export type FlowRangeTuple = [number, number];
  */
 @frozen
 @validating
-export class FlowRange extends BASE implements Readonly<FlowRangeProps> {
+export class FlowRange extends FlowRangeBase implements Readonly<FlowRangeProps> {
     /** A run-time type that matches {@link FlowRange} instances */
     public static readonly classType = recordClassType(() => FlowRange);
 

@@ -10,9 +10,9 @@ Represents an operation that applies a paragraph style to a range of flow conten
 
 ```typescript
 /** @sealed */
-export declare class FormatParagraph extends BASE implements Readonly<FormatParagraphProps> 
+export declare class FormatParagraph extends FormatParagraphBase implements Readonly<FormatParagraphProps> 
 ```
-<b>Extends:</b> BASE
+<b>Extends:</b> FormatParagraphBase
 
 <b>Implements:</b> Readonly&lt;[FormatParagraphProps](./scribing.formatparagraphprops.md)<!-- -->&gt;
 

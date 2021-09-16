@@ -48,7 +48,12 @@ const propsToData = (props: TextRunProps): TextRunData => (
     props.style.isEmpty ? props.text : props
 );
 const EMPTY_PROPS = (): TextRunProps => Object.freeze({ text: "", style: TextStyle.empty });
-const BASE = RecordClass(PropsType, InlineNode, DataType, propsToData);
+
+/**
+ * The base record class for {@link TextRun}
+ * @public
+ */
+export const TextRunBase = RecordClass(PropsType, InlineNode, DataType, propsToData);
 
 /**
  * Properties of a text run
@@ -76,7 +81,7 @@ export type TextRunData = string | {
 @frozen
 @validating
 @registerNode
-export class TextRun extends BASE implements Readonly<TextRunProps> {
+export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
     public static readonly classType = recordClassType(() => TextRun);
     public readonly size: number;
 

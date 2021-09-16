@@ -32,7 +32,11 @@ const propsToData = ({position, content }: InsertContentProps): InsertContentDat
     at: position,
 });
 
-const BASE = RecordClass(PropsType, FlowOperation, DataType, propsToData);
+/**
+ * The base record class for {@link InsertContent}
+ * @public
+ */
+export const InsertContentBase = RecordClass(PropsType, FlowOperation, DataType, propsToData);
 
 /**
  * Properties of insert content operations
@@ -60,7 +64,7 @@ export interface InsertContentData {
 @frozen
 @validating
 @registerOperation
-export class InsertContent extends BASE implements InsertContentProps {
+export class InsertContent extends InsertContentBase implements InsertContentProps {
     public static readonly classType = recordClassType(() => InsertContent);
 
     public static fromData(@type(DataType) data: InsertContentData): InsertContent {

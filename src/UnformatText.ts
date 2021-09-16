@@ -36,7 +36,12 @@ const Data = {
 const PropsType: RecordType<UnformatTextProps> = recordType(Props);
 const DataType: RecordType<UnformatTextData> = recordType(Data);
 const propsToData = ({range, style}: UnformatTextProps): UnformatTextData => ({ unformat: "text", range, style });
-const BASE = RecordClass(PropsType, FlowOperation, DataType, propsToData);
+
+/**
+ * The base record class for {@link UnformatText}
+ * @public
+ */
+export const UnformatTextBase = RecordClass(PropsType, FlowOperation, DataType, propsToData);
 
 /**
  * Properties of unformat text operations
@@ -65,7 +70,7 @@ export interface UnformatTextData {
 @frozen
 @validating
 @registerOperation
-export class UnformatText extends BASE implements Readonly<UnformatTextProps> {
+export class UnformatText extends UnformatTextBase implements Readonly<UnformatTextProps> {
     public static readonly classType = recordClassType(() => UnformatText);
 
     public static fromData(@type(DataType) data: UnformatTextData): UnformatText {

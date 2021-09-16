@@ -24,7 +24,12 @@ const PropsType: RecordType<ParagraphBreakProps> = recordType(Props);
 const DataType: RecordType<ParagraphBreakData> = recordType(Data).withOptional("style");
 const propsToData = ({style}: ParagraphBreakProps): ParagraphBreakData => ({break: "para", style});
 const EMPTY_PROPS = (): ParagraphBreakProps => Object.freeze({ style: ParagraphStyle.empty });
-const BASE = RecordClass(PropsType, FlowNode, DataType, propsToData);
+
+/**
+ * The base record class for {@link ParagraphBreak}
+ * @public
+ */
+export const ParagraphBreakBase = RecordClass(PropsType, FlowNode, DataType, propsToData);
 
 /**
  * Properties of paragraph break nodes
@@ -54,7 +59,7 @@ export interface ParagraphBreakData {
 @frozen
 @validating
 @registerNode
-export class ParagraphBreak extends BASE implements ParagraphBreakProps {
+export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreakProps {
     public static readonly classType = recordClassType(() => ParagraphBreak);
     public readonly size = 1;
 

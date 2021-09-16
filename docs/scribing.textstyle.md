@@ -10,9 +10,9 @@ Represents the styling that is applied to text.
 
 ```typescript
 /** @sealed */
-export declare class TextStyle extends TextStyle_base implements Readonly<TextStyleProps> 
+export declare class TextStyle extends TextStyleBase implements Readonly<TextStyleProps> 
 ```
-<b>Extends:</b> TextStyle\_base
+<b>Extends:</b> TextStyleBase
 
 <b>Implements:</b> Readonly&lt;[TextStyleProps](./scribing.textstyleprops.md)<!-- -->&gt;
 
