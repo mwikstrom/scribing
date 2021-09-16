@@ -57,9 +57,8 @@ export class FlowEditorState extends FlowEditorStateBase {
      */
     public applyMine(
         @type(lazyType(FlowOperationRegistry.close)) operation: FlowOperation,
-        @type(lazyType(FlowThemeRegistry.close)) theme: FlowTheme,
     ): FlowEditorState {
-        return this.#apply(operation, true, theme);
+        return this.#apply(operation, true);
     }
 
     /**
@@ -70,13 +69,12 @@ export class FlowEditorState extends FlowEditorStateBase {
      */
     public applyTheirs(
         @type(lazyType(FlowOperationRegistry.close)) operation: FlowOperation,
-        @type(lazyType(FlowThemeRegistry.close)) theme: FlowTheme,
     ): FlowEditorState {
-        return this.#apply(operation, false, theme);
+        return this.#apply(operation, false);
     }
 
-    #apply(operation: FlowOperation, mine: boolean, theme: FlowTheme): FlowEditorState {
-        const content = operation.applyToContent(this.content, theme);
+    #apply(operation: FlowOperation, mine: boolean): FlowEditorState {
+        const content = operation.applyToContent(this.content, this.theme);
         const selection = this.selection ? operation.applyToSelection(this.selection, mine) : null;
         return this.merge({ content, selection });
     }

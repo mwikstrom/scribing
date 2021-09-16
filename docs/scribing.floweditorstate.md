@@ -24,6 +24,6 @@ export declare class FlowEditorState extends FlowEditorStateBase
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [applyMine(operation, theme)](./scribing.floweditorstate.applymine.md) |  | Gets a new flow editor state, based on the current state, and with the specified operation applied. |
-|  [applyTheirs(operation, theme)](./scribing.floweditorstate.applytheirs.md) |  | Gets a new flow editor state, based on the current state, and with the specified operation applied. |
+|  [applyMine(operation)](./scribing.floweditorstate.applymine.md) |  | Gets a new flow editor state, based on the current state, and with the specified operation applied. |
+|  [applyTheirs(operation)](./scribing.floweditorstate.applytheirs.md) |  | Gets a new flow editor state, based on the current state, and with the specified operation applied. |
 

@@ -103,8 +103,8 @@ export class FlowCursor {
 
 // @public @sealed
 export class FlowEditorState extends FlowEditorStateBase {
-    applyMine(operation: FlowOperation, theme: FlowTheme): FlowEditorState;
-    applyTheirs(operation: FlowOperation, theme: FlowTheme): FlowEditorState;
+    applyMine(operation: FlowOperation): FlowEditorState;
+    applyTheirs(operation: FlowOperation): FlowEditorState;
     static get empty(): FlowEditorState;
 }
 
