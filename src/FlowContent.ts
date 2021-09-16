@@ -7,7 +7,6 @@ import {
     recordClassType, 
     RecordType, 
     recordType, 
-    restType, 
     type, 
     validating, 
 } from "paratype";
