@@ -8,9 +8,9 @@ describe("ParagraphStyle", () => {
     });
 
     it("can be reduced", () => {
-        const original = new ParagraphStyle({alignment: "center", direction: "ltr", line_spacing: 100});
+        const original = new ParagraphStyle({alignment: "center", direction: "ltr", lineSpacing: 100});
         const reduced = original.unmerge({alignment: "end", direction: "ltr", variant: "h1"});
-        expect(reduced.equals({alignment: "center", line_spacing: 100})).toBe(true);
+        expect(reduced.equals({alignment: "center", lineSpacing: 100})).toBe(true);
     });
 
     it("can be reduced by keys only", () => {

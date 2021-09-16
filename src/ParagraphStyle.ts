@@ -36,7 +36,7 @@ export interface ParagraphStyleProps {
     /**
      * The amount of space between lines, as a percentage of normal, where normal is represented as `100`.
      */
-    line_spacing?: number;
+    lineSpacing?: number;
 
     // TODO: by name inheritance
     // TODO: spacing mode
@@ -59,7 +59,7 @@ const Props = {
     alignment: enumType(["start", "center", "end", "justify"]),
     direction: enumType(["ltr", "rtl"]),
     variant: StyleVariantType,
-    line_spacing: integerType.restrict(
+    lineSpacing: integerType.restrict(
         "Must be greater than or equal to 10 and less than or equal to 1000",
         value => value >= 10 && value <= 1000,
     ),
