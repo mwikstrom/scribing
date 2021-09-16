@@ -88,6 +88,30 @@ export class FlowCursor {
     range(distance: number): Iterable<FlowNode>;
 }
 
+// @public @sealed
+export class FlowEditorState extends FlowEditorStateBase {
+    applyMine(operation: FlowOperation, theme: FlowTheme): FlowEditorState;
+    applyTheirs(operation: FlowOperation, theme: FlowTheme): FlowEditorState;
+    static get empty(): FlowEditorState;
+}
+
+// @public
+export const FlowEditorStateBase: RecordConstructor<    {
+content: FlowContent;
+selection: FlowSelection | null;
+}, Object, {
+content: FlowContent;
+selection: FlowSelection | null;
+}>;
+
+// @public
+export interface FlowEditorStateProps {
+    // (undocumented)
+    content: FlowContent;
+    // (undocumented)
+    selection: FlowSelection | null;
+}
+
 // @public
 export abstract class FlowNode {
     static readonly classType: Type<FlowNode>;

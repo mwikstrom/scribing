@@ -13,6 +13,7 @@ Model for collaborative rich text editing
 |  [FlowBatch](./scribing.flowbatch.md) | Represents a batch of flow operations that are applied sequentially and atomically. |
 |  [FlowContent](./scribing.flowcontent.md) | Flow content |
 |  [FlowCursor](./scribing.flowcursor.md) | Represents a position in flow content |
+|  [FlowEditorState](./scribing.floweditorstate.md) | Immutable state record for a flow content editor |
 |  [FlowNode](./scribing.flownode.md) | A piece of flow content. |
 |  [FlowOperation](./scribing.flowoperation.md) | An abstraction of an operation that updates flow content. |
 |  [FlowRange](./scribing.flowrange.md) | Represents a range of flow content |
@@ -38,6 +39,7 @@ Model for collaborative rich text editing
 |  --- | --- |
 |  [FlowBatchProps](./scribing.flowbatchprops.md) | Properties of [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowContentProps](./scribing.flowcontentprops.md) | Flow content properties |
+|  [FlowEditorStateProps](./scribing.floweditorstateprops.md) | Properties for [FlowEditorState](./scribing.floweditorstate.md) |
 |  [FlowRangeProps](./scribing.flowrangeprops.md) | Non-computed properties of a [FlowRange](./scribing.flowrange.md) |
 |  [FormatParagraphData](./scribing.formatparagraphdata.md) | Data of format paragraph operations |
 |  [FormatParagraphProps](./scribing.formatparagraphprops.md) | Properties of format paragraph operations |
@@ -66,6 +68,7 @@ Model for collaborative rich text editing
 |  --- | --- |
 |  [FlowBatchBase](./scribing.flowbatchbase.md) | The base record class for [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowContentBase](./scribing.flowcontentbase.md) | The base record class for [FlowContent](./scribing.flowcontent.md) |
+|  [FlowEditorStateBase](./scribing.floweditorstatebase.md) | The base record class for [FlowEditorState](./scribing.floweditorstate.md) |
 |  [FlowRangeBase](./scribing.flowrangebase.md) | The base record class for [FlowRange](./scribing.flowrange.md) |
 |  [FormatParagraphBase](./scribing.formatparagraphbase.md) | The base record class for [FormatParagraph](./scribing.formatparagraph.md) |
 |  [FormatTextBase](./scribing.formattextbase.md) | The base record class for [FormatText](./scribing.formattext.md) |
