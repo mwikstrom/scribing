@@ -14,6 +14,7 @@ import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
 import { FlowSelection } from "./FlowSelection";
 import { FormatText } from "./FormatText";
+import { InlineNode } from "./InlineNode";
 import { invertUnformatOp } from "./internal/format-helpers";
 import { registerOperation } from "./internal/operation-registry";
 import { 
@@ -93,7 +94,7 @@ export class UnformatText extends UnformatTextBase implements Readonly<UnformatT
             content,
             range,
             style,
-            getStyle: node => node.getTextStyle(),
+            getStyle: node => node instanceof InlineNode ? node.style : null,
             makeStyle: props => new TextStyle(props),
             makeFormatOp: props => new FormatText(props),
         });

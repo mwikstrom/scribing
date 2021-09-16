@@ -93,10 +93,6 @@ export abstract class FlowNode {
     abstract formatParagraph(style: ParagraphStyle): FlowNode;
     abstract formatText(style: TextStyle): FlowNode;
     static fromJsonValue(value: JsonValue): FlowNode;
-    // @internal
-    abstract getParagraphStyle(): ParagraphStyle | null;
-    // @internal
-    abstract getTextStyle(): TextStyle | null;
     abstract readonly size: number;
     abstract toData(): unknown;
     toJsonValue(): JsonValue;
@@ -234,8 +230,6 @@ export interface FormatTextProps {
 export abstract class InlineNode extends FlowNode {
     formatParagraph(): this;
     formatText(style: TextStyle): this;
-    getParagraphStyle(): null;
-    getTextStyle(): TextStyle;
     abstract set(key: "style", value: TextStyle): this;
     abstract readonly style: TextStyle;
     unformatParagraph(): this;
@@ -305,8 +299,6 @@ export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreak
     formatParagraph(style: ParagraphStyle): this;
     formatText(): this;
     static fromData(data: ParagraphBreakData): ParagraphBreak;
-    getParagraphStyle(): ParagraphStyle;
-    getTextStyle(): null;
     readonly size = 1;
     unformatParagraph(style: ParagraphStyle): this;
     unformatText(): this;

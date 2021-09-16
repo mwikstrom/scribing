@@ -36,8 +36,6 @@ export declare class ParagraphBreak extends ParagraphBreakBase implements Paragr
 |  [formatParagraph(style)](./scribing.paragraphbreak.formatparagraph.md) |  | Applies the specified paragraph style on the current node and returns the updated node. |
 |  [formatText()](./scribing.paragraphbreak.formattext.md) |  | Applies the specified text style on the current node and returns the updated node. |
 |  [fromData(data)](./scribing.paragraphbreak.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
-|  [getParagraphStyle()](./scribing.paragraphbreak.getparagraphstyle.md) |  | Gets paragraph style from the current node |
-|  [getTextStyle()](./scribing.paragraphbreak.gettextstyle.md) |  | Gets text style from the current node |
 |  [unformatParagraph(style)](./scribing.paragraphbreak.unformatparagraph.md) |  | Unapplies the specified paragraph style from the current node and returns the updated node. |
 |  [unformatText()](./scribing.paragraphbreak.unformattext.md) |  | Unapplies the specified text style from the current node and returns the updated node. |
 

@@ -19,6 +19,7 @@ import {
     transformEdgeInflatingRangeOpAfterInsertion, 
     transformRangeOpAfterRemoval
 } from "./internal/transform-helpers";
+import { ParagraphBreak } from "./ParagraphBreak";
 import { ParagraphStyle, ParagraphStyleProps } from "./ParagraphStyle";
 import { UnformatParagraph } from "./UnformatParagraph";
 
@@ -93,7 +94,7 @@ export class FormatParagraph extends FormatParagraphBase implements Readonly<For
             content,
             range,
             style,
-            getStyle: node => node.getParagraphStyle(),
+            getStyle: node => node instanceof ParagraphBreak ? node.style : null,
             makeStyle: props => new ParagraphStyle(props),
             makeFormatOp: props => new FormatParagraph(props),
             makeUnformatOp: props => new UnformatParagraph(props),

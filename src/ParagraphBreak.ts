@@ -99,14 +99,4 @@ export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreak
     public unformatText(): this {
         return this;
     }
-
-    /** {@inheritdoc FlowNode.getTextStyle} */
-    getTextStyle(): null {
-        return null;
-    }
-
-    /** {@inheritdoc FlowNode.getParagraphStyle} */
-    getParagraphStyle(): ParagraphStyle {
-        return this.style;
-    }
 }

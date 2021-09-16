@@ -53,16 +53,4 @@ export abstract class FlowNode {
      * @param style - The text style to unapply
      */
     abstract unformatText(style: TextStyle): FlowNode;
-
-    /**
-     * Gets text style from the current node
-     * @internal
-     */
-    abstract getTextStyle(): TextStyle | null;
-
-    /**
-     * Gets paragraph style from the current node
-     * @internal
-     */
-    abstract getParagraphStyle(): ParagraphStyle | null;
 }

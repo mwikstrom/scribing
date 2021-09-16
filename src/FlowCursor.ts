@@ -2,6 +2,8 @@
 import { frozen, integerType, type, validating } from "paratype";
 import { FlowContent } from "./FlowContent";
 import { FlowNode } from "./FlowNode";
+import { InlineNode } from "./InlineNode";
+import { ParagraphBreak } from "./ParagraphBreak";
 import { ParagraphStyle } from "./ParagraphStyle";
 import { TextRun } from "./TextRun";
 import { TextStyle } from "./TextStyle";
@@ -90,15 +92,15 @@ export class FlowCursor {
      */
     getParagraphStyle(): ParagraphStyle | null {
         const { nodes } = this.#content;
-        let index = this.#index;
-        let result: ParagraphStyle | null = null;
 
-        while (index < nodes.length && !result) {
-            result = nodes[index]?.getParagraphStyle() ?? null;
-            ++index;
+        for (let index = this.#index; index < nodes.length; ++index) {
+            const node = nodes[index];
+            if (node instanceof ParagraphBreak) {
+                return node.style;
+            }
         }
 
-        return result;
+        return null;
     }
 
     /**
@@ -112,10 +114,12 @@ export class FlowCursor {
 
         while (index >= 0 && !result) {
             const node = nodes[index];
-            if (breakAtPara && node?.getParagraphStyle()) {
+            if (breakAtPara && node instanceof ParagraphBreak) {
                 break;
             }
-            result = node?.getTextStyle() ?? null;
+            if (node instanceof InlineNode) {
+                result = node.style;
+            }
             --index;
             breakAtPara = true;
         }

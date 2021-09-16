@@ -13,6 +13,7 @@ import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
 import { FlowSelection } from "./FlowSelection";
+import { InlineNode } from "./InlineNode";
 import { invertFormatOp } from "./internal/format-helpers";
 import { registerOperation } from "./internal/operation-registry";
 import { 
@@ -93,7 +94,7 @@ export class FormatText extends FormatTextBase implements Readonly<FormatTextPro
             content,
             range,
             style,
-            getStyle: node => node.getTextStyle(),
+            getStyle: node => node instanceof InlineNode ? node.style : null,
             makeStyle: props => new TextStyle(props),
             makeFormatOp: props => new FormatText(props),
             makeUnformatOp: props => new UnformatText(props),

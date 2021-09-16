@@ -40,14 +40,4 @@ export abstract class InlineNode extends FlowNode {
     public unformatParagraph(): this {
         return this;
     }
-
-    /** {@inheritdoc FlowNode.getTextStyle} */
-    getTextStyle(): TextStyle {
-        return this.style;
-    }
-
-    /** {@inheritdoc FlowNode.getParagraphStyle} */
-    getParagraphStyle(): null {
-        return null;
-    }
 }
