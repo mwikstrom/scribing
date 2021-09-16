@@ -1,5 +1,5 @@
 import { frozen, lazyType, nullType, RecordClass, recordType, type, unionType, validating } from "paratype";
-import { FlowTheme } from ".";
+import { DefaultFlowTheme, FlowTheme } from ".";
 import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowSelection } from "./FlowSelection";
@@ -12,11 +12,13 @@ import { FlowOperationRegistry, FlowSelectionRegistry, FlowThemeRegistry } from 
 export interface FlowEditorStateProps {
     content: FlowContent;
     selection: FlowSelection | null;
+    theme: FlowTheme;
 }
 
 const Props = {
     content: lazyType(() => FlowContent.classType),
     selection: unionType(lazyType(FlowSelectionRegistry.close), nullType),
+    theme: lazyType(FlowThemeRegistry.close),
 };
 
 const PropsType = recordType(Props);
@@ -41,6 +43,7 @@ export class FlowEditorState extends FlowEditorStateBase {
             EMPTY_CACHE = new FlowEditorState({
                 content: new FlowContent(),
                 selection: null,
+                theme: DefaultFlowTheme.instance,
             });
         }
         return EMPTY_CACHE;
