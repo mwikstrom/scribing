@@ -9,7 +9,7 @@ Inserts the specified nodes at the specified position
 <b>Signature:</b>
 
 ```typescript
-insert(position: number, scope: FlowScope | undefined, ...nodes: readonly FlowNode[]): FlowContent;
+insert(position: number, theme: FlowTheme | undefined, ...nodes: readonly FlowNode[]): FlowContent;
 ```
 
 ## Parameters
@@ -17,7 +17,7 @@ insert(position: number, scope: FlowScope | undefined, ...nodes: readonly FlowNo
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  position | number | The position at which nodes shall be inserted |
-|  scope | [FlowScope](./scribing.flowscope.md) \| undefined | Scope of the current content |
+|  theme | [FlowTheme](./scribing.flowtheme.md) \| undefined | Theme of the current content |
 |  nodes | readonly [FlowNode](./scribing.flownode.md)<!-- -->\[\] | The nodes to be inserted |
 
 <b>Returns:</b>

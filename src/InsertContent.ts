@@ -13,7 +13,7 @@ import { FlowCursor } from "./FlowCursor";
 import { FlowNode } from "./FlowNode";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
-import { FlowScope } from "./FlowScope";
+import { FlowTheme } from "./FlowTheme";
 import { FlowSelection } from "./FlowSelection";
 import { InlineNode } from "./InlineNode";
 import { registerOperation } from "./internal/operation-registry";
@@ -159,7 +159,7 @@ export class InsertContent extends InsertContentBase implements InsertContentPro
     /** 
      * {@inheritDoc FlowOperation.applyToContent}
      */
-    applyToContent(content: FlowContent, scope?: FlowScope): FlowContent {
+    applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent {
         const target = content.peek(this.position);
         const targetParaStyle = target.getParagraphStyle();
         let targetTextStyle = target.getTextStyle();
@@ -190,7 +190,7 @@ export class InsertContent extends InsertContentBase implements InsertContentPro
             nodes.push(node);
         }
 
-        return content.insert(this.position, scope, ...nodes);
+        return content.insert(this.position, theme, ...nodes);
     }
 
     /**

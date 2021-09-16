@@ -9,14 +9,14 @@ Appends the specified nodes
 <b>Signature:</b>
 
 ```typescript
-append(scope: FlowScope | undefined, ...nodes: readonly FlowNode[]): FlowContent;
+append(theme: FlowTheme | undefined, ...nodes: readonly FlowNode[]): FlowContent;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  scope | [FlowScope](./scribing.flowscope.md) \| undefined | Scope of the current content |
+|  theme | [FlowTheme](./scribing.flowtheme.md) \| undefined | Theme of the current content |
 |  nodes | readonly [FlowNode](./scribing.flownode.md)<!-- -->\[\] | The nodes to be appended |
 
 <b>Returns:</b>

@@ -16,8 +16,8 @@ Model for collaborative rich text editing
 |  [FlowNode](./scribing.flownode.md) | A piece of flow content. |
 |  [FlowOperation](./scribing.flowoperation.md) | An abstraction of an operation that updates flow content. |
 |  [FlowRange](./scribing.flowrange.md) | Represents a range of flow content |
-|  [FlowScope](./scribing.flowscope.md) | Provides a scope for flow content |
 |  [FlowSelection](./scribing.flowselection.md) | Represents a selection of flow content |
+|  [FlowTheme](./scribing.flowtheme.md) | Provides a theme for flow content |
 |  [FormatParagraph](./scribing.formatparagraph.md) | Represents an operation that applies a paragraph style to a range of flow content. |
 |  [FormatText](./scribing.formattext.md) | Represents an operation that applies a text style to a range of flow content. |
 |  [InlineNode](./scribing.inlinenode.md) | Represents an inline node |

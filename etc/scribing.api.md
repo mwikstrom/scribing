@@ -40,14 +40,14 @@ export interface FlowBatchProps {
 export class FlowContent extends FlowContentBase implements Readonly<FlowContentProps> {
     constructor(props?: FlowContentProps);
     append(...nodes: readonly FlowNode[]): FlowContent;
-    append(scope: FlowScope | undefined, ...nodes: readonly FlowNode[]): FlowContent;
+    append(theme: FlowTheme | undefined, ...nodes: readonly FlowNode[]): FlowContent;
     static readonly classType: Type<FlowContent>;
     copy(range: FlowRange): FlowContent;
-    formatParagraph(range: FlowRange, style: ParagraphStyle, scope?: FlowScope): FlowContent;
-    formatText(range: FlowRange, style: TextStyle, scope?: FlowScope): FlowContent;
+    formatParagraph(range: FlowRange, style: ParagraphStyle, theme?: FlowTheme): FlowContent;
+    formatText(range: FlowRange, style: TextStyle, theme?: FlowTheme): FlowContent;
     static fromData(data: FlowContentData): FlowContent;
     insert(position: number, ...nodes: readonly FlowNode[]): FlowContent;
-    insert(position: number, scope: FlowScope | undefined, ...nodes: readonly FlowNode[]): FlowContent;
+    insert(position: number, theme: FlowTheme | undefined, ...nodes: readonly FlowNode[]): FlowContent;
     peek(position?: number): FlowCursor;
     remove(range: FlowRange): FlowContent;
     get size(): number;
@@ -106,7 +106,7 @@ export abstract class FlowOperation {
     abstract afterInsertion(other: FlowRange): FlowOperation | null;
     // @internal
     abstract afterRemoval(other: FlowRange): FlowOperation | null;
-    abstract applyToContent(content: FlowContent, scope?: FlowScope): FlowContent;
+    abstract applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent;
     abstract applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null;
     static fromJsonValue(value: JsonValue): FlowOperation;
     abstract invert(content: FlowContent): FlowOperation | null;
@@ -149,10 +149,6 @@ export interface FlowRangeProps {
 export type FlowRangeTuple = [number, number];
 
 // @public
-export abstract class FlowScope {
-}
-
-// @public
 export abstract class FlowSelection {
     // @internal
     abstract afterInsertion(range: FlowRange, mine: boolean): FlowSelection | null;
@@ -164,6 +160,11 @@ export abstract class FlowSelection {
     abstract remove(): FlowOperation | null;
     abstract unformatParagraph(style: ParagraphStyle): FlowOperation | null;
     abstract unformatText(style: TextStyle): FlowOperation | null;
+}
+
+// @public
+export abstract class FlowTheme {
+    abstract getParagraphTheme(breakNode: ParagraphBreak | null): FlowTheme;
 }
 
 // @public @sealed
@@ -240,7 +241,7 @@ export abstract class InlineNode extends FlowNode {
 export class InsertContent extends InsertContentBase implements InsertContentProps {
     afterInsertion(other: FlowRange): FlowOperation | null;
     afterRemoval(other: FlowRange): FlowOperation | null;
-    applyToContent(content: FlowContent, scope?: FlowScope): FlowContent;
+    applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent;
     // @override
     applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null;
     static readonly classType: Type<InsertContent>;

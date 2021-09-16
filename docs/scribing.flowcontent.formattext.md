@@ -9,7 +9,7 @@ Applies text style to a range
 <b>Signature:</b>
 
 ```typescript
-formatText(range: FlowRange, style: TextStyle, scope?: FlowScope): FlowContent;
+formatText(range: FlowRange, style: TextStyle, theme?: FlowTheme): FlowContent;
 ```
 
 ## Parameters
@@ -18,7 +18,7 @@ formatText(range: FlowRange, style: TextStyle, scope?: FlowScope): FlowContent;
 |  --- | --- | --- |
 |  range | [FlowRange](./scribing.flowrange.md) | The range to format |
 |  style | [TextStyle](./scribing.textstyle.md) | The style to apply |
-|  scope | [FlowScope](./scribing.flowscope.md) |  |
+|  theme | [FlowTheme](./scribing.flowtheme.md) |  |
 
 <b>Returns:</b>
 

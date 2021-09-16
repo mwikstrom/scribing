@@ -13,8 +13,9 @@ import {
 import { FlowCursor } from "./FlowCursor";
 import { FlowNode } from "./FlowNode";
 import { FlowRange } from "./FlowRange";
-import { FlowScope } from "./FlowScope";
+import { FlowTheme } from "./FlowTheme";
 import { flowNodeType } from "./internal/node-registry";
+import { ParagraphBreak } from "./ParagraphBreak";
 import { ParagraphStyle } from "./ParagraphStyle";
 import { TextRun } from "./TextRun";
 import { TextStyle } from "./TextStyle";
@@ -107,14 +108,14 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     
     /**
      * Appends the specified nodes
-     * @param scope - Scope of the current content
+     * @param theme - Theme of the current content
      * @param nodes - The nodes to be appended
      * @returns The updated flow content
      */
-    append(scope: FlowScope | undefined, ...nodes: readonly FlowNode[]): FlowContent;
+    append(theme: FlowTheme | undefined, ...nodes: readonly FlowNode[]): FlowContent;
     
-    append(first: FlowScope | FlowNode | undefined, ...rest: readonly FlowNode[]): FlowContent {
-        return this.insert(this.size, first, ...rest);
+    append(first: FlowTheme | FlowNode | undefined, ...rest: readonly FlowNode[]): FlowContent {
+        return this.#insert(this.size, first, ...rest);
     }
 
     /**
@@ -136,9 +137,10 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     formatParagraph(
         @type(FlowRange.classType) range: FlowRange, 
         @type(ParagraphStyle.classType) style: ParagraphStyle,
-            scope?: FlowScope,
+            theme?: FlowTheme,
     ): FlowContent {
-        return this.set("nodes", this.#formatRange(range, node => node.formatParagraph(style), scope));
+        // TODO: Verify theme arg
+        return this.set("nodes", this.#formatRange(range, node => node.formatParagraph(style), theme));
     }
 
     /**
@@ -150,9 +152,10 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     formatText(
         @type(FlowRange.classType) range: FlowRange,
         @type(TextStyle.classType) style: TextStyle,
-            scope?: FlowScope,
+            theme?: FlowTheme,
     ): FlowContent {
-        return this.set("nodes", this.#formatRange(range, node => node.formatText(style), scope));
+        // TODO: Verify theme arg
+        return this.set("nodes", this.#formatRange(range, node => node.formatText(style), theme));
     }
 
     /**
@@ -166,22 +169,14 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     /**
      * Inserts the specified nodes at the specified position
      * @param position - The position at which nodes shall be inserted
-     * @param scope - Scope of the current content
+     * @param theme - Theme of the current content
      * @param nodes - The nodes to be inserted
      * @returns The updated flow content
      */
-    insert(position: number, scope: FlowScope | undefined, ...nodes: readonly FlowNode[]): FlowContent;
+    insert(position: number, theme: FlowTheme | undefined, ...nodes: readonly FlowNode[]): FlowContent;
     
-    insert(position: number, first: FlowScope | FlowNode | undefined, ...rest: readonly FlowNode[]): FlowContent {
-        const { before, after } = this.peek(position);
-        const scope = first instanceof FlowScope ? first : undefined;
-        const nodes = [...rest];
-        if (first instanceof FlowNode) {
-            nodes.unshift(first);
-        }
-        const merged = Array.from(FlowContent.merge(before, nodes, after));
-        const unformatted = scope ? FlowContent.unformatAmbient(merged, scope) : merged;
-        return this.set("nodes", Object.freeze(unformatted));
+    insert(position: number, first: FlowTheme | FlowNode | undefined, ...rest: readonly FlowNode[]): FlowContent {
+        return this.#insert(position, first, ...rest);
     }
 
     /**
@@ -236,14 +231,26 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
         return this.set("nodes", this.#formatRange(range, node => node.unformatText(style)));
     }
     
-    #formatRange(range: FlowRange, formatter: (node: FlowNode) => FlowNode, scope?: FlowScope): readonly FlowNode[] {
+    #formatRange(range: FlowRange, formatter: (node: FlowNode) => FlowNode, theme?: FlowTheme): readonly FlowNode[] {
         const first = this.peek(range.first);
         const before = first.before;
         const formatted = Array.from(first.range(range.size)).map(formatter);
         const after = first.move(range.size).after;
         const merged = Array.from(FlowContent.merge(before, formatted, after));
-        const unformatted = scope ? FlowContent.unformatAmbient(merged, scope) : merged;
+        const unformatted = theme ? FlowContent.unformatAmbient(merged, theme) : merged;
         return Object.freeze(unformatted);
+    }
+
+    #insert(position: number, first: FlowTheme | FlowNode | undefined, ...rest: readonly FlowNode[]): FlowContent {
+        const { before, after } = this.peek(position);
+        const theme = first instanceof FlowTheme ? first : undefined;
+        const nodes = [...rest];
+        if (first instanceof FlowNode) {
+            nodes.unshift(first);
+        }
+        const merged = Array.from(FlowContent.merge(before, nodes, after));
+        const unformatted = theme ? FlowContent.unformatAmbient(merged, theme) : merged;
+        return this.set("nodes", Object.freeze(unformatted));
     }
 
     /** @internal */
@@ -293,8 +300,30 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     }
 
     /** @internal */
-    private static unformatAmbient(nodes: readonly FlowNode[], scope: FlowScope): FlowNode[] {
-        // TODO: UNFORMAT AMBIENT NODES
-        return [...nodes];
+    private static unformatAmbient(nodes: readonly FlowNode[], theme: FlowTheme): FlowNode[] {
+        const result: FlowNode[] = [];
+        let p = FlowContent.findParagraphBreak(nodes);
+        theme = theme.getParagraphTheme(p);
+        for (let i = 0; i < nodes.length; ++i) {
+            const n = nodes[i];
+            //result.push(n.unformatAmbient(theme));
+            result.push(n);
+            if (p === n) {
+                p = FlowContent.findParagraphBreak(nodes, i + 1);
+                theme = theme.getParagraphTheme(p);
+            }
+        }
+        return result;
+    }
+
+    /** @internal */
+    private static findParagraphBreak(nodes: readonly FlowNode[], startIndex = 0): ParagraphBreak | null {
+        for (let i = startIndex; i < nodes.length; ++i) {
+            const n = nodes[i];
+            if (n instanceof ParagraphBreak) {
+                return n;
+            }
+        }
+        return null;
     }
 }

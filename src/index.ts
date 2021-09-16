@@ -19,7 +19,7 @@ export * from "./TextRun";
 
 // Content
 export * from "./FlowCursor";
-export * from "./FlowScope";
+export * from "./FlowTheme";
 export * from "./FlowContent";
 
 // Operations
