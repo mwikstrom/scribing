@@ -4,6 +4,8 @@
 
 ## ParagraphBreak.formatText() method
 
+Applies the specified text style on the current node and returns the updated node.
+
 <b>Signature:</b>
 
 ```typescript

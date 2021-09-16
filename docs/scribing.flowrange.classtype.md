@@ -4,7 +4,7 @@
 
 ## FlowRange.classType property
 
-A run-time type that matches [FlowRange](./scribing.flowrange.md) instances
+The run-time type that represents this class
 
 <b>Signature:</b>
 

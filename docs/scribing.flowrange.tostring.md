@@ -4,6 +4,8 @@
 
 ## FlowRange.toString() method
 
+Gets a string representation of the current range
+
 <b>Signature:</b>
 
 ```typescript

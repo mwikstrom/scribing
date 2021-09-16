@@ -26,7 +26,7 @@ export declare class FlowContent extends FlowContentBase implements Readonly<Flo
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.flowcontent.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FlowContent](./scribing.flowcontent.md)<!-- -->&gt; |  |
+|  [classType](./scribing.flowcontent.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FlowContent](./scribing.flowcontent.md)<!-- -->&gt; | The run-time type that represents this class |
 |  [size](./scribing.flowcontent.size.md) |  | number | Flow content size |
 
 ## Methods
@@ -37,11 +37,11 @@ export declare class FlowContent extends FlowContentBase implements Readonly<Flo
 |  [copy(range)](./scribing.flowcontent.copy.md) |  | Extracts a range of flow content |
 |  [formatParagraph(range, style)](./scribing.flowcontent.formatparagraph.md) |  | Applies paragraph style to a range |
 |  [formatText(range, style)](./scribing.flowcontent.formattext.md) |  | Applies text style to a range |
-|  [fromData(data)](./scribing.flowcontent.fromdata.md) | <code>static</code> |  |
+|  [fromData(data)](./scribing.flowcontent.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
 |  [insert(position, nodes)](./scribing.flowcontent.insert.md) |  | Inserts the specified nodes at the specified position |
 |  [peek(position)](./scribing.flowcontent.peek.md) |  | Gets a cursor |
 |  [remove(range)](./scribing.flowcontent.remove.md) |  | Removes a range of flow content |
-|  [toJsonValue()](./scribing.flowcontent.tojsonvalue.md) |  |  |
+|  [toJsonValue()](./scribing.flowcontent.tojsonvalue.md) |  | Gets a JSON value representation of the current content |
 |  [unformatParagraph(range, style)](./scribing.flowcontent.unformatparagraph.md) |  | Unapplies paragraph style to a range |
 |  [unformatText(range, style)](./scribing.flowcontent.unformattext.md) |  | Unapplies text style to a range |
 

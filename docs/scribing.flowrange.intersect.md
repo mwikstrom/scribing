@@ -4,6 +4,8 @@
 
 ## FlowRange.intersect() method
 
+Gets a range that represents the intersection between the current range and the specified other range.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ intersect(other: FlowRange): FlowRange;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  other | [FlowRange](./scribing.flowrange.md) |  |
+|  other | [FlowRange](./scribing.flowrange.md) | The other range |
 
 <b>Returns:</b>
 

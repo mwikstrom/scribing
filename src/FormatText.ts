@@ -71,8 +71,10 @@ export interface FormatTextData {
 @validating
 @registerOperation
 export class FormatText extends FormatTextBase implements Readonly<FormatTextProps> {
+    /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => FormatText);
 
+    /** Gets an instance of the current class from the specified data */
     public static fromData(@type(DataType) data: FormatTextData): FormatText {
         const { range, style } = data;
         const props: FormatTextProps = { range, style };

@@ -81,14 +81,20 @@ export const ParagraphStyleBase = RecordClass(PropsType);
 @frozen
 @validating
 export class ParagraphStyle extends ParagraphStyleBase implements Readonly<ParagraphStyleProps> {
+    /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => ParagraphStyle);
+
+    /** Gets an empty paragraph style */
     public static get empty(): ParagraphStyle {
         if (!EMPTY_CACHE) {
             EMPTY_CACHE = new ParagraphStyle();
         }
         return EMPTY_CACHE;
     }
+
+    /** Determines whether the current style is empty */
     public get isEmpty(): boolean { return ParagraphStyle.empty.equals(this); }
+
     constructor(props: ParagraphStyleProps = {}) { super(props); }
 }
 

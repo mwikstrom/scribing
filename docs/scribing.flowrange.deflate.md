@@ -4,17 +4,19 @@
 
 ## FlowRange.deflate() method
 
+Reduces the distance of the current range by the specified delta
+
 <b>Signature:</b>
 
 ```typescript
-deflate(distance: number): FlowRange;
+deflate(delta: number): FlowRange;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  distance | number |  |
+|  delta | number | The delta distance |
 
 <b>Returns:</b>
 

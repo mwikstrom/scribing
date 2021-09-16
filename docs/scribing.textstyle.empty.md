@@ -4,6 +4,8 @@
 
 ## TextStyle.empty property
 
+Gets an empty text style
+
 <b>Signature:</b>
 
 ```typescript

@@ -20,7 +20,7 @@ export declare class FormatParagraph extends FormatParagraphBase implements Read
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.formatparagraph.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FormatParagraph](./scribing.formatparagraph.md)<!-- -->&gt; |  |
+|  [classType](./scribing.formatparagraph.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FormatParagraph](./scribing.formatparagraph.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 
@@ -30,7 +30,7 @@ export declare class FormatParagraph extends FormatParagraphBase implements Read
 |  [afterRemoval(other)](./scribing.formatparagraph.afterremoval.md) |  | Transforms the current operation so that its intent is preserved after the specified range was removed. |
 |  [applyToContent(content)](./scribing.formatparagraph.applytocontent.md) |  | Applies the current operation on the specified content and returns the updated result. |
 |  [applyToSelection(selection)](./scribing.formatparagraph.applytoselection.md) |  | Applies the current operation on the specified selection and returns the updated result. |
-|  [fromData(data)](./scribing.formatparagraph.fromdata.md) | <code>static</code> |  |
+|  [fromData(data)](./scribing.formatparagraph.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
 |  [invert(content)](./scribing.formatparagraph.invert.md) |  | Returns an operation that negates the effect of the current operation. |
 |  [transform(other)](./scribing.formatparagraph.transform.md) |  | Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation. |
 

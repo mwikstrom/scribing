@@ -19,7 +19,7 @@ export declare class FlowRange extends FlowRangeBase implements Readonly<FlowRan
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.flowrange.classtype.md) | <code>static</code> | Type&lt;[FlowRange](./scribing.flowrange.md)<!-- -->&gt; | A run-time type that matches [FlowRange](./scribing.flowrange.md) instances |
+|  [classType](./scribing.flowrange.classtype.md) | <code>static</code> | Type&lt;[FlowRange](./scribing.flowrange.md)<!-- -->&gt; | The run-time type that represents this class |
 |  [distance](./scribing.flowrange.distance.md) |  | number | Gets the distance from anchor to focus, which may be a negative value |
 |  [first](./scribing.flowrange.first.md) |  | number | Gets the first position |
 |  [isBackward](./scribing.flowrange.isbackward.md) |  | boolean | Determines whether the focus position is after the anchor position |
@@ -33,12 +33,12 @@ export declare class FlowRange extends FlowRangeBase implements Readonly<FlowRan
 |  --- | --- | --- |
 |  [at(position, distance)](./scribing.flowrange.at.md) | <code>static</code> | Gets a flow range with the specified anchor and optionally with a distance. |
 |  [contains(position)](./scribing.flowrange.contains.md) |  | Determines whether the specified position is within the current range |
-|  [deflate(distance)](./scribing.flowrange.deflate.md) |  |  |
+|  [deflate(delta)](./scribing.flowrange.deflate.md) |  | Reduces the distance of the current range by the specified delta |
 |  [fromData(data)](./scribing.flowrange.fromdata.md) | <code>static</code> | Gets a flow range from the specified data |
-|  [inflate(distance)](./scribing.flowrange.inflate.md) |  |  |
-|  [intersect(other)](./scribing.flowrange.intersect.md) |  |  |
-|  [reverse()](./scribing.flowrange.reverse.md) |  |  |
-|  [set(key, value)](./scribing.flowrange.set.md) |  |  |
-|  [toString()](./scribing.flowrange.tostring.md) |  |  |
-|  [translate(distance)](./scribing.flowrange.translate.md) |  |  |
+|  [inflate(delta)](./scribing.flowrange.inflate.md) |  | Increases the distance of the current range by the specified delta |
+|  [intersect(other)](./scribing.flowrange.intersect.md) |  | Gets a range that represents the intersection between the current range and the specified other range. |
+|  [reverse()](./scribing.flowrange.reverse.md) |  | Gets a range that represents the reverse of the current range |
+|  [set(key, value)](./scribing.flowrange.set.md) |  | Returns a copy of the current object with the specified property merged in |
+|  [toString()](./scribing.flowrange.tostring.md) |  | Gets a string representation of the current range |
+|  [translate(delta)](./scribing.flowrange.translate.md) |  | Moves the position of the current range by the specified delta |
 

@@ -82,6 +82,7 @@ export type TextRunData = string | {
 @validating
 @registerNode
 export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
+    /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => TextRun);
     public readonly size: number;
 
@@ -93,6 +94,7 @@ export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
             .replace(UNPAIRED_LOW_SURROGATE, REPLACEMENT);
     }
 
+    /** Gets an instance of the current class from the specified data */
     public static fromData(@type(DataType) data: TextRunData): TextRun {
         if (typeof data === "string") {
             data = { text: data };
@@ -108,20 +110,36 @@ export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
         this.size = props.text.length;
     }
 
+    /** Appends the specified text to the current text run */
     public append(@type(stringType) value: string): TextRun {
         return this.set("text", this.text + value);
     }
 
+    /**
+     * Splits the current text run a the specified position and returns the resulting
+     * text run before the split position.
+     * @param position - The position at which the text run shall be split
+     */
     public before(@type(integerType) position: number): TextRun {
         this.#assertSplitPosition(position);
         return this.set("text", this.text.substr(0, position));
     }
 
+    /**
+     * Splits the current text run a the specified position and returns the resulting
+     * text run after the split position.
+     * @param position - The position at which the text run shall be split
+     */
     public after(@type(integerType) position: number): TextRun {
         this.#assertSplitPosition(position);
         return this.set("text", this.text.substr(position));
     }
 
+    /**
+     * Splits the current text run a the specified position and returns a tuple with the
+     * resulting text runs.
+     * @param position - The position at which the text run shall be split
+     */
     public split(@type(integerType) position: number): [TextRun, TextRun] {
         this.#assertSplitPosition(position);
         return [

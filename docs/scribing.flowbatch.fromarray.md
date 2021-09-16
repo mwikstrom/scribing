@@ -4,6 +4,8 @@
 
 ## FlowBatch.fromArray() method
 
+Gets a single operation that represents the specified array of operations, or `null` when the specified array is empty.
+
 <b>Signature:</b>
 
 ```typescript

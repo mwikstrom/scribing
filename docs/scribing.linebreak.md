@@ -26,12 +26,12 @@ export declare class LineBreak extends LineBreakBase implements LineBreakProps
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.linebreak.classtype.md) | <code>static</code> | import("paratype").Type&lt;[LineBreak](./scribing.linebreak.md)<!-- -->&gt; |  |
+|  [classType](./scribing.linebreak.classtype.md) | <code>static</code> | import("paratype").Type&lt;[LineBreak](./scribing.linebreak.md)<!-- -->&gt; | The run-time type that represents this class |
 |  [size](./scribing.linebreak.size.md) |  | (not declared) |  |
 
 ## Methods
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [fromData(data)](./scribing.linebreak.fromdata.md) | <code>static</code> |  |
+|  [fromData(data)](./scribing.linebreak.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
 

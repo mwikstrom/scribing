@@ -65,8 +65,10 @@ export interface InsertContentData {
 @validating
 @registerOperation
 export class InsertContent extends InsertContentBase implements InsertContentProps {
+    /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => InsertContent);
 
+    /** Gets an instance of the current class from the specified data */
     public static fromData(@type(DataType) data: InsertContentData): InsertContent {
         const { insert: content, at: position } = data;
         const props: InsertContentProps = { position, content };

@@ -4,6 +4,8 @@
 
 ## TextRun.before() method
 
+Splits the current text run a the specified position and returns the resulting text run before the split position.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ before(position: number): TextRun;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  position | number |  |
+|  position | number | The position at which the text run shall be split |
 
 <b>Returns:</b>
 

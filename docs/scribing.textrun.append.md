@@ -4,6 +4,8 @@
 
 ## TextRun.append() method
 
+Appends the specified text to the current text run
+
 <b>Signature:</b>
 
 ```typescript

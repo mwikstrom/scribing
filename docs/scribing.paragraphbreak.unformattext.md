@@ -4,6 +4,8 @@
 
 ## ParagraphBreak.unformatText() method
 
+Unapplies the specified text style from the current node and returns the updated node.
+
 <b>Signature:</b>
 
 ```typescript

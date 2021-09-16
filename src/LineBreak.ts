@@ -60,9 +60,11 @@ export interface LineBreakData {
 @validating
 @registerNode
 export class LineBreak extends LineBreakBase implements LineBreakProps {
+    /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => LineBreak);
     public readonly size = 1;
 
+    /** Gets an instance of the current class from the specified data */
     public static fromData(@type(DataType) data: LineBreakData): LineBreak {
         const { style = TextStyle.empty} = data;
         const props: LineBreakProps = { style };

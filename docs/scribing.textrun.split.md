@@ -4,6 +4,8 @@
 
 ## TextRun.split() method
 
+Splits the current text run a the specified position and returns a tuple with the resulting text runs.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ split(position: number): [TextRun, TextRun];
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  position | number |  |
+|  position | number | The position at which the text run shall be split |
 
 <b>Returns:</b>
 

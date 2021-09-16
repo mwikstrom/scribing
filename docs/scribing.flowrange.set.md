@@ -4,6 +4,8 @@
 
 ## FlowRange.set() method
 
+Returns a copy of the current object with the specified property merged in
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,10 +16,14 @@ set(key: "first" | "last" | keyof FlowRangeProps, value: number): this;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  key | "first" \| "last" \| keyof [FlowRangeProps](./scribing.flowrangeprops.md) |  |
-|  value | number |  |
+|  key | "first" \| "last" \| keyof [FlowRangeProps](./scribing.flowrangeprops.md) | Key of the property to merge in |
+|  value | number | Property value to merge in |
 
 <b>Returns:</b>
 
 this
+
+## Remarks
+
+If the resulting object would be equal to the current instance, then the current instance is returned instead.
 

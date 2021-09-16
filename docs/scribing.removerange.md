@@ -20,7 +20,7 @@ export declare class RemoveRange extends RemoveRangeBase implements Readonly<Rem
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.removerange.classtype.md) | <code>static</code> | import("paratype").Type&lt;[RemoveRange](./scribing.removerange.md)<!-- -->&gt; |  |
+|  [classType](./scribing.removerange.classtype.md) | <code>static</code> | import("paratype").Type&lt;[RemoveRange](./scribing.removerange.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 
@@ -30,7 +30,7 @@ export declare class RemoveRange extends RemoveRangeBase implements Readonly<Rem
 |  [afterRemoval(other)](./scribing.removerange.afterremoval.md) |  | Transforms the current operation so that its intent is preserved after the specified range was removed. |
 |  [applyToContent(content)](./scribing.removerange.applytocontent.md) |  | Applies the current operation on the specified content and returns the updated result. |
 |  [applyToSelection(selection, mine)](./scribing.removerange.applytoselection.md) |  | Applies the current operation on the specified selection and returns the updated result. |
-|  [fromData(data)](./scribing.removerange.fromdata.md) | <code>static</code> |  |
+|  [fromData(data)](./scribing.removerange.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
 |  [invert(content)](./scribing.removerange.invert.md) |  | Returns an operation that negates the effect of the current operation. |
 |  [transform(other)](./scribing.removerange.transform.md) |  | Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation. |
 

@@ -63,14 +63,20 @@ export const TextStyleBase = RecordClass(PropsType);
 @frozen
 @validating
 export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps> {
+    /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => TextStyle);
+
+    /** Gets an empty text style */
     public static get empty(): TextStyle {
         if (!EMPTY_CACHE) {
             EMPTY_CACHE = new TextStyle();
         }
         return EMPTY_CACHE;        
     }
+
+    /** Determines whether the current style is empty */
     public get isEmpty(): boolean { return this.equals(TextStyle.empty); }
+    
     constructor(props: TextStyleProps = {}) { super(props); }
 }
 

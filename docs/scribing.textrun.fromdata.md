@@ -4,6 +4,8 @@
 
 ## TextRun.fromData() method
 
+Gets an instance of the current class from the specified data
+
 <b>Signature:</b>
 
 ```typescript

@@ -26,7 +26,7 @@ export declare class FlowBatch extends FlowBatchBase implements Readonly<FlowBat
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.flowbatch.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FlowBatch](./scribing.flowbatch.md)<!-- -->&gt; |  |
+|  [classType](./scribing.flowbatch.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FlowBatch](./scribing.flowbatch.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 
@@ -36,7 +36,7 @@ export declare class FlowBatch extends FlowBatchBase implements Readonly<FlowBat
 |  [afterRemoval(other)](./scribing.flowbatch.afterremoval.md) |  | Transforms the current operation so that its intent is preserved after the specified range was removed. |
 |  [applyToContent(content)](./scribing.flowbatch.applytocontent.md) |  | Applies the current operation on the specified content and returns the updated result. |
 |  [applyToSelection(selection, mine)](./scribing.flowbatch.applytoselection.md) |  | Applies the current operation on the specified selection and returns the updated result. |
-|  [fromArray(operations)](./scribing.flowbatch.fromarray.md) | <code>static</code> |  |
+|  [fromArray(operations)](./scribing.flowbatch.fromarray.md) | <code>static</code> | Gets a single operation that represents the specified array of operations, or <code>null</code> when the specified array is empty. |
 |  [fromData(data)](./scribing.flowbatch.fromdata.md) | <code>static</code> | Gets a [FlowBatch](./scribing.flowbatch.md) from the specified data |
 |  [invert(content)](./scribing.flowbatch.invert.md) |  | Returns an operation that negates the effect of the current operation. |
 |  [transform(other)](./scribing.flowbatch.transform.md) |  | Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation. |

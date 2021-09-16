@@ -70,8 +70,10 @@ export type FlowContentData = readonly FlowNode[];
 @frozen
 @validating
 export class FlowContent extends FlowContentBase implements Readonly<FlowContentProps> {
+    /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => FlowContent);
 
+    /** Gets an instance of the current class from the specified data */
     public static fromData(@type(NodeArrayType) data: FlowContentData): FlowContent {
         const props: FlowContentProps = { nodes: Object.freeze(Array.from(FlowContent.merge(data))) };
         return new FlowContent(props);
@@ -178,6 +180,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
         return this.set("nodes", merged);
     }
 
+    /** Gets a JSON value representation of the current content */
     toJsonValue(): JsonValue {
         return FlowContent.classType.toJsonValue(this);
     }

@@ -50,6 +50,7 @@ export type FlowBatchData = readonly FlowOperation[];
 @validating
 @registerOperation
 export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps> {
+    /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => FlowBatch);
 
     /**
@@ -61,6 +62,10 @@ export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps>
         return new FlowBatch(props);
     }
 
+    /**
+     * Gets a single operation that represents the specified array of operations,
+     * or `null` when the specified array is empty.
+     */
     public static fromArray(operations: FlowOperation[]): FlowOperation | null {
         if (operations.length === 0) {
             return null;

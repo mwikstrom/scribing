@@ -4,6 +4,8 @@
 
 ## ParagraphBreak.formatParagraph() method
 
+Applies the specified paragraph style on the current node and returns the updated node.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ formatParagraph(style: ParagraphStyle): this;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  style | [ParagraphStyle](./scribing.paragraphstyle.md) |  |
+|  style | [ParagraphStyle](./scribing.paragraphstyle.md) | The paragraph style to apply |
 
 <b>Returns:</b>
 

@@ -18,9 +18,7 @@ export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps>
     applyToContent(content: FlowContent): FlowContent;
     // @override
     applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null;
-    // (undocumented)
     static readonly classType: Type<FlowBatch>;
-    // (undocumented)
     static fromArray(operations: FlowOperation[]): FlowOperation | null;
     static fromData(data: FlowBatchData): FlowBatch;
     invert(content: FlowContent): FlowOperation | null;
@@ -42,18 +40,15 @@ export interface FlowBatchProps {
 export class FlowContent extends FlowContentBase implements Readonly<FlowContentProps> {
     constructor(props?: FlowContentProps);
     append(...nodes: readonly FlowNode[]): FlowContent;
-    // (undocumented)
     static readonly classType: Type<FlowContent>;
     copy(range: FlowRange): FlowContent;
     formatParagraph(range: FlowRange, style: ParagraphStyle): FlowContent;
     formatText(range: FlowRange, style: TextStyle): FlowContent;
-    // (undocumented)
     static fromData(data: FlowContentData): FlowContent;
     insert(position: number, ...nodes: readonly FlowNode[]): FlowContent;
     peek(position?: number): FlowCursor;
     remove(range: FlowRange): FlowContent;
     get size(): number;
-    // (undocumented)
     toJsonValue(): JsonValue;
     unformatParagraph(range: FlowRange, style: ParagraphStyle): FlowContent;
     unformatText(range: FlowRange, style: TextStyle): FlowContent;
@@ -136,27 +131,20 @@ export class FlowRange extends FlowRangeBase implements Readonly<FlowRangeProps>
     static at(position: number, distance?: number): FlowRange;
     static readonly classType: Type<FlowRange>;
     contains(position: number): boolean;
-    // (undocumented)
-    deflate(distance: number): FlowRange;
+    deflate(delta: number): FlowRange;
     get distance(): number;
     get first(): number;
     static fromData(data: FlowRangeTuple): FlowRange;
-    // (undocumented)
-    inflate(distance: number): FlowRange;
-    // (undocumented)
+    inflate(delta: number): FlowRange;
     intersect(other: FlowRange): FlowRange;
     get isBackward(): boolean;
     get isCollapsed(): boolean;
     get last(): number;
-    // (undocumented)
     reverse(): FlowRange;
-    // (undocumented)
     set(key: "first" | "last" | keyof FlowRangeProps, value: number): this;
     get size(): number;
-    // (undocumented)
     toString(): string;
-    // (undocumented)
-    translate(distance: number): FlowRange;
+    translate(delta: number): FlowRange;
 }
 
 // @public
@@ -193,9 +181,7 @@ export class FormatParagraph extends FormatParagraphBase implements Readonly<For
     applyToContent(content: FlowContent): FlowContent;
     // @override
     applyToSelection(selection: FlowSelection): FlowSelection;
-    // (undocumented)
     static readonly classType: Type<FormatParagraph>;
-    // (undocumented)
     static fromData(data: FormatParagraphData): FormatParagraph;
     // @override
     invert(content: FlowContent): FlowOperation | null;
@@ -232,9 +218,7 @@ export class FormatText extends FormatTextBase implements Readonly<FormatTextPro
     applyToContent(content: FlowContent): FlowContent;
     // @override
     applyToSelection(selection: FlowSelection): FlowSelection;
-    // (undocumented)
     static readonly classType: Type<FormatText>;
-    // (undocumented)
     static fromData(data: FormatTextData): FormatText;
     // @override
     invert(content: FlowContent): FlowOperation | null;
@@ -290,9 +274,7 @@ export class InsertContent extends InsertContentBase implements InsertContentPro
     applyToContent(content: FlowContent): FlowContent;
     // @override
     applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null;
-    // (undocumented)
     static readonly classType: Type<InsertContent>;
-    // (undocumented)
     static fromData(data: InsertContentData): InsertContent;
     invert(): FlowOperation | null;
     // (undocumented)
@@ -324,9 +306,7 @@ export interface InsertContentProps {
 // @public @sealed
 export class LineBreak extends LineBreakBase implements LineBreakProps {
     constructor(props?: LineBreakProps);
-    // (undocumented)
     static readonly classType: Type<LineBreak>;
-    // (undocumented)
     static fromData(data: LineBreakData): LineBreak;
     // (undocumented)
     readonly size = 1;
@@ -351,13 +331,9 @@ export interface LineBreakProps {
 // @public @sealed
 export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreakProps {
     constructor(props?: ParagraphBreakProps);
-    // (undocumented)
     static readonly classType: Type<ParagraphBreak>;
-    // (undocumented)
     formatParagraph(style: ParagraphStyle): this;
-    // (undocumented)
     formatText(): this;
-    // (undocumented)
     static fromData(data: ParagraphBreakData): ParagraphBreak;
     // (undocumented)
     getParagraphStyle(): ParagraphStyle;
@@ -365,9 +341,7 @@ export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreak
     getTextStyle(): null;
     // (undocumented)
     readonly size = 1;
-    // (undocumented)
     unformatParagraph(style: ParagraphStyle): this;
-    // (undocumented)
     unformatText(): this;
 }
 
@@ -390,7 +364,6 @@ export interface ParagraphBreakProps {
 // @public @sealed
 export class ParagraphStyle extends ParagraphStyleBase implements Readonly<ParagraphStyleProps> {
     constructor(props?: ParagraphStyleProps);
-    // (undocumented)
     static readonly classType: Type<RecordObject<Partial<{
     alignment: "start" | "center" | "end" | "justify";
     direction: "ltr" | "rtl";
@@ -407,9 +380,7 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
     type: "normal" | "title" | "subtitle" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
     line_spacing: number;
     }>> & ParagraphStyle>;
-    // (undocumented)
     static get empty(): ParagraphStyle;
-    // (undocumented)
     get isEmpty(): boolean;
 }
 
@@ -465,9 +436,7 @@ export class RemoveRange extends RemoveRangeBase implements Readonly<RemoveRange
     applyToContent(content: FlowContent): FlowContent;
     // @override
     applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null;
-    // (undocumented)
     static readonly classType: Type<RemoveRange>;
-    // (undocumented)
     static fromData(data: RemoveRangeData): RemoveRange;
     // @override
     invert(content: FlowContent): InsertContent;
@@ -493,15 +462,10 @@ export interface RemoveRangeProps {
 // @public @sealed
 export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
     constructor(props?: TextRunProps);
-    // (undocumented)
     after(position: number): TextRun;
-    // (undocumented)
     append(value: string): TextRun;
-    // (undocumented)
     before(position: number): TextRun;
-    // (undocumented)
     static readonly classType: Type<TextRun>;
-    // (undocumented)
     static fromData(data: TextRunData): TextRun;
     // @internal (undocumented)
     static merge(first: TextRun, second: TextRun): TextRun;
@@ -511,7 +475,6 @@ export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
     static shouldMerge(first: TextRun, second: TextRun): boolean;
     // (undocumented)
     readonly size: number;
-    // (undocumented)
     split(position: number): [TextRun, TextRun];
 }
 
@@ -535,7 +498,6 @@ export interface TextRunProps {
 // @public @sealed
 export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps> {
     constructor(props?: TextStyleProps);
-    // (undocumented)
     static readonly classType: Type<RecordObject<Partial<{
     bold: boolean;
     italic: boolean;
@@ -555,9 +517,7 @@ export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps>
     strike: boolean;
     baseline: "normal" | "sub" | "super";
     }>> & TextStyle>;
-    // (undocumented)
     static get empty(): TextStyle;
-    // (undocumented)
     get isEmpty(): boolean;
 }
 
@@ -593,9 +553,7 @@ export class UnformatParagraph extends UnformatParagraphBase implements Readonly
     applyToContent(content: FlowContent): FlowContent;
     // @override
     applyToSelection(selection: FlowSelection): FlowSelection;
-    // (undocumented)
     static readonly classType: Type<UnformatParagraph>;
-    // (undocumented)
     static fromData(data: UnformatParagraphData): UnformatParagraph;
     // @override
     invert(content: FlowContent): FlowOperation | null;
@@ -632,9 +590,7 @@ export class UnformatText extends UnformatTextBase implements Readonly<UnformatT
     applyToContent(content: FlowContent): FlowContent;
     // @override
     applyToSelection(selection: FlowSelection): FlowSelection;
-    // (undocumented)
     static readonly classType: Type<UnformatText>;
-    // (undocumented)
     static fromData(data: UnformatTextData): UnformatText;
     // @override
     invert(content: FlowContent): FlowOperation | null;

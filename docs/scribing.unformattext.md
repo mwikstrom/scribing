@@ -20,7 +20,7 @@ export declare class UnformatText extends UnformatTextBase implements Readonly<U
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.unformattext.classtype.md) | <code>static</code> | import("paratype").Type&lt;[UnformatText](./scribing.unformattext.md)<!-- -->&gt; |  |
+|  [classType](./scribing.unformattext.classtype.md) | <code>static</code> | import("paratype").Type&lt;[UnformatText](./scribing.unformattext.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 
@@ -30,7 +30,7 @@ export declare class UnformatText extends UnformatTextBase implements Readonly<U
 |  [afterRemoval(other)](./scribing.unformattext.afterremoval.md) |  | Transforms the current operation so that its intent is preserved after the specified range was removed. |
 |  [applyToContent(content)](./scribing.unformattext.applytocontent.md) |  | Applies the current operation on the specified content and returns the updated result. |
 |  [applyToSelection(selection)](./scribing.unformattext.applytoselection.md) |  | Applies the current operation on the specified selection and returns the updated result. |
-|  [fromData(data)](./scribing.unformattext.fromdata.md) | <code>static</code> |  |
+|  [fromData(data)](./scribing.unformattext.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
 |  [invert(content)](./scribing.unformattext.invert.md) |  | Returns an operation that negates the effect of the current operation. |
 |  [transform(other)](./scribing.unformattext.transform.md) |  | Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation. |
 

@@ -71,8 +71,10 @@ export interface UnformatTextData {
 @validating
 @registerOperation
 export class UnformatText extends UnformatTextBase implements Readonly<UnformatTextProps> {
+    /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => UnformatText);
 
+    /** Gets an instance of the current class from the specified data */
     public static fromData(@type(DataType) data: UnformatTextData): UnformatText {
         const { range, style } = data;
         const props: UnformatTextProps = { range, style };

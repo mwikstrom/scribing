@@ -4,6 +4,8 @@
 
 ## ParagraphBreak.unformatParagraph() method
 
+Unapplies the specified paragraph style from the current node and returns the updated node.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ unformatParagraph(style: ParagraphStyle): this;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  style | [ParagraphStyle](./scribing.paragraphstyle.md) |  |
+|  style | [ParagraphStyle](./scribing.paragraphstyle.md) | The paragraph style to unapply |
 
 <b>Returns:</b>
 

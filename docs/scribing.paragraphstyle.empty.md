@@ -4,6 +4,8 @@
 
 ## ParagraphStyle.empty property
 
+Gets an empty paragraph style
+
 <b>Signature:</b>
 
 ```typescript

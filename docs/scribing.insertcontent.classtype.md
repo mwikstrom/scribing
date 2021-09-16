@@ -4,6 +4,8 @@
 
 ## InsertContent.classType property
 
+The run-time type that represents this class
+
 <b>Signature:</b>
 
 ```typescript

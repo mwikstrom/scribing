@@ -4,17 +4,19 @@
 
 ## FlowRange.inflate() method
 
+Increases the distance of the current range by the specified delta
+
 <b>Signature:</b>
 
 ```typescript
-inflate(distance: number): FlowRange;
+inflate(delta: number): FlowRange;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  distance | number |  |
+|  delta | number | The delta distance |
 
 <b>Returns:</b>
 

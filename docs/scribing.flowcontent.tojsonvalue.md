@@ -4,6 +4,8 @@
 
 ## FlowContent.toJsonValue() method
 
+Gets a JSON value representation of the current content
+
 <b>Signature:</b>
 
 ```typescript

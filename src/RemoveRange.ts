@@ -60,8 +60,10 @@ export interface RemoveRangeData {
 @validating
 @registerOperation
 export class RemoveRange extends RemoveRangeBase implements Readonly<RemoveRangeProps> {
+    /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => RemoveRange);
 
+    /** Gets an instance of the current class from the specified data */
     public static fromData(@type(DataType) data: RemoveRangeData): RemoveRange {
         const { remove: range } = data;
         const props: RemoveRangeProps = { range };

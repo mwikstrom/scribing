@@ -55,7 +55,7 @@ export type FlowRangeTuple = [number, number];
 @frozen
 @validating
 export class FlowRange extends FlowRangeBase implements Readonly<FlowRangeProps> {
-    /** A run-time type that matches {@link FlowRange} instances */
+    /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => FlowRange);
 
     /**
@@ -102,19 +102,32 @@ export class FlowRange extends FlowRangeBase implements Readonly<FlowRangeProps>
         return this.first <= position && this.last > position;
     }
 
-    public deflate(distance: number): FlowRange {
-        return this.inflate(-distance);
+    /**
+     * Reduces the distance of the current range by the specified delta
+     * @param delta - The delta distance
+     */
+    public deflate(delta: number): FlowRange {
+        return this.inflate(-delta);
     }
 
-    public inflate(distance: number): FlowRange {
+    /**
+     * Increases the distance of the current range by the specified delta
+     * @param delta - The delta distance
+     */
+    public inflate(delta: number): FlowRange {
         const { anchor, focus, isBackward } = this;
         if (isBackward) {
-            return this.set("anchor", anchor + distance);
+            return this.set("anchor", anchor + delta);
         } else {
-            return this.set("focus", focus + distance);
+            return this.set("focus", focus + delta);
         }
     }
 
+    /**
+     * Gets a range that represents the intersection between the current range
+     * and the specified other range.
+     * @param other - The other range
+     */
     public intersect(other: FlowRange): FlowRange {
         if (other.last <= this.first) {
             return FlowRange.at(this.first);
@@ -134,11 +147,22 @@ export class FlowRange extends FlowRangeBase implements Readonly<FlowRangeProps>
         }
     }
 
+    /** Gets a range that represents the reverse of the current range */
     public reverse(): FlowRange {
         const { anchor, focus } = this;
         return this.merge({ anchor: focus, focus: anchor });
     }
 
+    /**
+     * Returns a copy of the current object with the specified property merged in
+     *
+     * @param key - Key of the property to merge in
+     * @param value - Property value to merge in
+     *
+     * @remarks
+     * If the resulting object would be equal to the current instance, then the current
+     * instance is returned instead.
+     */
     public set(key: "first" | "last" | keyof FlowRangeProps, value: number): this {
         if (key === "first") {
             key = this.isBackward ? "focus" : "anchor";
@@ -148,14 +172,19 @@ export class FlowRange extends FlowRangeBase implements Readonly<FlowRangeProps>
         return super.set(key, value);
     }
 
+    /** Gets a string representation of the current range */
     public toString(): string {
         return `[${this.anchor},${this.focus}]`;
     }
 
-    public translate(distance: number): FlowRange {
+    /**
+     * Moves the position of the current range by the specified delta
+     * @param delta - The delta distance
+     */
+    public translate(delta: number): FlowRange {
         let { anchor, focus } = this;
-        anchor += distance;
-        focus += distance;
+        anchor += delta;
+        focus += delta;
         return new FlowRange({ anchor, focus});
     }
 }

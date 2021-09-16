@@ -60,9 +60,11 @@ export interface ParagraphBreakData {
 @validating
 @registerNode
 export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreakProps {
+    /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => ParagraphBreak);
     public readonly size = 1;
 
+    /** Gets an instance of the current class from the specified data */
     public static fromData(@type(DataType) data: ParagraphBreakData): ParagraphBreak {
         const { style = ParagraphStyle.empty} = data;
         const props: ParagraphBreakProps = { style };
@@ -73,18 +75,22 @@ export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreak
         super(props);
     }
 
+    /** {@inheritdoc FlowNode.formatParagraph} */
     public formatParagraph(@type(Props.style) style: ParagraphStyle): this {
         return this.set("style", this.style.merge(style));
     }
 
+    /** {@inheritdoc FlowNode.formatText} */
     public formatText(): this {
         return this;
     }
 
+    /** {@inheritdoc FlowNode.unformatParagraph} */
     public unformatParagraph(@type(Props.style) style: ParagraphStyle): this {
         return this.set("style", this.style.unmerge(style));
     }
 
+    /** {@inheritdoc FlowNode.unformatText} */
     public unformatText(): this {
         return this;
     }

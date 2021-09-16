@@ -75,8 +75,10 @@ export interface UnformatParagraphData {
 @validating
 @registerOperation
 export class UnformatParagraph extends UnformatParagraphBase implements Readonly<UnformatParagraphProps> {
+    /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => UnformatParagraph);
 
+    /** Gets an instance of the current class from the specified data */
     public static fromData(@type(DataType) data: UnformatParagraphData): UnformatParagraph {
         const { range, style } = data;
         const props: UnformatParagraphProps = { range, style };

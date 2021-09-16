@@ -20,7 +20,7 @@ export declare class InsertContent extends InsertContentBase implements InsertCo
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.insertcontent.classtype.md) | <code>static</code> | import("paratype").Type&lt;[InsertContent](./scribing.insertcontent.md)<!-- -->&gt; |  |
+|  [classType](./scribing.insertcontent.classtype.md) | <code>static</code> | import("paratype").Type&lt;[InsertContent](./scribing.insertcontent.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 
@@ -30,7 +30,7 @@ export declare class InsertContent extends InsertContentBase implements InsertCo
 |  [afterRemoval(other)](./scribing.insertcontent.afterremoval.md) |  | Transforms the current operation so that its intent is preserved after the specified range was removed. |
 |  [applyToContent(content)](./scribing.insertcontent.applytocontent.md) |  | Applies the current operation on the specified content and returns the updated result. |
 |  [applyToSelection(selection, mine)](./scribing.insertcontent.applytoselection.md) |  | Applies the current operation on the specified selection and returns the updated result. |
-|  [fromData(data)](./scribing.insertcontent.fromdata.md) | <code>static</code> |  |
+|  [fromData(data)](./scribing.insertcontent.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
 |  [invert()](./scribing.insertcontent.invert.md) |  | Returns an operation that negates the effect of the current operation. |
 |  [toData()](./scribing.insertcontent.todata.md) |  |  |
 |  [transform(other)](./scribing.insertcontent.transform.md) |  | Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation. |

@@ -4,6 +4,8 @@
 
 ## FlowRange.reverse() method
 
+Gets a range that represents the reverse of the current range
+
 <b>Signature:</b>
 
 ```typescript

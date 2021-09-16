@@ -4,6 +4,8 @@
 
 ## ParagraphStyle.isEmpty property
 
+Determines whether the current style is empty
+
 <b>Signature:</b>
 
 ```typescript
