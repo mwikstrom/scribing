@@ -34,11 +34,13 @@ export declare class FlowContent extends FlowContentBase implements Readonly<Flo
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
 |  [append(nodes)](./scribing.flowcontent.append.md) |  | Appends the specified nodes |
+|  [append(scope, nodes)](./scribing.flowcontent.append_1.md) |  | Appends the specified nodes |
 |  [copy(range)](./scribing.flowcontent.copy.md) |  | Extracts a range of flow content |
-|  [formatParagraph(range, style)](./scribing.flowcontent.formatparagraph.md) |  | Applies paragraph style to a range |
-|  [formatText(range, style)](./scribing.flowcontent.formattext.md) |  | Applies text style to a range |
+|  [formatParagraph(range, style, scope)](./scribing.flowcontent.formatparagraph.md) |  | Applies paragraph style to a range |
+|  [formatText(range, style, scope)](./scribing.flowcontent.formattext.md) |  | Applies text style to a range |
 |  [fromData(data)](./scribing.flowcontent.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
 |  [insert(position, nodes)](./scribing.flowcontent.insert.md) |  | Inserts the specified nodes at the specified position |
+|  [insert(position, scope, nodes)](./scribing.flowcontent.insert_1.md) |  | Inserts the specified nodes at the specified position |
 |  [peek(position)](./scribing.flowcontent.peek.md) |  | Gets a cursor |
 |  [remove(range)](./scribing.flowcontent.remove.md) |  | Removes a range of flow content |
 |  [toJsonValue()](./scribing.flowcontent.tojsonvalue.md) |  | Gets a JSON value representation of the current content |

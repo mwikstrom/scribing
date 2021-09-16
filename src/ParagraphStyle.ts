@@ -1,5 +1,4 @@
-import { enumType, frozen, integerType, RecordClass, recordClassType, recordType, validating } from "paratype";
-import { StyleVariant, StyleVariantType } from "./StyleVariant";
+import { enumType, frozen, integerType, RecordClass, recordClassType, recordType, Type, validating } from "paratype";
 
 /**
  * Style properties for paragraph content
@@ -31,7 +30,7 @@ export interface ParagraphStyleProps {
     /**
      * The style variant of the paragraph.
      */
-    variant?: StyleVariant;
+    variant?: ParagraphStyleVariant;
 
     /**
      * The amount of space between lines, as a percentage of normal, where normal is represented as `100`.
@@ -55,10 +54,40 @@ export interface ParagraphStyleProps {
     // TODO: bullet (probably another obj)
 }
 
+/**
+ * Paragraph style variant
+ * @public
+ */
+export type ParagraphStyleVariant = (typeof PARAGRAPH_STYLE_VARIANTS)[number];
+
+/**
+ * Read-only array that contains all paragraph style variants
+ * @public
+ */
+export const PARAGRAPH_STYLE_VARIANTS = Object.freeze([
+    "normal",
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6",
+    "title",
+    "subtitle",
+    "preamble",
+    "code",
+] as const);
+
+/**
+ * The run-time type that matches paragraph style variant values
+ * @public
+ */
+export const ParagraphStyleVariantType: Type<ParagraphStyleVariant> = enumType(PARAGRAPH_STYLE_VARIANTS);
+
 const Props = {
     alignment: enumType(["start", "center", "end", "justify"]),
     direction: enumType(["ltr", "rtl"]),
-    variant: StyleVariantType,
+    variant: ParagraphStyleVariantType,
     lineSpacing: integerType.restrict(
         "Must be greater than or equal to 10 and less than or equal to 1000",
         value => value >= 10 && value <= 1000,

@@ -1,5 +1,4 @@
 import { booleanType, enumType, frozen, RecordClass, recordClassType, recordType, validating } from "paratype";
-import { StyleVariant, StyleVariantType } from "./StyleVariant";
 
 /**
  * Style properties for {@link TextRun|text}
@@ -29,11 +28,6 @@ export interface TextStyleProps {
      */
     baseline?: "normal" | "sub" | "super";
 
-    /**
-     * The style variant of the text.
-     */
-    variant?: StyleVariant;
-
     // TODO: by name inheritance
     // TODO: background color
     // TODO: foreground color
@@ -50,7 +44,6 @@ const Props = {
     underline: booleanType,
     strike: booleanType,
     baseline: enumType(["normal", "sub", "super"]),
-    variant: StyleVariantType,
 };
 
 const PropsType = recordType(Props).asPartial();

@@ -16,6 +16,7 @@ Model for collaborative rich text editing
 |  [FlowNode](./scribing.flownode.md) | A piece of flow content. |
 |  [FlowOperation](./scribing.flowoperation.md) | An abstraction of an operation that updates flow content. |
 |  [FlowRange](./scribing.flowrange.md) | Represents a range of flow content |
+|  [FlowScope](./scribing.flowscope.md) | Provides a scope for flow content |
 |  [FlowSelection](./scribing.flowselection.md) | Represents a selection of flow content |
 |  [FormatParagraph](./scribing.formatparagraph.md) | Represents an operation that applies a paragraph style to a range of flow content. |
 |  [FormatText](./scribing.formattext.md) | Represents an operation that applies a text style to a range of flow content. |
@@ -69,11 +70,11 @@ Model for collaborative rich text editing
 |  [FormatTextBase](./scribing.formattextbase.md) | The base record class for [FormatText](./scribing.formattext.md) |
 |  [InsertContentBase](./scribing.insertcontentbase.md) | The base record class for [InsertContent](./scribing.insertcontent.md) |
 |  [LineBreakBase](./scribing.linebreakbase.md) | The base record class for [LineBreak](./scribing.linebreak.md) |
+|  [PARAGRAPH\_STYLE\_VARIANTS](./scribing.paragraph_style_variants.md) | Read-only array that contains all paragraph style variants |
 |  [ParagraphBreakBase](./scribing.paragraphbreakbase.md) | The base record class for [ParagraphBreak](./scribing.paragraphbreak.md) |
 |  [ParagraphStyleBase](./scribing.paragraphstylebase.md) | The base record class for [ParagraphStyle](./scribing.paragraphstyle.md) |
+|  [ParagraphStyleVariantType](./scribing.paragraphstylevarianttype.md) | The run-time type that matches paragraph style variant values |
 |  [RemoveRangeBase](./scribing.removerangebase.md) | The base record class for [RemoveRange](./scribing.removerange.md) |
-|  [STYLE\_VARIANTS](./scribing.style_variants.md) | Read-only array that contains all style variants |
-|  [StyleVariantType](./scribing.stylevarianttype.md) | The run-time type that matches style variant values |
 |  [TextRunBase](./scribing.textrunbase.md) | The base record class for [TextRun](./scribing.textrun.md) |
 |  [TextStyleBase](./scribing.textstylebase.md) | The base record class for [TextStyle](./scribing.textstyle.md) |
 |  [UnformatParagraphBase](./scribing.unformatparagraphbase.md) | The base record class for [UnformatParagraph](./scribing.unformatparagraph.md) |
@@ -86,6 +87,6 @@ Model for collaborative rich text editing
 |  [FlowBatchData](./scribing.flowbatchdata.md) | Data of [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowContentData](./scribing.flowcontentdata.md) | Flow content data is an array of [nodes](./scribing.flownode.md) |
 |  [FlowRangeTuple](./scribing.flowrangetuple.md) | Data for a [FlowRange](./scribing.flowrange.md) represented by a tuple where the first value is the anchor position and the second value is the focus position. |
-|  [StyleVariant](./scribing.stylevariant.md) | Style variants |
+|  [ParagraphStyleVariant](./scribing.paragraphstylevariant.md) | Paragraph style variant |
 |  [TextRunData](./scribing.textrundata.md) | Data contract for a text run |
 

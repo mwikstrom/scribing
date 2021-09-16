@@ -40,12 +40,14 @@ export interface FlowBatchProps {
 export class FlowContent extends FlowContentBase implements Readonly<FlowContentProps> {
     constructor(props?: FlowContentProps);
     append(...nodes: readonly FlowNode[]): FlowContent;
+    append(scope: FlowScope | undefined, ...nodes: readonly FlowNode[]): FlowContent;
     static readonly classType: Type<FlowContent>;
     copy(range: FlowRange): FlowContent;
-    formatParagraph(range: FlowRange, style: ParagraphStyle): FlowContent;
-    formatText(range: FlowRange, style: TextStyle): FlowContent;
+    formatParagraph(range: FlowRange, style: ParagraphStyle, scope?: FlowScope): FlowContent;
+    formatText(range: FlowRange, style: TextStyle, scope?: FlowScope): FlowContent;
     static fromData(data: FlowContentData): FlowContent;
     insert(position: number, ...nodes: readonly FlowNode[]): FlowContent;
+    insert(position: number, scope: FlowScope | undefined, ...nodes: readonly FlowNode[]): FlowContent;
     peek(position?: number): FlowCursor;
     remove(range: FlowRange): FlowContent;
     get size(): number;
@@ -108,7 +110,7 @@ export abstract class FlowOperation {
     abstract afterInsertion(other: FlowRange): FlowOperation | null;
     // @internal
     abstract afterRemoval(other: FlowRange): FlowOperation | null;
-    abstract applyToContent(content: FlowContent): FlowContent;
+    abstract applyToContent(content: FlowContent, scope?: FlowScope): FlowContent;
     abstract applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null;
     static fromJsonValue(value: JsonValue): FlowOperation;
     abstract invert(content: FlowContent): FlowOperation | null;
@@ -149,6 +151,10 @@ export interface FlowRangeProps {
 
 // @public
 export type FlowRangeTuple = [number, number];
+
+// @public
+export abstract class FlowScope {
+}
 
 // @public
 export abstract class FlowSelection {
@@ -240,7 +246,7 @@ export abstract class InlineNode extends FlowNode {
 export class InsertContent extends InsertContentBase implements InsertContentProps {
     afterInsertion(other: FlowRange): FlowOperation | null;
     afterRemoval(other: FlowRange): FlowOperation | null;
-    applyToContent(content: FlowContent): FlowContent;
+    applyToContent(content: FlowContent, scope?: FlowScope): FlowContent;
     // @override
     applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null;
     static readonly classType: Type<InsertContent>;
@@ -289,6 +295,9 @@ export interface LineBreakProps {
     style: TextStyle;
 }
 
+// @public
+export const PARAGRAPH_STYLE_VARIANTS: readonly ["normal", "h1", "h2", "h3", "h4", "h5", "h6", "title", "subtitle", "preamble", "code"];
+
 // @public @sealed
 export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreakProps {
     constructor(props?: ParagraphBreakProps);
@@ -331,10 +340,10 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
     variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
     lineSpacing: number;
     }>> & Equatable & Readonly<Partial<{
-    alignment: "start" | "center" | "end" | "justify";
-    direction: "ltr" | "rtl";
-    variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
-    lineSpacing: number;
+        alignment: "start" | "center" | "end" | "justify";
+        direction: "ltr" | "rtl";
+        variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
+        lineSpacing: number;
     }>> & ParagraphStyle>;
     static get empty(): ParagraphStyle;
     get isEmpty(): boolean;
@@ -358,8 +367,14 @@ export interface ParagraphStyleProps {
     alignment?: "start" | "center" | "end" | "justify";
     direction?: "ltr" | "rtl";
     lineSpacing?: number;
-    variant?: StyleVariant;
+    variant?: ParagraphStyleVariant;
 }
+
+// @public
+export type ParagraphStyleVariant = (typeof PARAGRAPH_STYLE_VARIANTS)[number];
+
+// @public
+export const ParagraphStyleVariantType: Type<ParagraphStyleVariant>;
 
 // @public @sealed
 export class RangeSelection extends FlowSelection {
@@ -412,15 +427,6 @@ export interface RemoveRangeProps {
     range: FlowRange;
 }
 
-// @public
-export const STYLE_VARIANTS: readonly ["normal", "h1", "h2", "h3", "h4", "h5", "h6", "title", "subtitle", "preamble", "code"];
-
-// @public
-export type StyleVariant = (typeof STYLE_VARIANTS)[number];
-
-// @public
-export const StyleVariantType: Type<StyleVariant>;
-
 // @public @sealed
 export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
     constructor(props?: TextRunProps);
@@ -459,21 +465,18 @@ export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps>
     underline: boolean;
     strike: boolean;
     baseline: "normal" | "sub" | "super";
-    variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
     }>, Partial<{
     bold: boolean;
     italic: boolean;
     underline: boolean;
     strike: boolean;
     baseline: "normal" | "sub" | "super";
-    variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
     }>> & Equatable & Readonly<Partial<{
     bold: boolean;
     italic: boolean;
     underline: boolean;
     strike: boolean;
     baseline: "normal" | "sub" | "super";
-    variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
     }>> & TextStyle>;
     static get empty(): TextStyle;
     get isEmpty(): boolean;
@@ -486,14 +489,12 @@ italic: boolean;
 underline: boolean;
 strike: boolean;
 baseline: "normal" | "sub" | "super";
-variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
 }>, Object, Partial<{
 bold: boolean;
 italic: boolean;
 underline: boolean;
 strike: boolean;
 baseline: "normal" | "sub" | "super";
-variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
 }>>;
 
 // @public
@@ -503,7 +504,6 @@ export interface TextStyleProps {
     italic?: boolean;
     strike?: boolean;
     underline?: boolean;
-    variant?: StyleVariant;
 }
 
 // @public @sealed

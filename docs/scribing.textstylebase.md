@@ -15,13 +15,11 @@ TextStyleBase: import("paratype").RecordConstructor<Partial<{
     underline: boolean;
     strike: boolean;
     baseline: "normal" | "sub" | "super";
-    variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
 }>, Object, Partial<{
     bold: boolean;
     italic: boolean;
     underline: boolean;
     strike: boolean;
     baseline: "normal" | "sub" | "super";
-    variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
 }>>
 ```

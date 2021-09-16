@@ -21,5 +21,4 @@ export interface TextStyleProps
 |  [italic?](./scribing.textstyleprops.italic.md) | boolean | <i>(Optional)</i> Whether or not the text is italicized. |
 |  [strike?](./scribing.textstyleprops.strike.md) | boolean | <i>(Optional)</i> Whether or not the text is struck through. |
 |  [underline?](./scribing.textstyleprops.underline.md) | boolean | <i>(Optional)</i> Whether or not the text is underlined. |
-|  [variant?](./scribing.textstyleprops.variant.md) | [StyleVariant](./scribing.stylevariant.md) | <i>(Optional)</i> The style variant of the text. |
 

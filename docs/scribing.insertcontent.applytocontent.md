@@ -9,7 +9,7 @@ Applies the current operation on the specified content and returns the updated r
 <b>Signature:</b>
 
 ```typescript
-applyToContent(content: FlowContent): FlowContent;
+applyToContent(content: FlowContent, scope?: FlowScope): FlowContent;
 ```
 
 ## Parameters
@@ -17,6 +17,7 @@ applyToContent(content: FlowContent): FlowContent;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The flow content that shall be updated. |
+|  scope | [FlowScope](./scribing.flowscope.md) | Optional scope of the content that shall be updated. |
 
 <b>Returns:</b>
 

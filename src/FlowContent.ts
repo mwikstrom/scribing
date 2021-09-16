@@ -14,6 +14,7 @@ import {
 import { FlowCursor } from "./FlowCursor";
 import { FlowNode } from "./FlowNode";
 import { FlowRange } from "./FlowRange";
+import { FlowScope } from "./FlowScope";
 import { flowNodeType } from "./internal/node-registry";
 import { ParagraphStyle } from "./ParagraphStyle";
 import { TextRun } from "./TextRun";
@@ -103,10 +104,18 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
      * @param nodes - The nodes to be appended
      * @returns The updated flow content
      */
-    append(
-        @restType(flowNodeType) ...nodes: readonly FlowNode[]
-    ): FlowContent {
-        return this.insert(this.size, ...nodes);
+    append(...nodes: readonly FlowNode[]): FlowContent;
+    
+    /**
+     * Appends the specified nodes
+     * @param scope - Scope of the current content
+     * @param nodes - The nodes to be appended
+     * @returns The updated flow content
+     */
+    append(scope: FlowScope | undefined, ...nodes: readonly FlowNode[]): FlowContent;
+    
+    append(first: FlowScope | FlowNode | undefined, ...rest: readonly FlowNode[]): FlowContent {
+        return this.insert(this.size, first, ...rest);
     }
 
     /**
@@ -127,9 +136,10 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
      */
     formatParagraph(
         @type(FlowRange.classType) range: FlowRange, 
-        @type(ParagraphStyle.classType) style: ParagraphStyle
+        @type(ParagraphStyle.classType) style: ParagraphStyle,
+            scope?: FlowScope,
     ): FlowContent {
-        return this.set("nodes", this.#formatRange(range, node => node.formatParagraph(style)));
+        return this.set("nodes", this.#formatRange(range, node => node.formatParagraph(style), scope));
     }
 
     /**
@@ -140,9 +150,10 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
      */
     formatText(
         @type(FlowRange.classType) range: FlowRange,
-        @type(TextStyle.classType) style: TextStyle
+        @type(TextStyle.classType) style: TextStyle,
+            scope?: FlowScope,
     ): FlowContent {
-        return this.set("nodes", this.#formatRange(range, node => node.formatText(style)));
+        return this.set("nodes", this.#formatRange(range, node => node.formatText(style), scope));
     }
 
     /**
@@ -151,13 +162,27 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
      * @param nodes - The nodes to be inserted
      * @returns The updated flow content
      */
-    insert(
-        @type(nonNegativeIntegerType) position: number,
-        @restType(flowNodeType) ...nodes: readonly FlowNode[]
-    ): FlowContent {
+    insert(position: number, ...nodes: readonly FlowNode[]): FlowContent;
+
+    /**
+     * Inserts the specified nodes at the specified position
+     * @param position - The position at which nodes shall be inserted
+     * @param scope - Scope of the current content
+     * @param nodes - The nodes to be inserted
+     * @returns The updated flow content
+     */
+    insert(position: number, scope: FlowScope | undefined, ...nodes: readonly FlowNode[]): FlowContent;
+    
+    insert(position: number, first: FlowScope | FlowNode | undefined, ...rest: readonly FlowNode[]): FlowContent {
         const { before, after } = this.peek(position);
-        const merged = Object.freeze(Array.from(FlowContent.merge(before, nodes, after)));
-        return this.set("nodes", merged);
+        const scope = first instanceof FlowScope ? first : undefined;
+        const nodes = [...rest];
+        if (first instanceof FlowNode) {
+            nodes.unshift(first);
+        }
+        const merged = Array.from(FlowContent.merge(before, nodes, after));
+        const unformatted = scope ? FlowContent.unformatAmbient(merged, scope) : merged;
+        return this.set("nodes", Object.freeze(unformatted));
     }
 
     /**
@@ -211,13 +236,15 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     ): FlowContent {
         return this.set("nodes", this.#formatRange(range, node => node.unformatText(style)));
     }
-
-    #formatRange(range: FlowRange, formatter: (node: FlowNode) => FlowNode): readonly FlowNode[] {
+    
+    #formatRange(range: FlowRange, formatter: (node: FlowNode) => FlowNode, scope?: FlowScope): readonly FlowNode[] {
         const first = this.peek(range.first);
         const before = first.before;
         const formatted = Array.from(first.range(range.size)).map(formatter);
         const after = first.move(range.size).after;
-        return Object.freeze(Array.from(FlowContent.merge(before, formatted, after)));
+        const merged = Array.from(FlowContent.merge(before, formatted, after));
+        const unformatted = scope ? FlowContent.unformatAmbient(merged, scope) : merged;
+        return Object.freeze(unformatted);
     }
 
     /** @internal */
@@ -264,5 +291,11 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
         if (pending !== null) {
             yield pending;
         }
+    }
+
+    /** @internal */
+    private static unformatAmbient(nodes: readonly FlowNode[], scope: FlowScope): FlowNode[] {
+        // TODO: UNFORMAT AMBIENT NODES
+        return [...nodes];
     }
 }

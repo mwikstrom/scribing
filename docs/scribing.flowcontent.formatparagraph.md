@@ -9,7 +9,7 @@ Applies paragraph style to a range
 <b>Signature:</b>
 
 ```typescript
-formatParagraph(range: FlowRange, style: ParagraphStyle): FlowContent;
+formatParagraph(range: FlowRange, style: ParagraphStyle, scope?: FlowScope): FlowContent;
 ```
 
 ## Parameters
@@ -18,6 +18,7 @@ formatParagraph(range: FlowRange, style: ParagraphStyle): FlowContent;
 |  --- | --- | --- |
 |  range | [FlowRange](./scribing.flowrange.md) | The range to format |
 |  style | [ParagraphStyle](./scribing.paragraphstyle.md) | The style to apply |
+|  scope | [FlowScope](./scribing.flowscope.md) |  |
 
 <b>Returns:</b>
 

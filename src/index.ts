@@ -7,7 +7,6 @@
 export * from "./FlowRange";
 
 // Styles
-export * from "./StyleVariant";
 export * from "./ParagraphStyle";
 export * from "./TextStyle";
 
@@ -20,6 +19,7 @@ export * from "./TextRun";
 
 // Content
 export * from "./FlowCursor";
+export * from "./FlowScope";
 export * from "./FlowContent";
 
 // Operations

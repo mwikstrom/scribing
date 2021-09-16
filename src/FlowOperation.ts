@@ -3,6 +3,7 @@ import { FlowSelection } from "./FlowSelection";
 import { FlowContent } from "./FlowContent";
 import { FlowRange } from "./FlowRange";
 import { flowOperationType } from "./internal/operation-registry";
+import { FlowScope } from "./FlowScope";
 
 /**
  * An abstraction of an operation that updates flow content.
@@ -41,8 +42,9 @@ export abstract class FlowOperation {
      * Applies the current operation on the specified content and returns the updated result.
      * 
      * @param content - The flow content that shall be updated.
+     * @param scope - Optional scope of the content that shall be updated.
      */
-    abstract applyToContent(content: FlowContent): FlowContent;
+    abstract applyToContent(content: FlowContent, scope?: FlowScope): FlowContent;
 
     /**
      * Applies the current operation on the specified selection and returns the updated result.

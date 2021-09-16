@@ -9,10 +9,15 @@ import {
     validating, 
 } from "paratype";
 import { FlowContent } from "./FlowContent";
+import { FlowCursor } from "./FlowCursor";
+import { FlowNode } from "./FlowNode";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
+import { FlowScope } from "./FlowScope";
 import { FlowSelection } from "./FlowSelection";
+import { InlineNode } from "./InlineNode";
 import { registerOperation } from "./internal/operation-registry";
+import { ParagraphBreak } from "./ParagraphBreak";
 import { RemoveRange } from "./RemoveRange";
 
 const Props = {
@@ -154,29 +159,38 @@ export class InsertContent extends InsertContentBase implements InsertContentPro
     /** 
      * {@inheritDoc FlowOperation.applyToContent}
      */
-    applyToContent(content: FlowContent): FlowContent {
-        const cursor = content.peek(this.position);
-        const paraStyle = cursor.getParagraphStyle();
-        let textStyle = cursor.getTextStyle();
-        const nodes = [...this.content.nodes];
+    applyToContent(content: FlowContent, scope?: FlowScope): FlowContent {
+        const target = content.peek(this.position);
+        const targetParaStyle = target.getParagraphStyle();
+        let targetTextStyle = target.getTextStyle();
+        const nodes: FlowNode[] = [];
 
-        for (let i = 0; i < nodes.length; ++i) {
-            const n = nodes[i];
+        for (
+            let source: FlowCursor | null = this.content.peek(0);
+            source !== null;
+            source = source?.moveToStartOfNextNode()
+        ) {
+            let { node } = source;
+            
+            if (node === null) {
+                continue;
+            }
 
-            if (textStyle !== null) {
-                if (n.getParagraphStyle() !== null) {
-                    textStyle = null;
-                } else {
-                    nodes[i] = n.formatText(textStyle);
+            if (node instanceof ParagraphBreak) {
+                if (targetParaStyle !== null) {
+                    node = node.formatParagraph(targetParaStyle);
                 }
+                targetTextStyle = null;
             }
 
-            if (paraStyle !== null) {
-                nodes[i] = n.formatParagraph(paraStyle);
+            if (targetTextStyle && node instanceof InlineNode) {
+                node = node.formatText(targetTextStyle);
             }
+
+            nodes.push(node);
         }
 
-        return content.insert(this.position, ...nodes);
+        return content.insert(this.position, scope, ...nodes);
     }
 
     /**
