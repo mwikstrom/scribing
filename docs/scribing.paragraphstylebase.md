@@ -12,12 +12,12 @@ The base record class for [ParagraphStyle](./scribing.paragraphstyle.md)
 ParagraphStyleBase: import("paratype").RecordConstructor<Partial<{
     alignment: "start" | "center" | "end" | "justify";
     direction: "ltr" | "rtl";
-    type: "normal" | "title" | "subtitle" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+    variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
     line_spacing: number;
 }>, Object, Partial<{
     alignment: "start" | "center" | "end" | "justify";
     direction: "ltr" | "rtl";
-    type: "normal" | "title" | "subtitle" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+    variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
     line_spacing: number;
 }>>
 ```

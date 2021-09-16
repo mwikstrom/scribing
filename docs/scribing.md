@@ -72,6 +72,8 @@ Model for collaborative rich text editing
 |  [ParagraphBreakBase](./scribing.paragraphbreakbase.md) | The base record class for [ParagraphBreak](./scribing.paragraphbreak.md) |
 |  [ParagraphStyleBase](./scribing.paragraphstylebase.md) | The base record class for [ParagraphStyle](./scribing.paragraphstyle.md) |
 |  [RemoveRangeBase](./scribing.removerangebase.md) | The base record class for [RemoveRange](./scribing.removerange.md) |
+|  [STYLE\_VARIANTS](./scribing.style_variants.md) | Read-only array that contains all style variants |
+|  [StyleVariantType](./scribing.stylevarianttype.md) | The run-time type that matches style variant values |
 |  [TextRunBase](./scribing.textrunbase.md) | The base record class for [TextRun](./scribing.textrun.md) |
 |  [TextStyleBase](./scribing.textstylebase.md) | The base record class for [TextStyle](./scribing.textstyle.md) |
 |  [UnformatParagraphBase](./scribing.unformatparagraphbase.md) | The base record class for [UnformatParagraph](./scribing.unformatparagraph.md) |
@@ -84,5 +86,6 @@ Model for collaborative rich text editing
 |  [FlowBatchData](./scribing.flowbatchdata.md) | Data of [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowContentData](./scribing.flowcontentdata.md) | Flow content data is an array of [nodes](./scribing.flownode.md) |
 |  [FlowRangeTuple](./scribing.flowrangetuple.md) | Data for a [FlowRange](./scribing.flowrange.md) represented by a tuple where the first value is the anchor position and the second value is the focus position. |
+|  [StyleVariant](./scribing.stylevariant.md) | Style variants |
 |  [TextRunData](./scribing.textrundata.md) | Data contract for a text run |
 

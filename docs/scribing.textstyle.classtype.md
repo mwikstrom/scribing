@@ -15,17 +15,20 @@ static readonly classType: import("paratype").Type<import("paratype").RecordObje
         underline: boolean;
         strike: boolean;
         baseline: "normal" | "sub" | "super";
+        variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
     }>, Partial<{
         bold: boolean;
         italic: boolean;
         underline: boolean;
         strike: boolean;
         baseline: "normal" | "sub" | "super";
+        variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
     }>> & import("paratype").Equatable & Readonly<Partial<{
         bold: boolean;
         italic: boolean;
         underline: boolean;
         strike: boolean;
         baseline: "normal" | "sub" | "super";
+        variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
     }>> & TextStyle>;
 ```

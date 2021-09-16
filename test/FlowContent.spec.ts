@@ -45,7 +45,7 @@ describe("FlowContent", () => {
         const content = FlowContent.classType.fromJsonValue([
             "foo", { break: "para" }, "bar",
         ]).formatParagraph(FlowRange.at(1, 2), ParagraphStyle.classType.fromJsonValue({
-            type: "title"
+            variant: "title"
         }));
         expect(FlowContent.classType.toJsonValue(content)).toMatchObject([
             "foo", { break: "para" }, "bar",
@@ -55,9 +55,9 @@ describe("FlowContent", () => {
     it("can format paragraph", () => {
         const content = FlowContent.classType.fromJsonValue([
             "foo", { break: "para" }, "bar",
-        ]).formatParagraph(FlowRange.at(3, 1), new ParagraphStyle({ type: "title" }));
+        ]).formatParagraph(FlowRange.at(3, 1), new ParagraphStyle({ variant: "title" }));
         expect(FlowContent.classType.toJsonValue(content)).toMatchObject([
-            "foo", { break: "para", style: { type: "title"} }, "bar",
+            "foo", { break: "para", style: { variant: "title"} }, "bar",
         ]);
     });
 

@@ -7,6 +7,7 @@
 export * from "./FlowRange";
 
 // Styles
+export * from "./StyleVariant";
 export * from "./ParagraphStyle";
 export * from "./TextStyle";
 

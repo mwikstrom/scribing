@@ -79,22 +79,22 @@ describe("FlowOperation", () => {
         const op = FlowOperation.fromJsonValue({
             format: "para",
             range: [123, 456],
-            style: { type: "h1" },
+            style: { variant: "h1" },
         }) as FormatParagraph;
         expect(op).toBeInstanceOf(FormatParagraph);
         expect(op.range.anchor).toBe(123);
         expect(op.range.focus).toBe(456);
-        expect(op.style.toData()).toMatchObject({ type: "h1" });
+        expect(op.style.toData()).toMatchObject({ variant: "h1" });
     });
 
     it("can deserialize unformat paragraph operation", () => {
         const op = FlowOperation.fromJsonValue({
             unformat: "para",
             range: [123, 456],
-            style: { type: "h1" },
+            style: { variant: "h1" },
         }) as UnformatParagraph;
         expect(op).toBeInstanceOf(UnformatParagraph);
         expect(op.range.anchor).toBe(123);
         expect(op.range.focus).toBe(456);
-        expect(op.style.toData()).toMatchObject({ type: "h1" });
+        expect(op.style.toData()).toMatchObject({ variant: "h1" });
     });});

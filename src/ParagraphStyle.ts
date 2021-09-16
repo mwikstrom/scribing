@@ -1,4 +1,5 @@
 import { enumType, frozen, integerType, RecordClass, recordClassType, recordType, validating } from "paratype";
+import { StyleVariant, StyleVariantType } from "./StyleVariant";
 
 /**
  * Style properties for paragraph content
@@ -28,9 +29,9 @@ export interface ParagraphStyleProps {
     direction?: "ltr" | "rtl";
 
     /**
-     * The style type of the paragraph.
+     * The style variant of the paragraph.
      */
-    type?: "normal" | "title" | "subtitle" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+    variant?: StyleVariant;
 
     /**
      * The amount of space between lines, as a percentage of normal, where normal is represented as `100`.
@@ -57,7 +58,7 @@ export interface ParagraphStyleProps {
 const Props = {
     alignment: enumType(["start", "center", "end", "justify"]),
     direction: enumType(["ltr", "rtl"]),
-    type: enumType(["normal", "title", "subtitle", "h1", "h2", "h3", "h4", "h5", "h6"]),
+    variant: StyleVariantType,
     line_spacing: integerType.restrict(
         "Must be greater than or equal to 10 and less than or equal to 1000",
         value => value >= 10 && value <= 1000,

@@ -323,17 +323,17 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
     static readonly classType: Type<RecordObject<Partial<{
     alignment: "start" | "center" | "end" | "justify";
     direction: "ltr" | "rtl";
-    type: "normal" | "title" | "subtitle" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+    variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
     line_spacing: number;
     }>, Partial<{
     alignment: "start" | "center" | "end" | "justify";
     direction: "ltr" | "rtl";
-    type: "normal" | "title" | "subtitle" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+    variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
     line_spacing: number;
     }>> & Equatable & Readonly<Partial<{
     alignment: "start" | "center" | "end" | "justify";
     direction: "ltr" | "rtl";
-    type: "normal" | "title" | "subtitle" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+    variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
     line_spacing: number;
     }>> & ParagraphStyle>;
     static get empty(): ParagraphStyle;
@@ -344,12 +344,12 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
 export const ParagraphStyleBase: RecordConstructor<Partial<{
 alignment: "start" | "center" | "end" | "justify";
 direction: "ltr" | "rtl";
-type: "normal" | "title" | "subtitle" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
 line_spacing: number;
 }>, Object, Partial<{
 alignment: "start" | "center" | "end" | "justify";
 direction: "ltr" | "rtl";
-type: "normal" | "title" | "subtitle" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
 line_spacing: number;
 }>>;
 
@@ -358,7 +358,7 @@ export interface ParagraphStyleProps {
     alignment?: "start" | "center" | "end" | "justify";
     direction?: "ltr" | "rtl";
     line_spacing?: number;
-    type?: "normal" | "title" | "subtitle" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+    variant?: StyleVariant;
 }
 
 // @public @sealed
@@ -412,6 +412,15 @@ export interface RemoveRangeProps {
     range: FlowRange;
 }
 
+// @public
+export const STYLE_VARIANTS: readonly ["normal", "h1", "h2", "h3", "h4", "h5", "h6", "title", "subtitle", "preamble", "code"];
+
+// @public
+export type StyleVariant = (typeof STYLE_VARIANTS)[number];
+
+// @public
+export const StyleVariantType: Type<StyleVariant>;
+
 // @public @sealed
 export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
     constructor(props?: TextRunProps);
@@ -450,18 +459,21 @@ export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps>
     underline: boolean;
     strike: boolean;
     baseline: "normal" | "sub" | "super";
+    variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
     }>, Partial<{
     bold: boolean;
     italic: boolean;
     underline: boolean;
     strike: boolean;
     baseline: "normal" | "sub" | "super";
+    variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
     }>> & Equatable & Readonly<Partial<{
     bold: boolean;
     italic: boolean;
     underline: boolean;
     strike: boolean;
     baseline: "normal" | "sub" | "super";
+    variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
     }>> & TextStyle>;
     static get empty(): TextStyle;
     get isEmpty(): boolean;
@@ -474,12 +486,14 @@ italic: boolean;
 underline: boolean;
 strike: boolean;
 baseline: "normal" | "sub" | "super";
+variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
 }>, Object, Partial<{
 bold: boolean;
 italic: boolean;
 underline: boolean;
 strike: boolean;
 baseline: "normal" | "sub" | "super";
+variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
 }>>;
 
 // @public
@@ -489,6 +503,7 @@ export interface TextStyleProps {
     italic?: boolean;
     strike?: boolean;
     underline?: boolean;
+    variant?: StyleVariant;
 }
 
 // @public @sealed
