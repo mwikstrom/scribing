@@ -12,6 +12,12 @@ Provides a theme for flow content
 export declare abstract class FlowTheme 
 ```
 
+## Properties
+
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [classType](./scribing.flowtheme.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FlowTheme](./scribing.flowtheme.md)<!-- -->&gt; | The run-time type that represents this class |
+
 ## Methods
 
 |  Method | Modifiers | Description |

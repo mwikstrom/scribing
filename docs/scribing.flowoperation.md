@@ -12,6 +12,12 @@ An abstraction of an operation that updates flow content.
 export declare abstract class FlowOperation 
 ```
 
+## Properties
+
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [classType](./scribing.flowoperation.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FlowOperation](./scribing.flowoperation.md)<!-- -->&gt; | The run-time type that represents this class |
+
 ## Methods
 
 |  Method | Modifiers | Description |

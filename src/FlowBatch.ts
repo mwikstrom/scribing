@@ -16,7 +16,7 @@ import { FlowRange } from "./FlowRange";
 import { FlowTheme } from "./FlowTheme";
 import { FlowOperationRegistry } from "./internal/class-registry";
 
-const DataType = arrayType(lazyType(() => FlowOperationRegistry.type));
+const DataType = arrayType(lazyType(FlowOperationRegistry.close));
 const Props = { operations: DataType.frozen() };
 const PropsType: RecordType<FlowBatchProps> = recordType(Props);
 const propsToData = (props: FlowBatchProps): FlowBatchData => props.operations;
@@ -170,7 +170,7 @@ export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps>
                 modified = true;
                 continue;
             }
-            if (!modified && !FlowOperationRegistry.type.equals(before, after)) {
+            if (!modified && !FlowOperation.classType.equals(before, after)) {
                 modified = true;
             }
             result.push(after);

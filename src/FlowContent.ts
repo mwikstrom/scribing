@@ -21,7 +21,7 @@ import { ParagraphStyle } from "./ParagraphStyle";
 import { TextRun } from "./TextRun";
 import { TextStyle } from "./TextStyle";
 
-const NodeArrayType = arrayType(lazyType(() => FlowNodeRegistry.type));
+const NodeArrayType = arrayType(lazyType(FlowNodeRegistry.close));
 const RestrictedNodeArrayType = NodeArrayType
     .frozen()
     .restrict(

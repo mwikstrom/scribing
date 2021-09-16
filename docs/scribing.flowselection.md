@@ -12,6 +12,12 @@ Represents a selection of flow content
 export declare abstract class FlowSelection 
 ```
 
+## Properties
+
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [classType](./scribing.flowselection.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FlowSelection](./scribing.flowselection.md)<!-- -->&gt; | The run-time type that represents this class |
+
 ## Methods
 
 |  Method | Modifiers | Description |

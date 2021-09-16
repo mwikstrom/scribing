@@ -13,17 +13,17 @@ export interface RegistrableClass<T> {
 /** @internal */
 export class ClassRegistry<T> {
     readonly #union = new Set<RegistrableClass<T>>();
-    #type: Type<T> | undefined;
+    #closed: Type<T> | undefined;
 
-    get type(): Type<T> {
-        if (!this.#type) {
-            this.#type = unionType(...Array.from(this.#union).map(r => r.classType));
+    close = (): Type<T> => {
+        if (!this.#closed) {
+            this.#closed = unionType(...Array.from(this.#union).map(r => r.classType));
         }
-        return this.#type;
+        return this.#closed;
     }
 
     register = (target: RegistrableClass<T>): void => {
-        if (this.#type) {
+        if (this.#closed) {
             throw new Error(`Cannot register ${target.name} after closing registration`);
         }
         this.#union.add(target);

@@ -1,4 +1,4 @@
-import { JsonValue } from "paratype";
+import { JsonValue, lazyType } from "paratype";
 import { FlowTheme } from "./FlowTheme";
 import { FlowNodeRegistry } from "./internal/class-registry";
 import { ParagraphStyle } from "./ParagraphStyle";
@@ -9,9 +9,12 @@ import { TextStyle } from "./TextStyle";
  * @public
  */
 export abstract class FlowNode {
+    /** The run-time type that represents this class */
+    public static readonly classType = lazyType(FlowNodeRegistry.close);
+
     /** Converts the specified JSON value to a flow node */
     public static fromJsonValue(value: JsonValue): FlowNode {
-        return FlowNodeRegistry.type.fromJsonValue(value);
+        return FlowNode.classType.fromJsonValue(value);
     }
     
     /**
@@ -40,7 +43,7 @@ export abstract class FlowNode {
 
     /** Converts the current flow node to a JSON value */
     toJsonValue(): JsonValue {
-        return FlowNodeRegistry.type.toJsonValue(this);
+        return FlowNode.classType.toJsonValue(this);
     }
 
     /**

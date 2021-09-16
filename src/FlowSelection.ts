@@ -1,4 +1,4 @@
-import { JsonValue } from "paratype";
+import { JsonValue, lazyType } from "paratype";
 import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
@@ -11,14 +11,17 @@ import { TextStyle } from "./TextStyle";
  * @public
  */
 export abstract class FlowSelection {
+    /** The run-time type that represents this class */
+    public static readonly classType = lazyType(FlowSelectionRegistry.close);
+
     /** Converts the specified JSON value to a flow selection */
     public static fromJsonValue(value: JsonValue): FlowSelection {
-        return FlowSelectionRegistry.type.fromJsonValue(value);
+        return FlowSelection.classType.fromJsonValue(value);
     }
 
     /** Converts the current selection to a JSON value */
     public toJsonValue(): JsonValue {
-        return FlowSelectionRegistry.type.toJsonValue(this);
+        return FlowSelection.classType.toJsonValue(this);
     }
 
     /**
