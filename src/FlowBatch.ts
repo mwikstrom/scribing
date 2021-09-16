@@ -13,6 +13,7 @@ import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
 import { flowOperationType, registerOperation } from "./internal/operation-registry";
+import { FlowTheme } from "./FlowTheme";
 
 const DataType = arrayType(flowOperationType);
 const Props = { operations: DataType.frozen() };
@@ -122,9 +123,9 @@ export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps>
     /** 
      * {@inheritDoc FlowOperation.applyToContent}
      */
-    applyToContent(content: FlowContent): FlowContent {
+    applyToContent(content: FlowContent, theme: FlowTheme): FlowContent {
         for (const op of this.operations) {
-            content = op.applyToContent(content);
+            content = op.applyToContent(content, theme);
         }
         return content;
     }
