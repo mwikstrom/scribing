@@ -18,4 +18,5 @@ export interface FlowEditorStateProps
 |  --- | --- | --- |
 |  [content](./scribing.floweditorstateprops.content.md) | [FlowContent](./scribing.flowcontent.md) |  |
 |  [selection](./scribing.floweditorstateprops.selection.md) | [FlowSelection](./scribing.flowselection.md) \| null |  |
+|  [theme](./scribing.floweditorstateprops.theme.md) | [FlowTheme](./scribing.flowtheme.md) |  |
 

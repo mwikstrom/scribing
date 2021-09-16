@@ -12,8 +12,10 @@ The base record class for [FlowEditorState](./scribing.floweditorstate.md)
 FlowEditorStateBase: import("paratype").RecordConstructor<{
     content: FlowContent;
     selection: FlowSelection | null;
+    theme: FlowTheme;
 }, Object, {
     content: FlowContent;
     selection: FlowSelection | null;
+    theme: FlowTheme;
 }>
 ```

@@ -112,9 +112,11 @@ export class FlowEditorState extends FlowEditorStateBase {
 export const FlowEditorStateBase: RecordConstructor<    {
 content: FlowContent;
 selection: FlowSelection | null;
+theme: FlowTheme;
 }, Object, {
 content: FlowContent;
 selection: FlowSelection | null;
+theme: FlowTheme;
 }>;
 
 // @public
@@ -123,6 +125,8 @@ export interface FlowEditorStateProps {
     content: FlowContent;
     // (undocumented)
     selection: FlowSelection | null;
+    // (undocumented)
+    theme: FlowTheme;
 }
 
 // @public
