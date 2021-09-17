@@ -112,6 +112,10 @@ export class FlowCursor {
         let result: TextStyle | null = null;
         let breakAtPara = false;
 
+        if (index > 0 && this.#offset === 0 && this.node instanceof InlineNode) {
+            --index;
+        }
+
         while (index >= 0 && !result) {
             const node = nodes[index];
             if (breakAtPara && node instanceof ParagraphBreak) {
