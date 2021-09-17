@@ -16,7 +16,7 @@ export declare abstract class FlowSelection
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.flowselection.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FlowSelection](./scribing.flowselection.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [baseType](./scribing.flowselection.basetype.md) | <code>static</code> | import("paratype").Type&lt;[FlowSelection](./scribing.flowselection.md)<!-- -->&gt; | The run-time type that represents the base class |
 
 ## Methods
 

@@ -16,7 +16,7 @@ export declare abstract class FlowOperation
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.flowoperation.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FlowOperation](./scribing.flowoperation.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [baseType](./scribing.flowoperation.basetype.md) | <code>static</code> | import("paratype").Type&lt;[FlowOperation](./scribing.flowoperation.md)<!-- -->&gt; | The run-time type that represents the base class |
 
 ## Methods
 

@@ -16,7 +16,7 @@ export declare abstract class FlowNode
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.flownode.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FlowNode](./scribing.flownode.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [baseType](./scribing.flownode.basetype.md) | <code>static</code> | import("paratype").Type&lt;[FlowNode](./scribing.flownode.md)<!-- -->&gt; | The run-time type that represents the base class |
 |  [size](./scribing.flownode.size.md) |  | number | Size of the current node. |
 
 ## Methods

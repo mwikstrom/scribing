@@ -131,7 +131,7 @@ export interface FlowEditorStateProps {
 
 // @public
 export abstract class FlowNode {
-    static readonly classType: Type<FlowNode>;
+    static readonly baseType: Type<FlowNode>;
     abstract formatParagraph(style: ParagraphStyle): FlowNode;
     abstract formatText(style: TextStyle): FlowNode;
     static fromJsonValue(value: JsonValue): FlowNode;
@@ -151,7 +151,7 @@ export abstract class FlowOperation {
     abstract afterRemoval(other: FlowRange): FlowOperation | null;
     abstract applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent;
     abstract applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null;
-    static readonly classType: Type<FlowOperation>;
+    static readonly baseType: Type<FlowOperation>;
     static fromJsonValue(value: JsonValue): FlowOperation;
     abstract invert(content: FlowContent): FlowOperation | null;
     abstract toData(): unknown;
@@ -198,7 +198,7 @@ export abstract class FlowSelection {
     abstract afterInsertion(range: FlowRange, mine: boolean): FlowSelection | null;
     // @internal
     abstract afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
-    static readonly classType: Type<FlowSelection>;
+    static readonly baseType: Type<FlowSelection>;
     abstract formatParagraph(style: ParagraphStyle): FlowOperation | null;
     abstract formatText(style: TextStyle): FlowOperation | null;
     static fromJsonValue(value: JsonValue): FlowSelection;
@@ -211,7 +211,7 @@ export abstract class FlowSelection {
 
 // @public
 export abstract class FlowTheme {
-    static readonly classType: Type<FlowTheme>;
+    static readonly baseType: Type<FlowTheme>;
     static fromJsonValue(value: JsonValue): FlowTheme;
     abstract getAmbientParagraphStyle(): ParagraphStyle;
     abstract getAmbientTextStyle(): TextStyle;

@@ -16,7 +16,7 @@ export declare abstract class FlowTheme
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.flowtheme.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FlowTheme](./scribing.flowtheme.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [baseType](./scribing.flowtheme.basetype.md) | <code>static</code> | import("paratype").Type&lt;[FlowTheme](./scribing.flowtheme.md)<!-- -->&gt; | The run-time type that represents the base class |
 
 ## Methods
 
