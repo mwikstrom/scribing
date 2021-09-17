@@ -11,17 +11,17 @@ import { TextStyle } from "./TextStyle";
  * @public
  */
 export abstract class FlowSelection {
-    /** The run-time type that represents this class */
-    public static readonly classType = lazyType(FlowSelectionRegistry.close);
+    /** The run-time type that represents the base class */
+    public static readonly baseType = lazyType(FlowSelectionRegistry.close);
 
     /** Converts the specified JSON value to a flow selection */
     public static fromJsonValue(value: JsonValue): FlowSelection {
-        return FlowSelection.classType.fromJsonValue(value);
+        return FlowSelection.baseType.fromJsonValue(value);
     }
 
     /** Converts the current selection to a JSON value */
     public toJsonValue(): JsonValue {
-        return FlowSelection.classType.toJsonValue(this);
+        return FlowSelection.baseType.toJsonValue(this);
     }
 
     /**

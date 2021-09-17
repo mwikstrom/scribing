@@ -9,12 +9,12 @@ import { TextStyle } from "./TextStyle";
  * @public
  */
 export abstract class FlowNode {
-    /** The run-time type that represents this class */
-    public static readonly classType = lazyType(FlowNodeRegistry.close);
+    /** The run-time type that represents the base class */
+    public static readonly baseType = lazyType(FlowNodeRegistry.close);
 
     /** Converts the specified JSON value to a flow node */
     public static fromJsonValue(value: JsonValue): FlowNode {
-        return FlowNode.classType.fromJsonValue(value);
+        return FlowNode.baseType.fromJsonValue(value);
     }
     
     /**
@@ -43,7 +43,7 @@ export abstract class FlowNode {
 
     /** Converts the current flow node to a JSON value */
     toJsonValue(): JsonValue {
-        return FlowNode.classType.toJsonValue(this);
+        return FlowNode.baseType.toJsonValue(this);
     }
 
     /**

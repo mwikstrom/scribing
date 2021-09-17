@@ -10,12 +10,12 @@ import { FlowOperationRegistry } from "./internal/class-registry";
  * @public
  */
 export abstract class FlowOperation {
-    /** The run-time type that represents this class */
-    public static readonly classType = lazyType(FlowOperationRegistry.close);
+    /** The run-time type that represents the base class */
+    public static readonly baseType = lazyType(FlowOperationRegistry.close);
 
     /** Converts the specified JSON value to a flow operation */
     public static fromJsonValue(value: JsonValue): FlowOperation {
-        return FlowOperation.classType.fromJsonValue(value);
+        return FlowOperation.baseType.fromJsonValue(value);
     }
 
     /**
@@ -63,7 +63,7 @@ export abstract class FlowOperation {
 
     /** Converts the current operation to a JSON value */
     toJsonValue(): JsonValue {
-        return FlowOperation.classType.toJsonValue(this);
+        return FlowOperation.baseType.toJsonValue(this);
     }
 
     /**

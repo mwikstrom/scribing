@@ -170,7 +170,7 @@ export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps>
                 modified = true;
                 continue;
             }
-            if (!modified && !FlowOperation.classType.equals(before, after)) {
+            if (!modified && !FlowOperation.baseType.equals(before, after)) {
                 modified = true;
             }
             result.push(after);
