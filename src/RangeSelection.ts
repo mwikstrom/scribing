@@ -83,13 +83,13 @@ export class RangeSelection extends RangeSelectionBase implements Readonly<Range
 
         let result = ParagraphStyle.empty;
         for (const node of cursor.range(size)) {
-            const uniform = node.getUniformParagraphStyle(theme, diff);
-            if (uniform) {
-                result = result.merge(uniform);
+            const style = node.getUniformParagraphStyle(theme, diff);
+            if (style) {
+                result = result.merge(style, diff);
             }
         }
 
-        return result.unset(...Array.from(diff));
+        return result;
     }
 
     /**
@@ -118,9 +118,9 @@ export class RangeSelection extends RangeSelectionBase implements Readonly<Range
 
         let result = TextStyle.empty;
         for (const node of cursor.range(size)) {
-            const uniform = node.getUniformTextStyle(paraTheme, diff);
-            if (uniform) {
-                result = result.merge(uniform);
+            const style = node.getUniformTextStyle(paraTheme, diff);
+            if (style) {
+                result = result.merge(style, diff);
             }
 
             if (node instanceof ParagraphBreak) {
@@ -129,7 +129,7 @@ export class RangeSelection extends RangeSelectionBase implements Readonly<Range
             }
         }
 
-        return result.unset(...Array.from(diff));
+        return result;
     }
  
     /**
