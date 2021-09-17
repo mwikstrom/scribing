@@ -17,12 +17,14 @@ export interface FlowEditorStateProps {
     content: FlowContent;
     selection: FlowSelection | null;
     theme: FlowTheme;
+    caret: TextStyle;
 }
 
 const Props = {
     content: lazyType(() => FlowContent.classType),
     selection: unionType(lazyType(FlowSelectionRegistry.close), nullType),
     theme: lazyType(FlowThemeRegistry.close),
+    caret: TextStyle.classType,
 };
 
 const PropsType = recordType(Props);
@@ -48,6 +50,7 @@ export class FlowEditorState extends FlowEditorStateBase {
                 content: new FlowContent(),
                 selection: null,
                 theme: DefaultFlowTheme.instance,
+                caret: TextStyle.empty,
             });
         }
         return EMPTY_CACHE;
@@ -104,7 +107,8 @@ export class FlowEditorState extends FlowEditorStateBase {
     #apply(operation: FlowOperation, mine: boolean): FlowEditorState {
         const content = operation.applyToContent(this.content, this.theme);
         const selection = this.selection ? operation.applyToSelection(this.selection, mine) : null;
-        return this.merge({ content, selection });
+        const caret = !mine && selection ? this.caret : TextStyle.empty;
+        return this.merge({ content, selection, caret });
     }
 }
 
