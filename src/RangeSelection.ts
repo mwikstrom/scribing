@@ -49,6 +49,14 @@ export class RangeSelection extends RangeSelectionBase implements Readonly<Range
     public static readonly classType = recordClassType(() => RangeSelection);
 
     /**
+     * {@inheritDoc FlowSelection.isCollapsed}
+     * @override
+     */
+    public get isCollapsed(): boolean {
+        return this.range.isCollapsed;
+    }
+
+    /**
      * {@inheritDoc FlowSelection.formatParagraph}
      * @override
      */

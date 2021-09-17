@@ -24,6 +24,9 @@ export abstract class FlowSelection {
         return FlowSelection.baseType.toJsonValue(this);
     }
 
+    /** Determines whether the current selection is collapsed */
+    public abstract get isCollapsed(): boolean;
+
     /**
      * Creates an operation that applies the specified paragraph style on the current selection
      * @param style - The style to apply
