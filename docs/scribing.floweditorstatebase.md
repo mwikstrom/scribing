@@ -13,9 +13,47 @@ FlowEditorStateBase: import("paratype").RecordConstructor<{
     content: FlowContent;
     selection: FlowSelection | null;
     theme: FlowTheme;
+    caret: import("paratype").RecordObject<Partial<{
+        bold: any;
+        italic: any;
+        underline: any;
+        strike: any;
+        baseline: any;
+    }>, Partial<{
+        bold: any;
+        italic: any;
+        underline: any;
+        strike: any;
+        baseline: any;
+    }>> & import("paratype").Equatable & Readonly<Partial<{
+        bold: any;
+        italic: any;
+        underline: any;
+        strike: any;
+        baseline: any;
+    }>> & TextStyle;
 }, Object, {
     content: FlowContent;
     selection: FlowSelection | null;
     theme: FlowTheme;
+    caret: import("paratype").RecordObject<Partial<{
+        bold: any;
+        italic: any;
+        underline: any;
+        strike: any;
+        baseline: any;
+    }>, Partial<{
+        bold: any;
+        italic: any;
+        underline: any;
+        strike: any;
+        baseline: any;
+    }>> & import("paratype").Equatable & Readonly<Partial<{
+        bold: any;
+        italic: any;
+        underline: any;
+        strike: any;
+        baseline: any;
+    }>> & TextStyle;
 }>
 ```
