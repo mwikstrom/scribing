@@ -21,6 +21,7 @@ export declare class RangeSelection extends RangeSelectionBase implements Readon
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [classType](./scribing.rangeselection.classtype.md) | <code>static</code> | import("paratype").Type&lt;import("paratype").RecordObject&lt;[RangeSelectionProps](./scribing.rangeselectionprops.md)<!-- -->, [RangeSelectionProps](./scribing.rangeselectionprops.md)<!-- -->&gt; &amp; import("paratype").Equatable &amp; Readonly&lt;[RangeSelectionProps](./scribing.rangeselectionprops.md)<!-- -->&gt; &amp; [RangeSelection](./scribing.rangeselection.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [isCollapsed](./scribing.rangeselection.iscollapsed.md) |  | boolean | Determines whether the current selection is collapsed |
 
 ## Methods
 
@@ -30,6 +31,8 @@ export declare class RangeSelection extends RangeSelectionBase implements Readon
 |  [afterRemoval(range, mine)](./scribing.rangeselection.afterremoval.md) |  | Transforms the current selection so that its intended boundary is preserved after the specified range was inserted. |
 |  [formatParagraph(style)](./scribing.rangeselection.formatparagraph.md) |  | Creates an operation that applies the specified paragraph style on the current selection |
 |  [formatText(style)](./scribing.rangeselection.formattext.md) |  | Creates an operation that applies the specified text style on the current selection |
+|  [getUniformParagraphStyle(content, theme, diff)](./scribing.rangeselection.getuniformparagraphstyle.md) |  | Gets the uniform paragraph style of the current selection |
+|  [getUniformTextStyle(content, theme, diff)](./scribing.rangeselection.getuniformtextstyle.md) |  | Gets the uniform text style of the current selection |
 |  [insert(content)](./scribing.rangeselection.insert.md) |  | Creates an operation that inserts the specified content into the current selection |
 |  [remove()](./scribing.rangeselection.remove.md) |  | Creates an operation that removes the content of the current selection |
 |  [unformatParagraph(style)](./scribing.rangeselection.unformatparagraph.md) |  | Creates an operation that unapplies the specified paragraph style on the current selection |

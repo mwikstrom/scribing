@@ -1,3 +1,4 @@
+import { ParagraphStyle } from ".";
 import { FlowNode } from "./FlowNode";
 import { FlowTheme } from "./FlowTheme";
 import { TextStyle } from "./TextStyle";
@@ -18,6 +19,24 @@ export abstract class InlineNode extends FlowNode {
     /** {@inheritdoc FlowNode.formatParagraph} */
     public formatParagraph(): this {
         return this;
+    }
+
+    /**
+     * {@inheritDoc FlowNode.getUniformParagraphStyle}
+     * @override
+     */
+    public getUniformParagraphStyle(theme?: FlowTheme): ParagraphStyle | null {
+        const ambient = theme?.getAmbientParagraphStyle() ?? ParagraphStyle.empty;
+        return ambient;
+    }
+
+    /**
+     * {@inheritDoc FlowNode.getUniformTextStyle}
+     * @override
+     */
+    public getUniformTextStyle(theme?: FlowTheme): TextStyle {
+        const ambient = theme?.getAmbientTextStyle() ?? TextStyle.empty;
+        return ambient.isEmpty ? this.style : ambient.merge(this.style);
     }
 
     /**

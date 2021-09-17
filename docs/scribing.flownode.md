@@ -26,6 +26,8 @@ export declare abstract class FlowNode
 |  [formatParagraph(style)](./scribing.flownode.formatparagraph.md) |  | Applies the specified paragraph style on the current node and returns the updated node. |
 |  [formatText(style)](./scribing.flownode.formattext.md) |  | Applies the specified text style on the current node and returns the updated node. |
 |  [fromJsonValue(value)](./scribing.flownode.fromjsonvalue.md) | <code>static</code> | Converts the specified JSON value to a flow node |
+|  [getUniformParagraphStyle(theme, diff)](./scribing.flownode.getuniformparagraphstyle.md) |  | Gets a uniform paragraph style from the current node |
+|  [getUniformTextStyle(theme, diff)](./scribing.flownode.getuniformtextstyle.md) |  | Gets a uniform text style from the current node |
 |  [toData()](./scribing.flownode.todata.md) |  | Converts the current flow node to data |
 |  [toJsonValue()](./scribing.flownode.tojsonvalue.md) |  | Converts the current flow node to a JSON value |
 |  [unformatAmbient(theme)](./scribing.flownode.unformatambient.md) |  | Unapplies the ambient style of the specified theme from the current node and returns the updated node. |

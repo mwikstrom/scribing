@@ -1,10 +1,11 @@
 import { JsonValue, lazyType } from "paratype";
+import { FlowTheme } from "./FlowTheme";
 import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
 import { FlowSelectionRegistry } from "./internal/class-registry";
-import { ParagraphStyle } from "./ParagraphStyle";
-import { TextStyle } from "./TextStyle";
+import { ParagraphStyle, ParagraphStyleProps } from "./ParagraphStyle";
+import { TextStyle, TextStyleProps } from "./TextStyle";
 
 /**
  * Represents a selection of flow content
@@ -27,6 +28,30 @@ export abstract class FlowSelection {
     /** Determines whether the current selection is collapsed */
     public abstract get isCollapsed(): boolean;
 
+    /**
+     * Gets the uniform paragraph style of the current selection
+     * @param content - The selected content
+     * @param theme - Theme of the selected content
+     * @param diff - An optional set that is populated with style keys with non-uniform values
+     */
+    public abstract getUniformParagraphStyle(
+        content: FlowContent,
+        theme?: FlowTheme,
+        diff?: Set<keyof ParagraphStyleProps>,
+    ): ParagraphStyle;
+
+    /**
+     * Gets the uniform text style of the current selection
+     * @param content - The selected content
+     * @param theme - Theme of the selected content
+     * @param diff - An optional set that is populated with style keys with non-uniform values
+     */
+    public abstract getUniformTextStyle(
+        content: FlowContent,
+        theme?: FlowTheme,
+        diff?: Set<keyof TextStyleProps>,
+    ): TextStyle;
+    
     /**
      * Creates an operation that applies the specified paragraph style on the current selection
      * @param style - The style to apply

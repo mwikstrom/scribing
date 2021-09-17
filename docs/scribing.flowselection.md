@@ -17,6 +17,7 @@ export declare abstract class FlowSelection
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [baseType](./scribing.flowselection.basetype.md) | <code>static</code> | import("paratype").Type&lt;[FlowSelection](./scribing.flowselection.md)<!-- -->&gt; | The run-time type that represents the base class |
+|  [isCollapsed](./scribing.flowselection.iscollapsed.md) |  | boolean | Determines whether the current selection is collapsed |
 
 ## Methods
 
@@ -25,6 +26,8 @@ export declare abstract class FlowSelection
 |  [formatParagraph(style)](./scribing.flowselection.formatparagraph.md) |  | Creates an operation that applies the specified paragraph style on the current selection |
 |  [formatText(style)](./scribing.flowselection.formattext.md) |  | Creates an operation that applies the specified text style on the current selection |
 |  [fromJsonValue(value)](./scribing.flowselection.fromjsonvalue.md) | <code>static</code> | Converts the specified JSON value to a flow selection |
+|  [getUniformParagraphStyle(content, theme, diff)](./scribing.flowselection.getuniformparagraphstyle.md) |  | Gets the uniform paragraph style of the current selection |
+|  [getUniformTextStyle(content, theme, diff)](./scribing.flowselection.getuniformtextstyle.md) |  | Gets the uniform text style of the current selection |
 |  [insert(content)](./scribing.flowselection.insert.md) |  | Creates an operation that inserts the specified content into the current selection |
 |  [remove()](./scribing.flowselection.remove.md) |  | Creates an operation that removes the content of the current selection |
 |  [toJsonValue()](./scribing.flowselection.tojsonvalue.md) |  | Converts the current selection to a JSON value |

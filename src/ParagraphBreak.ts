@@ -13,6 +13,7 @@ import { FlowNode } from "./FlowNode";
 import { FlowTheme } from "./FlowTheme";
 import { FlowNodeRegistry } from "./internal/class-registry";
 import { ParagraphStyle } from "./ParagraphStyle";
+import { TextStyle } from "./TextStyle";
 
 const Props = {
     style: lazyType(() => ParagraphStyle.classType),
@@ -89,6 +90,26 @@ export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreak
     /** {@inheritdoc FlowNode.formatText} */
     public formatText(): this {
         return this;
+    }
+
+    /**
+     * {@inheritDoc FlowNode.getUniformParagraphStyle}
+     * @override
+     */
+    public getUniformParagraphStyle(theme?: FlowTheme): ParagraphStyle | null {
+        theme = theme?.getParagraphTheme(this.style.variant ?? "normal");
+        const ambient = theme?.getAmbientParagraphStyle() ?? ParagraphStyle.empty;
+        return ambient.isEmpty ? this.style : ambient.merge(this.style);
+    }
+
+    /**
+     * {@inheritDoc FlowNode.getUniformTextStyle}
+     * @override
+     */
+    public getUniformTextStyle(theme?: FlowTheme): TextStyle {
+        theme = theme?.getParagraphTheme(this.style.variant ?? "normal");
+        const ambient = theme?.getAmbientTextStyle() ?? TextStyle.empty;
+        return ambient;
     }
 
     /** {@inheritdoc FlowNode.unformatAmbient} */

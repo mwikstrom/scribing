@@ -106,6 +106,8 @@ export class FlowEditorState extends FlowEditorStateBase {
     applyMine(operation: FlowOperation): FlowEditorState;
     applyTheirs(operation: FlowOperation): FlowEditorState;
     static get empty(): FlowEditorState;
+    getUniformParagraphStyle(diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle;
+    getUniformTextStyle(diff?: Set<keyof TextStyleProps>): TextStyle;
 }
 
 // @public
@@ -135,6 +137,8 @@ export abstract class FlowNode {
     abstract formatParagraph(style: ParagraphStyle): FlowNode;
     abstract formatText(style: TextStyle): FlowNode;
     static fromJsonValue(value: JsonValue): FlowNode;
+    abstract getUniformParagraphStyle(theme?: FlowTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle | null;
+    abstract getUniformTextStyle(theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle | null;
     abstract readonly size: number;
     abstract toData(): unknown;
     toJsonValue(): JsonValue;
@@ -202,7 +206,10 @@ export abstract class FlowSelection {
     abstract formatParagraph(style: ParagraphStyle): FlowOperation | null;
     abstract formatText(style: TextStyle): FlowOperation | null;
     static fromJsonValue(value: JsonValue): FlowSelection;
+    abstract getUniformParagraphStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle;
+    abstract getUniformTextStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
     abstract insert(content: FlowContent): FlowOperation | null;
+    abstract get isCollapsed(): boolean;
     abstract remove(): FlowOperation | null;
     toJsonValue(): JsonValue;
     abstract unformatParagraph(style: ParagraphStyle): FlowOperation | null;
@@ -283,6 +290,10 @@ export interface FormatTextProps {
 export abstract class InlineNode extends FlowNode {
     formatParagraph(): this;
     formatText(style: TextStyle): this;
+    // @override
+    getUniformParagraphStyle(theme?: FlowTheme): ParagraphStyle | null;
+    // @override
+    getUniformTextStyle(theme?: FlowTheme): TextStyle;
     abstract set(key: "style", value: TextStyle): this;
     abstract readonly style: TextStyle;
     unformatAmbient(theme: FlowTheme): this;
@@ -353,6 +364,10 @@ export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreak
     formatParagraph(style: ParagraphStyle): this;
     formatText(): this;
     static fromData(data: ParagraphBreakData): ParagraphBreak;
+    // @override
+    getUniformParagraphStyle(theme?: FlowTheme): ParagraphStyle | null;
+    // @override
+    getUniformTextStyle(theme?: FlowTheme): TextStyle;
     readonly size = 1;
     unformatAmbient(theme: FlowTheme): this;
     unformatParagraph(style: ParagraphStyle): this;
@@ -435,7 +450,13 @@ export class RangeSelection extends RangeSelectionBase implements Readonly<Range
     // @override
     formatText(style: TextStyle): FlowOperation | null;
     // @override
+    getUniformParagraphStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle;
+    // @override
+    getUniformTextStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
+    // @override
     insert(content: FlowContent): FlowOperation | null;
+    // @override
+    get isCollapsed(): boolean;
     // @override
     remove(): FlowOperation | null;
     // @override

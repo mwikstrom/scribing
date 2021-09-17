@@ -26,4 +26,6 @@ export declare class FlowEditorState extends FlowEditorStateBase
 |  --- | --- | --- |
 |  [applyMine(operation)](./scribing.floweditorstate.applymine.md) |  | Gets a new flow editor state, based on the current state, and with the specified operation applied. |
 |  [applyTheirs(operation)](./scribing.floweditorstate.applytheirs.md) |  | Gets a new flow editor state, based on the current state, and with the specified operation applied. |
+|  [getUniformParagraphStyle(diff)](./scribing.floweditorstate.getuniformparagraphstyle.md) |  | Gets a uniform paragraph style from the current selection |
+|  [getUniformTextStyle(diff)](./scribing.floweditorstate.getuniformtextstyle.md) |  | Gets a uniform text style from the current selection |
 

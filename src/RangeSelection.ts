@@ -4,14 +4,16 @@ import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
 import { FlowSelection } from "./FlowSelection";
+import { FlowTheme } from "./FlowTheme";
 import { FormatParagraph } from "./FormatParagraph";
 import { FormatText } from "./FormatText";
 import { InsertContent } from "./InsertContent";
 import { FlowSelectionRegistry } from "./internal/class-registry";
 import { transformRangeAfterInsertion, transformRangeAfterRemoval } from "./internal/transform-helpers";
-import { ParagraphStyle } from "./ParagraphStyle";
+import { ParagraphBreak } from "./ParagraphBreak";
+import { ParagraphStyle, ParagraphStyleProps } from "./ParagraphStyle";
 import { RemoveRange } from "./RemoveRange";
-import { TextStyle } from "./TextStyle";
+import { TextStyle, TextStyleProps } from "./TextStyle";
 import { UnformatParagraph } from "./UnformatParagraph";
 import { UnformatText } from "./UnformatText";
 
@@ -56,6 +58,80 @@ export class RangeSelection extends RangeSelectionBase implements Readonly<Range
         return this.range.isCollapsed;
     }
 
+    /**
+     * {@inheritDoc FlowSelection.getUniformParagraphStyle}
+     * @override
+     */
+    public getUniformParagraphStyle(
+        content: FlowContent,
+        theme?: FlowTheme,
+        diff?: Set<keyof ParagraphStyleProps>,
+    ): ParagraphStyle {
+        const { first, size } = this.range;
+        const cursor = content.peek(first);
+
+        if (size === 0) {
+            const style = cursor.getParagraphStyle() ?? ParagraphStyle.empty;
+            theme = theme?.getParagraphTheme(style.variant ?? "normal");
+            const ambient = theme?.getAmbientParagraphStyle() ?? ParagraphStyle.empty;
+            return ambient.isEmpty ? style : ambient.merge(style);
+        }
+
+        if (!diff) {
+            diff = new Set();
+        }
+
+        let result = ParagraphStyle.empty;
+        for (const node of cursor.range(size)) {
+            const uniform = node.getUniformParagraphStyle(theme, diff);
+            if (uniform) {
+                result = result.merge(uniform);
+            }
+        }
+
+        return result.unset(...Array.from(diff));
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.getUniformTextStyle}
+     * @override
+     */
+    public getUniformTextStyle(
+        content: FlowContent,
+        theme?: FlowTheme,
+        diff?: Set<keyof TextStyleProps>,
+    ): TextStyle {
+        const { first, size } = this.range;
+        const cursor = content.peek(first);
+        let variant = cursor.getParagraphStyle()?.variant ?? "normal";
+        let paraTheme = theme?.getParagraphTheme(variant);
+        
+        if (size === 0) {            
+            const ambient = paraTheme?.getAmbientTextStyle() ?? TextStyle.empty;
+            const style = cursor.getTextStyle() ?? TextStyle.empty;
+            return ambient.isEmpty ? style : ambient.merge(style);
+        }
+
+        if (!diff) {
+            diff = new Set();
+        }
+
+        let result = TextStyle.empty;
+        for (const node of cursor.range(size)) {
+            const uniform = node.getUniformTextStyle(paraTheme, diff);
+            if (uniform) {
+                result = result.merge(uniform);
+            }
+
+            if (node instanceof ParagraphBreak) {
+                variant = node.style.variant ?? "normal";
+                paraTheme = theme?.getParagraphTheme(variant);
+            }
+        }
+
+        return result.unset(...Array.from(diff));
+    }
+ 
     /**
      * {@inheritDoc FlowSelection.formatParagraph}
      * @override

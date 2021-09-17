@@ -1,8 +1,8 @@
 import { JsonValue, lazyType } from "paratype";
 import { FlowTheme } from "./FlowTheme";
 import { FlowNodeRegistry } from "./internal/class-registry";
-import { ParagraphStyle } from "./ParagraphStyle";
-import { TextStyle } from "./TextStyle";
+import { ParagraphStyle, ParagraphStyleProps } from "./ParagraphStyle";
+import { TextStyle, TextStyleProps } from "./TextStyle";
 
 /**
  * A piece of flow content.
@@ -37,6 +37,20 @@ export abstract class FlowNode {
      * @param style - The text style to apply
      */
     abstract formatText(style: TextStyle): FlowNode;
+
+    /**
+     * Gets a uniform paragraph style from the current node
+     * @param theme - Theme of the current node
+     * @param diff - An optional set that is populated with style keys with non-uniform values
+     */
+    abstract getUniformParagraphStyle(theme?: FlowTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle | null;
+
+    /**
+     * Gets a uniform text style from the current node
+     * @param theme - Theme of the current node
+     * @param diff - An optional set that is populated with style keys with non-uniform values
+     */
+    abstract getUniformTextStyle(theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle | null;
 
     /** Converts the current flow node to data */
     abstract toData(): unknown;

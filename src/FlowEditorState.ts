@@ -1,9 +1,13 @@
 import { frozen, lazyType, nullType, RecordClass, recordType, type, unionType, validating } from "paratype";
-import { DefaultFlowTheme, FlowTheme } from ".";
+import { ParagraphStyleProps, TextStyleProps } from ".";
+import { DefaultFlowTheme } from "./DefaultFlowTheme";
 import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowSelection } from "./FlowSelection";
+import { FlowTheme } from "./FlowTheme";
 import { FlowOperationRegistry, FlowSelectionRegistry, FlowThemeRegistry } from "./internal/class-registry";
+import { ParagraphStyle } from "./ParagraphStyle";
+import { TextStyle } from "./TextStyle";
 
 /**
  * Properties for {@link FlowEditorState}
@@ -47,6 +51,30 @@ export class FlowEditorState extends FlowEditorStateBase {
             });
         }
         return EMPTY_CACHE;
+    }
+
+    /**
+     * Gets a uniform paragraph style from the current selection
+     * @param diff - An optional set that is populated with style keys with non-uniform values
+     */
+    public getUniformParagraphStyle(diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle {
+        const { selection, content, theme } = this;
+        if (selection === null) {
+            return ParagraphStyle.empty;
+        }
+        return selection.getUniformParagraphStyle(content, theme, diff);
+    }
+
+    /**
+     * Gets a uniform text style from the current selection
+     * @param diff - An optional set that is populated with style keys with non-uniform values
+     */
+    public getUniformTextStyle(diff?: Set<keyof TextStyleProps>): TextStyle {
+        const { selection, content, theme } = this;
+        if (selection === null) {
+            return TextStyle.empty;
+        }
+        return selection.getUniformTextStyle(content, theme, diff);
     }
 
     /**
