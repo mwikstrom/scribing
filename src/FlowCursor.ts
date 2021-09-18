@@ -109,26 +109,26 @@ export class FlowCursor {
     getTextStyle(): TextStyle | null {
         const { nodes } = this.#content;
         let index = this.#index;
-        let result: TextStyle | null = null;
-        let breakAtPara = false;
+        let { node } = this;
+        let forward: TextStyle | null = null;
 
-        if (index > 0 && this.#offset === 0 && this.node instanceof InlineNode) {
-            --index;
+        if (node instanceof InlineNode) {
+            if (this.#offset > 0) {
+                return node.style;
+            }
+            forward = node.style;
         }
 
-        while (index >= 0 && !result) {
-            const node = nodes[index];
-            if (breakAtPara && node instanceof ParagraphBreak) {
+        while (index > 0) {
+            node = nodes[--index];
+            if (node instanceof InlineNode) {
+                return node.style;
+            } else if (node instanceof ParagraphBreak) {
                 break;
             }
-            if (node instanceof InlineNode) {
-                result = node.style;
-            }
-            --index;
-            breakAtPara = true;
         }
 
-        return result;
+        return forward;
     }
 
     /**
