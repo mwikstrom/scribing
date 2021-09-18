@@ -204,7 +204,7 @@ export abstract class FlowOperation {
     abstract transform(other: FlowOperation): FlowOperation | null;
 }
 
-// @public
+// @public @sealed
 export class FlowRange extends FlowRangeBase implements Readonly<FlowRangeProps> {
     static at(position: number, distance?: number): FlowRange;
     static readonly classType: Type<FlowRange>;

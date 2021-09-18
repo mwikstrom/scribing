@@ -195,39 +195,6 @@ export class RangeSelection extends RangeSelectionBase implements Readonly<Range
     }
 
     /**
-     * {@inheritDoc FlowSelection.updateFlowRange}
-     * @override
-     */
-    public updateFlowRange(
-        updater: (range: FlowRange) => FlowRange | null,
-    ): FlowSelection | null;
-
-    /**
-     * {@inheritDoc FlowSelection.updateFlowRange}
-     * @override
-     */
-    public updateFlowRange(
-        updater: (range: FlowRange, content: FlowContent) => FlowRange | null,
-        content: FlowContent,
-    ): FlowSelection | null;
-
-    public updateFlowRange(
-        updater: (range: FlowRange, content: FlowContent) => FlowRange | null,
-        content?: FlowContent,
-    ): FlowSelection | null {
-        const { range } = this;
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        const result = updater(range, content!);
-        if (result === null) {
-            return null;
-        } else if (range.equals(result)) {
-            return this;
-        } else {
-            return new RangeSelection({ range: result });
-        }
-    }
-
-    /**
      * {@inheritDoc FlowSelection.afterInsertion}
      * @override
      */

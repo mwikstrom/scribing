@@ -9,6 +9,7 @@ Represents a range of flow content
 <b>Signature:</b>
 
 ```typescript
+/** @sealed */
 export declare class FlowRange extends FlowRangeBase implements Readonly<FlowRangeProps> 
 ```
 <b>Extends:</b> FlowRangeBase
