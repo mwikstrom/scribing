@@ -29,7 +29,7 @@ export declare abstract class FlowSelection
 |  [getUniformParagraphStyle(content, theme, diff)](./scribing.flowselection.getuniformparagraphstyle.md) |  | Gets the uniform paragraph style of the current selection |
 |  [getUniformTextStyle(content, theme, diff)](./scribing.flowselection.getuniformtextstyle.md) |  | Gets the uniform text style of the current selection |
 |  [insert(content)](./scribing.flowselection.insert.md) |  | Creates an operation that inserts the specified content into the current selection |
-|  [remove()](./scribing.flowselection.remove.md) |  | Creates an operation that removes the content of the current selection |
+|  [remove(options)](./scribing.flowselection.remove.md) |  | Creates an operation that removes the content of the current selection |
 |  [toJsonValue()](./scribing.flowselection.tojsonvalue.md) |  | Converts the current selection to a JSON value |
 |  [unformatParagraph(style)](./scribing.flowselection.unformatparagraph.md) |  | Creates an operation that unapplies the specified paragraph style on the current selection |
 |  [unformatText(style)](./scribing.flowselection.unformattext.md) |  | Creates an operation that unapplies the specified text style on the current selection |

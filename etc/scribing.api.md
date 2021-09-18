@@ -234,6 +234,41 @@ export interface FlowRangeProps {
     focus: number;
 }
 
+// @public @sealed
+export class FlowRangeSelection extends FlowRangeSelectionBase implements Readonly<FlowRangeSelectionProps> {
+    // @override
+    afterInsertion(range: FlowRange, mine: boolean): FlowSelection | null;
+    // @override
+    afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
+    static readonly classType: Type<RecordObject<FlowRangeSelectionProps, FlowRangeSelectionProps> & Equatable & Readonly<FlowRangeSelectionProps> & FlowRangeSelection>;
+    // @override
+    formatParagraph(style: ParagraphStyle): FlowOperation | null;
+    // @override
+    formatText(style: TextStyle): FlowOperation | null;
+    // @override
+    getUniformParagraphStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle;
+    // @override
+    getUniformTextStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
+    // @override
+    insert(content: FlowContent): FlowOperation | null;
+    // @override
+    get isCollapsed(): boolean;
+    // @override
+    remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
+    // @override
+    unformatParagraph(style: ParagraphStyle): FlowOperation | null;
+    // @override
+    unformatText(style: TextStyle): FlowOperation | null;
+}
+
+// @public
+export const FlowRangeSelectionBase: RecordConstructor<FlowRangeSelectionProps, FlowSelection, FlowRangeSelectionProps>;
+
+// @public
+export interface FlowRangeSelectionProps {
+    range: FlowRange;
+}
+
 // @public
 export type FlowRangeTuple = [number, number];
 
@@ -251,7 +286,7 @@ export abstract class FlowSelection {
     abstract getUniformTextStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
     abstract insert(content: FlowContent): FlowOperation | null;
     abstract get isCollapsed(): boolean;
-    abstract remove(): FlowOperation | null;
+    abstract remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
     toJsonValue(): JsonValue;
     abstract unformatParagraph(style: ParagraphStyle): FlowOperation | null;
     abstract unformatText(style: TextStyle): FlowOperation | null;
@@ -479,39 +514,10 @@ export type ParagraphStyleVariant = (typeof PARAGRAPH_STYLE_VARIANTS)[number];
 // @public
 export const ParagraphStyleVariantType: Type<ParagraphStyleVariant>;
 
-// @public @sealed
-export class RangeSelection extends RangeSelectionBase implements Readonly<RangeSelectionProps> {
-    // @override
-    afterInsertion(range: FlowRange, mine: boolean): FlowSelection | null;
-    // @override
-    afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
-    static readonly classType: Type<RecordObject<RangeSelectionProps, RangeSelectionProps> & Equatable & Readonly<RangeSelectionProps> & RangeSelection>;
-    // @override
-    formatParagraph(style: ParagraphStyle): FlowOperation | null;
-    // @override
-    formatText(style: TextStyle): FlowOperation | null;
-    // @override
-    getUniformParagraphStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle;
-    // @override
-    getUniformTextStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
-    // @override
-    insert(content: FlowContent): FlowOperation | null;
-    // @override
-    get isCollapsed(): boolean;
-    // @override
-    remove(): FlowOperation | null;
-    // @override
-    unformatParagraph(style: ParagraphStyle): FlowOperation | null;
-    // @override
-    unformatText(style: TextStyle): FlowOperation | null;
-}
-
 // @public
-export const RangeSelectionBase: RecordConstructor<RangeSelectionProps, FlowSelection, RangeSelectionProps>;
-
-// @public
-export interface RangeSelectionProps {
-    range: FlowRange;
+export interface RemoveFlowSelectionOptions {
+    content?: FlowContent;
+    whenCollapsed?: "removeBackward" | "removeForward" | "noop";
 }
 
 // @public @sealed

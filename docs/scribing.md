@@ -18,6 +18,7 @@ Model for collaborative rich text editing
 |  [FlowNode](./scribing.flownode.md) | A piece of flow content. |
 |  [FlowOperation](./scribing.flowoperation.md) | An abstraction of an operation that updates flow content. |
 |  [FlowRange](./scribing.flowrange.md) | Represents a range of flow content |
+|  [FlowRangeSelection](./scribing.flowrangeselection.md) | Represents a range of selected flow content |
 |  [FlowSelection](./scribing.flowselection.md) | Represents a selection of flow content |
 |  [FlowTheme](./scribing.flowtheme.md) | Provides a theme for flow content |
 |  [FormatParagraph](./scribing.formatparagraph.md) | Represents an operation that applies a paragraph style to a range of flow content. |
@@ -27,7 +28,6 @@ Model for collaborative rich text editing
 |  [LineBreak](./scribing.linebreak.md) | Represents a line break. |
 |  [ParagraphBreak](./scribing.paragraphbreak.md) | Represents a paragraph break. |
 |  [ParagraphStyle](./scribing.paragraphstyle.md) | Represents the styling that is applied to paragraph content. |
-|  [RangeSelection](./scribing.rangeselection.md) | Represents a range of selected flow content |
 |  [RemoveRange](./scribing.removerange.md) | Represents an operation that removes a range of flow. |
 |  [TextRun](./scribing.textrun.md) | A run of text with uniform styling |
 |  [TextStyle](./scribing.textstyle.md) | Represents the styling that is applied to text. |
@@ -42,6 +42,7 @@ Model for collaborative rich text editing
 |  [FlowContentProps](./scribing.flowcontentprops.md) | Flow content properties |
 |  [FlowEditorStateProps](./scribing.floweditorstateprops.md) | Properties for [FlowEditorState](./scribing.floweditorstate.md) |
 |  [FlowRangeProps](./scribing.flowrangeprops.md) | Non-computed properties of a [FlowRange](./scribing.flowrange.md) |
+|  [FlowRangeSelectionProps](./scribing.flowrangeselectionprops.md) | Properties of flow range selections |
 |  [FormatParagraphData](./scribing.formatparagraphdata.md) | Data of format paragraph operations |
 |  [FormatParagraphProps](./scribing.formatparagraphprops.md) | Properties of format paragraph operations |
 |  [FormatTextData](./scribing.formattextdata.md) | Data of format text operations |
@@ -53,7 +54,7 @@ Model for collaborative rich text editing
 |  [ParagraphBreakData](./scribing.paragraphbreakdata.md) | Data of paragraph break nodes |
 |  [ParagraphBreakProps](./scribing.paragraphbreakprops.md) | Properties of paragraph break nodes |
 |  [ParagraphStyleProps](./scribing.paragraphstyleprops.md) | Style properties for paragraph content |
-|  [RangeSelectionProps](./scribing.rangeselectionprops.md) | Properties of range selections |
+|  [RemoveFlowSelectionOptions](./scribing.removeflowselectionoptions.md) | Options for [FlowSelection.remove()](./scribing.flowselection.remove.md) |
 |  [RemoveRangeData](./scribing.removerangedata.md) | Data of remove range operations |
 |  [RemoveRangeProps](./scribing.removerangeprops.md) | Properties of remove range opertions |
 |  [TextRunProps](./scribing.textrunprops.md) | Properties of a text run |
@@ -72,6 +73,7 @@ Model for collaborative rich text editing
 |  [FlowContentBase](./scribing.flowcontentbase.md) | The base record class for [FlowContent](./scribing.flowcontent.md) |
 |  [FlowEditorStateBase](./scribing.floweditorstatebase.md) | The base record class for [FlowEditorState](./scribing.floweditorstate.md) |
 |  [FlowRangeBase](./scribing.flowrangebase.md) | The base record class for [FlowRange](./scribing.flowrange.md) |
+|  [FlowRangeSelectionBase](./scribing.flowrangeselectionbase.md) | The base record class for [FlowRangeSelection](./scribing.flowrangeselection.md) |
 |  [FormatParagraphBase](./scribing.formatparagraphbase.md) | The base record class for [FormatParagraph](./scribing.formatparagraph.md) |
 |  [FormatTextBase](./scribing.formattextbase.md) | The base record class for [FormatText](./scribing.formattext.md) |
 |  [InsertContentBase](./scribing.insertcontentbase.md) | The base record class for [InsertContent](./scribing.insertcontent.md) |
@@ -80,7 +82,6 @@ Model for collaborative rich text editing
 |  [ParagraphBreakBase](./scribing.paragraphbreakbase.md) | The base record class for [ParagraphBreak](./scribing.paragraphbreak.md) |
 |  [ParagraphStyleBase](./scribing.paragraphstylebase.md) | The base record class for [ParagraphStyle](./scribing.paragraphstyle.md) |
 |  [ParagraphStyleVariantType](./scribing.paragraphstylevarianttype.md) | The run-time type that matches paragraph style variant values |
-|  [RangeSelectionBase](./scribing.rangeselectionbase.md) | The base record class for [RangeSelection](./scribing.rangeselection.md) |
 |  [RemoveRangeBase](./scribing.removerangebase.md) | The base record class for [RemoveRange](./scribing.removerange.md) |
 |  [TextRunBase](./scribing.textrunbase.md) | The base record class for [TextRun](./scribing.textrun.md) |
 |  [TextStyleBase](./scribing.textstylebase.md) | The base record class for [TextStyle](./scribing.textstyle.md) |
