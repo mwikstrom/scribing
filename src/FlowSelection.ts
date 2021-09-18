@@ -100,6 +100,24 @@ export abstract class FlowSelection {
     public abstract unformatText(style: TextStyle): FlowOperation | null;
 
     /**
+     * Returns a new selection after updating the leaf flow range (if any)
+     * @param updater - The callback that will update the leaf flow range
+     */
+    public abstract updateFlowRange(
+        updater: (range: FlowRange) => FlowRange | null,
+    ): FlowSelection | null;
+
+    /**
+     * Returns a new selection after updating the leaf flow range (if any)
+     * @param updater - The callback that will update the leaf flow range
+     * @param content - The selected content
+     */
+    public abstract updateFlowRange(
+        updater: (range: FlowRange, content: FlowContent) => FlowRange | null,
+        content: FlowContent,
+    ): FlowSelection | null;
+
+    /**
      * Transforms the current selection so that its intended boundary is preserved after the specified
      * range was inserted.
      * @internal

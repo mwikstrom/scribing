@@ -51,6 +51,7 @@ export type FlowRangeTuple = [number, number];
 /**
  * Represents a range of flow content
  * @public
+ * @sealed
  */
 @frozen
 @validating
