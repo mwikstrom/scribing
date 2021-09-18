@@ -3,6 +3,7 @@ import { frozen, integerType, type, validating } from "paratype";
 import { FlowContent } from "./FlowContent";
 import { FlowNode } from "./FlowNode";
 import { InlineNode } from "./InlineNode";
+import { LineBreak } from "./LineBreak";
 import { ParagraphBreak } from "./ParagraphBreak";
 import { ParagraphStyle } from "./ParagraphStyle";
 import { TextRun } from "./TextRun";
@@ -121,10 +122,13 @@ export class FlowCursor {
 
         while (index > 0) {
             node = nodes[--index];
-            if (node instanceof InlineNode) {
-                return node.style;
-            } else if (node instanceof ParagraphBreak) {
+            if (
+                node instanceof ParagraphBreak ||
+                node instanceof LineBreak
+            ) {
                 break;
+            } else if (node instanceof InlineNode) {
+                return node.style;
             }
         }
 
