@@ -138,7 +138,11 @@ export class RangeSelection extends RangeSelectionBase implements Readonly<Range
      */
     public formatParagraph(@type(ParagraphStyle.classType) style: ParagraphStyle): FlowOperation | null {
         const { range } = this;
-        return new FormatParagraph({ range, style });
+        if (range.isCollapsed) {
+            return null;
+        } else {
+            return new FormatParagraph({ range, style });
+        }
     }
 
     /**
@@ -147,7 +151,11 @@ export class RangeSelection extends RangeSelectionBase implements Readonly<Range
      */
     public formatText(@type(TextStyle.classType) style: TextStyle): FlowOperation | null {
         const { range } = this;
-        return new FormatText({ range, style });
+        if (range.isCollapsed) {
+            return null;
+        } else {
+            return new FormatText({ range, style });
+        }
     }
 
     /**
@@ -173,7 +181,11 @@ export class RangeSelection extends RangeSelectionBase implements Readonly<Range
      */
     public remove(): FlowOperation | null {
         const { range } = this;
-        return new RemoveRange({ range });
+        if (range.isCollapsed) {
+            return null;
+        } else {
+            return new RemoveRange({ range });
+        }
     }
 
     /**
@@ -182,7 +194,11 @@ export class RangeSelection extends RangeSelectionBase implements Readonly<Range
      */
     public unformatParagraph(@type(ParagraphStyle.classType) style: ParagraphStyle): FlowOperation | null {
         const { range } = this;
-        return new UnformatParagraph({ range, style });
+        if (range.isCollapsed) {
+            return null;
+        } else {
+            return new UnformatParagraph({ range, style });
+        }
     }
 
     /**
@@ -191,7 +207,11 @@ export class RangeSelection extends RangeSelectionBase implements Readonly<Range
      */
     public unformatText(@type(TextStyle.classType) style: TextStyle): FlowOperation | null {
         const { range } = this;
-        return new UnformatText({ range, style });
+        if (range.isCollapsed) {
+            return null;
+        } else {
+            return new UnformatText({ range, style });
+        }
     }
 
     /**
