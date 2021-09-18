@@ -59,6 +59,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     formatParagraph(range: FlowRange, style: ParagraphStyle, theme?: FlowTheme): FlowContent;
     formatText(range: FlowRange, style: TextStyle, theme?: FlowTheme): FlowContent;
     static fromData(data: FlowContentData): FlowContent;
+    static fromJsonValue(value: JsonValue): FlowContent;
     insert(position: number, ...nodes: readonly FlowNode[]): FlowContent;
     insert(position: number, theme: FlowTheme | undefined, ...nodes: readonly FlowNode[]): FlowContent;
     peek(position?: number): FlowCursor;

@@ -38,7 +38,8 @@ export declare class FlowContent extends FlowContentBase implements Readonly<Flo
 |  [copy(range)](./scribing.flowcontent.copy.md) |  | Extracts a range of flow content |
 |  [formatParagraph(range, style, theme)](./scribing.flowcontent.formatparagraph.md) |  | Applies paragraph style to a range |
 |  [formatText(range, style, theme)](./scribing.flowcontent.formattext.md) |  | Applies text style to a range |
-|  [fromData(data)](./scribing.flowcontent.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
+|  [fromData(data)](./scribing.flowcontent.fromdata.md) | <code>static</code> | Gets flow content from the specified data |
+|  [fromJsonValue(value)](./scribing.flowcontent.fromjsonvalue.md) | <code>static</code> | Gets flow content from the specified JSON value |
 |  [insert(position, nodes)](./scribing.flowcontent.insert.md) |  | Inserts the specified nodes at the specified position |
 |  [insert(position, theme, nodes)](./scribing.flowcontent.insert_1.md) |  | Inserts the specified nodes at the specified position |
 |  [peek(position)](./scribing.flowcontent.peek.md) |  | Gets a cursor |

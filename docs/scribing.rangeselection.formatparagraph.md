@@ -25,5 +25,5 @@ formatParagraph(style: ParagraphStyle): FlowOperation | null;
 
 ## Remarks
 
-`null` is returns when the operation would be a no-op or not applicable on the current selection.
+`null` is returned when the operation would be a no-op or not applicable on the current selection.
 
