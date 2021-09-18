@@ -2,6 +2,7 @@ import {
     arrayType, 
     frozen, 
     JsonValue, 
+    jsonValueType, 
     lazyType, 
     nonNegativeIntegerType, 
     RecordClass, 
@@ -75,10 +76,15 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => FlowContent);
 
-    /** Gets an instance of the current class from the specified data */
+    /** Gets flow content from the specified data */
     public static fromData(@type(NodeArrayType) data: FlowContentData): FlowContent {
         const props: FlowContentProps = { nodes: Object.freeze(Array.from(FlowContent.merge(data))) };
         return new FlowContent(props);
+    }
+
+    /** Gets flow content from the specified JSON value */
+    public static fromJsonValue(@type(jsonValueType) value: JsonValue): FlowContent {
+        return FlowContent.classType.fromJsonValue(value);
     }
 
     #size: number | undefined;
