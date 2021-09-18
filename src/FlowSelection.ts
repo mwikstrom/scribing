@@ -78,10 +78,11 @@ export abstract class FlowSelection {
 
     /**
      * Creates an operation that removes the content of the current selection
+     * @param options - Options that provide operation behavior
      * @remarks
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
-    public abstract remove(): FlowOperation | null;
+    public abstract remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
 
     /**
      * Creates an operation that unapplies the specified paragraph style on the current selection
@@ -112,4 +113,16 @@ export abstract class FlowSelection {
      * @internal
      */
     abstract afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
+}
+
+/**
+ * Options for {@link FlowSelection.remove}
+ * @public
+ */
+export interface RemoveFlowSelectionOptions {
+    /** The content that is selected */
+    content?: FlowContent;
+
+    /** Controls what to remove when selection is collapsed */
+    whenCollapsed?: "removeBackward" | "removeForward" | "noop";
 }

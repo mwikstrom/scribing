@@ -3,7 +3,7 @@ import { FlowBatch } from "./FlowBatch";
 import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
-import { FlowSelection } from "./FlowSelection";
+import { FlowSelection, RemoveFlowSelectionOptions } from "./FlowSelection";
 import { FlowTheme } from "./FlowTheme";
 import { FormatParagraph } from "./FormatParagraph";
 import { FormatText } from "./FormatText";
@@ -179,13 +179,21 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      * {@inheritDoc FlowSelection.remove}
      * @override
      */
-    public remove(): FlowOperation | null {
-        const { range } = this;
+    public remove(options: RemoveFlowSelectionOptions = {}): FlowOperation | null {
+        const { whenCollapsed, content } = options;
+        let { range } = this;
+
         if (range.isCollapsed) {
-            return null;
-        } else {
-            return new RemoveRange({ range });
+            if (whenCollapsed === "removeBackward" && range.first > 0) {
+                range = FlowRange.at(range.first, -1);
+            } else if (whenCollapsed === "removeForward" && content && range.last < content.size - 1) {
+                range = FlowRange.at(range.last, 1);
+            } else {
+                return null;
+            }
         }
+        
+        return new RemoveRange({ range });
     }
 
     /**
