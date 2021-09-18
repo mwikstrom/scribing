@@ -21,19 +21,19 @@ const Props = {
     range: lazyType(() => FlowRange.classType),
 };
 
-const PropsType: RecordType<RangeSelectionProps> = recordType(Props);
+const PropsType: RecordType<FlowRangeSelectionProps> = recordType(Props);
 
 /**
- * The base record class for {@link RangeSelection}
+ * The base record class for {@link FlowRangeSelection}
  * @public
  */
-export const RangeSelectionBase = RecordClass(PropsType, FlowSelection);
+export const FlowRangeSelectionBase = RecordClass(PropsType, FlowSelection);
 
 /**
- * Properties of range selections
+ * Properties of flow range selections
  * @public
  */
-export interface RangeSelectionProps {
+export interface FlowRangeSelectionProps {
     /** The selected range */
     range: FlowRange;
 }
@@ -46,9 +46,9 @@ export interface RangeSelectionProps {
 @frozen
 @validating
 @FlowSelectionRegistry.register
-export class RangeSelection extends RangeSelectionBase implements Readonly<RangeSelectionProps> {
+export class FlowRangeSelection extends FlowRangeSelectionBase implements Readonly<FlowRangeSelectionProps> {
     /** The run-time type that represents this class */
-    public static readonly classType = recordClassType(() => RangeSelection);
+    public static readonly classType = recordClassType(() => FlowRangeSelection);
 
     /**
      * {@inheritDoc FlowSelection.isCollapsed}

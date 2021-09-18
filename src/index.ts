@@ -37,7 +37,7 @@ export * from "./RemoveRange";
 
 // Selection
 export * from "./FlowSelection";
-export * from "./RangeSelection";
+export * from "./FlowRangeSelection";
 
 // Editor
 export * from "./FlowEditorState";
