@@ -247,6 +247,8 @@ export class FlowCursor {
             const lastNode = nodes[nodes.length - 1];
             if (TextRun.classType.test(lastNode) && lastOffset < lastNode.size) {
                 nodes[nodes.length - 1] = lastNode.before(lastOffset);
+            } else if (lastNode) {
+                nodes.splice(nodes.length - 1, 1);
             }
         }
 
@@ -254,6 +256,8 @@ export class FlowCursor {
             const firstNode = nodes[0];
             if (TextRun.classType.test(firstNode)) {
                 nodes[0] = firstNode.after(firstOffset);
+            } else if (firstNode) {
+                nodes.splice(0, 1);
             }
         }
 
