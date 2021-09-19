@@ -178,13 +178,13 @@ export class InsertContent extends InsertContentBase implements InsertContentPro
 
             if (node instanceof ParagraphBreak) {
                 if (targetParaStyle !== null) {
-                    node = node.formatParagraph(targetParaStyle);
+                    node = node.formatParagraph(targetParaStyle.merge(node.style));
                 }
                 targetTextStyle = null;
             }
 
             if (targetTextStyle && node instanceof InlineNode) {
-                node = node.formatText(targetTextStyle);
+                node = node.formatText(targetTextStyle.merge(node.style));
             }
 
             nodes.push(node);
