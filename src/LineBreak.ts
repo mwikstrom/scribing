@@ -22,7 +22,9 @@ const Data = {
 };
 const PropsType: RecordType<LineBreakProps> = recordType(Props);
 const DataType: RecordType<LineBreakData> = recordType(Data).withOptional("style");
-const propsToData = ({style}: LineBreakProps): LineBreakData => ({break: "line", style});
+const propsToData = ({style}: LineBreakProps): LineBreakData => (
+    style.isEmpty ? {break: "line"} : {break: "line", style}
+);
 const EMPTY_PROPS = (): LineBreakProps => Object.freeze({ style: TextStyle.empty });
 
 /**

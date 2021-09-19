@@ -24,7 +24,9 @@ const Data = {
 };
 const PropsType: RecordType<ParagraphBreakProps> = recordType(Props);
 const DataType: RecordType<ParagraphBreakData> = recordType(Data).withOptional("style");
-const propsToData = ({style}: ParagraphBreakProps): ParagraphBreakData => ({break: "para", style});
+const propsToData = ({style}: ParagraphBreakProps): ParagraphBreakData => (
+    style.isEmpty ? {break: "para"} : {break: "para", style}
+);
 const EMPTY_PROPS = (): ParagraphBreakProps => Object.freeze({ style: ParagraphStyle.empty });
 
 /**
