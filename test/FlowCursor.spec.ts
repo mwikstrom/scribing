@@ -177,4 +177,26 @@ describe("FlowCursor", () => {
         expect(content.peek(12).getTextStyle()?.toData()).toMatchObject({});
         expect(content.peek(13).getTextStyle()?.toData()).toMatchObject({});
     });
+
+    it("can get before/after ranges after single para break", () => {
+        const content = FlowContent.fromJsonValue([
+            { break: "para" }
+        ]);
+        const cursor = content.peek(1);
+        const before = Array.from(cursor.before);
+        const after = Array.from(cursor.after);
+        expect(before.length).toBe(1);
+        expect(after.length).toBe(0);
+    });
+
+    it("can get before/after ranges before single para break", () => {
+        const content = FlowContent.fromJsonValue([
+            { break: "para" }
+        ]);
+        const cursor = content.peek(0);
+        const before = Array.from(cursor.before);
+        const after = Array.from(cursor.after);
+        expect(before.length).toBe(0);
+        expect(after.length).toBe(1);
+    });
 });
