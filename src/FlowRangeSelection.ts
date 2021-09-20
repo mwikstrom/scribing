@@ -122,14 +122,14 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
 
         let result = TextStyle.empty;
         for (const node of cursor.range(size)) {
-            const style = node.getUniformTextStyle(paraTheme, diff);
-            if (style) {
-                result = result.merge(style, diff);
-            }
-
             if (node instanceof ParagraphBreak) {
                 variant = node.style.variant ?? "normal";
                 paraTheme = theme?.getParagraphTheme(variant);
+            } else {
+                const style = node.getUniformTextStyle(paraTheme, diff);
+                if (style) {
+                    result = result.merge(style, diff);
+                }
             }
         }
 
