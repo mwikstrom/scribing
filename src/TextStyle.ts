@@ -1,4 +1,13 @@
-import { booleanType, enumType, frozen, RecordClass, recordClassType, recordType, validating } from "paratype";
+import { 
+    booleanType,
+    enumType,
+    frozen,
+    integerType,
+    RecordClass,
+    recordClassType,
+    recordType,
+    validating
+} from "paratype";
 
 /**
  * Style properties for {@link TextRun|text}
@@ -33,11 +42,15 @@ export interface TextStyleProps {
      */
     fontFamily?: "serif" | "sans-serif" | "monospace";
 
+    /**
+     * The text's font size, as a percentage of the user's default font size, where normal is represented as `100`.
+     */
+    fontSize?: number;
+
     // TODO: by name inheritance
     // TODO: background color
     // TODO: foreground color
     // TODO: small caps
-    // TODO: font size
     // TODO: link target
     // TODO: language
 }
@@ -49,6 +62,10 @@ const Props = {
     strike: booleanType,
     baseline: enumType(["normal", "sub", "super"]),
     fontFamily: enumType(["serif", "sans-serif", "monospace"]),
+    fontSize: integerType.restrict(
+        "Must be greater than or equal to 10 and less than or equal to 1000",
+        value => value >= 10 && value <= 1000,
+    ),
 };
 
 const PropsType = recordType(Props).asPartial();

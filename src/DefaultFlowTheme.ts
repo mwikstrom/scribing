@@ -71,20 +71,10 @@ class DefaultParagraphTheme extends ParagraphTheme {
     constructor(variant: ParagraphStyleVariant) {
         super();
 
-        const isHeading = /^h[1-6]$/.test(variant);
-        let fontFamily: TextStyleProps["fontFamily"];
-
-        if (variant === "code") {
-            fontFamily = "monospace";
-        } else if (isHeading || variant === "title" || variant === "subtitle") {
-            fontFamily = "sans-serif";
-        } else {
-            fontFamily = "serif";
-        }
-        
         this.#text = new TextStyle({
-            fontFamily,
-            bold: isHeading,
+            fontFamily: getDefaultFontFamily(variant),
+            fontSize: getDefaultFontSize(variant),
+            bold: isHeading(variant),
             italic: false,
             underline: false,
             strike: false,
@@ -108,3 +98,31 @@ class DefaultParagraphTheme extends ParagraphTheme {
         return this.#para;
     }
 }
+
+const isHeading = (variant: ParagraphStyleVariant): boolean => /^h[1-6]$/.test(variant);
+
+const getDefaultFontFamily = (variant: ParagraphStyleVariant): TextStyleProps["fontFamily"] => {
+    if (variant === "code") {
+        return "monospace";
+    } else if (isHeading(variant) || variant === "title" || variant === "subtitle") {
+        return "sans-serif";
+    } else {
+        return "serif";
+    }
+};
+
+const getDefaultFontSize = (variant: ParagraphStyleVariant): number => {
+    switch (variant) {
+    case "title": return 300;
+    case "subtitle": return 125;
+    case "h1": return 200;
+    case "h2": return 150;
+    case "h3": return 117;
+    case "h4": return 100;
+    case "h5": return 83;
+    case "h6": return 67;
+    case "code": return 90;
+    case "preamble": return 110;
+    default: return 100;
+    }
+};
