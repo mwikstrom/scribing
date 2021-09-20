@@ -3,11 +3,14 @@ import {
     enumType,
     frozen,
     integerType,
+    nullType,
     RecordClass,
     recordClassType,
     recordType,
+    unionType,
     validating
 } from "paratype";
+import { Interaction } from "./Interaction";
 
 /**
  * Style properties for {@link TextRun|text}
@@ -48,11 +51,20 @@ export interface TextStyleProps {
      */
     fontSize?: number;
 
+    /**
+     * When non-null, indicates that text shall be styled as a link with the specified
+     * interaction.
+     */
+    link?: Interaction | null;
+
+    /**
+     * The text's foreground color
+     */
+    color?: "default" | "primary" | "secondary" | "warning" | "caution" | "note" | "subtle";
+
     // TODO: by name inheritance
     // TODO: background color
-    // TODO: foreground color
     // TODO: small caps
-    // TODO: link target
     // TODO: language
 }
 
@@ -67,6 +79,8 @@ const Props = {
         "Must be greater than or equal to 10 and less than or equal to 1000",
         value => value >= 10 && value <= 1000,
     ),
+    link: unionType(nullType, Interaction.baseType),
+    color: enumType(["default", "primary", "secondary", "warning", "caution", "note", "subtle"])
 };
 
 const PropsType = recordType(Props).asPartial();

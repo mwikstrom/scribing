@@ -67,6 +67,7 @@ let CACHED_ROOT: DefaultFlowTheme | undefined;
 class DefaultParagraphTheme extends ParagraphTheme {
     #text: TextStyle;
     #para: ParagraphStyle;
+    #link: TextStyle;
 
     constructor(variant: ParagraphStyleVariant) {
         super();
@@ -79,6 +80,8 @@ class DefaultParagraphTheme extends ParagraphTheme {
             underline: false,
             strike: false,
             baseline: "normal",
+            link: null,
+            color: "default",
         });
 
         this.#para = new ParagraphStyle({
@@ -87,6 +90,11 @@ class DefaultParagraphTheme extends ParagraphTheme {
             lineSpacing: variant === "preamble" ? 110 : 100,
             spaceAbove: getSpaceAbove(variant),
             spaceBelow: getSpaceAbove(variant),
+        });
+
+        this.#link = new TextStyle({
+            underline: true,
+            color: "primary",
         });
     }
 
@@ -98,6 +106,11 @@ class DefaultParagraphTheme extends ParagraphTheme {
     /** {@inheritdoc ParagraphTheme.getAmbientParagraphStyle} */
     getAmbientParagraphStyle(): ParagraphStyle {
         return this.#para;
+    }
+
+    /** {@inheritdoc ParagraphTheme.getLinkStyle} */
+    getLinkStyle(): TextStyle {
+        return this.#link;
     }
 }
 

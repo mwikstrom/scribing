@@ -3,6 +3,7 @@ import { FlowNode } from "../FlowNode";
 import { FlowOperation } from "../FlowOperation";
 import { FlowSelection } from "../FlowSelection";
 import { FlowTheme } from "../FlowTheme";
+import { Interaction } from "../Interaction";
 
 /** @internal */
 export interface RegistrableClass<T> {
@@ -41,3 +42,6 @@ export const FlowSelectionRegistry = new ClassRegistry<FlowSelection>();
 
 /** @internal */
 export const FlowThemeRegistry = new ClassRegistry<FlowTheme>();
+
+/** @internal */
+export const InteractionRegistry = new ClassRegistry<Interaction>();

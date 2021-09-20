@@ -19,18 +19,30 @@ FlowEditorStateBase: import("paratype").RecordConstructor<{
         underline: any;
         strike: any;
         baseline: any;
+        fontFamily: any;
+        fontSize: any;
+        link: any;
+        color: any;
     }>, Partial<{
         bold: any;
         italic: any;
         underline: any;
         strike: any;
         baseline: any;
+        fontFamily: any;
+        fontSize: any;
+        link: any;
+        color: any;
     }>> & import("paratype").Equatable & Readonly<Partial<{
         bold: any;
         italic: any;
         underline: any;
         strike: any;
         baseline: any;
+        fontFamily: any;
+        fontSize: any;
+        link: any;
+        color: any;
     }>> & TextStyle;
 }, Object, {
     content: FlowContent;
@@ -42,18 +54,30 @@ FlowEditorStateBase: import("paratype").RecordConstructor<{
         underline: any;
         strike: any;
         baseline: any;
+        fontFamily: any;
+        fontSize: any;
+        link: any;
+        color: any;
     }>, Partial<{
         bold: any;
         italic: any;
         underline: any;
         strike: any;
         baseline: any;
+        fontFamily: any;
+        fontSize: any;
+        link: any;
+        color: any;
     }>> & import("paratype").Equatable & Readonly<Partial<{
         bold: any;
         italic: any;
         underline: any;
         strike: any;
         baseline: any;
+        fontFamily: any;
+        fontSize: any;
+        link: any;
+        color: any;
     }>> & TextStyle;
 }>
 ```

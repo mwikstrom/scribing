@@ -19,4 +19,9 @@ export abstract class ParagraphTheme {
      * paragraph style variant.
      */
     abstract getAmbientParagraphStyle(): ParagraphStyle;
+
+    /**
+     * Gets the text style for links in this paragraph theme.
+     */
+     abstract getLinkStyle(): TextStyle;
 }

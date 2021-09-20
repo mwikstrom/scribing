@@ -6,6 +6,10 @@
 // Range
 export * from "./FlowRange";
 
+// Interactions
+export * from "./Interaction";
+export * from "./OpenUrl";
+
 // Styles
 export * from "./ParagraphStyle";
 export * from "./TextStyle";

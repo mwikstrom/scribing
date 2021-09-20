@@ -120,18 +120,30 @@ italic: any;
 underline: any;
 strike: any;
 baseline: any;
+fontFamily: any;
+fontSize: any;
+link: any;
+color: any;
 }>, Partial<{
 bold: any;
 italic: any;
 underline: any;
 strike: any;
 baseline: any;
+fontFamily: any;
+fontSize: any;
+link: any;
+color: any;
 }>> & Equatable & Readonly<Partial<{
 bold: any;
 italic: any;
 underline: any;
 strike: any;
 baseline: any;
+fontFamily: any;
+fontSize: any;
+link: any;
+color: any;
 }>> & TextStyle;
 }, Object, {
 content: FlowContent;
@@ -143,18 +155,30 @@ italic: any;
 underline: any;
 strike: any;
 baseline: any;
+fontFamily: any;
+fontSize: any;
+link: any;
+color: any;
 }>, Partial<{
 bold: any;
 italic: any;
 underline: any;
 strike: any;
 baseline: any;
+fontFamily: any;
+fontSize: any;
+link: any;
+color: any;
 }>> & Equatable & Readonly<Partial<{
 bold: any;
 italic: any;
 underline: any;
 strike: any;
 baseline: any;
+fontFamily: any;
+fontSize: any;
+link: any;
+color: any;
 }>> & TextStyle;
 }>;
 
@@ -404,6 +428,13 @@ export interface InsertContentProps {
     position: number;
 }
 
+// @public
+export abstract class Interaction {
+    static readonly baseType: Type<Interaction>;
+    static fromJsonValue(value: JsonValue): Interaction;
+    toJsonValue(): JsonValue;
+}
+
 // @public @sealed
 export class LineBreak extends LineBreakBase implements LineBreakProps {
     constructor(props?: LineBreakProps);
@@ -424,6 +455,20 @@ export interface LineBreakData {
 // @public
 export interface LineBreakProps {
     style: TextStyle;
+}
+
+// @public @sealed
+export class OpenUrl extends OpenUrlBase {
+    static readonly classType: Type<OpenUrl>;
+    static fromData(data: string): OpenUrl;
+}
+
+// @public
+export const OpenUrlBase: RecordConstructor<OpenUrlProps, Interaction, string>;
+
+// @public
+export interface OpenUrlProps {
+    url: string;
 }
 
 // @public
@@ -468,16 +513,22 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
     direction: "ltr" | "rtl";
     variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
     lineSpacing: number;
+    spaceAbove: number;
+    spaceBelow: number;
     }>, Partial<{
     alignment: "start" | "center" | "end" | "justify";
     direction: "ltr" | "rtl";
     variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
     lineSpacing: number;
+    spaceAbove: number;
+    spaceBelow: number;
     }>> & Equatable & Readonly<Partial<{
         alignment: "start" | "center" | "end" | "justify";
         direction: "ltr" | "rtl";
         variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
         lineSpacing: number;
+        spaceAbove: number;
+        spaceBelow: number;
     }>> & ParagraphStyle>;
     static get empty(): ParagraphStyle;
     get isEmpty(): boolean;
@@ -489,11 +540,15 @@ alignment: "start" | "center" | "end" | "justify";
 direction: "ltr" | "rtl";
 variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
 lineSpacing: number;
+spaceAbove: number;
+spaceBelow: number;
 }>, Object, Partial<{
 alignment: "start" | "center" | "end" | "justify";
 direction: "ltr" | "rtl";
 variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
 lineSpacing: number;
+spaceAbove: number;
+spaceBelow: number;
 }>>;
 
 // @public
@@ -501,6 +556,8 @@ export interface ParagraphStyleProps {
     alignment?: "start" | "center" | "end" | "justify";
     direction?: "ltr" | "rtl";
     lineSpacing?: number;
+    spaceAbove?: number;
+    spaceBelow?: number;
     variant?: ParagraphStyleVariant;
 }
 
@@ -514,6 +571,7 @@ export const ParagraphStyleVariantType: Type<ParagraphStyleVariant>;
 export abstract class ParagraphTheme {
     abstract getAmbientParagraphStyle(): ParagraphStyle;
     abstract getAmbientTextStyle(): TextStyle;
+    abstract getLinkStyle(): TextStyle;
 }
 
 // @public
@@ -589,18 +647,30 @@ export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps>
     underline: boolean;
     strike: boolean;
     baseline: "normal" | "sub" | "super";
+    fontFamily: "serif" | "sans-serif" | "monospace";
+    fontSize: number;
+    link: Interaction | null;
+    color: "default" | "primary" | "secondary" | "warning" | "caution" | "note" | "subtle";
     }>, Partial<{
     bold: boolean;
     italic: boolean;
     underline: boolean;
     strike: boolean;
     baseline: "normal" | "sub" | "super";
+    fontFamily: "serif" | "sans-serif" | "monospace";
+    fontSize: number;
+    link: Interaction | null;
+    color: "default" | "primary" | "secondary" | "warning" | "caution" | "note" | "subtle";
     }>> & Equatable & Readonly<Partial<{
     bold: boolean;
     italic: boolean;
     underline: boolean;
     strike: boolean;
     baseline: "normal" | "sub" | "super";
+    fontFamily: "serif" | "sans-serif" | "monospace";
+    fontSize: number;
+    link: Interaction | null;
+    color: "default" | "primary" | "secondary" | "warning" | "caution" | "note" | "subtle";
     }>> & TextStyle>;
     static get empty(): TextStyle;
     get isEmpty(): boolean;
@@ -613,19 +683,31 @@ italic: boolean;
 underline: boolean;
 strike: boolean;
 baseline: "normal" | "sub" | "super";
+fontFamily: "serif" | "sans-serif" | "monospace";
+fontSize: number;
+link: Interaction | null;
+color: "default" | "primary" | "secondary" | "warning" | "caution" | "note" | "subtle";
 }>, Object, Partial<{
 bold: boolean;
 italic: boolean;
 underline: boolean;
 strike: boolean;
 baseline: "normal" | "sub" | "super";
+fontFamily: "serif" | "sans-serif" | "monospace";
+fontSize: number;
+link: Interaction | null;
+color: "default" | "primary" | "secondary" | "warning" | "caution" | "note" | "subtle";
 }>>;
 
 // @public
 export interface TextStyleProps {
     baseline?: "normal" | "sub" | "super";
     bold?: boolean;
+    color?: "default" | "primary" | "secondary" | "warning" | "caution" | "note" | "subtle";
+    fontFamily?: "serif" | "sans-serif" | "monospace";
+    fontSize?: number;
     italic?: boolean;
+    link?: Interaction | null;
     strike?: boolean;
     underline?: boolean;
 }

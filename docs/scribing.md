@@ -25,7 +25,9 @@ Model for collaborative rich text editing
 |  [FormatText](./scribing.formattext.md) | Represents an operation that applies a text style to a range of flow content. |
 |  [InlineNode](./scribing.inlinenode.md) | Represents an inline node |
 |  [InsertContent](./scribing.insertcontent.md) | Represents an operation that insert flow content. |
+|  [Interaction](./scribing.interaction.md) | A base class for interactions |
 |  [LineBreak](./scribing.linebreak.md) | Represents a line break. |
+|  [OpenUrl](./scribing.openurl.md) | An interaction that opens a URL |
 |  [ParagraphBreak](./scribing.paragraphbreak.md) | Represents a paragraph break. |
 |  [ParagraphStyle](./scribing.paragraphstyle.md) | Represents the styling that is applied to paragraph content. |
 |  [ParagraphTheme](./scribing.paragraphtheme.md) | Provides a theme for paragraph content |
@@ -52,6 +54,7 @@ Model for collaborative rich text editing
 |  [InsertContentProps](./scribing.insertcontentprops.md) | Properties of insert content operations |
 |  [LineBreakData](./scribing.linebreakdata.md) | Data of line break nodes |
 |  [LineBreakProps](./scribing.linebreakprops.md) | Properties of line break nodes |
+|  [OpenUrlProps](./scribing.openurlprops.md) | Properties for [OpenUrl](./scribing.openurl.md) |
 |  [ParagraphBreakData](./scribing.paragraphbreakdata.md) | Data of paragraph break nodes |
 |  [ParagraphBreakProps](./scribing.paragraphbreakprops.md) | Properties of paragraph break nodes |
 |  [ParagraphStyleProps](./scribing.paragraphstyleprops.md) | Style properties for paragraph content |
@@ -79,6 +82,7 @@ Model for collaborative rich text editing
 |  [FormatTextBase](./scribing.formattextbase.md) | The base record class for [FormatText](./scribing.formattext.md) |
 |  [InsertContentBase](./scribing.insertcontentbase.md) | The base record class for [InsertContent](./scribing.insertcontent.md) |
 |  [LineBreakBase](./scribing.linebreakbase.md) | The base record class for [LineBreak](./scribing.linebreak.md) |
+|  [OpenUrlBase](./scribing.openurlbase.md) | The base record class for [OpenUrl](./scribing.openurl.md) |
 |  [PARAGRAPH\_STYLE\_VARIANTS](./scribing.paragraph_style_variants.md) | Read-only array that contains all paragraph style variants |
 |  [ParagraphBreakBase](./scribing.paragraphbreakbase.md) | The base record class for [ParagraphBreak](./scribing.paragraphbreak.md) |
 |  [ParagraphStyleBase](./scribing.paragraphstylebase.md) | The base record class for [ParagraphStyle](./scribing.paragraphstyle.md) |

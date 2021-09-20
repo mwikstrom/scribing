@@ -15,17 +15,29 @@ static readonly classType: import("paratype").Type<import("paratype").RecordObje
         underline: boolean;
         strike: boolean;
         baseline: "normal" | "sub" | "super";
+        fontFamily: "serif" | "sans-serif" | "monospace";
+        fontSize: number;
+        link: Interaction | null;
+        color: "default" | "primary" | "secondary" | "warning" | "caution" | "note" | "subtle";
     }>, Partial<{
         bold: boolean;
         italic: boolean;
         underline: boolean;
         strike: boolean;
         baseline: "normal" | "sub" | "super";
+        fontFamily: "serif" | "sans-serif" | "monospace";
+        fontSize: number;
+        link: Interaction | null;
+        color: "default" | "primary" | "secondary" | "warning" | "caution" | "note" | "subtle";
     }>> & import("paratype").Equatable & Readonly<Partial<{
         bold: boolean;
         italic: boolean;
         underline: boolean;
         strike: boolean;
         baseline: "normal" | "sub" | "super";
+        fontFamily: "serif" | "sans-serif" | "monospace";
+        fontSize: number;
+        link: Interaction | null;
+        color: "default" | "primary" | "secondary" | "warning" | "caution" | "note" | "subtle";
     }>> & TextStyle>;
 ```
