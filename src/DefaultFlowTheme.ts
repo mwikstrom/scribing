@@ -120,9 +120,9 @@ const getFontFamily = (variant: ParagraphStyleVariant): TextStyleProps["fontFami
     if (variant === "code") {
         return "monospace";
     } else if (isHeading(variant) || variant === "title" || variant === "subtitle") {
-        return "sans-serif";
+        return "heading";
     } else {
-        return "serif";
+        return "body";
     }
 };
 
@@ -137,7 +137,7 @@ const getFontSize = (variant: ParagraphStyleVariant): number => {
     case "h5": return 83;
     case "h6": return 67;
     case "code": return 90;
-    case "preamble": return 110;
+    case "preamble": return 120;
     default: return 100;
     }
 };

@@ -9,13 +9,13 @@ Options for [FlowSelection.remove()](./scribing.flowselection.remove.md)
 <b>Signature:</b>
 
 ```typescript
-export interface RemoveFlowSelectionOptions 
+export interface RemoveFlowSelectionOptions extends ContentOption 
 ```
+<b>Extends:</b> [ContentOption](./scribing.contentoption.md)
 
 ## Properties
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [content?](./scribing.removeflowselectionoptions.content.md) | [FlowContent](./scribing.flowcontent.md) | <i>(Optional)</i> The content that is selected |
 |  [whenCollapsed?](./scribing.removeflowselectionoptions.whencollapsed.md) | "removeBackward" \| "removeForward" \| "noop" | <i>(Optional)</i> Controls what to remove when selection is collapsed |
 

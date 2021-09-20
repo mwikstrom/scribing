@@ -41,6 +41,7 @@ Model for collaborative rich text editing
 
 |  Interface | Description |
 |  --- | --- |
+|  [ContentOption](./scribing.contentoption.md) | Provides the content option |
 |  [FlowBatchProps](./scribing.flowbatchprops.md) | Properties of [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowContentProps](./scribing.flowcontentprops.md) | Flow content properties |
 |  [FlowEditorStateProps](./scribing.floweditorstateprops.md) | Properties for [FlowEditorState](./scribing.floweditorstate.md) |

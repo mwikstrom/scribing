@@ -9,5 +9,5 @@ The text's font family.
 <b>Signature:</b>
 
 ```typescript
-fontFamily?: "serif" | "sans-serif" | "monospace";
+fontFamily?: "body" | "heading" | "monospace";
 ```

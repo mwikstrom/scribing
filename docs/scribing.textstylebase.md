@@ -15,19 +15,19 @@ TextStyleBase: import("paratype").RecordConstructor<Partial<{
     underline: boolean;
     strike: boolean;
     baseline: "normal" | "sub" | "super";
-    fontFamily: "serif" | "sans-serif" | "monospace";
+    fontFamily: "body" | "heading" | "monospace";
     fontSize: number;
     link: Interaction | null;
-    color: "default" | "primary" | "secondary" | "warning" | "caution" | "note" | "subtle";
+    color: "default" | "primary" | "secondary" | "warning" | "error" | "information" | "success" | "subtle";
 }>, Object, Partial<{
     bold: boolean;
     italic: boolean;
     underline: boolean;
     strike: boolean;
     baseline: "normal" | "sub" | "super";
-    fontFamily: "serif" | "sans-serif" | "monospace";
+    fontFamily: "body" | "heading" | "monospace";
     fontSize: number;
     link: Interaction | null;
-    color: "default" | "primary" | "secondary" | "warning" | "caution" | "note" | "subtle";
+    color: "default" | "primary" | "secondary" | "warning" | "error" | "information" | "success" | "subtle";
 }>>
 ```

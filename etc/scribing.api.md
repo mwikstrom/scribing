@@ -10,6 +10,11 @@ import { RecordConstructor } from 'paratype';
 import { RecordObject } from 'paratype';
 import { Type } from 'paratype';
 
+// @public
+export interface ContentOption {
+    content?: FlowContent;
+}
+
 // @public @sealed
 export class DefaultFlowTheme extends DefaultFlowThemeBase {
     constructor();
@@ -264,7 +269,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
     static readonly classType: Type<RecordObject<FlowRangeSelectionProps, FlowRangeSelectionProps> & Equatable & Readonly<FlowRangeSelectionProps> & FlowRangeSelection>;
     // @override
-    formatParagraph(style: ParagraphStyle): FlowOperation | null;
+    formatParagraph(style: ParagraphStyle, options?: ContentOption): FlowOperation | null;
     // @override
     formatText(style: TextStyle): FlowOperation | null;
     // @override
@@ -575,8 +580,7 @@ export abstract class ParagraphTheme {
 }
 
 // @public
-export interface RemoveFlowSelectionOptions {
-    content?: FlowContent;
+export interface RemoveFlowSelectionOptions extends ContentOption {
     whenCollapsed?: "removeBackward" | "removeForward" | "noop";
 }
 
@@ -647,30 +651,30 @@ export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps>
     underline: boolean;
     strike: boolean;
     baseline: "normal" | "sub" | "super";
-    fontFamily: "serif" | "sans-serif" | "monospace";
+    fontFamily: "body" | "heading" | "monospace";
     fontSize: number;
     link: Interaction | null;
-    color: "default" | "primary" | "secondary" | "warning" | "caution" | "note" | "subtle";
+    color: "default" | "primary" | "secondary" | "warning" | "error" | "information" | "success" | "subtle";
     }>, Partial<{
     bold: boolean;
     italic: boolean;
     underline: boolean;
     strike: boolean;
     baseline: "normal" | "sub" | "super";
-    fontFamily: "serif" | "sans-serif" | "monospace";
+    fontFamily: "body" | "heading" | "monospace";
     fontSize: number;
     link: Interaction | null;
-    color: "default" | "primary" | "secondary" | "warning" | "caution" | "note" | "subtle";
+    color: "default" | "primary" | "secondary" | "warning" | "error" | "information" | "success" | "subtle";
     }>> & Equatable & Readonly<Partial<{
     bold: boolean;
     italic: boolean;
     underline: boolean;
     strike: boolean;
     baseline: "normal" | "sub" | "super";
-    fontFamily: "serif" | "sans-serif" | "monospace";
+    fontFamily: "body" | "heading" | "monospace";
     fontSize: number;
     link: Interaction | null;
-    color: "default" | "primary" | "secondary" | "warning" | "caution" | "note" | "subtle";
+    color: "default" | "primary" | "secondary" | "warning" | "error" | "information" | "success" | "subtle";
     }>> & TextStyle>;
     static get empty(): TextStyle;
     get isEmpty(): boolean;
@@ -683,28 +687,28 @@ italic: boolean;
 underline: boolean;
 strike: boolean;
 baseline: "normal" | "sub" | "super";
-fontFamily: "serif" | "sans-serif" | "monospace";
+fontFamily: "body" | "heading" | "monospace";
 fontSize: number;
 link: Interaction | null;
-color: "default" | "primary" | "secondary" | "warning" | "caution" | "note" | "subtle";
+color: "default" | "primary" | "secondary" | "warning" | "error" | "information" | "success" | "subtle";
 }>, Object, Partial<{
 bold: boolean;
 italic: boolean;
 underline: boolean;
 strike: boolean;
 baseline: "normal" | "sub" | "super";
-fontFamily: "serif" | "sans-serif" | "monospace";
+fontFamily: "body" | "heading" | "monospace";
 fontSize: number;
 link: Interaction | null;
-color: "default" | "primary" | "secondary" | "warning" | "caution" | "note" | "subtle";
+color: "default" | "primary" | "secondary" | "warning" | "error" | "information" | "success" | "subtle";
 }>>;
 
 // @public
 export interface TextStyleProps {
     baseline?: "normal" | "sub" | "super";
     bold?: boolean;
-    color?: "default" | "primary" | "secondary" | "warning" | "caution" | "note" | "subtle";
-    fontFamily?: "serif" | "sans-serif" | "monospace";
+    color?: "default" | "primary" | "secondary" | "warning" | "error" | "information" | "success" | "subtle";
+    fontFamily?: "body" | "heading" | "monospace";
     fontSize?: number;
     italic?: boolean;
     link?: Interaction | null;

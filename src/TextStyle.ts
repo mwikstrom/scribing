@@ -43,7 +43,7 @@ export interface TextStyleProps {
     /**
      * The text's font family.
      */
-    fontFamily?: "serif" | "sans-serif" | "monospace";
+    fontFamily?: "body" | "heading" | "monospace";
 
     /**
      * The text's font size, as a percentage of the user agent's default font size,
@@ -60,7 +60,7 @@ export interface TextStyleProps {
     /**
      * The text's foreground color
      */
-    color?: "default" | "primary" | "secondary" | "warning" | "caution" | "note" | "subtle";
+    color?: "default" | "primary" | "secondary" | "warning" | "error" | "information" | "success" | "subtle";
 
     // TODO: by name inheritance
     // TODO: background color
@@ -74,13 +74,13 @@ const Props = {
     underline: booleanType,
     strike: booleanType,
     baseline: enumType(["normal", "sub", "super"]),
-    fontFamily: enumType(["serif", "sans-serif", "monospace"]),
+    fontFamily: enumType(["body", "heading", "monospace"]),
     fontSize: integerType.restrict(
         "Must be greater than or equal to 10 and less than or equal to 1000",
         value => value >= 10 && value <= 1000,
     ),
     link: unionType(nullType, Interaction.baseType),
-    color: enumType(["default", "primary", "secondary", "warning", "caution", "note", "subtle"])
+    color: enumType(["default", "primary", "secondary", "warning", "error", "information", "success", "subtle"])
 };
 
 const PropsType = recordType(Props).asPartial();
