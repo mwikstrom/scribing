@@ -3,7 +3,7 @@ import { FlowBatch } from "./FlowBatch";
 import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
-import { FlowSelection, RemoveFlowSelectionOptions } from "./FlowSelection";
+import { ContentOption, FlowSelection, RemoveFlowSelectionOptions } from "./FlowSelection";
 import { FlowTheme } from "./FlowTheme";
 import { FormatParagraph } from "./FormatParagraph";
 import { FormatText } from "./FormatText";
@@ -140,8 +140,55 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      * {@inheritDoc FlowSelection.formatParagraph}
      * @override
      */
-    public formatParagraph(@type(ParagraphStyle.classType) style: ParagraphStyle): FlowOperation | null {
-        const { range } = this;
+    public formatParagraph(
+        @type(ParagraphStyle.classType) style: ParagraphStyle,
+            options: ContentOption = {},
+    ): FlowOperation | null {
+        const { content } = options;
+        let { range } = this;
+
+        // Examine content if we've got it
+        if (content) {
+            let foundBreak = false;
+
+            // Check if there's a paragraph break in the selected range
+            if (range.size > 0) {
+                for (const node of content.peek(range.first).range(range.size)) {
+                    if (node instanceof ParagraphBreak) {
+                        foundBreak = true;
+                        break;
+                    }
+                }
+            }
+
+            // If we didn't find a paragraph break, then we'll try to expand the range
+            // to include the closest following paragraph break.
+            if (!foundBreak) {
+                let delta = 0;
+                for (const node of content.peek(range.last).after) {
+                    delta += node.size;
+                    if (node instanceof ParagraphBreak) {
+                        foundBreak = true;
+                        break;
+                    }
+                }
+
+                if (foundBreak) {
+                    // We found a break. Inflate range.
+                    range = range.inflate(delta);
+                } else {
+                    // We didn't find a break, so this is a trailing paragraph.
+                    // To format it we need to append a styled paragraph break!
+                    return new InsertContent({
+                        position: range.last + delta,
+                        content: FlowContent.fromData([
+                            new ParagraphBreak({ style }),
+                        ]),
+                    });
+                }
+            }
+        }
+
         if (range.isCollapsed) {
             return null;
         } else {
