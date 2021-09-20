@@ -12,7 +12,7 @@ import { ParagraphStyleVariant, ParagraphTheme } from ".";
 import { FlowTheme } from "./FlowTheme";
 import { FlowThemeRegistry } from "./internal/class-registry";
 import { ParagraphStyle } from "./ParagraphStyle";
-import { TextStyle } from "./TextStyle";
+import { TextStyle, TextStyleProps } from "./TextStyle";
 
 const Data = "default" as const;
 const PropsType: RecordType<{/*empty*/}> = recordType({});
@@ -72,8 +72,18 @@ class DefaultParagraphTheme extends ParagraphTheme {
         super();
 
         const isHeading = /^h[1-6]$/.test(variant);
+        let fontFamily: TextStyleProps["fontFamily"];
+
+        if (variant === "code") {
+            fontFamily = "monospace";
+        } else if (isHeading || variant === "title" || variant === "subtitle") {
+            fontFamily = "sans-serif";
+        } else {
+            fontFamily = "serif";
+        }
         
         this.#text = new TextStyle({
+            fontFamily,
             bold: isHeading,
             italic: false,
             underline: false,

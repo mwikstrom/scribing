@@ -28,12 +28,16 @@ export interface TextStyleProps {
      */
     baseline?: "normal" | "sub" | "super";
 
+    /**
+     * The text's font family.
+     */
+    fontFamily?: "serif" | "sans-serif" | "monospace";
+
     // TODO: by name inheritance
     // TODO: background color
     // TODO: foreground color
     // TODO: small caps
     // TODO: font size
-    // TODO: font family (weighted?!)
     // TODO: link target
     // TODO: language
 }
@@ -44,6 +48,7 @@ const Props = {
     underline: booleanType,
     strike: booleanType,
     baseline: enumType(["normal", "sub", "super"]),
+    fontFamily: enumType(["serif", "sans-serif", "monospace"]),
 };
 
 const PropsType = recordType(Props).asPartial();
