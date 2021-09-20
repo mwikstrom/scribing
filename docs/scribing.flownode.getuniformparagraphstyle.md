@@ -9,14 +9,14 @@ Gets a uniform paragraph style from the current node
 <b>Signature:</b>
 
 ```typescript
-abstract getUniformParagraphStyle(theme?: FlowTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle | null;
+abstract getUniformParagraphStyle(theme?: ParagraphTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle | null;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  theme | [FlowTheme](./scribing.flowtheme.md) | Theme of the current node |
+|  theme | [ParagraphTheme](./scribing.paragraphtheme.md) | Theme of the current node |
 |  diff | Set&lt;keyof [ParagraphStyleProps](./scribing.paragraphstyleprops.md)<!-- -->&gt; | An optional set that is populated with style keys with non-uniform values |
 
 <b>Returns:</b>

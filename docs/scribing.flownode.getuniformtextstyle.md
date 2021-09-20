@@ -9,14 +9,14 @@ Gets a uniform text style from the current node
 <b>Signature:</b>
 
 ```typescript
-abstract getUniformTextStyle(theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle | null;
+abstract getUniformTextStyle(theme?: ParagraphTheme, diff?: Set<keyof TextStyleProps>): TextStyle | null;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  theme | [FlowTheme](./scribing.flowtheme.md) | Theme of the current node |
+|  theme | [ParagraphTheme](./scribing.paragraphtheme.md) | Theme of the current node |
 |  diff | Set&lt;keyof [TextStyleProps](./scribing.textstyleprops.md)<!-- -->&gt; | An optional set that is populated with style keys with non-uniform values |
 
 <b>Returns:</b>

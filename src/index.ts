@@ -22,6 +22,7 @@ export * from "./FlowCursor";
 export * from "./FlowContent";
 
 // Theme
+export * from "./ParagraphTheme";
 export * from "./FlowTheme";
 export * from "./DefaultFlowTheme";
 

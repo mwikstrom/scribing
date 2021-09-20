@@ -1,7 +1,7 @@
 import { JsonValue, lazyType } from "paratype";
-import { FlowTheme } from "./FlowTheme";
 import { FlowNodeRegistry } from "./internal/class-registry";
 import { ParagraphStyle, ParagraphStyleProps } from "./ParagraphStyle";
+import { ParagraphTheme } from "./ParagraphTheme";
 import { TextStyle, TextStyleProps } from "./TextStyle";
 
 /**
@@ -43,14 +43,20 @@ export abstract class FlowNode {
      * @param theme - Theme of the current node
      * @param diff - An optional set that is populated with style keys with non-uniform values
      */
-    abstract getUniformParagraphStyle(theme?: FlowTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle | null;
+    abstract getUniformParagraphStyle(
+        theme?: ParagraphTheme, 
+        diff?: Set<keyof ParagraphStyleProps>,
+    ): ParagraphStyle | null;
 
     /**
      * Gets a uniform text style from the current node
      * @param theme - Theme of the current node
      * @param diff - An optional set that is populated with style keys with non-uniform values
      */
-    abstract getUniformTextStyle(theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle | null;
+    abstract getUniformTextStyle(
+        theme?: ParagraphTheme, 
+        diff?: Set<keyof TextStyleProps>,
+    ): TextStyle | null;
 
     /** Converts the current flow node to data */
     abstract toData(): unknown;
@@ -64,7 +70,7 @@ export abstract class FlowNode {
      * Unapplies the ambient style of the specified theme from the current node and returns the updated node.
      * @param theme - The theme that provides ambient styling
      */
-    abstract unformatAmbient(theme: FlowTheme): FlowNode;
+    abstract unformatAmbient(theme: ParagraphTheme): FlowNode;
 
     /**
      * Unapplies the specified paragraph style from the current node and returns the updated node.

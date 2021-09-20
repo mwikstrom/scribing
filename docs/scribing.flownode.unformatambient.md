@@ -9,14 +9,14 @@ Unapplies the ambient style of the specified theme from the current node and ret
 <b>Signature:</b>
 
 ```typescript
-abstract unformatAmbient(theme: FlowTheme): FlowNode;
+abstract unformatAmbient(theme: ParagraphTheme): FlowNode;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  theme | [FlowTheme](./scribing.flowtheme.md) | The theme that provides ambient styling |
+|  theme | [ParagraphTheme](./scribing.paragraphtheme.md) | The theme that provides ambient styling |
 
 <b>Returns:</b>
 

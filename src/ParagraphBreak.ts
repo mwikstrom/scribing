@@ -10,9 +10,9 @@ import {
     validating
 } from "paratype";
 import { FlowNode } from "./FlowNode";
-import { FlowTheme } from "./FlowTheme";
 import { FlowNodeRegistry } from "./internal/class-registry";
 import { ParagraphStyle } from "./ParagraphStyle";
+import { ParagraphTheme } from "./ParagraphTheme";
 import { TextStyle } from "./TextStyle";
 
 const Props = {
@@ -98,8 +98,7 @@ export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreak
      * {@inheritDoc FlowNode.getUniformParagraphStyle}
      * @override
      */
-    public getUniformParagraphStyle(theme?: FlowTheme): ParagraphStyle | null {
-        theme = theme?.getParagraphTheme(this.style.variant ?? "normal");
+    public getUniformParagraphStyle(theme?: ParagraphTheme): ParagraphStyle | null {
         const ambient = theme?.getAmbientParagraphStyle() ?? ParagraphStyle.empty;
         return ambient.isEmpty ? this.style : ambient.merge(this.style);
     }
@@ -108,14 +107,13 @@ export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreak
      * {@inheritDoc FlowNode.getUniformTextStyle}
      * @override
      */
-    public getUniformTextStyle(theme?: FlowTheme): TextStyle {
-        theme = theme?.getParagraphTheme(this.style.variant ?? "normal");
+    public getUniformTextStyle(theme?: ParagraphTheme): TextStyle {
         const ambient = theme?.getAmbientTextStyle() ?? TextStyle.empty;
         return ambient;
     }
 
     /** {@inheritdoc FlowNode.unformatAmbient} */
-    public unformatAmbient(theme: FlowTheme): this {
+    public unformatAmbient(theme: ParagraphTheme): this {
         return this.unformatParagraph(theme.getAmbientParagraphStyle());
     }
 

@@ -69,12 +69,12 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     ): ParagraphStyle {
         const { first, size } = this.range;
         const cursor = content.peek(first);
+        let paraStyle = cursor.getParagraphStyle() ?? ParagraphStyle.empty;
+        let paraTheme = theme?.getParagraphTheme(paraStyle?.variant ?? "normal");
 
         if (size === 0) {
-            const style = cursor.getParagraphStyle() ?? ParagraphStyle.empty;
-            theme = theme?.getParagraphTheme(style.variant ?? "normal");
-            const ambient = theme?.getAmbientParagraphStyle() ?? ParagraphStyle.empty;
-            return ambient.isEmpty ? style : ambient.merge(style);
+            const ambient = paraTheme?.getAmbientParagraphStyle() ?? ParagraphStyle.empty;
+            return ambient.isEmpty ? paraStyle : ambient.merge(paraStyle);
         }
 
         if (!diff) {
@@ -83,7 +83,11 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
 
         let result = ParagraphStyle.empty;
         for (const node of cursor.range(size)) {
-            const style = node.getUniformParagraphStyle(theme, diff);
+            if (node instanceof ParagraphBreak) {
+                paraStyle = cursor.getParagraphStyle() ?? ParagraphStyle.empty;
+                paraTheme = theme?.getParagraphTheme(paraStyle?.variant ?? "normal");
+            }
+            const style = node.getUniformParagraphStyle(paraTheme, diff);
             if (style) {
                 result = result.merge(style, diff);
             }

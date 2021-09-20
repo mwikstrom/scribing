@@ -31,7 +31,5 @@ export declare class DefaultFlowTheme extends DefaultFlowThemeBase
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [getAmbientParagraphStyle()](./scribing.defaultflowtheme.getambientparagraphstyle.md) |  | Gets the ambient paragraph style |
-|  [getAmbientTextStyle()](./scribing.defaultflowtheme.getambienttextstyle.md) |  | Gets the ambient text style |
-|  [getParagraphTheme()](./scribing.defaultflowtheme.getparagraphtheme.md) |  | Gets a flow theme for the specified paragraph variant |
+|  [getParagraphTheme(variant)](./scribing.defaultflowtheme.getparagraphtheme.md) |  | Gets a flow theme for the specified paragraph variant |
 

@@ -14,9 +14,7 @@ import { Type } from 'paratype';
 export class DefaultFlowTheme extends DefaultFlowThemeBase {
     constructor();
     static readonly classType: Type<RecordObject<    {}, "default"> & Equatable & Readonly<{}> & DefaultFlowTheme>;
-    getAmbientParagraphStyle(): ParagraphStyle;
-    getAmbientTextStyle(): TextStyle;
-    getParagraphTheme(): FlowTheme;
+    getParagraphTheme(variant: ParagraphStyleVariant): ParagraphTheme;
     static get instance(): DefaultFlowTheme;
 }
 
@@ -178,12 +176,12 @@ export abstract class FlowNode {
     abstract formatParagraph(style: ParagraphStyle): FlowNode;
     abstract formatText(style: TextStyle): FlowNode;
     static fromJsonValue(value: JsonValue): FlowNode;
-    abstract getUniformParagraphStyle(theme?: FlowTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle | null;
-    abstract getUniformTextStyle(theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle | null;
+    abstract getUniformParagraphStyle(theme?: ParagraphTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle | null;
+    abstract getUniformTextStyle(theme?: ParagraphTheme, diff?: Set<keyof TextStyleProps>): TextStyle | null;
     abstract readonly size: number;
     abstract toData(): unknown;
     toJsonValue(): JsonValue;
-    abstract unformatAmbient(theme: FlowTheme): FlowNode;
+    abstract unformatAmbient(theme: ParagraphTheme): FlowNode;
     abstract unformatParagraph(style: ParagraphStyle): FlowNode;
     abstract unformatText(style: TextStyle): FlowNode;
 }
@@ -296,9 +294,7 @@ export abstract class FlowSelection {
 export abstract class FlowTheme {
     static readonly baseType: Type<FlowTheme>;
     static fromJsonValue(value: JsonValue): FlowTheme;
-    abstract getAmbientParagraphStyle(): ParagraphStyle;
-    abstract getAmbientTextStyle(): TextStyle;
-    abstract getParagraphTheme(variant: ParagraphStyleVariant): FlowTheme;
+    abstract getParagraphTheme(variant: ParagraphStyleVariant): ParagraphTheme;
     toJsonValue(): JsonValue;
 }
 
@@ -367,12 +363,12 @@ export abstract class InlineNode extends FlowNode {
     formatParagraph(): this;
     formatText(style: TextStyle): this;
     // @override
-    getUniformParagraphStyle(theme?: FlowTheme): ParagraphStyle | null;
+    getUniformParagraphStyle(theme?: ParagraphTheme): ParagraphStyle | null;
     // @override
-    getUniformTextStyle(theme?: FlowTheme): TextStyle;
+    getUniformTextStyle(theme?: ParagraphTheme): TextStyle;
     abstract set(key: "style", value: TextStyle): this;
     abstract readonly style: TextStyle;
-    unformatAmbient(theme: FlowTheme): this;
+    unformatAmbient(theme: ParagraphTheme): this;
     unformatParagraph(): this;
     unformatText(style: TextStyle): this;
 }
@@ -441,11 +437,11 @@ export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreak
     formatText(): this;
     static fromData(data: ParagraphBreakData): ParagraphBreak;
     // @override
-    getUniformParagraphStyle(theme?: FlowTheme): ParagraphStyle | null;
+    getUniformParagraphStyle(theme?: ParagraphTheme): ParagraphStyle | null;
     // @override
-    getUniformTextStyle(theme?: FlowTheme): TextStyle;
+    getUniformTextStyle(theme?: ParagraphTheme): TextStyle;
     readonly size = 1;
-    unformatAmbient(theme: FlowTheme): this;
+    unformatAmbient(theme: ParagraphTheme): this;
     unformatParagraph(style: ParagraphStyle): this;
     unformatText(): this;
 }
@@ -513,6 +509,12 @@ export type ParagraphStyleVariant = (typeof PARAGRAPH_STYLE_VARIANTS)[number];
 
 // @public
 export const ParagraphStyleVariantType: Type<ParagraphStyleVariant>;
+
+// @public
+export abstract class ParagraphTheme {
+    abstract getAmbientParagraphStyle(): ParagraphStyle;
+    abstract getAmbientTextStyle(): TextStyle;
+}
 
 // @public
 export interface RemoveFlowSelectionOptions {

@@ -19,6 +19,7 @@ import { FlowTheme } from "./FlowTheme";
 import { FlowNodeRegistry } from "./internal/class-registry";
 import { ParagraphBreak } from "./ParagraphBreak";
 import { ParagraphStyle } from "./ParagraphStyle";
+import { ParagraphTheme } from "./ParagraphTheme";
 import { TextRun } from "./TextRun";
 import { TextStyle } from "./TextStyle";
 
@@ -310,7 +311,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     private static unformatAmbient(nodes: readonly FlowNode[], theme: FlowTheme): FlowNode[] {
         const result: FlowNode[] = [];
         let p = FlowContent.findParagraphBreak(nodes);
-        let t: FlowTheme | undefined;
+        let t: ParagraphTheme | undefined;
         for (let i = 0; i < nodes.length; ++i) {
             const n = nodes[i];
             if (!t) {

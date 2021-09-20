@@ -10,14 +10,14 @@ Gets a uniform paragraph style from the current node
 
 ```typescript
 /** @override */
-getUniformParagraphStyle(theme?: FlowTheme): ParagraphStyle | null;
+getUniformParagraphStyle(theme?: ParagraphTheme): ParagraphStyle | null;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  theme | [FlowTheme](./scribing.flowtheme.md) | Theme of the current node |
+|  theme | [ParagraphTheme](./scribing.paragraphtheme.md) | Theme of the current node |
 
 <b>Returns:</b>
 

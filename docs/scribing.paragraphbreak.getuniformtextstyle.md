@@ -10,14 +10,14 @@ Gets a uniform text style from the current node
 
 ```typescript
 /** @override */
-getUniformTextStyle(theme?: FlowTheme): TextStyle;
+getUniformTextStyle(theme?: ParagraphTheme): TextStyle;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  theme | [FlowTheme](./scribing.flowtheme.md) | Theme of the current node |
+|  theme | [ParagraphTheme](./scribing.paragraphtheme.md) | Theme of the current node |
 
 <b>Returns:</b>
 

@@ -9,7 +9,7 @@ Gets a flow theme for the specified paragraph variant
 <b>Signature:</b>
 
 ```typescript
-abstract getParagraphTheme(variant: ParagraphStyleVariant): FlowTheme;
+abstract getParagraphTheme(variant: ParagraphStyleVariant): ParagraphTheme;
 ```
 
 ## Parameters
@@ -20,5 +20,5 @@ abstract getParagraphTheme(variant: ParagraphStyleVariant): FlowTheme;
 
 <b>Returns:</b>
 
-[FlowTheme](./scribing.flowtheme.md)
+[ParagraphTheme](./scribing.paragraphtheme.md)
 
