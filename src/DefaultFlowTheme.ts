@@ -72,8 +72,8 @@ class DefaultParagraphTheme extends ParagraphTheme {
         super();
 
         this.#text = new TextStyle({
-            fontFamily: getDefaultFontFamily(variant),
-            fontSize: getDefaultFontSize(variant),
+            fontFamily: getFontFamily(variant),
+            fontSize: getFontSize(variant),
             bold: isHeading(variant),
             italic: false,
             underline: false,
@@ -84,7 +84,9 @@ class DefaultParagraphTheme extends ParagraphTheme {
         this.#para = new ParagraphStyle({
             alignment: "start",
             direction: "ltr",
-            lineSpacing: 100,
+            lineSpacing: variant === "preamble" ? 110 : 100,
+            spaceAbove: getSpaceAbove(variant),
+            spaceBelow: getSpaceAbove(variant),
         });
     }
 
@@ -101,7 +103,7 @@ class DefaultParagraphTheme extends ParagraphTheme {
 
 const isHeading = (variant: ParagraphStyleVariant): boolean => /^h[1-6]$/.test(variant);
 
-const getDefaultFontFamily = (variant: ParagraphStyleVariant): TextStyleProps["fontFamily"] => {
+const getFontFamily = (variant: ParagraphStyleVariant): TextStyleProps["fontFamily"] => {
     if (variant === "code") {
         return "monospace";
     } else if (isHeading(variant) || variant === "title" || variant === "subtitle") {
@@ -111,7 +113,7 @@ const getDefaultFontFamily = (variant: ParagraphStyleVariant): TextStyleProps["f
     }
 };
 
-const getDefaultFontSize = (variant: ParagraphStyleVariant): number => {
+const getFontSize = (variant: ParagraphStyleVariant): number => {
     switch (variant) {
     case "title": return 300;
     case "subtitle": return 125;
@@ -123,6 +125,17 @@ const getDefaultFontSize = (variant: ParagraphStyleVariant): number => {
     case "h6": return 67;
     case "code": return 90;
     case "preamble": return 110;
+    default: return 100;
+    }
+};
+
+const getSpaceAbove = (variant: ParagraphStyleVariant): number => getSpaceBelow(variant);
+
+const getSpaceBelow = (variant: ParagraphStyleVariant): number => {
+    switch (variant) {
+    case "h1": return 134;
+    case "h2": return 125;
+    case "h3": return 117;
     default: return 100;
     }
 };

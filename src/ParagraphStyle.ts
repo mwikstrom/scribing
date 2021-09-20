@@ -37,10 +37,20 @@ export interface ParagraphStyleProps {
      */
     lineSpacing?: number;
 
+    /**
+     * The amount of space before the paragraph, as a percentage of the user agent's default font size, 
+     * where normal is represented as `100`.
+     */
+    spaceAbove?: number;
+
+    /**
+     * The amount of space before the paragraph, as a percentage of the user agent's default font size, 
+     * where normal is represented as `100`.
+     */
+    spaceBelow?: number;
+
     // TODO: by name inheritance
     // TODO: spacing mode
-    // TODO: space above
-    // TODO: space below
     // TODO: border between
     // TODO: border top, bottom, left, right
     // TODO: indent first line
@@ -84,14 +94,18 @@ export const PARAGRAPH_STYLE_VARIANTS = Object.freeze([
  */
 export const ParagraphStyleVariantType: Type<ParagraphStyleVariant> = enumType(PARAGRAPH_STYLE_VARIANTS);
 
+const percentage10to1000 = integerType.restrict(
+    "Must be greater than or equal to 10 and less than or equal to 1000",
+    value => value >= 10 && value <= 1000,
+);
+
 const Props = {
     alignment: enumType(["start", "center", "end", "justify"]),
     direction: enumType(["ltr", "rtl"]),
     variant: ParagraphStyleVariantType,
-    lineSpacing: integerType.restrict(
-        "Must be greater than or equal to 10 and less than or equal to 1000",
-        value => value >= 10 && value <= 1000,
-    ),
+    lineSpacing: percentage10to1000,
+    spaceAbove: percentage10to1000,
+    spaceBelow: percentage10to1000,
 };
 
 const PropsType = recordType(Props).asPartial();

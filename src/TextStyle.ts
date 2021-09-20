@@ -43,7 +43,8 @@ export interface TextStyleProps {
     fontFamily?: "serif" | "sans-serif" | "monospace";
 
     /**
-     * The text's font size, as a percentage of the user's default font size, where normal is represented as `100`.
+     * The text's font size, as a percentage of the user agent's default font size,
+     * where normal is represented as `100`.
      */
     fontSize?: number;
 
