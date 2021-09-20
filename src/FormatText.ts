@@ -13,6 +13,7 @@ import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
 import { FlowSelection } from "./FlowSelection";
+import { FlowTheme } from "./FlowTheme";
 import { InlineNode } from "./InlineNode";
 import { FlowOperationRegistry } from "./internal/class-registry";
 import { invertFormatOp } from "./internal/format-helpers";
@@ -114,8 +115,8 @@ export class FormatText extends FormatTextBase implements Readonly<FormatTextPro
      * {@inheritDoc FlowOperation.applyToContent}
      * @override
      */
-    applyToContent(content: FlowContent): FlowContent {
-        return content.formatText(this.range, this.style);
+    applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent {
+        return content.formatText(this.range, this.style, theme);
     }
 
     /**

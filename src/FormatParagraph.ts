@@ -13,6 +13,7 @@ import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
 import { FlowSelection } from "./FlowSelection";
+import { FlowTheme } from "./FlowTheme";
 import { FlowOperationRegistry } from "./internal/class-registry";
 import { invertFormatOp } from "./internal/format-helpers";
 import { 
@@ -114,8 +115,8 @@ export class FormatParagraph extends FormatParagraphBase implements Readonly<For
      * {@inheritDoc FlowOperation.applyToContent}
      * @override
      */
-    applyToContent(content: FlowContent): FlowContent {
-        return content.formatParagraph(this.range, this.style);
+    applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent {
+        return content.formatParagraph(this.range, this.style, theme);
     }
 
     /**

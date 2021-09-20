@@ -303,7 +303,7 @@ export class FormatParagraph extends FormatParagraphBase implements Readonly<For
     afterInsertion(other: FlowRange): FlowOperation | null;
     afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
-    applyToContent(content: FlowContent): FlowContent;
+    applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent;
     // @override
     applyToSelection(selection: FlowSelection): FlowSelection;
     static readonly classType: Type<FormatParagraph>;
@@ -333,7 +333,7 @@ export class FormatText extends FormatTextBase implements Readonly<FormatTextPro
     afterInsertion(other: FlowRange): FlowOperation | null;
     afterRemoval(other: FlowRange): FlowOperation | null;
     // @override
-    applyToContent(content: FlowContent): FlowContent;
+    applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent;
     // @override
     applyToSelection(selection: FlowSelection): FlowSelection;
     static readonly classType: Type<FormatText>;

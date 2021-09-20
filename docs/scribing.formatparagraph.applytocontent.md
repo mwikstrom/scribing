@@ -10,7 +10,7 @@ Applies the current operation on the specified content and returns the updated r
 
 ```typescript
 /** @override */
-applyToContent(content: FlowContent): FlowContent;
+applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent;
 ```
 
 ## Parameters
@@ -18,6 +18,7 @@ applyToContent(content: FlowContent): FlowContent;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The flow content that shall be updated. |
+|  theme | [FlowTheme](./scribing.flowtheme.md) | Optional theme of the content that shall be updated. |
 
 <b>Returns:</b>
 
