@@ -242,23 +242,27 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     #formatRange(range: FlowRange, formatter: (node: FlowNode) => FlowNode, theme?: FlowTheme): readonly FlowNode[] {
         const first = this.peek(range.first);
         const before = first.before;
-        const formatted = Array.from(first.range(range.size)).map(formatter);
+        const inner = Array.from(first.range(range.size)).map(formatter);
         const after = first.move(range.size).after;
-        const merged = Array.from(FlowContent.merge(before, formatted, after));
-        const unformatted = theme ? FlowContent.unformatAmbient(merged, theme) : merged;
-        return Object.freeze(unformatted);
+        let result = Array.from(FlowContent.merge(before, inner, after));
+        if (theme) {
+            result = Array.from(FlowContent.merge(FlowContent.unformatAmbient(result, theme)));
+        }
+        return Object.freeze(result);
     }
 
     #insert(position: number, first: FlowTheme | FlowNode | undefined, ...rest: readonly FlowNode[]): FlowContent {
         const { before, after } = this.peek(position);
         const theme = first instanceof FlowTheme ? first : undefined;
-        const nodes = [...rest];
+        const inner = [...rest];
         if (first instanceof FlowNode) {
-            nodes.unshift(first);
+            inner.unshift(first);
         }
-        const merged = Array.from(FlowContent.merge(before, nodes, after));
-        const unformatted = theme ? FlowContent.unformatAmbient(merged, theme) : merged;
-        return this.set("nodes", Object.freeze(unformatted));
+        let result = Array.from(FlowContent.merge(before, inner, after));
+        if (theme) {
+            result = Array.from(FlowContent.merge(FlowContent.unformatAmbient(result, theme)));
+        }
+        return this.set("nodes", Object.freeze(result));
     }
 
     /** @internal */
