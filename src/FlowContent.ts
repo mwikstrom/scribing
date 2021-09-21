@@ -1,6 +1,7 @@
 import { 
     arrayType, 
     frozen, 
+    integerType, 
     JsonValue, 
     jsonValueType, 
     lazyType, 
@@ -155,6 +156,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
      * Applies text style to a range
      * @param range - The range to format
      * @param style - The style to apply
+     * @param theme - Theme of the current content
      * @returns The updated flow content
      */
     formatText(
@@ -164,6 +166,31 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     ): FlowContent {
         // TODO: Verify theme arg
         return this.set("nodes", this.#formatRange(range, node => node.formatText(style), theme));
+    }
+
+    /**
+     * Increments list level of nodes in the specified range
+     * 
+     * @param range - The range to format
+     * @param delta - The delta increment
+     * @param theme - Theme of the current content
+     * @returns The updated flow content
+     */
+    incrementListLevel(
+        @type(FlowRange.classType) range: FlowRange, 
+        @type(integerType) delta: number,
+            theme?: FlowTheme,
+    ): FlowContent {
+        return this.set("nodes", this.#formatRange(range, node => {
+            if (node instanceof ParagraphBreak) {
+                const { listLevel: before = 0 } = node.style;
+                const after = Math.max(0, Math.min(9, before + delta));
+                if (before !== after) {
+                    return node.formatParagraph(ParagraphStyle.empty.set("listLevel", after));
+                }
+            }
+            return node;
+        }, theme));
     }
 
     /**

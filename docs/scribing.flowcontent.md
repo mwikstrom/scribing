@@ -40,6 +40,7 @@ export declare class FlowContent extends FlowContentBase implements Readonly<Flo
 |  [formatText(range, style, theme)](./scribing.flowcontent.formattext.md) |  | Applies text style to a range |
 |  [fromData(data)](./scribing.flowcontent.fromdata.md) | <code>static</code> | Gets flow content from the specified data |
 |  [fromJsonValue(value)](./scribing.flowcontent.fromjsonvalue.md) | <code>static</code> | Gets flow content from the specified JSON value |
+|  [incrementListLevel(range, delta, theme)](./scribing.flowcontent.incrementlistlevel.md) |  | Increments list level of nodes in the specified range |
 |  [insert(position, nodes)](./scribing.flowcontent.insert.md) |  | Inserts the specified nodes at the specified position |
 |  [insert(position, theme, nodes)](./scribing.flowcontent.insert_1.md) |  | Inserts the specified nodes at the specified position |
 |  [peek(position)](./scribing.flowcontent.peek.md) |  | Gets a cursor |

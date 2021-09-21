@@ -35,6 +35,7 @@ export * from "./FlowOperation";
 export * from "./FlowBatch";
 export * from "./FormatParagraph";
 export * from "./UnformatParagraph";
+export * from "./IncrementListLevel";
 export * from "./FormatText";
 export * from "./UnformatText";
 export * from "./InsertContent";

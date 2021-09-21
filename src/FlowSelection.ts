@@ -53,6 +53,16 @@ export abstract class FlowSelection {
     ): TextStyle;
     
     /**
+     * Creates an operation that decrements the list level of the current selection
+     * @param delta - Optional list level decrement. Default is `1`.
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public decrementListLevel(delta = 1): FlowOperation | null {
+        return this.incrementListLevel(-delta);
+    }
+
+    /**
      * Creates an operation that applies the specified paragraph style on the current selection
      * @param style - The style to apply
      * @remarks
@@ -67,6 +77,14 @@ export abstract class FlowSelection {
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
     public abstract formatText(style: TextStyle): FlowOperation | null;
+
+    /**
+     * Creates an operation that increments the list level of the current selection
+     * @param delta - Optional list level increment. Default is `1`.
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract incrementListLevel(delta?: number): FlowOperation | null;
 
     /**
      * Creates an operation that inserts the specified content into the current selection

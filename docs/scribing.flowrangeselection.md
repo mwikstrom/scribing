@@ -33,6 +33,7 @@ export declare class FlowRangeSelection extends FlowRangeSelectionBase implement
 |  [formatText(style)](./scribing.flowrangeselection.formattext.md) |  | Creates an operation that applies the specified text style on the current selection |
 |  [getUniformParagraphStyle(content, theme, diff)](./scribing.flowrangeselection.getuniformparagraphstyle.md) |  | Gets the uniform paragraph style of the current selection |
 |  [getUniformTextStyle(content, theme, diff)](./scribing.flowrangeselection.getuniformtextstyle.md) |  | Gets the uniform text style of the current selection |
+|  [incrementListLevel(delta)](./scribing.flowrangeselection.incrementlistlevel.md) |  | Creates an operation that increments the list level of the current selection |
 |  [insert(content)](./scribing.flowrangeselection.insert.md) |  | Creates an operation that inserts the specified content into the current selection |
 |  [remove(options)](./scribing.flowrangeselection.remove.md) |  | Creates an operation that removes the content of the current selection |
 |  [unformatParagraph(style)](./scribing.flowrangeselection.unformatparagraph.md) |  | Creates an operation that unapplies the specified paragraph style on the current selection |

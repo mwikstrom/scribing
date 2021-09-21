@@ -7,6 +7,7 @@ import { TargetOption, FlowSelection, RemoveFlowSelectionOptions } from "./FlowS
 import { FlowTheme } from "./FlowTheme";
 import { FormatParagraph } from "./FormatParagraph";
 import { FormatText } from "./FormatText";
+import { IncrementListLevel } from "./IncrementListLevel";
 import { InsertContent } from "./InsertContent";
 import { FlowSelectionRegistry } from "./internal/class-registry";
 import { transformRangeAfterInsertion, transformRangeAfterRemoval } from "./internal/transform-helpers";
@@ -206,6 +207,19 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
             return null;
         } else {
             return new FormatText({ range, style });
+        }
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.incrementListLevel}
+     * @override
+     */
+    public incrementListLevel(delta = 1): FlowOperation | null {
+        const { range } = this;
+        if (delta === 0) {
+            return null;
+        } else {
+            return new IncrementListLevel({ range, delta });
         }
     }
 
