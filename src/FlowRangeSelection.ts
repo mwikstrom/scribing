@@ -3,7 +3,7 @@ import { FlowBatch } from "./FlowBatch";
 import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
-import { TargetOption, FlowSelection, RemoveFlowSelectionOptions } from "./FlowSelection";
+import { TargetOptions, FlowSelection, RemoveFlowSelectionOptions } from "./FlowSelection";
 import { FlowTheme } from "./FlowTheme";
 import { FormatParagraph } from "./FormatParagraph";
 import { FormatText } from "./FormatText";
@@ -143,7 +143,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      */
     public formatParagraph(
         @type(ParagraphStyle.classType) style: ParagraphStyle,
-            options: TargetOption = {},
+            options: TargetOptions = {},
     ): FlowOperation | null {
         const { target: content } = options;
         let { range } = this;
@@ -227,7 +227,10 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      * {@inheritDoc FlowSelection.insert}
      * @override
      */
-    public insert(@type(FlowContent.classType) content: FlowContent, options: TargetOption = {}): FlowOperation | null {
+    public insert(
+        @type(FlowContent.classType) content: FlowContent,
+            options: TargetOptions = {}
+    ): FlowOperation | null {
         const { target, theme } = options;
         const { range } = this;
         const { first: position } = range;

@@ -9,7 +9,7 @@ Creates an operation that inserts the specified content into the current selecti
 <b>Signature:</b>
 
 ```typescript
-abstract insert(content: FlowContent, options?: TargetOption): FlowOperation | null;
+abstract insert(content: FlowContent, options?: TargetOptions): FlowOperation | null;
 ```
 
 ## Parameters
@@ -17,7 +17,7 @@ abstract insert(content: FlowContent, options?: TargetOption): FlowOperation | n
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The content to be inserted |
-|  options | [TargetOption](./scribing.targetoption.md) | Options that provide operation behavior |
+|  options | [TargetOptions](./scribing.targetoptions.md) | Options that provide operation behavior |
 
 <b>Returns:</b>
 

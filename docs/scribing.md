@@ -64,7 +64,7 @@ Model for collaborative rich text editing
 |  [RemoveFlowSelectionOptions](./scribing.removeflowselectionoptions.md) | Options for [FlowSelection.remove()](./scribing.flowselection.remove.md) |
 |  [RemoveRangeData](./scribing.removerangedata.md) | Data of remove range operations |
 |  [RemoveRangeProps](./scribing.removerangeprops.md) | Properties of remove range opertions |
-|  [TargetOption](./scribing.targetoption.md) | Provides the target option |
+|  [TargetOptions](./scribing.targetoptions.md) | Provides options for the target flow |
 |  [TextRunProps](./scribing.textrunprops.md) | Properties of a text run |
 |  [TextStyleProps](./scribing.textstyleprops.md) | Style properties for [text](./scribing.textrun.md) |
 |  [UnformatParagraphData](./scribing.unformatparagraphdata.md) | Data of unformat paragraph operations |

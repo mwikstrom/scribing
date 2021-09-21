@@ -10,7 +10,7 @@ Creates an operation that applies the specified paragraph style on the current s
 
 ```typescript
 /** @override */
-formatParagraph(style: ParagraphStyle, options?: TargetOption): FlowOperation | null;
+formatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
 ```
 
 ## Parameters
@@ -18,7 +18,7 @@ formatParagraph(style: ParagraphStyle, options?: TargetOption): FlowOperation | 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  style | [ParagraphStyle](./scribing.paragraphstyle.md) | The style to apply |
-|  options | [TargetOption](./scribing.targetoption.md) | Options that provide operation behavior |
+|  options | [TargetOptions](./scribing.targetoptions.md) | Options that provide operation behavior |
 
 <b>Returns:</b>
 

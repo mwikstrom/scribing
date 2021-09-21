@@ -69,7 +69,7 @@ export abstract class FlowSelection {
      * @remarks
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
-    public abstract formatParagraph(style: ParagraphStyle, options?: TargetOption): FlowOperation | null;
+    public abstract formatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
 
     /**
      * Creates an operation that applies the specified text style on the current selection
@@ -94,7 +94,7 @@ export abstract class FlowSelection {
      * @remarks
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
-    public abstract insert(content: FlowContent, options?: TargetOption): FlowOperation | null;
+    public abstract insert(content: FlowContent, options?: TargetOptions): FlowOperation | null;
 
     /**
      * Creates an operation that removes the content of the current selection
@@ -136,12 +136,14 @@ export abstract class FlowSelection {
 }
 
 /**
- * Provides the target option
+ * Provides options for the target flow
  * @public
  */
-export interface TargetOption {
+export interface TargetOptions {
     /** The content that is selected */
     target?: FlowContent;
+
+    /** Theme of the selected content */
     theme?: FlowTheme;
 }
 
@@ -149,7 +151,7 @@ export interface TargetOption {
  * Options for {@link FlowSelection.remove}
  * @public
  */
-export interface RemoveFlowSelectionOptions extends TargetOption {
+export interface RemoveFlowSelectionOptions extends TargetOptions {
     /** Controls what to remove when selection is collapsed */
     whenCollapsed?: "removeBackward" | "removeForward" | "noop";
 }

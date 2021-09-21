@@ -265,7 +265,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
     static readonly classType: Type<RecordObject<FlowRangeSelectionProps, FlowRangeSelectionProps> & Equatable & Readonly<FlowRangeSelectionProps> & FlowRangeSelection>;
     // @override
-    formatParagraph(style: ParagraphStyle, options?: TargetOption): FlowOperation | null;
+    formatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
     // @override
     formatText(style: TextStyle): FlowOperation | null;
     // @override
@@ -275,7 +275,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     // @override
     incrementListLevel(delta?: number): FlowOperation | null;
     // @override
-    insert(content: FlowContent, options?: TargetOption): FlowOperation | null;
+    insert(content: FlowContent, options?: TargetOptions): FlowOperation | null;
     // @override
     get isCollapsed(): boolean;
     // @override
@@ -305,13 +305,13 @@ export abstract class FlowSelection {
     abstract afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
     static readonly baseType: Type<FlowSelection>;
     decrementListLevel(delta?: number): FlowOperation | null;
-    abstract formatParagraph(style: ParagraphStyle, options?: TargetOption): FlowOperation | null;
+    abstract formatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
     abstract formatText(style: TextStyle): FlowOperation | null;
     static fromJsonValue(value: JsonValue): FlowSelection;
     abstract getUniformParagraphStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle;
     abstract getUniformTextStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
     abstract incrementListLevel(delta?: number): FlowOperation | null;
-    abstract insert(content: FlowContent, options?: TargetOption): FlowOperation | null;
+    abstract insert(content: FlowContent, options?: TargetOptions): FlowOperation | null;
     abstract get isCollapsed(): boolean;
     abstract remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
     toJsonValue(): JsonValue;
@@ -656,7 +656,7 @@ export abstract class ParagraphTheme {
 }
 
 // @public
-export interface RemoveFlowSelectionOptions extends TargetOption {
+export interface RemoveFlowSelectionOptions extends TargetOptions {
     whenCollapsed?: "removeBackward" | "removeForward" | "noop";
 }
 
@@ -690,8 +690,9 @@ export interface RemoveRangeProps {
 }
 
 // @public
-export interface TargetOption {
+export interface TargetOptions {
     target?: FlowContent;
+    theme?: FlowTheme;
 }
 
 // @public @sealed

@@ -9,7 +9,7 @@ Creates an operation that applies the specified paragraph style on the current s
 <b>Signature:</b>
 
 ```typescript
-abstract formatParagraph(style: ParagraphStyle, options?: TargetOption): FlowOperation | null;
+abstract formatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
 ```
 
 ## Parameters
@@ -17,7 +17,7 @@ abstract formatParagraph(style: ParagraphStyle, options?: TargetOption): FlowOpe
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  style | [ParagraphStyle](./scribing.paragraphstyle.md) | The style to apply |
-|  options | [TargetOption](./scribing.targetoption.md) | Options that provide operation behavior |
+|  options | [TargetOptions](./scribing.targetoptions.md) | Options that provide operation behavior |
 
 <b>Returns:</b>
 
