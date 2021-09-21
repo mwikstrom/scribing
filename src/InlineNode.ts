@@ -35,15 +35,7 @@ export abstract class InlineNode extends FlowNode {
      * @override
      */
     public getUniformTextStyle(theme?: ParagraphTheme): TextStyle {
-        let ambient = theme?.getAmbientTextStyle() ?? TextStyle.empty;
-
-        if (this.style.link) {
-            const linkStyle = theme?.getLinkStyle();
-            if (linkStyle) {
-                ambient = ambient.merge(linkStyle);
-            }
-        }
-
+        const ambient = this.#getAmbientStyle(theme);
         return ambient.isEmpty ? this.style : ambient.merge(this.style);
     }
 
@@ -61,7 +53,8 @@ export abstract class InlineNode extends FlowNode {
 
     /** {@inheritdoc FlowNode.unformatAmbient} */
     public unformatAmbient(theme: ParagraphTheme): this {
-        return this.unformatText(theme.getAmbientTextStyle());
+        const ambient = this.#getAmbientStyle(theme);
+        return this.unformatText(ambient);
     }
 
     /** {@inheritdoc FlowNode.unformatText} */
@@ -72,5 +65,18 @@ export abstract class InlineNode extends FlowNode {
     /** {@inheritdoc FlowNode.unformatParagraph} */
     public unformatParagraph(): this {
         return this;
+    }
+
+    #getAmbientStyle(theme?: ParagraphTheme): TextStyle {
+        let ambient = theme?.getAmbientTextStyle() ?? TextStyle.empty;
+
+        if (this.style.link) {
+            const linkStyle = theme?.getLinkStyle();
+            if (linkStyle) {
+                ambient = ambient.merge(linkStyle);
+            }
+        }
+
+        return ambient;
     }
 }
