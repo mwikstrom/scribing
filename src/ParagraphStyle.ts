@@ -6,7 +6,9 @@ import {
     RecordClass, 
     recordClassType, 
     recordType, 
+    stringType, 
     Type, 
+    unionType, 
     validating
 } from "paratype";
 
@@ -65,30 +67,29 @@ export interface ParagraphStyleProps {
     listLevel?: number;
 
     /**
-     * Specifies whether the paragraph is a continuation of the previous list item. 
-     * No bullet is shown and counter is not incremented.
+     * Specifies the list marker kind
      */
-    insideList?: boolean;
+    listMarker?: ListMarkerKind;
 
     /**
-     * Specifies the list type
+     * Specifies whether the list marker is hidden
      */
-    listType?: ListStyle;
+    hideListMarker?: boolean;
 
     /**
-     * Specifies whether a new list shall be started after this paragraph
+     * Specifies the list litem counter value
      */
-    separateList?: boolean;
+    listCounter?: number | "auto" | "resume";
 
     /**
-     * Specifies whether list bullet shall use upper or lower case
+     * Specifies the list item counter prefix
      */
-    bulletCase?: "lower" | "upper";
+    listCounterPrefix?: string;
 
     /**
-     * Specifies the suffix for non-symbolic list bullets
+     * Specifies the list item counter suffix
      */
-    bulletSuffix?: "." | ")";
+    listCounterSuffix?: string;
 
     // TODO: by name inheritance
     // TODO: spacing mode
@@ -138,34 +139,44 @@ export const ParagraphStyleVariantType: Type<ParagraphStyleVariant> = enumType(P
  * List styles
  * @public
  */
-export type ListStyle = (typeof LIST_STYLES)[number];
+export type ListMarkerKind = (typeof LIST_MARKER_KINDS)[number];
 
+// TODO: Support hierarchical markers (useful for headings)
 /**
  * Read-only array that contains all list styles
  * @public
  */
-export const LIST_STYLES = Object.freeze([
-    "symbol", // alternating: disc, circle, square
-    "numeric", // alternating: decimal, alpha, roman
+export const LIST_MARKER_KINDS = Object.freeze([
+    "unordered", // alternating: disc, circle, square
+    "ordered", // alternating: decimal, lower-alpha, lower-roman
     "disc",
     "circle",
     "square",
     "dash",
     "decimal",
-    "alpha",
-    "roman",
+    "lower-alpha",
+    "upper-alpha",
+    "lower-roman",
+    "upper-roman",
 ] as const);
 
 /**
  * The run-time type that matches list style values
  * @public
  */
-export const ListStyleType: Type<ListStyle> = enumType(LIST_STYLES);
+export const ListMarkerKindType: Type<ListMarkerKind> = enumType(LIST_MARKER_KINDS);
 
 const percentage10to1000 = integerType.restrict(
     "Must be greater than or equal to 10 and less than or equal to 1000",
     value => value >= 10 && value <= 1000,
 );
+
+// NOTE: Restricted to keep it safe for inclusion as a CSS literal string
+const counterTextType = stringType
+    .restrict(
+        "Must be a valid counter separator text",
+        value => /^[a-zA-Z0-9. ()_-]{0,10}$/.test(value)
+    );
 
 const Props = {
     alignment: enumType(["start", "center", "end", "justify"]),
@@ -178,11 +189,11 @@ const Props = {
         "Must be greater than or equal to zero and less than or equal to nine",
         value => value >= 0 && value <= 9,
     ),
-    insideList: booleanType,
-    listType: ListStyleType,
-    separateList: booleanType,
-    bulletCase: enumType(["lower", "upper"]),
-    bulletSuffix: enumType([".", ")"]),
+    listMarker: ListMarkerKindType,
+    hideListMarker: booleanType,
+    listCounter: unionType(integerType, enumType(["auto", "resume"])),
+    listCounterPrefix: counterTextType,
+    listCounterSuffix: counterTextType,
 };
 
 const PropsType = recordType(Props).asPartial();

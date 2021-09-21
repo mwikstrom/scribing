@@ -92,11 +92,11 @@ class DefaultParagraphTheme extends ParagraphTheme {
             spaceAbove: getSpaceAbove(variant),
             spaceBelow: getSpaceBelow(variant),
             listLevel: 0,
-            insideList: false,
-            listType: "symbol",
-            separateList: false,
-            bulletCase: "lower",
-            bulletSuffix: ".",
+            listMarker: "unordered",
+            hideListMarker: false,
+            listCounter: "auto",
+            listCounterPrefix: "",
+            listCounterSuffix: ". ",
         });
 
         this.#link = new TextStyle({

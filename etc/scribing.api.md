@@ -493,13 +493,13 @@ export interface LineBreakProps {
 }
 
 // @public
-export const LIST_STYLES: readonly ["symbol", "numeric", "disc", "circle", "square", "dash", "decimal", "alpha", "roman"];
+export const LIST_MARKER_KINDS: readonly ["unordered", "ordered", "disc", "circle", "square", "dash", "decimal", "lower-alpha", "upper-alpha", "lower-roman", "upper-roman"];
 
 // @public
-export type ListStyle = (typeof LIST_STYLES)[number];
+export type ListMarkerKind = (typeof LIST_MARKER_KINDS)[number];
 
 // @public
-export const ListStyleType: Type<ListStyle>;
+export const ListMarkerKindType: Type<ListMarkerKind>;
 
 // @public @sealed
 export class OpenUrl extends OpenUrlBase {
@@ -560,11 +560,11 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
     spaceAbove: number;
     spaceBelow: number;
     listLevel: number;
-    insideList: boolean;
-    listType: "symbol" | "numeric" | "disc" | "circle" | "square" | "dash" | "decimal" | "alpha" | "roman";
-    separateList: boolean;
-    bulletCase: "lower" | "upper";
-    bulletSuffix: "." | ")";
+    listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
+    hideListMarker: boolean;
+    listCounter: number | "auto" | "resume";
+    listCounterPrefix: string;
+    listCounterSuffix: string;
     }>, Partial<{
     alignment: "start" | "center" | "end" | "justify";
     direction: "ltr" | "rtl";
@@ -573,11 +573,11 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
     spaceAbove: number;
     spaceBelow: number;
     listLevel: number;
-    insideList: boolean;
-    listType: "symbol" | "numeric" | "disc" | "circle" | "square" | "dash" | "decimal" | "alpha" | "roman";
-    separateList: boolean;
-    bulletCase: "lower" | "upper";
-    bulletSuffix: "." | ")";
+    listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
+    hideListMarker: boolean;
+    listCounter: number | "auto" | "resume";
+    listCounterPrefix: string;
+    listCounterSuffix: string;
     }>> & Equatable & Readonly<Partial<{
         alignment: "start" | "center" | "end" | "justify";
         direction: "ltr" | "rtl";
@@ -586,11 +586,11 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
         spaceAbove: number;
         spaceBelow: number;
         listLevel: number;
-        insideList: boolean;
-        listType: "symbol" | "numeric" | "disc" | "circle" | "square" | "dash" | "decimal" | "alpha" | "roman";
-        separateList: boolean;
-        bulletCase: "lower" | "upper";
-        bulletSuffix: "." | ")";
+        listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
+        hideListMarker: boolean;
+        listCounter: number | "auto" | "resume";
+        listCounterPrefix: string;
+        listCounterSuffix: string;
     }>> & ParagraphStyle>;
     static get empty(): ParagraphStyle;
     get isEmpty(): boolean;
@@ -605,11 +605,11 @@ lineSpacing: number;
 spaceAbove: number;
 spaceBelow: number;
 listLevel: number;
-insideList: boolean;
-listType: "symbol" | "numeric" | "disc" | "circle" | "square" | "dash" | "decimal" | "alpha" | "roman";
-separateList: boolean;
-bulletCase: "lower" | "upper";
-bulletSuffix: "." | ")";
+listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
+hideListMarker: boolean;
+listCounter: number | "auto" | "resume";
+listCounterPrefix: string;
+listCounterSuffix: string;
 }>, Object, Partial<{
 alignment: "start" | "center" | "end" | "justify";
 direction: "ltr" | "rtl";
@@ -618,24 +618,24 @@ lineSpacing: number;
 spaceAbove: number;
 spaceBelow: number;
 listLevel: number;
-insideList: boolean;
-listType: "symbol" | "numeric" | "disc" | "circle" | "square" | "dash" | "decimal" | "alpha" | "roman";
-separateList: boolean;
-bulletCase: "lower" | "upper";
-bulletSuffix: "." | ")";
+listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
+hideListMarker: boolean;
+listCounter: number | "auto" | "resume";
+listCounterPrefix: string;
+listCounterSuffix: string;
 }>>;
 
 // @public
 export interface ParagraphStyleProps {
     alignment?: "start" | "center" | "end" | "justify";
-    bulletCase?: "lower" | "upper";
-    bulletSuffix?: "." | ")";
     direction?: "ltr" | "rtl";
-    insideList?: boolean;
+    hideListMarker?: boolean;
     lineSpacing?: number;
+    listCounter?: number | "auto" | "resume";
+    listCounterPrefix?: string;
+    listCounterSuffix?: string;
     listLevel?: number;
-    listType?: ListStyle;
-    separateList?: boolean;
+    listMarker?: ListMarkerKind;
     spaceAbove?: number;
     spaceBelow?: number;
     variant?: ParagraphStyleVariant;

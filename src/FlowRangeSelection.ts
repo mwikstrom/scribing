@@ -253,10 +253,9 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
 
                 // Are we inside a list?
                 if ((curr.style.listLevel ?? 0) > 0) {
-                    // If the current paragraph is inside the list, then we'll convert it
-                    // to a normal bullet
-                    if (curr.style.insideList) {
-                        return this.formatParagraph(ParagraphStyle.empty.set("insideList", false), { target });
+                    // If the current list marker is hidden, then we'll show it
+                    if (curr.style.hideListMarker) {
+                        return this.formatParagraph(ParagraphStyle.empty.set("hideListMarker", false), { target });
                     }
 
                     // Otherwise we'll decrement the current list level
@@ -281,11 +280,10 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
                 if (target) {
                     const { node } = target.peek(range.first - 1);
                     if (node instanceof ParagraphBreak && (node.style.listLevel ?? 0) > 0) {
-                        // Caret is placed just after a list paragraph and we're deleting backwards
-                        // The intention is then to remove the bullet - making the current paragraph
-                        // inside that list.
+                        // Caret is placed just after a list paragraph and we're deleting backwards,
+                        // then the intention is then to hide the list marker
                         return this.formatParagraph(
-                            ParagraphStyle.empty.set("insideList", true),
+                            ParagraphStyle.empty.set("hideListMarker", true),
                             { target },
                         );
                     }

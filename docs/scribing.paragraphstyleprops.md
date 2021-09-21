@@ -17,14 +17,14 @@ export interface ParagraphStyleProps
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [alignment?](./scribing.paragraphstyleprops.alignment.md) | "start" \| "center" \| "end" \| "justify" | <i>(Optional)</i> The alignment for paragraph content. |
-|  [bulletCase?](./scribing.paragraphstyleprops.bulletcase.md) | "lower" \| "upper" | <i>(Optional)</i> Specifies whether list bullet shall use upper or lower case |
-|  [bulletSuffix?](./scribing.paragraphstyleprops.bulletsuffix.md) | "." \| ")" | <i>(Optional)</i> Specifies the suffix for non-symbolic list bullets |
 |  [direction?](./scribing.paragraphstyleprops.direction.md) | "ltr" \| "rtl" | <i>(Optional)</i> The reading direction of paragraph content. |
-|  [insideList?](./scribing.paragraphstyleprops.insidelist.md) | boolean | <i>(Optional)</i> Specifies whether the paragraph is a continuation of the previous list item. No bullet is shown and counter is not incremented. |
+|  [hideListMarker?](./scribing.paragraphstyleprops.hidelistmarker.md) | boolean | <i>(Optional)</i> Specifies whether the list marker is hidden |
 |  [lineSpacing?](./scribing.paragraphstyleprops.linespacing.md) | number | <i>(Optional)</i> The amount of space between lines, as a percentage of normal, where normal is represented as <code>100</code>. |
+|  [listCounter?](./scribing.paragraphstyleprops.listcounter.md) | number \| "auto" \| "resume" | <i>(Optional)</i> Specifies the list litem counter value |
+|  [listCounterPrefix?](./scribing.paragraphstyleprops.listcounterprefix.md) | string | <i>(Optional)</i> Specifies the list item counter prefix |
+|  [listCounterSuffix?](./scribing.paragraphstyleprops.listcountersuffix.md) | string | <i>(Optional)</i> Specifies the list item counter suffix |
 |  [listLevel?](./scribing.paragraphstyleprops.listlevel.md) | number | <i>(Optional)</i> Specifies the list level. Zero means not a list. |
-|  [listType?](./scribing.paragraphstyleprops.listtype.md) | [ListStyle](./scribing.liststyle.md) | <i>(Optional)</i> Specifies the list type |
-|  [separateList?](./scribing.paragraphstyleprops.separatelist.md) | boolean | <i>(Optional)</i> Specifies whether a new list shall be started after this paragraph |
+|  [listMarker?](./scribing.paragraphstyleprops.listmarker.md) | [ListMarkerKind](./scribing.listmarkerkind.md) | <i>(Optional)</i> Specifies the list marker kind |
 |  [spaceAbove?](./scribing.paragraphstyleprops.spaceabove.md) | number | <i>(Optional)</i> The amount of space before the paragraph, as a percentage of the user agent's default font size, where normal is represented as <code>100</code>. |
 |  [spaceBelow?](./scribing.paragraphstyleprops.spacebelow.md) | number | <i>(Optional)</i> The amount of space before the paragraph, as a percentage of the user agent's default font size, where normal is represented as <code>100</code>. |
 |  [variant?](./scribing.paragraphstyleprops.variant.md) | [ParagraphStyleVariant](./scribing.paragraphstylevariant.md) | <i>(Optional)</i> The style variant of the paragraph. |

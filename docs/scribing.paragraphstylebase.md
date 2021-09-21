@@ -17,11 +17,11 @@ ParagraphStyleBase: import("paratype").RecordConstructor<Partial<{
     spaceAbove: number;
     spaceBelow: number;
     listLevel: number;
-    insideList: boolean;
-    listType: "symbol" | "numeric" | "disc" | "circle" | "square" | "dash" | "decimal" | "alpha" | "roman";
-    separateList: boolean;
-    bulletCase: "lower" | "upper";
-    bulletSuffix: "." | ")";
+    listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
+    hideListMarker: boolean;
+    listCounter: number | "auto" | "resume";
+    listCounterPrefix: string;
+    listCounterSuffix: string;
 }>, Object, Partial<{
     alignment: "start" | "center" | "end" | "justify";
     direction: "ltr" | "rtl";
@@ -30,10 +30,10 @@ ParagraphStyleBase: import("paratype").RecordConstructor<Partial<{
     spaceAbove: number;
     spaceBelow: number;
     listLevel: number;
-    insideList: boolean;
-    listType: "symbol" | "numeric" | "disc" | "circle" | "square" | "dash" | "decimal" | "alpha" | "roman";
-    separateList: boolean;
-    bulletCase: "lower" | "upper";
-    bulletSuffix: "." | ")";
+    listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
+    hideListMarker: boolean;
+    listCounter: number | "auto" | "resume";
+    listCounterPrefix: string;
+    listCounterSuffix: string;
 }>>
 ```
