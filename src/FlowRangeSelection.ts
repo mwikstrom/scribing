@@ -228,7 +228,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      * @override
      */
     public insert(@type(FlowContent.classType) content: FlowContent, options: TargetOption = {}): FlowOperation | null {
-        const { target } = options;
+        const { target, theme } = options;
         const { range } = this;
         const { first: position } = range;
         
@@ -239,29 +239,60 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
             ]);
         }
 
-        // Are we inserting a single paragraph break into a known target?
-        if (target && range.first > 0 && content.nodes.length === 1 && content.nodes[0] instanceof ParagraphBreak) {
-            const { node: curr } = target.peek(range.last);
-            const { node: prev } = target.peek(range.first - 1);
-            // Are we inserting a new paragraph break between two existing paragraph breaks?
-            if (prev instanceof ParagraphBreak && curr instanceof ParagraphBreak) {
-                // If the current paragraph is not of the normal variant then we'll reformat
-                // it to become normal.
-                if (curr.style.variant && curr.style.variant !== "normal") {
-                    return this.formatParagraph(ParagraphStyle.empty.set("variant", "normal"), { target });
-                }
+        // We may want to reformat the following paragraph
+        let applyNextParaStyle = ParagraphStyle.empty;
 
-                // Are we inside a list?
-                if ((curr.style.listLevel ?? 0) > 0) {
-                    // If the current list marker is hidden, then we'll show it
-                    if (curr.style.hideListMarker) {
-                        return this.unformatParagraph(ParagraphStyle.empty.set("hideListMarker", true));
+        // Is single para break insertion?
+        if (content.nodes.length === 1 && content.nodes[0] instanceof ParagraphBreak) {
+            // Inserting a para break may split a list node with a counter reset. The intention is then
+            // to keep the counter reset on the newly inserted para break and to clear it on the existing
+            // (otherwise we would end up with two paras with the same numeric counter value)
+            applyNextParaStyle = applyNextParaStyle.set("listCounter", "auto");
+
+            // Do we have a known target?
+            if (target) {
+                const prev = range.first > 0 ? target.peek(range.first - 1).node : null;
+                const cursor = target.peek(range.last);
+                const at = cursor.node;
+
+                // Are we inserting between two para breaks?
+                if (prev instanceof ParagraphBreak && at instanceof ParagraphBreak) {
+                    // If the current paragraph is not of the normal variant then we'll reformat
+                    // it to become normal.
+                    if (at.style.variant && at.style.variant !== "normal") {
+                        return this.formatParagraph(ParagraphStyle.empty.set("variant", "normal"), { target });
                     }
 
-                    // Otherwise we'll decrement the current list level
-                    return this.decrementListLevel();
+                    // Are we inside a list?
+                    if ((at.style.listLevel ?? 0) > 0) {
+                        // If the current list marker is hidden, then we'll show it
+                        if (at.style.hideListMarker) {
+                            return this.unformatParagraph(ParagraphStyle.empty.set("hideListMarker", true));
+                        }
+
+                        // Otherwise we'll decrement the current list level
+                        return this.decrementListLevel();
+                    }
+                }
+
+                // Apply next paragraph variant
+                if (theme) {                 
+                    const splitVarint = cursor.getParagraphStyle()?.variant ?? "normal";
+                    const nextVariant = theme.getParagraphTheme(splitVarint).getNextVariant();
+                    applyNextParaStyle = applyNextParaStyle.set("variant", nextVariant);
                 }
             }
+        }
+
+        // Do we have a style to apply on the following paragraph?
+        if (!applyNextParaStyle.isEmpty) {
+            return FlowBatch.fromArray([
+                new InsertContent({ position, content }),
+                new FormatParagraph({
+                    range: FlowRange.at(position + content.size),
+                    style: applyNextParaStyle,
+                }),
+            ]);
         }
 
         return new InsertContent({ position, content });
@@ -278,14 +309,15 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
         if (range.isCollapsed) {
             if (whenCollapsed === "removeBackward" && range.first > 0) {
                 if (target) {
+                    const paraStyle = target.peek(range.first).getParagraphStyle();
                     const { node: prev } = target.peek(range.first - 1);
+
                     // Is caret placet just after a paragraph break?
                     if (prev instanceof ParagraphBreak) {
-                        const currStyle = target.peek(range.first).getParagraphStyle();
                         // Are we at the start of a list item?
-                        if ((currStyle?.listLevel ?? 0) > 0) {
+                        if ((paraStyle?.listLevel ?? 0) > 0) {
                             // Is the list marker shown?
-                            if (!currStyle?.hideListMarker) {
+                            if (!paraStyle?.hideListMarker) {
                                 // Intention is not to delete prev paragraph break, but
                                 // instead to hide the list marker of the current para.
                                 return this.formatParagraph(
@@ -294,6 +326,24 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
                                 );
                             }
                         }
+
+                        // When deleting a paragraph break backward, the intention is to keep
+                        // the styling of the paragraph that we're deleting into. Therefore we
+                        // must copy the paragraph style of the node we're deleting and assign
+                        // it to the current paragraph.
+                        return FlowBatch.fromArray([
+                            new UnformatParagraph({
+                                range: FlowRange.at(range.first),
+                                style: paraStyle ?? ParagraphStyle.empty,
+                            }),
+                            new FormatParagraph({
+                                range: FlowRange.at(range.first),
+                                style: prev.style,
+                            }),
+                            new RemoveRange({
+                                range: FlowRange.at(range.first, -1),
+                            }),
+                        ]);
                     }
                 }
                 range = FlowRange.at(range.first, -1);

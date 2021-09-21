@@ -142,6 +142,7 @@ export abstract class FlowSelection {
 export interface TargetOption {
     /** The content that is selected */
     target?: FlowContent;
+    theme?: FlowTheme;
 }
 
 /**
