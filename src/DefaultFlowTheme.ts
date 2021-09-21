@@ -81,7 +81,7 @@ class DefaultParagraphTheme extends ParagraphTheme {
             strike: false,
             baseline: "normal",
             link: null,
-            color: "default",
+            color: variant === "subtitle" ? "subtle" : "default",
         });
 
         this.#para = new ParagraphStyle({
@@ -137,15 +137,24 @@ const getFontSize = (variant: ParagraphStyleVariant): number => {
     case "h5": return 83;
     case "h6": return 67;
     case "code": return 90;
-    case "preamble": return 120;
+    case "preamble": return 110;
     default: return 100;
     }
 };
 
-const getSpaceAbove = (variant: ParagraphStyleVariant): number => getSpaceBelow(variant);
+const getSpaceAbove = (variant: ParagraphStyleVariant): number => {
+    if (variant === "title") {
+        return 300;
+    } else if (variant === "subtitle") {
+        return 100;
+    } else {
+        return getSpaceBelow(variant);
+    }
+};
 
 const getSpaceBelow = (variant: ParagraphStyleVariant): number => {
     switch (variant) {
+    case "subtitle": return 200;
     case "h1": return 134;
     case "h2": return 125;
     case "h3": return 117;
