@@ -16,6 +16,12 @@ static readonly classType: Type<import("paratype").RecordObject<Partial<{
         lineSpacing: number;
         spaceAbove: number;
         spaceBelow: number;
+        listLevel: number;
+        insideList: boolean;
+        listType: "symbol" | "numeric" | "disc" | "circle" | "square" | "dash" | "decimal" | "alpha" | "roman";
+        separateList: boolean;
+        bulletCase: "lower" | "upper";
+        bulletSuffix: "." | ")";
     }>, Partial<{
         alignment: "start" | "center" | "end" | "justify";
         direction: "ltr" | "rtl";
@@ -23,6 +29,12 @@ static readonly classType: Type<import("paratype").RecordObject<Partial<{
         lineSpacing: number;
         spaceAbove: number;
         spaceBelow: number;
+        listLevel: number;
+        insideList: boolean;
+        listType: "symbol" | "numeric" | "disc" | "circle" | "square" | "dash" | "decimal" | "alpha" | "roman";
+        separateList: boolean;
+        bulletCase: "lower" | "upper";
+        bulletSuffix: "." | ")";
     }>> & import("paratype").Equatable & Readonly<Partial<{
         alignment: "start" | "center" | "end" | "justify";
         direction: "ltr" | "rtl";
@@ -30,5 +42,11 @@ static readonly classType: Type<import("paratype").RecordObject<Partial<{
         lineSpacing: number;
         spaceAbove: number;
         spaceBelow: number;
+        listLevel: number;
+        insideList: boolean;
+        listType: "symbol" | "numeric" | "disc" | "circle" | "square" | "dash" | "decimal" | "alpha" | "roman";
+        separateList: boolean;
+        bulletCase: "lower" | "upper";
+        bulletSuffix: "." | ")";
     }>> & ParagraphStyle>;
 ```

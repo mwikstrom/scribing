@@ -90,6 +90,12 @@ class DefaultParagraphTheme extends ParagraphTheme {
             lineSpacing: variant === "preamble" ? 110 : 100,
             spaceAbove: getSpaceAbove(variant),
             spaceBelow: getSpaceAbove(variant),
+            listLevel: 0,
+            insideList: false,
+            listType: "symbol",
+            separateList: false,
+            bulletCase: "lower",
+            bulletSuffix: ".",
         });
 
         this.#link = new TextStyle({

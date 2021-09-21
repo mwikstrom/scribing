@@ -16,6 +16,12 @@ ParagraphStyleBase: import("paratype").RecordConstructor<Partial<{
     lineSpacing: number;
     spaceAbove: number;
     spaceBelow: number;
+    listLevel: number;
+    insideList: boolean;
+    listType: "symbol" | "numeric" | "disc" | "circle" | "square" | "dash" | "decimal" | "alpha" | "roman";
+    separateList: boolean;
+    bulletCase: "lower" | "upper";
+    bulletSuffix: "." | ")";
 }>, Object, Partial<{
     alignment: "start" | "center" | "end" | "justify";
     direction: "ltr" | "rtl";
@@ -23,5 +29,11 @@ ParagraphStyleBase: import("paratype").RecordConstructor<Partial<{
     lineSpacing: number;
     spaceAbove: number;
     spaceBelow: number;
+    listLevel: number;
+    insideList: boolean;
+    listType: "symbol" | "numeric" | "disc" | "circle" | "square" | "dash" | "decimal" | "alpha" | "roman";
+    separateList: boolean;
+    bulletCase: "lower" | "upper";
+    bulletSuffix: "." | ")";
 }>>
 ```

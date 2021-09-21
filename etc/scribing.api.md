@@ -462,6 +462,15 @@ export interface LineBreakProps {
     style: TextStyle;
 }
 
+// @public
+export const LIST_STYLES: readonly ["symbol", "numeric", "disc", "circle", "square", "dash", "decimal", "alpha", "roman"];
+
+// @public
+export type ListStyle = (typeof LIST_STYLES)[number];
+
+// @public
+export const ListStyleType: Type<ListStyle>;
+
 // @public @sealed
 export class OpenUrl extends OpenUrlBase {
     static readonly classType: Type<OpenUrl>;
@@ -520,6 +529,12 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
     lineSpacing: number;
     spaceAbove: number;
     spaceBelow: number;
+    listLevel: number;
+    insideList: boolean;
+    listType: "symbol" | "numeric" | "disc" | "circle" | "square" | "dash" | "decimal" | "alpha" | "roman";
+    separateList: boolean;
+    bulletCase: "lower" | "upper";
+    bulletSuffix: "." | ")";
     }>, Partial<{
     alignment: "start" | "center" | "end" | "justify";
     direction: "ltr" | "rtl";
@@ -527,6 +542,12 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
     lineSpacing: number;
     spaceAbove: number;
     spaceBelow: number;
+    listLevel: number;
+    insideList: boolean;
+    listType: "symbol" | "numeric" | "disc" | "circle" | "square" | "dash" | "decimal" | "alpha" | "roman";
+    separateList: boolean;
+    bulletCase: "lower" | "upper";
+    bulletSuffix: "." | ")";
     }>> & Equatable & Readonly<Partial<{
         alignment: "start" | "center" | "end" | "justify";
         direction: "ltr" | "rtl";
@@ -534,6 +555,12 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
         lineSpacing: number;
         spaceAbove: number;
         spaceBelow: number;
+        listLevel: number;
+        insideList: boolean;
+        listType: "symbol" | "numeric" | "disc" | "circle" | "square" | "dash" | "decimal" | "alpha" | "roman";
+        separateList: boolean;
+        bulletCase: "lower" | "upper";
+        bulletSuffix: "." | ")";
     }>> & ParagraphStyle>;
     static get empty(): ParagraphStyle;
     get isEmpty(): boolean;
@@ -547,6 +574,12 @@ variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitl
 lineSpacing: number;
 spaceAbove: number;
 spaceBelow: number;
+listLevel: number;
+insideList: boolean;
+listType: "symbol" | "numeric" | "disc" | "circle" | "square" | "dash" | "decimal" | "alpha" | "roman";
+separateList: boolean;
+bulletCase: "lower" | "upper";
+bulletSuffix: "." | ")";
 }>, Object, Partial<{
 alignment: "start" | "center" | "end" | "justify";
 direction: "ltr" | "rtl";
@@ -554,13 +587,25 @@ variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitl
 lineSpacing: number;
 spaceAbove: number;
 spaceBelow: number;
+listLevel: number;
+insideList: boolean;
+listType: "symbol" | "numeric" | "disc" | "circle" | "square" | "dash" | "decimal" | "alpha" | "roman";
+separateList: boolean;
+bulletCase: "lower" | "upper";
+bulletSuffix: "." | ")";
 }>>;
 
 // @public
 export interface ParagraphStyleProps {
     alignment?: "start" | "center" | "end" | "justify";
+    bulletCase?: "lower" | "upper";
+    bulletSuffix?: "." | ")";
     direction?: "ltr" | "rtl";
+    insideList?: boolean;
     lineSpacing?: number;
+    listLevel?: number;
+    listType?: ListStyle;
+    separateList?: boolean;
     spaceAbove?: number;
     spaceBelow?: number;
     variant?: ParagraphStyleVariant;

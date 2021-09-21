@@ -1,4 +1,14 @@
-import { enumType, frozen, integerType, RecordClass, recordClassType, recordType, Type, validating } from "paratype";
+import { 
+    booleanType,
+    enumType, 
+    frozen, 
+    integerType, 
+    RecordClass, 
+    recordClassType, 
+    recordType, 
+    Type, 
+    validating
+} from "paratype";
 
 /**
  * Style properties for paragraph content
@@ -49,6 +59,37 @@ export interface ParagraphStyleProps {
      */
     spaceBelow?: number;
 
+    /**
+     * Specifies the list level. Zero means not a list.
+     */
+    listLevel?: number;
+
+    /**
+     * Specifies whether the paragraph is a continuation of the previous list item. 
+     * No bullet is shown and counter is not incremented.
+     */
+    insideList?: boolean;
+
+    /**
+     * Specifies the list type
+     */
+    listType?: ListStyle;
+
+    /**
+     * Specifies whether a new list shall be started after this paragraph
+     */
+    separateList?: boolean;
+
+    /**
+     * Specifies whether list bullet shall use upper or lower case
+     */
+    bulletCase?: "lower" | "upper";
+
+    /**
+     * Specifies the suffix for non-symbolic list bullets
+     */
+    bulletSuffix?: "." | ")";
+
     // TODO: by name inheritance
     // TODO: spacing mode
     // TODO: border between
@@ -61,7 +102,6 @@ export interface ParagraphStyleProps {
     // TODO: keep with next
     // TODO: avoid widow and orphan
     // TODO: shading
-    // TODO: bullet (probably another obj)
 }
 
 /**
@@ -94,6 +134,34 @@ export const PARAGRAPH_STYLE_VARIANTS = Object.freeze([
  */
 export const ParagraphStyleVariantType: Type<ParagraphStyleVariant> = enumType(PARAGRAPH_STYLE_VARIANTS);
 
+/**
+ * List styles
+ * @public
+ */
+export type ListStyle = (typeof LIST_STYLES)[number];
+
+/**
+ * Read-only array that contains all list styles
+ * @public
+ */
+export const LIST_STYLES = Object.freeze([
+    "symbol", // alternating: disc, circle, square
+    "numeric", // alternating: decimal, alpha, roman
+    "disc",
+    "circle",
+    "square",
+    "dash",
+    "decimal",
+    "alpha",
+    "roman",
+] as const);
+
+/**
+ * The run-time type that matches list style values
+ * @public
+ */
+export const ListStyleType: Type<ListStyle> = enumType(LIST_STYLES);
+
 const percentage10to1000 = integerType.restrict(
     "Must be greater than or equal to 10 and less than or equal to 1000",
     value => value >= 10 && value <= 1000,
@@ -106,6 +174,15 @@ const Props = {
     lineSpacing: percentage10to1000,
     spaceAbove: percentage10to1000,
     spaceBelow: percentage10to1000,
+    listLevel: integerType.restrict(
+        "Must be greater than or equal to zero and less than or equal to nine",
+        value => value >= 0 && value <= 9,
+    ),
+    insideList: booleanType,
+    listType: ListStyleType,
+    separateList: booleanType,
+    bulletCase: enumType(["lower", "upper"]),
+    bulletSuffix: enumType([".", ")"]),
 };
 
 const PropsType = recordType(Props).asPartial();
