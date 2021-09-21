@@ -280,12 +280,14 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
                 if (target) {
                     const { node } = target.peek(range.first - 1);
                     if (node instanceof ParagraphBreak && (node.style.listLevel ?? 0) > 0) {
-                        // Caret is placed just after a list paragraph and we're deleting backwards,
-                        // then the intention is then to hide the list marker
-                        return this.formatParagraph(
-                            ParagraphStyle.empty.set("hideListMarker", true),
-                            { target },
-                        );
+                        // Caret is placed just after a list paragraph and we're deleting backwards.
+                        if (!node.style.hideListMarker) {
+                            // List marker is shown so the intention is to remove/hide it.
+                            return this.formatParagraph(
+                                ParagraphStyle.empty.set("hideListMarker", true),
+                                { target },
+                            );
+                        }
                     }
                 }
                 range = FlowRange.at(range.first, -1);
