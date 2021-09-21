@@ -10,7 +10,7 @@ Creates an operation that inserts the specified content into the current selecti
 
 ```typescript
 /** @override */
-insert(content: FlowContent): FlowOperation | null;
+insert(content: FlowContent, options?: TargetOption): FlowOperation | null;
 ```
 
 ## Parameters
@@ -18,6 +18,7 @@ insert(content: FlowContent): FlowOperation | null;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The content to be inserted |
+|  options | [TargetOption](./scribing.targetoption.md) | Options that provide operation behavior |
 
 <b>Returns:</b>
 

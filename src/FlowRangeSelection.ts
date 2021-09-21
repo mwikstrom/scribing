@@ -227,17 +227,45 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      * {@inheritDoc FlowSelection.insert}
      * @override
      */
-    public insert(@type(FlowContent.classType) content: FlowContent): FlowOperation | null {
+    public insert(@type(FlowContent.classType) content: FlowContent, options: TargetOption = {}): FlowOperation | null {
+        const { target } = options;
         const { range } = this;
         const { first: position } = range;
-        if (this.range.isCollapsed) {
-            return new InsertContent({ position, content });
-        } else {
+        
+        if (!this.range.isCollapsed) {
             return FlowBatch.fromArray([
                 new RemoveRange({ range }),
                 new InsertContent({ position, content }),
             ]);
         }
+
+        // Are we inserting a single paragraph break into a known target?
+        if (target && range.first > 0 && content.nodes.length === 1 && content.nodes[0] instanceof ParagraphBreak) {
+            const { node: curr } = target.peek(range.last);
+            const { node: prev } = target.peek(range.first - 1);
+            // Are we inserting a new paragraph break between two existing paragraph breaks?
+            if (prev instanceof ParagraphBreak && curr instanceof ParagraphBreak) {
+                // If the current paragraph is not of the normal variant then we'll reformat
+                // it to become normal.
+                if (curr.style.variant && curr.style.variant !== "normal") {
+                    return this.formatParagraph(ParagraphStyle.empty.set("variant", "normal"), { target });
+                }
+
+                // Are we inside a list?
+                if ((curr.style.listLevel ?? 0) > 0) {
+                    // If the current paragraph is inside the list, then we'll convert it
+                    // to a normal bullet
+                    if (curr.style.insideList) {
+                        return this.formatParagraph(ParagraphStyle.empty.set("insideList", false), { target });
+                    }
+
+                    // Otherwise we'll decrement the current list level
+                    return this.decrementListLevel();
+                }
+            }
+        }
+
+        return new InsertContent({ position, content });
     }
 
     /**

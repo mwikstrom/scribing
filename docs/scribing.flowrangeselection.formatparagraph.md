@@ -18,7 +18,7 @@ formatParagraph(style: ParagraphStyle, options?: TargetOption): FlowOperation | 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  style | [ParagraphStyle](./scribing.paragraphstyle.md) | The style to apply |
-|  options | [TargetOption](./scribing.targetoption.md) |  |
+|  options | [TargetOption](./scribing.targetoption.md) | Options that provide operation behavior |
 
 <b>Returns:</b>
 

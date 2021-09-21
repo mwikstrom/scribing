@@ -275,7 +275,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     // @override
     incrementListLevel(delta?: number): FlowOperation | null;
     // @override
-    insert(content: FlowContent): FlowOperation | null;
+    insert(content: FlowContent, options?: TargetOption): FlowOperation | null;
     // @override
     get isCollapsed(): boolean;
     // @override
@@ -305,13 +305,13 @@ export abstract class FlowSelection {
     abstract afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
     static readonly baseType: Type<FlowSelection>;
     decrementListLevel(delta?: number): FlowOperation | null;
-    abstract formatParagraph(style: ParagraphStyle): FlowOperation | null;
+    abstract formatParagraph(style: ParagraphStyle, options?: TargetOption): FlowOperation | null;
     abstract formatText(style: TextStyle): FlowOperation | null;
     static fromJsonValue(value: JsonValue): FlowSelection;
     abstract getUniformParagraphStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle;
     abstract getUniformTextStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
     abstract incrementListLevel(delta?: number): FlowOperation | null;
-    abstract insert(content: FlowContent): FlowOperation | null;
+    abstract insert(content: FlowContent, options?: TargetOption): FlowOperation | null;
     abstract get isCollapsed(): boolean;
     abstract remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
     toJsonValue(): JsonValue;
