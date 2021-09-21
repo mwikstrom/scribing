@@ -255,7 +255,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
                 if ((curr.style.listLevel ?? 0) > 0) {
                     // If the current list marker is hidden, then we'll show it
                     if (curr.style.hideListMarker) {
-                        return this.formatParagraph(ParagraphStyle.empty.set("hideListMarker", false), { target });
+                        return this.unformatParagraph(ParagraphStyle.empty.set("hideListMarker", true));
                     }
 
                     // Otherwise we'll decrement the current list level
