@@ -90,7 +90,7 @@ class DefaultParagraphTheme extends ParagraphTheme {
             direction: "ltr",
             lineSpacing: variant === "preamble" ? 110 : 100,
             spaceAbove: getSpaceAbove(variant),
-            spaceBelow: getSpaceAbove(variant),
+            spaceBelow: getSpaceBelow(variant),
             listLevel: 0,
             insideList: false,
             listType: "symbol",
