@@ -41,7 +41,6 @@ Model for collaborative rich text editing
 
 |  Interface | Description |
 |  --- | --- |
-|  [ContentOption](./scribing.contentoption.md) | Provides the content option |
 |  [FlowBatchProps](./scribing.flowbatchprops.md) | Properties of [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowContentProps](./scribing.flowcontentprops.md) | Flow content properties |
 |  [FlowEditorStateProps](./scribing.floweditorstateprops.md) | Properties for [FlowEditorState](./scribing.floweditorstate.md) |
@@ -62,6 +61,7 @@ Model for collaborative rich text editing
 |  [RemoveFlowSelectionOptions](./scribing.removeflowselectionoptions.md) | Options for [FlowSelection.remove()](./scribing.flowselection.remove.md) |
 |  [RemoveRangeData](./scribing.removerangedata.md) | Data of remove range operations |
 |  [RemoveRangeProps](./scribing.removerangeprops.md) | Properties of remove range opertions |
+|  [TargetOption](./scribing.targetoption.md) | Provides the target option |
 |  [TextRunProps](./scribing.textrunprops.md) | Properties of a text run |
 |  [TextStyleProps](./scribing.textstyleprops.md) | Style properties for [text](./scribing.textrun.md) |
 |  [UnformatParagraphData](./scribing.unformatparagraphdata.md) | Data of unformat paragraph operations |

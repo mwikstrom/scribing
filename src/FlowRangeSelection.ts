@@ -3,7 +3,7 @@ import { FlowBatch } from "./FlowBatch";
 import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
-import { ContentOption, FlowSelection, RemoveFlowSelectionOptions } from "./FlowSelection";
+import { TargetOption, FlowSelection, RemoveFlowSelectionOptions } from "./FlowSelection";
 import { FlowTheme } from "./FlowTheme";
 import { FormatParagraph } from "./FormatParagraph";
 import { FormatText } from "./FormatText";
@@ -142,9 +142,9 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      */
     public formatParagraph(
         @type(ParagraphStyle.classType) style: ParagraphStyle,
-            options: ContentOption = {},
+            options: TargetOption = {},
     ): FlowOperation | null {
-        const { content } = options;
+        const { target: content } = options;
         let { range } = this;
 
         // Examine content if we've got it
@@ -231,7 +231,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      * @override
      */
     public remove(options: RemoveFlowSelectionOptions = {}): FlowOperation | null {
-        const { whenCollapsed, content } = options;
+        const { whenCollapsed, target: content } = options;
         let { range } = this;
 
         if (range.isCollapsed) {

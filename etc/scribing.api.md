@@ -10,11 +10,6 @@ import { RecordConstructor } from 'paratype';
 import { RecordObject } from 'paratype';
 import { Type } from 'paratype';
 
-// @public
-export interface ContentOption {
-    content?: FlowContent;
-}
-
 // @public @sealed
 export class DefaultFlowTheme extends DefaultFlowThemeBase {
     constructor();
@@ -269,7 +264,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
     static readonly classType: Type<RecordObject<FlowRangeSelectionProps, FlowRangeSelectionProps> & Equatable & Readonly<FlowRangeSelectionProps> & FlowRangeSelection>;
     // @override
-    formatParagraph(style: ParagraphStyle, options?: ContentOption): FlowOperation | null;
+    formatParagraph(style: ParagraphStyle, options?: TargetOption): FlowOperation | null;
     // @override
     formatText(style: TextStyle): FlowOperation | null;
     // @override
@@ -626,7 +621,7 @@ export abstract class ParagraphTheme {
 }
 
 // @public
-export interface RemoveFlowSelectionOptions extends ContentOption {
+export interface RemoveFlowSelectionOptions extends TargetOption {
     whenCollapsed?: "removeBackward" | "removeForward" | "noop";
 }
 
@@ -657,6 +652,11 @@ export interface RemoveRangeData {
 // @public
 export interface RemoveRangeProps {
     range: FlowRange;
+}
+
+// @public
+export interface TargetOption {
+    target?: FlowContent;
 }
 
 // @public @sealed

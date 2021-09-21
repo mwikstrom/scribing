@@ -116,19 +116,19 @@ export abstract class FlowSelection {
 }
 
 /**
- * Provides the content option
+ * Provides the target option
  * @public
  */
-export interface ContentOption {
+export interface TargetOption {
     /** The content that is selected */
-    content?: FlowContent;
+    target?: FlowContent;
 }
 
 /**
  * Options for {@link FlowSelection.remove}
  * @public
  */
-export interface RemoveFlowSelectionOptions extends ContentOption {
+export interface RemoveFlowSelectionOptions extends TargetOption {
     /** Controls what to remove when selection is collapsed */
     whenCollapsed?: "removeBackward" | "removeForward" | "noop";
 }

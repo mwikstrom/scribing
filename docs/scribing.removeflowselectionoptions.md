@@ -9,9 +9,9 @@ Options for [FlowSelection.remove()](./scribing.flowselection.remove.md)
 <b>Signature:</b>
 
 ```typescript
-export interface RemoveFlowSelectionOptions extends ContentOption 
+export interface RemoveFlowSelectionOptions extends TargetOption 
 ```
-<b>Extends:</b> [ContentOption](./scribing.contentoption.md)
+<b>Extends:</b> [TargetOption](./scribing.targetoption.md)
 
 ## Properties
 
