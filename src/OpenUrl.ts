@@ -14,7 +14,7 @@ import { InteractionRegistry } from "./internal/class-registry";
 const urlType = stringType.restrict(
     "Must be an absolute https URL",
     value => {
-        if (!/^https:\/\/[^/]+\//.test(value)) {
+        if (!/^https:\/\//.test(value)) {
             return false;
         }
 
