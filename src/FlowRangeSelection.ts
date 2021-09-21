@@ -245,13 +245,25 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      * @override
      */
     public remove(options: RemoveFlowSelectionOptions = {}): FlowOperation | null {
-        const { whenCollapsed, target: content } = options;
+        const { whenCollapsed, target } = options;
         let { range } = this;
 
         if (range.isCollapsed) {
             if (whenCollapsed === "removeBackward" && range.first > 0) {
+                if (target) {
+                    const { node } = target.peek(range.first - 1);
+                    if (node instanceof ParagraphBreak && (node.style.listLevel ?? 0) > 0) {
+                        // Caret is placed just after a list paragraph and we're deleting backwards
+                        // The intention is then to remove the bullet - making the current paragraph
+                        // inside that list.
+                        return this.formatParagraph(
+                            ParagraphStyle.empty.set("insideList", true),
+                            { target },
+                        );
+                    }
+                }
                 range = FlowRange.at(range.first, -1);
-            } else if (whenCollapsed === "removeForward" && content && range.last < content.size - 1) {
+            } else if (whenCollapsed === "removeForward" && target && range.last < target.size - 1) {
                 range = FlowRange.at(range.last, 1);
             } else {
                 return null;
