@@ -278,15 +278,21 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
         if (range.isCollapsed) {
             if (whenCollapsed === "removeBackward" && range.first > 0) {
                 if (target) {
-                    const { node } = target.peek(range.first - 1);
-                    if (node instanceof ParagraphBreak && (node.style.listLevel ?? 0) > 0) {
-                        // Caret is placed just after a list paragraph and we're deleting backwards.
-                        if (!node.style.hideListMarker) {
-                            // List marker is shown so the intention is to remove/hide it.
-                            return this.formatParagraph(
-                                ParagraphStyle.empty.set("hideListMarker", true),
-                                { target },
-                            );
+                    const { node: prev } = target.peek(range.first - 1);
+                    // Is caret placet just after a paragraph break?
+                    if (prev instanceof ParagraphBreak) {
+                        const currStyle = target.peek(range.first).getParagraphStyle();
+                        // Are we at the start of a list item?
+                        if ((currStyle?.listLevel ?? 0) > 0) {
+                            // Is the list marker shown?
+                            if (!currStyle?.hideListMarker) {
+                                // Intention is not to delete prev paragraph break, but
+                                // instead to hide the list marker of the current para.
+                                return this.formatParagraph(
+                                    ParagraphStyle.empty.set("hideListMarker", true),
+                                    { target },
+                                );
+                            }
                         }
                     }
                 }
