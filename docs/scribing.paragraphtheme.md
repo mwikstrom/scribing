@@ -19,4 +19,5 @@ export declare abstract class ParagraphTheme
 |  [getAmbientParagraphStyle()](./scribing.paragraphtheme.getambientparagraphstyle.md) |  | Gets the ambient paragraph style |
 |  [getAmbientTextStyle()](./scribing.paragraphtheme.getambienttextstyle.md) |  | Gets the ambient text style for this paragraph theme. |
 |  [getLinkStyle()](./scribing.paragraphtheme.getlinkstyle.md) |  | Gets the text style for links in this paragraph theme. |
+|  [getNextVariant()](./scribing.paragraphtheme.getnextvariant.md) |  | Gets the default variant of the next paragraph |
 

@@ -622,6 +622,7 @@ export abstract class ParagraphTheme {
     abstract getAmbientParagraphStyle(): ParagraphStyle;
     abstract getAmbientTextStyle(): TextStyle;
     abstract getLinkStyle(): TextStyle;
+    abstract getNextVariant(): ParagraphStyleVariant;
 }
 
 // @public

@@ -8,10 +8,10 @@ import {
     Type, 
     validating 
 } from "paratype";
-import { ParagraphStyleVariant, ParagraphTheme } from ".";
 import { FlowTheme } from "./FlowTheme";
 import { FlowThemeRegistry } from "./internal/class-registry";
-import { ParagraphStyle } from "./ParagraphStyle";
+import { ParagraphStyle, ParagraphStyleVariant } from "./ParagraphStyle";
+import { ParagraphTheme } from "./ParagraphTheme";
 import { TextStyle, TextStyleProps } from "./TextStyle";
 
 const Data = "default" as const;
@@ -68,6 +68,7 @@ class DefaultParagraphTheme extends ParagraphTheme {
     #text: TextStyle;
     #para: ParagraphStyle;
     #link: TextStyle;
+    #next: ParagraphStyleVariant;
 
     constructor(variant: ParagraphStyleVariant) {
         super();
@@ -102,6 +103,8 @@ class DefaultParagraphTheme extends ParagraphTheme {
             underline: true,
             color: "primary",
         });
+
+        this.#next = variant === "title" ? "subtitle" : variant === "code" ? "code" : "normal";
     }
 
     /** {@inheritdoc ParagraphTheme.getAmbientTextStyle} */
@@ -117,6 +120,11 @@ class DefaultParagraphTheme extends ParagraphTheme {
     /** {@inheritdoc ParagraphTheme.getLinkStyle} */
     getLinkStyle(): TextStyle {
         return this.#link;
+    }
+
+    /** {@inheritdoc ParagraphTheme.getNextVariant} */
+    getNextVariant(): ParagraphStyleVariant {
+        return this.#next;
     }
 }
 

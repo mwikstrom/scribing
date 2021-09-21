@@ -1,4 +1,4 @@
-import { ParagraphStyle } from "./ParagraphStyle";
+import { ParagraphStyle, ParagraphStyleVariant } from "./ParagraphStyle";
 import { TextStyle } from "./TextStyle";
 
 /**
@@ -23,5 +23,10 @@ export abstract class ParagraphTheme {
     /**
      * Gets the text style for links in this paragraph theme.
      */
-     abstract getLinkStyle(): TextStyle;
+    abstract getLinkStyle(): TextStyle;
+
+    /** 
+     * Gets the default variant of the next paragraph
+     */
+    abstract getNextVariant(): ParagraphStyleVariant;
 }

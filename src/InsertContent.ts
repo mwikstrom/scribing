@@ -161,9 +161,18 @@ export class InsertContent extends InsertContentBase implements InsertContentPro
      */
     applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent {
         const target = content.peek(this.position);
-        const targetParaStyle = target.getParagraphStyle();
+        let targetParaStyle = target.getParagraphStyle();
         let targetTextStyle = target.getTextStyle();
         const nodes: FlowNode[] = [];
+
+        if (targetParaStyle) {
+            targetParaStyle = targetParaStyle.unset("separateList");
+            if (theme && targetParaStyle.variant) {
+                const targetParaTheme = theme.getParagraphTheme(targetParaStyle.variant);
+                const nextVariant = targetParaTheme.getNextVariant();
+                targetParaStyle = targetParaStyle.set("variant", nextVariant);
+            }
+        }
 
         for (
             let source: FlowCursor | null = this.content.peek(0);
