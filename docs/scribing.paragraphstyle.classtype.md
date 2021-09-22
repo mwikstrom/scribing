@@ -19,7 +19,7 @@ static readonly classType: Type<import("paratype").RecordObject<Partial<{
         listLevel: number;
         listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
         hideListMarker: boolean;
-        listCounter: number | "auto" | "resume";
+        listCounter: number | "auto" | "reset" | "resume";
         listCounterPrefix: string;
         listCounterSuffix: string;
     }>, Partial<{
@@ -32,7 +32,7 @@ static readonly classType: Type<import("paratype").RecordObject<Partial<{
         listLevel: number;
         listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
         hideListMarker: boolean;
-        listCounter: number | "auto" | "resume";
+        listCounter: number | "auto" | "reset" | "resume";
         listCounterPrefix: string;
         listCounterSuffix: string;
     }>> & import("paratype").Equatable & Readonly<Partial<{
@@ -45,7 +45,7 @@ static readonly classType: Type<import("paratype").RecordObject<Partial<{
         listLevel: number;
         listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
         hideListMarker: boolean;
-        listCounter: number | "auto" | "resume";
+        listCounter: number | "auto" | "reset" | "resume";
         listCounterPrefix: string;
         listCounterSuffix: string;
     }>> & ParagraphStyle>;

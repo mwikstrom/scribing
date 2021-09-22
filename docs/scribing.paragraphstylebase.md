@@ -19,7 +19,7 @@ ParagraphStyleBase: import("paratype").RecordConstructor<Partial<{
     listLevel: number;
     listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
     hideListMarker: boolean;
-    listCounter: number | "auto" | "resume";
+    listCounter: number | "auto" | "reset" | "resume";
     listCounterPrefix: string;
     listCounterSuffix: string;
 }>, Object, Partial<{
@@ -32,7 +32,7 @@ ParagraphStyleBase: import("paratype").RecordConstructor<Partial<{
     listLevel: number;
     listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
     hideListMarker: boolean;
-    listCounter: number | "auto" | "resume";
+    listCounter: number | "auto" | "reset" | "resume";
     listCounterPrefix: string;
     listCounterSuffix: string;
 }>>

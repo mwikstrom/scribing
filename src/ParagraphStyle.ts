@@ -79,7 +79,7 @@ export interface ParagraphStyleProps {
     /**
      * Specifies the list litem counter value
      */
-    listCounter?: number | "auto" | "resume";
+    listCounter?: number | "auto" | "reset" | "resume";
 
     /**
      * Specifies the list item counter prefix
@@ -191,7 +191,7 @@ const Props = {
     ),
     listMarker: ListMarkerKindType,
     hideListMarker: booleanType,
-    listCounter: unionType(integerType, enumType(["auto", "resume"])),
+    listCounter: unionType(integerType, enumType(["auto", "reset", "resume"])),
     listCounterPrefix: counterTextType,
     listCounterSuffix: counterTextType,
 };

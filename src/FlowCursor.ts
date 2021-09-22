@@ -89,19 +89,33 @@ export class FlowCursor {
     }
 
     /**
-     * Gets the paragraph style at the current position
+     * Finds a node in the forward direction that matches a predicate
      */
-    getParagraphStyle(): ParagraphStyle | null {
+    findNodeForward(predicate: (node: FlowNode) => boolean): FlowCursor | null {
         const { nodes } = this.#content;
+        let distance = -this.#offset;
 
         for (let index = this.#index; index < nodes.length; ++index) {
             const node = nodes[index];
-            if (node instanceof ParagraphBreak) {
-                return node.style;
+            if (predicate(node)) {
+                return new FlowCursor(this.#content, PRIVATE, index, 0, this.#position + distance);
+            } else {
+                distance += node.size;
             }
         }
 
         return null;
+    }
+
+    /**
+     * Gets the paragraph style at the current position
+     */
+    getParagraphStyle(): ParagraphStyle | null {
+        const found = this.findNodeForward(node => node instanceof ParagraphBreak)?.node;
+        if (!found) {
+            return null;
+        }
+        return (found as ParagraphBreak).style;
     }
 
     /**

@@ -88,6 +88,7 @@ export class FlowCursor {
     constructor(content: FlowContent, symbol: symbol, index: number, offset: number, position: number);
     get after(): Iterable<FlowNode>;
     get before(): Iterable<FlowNode>;
+    findNodeForward(predicate: (node: FlowNode) => boolean): FlowCursor | null;
     getParagraphStyle(): ParagraphStyle | null;
     getTextStyle(): TextStyle | null;
     get index(): number;
@@ -562,7 +563,7 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
     listLevel: number;
     listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
     hideListMarker: boolean;
-    listCounter: number | "auto" | "resume";
+    listCounter: number | "auto" | "reset" | "resume";
     listCounterPrefix: string;
     listCounterSuffix: string;
     }>, Partial<{
@@ -575,7 +576,7 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
     listLevel: number;
     listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
     hideListMarker: boolean;
-    listCounter: number | "auto" | "resume";
+    listCounter: number | "auto" | "reset" | "resume";
     listCounterPrefix: string;
     listCounterSuffix: string;
     }>> & Equatable & Readonly<Partial<{
@@ -588,7 +589,7 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
         listLevel: number;
         listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
         hideListMarker: boolean;
-        listCounter: number | "auto" | "resume";
+        listCounter: number | "auto" | "reset" | "resume";
         listCounterPrefix: string;
         listCounterSuffix: string;
     }>> & ParagraphStyle>;
@@ -607,7 +608,7 @@ spaceBelow: number;
 listLevel: number;
 listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
 hideListMarker: boolean;
-listCounter: number | "auto" | "resume";
+listCounter: number | "auto" | "reset" | "resume";
 listCounterPrefix: string;
 listCounterSuffix: string;
 }>, Object, Partial<{
@@ -620,7 +621,7 @@ spaceBelow: number;
 listLevel: number;
 listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
 hideListMarker: boolean;
-listCounter: number | "auto" | "resume";
+listCounter: number | "auto" | "reset" | "resume";
 listCounterPrefix: string;
 listCounterSuffix: string;
 }>>;
@@ -631,7 +632,7 @@ export interface ParagraphStyleProps {
     direction?: "ltr" | "rtl";
     hideListMarker?: boolean;
     lineSpacing?: number;
-    listCounter?: number | "auto" | "resume";
+    listCounter?: number | "auto" | "reset" | "resume";
     listCounterPrefix?: string;
     listCounterSuffix?: string;
     listLevel?: number;
