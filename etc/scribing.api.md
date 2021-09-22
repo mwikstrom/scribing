@@ -112,6 +112,7 @@ export class FlowEditorState extends FlowEditorStateBase {
     getUniformParagraphStyle(diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle;
     getUniformTextStyle(diff?: Set<keyof TextStyleProps>): TextStyle;
     redo(): FlowEditorState;
+    toggleFormttingSymbols(): FlowEditorState;
     undo(): FlowEditorState;
 }
 
@@ -134,6 +135,8 @@ export interface FlowEditorStateProps {
     caret: TextStyle;
     // (undocumented)
     content: FlowContent;
+    // (undocumented)
+    formattingSymbols: boolean;
     // (undocumented)
     redoStack: readonly FlowOperation[];
     // (undocumented)
