@@ -1,5 +1,6 @@
 import { 
     arrayType, 
+    booleanType, 
     frozen, 
     lazyType, 
     nullType, 
@@ -33,8 +34,9 @@ export interface FlowEditorStateProps {
     selection: FlowSelection | null;
     theme: FlowTheme;
     caret: TextStyle;
-    undoStack: readonly FlowOperation[],
-    redoStack: readonly FlowOperation[],
+    undoStack: readonly FlowOperation[];
+    redoStack: readonly FlowOperation[];
+    formattingSymbols: boolean;
 }
 
 /**
@@ -55,6 +57,7 @@ const Props = {
     caret: TextStyle.classType,
     undoStack: operationStackType,
     redoStack: operationStackType,
+    formattingSymbols: booleanType,
 };
 
 const Data = {
@@ -64,13 +67,22 @@ const Data = {
     caret: Props.caret,
     undo: Props.undoStack,
     redo: Props.redoStack,
+    formattingSymbols: Props.formattingSymbols,
 };
 
 const PropsType: RecordType<FlowEditorStateProps> = recordType(Props);
 const DataType: RecordType<FlowEditorStateData> = recordType(Data).asPartial();
 
 const propsToData = (props: FlowEditorStateProps): FlowEditorStateData => {
-    const { content, selection, theme, caret, undoStack, redoStack } = props;
+    const { 
+        content, 
+        selection, 
+        theme, 
+        caret, 
+        undoStack, 
+        redoStack,
+        formattingSymbols,
+    } = props;
     const data: FlowEditorStateData = {};
     
     if (content.nodes.length > 0) {
@@ -95,6 +107,10 @@ const propsToData = (props: FlowEditorStateProps): FlowEditorStateData => {
 
     if (redoStack.length > 0) {
         data.redo = redoStack;
+    }
+
+    if (formattingSymbols) {
+        data.formattingSymbols = formattingSymbols;
     }
 
     return data;
@@ -129,7 +145,8 @@ export class FlowEditorState extends FlowEditorStateBase {
             theme,
             caret,
             undo: undoStack,
-            redo: redoStack
+            redo: redoStack,
+            formattingSymbols,
         } = data;
 
         return FlowEditorState.empty.merge({
@@ -139,6 +156,7 @@ export class FlowEditorState extends FlowEditorStateBase {
             caret,
             undoStack,
             redoStack,
+            formattingSymbols,
         });
     }
 
@@ -152,6 +170,7 @@ export class FlowEditorState extends FlowEditorStateBase {
                 caret: TextStyle.empty,
                 undoStack: Object.freeze([]),
                 redoStack: Object.freeze([]),
+                formattingSymbols: false,
             });
         }
         return EMPTY_CACHE;
@@ -203,6 +222,11 @@ export class FlowEditorState extends FlowEditorStateBase {
         @type(lazyType(FlowOperationRegistry.close)) operation: FlowOperation,
     ): FlowEditorState {
         return this.#apply(operation, false);
+    }
+
+    /** Toggles whether formatting symbols are shown */
+    public toggleFormttingSymbols(): FlowEditorState {
+        return this.set("formattingSymbols", !this.formattingSymbols);
     }
 
     /** Undoes the most recent operation */
