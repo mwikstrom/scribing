@@ -18,6 +18,7 @@ import { FlowOperation } from "./FlowOperation";
 import { FlowSelection } from "./FlowSelection";
 import { FlowTheme } from "./FlowTheme";
 import { FlowOperationRegistry, FlowSelectionRegistry, FlowThemeRegistry } from "./internal/class-registry";
+import { filterNotNull, mapNotNull } from "./internal/utils";
 import { ParagraphStyle } from "./ParagraphStyle";
 import { TextStyle } from "./TextStyle";
 
@@ -204,12 +205,43 @@ export class FlowEditorState extends FlowEditorStateBase {
         return this.#apply(operation, false);
     }
 
-    #apply(operation: FlowOperation, mine: boolean): FlowEditorState {
+    /** Undoes the most recent operation */
+    public undo(): FlowEditorState {
+        const { undoStack: [operation] } = this;
+        return operation ? this.#apply(operation, "undo") : this;
+    }
+
+    /** Redoes the most recent undone operation */
+    public redo(): FlowEditorState {
+        const { redoStack: [operation] } = this;
+        return operation ? this.#apply(operation, "redo") : this;
+    }
+
+    #apply(operation: FlowOperation, mine: boolean | "undo" | "redo"): FlowEditorState {
         const content = operation.applyToContent(this.content, this.theme);
-        const selection = this.selection ? operation.applyToSelection(this.selection, mine) : null;
+        const selection = this.selection ? operation.applyToSelection(this.selection, !!mine) : null;
         const caret = !mine && selection ? this.caret : TextStyle.empty;
-        return this.merge({ content, selection, caret });
+        let undoStack: readonly FlowOperation[];
+        let redoStack: readonly FlowOperation[];
+
+        if (!mine) {
+            undoStack = Object.freeze(mapNotNull(this.undoStack, op => operation.transform(op)));
+            redoStack = Object.freeze(mapNotNull(this.redoStack, op => operation.transform(op)));
+        } else if (mine === "undo" && operation === this.undoStack[0]) {
+            undoStack = Object.freeze(this.undoStack.slice(1));
+            redoStack = Object.freeze(filterNotNull([operation.invert(this.content), ...this.redoStack]));
+        } else {
+            undoStack = Object.freeze(filterNotNull([operation.invert(this.content), ...this.undoStack]));
+            if (mine === "redo" && operation === this.redoStack[0]) {
+                redoStack = Object.freeze(this.redoStack.slice(1));
+            } else {
+                redoStack = Object.freeze([]);
+            }            
+        }
+
+        return this.merge({ content, selection, caret, undoStack, redoStack });
     }
 }
 
 let EMPTY_CACHE: FlowEditorState | undefined;
+
