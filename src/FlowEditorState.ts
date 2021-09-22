@@ -1,4 +1,16 @@
-import { arrayType, frozen, lazyType, nullType, RecordClass, recordType, type, unionType, validating } from "paratype";
+import { 
+    arrayType, 
+    frozen, 
+    lazyType, 
+    nullType, 
+    RecordClass, 
+    recordClassType, 
+    RecordType, 
+    recordType, 
+    type, 
+    unionType, 
+    validating 
+} from "paratype";
 import { ParagraphStyleProps, TextStyleProps } from ".";
 import { DefaultFlowTheme } from "./DefaultFlowTheme";
 import { FlowContent } from "./FlowContent";
@@ -24,6 +36,17 @@ export interface FlowEditorStateProps {
     redoStack: readonly FlowOperation[],
 }
 
+/**
+ * Data for {@link FlowEditorState}
+ * @public
+ */
+export interface FlowEditorStateData 
+extends Partial<Omit<FlowEditorStateProps, "selection" | "undoStack" | "redoStack">> {
+    selection?: FlowSelection;
+    undo?: readonly FlowOperation[],
+    redo?: readonly FlowOperation[],
+}
+
 const Props = {
     content: lazyType(() => FlowContent.classType),
     selection: unionType(lazyType(FlowSelectionRegistry.close), nullType),
@@ -33,13 +56,54 @@ const Props = {
     redoStack: operationStackType,
 };
 
-const PropsType = recordType(Props);
+const Data = {
+    content: Props.content,
+    selection: lazyType(FlowSelectionRegistry.close),
+    theme: Props.theme,
+    caret: Props.caret,
+    undo: Props.undoStack,
+    redo: Props.redoStack,
+};
+
+const PropsType: RecordType<FlowEditorStateProps> = recordType(Props);
+const DataType: RecordType<FlowEditorStateData> = recordType(Data).asPartial();
+
+const propsToData = (props: FlowEditorStateProps): FlowEditorStateData => {
+    const { content, selection, theme, caret, undoStack, redoStack } = props;
+    const data: FlowEditorStateData = {};
+    
+    if (content.nodes.length > 0) {
+        data.content = content;
+    }
+
+    if (selection !== null) {
+        data.selection = selection;
+    }
+
+    if (theme !== DefaultFlowTheme.instance) {
+        data.theme = theme;
+    }
+
+    if (!caret.isEmpty) {
+        data.caret = caret;
+    }
+
+    if (undoStack.length > 0) {
+        data.undo = undoStack;
+    }
+
+    if (redoStack.length > 0) {
+        data.redo = redoStack;
+    }
+
+    return data;
+};
 
 /**
  * The base record class for {@link FlowEditorState}
  * @public
  */
-export const FlowEditorStateBase = RecordClass(PropsType);
+export const FlowEditorStateBase = RecordClass(PropsType, Object, DataType, propsToData);
 
 /**
  * Immutable state record for a flow content editor
@@ -49,6 +113,34 @@ export const FlowEditorStateBase = RecordClass(PropsType);
 @frozen
 @validating 
 export class FlowEditorState extends FlowEditorStateBase {
+    /** The run-time type that represents this class */
+    public static readonly classType = recordClassType(() => FlowEditorState);
+
+    /**
+     * Gets a flow range from the specified data
+     * @param data - A tuple with two values, the first is the anchor position and the second is the
+     *               focus position
+     */
+    public static fromData(@type(DataType) data: FlowEditorStateData): FlowEditorState {
+        const {
+            content,
+            selection,
+            theme,
+            caret,
+            undo: undoStack,
+            redo: redoStack
+        } = data;
+
+        return FlowEditorState.empty.merge({
+            content,
+            selection,
+            theme,
+            caret,
+            undoStack,
+            redoStack,
+        });
+    }
+
     /** Gets an empty flow editor state */
     public static get empty(): FlowEditorState {
         if (!EMPTY_CACHE) {
