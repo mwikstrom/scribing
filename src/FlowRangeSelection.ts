@@ -143,58 +143,70 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      */
     public formatParagraph(
         @type(ParagraphStyle.classType) style: ParagraphStyle,
-            options: TargetOptions = {},
+            options?: TargetOptions,
     ): FlowOperation | null {
-        const { target: content } = options;
-        let { range } = this;
+        const expanded = this.#expandRangeToParagraph(options, style);
 
-        // Examine content if we've got it
-        if (content) {
-            let foundBreak = false;
-
-            // Check if there's a paragraph break in the selected range
-            if (range.size > 0) {
-                for (const node of content.peek(range.first).range(range.size)) {
-                    if (node instanceof ParagraphBreak) {
-                        foundBreak = true;
-                        break;
-                    }
-                }
-            }
-
-            // If we didn't find a paragraph break, then we'll try to expand the range
-            // to include the closest following paragraph break.
-            if (!foundBreak) {
-                let delta = 0;
-                for (const node of content.peek(range.last).after) {
-                    delta += node.size;
-                    if (node instanceof ParagraphBreak) {
-                        foundBreak = true;
-                        break;
-                    }
-                }
-
-                if (foundBreak) {
-                    // We found a break. Inflate range.
-                    range = range.inflate(delta);
-                } else {
-                    // We didn't find a break, so this is a trailing paragraph.
-                    // To format it we need to append a styled paragraph break!
-                    return new InsertContent({
-                        position: range.last + delta,
-                        content: FlowContent.fromData([
-                            new ParagraphBreak({ style }),
-                        ]),
-                    });
-                }
-            }
-        }
-
-        if (range.isCollapsed) {
+        if (expanded instanceof FlowOperation) {
+            return expanded;
+        } else if (expanded.isCollapsed) {
             return null;
         } else {
-            return new FormatParagraph({ range, style });
+            return new FormatParagraph({ range: expanded, style });
         }
+    }
+    
+    #expandRangeToParagraph(
+        options: TargetOptions = {},
+        insertStyle: ParagraphStyle = ParagraphStyle.empty,
+    ): FlowRange | InsertContent {
+        const { target: content } = options;
+        const { range } = this;
+
+        if (!content) {
+            return this.range;
+        }
+    
+        let foundBreak = false;
+
+        // Check if there's a paragraph break in the selected range
+        if (range.size > 0) {
+            for (const node of content.peek(range.first).range(range.size)) {
+                if (node instanceof ParagraphBreak) {
+                    foundBreak = true;
+                    break;
+                }
+            }
+        }
+
+        if (foundBreak) {
+            return range;
+        }
+
+        // If we didn't find a paragraph break, then we'll try to expand the range
+        // to include the closest following paragraph break.
+        let delta = 0;
+        for (const node of content.peek(range.last).after) {
+            delta += node.size;
+            if (node instanceof ParagraphBreak) {
+                foundBreak = true;
+                break;
+            }
+        }
+
+        if (foundBreak) {
+            // We found a break. Inflate range.
+            return range.inflate(delta);
+        }
+
+        // We didn't find a break, so this is a trailing paragraph.
+        // To format it we need to append a styled paragraph break!
+        return new InsertContent({
+            position: range.last + delta,
+            content: FlowContent.fromData([
+                new ParagraphBreak({ style: insertStyle }),
+            ]),
+        });
     }
 
     /**
@@ -214,12 +226,16 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      * {@inheritDoc FlowSelection.incrementListLevel}
      * @override
      */
-    public incrementListLevel(delta = 1): FlowOperation | null {
-        const { range } = this;
-        if (delta === 0) {
+    public incrementListLevel(options?: TargetOptions, delta = 1): FlowOperation | null {
+        const insertionStyle = ParagraphStyle.empty.set("listLevel", Math.max(0, Math.min(9, delta)));
+        const expanded = this.#expandRangeToParagraph(options, insertionStyle);
+
+        if (expanded instanceof FlowOperation) {
+            return expanded;
+        } else if (expanded.isCollapsed) {
             return null;
         } else {
-            return new IncrementListLevel({ range, delta });
+            return new IncrementListLevel({ range: expanded, delta });
         }
     }
 
@@ -393,6 +409,24 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
         
         return new RemoveRange({ range });
     }
+
+    /**
+     * {@inheritDoc FlowSelection.transformRanges}
+     * @override
+     */
+    public transformRanges(
+        transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null,
+        options?: TargetOptions
+    ): FlowSelection | null {
+        const result = transform(this.range, options);
+        if (result === this.range) {
+            return this;
+        } else if (result === null) {
+            return null;
+        } else {
+            return this.set("range", result);
+        }
+    }    
 
     /**
      * {@inheritDoc FlowSelection.unformatParagraph}

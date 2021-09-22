@@ -274,13 +274,15 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     // @override
     getUniformTextStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
     // @override
-    incrementListLevel(delta?: number): FlowOperation | null;
+    incrementListLevel(options?: TargetOptions, delta?: number): FlowOperation | null;
     // @override
     insert(content: FlowContent, options?: TargetOptions): FlowOperation | null;
     // @override
     get isCollapsed(): boolean;
     // @override
     remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
+    // @override
+    transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;
     // @override
     unformatParagraph(style: ParagraphStyle): FlowOperation | null;
     // @override
@@ -305,17 +307,18 @@ export abstract class FlowSelection {
     // @internal
     abstract afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
     static readonly baseType: Type<FlowSelection>;
-    decrementListLevel(delta?: number): FlowOperation | null;
+    decrementListLevel(options?: TargetOptions, delta?: number): FlowOperation | null;
     abstract formatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
     abstract formatText(style: TextStyle): FlowOperation | null;
     static fromJsonValue(value: JsonValue): FlowSelection;
     abstract getUniformParagraphStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle;
     abstract getUniformTextStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
-    abstract incrementListLevel(delta?: number): FlowOperation | null;
+    abstract incrementListLevel(options?: TargetOptions, delta?: number): FlowOperation | null;
     abstract insert(content: FlowContent, options?: TargetOptions): FlowOperation | null;
     abstract get isCollapsed(): boolean;
     abstract remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
     toJsonValue(): JsonValue;
+    abstract transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;
     abstract unformatParagraph(style: ParagraphStyle): FlowOperation | null;
     abstract unformatText(style: TextStyle): FlowOperation | null;
 }

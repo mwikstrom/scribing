@@ -54,12 +54,13 @@ export abstract class FlowSelection {
     
     /**
      * Creates an operation that decrements the list level of the current selection
+     * @param options - Options that provide operation behavior
      * @param delta - Optional list level decrement. Default is `1`.
      * @remarks
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
-    public decrementListLevel(delta = 1): FlowOperation | null {
-        return this.incrementListLevel(-delta);
+    public decrementListLevel(options?: TargetOptions, delta = 1): FlowOperation | null {
+        return this.incrementListLevel(options, -delta);
     }
 
     /**
@@ -81,11 +82,12 @@ export abstract class FlowSelection {
 
     /**
      * Creates an operation that increments the list level of the current selection
+     * @param options - Options that provide operation behavior
      * @param delta - Optional list level increment. Default is `1`.
      * @remarks
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
-    public abstract incrementListLevel(delta?: number): FlowOperation | null;
+    public abstract incrementListLevel(options?: TargetOptions, delta?: number): FlowOperation | null;
 
     /**
      * Creates an operation that inserts the specified content into the current selection
@@ -103,6 +105,16 @@ export abstract class FlowSelection {
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
     public abstract remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
+
+    /**
+     * Transforms all ranges in the current selection
+     * @param transform - The transform to apply
+     * @param options - Options that provide tranformation behavior
+     */
+    public abstract transformRanges(
+        transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null,
+        options?: TargetOptions
+    ): FlowSelection | null;
 
     /**
      * Creates an operation that unapplies the specified paragraph style on the current selection
