@@ -106,83 +106,27 @@ export class FlowCursor {
 export class FlowEditorState extends FlowEditorStateBase {
     applyMine(operation: FlowOperation): FlowEditorState;
     applyTheirs(operation: FlowOperation): FlowEditorState;
+    static readonly classType: Type<FlowEditorState>;
     static get empty(): FlowEditorState;
+    static fromData(data: FlowEditorStateData): FlowEditorState;
     getUniformParagraphStyle(diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle;
     getUniformTextStyle(diff?: Set<keyof TextStyleProps>): TextStyle;
+    redo(): FlowEditorState;
+    undo(): FlowEditorState;
 }
 
 // @public
-export const FlowEditorStateBase: RecordConstructor<    {
-content: FlowContent;
-selection: FlowSelection | null;
-theme: FlowTheme;
-caret: RecordObject<Partial<{
-bold: any;
-italic: any;
-underline: any;
-strike: any;
-baseline: any;
-fontFamily: any;
-fontSize: any;
-link: any;
-color: any;
-}>, Partial<{
-bold: any;
-italic: any;
-underline: any;
-strike: any;
-baseline: any;
-fontFamily: any;
-fontSize: any;
-link: any;
-color: any;
-}>> & Equatable & Readonly<Partial<{
-bold: any;
-italic: any;
-underline: any;
-strike: any;
-baseline: any;
-fontFamily: any;
-fontSize: any;
-link: any;
-color: any;
-}>> & TextStyle;
-}, Object, {
-content: FlowContent;
-selection: FlowSelection | null;
-theme: FlowTheme;
-caret: RecordObject<Partial<{
-bold: any;
-italic: any;
-underline: any;
-strike: any;
-baseline: any;
-fontFamily: any;
-fontSize: any;
-link: any;
-color: any;
-}>, Partial<{
-bold: any;
-italic: any;
-underline: any;
-strike: any;
-baseline: any;
-fontFamily: any;
-fontSize: any;
-link: any;
-color: any;
-}>> & Equatable & Readonly<Partial<{
-bold: any;
-italic: any;
-underline: any;
-strike: any;
-baseline: any;
-fontFamily: any;
-fontSize: any;
-link: any;
-color: any;
-}>> & TextStyle;
-}>;
+export const FlowEditorStateBase: RecordConstructor<FlowEditorStateProps, Object, FlowEditorStateData>;
+
+// @public
+export interface FlowEditorStateData extends Partial<Omit<FlowEditorStateProps, "selection" | "undoStack" | "redoStack">> {
+    // (undocumented)
+    redo?: readonly FlowOperation[];
+    // (undocumented)
+    selection?: FlowSelection;
+    // (undocumented)
+    undo?: readonly FlowOperation[];
+}
 
 // @public
 export interface FlowEditorStateProps {
@@ -191,9 +135,13 @@ export interface FlowEditorStateProps {
     // (undocumented)
     content: FlowContent;
     // (undocumented)
+    redoStack: readonly FlowOperation[];
+    // (undocumented)
     selection: FlowSelection | null;
     // (undocumented)
     theme: FlowTheme;
+    // (undocumented)
+    undoStack: readonly FlowOperation[];
 }
 
 // @public

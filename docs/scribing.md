@@ -44,6 +44,7 @@ Model for collaborative rich text editing
 |  --- | --- |
 |  [FlowBatchProps](./scribing.flowbatchprops.md) | Properties of [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowContentProps](./scribing.flowcontentprops.md) | Flow content properties |
+|  [FlowEditorStateData](./scribing.floweditorstatedata.md) | Data for [FlowEditorState](./scribing.floweditorstate.md) |
 |  [FlowEditorStateProps](./scribing.floweditorstateprops.md) | Properties for [FlowEditorState](./scribing.floweditorstate.md) |
 |  [FlowRangeProps](./scribing.flowrangeprops.md) | Non-computed properties of a [FlowRange](./scribing.flowrange.md) |
 |  [FlowRangeSelectionProps](./scribing.flowrangeselectionprops.md) | Properties of flow range selections |

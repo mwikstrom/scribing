@@ -18,6 +18,7 @@ export declare class FlowEditorState extends FlowEditorStateBase
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
+|  [classType](./scribing.floweditorstate.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FlowEditorState](./scribing.floweditorstate.md)<!-- -->&gt; | The run-time type that represents this class |
 |  [empty](./scribing.floweditorstate.empty.md) | <code>static</code> | [FlowEditorState](./scribing.floweditorstate.md) | Gets an empty flow editor state |
 
 ## Methods
@@ -26,6 +27,9 @@ export declare class FlowEditorState extends FlowEditorStateBase
 |  --- | --- | --- |
 |  [applyMine(operation)](./scribing.floweditorstate.applymine.md) |  | Gets a new flow editor state, based on the current state, and with the specified operation applied. |
 |  [applyTheirs(operation)](./scribing.floweditorstate.applytheirs.md) |  | Gets a new flow editor state, based on the current state, and with the specified operation applied. |
+|  [fromData(data)](./scribing.floweditorstate.fromdata.md) | <code>static</code> | Gets a flow range from the specified data |
 |  [getUniformParagraphStyle(diff)](./scribing.floweditorstate.getuniformparagraphstyle.md) |  | Gets a uniform paragraph style from the current selection |
 |  [getUniformTextStyle(diff)](./scribing.floweditorstate.getuniformtextstyle.md) |  | Gets a uniform text style from the current selection |
+|  [redo()](./scribing.floweditorstate.redo.md) |  | Redoes the most recent undone operation |
+|  [undo()](./scribing.floweditorstate.undo.md) |  | Undoes the most recent operation |
 
