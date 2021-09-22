@@ -1,4 +1,4 @@
-import { frozen, lazyType, nullType, RecordClass, recordType, type, unionType, validating } from "paratype";
+import { arrayType, frozen, lazyType, nullType, RecordClass, recordType, type, unionType, validating } from "paratype";
 import { ParagraphStyleProps, TextStyleProps } from ".";
 import { DefaultFlowTheme } from "./DefaultFlowTheme";
 import { FlowContent } from "./FlowContent";
@@ -9,6 +9,8 @@ import { FlowOperationRegistry, FlowSelectionRegistry, FlowThemeRegistry } from 
 import { ParagraphStyle } from "./ParagraphStyle";
 import { TextStyle } from "./TextStyle";
 
+const operationStackType = arrayType(FlowOperation.baseType).frozen();
+
 /**
  * Properties for {@link FlowEditorState}
  * @public
@@ -18,6 +20,8 @@ export interface FlowEditorStateProps {
     selection: FlowSelection | null;
     theme: FlowTheme;
     caret: TextStyle;
+    undoStack: readonly FlowOperation[],
+    redoStack: readonly FlowOperation[],
 }
 
 const Props = {
@@ -25,6 +29,8 @@ const Props = {
     selection: unionType(lazyType(FlowSelectionRegistry.close), nullType),
     theme: lazyType(FlowThemeRegistry.close),
     caret: TextStyle.classType,
+    undoStack: operationStackType,
+    redoStack: operationStackType,
 };
 
 const PropsType = recordType(Props);
@@ -51,6 +57,8 @@ export class FlowEditorState extends FlowEditorStateBase {
                 selection: null,
                 theme: DefaultFlowTheme.instance,
                 caret: TextStyle.empty,
+                undoStack: Object.freeze([]),
+                redoStack: Object.freeze([]),
             });
         }
         return EMPTY_CACHE;
