@@ -9,6 +9,7 @@ import {
     type, 
     validating 
 } from "paratype";
+import { EditButton } from "./EditButton";
 import { FlowButton } from "./FlowButton";
 import { FlowContent } from "./FlowContent";
 import { FlowNode } from "./FlowNode";
@@ -102,8 +103,7 @@ export class FlowButtonSelection extends FlowButtonSelectionBase {
      */
     protected getOuterOperation(inner: FlowOperation): FlowOperation {
         const { position } = this;
-        // return new EditButtonContent({ position, operation: inner });
-        throw new Error("TODO: Need EditButton operation");
+        return new EditButton({ position, inner });
     }
 
     /**
