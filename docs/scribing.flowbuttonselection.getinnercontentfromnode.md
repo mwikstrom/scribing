@@ -4,12 +4,13 @@
 
 ## FlowButtonSelection.getInnerContentFromNode() method
 
+Gets the inner content
 
 <b>Signature:</b>
 
 ```typescript
 /** @override */
-protected getInnerContentFromNode(node: FlowNode): FlowContent | null;
+protected getInnerContentFromNode(node: FlowNode): FlowContent;
 ```
 
 ## Parameters
@@ -20,5 +21,5 @@ protected getInnerContentFromNode(node: FlowNode): FlowContent | null;
 
 <b>Returns:</b>
 
-[FlowContent](./scribing.flowcontent.md) \| null
+[FlowContent](./scribing.flowcontent.md)
 

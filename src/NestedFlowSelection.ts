@@ -29,24 +29,32 @@ export abstract class NestedFlowSelection extends FlowSelection {
     public abstract set(key: "position", value: number): this;
 
     /**
+     * Gets the selected (outer) node
+     * @param outer - The outer content
+     */
+    protected getSelectedNode(outer: FlowContent): FlowNode {
+        const { node, offset } = outer.peek(this.position);
+        if (offset === 0 && node && node.size === 1) {
+            return node;
+        } else {
+            throw new Error("Invalid content for nested selection");
+        }
+    }
+
+    /**
      * Gets the inner content
      * @param outer - The outer content
      */
     protected getInnerContent(outer: FlowContent): FlowContent {
-        const { node, offset } = outer.peek(this.position);
-        const inner = node !== null && offset === 0 ? this.getInnerContentFromNode(node) : null;
-        if (inner === null) {
-            throw new Error("Invalid content for nested selection");
-        } else {
-            return inner;
-        }
+        const node = this.getSelectedNode(outer);
+        return this.getInnerContentFromNode(node);
     }
 
     /**
      * Gets the inner content
      * @param outer - The selected node
      */
-    protected abstract getInnerContentFromNode(node: FlowNode): FlowContent | null;
+    protected abstract getInnerContentFromNode(node: FlowNode): FlowContent;
 
     /**
      * Gets the inner selection
@@ -195,6 +203,15 @@ export abstract class NestedFlowSelection extends FlowSelection {
         const innerSelection = this.getInnerSelection();
         const innerOperation = innerSelection.unformatText(style);
         return this.#wrapOperation(innerOperation);
+    }
+
+    /**
+     * Updates the inner selected by invoking the specified callback
+     * @internal
+     */
+    updateInner(callback: (inner: FlowSelection) => FlowSelection | null): FlowSelection | null {
+        const result = callback(this.getInnerSelection());
+        return this.#wrapSelection(result);
     }
 
     /**

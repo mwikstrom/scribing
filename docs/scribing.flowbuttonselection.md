@@ -25,8 +25,8 @@ export declare class FlowButtonSelection extends FlowButtonSelectionBase
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
 |  [fromData(data)](./scribing.flowbuttonselection.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
-|  [getInnerContentFromNode(node)](./scribing.flowbuttonselection.getinnercontentfromnode.md) |  |  |
-|  [getInnerSelection()](./scribing.flowbuttonselection.getinnerselection.md) |  |  |
-|  [getOuterOperation(inner)](./scribing.flowbuttonselection.getouteroperation.md) |  |  |
-|  [setInnerSelection(value)](./scribing.flowbuttonselection.setinnerselection.md) |  |  |
+|  [getInnerContentFromNode(node)](./scribing.flowbuttonselection.getinnercontentfromnode.md) |  | Gets the inner content |
+|  [getInnerSelection()](./scribing.flowbuttonselection.getinnerselection.md) |  | Gets the inner selection |
+|  [getOuterOperation(inner)](./scribing.flowbuttonselection.getouteroperation.md) |  | Wraps the specified operation so that it applies the outer selection |
+|  [setInnerSelection(value)](./scribing.flowbuttonselection.setinnerselection.md) |  | Returns a copy of this selection with the specified inner selection merged in |
 

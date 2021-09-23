@@ -234,6 +234,15 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
         return this.set("nodes", merged);
     }
 
+    /**
+     * Replaces the specified range with the specified nodes
+     * @param remove - The range to be removed
+     * @param insert - The nodes to insert at the start of the removed range
+     */
+    replace(remove: FlowRange, ...insert: FlowNode[]): FlowContent {
+        return this.remove(remove).insert(remove.first, ...insert);
+    }
+
     /** Gets a JSON value representation of the current content */
     toJsonValue(): JsonValue {
         return FlowContent.classType.toJsonValue(this);

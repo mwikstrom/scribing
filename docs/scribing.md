@@ -29,6 +29,7 @@ Model for collaborative rich text editing
 |  [InsertContent](./scribing.insertcontent.md) | Represents an operation that insert flow content. |
 |  [Interaction](./scribing.interaction.md) | A base class for interactions |
 |  [LineBreak](./scribing.linebreak.md) | Represents a line break. |
+|  [NestedFlowOperation](./scribing.nestedflowoperation.md) | A nested operation at a specific flow position |
 |  [NestedFlowSelection](./scribing.nestedflowselection.md) | A nested selection at a specific flow position |
 |  [OpenUrl](./scribing.openurl.md) | An interaction that opens a URL |
 |  [ParagraphBreak](./scribing.paragraphbreak.md) | Represents a paragraph break. |

@@ -4,6 +4,7 @@
 
 ## FlowButtonSelection.getInnerSelection() method
 
+Gets the inner selection
 
 <b>Signature:</b>
 

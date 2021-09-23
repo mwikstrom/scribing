@@ -77,19 +77,19 @@ export class FlowButtonSelection extends FlowButtonSelectionBase {
     }
 
     /**
-     * {@inheritDoc NestFlowSelection.getInnerContentFromNode}
+     * {@inheritDoc NestedFlowSelection.getInnerContentFromNode}
      * @override
      */
-    protected getInnerContentFromNode(node: FlowNode): FlowContent | null {
+    protected getInnerContentFromNode(node: FlowNode): FlowContent {
         if (node instanceof FlowButton) {
             return node.content;
         } else {
-            return null;
+            throw new Error(`Expected a flow button at position ${this.position}`);
         }
     }
 
     /**
-     * {@inheritDoc NestFlowSelection.getInnerSelection}
+     * {@inheritDoc NestedFlowSelection.getInnerSelection}
      * @override
      */
     protected getInnerSelection(): FlowSelection {
@@ -97,17 +97,17 @@ export class FlowButtonSelection extends FlowButtonSelectionBase {
     }
 
     /**
-     * {@inheritDoc NestFlowSelection.getOuterOperation}
+     * {@inheritDoc NestedFlowSelection.getOuterOperation}
      * @override
      */
     protected getOuterOperation(inner: FlowOperation): FlowOperation {
         const { position } = this;
-        // return new EditButton({ position, operation: inner });
+        // return new EditButtonContent({ position, operation: inner });
         throw new Error("TODO: Need EditButton operation");
     }
 
     /**
-     * {@inheritDoc NestFlowSelection.setInnerSelection}
+     * {@inheritDoc NestedFlowSelection.setInnerSelection}
      * @override
      */
     protected setInnerSelection(value: FlowSelection): NestedFlowSelection {

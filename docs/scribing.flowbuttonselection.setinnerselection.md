@@ -4,6 +4,7 @@
 
 ## FlowButtonSelection.setInnerSelection() method
 
+Returns a copy of this selection with the specified inner selection merged in
 
 <b>Signature:</b>
 
@@ -16,7 +17,7 @@ protected setInnerSelection(value: FlowSelection): NestedFlowSelection;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  value | [FlowSelection](./scribing.flowselection.md) |  |
+|  value | [FlowSelection](./scribing.flowselection.md) | The inner selection to be merged in |
 
 <b>Returns:</b>
 

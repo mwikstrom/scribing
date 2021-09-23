@@ -40,6 +40,7 @@ export * from "./FormatText";
 export * from "./UnformatText";
 export * from "./InsertContent";
 export * from "./RemoveRange";
+export * from "./NestedFlowOperation";
 
 // Selection
 export * from "./FlowSelection";

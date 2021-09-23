@@ -4,6 +4,7 @@
 
 ## FlowButtonSelection.getOuterOperation() method
 
+Wraps the specified operation so that it applies the outer selection
 
 <b>Signature:</b>
 
@@ -16,7 +17,7 @@ protected getOuterOperation(inner: FlowOperation): FlowOperation;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  inner | [FlowOperation](./scribing.flowoperation.md) |  |
+|  inner | [FlowOperation](./scribing.flowoperation.md) | The inner operation |
 
 <b>Returns:</b>
 

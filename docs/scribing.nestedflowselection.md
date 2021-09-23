@@ -32,6 +32,7 @@ export declare abstract class NestedFlowSelection extends FlowSelection
 |  [getInnerContentFromNode(node)](./scribing.nestedflowselection.getinnercontentfromnode.md) |  | Gets the inner content |
 |  [getInnerSelection()](./scribing.nestedflowselection.getinnerselection.md) |  | Gets the inner selection |
 |  [getOuterOperation(inner)](./scribing.nestedflowselection.getouteroperation.md) |  | Wraps the specified operation so that it applies the outer selection |
+|  [getSelectedNode(outer)](./scribing.nestedflowselection.getselectednode.md) |  | Gets the selected (outer) node |
 |  [getUniformParagraphStyle(content, theme, diff)](./scribing.nestedflowselection.getuniformparagraphstyle.md) |  | Gets the uniform paragraph style of the current selection |
 |  [getUniformTextStyle(content, theme, diff)](./scribing.nestedflowselection.getuniformtextstyle.md) |  | Gets the uniform text style of the current selection |
 |  [incrementListLevel(content, delta)](./scribing.nestedflowselection.incrementlistlevel.md) |  | Creates an operation that increments the list level of the current selection |
