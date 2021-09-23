@@ -58,7 +58,7 @@ export const insertParaBreak = (
         }
 
         // Are we at the start of a paragraph (start of flow or after para break)?
-        if (position === 0 || target.peek(position).node instanceof ParagraphBreak) {
+        if (position === 0 || target.peek(position - 1).node instanceof ParagraphBreak) {
             // When inserting a para break between two paragraphs, the user is pressing ENTER
             // in an empty paragraph, then the intention is to reformat the current paragraph
             // to the next variant (unless it already is of the next variant)

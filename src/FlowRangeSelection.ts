@@ -339,9 +339,8 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
         const paraBreak = (paraCursor?.node ?? null) as (ParagraphBreak | null);
         const paraStyle = paraBreak?.style ?? ParagraphStyle.empty;
         const { node: prev } = target.peek(position - 1);
-        const isAfterParaBreak = prev instanceof ParagraphBreak;
 
-        if (!isAfterParaBreak) {
+        if (!(prev instanceof ParagraphBreak)) {
             return defaultOp;
         }
 
