@@ -9,14 +9,14 @@ Creates an operation that decrements the list level of the current selection
 <b>Signature:</b>
 
 ```typescript
-decrementListLevel(options?: TargetOptions, delta?: number): FlowOperation | null;
+decrementListLevel(content: FlowContent, delta?: number): FlowOperation | null;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  options | [TargetOptions](./scribing.targetoptions.md) | Options that provide operation behavior |
+|  content | [FlowContent](./scribing.flowcontent.md) | The selected content |
 |  delta | number | Optional list level decrement. Default is <code>1</code>. |
 
 <b>Returns:</b>

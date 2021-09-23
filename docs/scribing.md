@@ -23,7 +23,6 @@ Model for collaborative rich text editing
 |  [FlowTheme](./scribing.flowtheme.md) | Provides a theme for flow content |
 |  [FormatParagraph](./scribing.formatparagraph.md) | Represents an operation that applies a paragraph style to a range of flow content. |
 |  [FormatText](./scribing.formattext.md) | Represents an operation that applies a text style to a range of flow content. |
-|  [IncrementListLevel](./scribing.incrementlistlevel.md) | Represents an operation that applies a paragraph style to a range of flow content. |
 |  [InlineNode](./scribing.inlinenode.md) | Represents an inline node |
 |  [InsertContent](./scribing.insertcontent.md) | Represents an operation that insert flow content. |
 |  [Interaction](./scribing.interaction.md) | A base class for interactions |
@@ -52,8 +51,6 @@ Model for collaborative rich text editing
 |  [FormatParagraphProps](./scribing.formatparagraphprops.md) | Properties of format paragraph operations |
 |  [FormatTextData](./scribing.formattextdata.md) | Data of format text operations |
 |  [FormatTextProps](./scribing.formattextprops.md) | Properties of format text operations |
-|  [IncrementListLevelData](./scribing.incrementlistleveldata.md) | Data of format increment list level operations |
-|  [IncrementListLevelProps](./scribing.incrementlistlevelprops.md) | Properties of increment list level operations |
 |  [InsertContentData](./scribing.insertcontentdata.md) | Data of insert content operations |
 |  [InsertContentProps](./scribing.insertcontentprops.md) | Properties of insert content operations |
 |  [LineBreakData](./scribing.linebreakdata.md) | Data of line break nodes |
@@ -85,7 +82,6 @@ Model for collaborative rich text editing
 |  [FlowRangeSelectionBase](./scribing.flowrangeselectionbase.md) | The base record class for [FlowRangeSelection](./scribing.flowrangeselection.md) |
 |  [FormatParagraphBase](./scribing.formatparagraphbase.md) | The base record class for [FormatParagraph](./scribing.formatparagraph.md) |
 |  [FormatTextBase](./scribing.formattextbase.md) | The base record class for [FormatText](./scribing.formattext.md) |
-|  [IncrementListLevelBase](./scribing.incrementlistlevelbase.md) | The base record class for [IncrementListLevel](./scribing.incrementlistlevel.md) |
 |  [InsertContentBase](./scribing.insertcontentbase.md) | The base record class for [InsertContent](./scribing.insertcontent.md) |
 |  [LineBreakBase](./scribing.linebreakbase.md) | The base record class for [LineBreak](./scribing.linebreak.md) |
 |  [LIST\_MARKER\_KINDS](./scribing.list_marker_kinds.md) | Read-only array that contains all list styles |

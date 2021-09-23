@@ -9,14 +9,14 @@ Creates an operation that increments the list level of the current selection
 <b>Signature:</b>
 
 ```typescript
-abstract incrementListLevel(options?: TargetOptions, delta?: number): FlowOperation | null;
+abstract incrementListLevel(content: FlowContent, delta?: number): FlowOperation | null;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  options | [TargetOptions](./scribing.targetoptions.md) | Options that provide operation behavior |
+|  content | [FlowContent](./scribing.flowcontent.md) | The selected content |
 |  delta | number | Optional list level increment. Default is <code>1</code>. |
 
 <b>Returns:</b>

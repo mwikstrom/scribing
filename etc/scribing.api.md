@@ -225,7 +225,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     // @override
     getUniformTextStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
     // @override
-    incrementListLevel(options?: TargetOptions, delta?: number): FlowOperation | null;
+    incrementListLevel(content: FlowContent, delta?: number): FlowOperation | null;
     // @override
     insert(content: FlowContent, options?: TargetOptions): FlowOperation | null;
     // @override
@@ -258,13 +258,13 @@ export abstract class FlowSelection {
     // @internal
     abstract afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
     static readonly baseType: Type<FlowSelection>;
-    decrementListLevel(options?: TargetOptions, delta?: number): FlowOperation | null;
+    decrementListLevel(content: FlowContent, delta?: number): FlowOperation | null;
     abstract formatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
     abstract formatText(style: TextStyle): FlowOperation | null;
     static fromJsonValue(value: JsonValue): FlowSelection;
     abstract getUniformParagraphStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle;
     abstract getUniformTextStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
-    abstract incrementListLevel(options?: TargetOptions, delta?: number): FlowOperation | null;
+    abstract incrementListLevel(content: FlowContent, delta?: number): FlowOperation | null;
     abstract insert(content: FlowContent, options?: TargetOptions): FlowOperation | null;
     abstract get isCollapsed(): boolean;
     abstract remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
@@ -340,36 +340,6 @@ export interface FormatTextData extends FormatTextProps {
 export interface FormatTextProps {
     range: FlowRange;
     style: TextStyle;
-}
-
-// @public @sealed
-export class IncrementListLevel extends IncrementListLevelBase implements Readonly<IncrementListLevelProps> {
-    afterInsertion(other: FlowRange): FlowOperation | null;
-    afterRemoval(other: FlowRange): FlowOperation | null;
-    // @override
-    applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent;
-    // @override
-    applyToSelection(selection: FlowSelection): FlowSelection;
-    static readonly classType: Type<IncrementListLevel>;
-    static fromData(data: IncrementListLevelData): IncrementListLevel;
-    // @override
-    invert(): FlowOperation | null;
-    // @override
-    transform(other: FlowOperation): FlowOperation | null;
-}
-
-// @public
-export const IncrementListLevelBase: RecordConstructor<IncrementListLevelProps, FlowOperation, IncrementListLevelData>;
-
-// @public
-export interface IncrementListLevelData extends Pick<IncrementListLevelProps, "range"> {
-    list: number;
-}
-
-// @public
-export interface IncrementListLevelProps {
-    delta: number;
-    range: FlowRange;
 }
 
 // @public

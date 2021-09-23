@@ -1,7 +1,7 @@
 /** @internal */
-export const mapNotNull = <T>(
-    array: readonly T[],
-    callback: (value: T, index: number, array: readonly T[]) => (T | null | undefined),
+export const mapNotNull = <A extends readonly unknown[], T>(
+    array: A,
+    callback: (value: A[number], index: number) => (T | null | undefined),
 ): NotNullish<T>[] => array.map(callback).filter(value => value !== null && value !== void(0)) as NotNullish<T>[];
 
 /** @internal */

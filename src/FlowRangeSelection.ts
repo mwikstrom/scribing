@@ -7,10 +7,13 @@ import { TargetOptions, FlowSelection, RemoveFlowSelectionOptions } from "./Flow
 import { FlowTheme } from "./FlowTheme";
 import { FormatParagraph } from "./FormatParagraph";
 import { FormatText } from "./FormatText";
-import { IncrementListLevel } from "./IncrementListLevel";
 import { InsertContent } from "./InsertContent";
 import { FlowSelectionRegistry } from "./internal/class-registry";
+import { expandRangeToParagraph } from "./internal/expand-range-to-paragraph";
+import { formatListLevel } from "./internal/format-list-level";
+import { splitRangeByUniformParagraphStyle } from "./internal/split-range-by-paragraph-style";
 import { transformRangeAfterInsertion, transformRangeAfterRemoval } from "./internal/transform-helpers";
+import { mapNotNull } from "./internal/utils";
 import { ParagraphBreak } from "./ParagraphBreak";
 import { ParagraphStyle, ParagraphStyleProps } from "./ParagraphStyle";
 import { RemoveRange } from "./RemoveRange";
@@ -143,9 +146,11 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      */
     public formatParagraph(
         @type(ParagraphStyle.classType) style: ParagraphStyle,
-            options?: TargetOptions,
+            options: TargetOptions = {},
     ): FlowOperation | null {
-        const expanded = this.#expandRangeToParagraph(options, style);
+        const { target: content } = options;
+        const { range } = this;
+        const expanded = content ? expandRangeToParagraph(range, content, style) : range;
 
         if (expanded instanceof FlowOperation) {
             return expanded;
@@ -156,59 +161,6 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
         }
     }
     
-    #expandRangeToParagraph(
-        options: TargetOptions = {},
-        insertStyle: ParagraphStyle = ParagraphStyle.empty,
-    ): FlowRange | InsertContent {
-        const { target: content } = options;
-        const { range } = this;
-
-        if (!content) {
-            return this.range;
-        }
-    
-        let foundBreak = false;
-
-        // Check if there's a paragraph break in the selected range
-        if (range.size > 0) {
-            for (const node of content.peek(range.first).range(range.size)) {
-                if (node instanceof ParagraphBreak) {
-                    foundBreak = true;
-                    break;
-                }
-            }
-        }
-
-        if (foundBreak) {
-            return range;
-        }
-
-        // If we didn't find a paragraph break, then we'll try to expand the range
-        // to include the closest following paragraph break.
-        let delta = 0;
-        for (const node of content.peek(range.last).after) {
-            delta += node.size;
-            if (node instanceof ParagraphBreak) {
-                foundBreak = true;
-                break;
-            }
-        }
-
-        if (foundBreak) {
-            // We found a break. Inflate range.
-            return range.inflate(delta);
-        }
-
-        // We didn't find a break, so this is a trailing paragraph.
-        // To format it we need to append a styled paragraph break!
-        return new InsertContent({
-            position: range.last + delta,
-            content: FlowContent.fromData([
-                new ParagraphBreak({ style: insertStyle }),
-            ]),
-        });
-    }
-
     /**
      * {@inheritDoc FlowSelection.formatText}
      * @override
@@ -226,17 +178,32 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      * {@inheritDoc FlowSelection.incrementListLevel}
      * @override
      */
-    public incrementListLevel(options?: TargetOptions, delta = 1): FlowOperation | null {
+    public incrementListLevel(content: FlowContent, delta = 1): FlowOperation | null {
+        const { range } = this;
         const insertionStyle = ParagraphStyle.empty.set("listLevel", Math.max(0, Math.min(9, delta)));
-        const expanded = this.#expandRangeToParagraph(options, insertionStyle);
+        const expanded = expandRangeToParagraph(range, content, insertionStyle);
 
         if (expanded instanceof FlowOperation) {
             return expanded;
-        } else if (expanded.isCollapsed) {
-            return null;
-        } else {
-            return new IncrementListLevel({ range: expanded, delta });
         }
+
+        return FlowBatch.fromArray(
+            mapNotNull(
+                splitRangeByUniformParagraphStyle(expanded, content, "listLevel"),
+                ([subrange, { listLevel: current = 0 }]) => {
+                    const target = Math.max(0, Math.min(9, current + delta));
+                    if (current === target) {
+                        return null;
+                    } else {
+                        return formatListLevel(
+                            subrange,
+                            content,
+                            target,
+                        );
+                    }
+                },
+            )
+        );
     }
 
     /**
@@ -311,7 +278,8 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
                             }
 
                             // Are we inside a list?
-                            if ((splitPara.style.listLevel ?? 0) > 0) {
+                            const { listLevel = 0} = splitPara.style;
+                            if (listLevel > 0) {
                                 // If the current list marker is hidden, then we'll show it
                                 const { hideListMarker } = splitPara.style;
                                 if (hideListMarker) {
@@ -322,10 +290,11 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
                                 }
 
                                 // Otherwise we'll decrement the current list level
-                                return new IncrementListLevel({
-                                    range: FlowRange.at(splitParaCursor.position, splitPara.size),
-                                    delta: -1,
-                                });
+                                return formatListLevel(
+                                    FlowRange.at(splitParaCursor.position, splitPara.size),
+                                    target,
+                                    listLevel - 1,
+                                );
                             }
                         }
                     }

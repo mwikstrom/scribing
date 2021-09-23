@@ -54,13 +54,13 @@ export abstract class FlowSelection {
     
     /**
      * Creates an operation that decrements the list level of the current selection
-     * @param options - Options that provide operation behavior
+     * @param content - The selected content
      * @param delta - Optional list level decrement. Default is `1`.
      * @remarks
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
-    public decrementListLevel(options?: TargetOptions, delta = 1): FlowOperation | null {
-        return this.incrementListLevel(options, -delta);
+    public decrementListLevel(content: FlowContent, delta = 1): FlowOperation | null {
+        return this.incrementListLevel(content, -delta);
     }
 
     /**
@@ -82,12 +82,12 @@ export abstract class FlowSelection {
 
     /**
      * Creates an operation that increments the list level of the current selection
-     * @param options - Options that provide operation behavior
+     * @param content - The selected content
      * @param delta - Optional list level increment. Default is `1`.
      * @remarks
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
-    public abstract incrementListLevel(options?: TargetOptions, delta?: number): FlowOperation | null;
+    public abstract incrementListLevel(content: FlowContent, delta?: number): FlowOperation | null;
 
     /**
      * Creates an operation that inserts the specified content into the current selection

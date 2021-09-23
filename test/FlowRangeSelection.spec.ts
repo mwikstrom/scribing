@@ -315,4 +315,45 @@ describe("FlowRangeSelection", () => {
             range: [3, 3],
         });
     });
+
+    it("unsets list style when level reaches zero", () => {
+        const theme = DefaultFlowTheme.instance;
+        const contentBefore = FlowContent.fromJsonValue([
+            "foo",
+            { break: "para", style: { listLevel: 2, hideListMarker: true, variant: "h1", listMarker: "disc" } },
+            "bar",
+            { break: "para", style: { listLevel: 1, hideListMarker: true, variant: "h1", listMarker: "disc" } },
+            "break",
+            { break: "para" },
+            "foo",
+            { break: "para", style: { listLevel: 2, hideListMarker: true, variant: "h1", listMarker: "disc" } },
+            "bar",
+            { break: "para", style: { listLevel: 1, hideListMarker: true, variant: "h1", listMarker: "disc" } },
+            "break",
+            { break: "para" },
+        ]);
+        const selectionBefore = new FlowRangeSelection({
+            range: FlowRange.at(0, contentBefore.size),
+        });
+        const operation = selectionBefore.decrementListLevel(contentBefore);
+        const contentAfter = operation?.applyToContent(contentBefore, theme);
+        expect(contentAfter?.toJsonValue()).toMatchObject([
+            "foo",
+            { break: "para", style: { listLevel: 1, hideListMarker: true, variant: "h1", listMarker: "disc" } },
+            "bar",
+            { break: "para", style: { variant: "h1" } },
+            "break",
+            { break: "para" },
+            "foo",
+            { break: "para", style: { listLevel: 1, hideListMarker: true, variant: "h1", listMarker: "disc" } },
+            "bar",
+            { break: "para", style: { variant: "h1" } },
+            "break",
+            { break: "para" },
+        ]);
+        const selectionAfter = operation?.applyToSelection(selectionBefore, true);
+        expect(selectionAfter?.toJsonValue()).toMatchObject({
+            range: [0, contentBefore.size],
+        });
+    });
 });
