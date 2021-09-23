@@ -44,6 +44,8 @@ export * from "./RemoveRange";
 // Selection
 export * from "./FlowSelection";
 export * from "./FlowRangeSelection";
+export * from "./NestedFlowSelection";
+export * from "./FlowButtonSelection";
 
 // Editor
 export * from "./FlowEditorState";

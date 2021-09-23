@@ -25,7 +25,7 @@ export declare abstract class FlowSelection
 |  --- | --- | --- |
 |  [decrementListLevel(content, delta)](./scribing.flowselection.decrementlistlevel.md) |  | Creates an operation that decrements the list level of the current selection |
 |  [formatParagraph(style, options)](./scribing.flowselection.formatparagraph.md) |  | Creates an operation that applies the specified paragraph style on the current selection |
-|  [formatText(style)](./scribing.flowselection.formattext.md) |  | Creates an operation that applies the specified text style on the current selection |
+|  [formatText(style, options)](./scribing.flowselection.formattext.md) |  | Creates an operation that applies the specified text style on the current selection |
 |  [fromJsonValue(value)](./scribing.flowselection.fromjsonvalue.md) | <code>static</code> | Converts the specified JSON value to a flow selection |
 |  [getUniformParagraphStyle(content, theme, diff)](./scribing.flowselection.getuniformparagraphstyle.md) |  | Gets the uniform paragraph style of the current selection |
 |  [getUniformTextStyle(content, theme, diff)](./scribing.flowselection.getuniformtextstyle.md) |  | Gets the uniform text style of the current selection |

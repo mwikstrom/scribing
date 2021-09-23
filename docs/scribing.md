@@ -13,6 +13,7 @@ Model for collaborative rich text editing
 |  [DefaultFlowTheme](./scribing.defaultflowtheme.md) | Provides a theme for flow content |
 |  [FlowBatch](./scribing.flowbatch.md) | Represents a batch of flow operations that are applied sequentially and atomically. |
 |  [FlowButton](./scribing.flowbutton.md) | Represents a button in flow content |
+|  [FlowButtonSelection](./scribing.flowbuttonselection.md) | Represents a selection inside a flow button |
 |  [FlowContent](./scribing.flowcontent.md) | Flow content |
 |  [FlowCursor](./scribing.flowcursor.md) | Represents a position in flow content |
 |  [FlowEditorState](./scribing.floweditorstate.md) | Immutable state record for a flow content editor |
@@ -28,6 +29,7 @@ Model for collaborative rich text editing
 |  [InsertContent](./scribing.insertcontent.md) | Represents an operation that insert flow content. |
 |  [Interaction](./scribing.interaction.md) | A base class for interactions |
 |  [LineBreak](./scribing.linebreak.md) | Represents a line break. |
+|  [NestedFlowSelection](./scribing.nestedflowselection.md) | A nested selection at a specific flow position |
 |  [OpenUrl](./scribing.openurl.md) | An interaction that opens a URL |
 |  [ParagraphBreak](./scribing.paragraphbreak.md) | Represents a paragraph break. |
 |  [ParagraphStyle](./scribing.paragraphstyle.md) | Represents the styling that is applied to paragraph content. |
@@ -45,6 +47,8 @@ Model for collaborative rich text editing
 |  [FlowBatchProps](./scribing.flowbatchprops.md) | Properties of [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowButtonData](./scribing.flowbuttondata.md) | Data of [FlowButton](./scribing.flowbutton.md) |
 |  [FlowButtonProps](./scribing.flowbuttonprops.md) | Properties of [FlowButton](./scribing.flowbutton.md) |
+|  [FlowButtonSelectionData](./scribing.flowbuttonselectiondata.md) | Data of [FlowButtonSelection](./scribing.flowbuttonselection.md) |
+|  [FlowButtonSelectionProps](./scribing.flowbuttonselectionprops.md) | Properties of [FlowButtonSelection](./scribing.flowbuttonselection.md) |
 |  [FlowContentProps](./scribing.flowcontentprops.md) | Flow content properties |
 |  [FlowEditorStateData](./scribing.floweditorstatedata.md) | Data for [FlowEditorState](./scribing.floweditorstate.md) |
 |  [FlowEditorStateProps](./scribing.floweditorstateprops.md) | Properties for [FlowEditorState](./scribing.floweditorstate.md) |
@@ -80,6 +84,7 @@ Model for collaborative rich text editing
 |  [DefaultFlowThemeBase](./scribing.defaultflowthemebase.md) | The base record class for [DefaultFlowTheme](./scribing.defaultflowtheme.md) |
 |  [FlowBatchBase](./scribing.flowbatchbase.md) | The base record class for [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowButtonBase](./scribing.flowbuttonbase.md) | The base record class for [FlowButton](./scribing.flowbutton.md) |
+|  [FlowButtonSelectionBase](./scribing.flowbuttonselectionbase.md) | The base record class for [FlowButtonSelection](./scribing.flowbuttonselection.md) |
 |  [FlowContentBase](./scribing.flowcontentbase.md) | The base record class for [FlowContent](./scribing.flowcontent.md) |
 |  [FlowEditorStateBase](./scribing.floweditorstatebase.md) | The base record class for [FlowEditorState](./scribing.floweditorstate.md) |
 |  [FlowRangeBase](./scribing.flowrangebase.md) | The base record class for [FlowRange](./scribing.flowrange.md) |

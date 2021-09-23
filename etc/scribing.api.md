@@ -79,6 +79,47 @@ export interface FlowButtonProps {
 }
 
 // @public @sealed
+export class FlowButtonSelection extends FlowButtonSelectionBase {
+    static readonly classType: Type<FlowButtonSelection>;
+    static fromData(data: FlowButtonSelectionData): FlowButtonSelection;
+    // Warning: (ae-unresolved-inheritdoc-reference) The @inheritDoc reference could not be resolved: The package "scribing" does not have an export "NestFlowSelection"
+    //
+    // @override (undocumented)
+    protected getInnerContentFromNode(node: FlowNode): FlowContent | null;
+    // Warning: (ae-unresolved-inheritdoc-reference) The @inheritDoc reference could not be resolved: The package "scribing" does not have an export "NestFlowSelection"
+    //
+    // @override (undocumented)
+    protected getInnerSelection(): FlowSelection;
+    // Warning: (ae-unresolved-inheritdoc-reference) The @inheritDoc reference could not be resolved: The package "scribing" does not have an export "NestFlowSelection"
+    //
+    // @override (undocumented)
+    protected getOuterOperation(inner: FlowOperation): FlowOperation;
+    // Warning: (ae-unresolved-inheritdoc-reference) The @inheritDoc reference could not be resolved: The package "scribing" does not have an export "NestFlowSelection"
+    //
+    // @override (undocumented)
+    protected setInnerSelection(value: FlowSelection): NestedFlowSelection;
+}
+
+// @public
+export const FlowButtonSelectionBase: RecordConstructor<FlowButtonSelectionProps, NestedFlowSelection, FlowButtonSelectionData>;
+
+// @public
+export interface FlowButtonSelectionData {
+    // (undocumented)
+    button: number;
+    // (undocumented)
+    content: FlowSelection;
+}
+
+// @public
+export interface FlowButtonSelectionProps {
+    // (undocumented)
+    content: FlowSelection;
+    // (undocumented)
+    position: number;
+}
+
+// @public @sealed
 export class FlowContent extends FlowContentBase implements Readonly<FlowContentProps> {
     constructor(props?: FlowContentProps);
     append(...nodes: readonly FlowNode[]): FlowContent;
@@ -292,7 +333,7 @@ export abstract class FlowSelection {
     static readonly baseType: Type<FlowSelection>;
     decrementListLevel(content: FlowContent, delta?: number): FlowOperation | null;
     abstract formatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
-    abstract formatText(style: TextStyle): FlowOperation | null;
+    abstract formatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
     static fromJsonValue(value: JsonValue): FlowSelection;
     abstract getUniformParagraphStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle;
     abstract getUniformTextStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
@@ -457,6 +498,43 @@ export type ListMarkerKind = (typeof LIST_MARKER_KINDS)[number];
 
 // @public
 export const ListMarkerKindType: Type<ListMarkerKind>;
+
+// @public
+export abstract class NestedFlowSelection extends FlowSelection {
+    // @override
+    afterInsertion(range: FlowRange): FlowSelection | null;
+    // @override
+    afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
+    // @override
+    formatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
+    // @override
+    formatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
+    protected getInnerContent(outer: FlowContent): FlowContent;
+    protected abstract getInnerContentFromNode(node: FlowNode): FlowContent | null;
+    protected abstract getInnerSelection(): FlowSelection;
+    protected abstract getOuterOperation(inner: FlowOperation): FlowOperation;
+    // @override
+    getUniformParagraphStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle;
+    // @override
+    getUniformTextStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
+    // @override
+    incrementListLevel(content: FlowContent, delta?: number): FlowOperation | null;
+    // @override
+    insert(content: FlowContent, options?: TargetOptions): FlowOperation | null;
+    // @override
+    get isCollapsed(): boolean;
+    abstract position: number;
+    // @override
+    remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
+    abstract set(key: "position", value: number): this;
+    protected abstract setInnerSelection(value: FlowSelection): NestedFlowSelection;
+    // @override
+    transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;
+    // @override
+    unformatParagraph(style: ParagraphStyle): FlowOperation | null;
+    // @override
+    unformatText(style: TextStyle): FlowOperation | null;
+}
 
 // @public @sealed
 export class OpenUrl extends OpenUrlBase {

@@ -75,10 +75,11 @@ export abstract class FlowSelection {
     /**
      * Creates an operation that applies the specified text style on the current selection
      * @param style - The style to apply
+     * @param options - Options that provide operation behavior
      * @remarks
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
-    public abstract formatText(style: TextStyle): FlowOperation | null;
+    public abstract formatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
 
     /**
      * Creates an operation that increments the list level of the current selection
