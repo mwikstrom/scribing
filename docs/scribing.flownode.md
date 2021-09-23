@@ -23,8 +23,8 @@ export declare abstract class FlowNode
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [formatParagraph(style)](./scribing.flownode.formatparagraph.md) |  | Applies the specified paragraph style on the current node and returns the updated node. |
-|  [formatText(style)](./scribing.flownode.formattext.md) |  | Applies the specified text style on the current node and returns the updated node. |
+|  [formatParagraph(style, theme)](./scribing.flownode.formatparagraph.md) |  | Applies the specified paragraph style on the current node and returns the updated node. |
+|  [formatText(style, theme)](./scribing.flownode.formattext.md) |  | Applies the specified text style on the current node and returns the updated node. |
 |  [fromJsonValue(value)](./scribing.flownode.fromjsonvalue.md) | <code>static</code> | Converts the specified JSON value to a flow node |
 |  [getUniformParagraphStyle(theme, diff)](./scribing.flownode.getuniformparagraphstyle.md) |  | Gets a uniform paragraph style from the current node |
 |  [getUniformTextStyle(theme, diff)](./scribing.flownode.getuniformtextstyle.md) |  | Gets a uniform text style from the current node |

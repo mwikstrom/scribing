@@ -20,6 +20,7 @@ export * from "./InlineNode";
 export * from "./LineBreak";
 export * from "./ParagraphBreak";
 export * from "./TextRun";
+export * from "./FlowButton";
 
 // Content
 export * from "./FlowCursor";

@@ -46,6 +46,7 @@ export declare class FlowContent extends FlowContentBase implements Readonly<Flo
 |  [peek(position)](./scribing.flowcontent.peek.md) |  | Gets a cursor |
 |  [remove(range)](./scribing.flowcontent.remove.md) |  | Removes a range of flow content |
 |  [toJsonValue()](./scribing.flowcontent.tojsonvalue.md) |  | Gets a JSON value representation of the current content |
+|  [unformatAmbient(theme)](./scribing.flowcontent.unformatambient.md) |  | Unapplies the ambient style of the specified theme from the current content. |
 |  [unformatParagraph(range, style)](./scribing.flowcontent.unformatparagraph.md) |  | Unapplies paragraph style to a range |
 |  [unformatText(range, style)](./scribing.flowcontent.unformattext.md) |  | Unapplies text style to a range |
 

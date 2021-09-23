@@ -1,4 +1,5 @@
 import { JsonValue, lazyType } from "paratype";
+import { FlowTheme } from "./FlowTheme";
 import { FlowNodeRegistry } from "./internal/class-registry";
 import { ParagraphStyle, ParagraphStyleProps } from "./ParagraphStyle";
 import { ParagraphTheme } from "./ParagraphTheme";
@@ -29,14 +30,16 @@ export abstract class FlowNode {
     /**
      * Applies the specified paragraph style on the current node and returns the updated node.
      * @param style - The paragraph style to apply
+     * @param theme - Theme of the current content
      */
-    abstract formatParagraph(style: ParagraphStyle): FlowNode;
+    abstract formatParagraph(style: ParagraphStyle, theme?: FlowTheme): FlowNode;
 
     /**
      * Applies the specified text style on the current node and returns the updated node.
      * @param style - The text style to apply
+     * @param theme - Theme of the current content
      */
-    abstract formatText(style: TextStyle): FlowNode;
+    abstract formatText(style: TextStyle, theme?: FlowTheme): FlowNode;
 
     /**
      * Gets a uniform paragraph style from the current node

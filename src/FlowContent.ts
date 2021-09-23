@@ -149,7 +149,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
             theme?: FlowTheme,
     ): FlowContent {
         // TODO: Verify theme arg
-        return this.set("nodes", this.#formatRange(range, node => node.formatParagraph(style), theme));
+        return this.set("nodes", this.#formatRange(range, node => node.formatParagraph(style, theme), theme));
     }
 
     /**
@@ -165,7 +165,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
             theme?: FlowTheme,
     ): FlowContent {
         // TODO: Verify theme arg
-        return this.set("nodes", this.#formatRange(range, node => node.formatText(style), theme));
+        return this.set("nodes", this.#formatRange(range, node => node.formatText(style, theme), theme));
     }
 
     /**
@@ -237,6 +237,14 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     /** Gets a JSON value representation of the current content */
     toJsonValue(): JsonValue {
         return FlowContent.classType.toJsonValue(this);
+    }
+
+    /**
+     * Unapplies the ambient style of the specified theme from the current content.
+     * @param theme - The theme that provides ambient styling
+     */
+    unformatAmbient(theme: FlowTheme): FlowContent {
+        return this.set("nodes", Object.freeze(FlowContent.unformatAmbient(this.nodes, theme)));
     }
     
     /**

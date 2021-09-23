@@ -1,3 +1,4 @@
+import type { FlowTheme } from "./FlowTheme";
 import { ParagraphStyle, ParagraphStyleVariant } from "./ParagraphStyle";
 import { TextStyle } from "./TextStyle";
 
@@ -19,6 +20,9 @@ export abstract class ParagraphTheme {
      * paragraph style variant.
      */
     abstract getAmbientParagraphStyle(): ParagraphStyle;
+
+    /** Gets the flow theme */
+    abstract getFlowTheme(): FlowTheme;
 
     /**
      * Gets the text style for links in this paragraph theme.

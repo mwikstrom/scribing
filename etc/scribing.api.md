@@ -48,6 +48,37 @@ export interface FlowBatchProps {
 }
 
 // @public @sealed
+export class FlowButton extends FlowButtonBase {
+    static readonly classType: Type<FlowButton>;
+    formatParagraph(style: ParagraphStyle, theme?: FlowTheme): this;
+    formatText(style: TextStyle, theme?: FlowTheme): this;
+    static fromData(data: FlowButtonData): FlowButton;
+    // @override
+    getUniformParagraphStyle(theme?: ParagraphTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle | null;
+    // @override
+    getUniformTextStyle(theme?: ParagraphTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
+    readonly size = 1;
+    unformatAmbient(theme: ParagraphTheme): this;
+    unformatParagraph(style: ParagraphStyle): this;
+    unformatText(style: TextStyle): this;
+}
+
+// @public
+export const FlowButtonBase: RecordConstructor<FlowButtonProps, FlowNode, FlowButtonData>;
+
+// @public
+export interface FlowButtonData {
+    // (undocumented)
+    button: FlowContent;
+}
+
+// @public
+export interface FlowButtonProps {
+    // (undocumented)
+    content: FlowContent;
+}
+
+// @public @sealed
 export class FlowContent extends FlowContentBase implements Readonly<FlowContentProps> {
     constructor(props?: FlowContentProps);
     append(...nodes: readonly FlowNode[]): FlowContent;
@@ -65,6 +96,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     remove(range: FlowRange): FlowContent;
     get size(): number;
     toJsonValue(): JsonValue;
+    unformatAmbient(theme: FlowTheme): FlowContent;
     unformatParagraph(range: FlowRange, style: ParagraphStyle): FlowContent;
     unformatText(range: FlowRange, style: TextStyle): FlowContent;
 }
@@ -150,8 +182,8 @@ export interface FlowEditorStateProps {
 // @public
 export abstract class FlowNode {
     static readonly baseType: Type<FlowNode>;
-    abstract formatParagraph(style: ParagraphStyle): FlowNode;
-    abstract formatText(style: TextStyle): FlowNode;
+    abstract formatParagraph(style: ParagraphStyle, theme?: FlowTheme): FlowNode;
+    abstract formatText(style: TextStyle, theme?: FlowTheme): FlowNode;
     static fromJsonValue(value: JsonValue): FlowNode;
     abstract getUniformParagraphStyle(theme?: ParagraphTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle | null;
     abstract getUniformTextStyle(theme?: ParagraphTheme, diff?: Set<keyof TextStyleProps>): TextStyle | null;
@@ -576,6 +608,7 @@ export const ParagraphStyleVariantType: Type<ParagraphStyleVariant>;
 export abstract class ParagraphTheme {
     abstract getAmbientParagraphStyle(): ParagraphStyle;
     abstract getAmbientTextStyle(): TextStyle;
+    abstract getFlowTheme(): FlowTheme;
     abstract getLinkStyle(): TextStyle;
     abstract getNextVariant(): ParagraphStyleVariant;
 }

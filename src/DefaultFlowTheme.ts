@@ -126,6 +126,11 @@ class DefaultParagraphTheme extends ParagraphTheme {
     getNextVariant(): ParagraphStyleVariant {
         return this.#next;
     }
+
+    /** {@inheritdoc ParagraphTheme.getFlowTheme} */
+    getFlowTheme(): FlowTheme {
+        return DefaultFlowTheme.instance;
+    }
 }
 
 const isHeading = (variant: ParagraphStyleVariant): boolean => /^h[1-6]$/.test(variant);
