@@ -1,4 +1,4 @@
-import { frozen, lazyType, RecordClass, recordClassType, RecordType, recordType, type, validating } from "paratype";
+import { frozen, RecordClass, recordClassType, RecordType, recordType, type, validating } from "paratype";
 import { FlowContent } from "./FlowContent";
 import { FlowNode } from "./FlowNode";
 import { FlowRange } from "./FlowRange";
@@ -10,11 +10,11 @@ import { ParagraphTheme } from "./ParagraphTheme";
 import { TextStyle, TextStyleProps } from "./TextStyle";
 
 const Props = {
-    content: lazyType(() => FlowContent.classType),    
+    content: FlowContent.classType,
 };
 
 const Data = {
-    button: Props.content,
+    button: FlowContent.classType,
 };
 
 const PropsType: RecordType<FlowButtonProps> = recordType(Props);
