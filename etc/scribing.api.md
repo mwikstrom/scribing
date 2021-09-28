@@ -820,6 +820,19 @@ export interface RemoveRangeProps {
     range: FlowRange;
 }
 
+// @public @sealed
+export class RunScript extends RunScriptBase {
+    static readonly classType: Type<RecordObject<RunScriptProps, RunScriptProps> & Equatable & Readonly<RunScriptProps> & RunScript>;
+}
+
+// @public
+export const RunScriptBase: RecordConstructor<RunScriptProps, Interaction, RunScriptProps>;
+
+// @public
+export interface RunScriptProps {
+    script: string;
+}
+
 // @public
 export interface TargetOptions {
     target?: FlowContent;

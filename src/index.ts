@@ -9,6 +9,7 @@ export * from "./FlowRange";
 // Interactions
 export * from "./Interaction";
 export * from "./OpenUrl";
+export * from "./RunScript";
 
 // Styles
 export * from "./ParagraphStyle";

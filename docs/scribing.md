@@ -39,6 +39,7 @@ Model for collaborative rich text editing
 |  [ParagraphStyle](./scribing.paragraphstyle.md) | Represents the styling that is applied to paragraph content. |
 |  [ParagraphTheme](./scribing.paragraphtheme.md) | Provides a theme for paragraph content |
 |  [RemoveRange](./scribing.removerange.md) | Represents an operation that removes a range of flow. |
+|  [RunScript](./scribing.runscript.md) | An interaction that runs a script |
 |  [TextRun](./scribing.textrun.md) | A run of text with uniform styling |
 |  [TextStyle](./scribing.textstyle.md) | Represents the styling that is applied to text. |
 |  [UnformatParagraph](./scribing.unformatparagraph.md) | Represents an operation that unapplies a paragraph style to a range of flow content. |
@@ -79,6 +80,7 @@ Model for collaborative rich text editing
 |  [RemoveFlowSelectionOptions](./scribing.removeflowselectionoptions.md) | Options for [FlowSelection.remove()](./scribing.flowselection.remove.md) |
 |  [RemoveRangeData](./scribing.removerangedata.md) | Data of remove range operations |
 |  [RemoveRangeProps](./scribing.removerangeprops.md) | Properties of remove range opertions |
+|  [RunScriptProps](./scribing.runscriptprops.md) | Properties for [RunScript](./scribing.runscript.md) |
 |  [TargetOptions](./scribing.targetoptions.md) | Provides options for the target flow |
 |  [TextRunProps](./scribing.textrunprops.md) | Properties of a text run |
 |  [TextStyleProps](./scribing.textstyleprops.md) | Style properties for [text](./scribing.textrun.md) |
@@ -114,6 +116,7 @@ Model for collaborative rich text editing
 |  [ParagraphStyleBase](./scribing.paragraphstylebase.md) | The base record class for [ParagraphStyle](./scribing.paragraphstyle.md) |
 |  [ParagraphStyleVariantType](./scribing.paragraphstylevarianttype.md) | The run-time type that matches paragraph style variant values |
 |  [RemoveRangeBase](./scribing.removerangebase.md) | The base record class for [RemoveRange](./scribing.removerange.md) |
+|  [RunScriptBase](./scribing.runscriptbase.md) | The base record class for [RunScript](./scribing.runscript.md) |
 |  [TextRunBase](./scribing.textrunbase.md) | The base record class for [TextRun](./scribing.textrun.md) |
 |  [TextStyleBase](./scribing.textstylebase.md) | The base record class for [TextStyle](./scribing.textstyle.md) |
 |  [UnformatParagraphBase](./scribing.unformatparagraphbase.md) | The base record class for [UnformatParagraph](./scribing.unformatparagraph.md) |
