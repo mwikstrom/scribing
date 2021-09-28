@@ -22,6 +22,84 @@ export class DefaultFlowTheme extends DefaultFlowThemeBase {
 export const DefaultFlowThemeBase: RecordConstructor<    {}, FlowTheme, "default">;
 
 // @public @sealed
+export class DynamicText extends DynamicTextBase implements DynamicTextProps {
+    static readonly classType: Type<DynamicText>;
+    static fromData(data: DynamicTextData): DynamicText;
+    readonly size = 1;
+}
+
+// @public
+export const DynamicTextBase: RecordConstructor<DynamicTextProps, InlineNode, DynamicTextData>;
+
+// @public
+export interface DynamicTextData {
+    dynamic: string;
+    style?: TextStyle;
+}
+
+// @public
+export interface DynamicTextProps {
+    expression: string;
+    style: TextStyle;
+}
+
+// @public @sealed
+export class EditButton extends EditButtonBase implements EditButtonProps {
+    static readonly classType: Type<EditButton>;
+    createReplacementNode(content: FlowContent, before: FlowNode): FlowNode;
+    static fromData(data: EditButtonData): EditButton;
+    getInnerContentFromNode(node: FlowNode): FlowContent;
+}
+
+// @public
+export const EditButtonBase: RecordConstructor<EditButtonProps, NestedFlowOperation, EditButtonData>;
+
+// @public
+export interface EditButtonData {
+    at: number;
+    edit: "button";
+    op: FlowOperation;
+}
+
+// @public
+export interface EditButtonProps {
+    inner: FlowOperation;
+    position: number;
+}
+
+// @public @sealed
+export class EditDynamicText extends EditDynamicTextBase implements EditDynamicTextProps {
+    afterInsertion(range: FlowRange): FlowOperation | null;
+    afterRemoval(range: FlowRange): FlowOperation | null;
+    // @override
+    applyToContent(content: FlowContent): FlowContent;
+    // @override
+    applyToSelection(selection: FlowSelection): FlowSelection;
+    static readonly classType: Type<EditDynamicText>;
+    static fromData(data: EditDynamicTextData): EditDynamicText;
+    // @override
+    invert(content: FlowContent): FlowOperation | null;
+    // @override
+    transform(other: FlowOperation): FlowOperation | null;
+}
+
+// @public
+export const EditDynamicTextBase: RecordConstructor<EditDynamicTextProps, FlowOperation, EditDynamicTextData>;
+
+// @public
+export interface EditDynamicTextData {
+    at: number;
+    edit: "dynamic";
+    expr: string;
+}
+
+// @public
+export interface EditDynamicTextProps {
+    expression: string;
+    position: number;
+}
+
+// @public @sealed
 export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps> {
     constructor(props?: FlowBatchProps);
     afterInsertion(other: FlowRange): FlowOperation | null;

@@ -11,6 +11,9 @@ Model for collaborative rich text editing
 |  Class | Description |
 |  --- | --- |
 |  [DefaultFlowTheme](./scribing.defaultflowtheme.md) | Provides a theme for flow content |
+|  [DynamicText](./scribing.dynamictext.md) | Represents a dynamic text. |
+|  [EditButton](./scribing.editbutton.md) | Represents an operation that edit the content of a button |
+|  [EditDynamicText](./scribing.editdynamictext.md) | Represents an operation that edit the content of a button |
 |  [FlowBatch](./scribing.flowbatch.md) | Represents a batch of flow operations that are applied sequentially and atomically. |
 |  [FlowButton](./scribing.flowbutton.md) | Represents a button in flow content |
 |  [FlowButtonSelection](./scribing.flowbuttonselection.md) | Represents a selection inside a flow button |
@@ -45,6 +48,12 @@ Model for collaborative rich text editing
 
 |  Interface | Description |
 |  --- | --- |
+|  [DynamicTextData](./scribing.dynamictextdata.md) | Data of line break nodes |
+|  [DynamicTextProps](./scribing.dynamictextprops.md) | Properties of [DynamicText](./scribing.dynamictext.md) |
+|  [EditButtonData](./scribing.editbuttondata.md) | Data of [EditButton](./scribing.editbutton.md) |
+|  [EditButtonProps](./scribing.editbuttonprops.md) | Properties of [EditButton](./scribing.editbutton.md) |
+|  [EditDynamicTextData](./scribing.editdynamictextdata.md) | Data of [EditDynamicText](./scribing.editdynamictext.md) |
+|  [EditDynamicTextProps](./scribing.editdynamictextprops.md) | Properties of [EditDynamicText](./scribing.editdynamictext.md) |
 |  [FlowBatchProps](./scribing.flowbatchprops.md) | Properties of [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowButtonData](./scribing.flowbuttondata.md) | Data of [FlowButton](./scribing.flowbutton.md) |
 |  [FlowButtonProps](./scribing.flowbuttonprops.md) | Properties of [FlowButton](./scribing.flowbutton.md) |
@@ -83,6 +92,9 @@ Model for collaborative rich text editing
 |  Variable | Description |
 |  --- | --- |
 |  [DefaultFlowThemeBase](./scribing.defaultflowthemebase.md) | The base record class for [DefaultFlowTheme](./scribing.defaultflowtheme.md) |
+|  [DynamicTextBase](./scribing.dynamictextbase.md) | The base record class for [DynamicText](./scribing.dynamictext.md) |
+|  [EditButtonBase](./scribing.editbuttonbase.md) | The base record class for [EditButton](./scribing.editbutton.md) |
+|  [EditDynamicTextBase](./scribing.editdynamictextbase.md) | The base record class for [EditDynamicText](./scribing.editdynamictext.md) |
 |  [FlowBatchBase](./scribing.flowbatchbase.md) | The base record class for [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowButtonBase](./scribing.flowbuttonbase.md) | The base record class for [FlowButton](./scribing.flowbutton.md) |
 |  [FlowButtonSelectionBase](./scribing.flowbuttonselectionbase.md) | The base record class for [FlowButtonSelection](./scribing.flowbuttonselection.md) |

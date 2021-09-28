@@ -21,6 +21,7 @@ export * from "./LineBreak";
 export * from "./ParagraphBreak";
 export * from "./TextRun";
 export * from "./FlowButton";
+export * from "./DynamicText";
 
 // Content
 export * from "./FlowCursor";
@@ -41,6 +42,8 @@ export * from "./UnformatText";
 export * from "./InsertContent";
 export * from "./RemoveRange";
 export * from "./NestedFlowOperation";
+export * from "./EditButton";
+export * from "./EditDynamicText";
 
 // Selection
 export * from "./FlowSelection";
