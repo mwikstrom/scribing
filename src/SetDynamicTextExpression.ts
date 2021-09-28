@@ -24,30 +24,30 @@ const Props = {
 };
 
 const Data = {
-    edit: constType("dynamic"),
+    set: constType("dynamic_text_expression"),
     at: Props.position,
-    expr: stringType,
+    value: stringType,
 };
 
-const PropsType: RecordType<EditDynamicTextProps> = recordType(Props);
-const DataType: RecordType<EditDynamicTextData> = recordType(Data);
-const propsToData = ({position, expression }: EditDynamicTextProps): EditDynamicTextData => ({
-    edit: "dynamic",
+const PropsType: RecordType<SetDynamicTextExpressionProps> = recordType(Props);
+const DataType: RecordType<SetDynamicTextExpressionData> = recordType(Data);
+const propsToData = ({position, expression }: SetDynamicTextExpressionProps): SetDynamicTextExpressionData => ({
+    set: "dynamic_text_expression",
     at: position,
-    expr: expression,
+    value: expression,
 });
 
 /**
- * The base record class for {@link EditDynamicText}
+ * The base record class for {@link SetDynamicTextExpression}
  * @public
  */
-export const EditDynamicTextBase = RecordClass(PropsType, FlowOperation, DataType, propsToData);
+export const SetDynamicTextExpressionBase = RecordClass(PropsType, FlowOperation, DataType, propsToData);
 
 /**
- * Properties of {@link EditDynamicText}
+ * Properties of {@link SetDynamicTextExpression}
  * @public
  */
-export interface EditDynamicTextProps {
+export interface SetDynamicTextExpressionProps {
     /** The dynamic text position */
     position: number;
 
@@ -56,18 +56,18 @@ export interface EditDynamicTextProps {
 }
 
 /**
- * Data of {@link EditDynamicText}
+ * Data of {@link SetDynamicTextExpression}
  * @public
  */
-export interface EditDynamicTextData {
+export interface SetDynamicTextExpressionData {
     /** Data discriminator */
-    edit: "dynamic";
+    set: "dynamic_text_expression";
 
-    /** {@inheritdoc EditDynamicTextProps.position} */
+    /** {@inheritdoc SetDynamicTextExpressionProps.position} */
     at: number;
 
-    /** {@inheritdoc EditDynamicTextProps.expression} */
-    expr: string;
+    /** {@inheritdoc SetDynamicTextExpressionProps.expression} */
+    value: string;
 }
 
 /**
@@ -78,15 +78,15 @@ export interface EditDynamicTextData {
 @frozen
 @validating
 @FlowOperationRegistry.register
-export class EditDynamicText extends EditDynamicTextBase implements EditDynamicTextProps {
+export class SetDynamicTextExpression extends SetDynamicTextExpressionBase implements SetDynamicTextExpressionProps {
     /** The run-time type that represents this class */
-    public static readonly classType = recordClassType(() => EditDynamicText);
+    public static readonly classType = recordClassType(() => SetDynamicTextExpression);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: EditDynamicTextData): EditDynamicText {
-        const { expr: expression, at: position } = data;
-        const props: EditDynamicTextProps = { expression, position };
-        return new EditDynamicText(props);
+    public static fromData(@type(DataType) data: SetDynamicTextExpressionData): SetDynamicTextExpression {
+        const { value: expression, at: position } = data;
+        const props: SetDynamicTextExpressionProps = { expression, position };
+        return new SetDynamicTextExpression(props);
     }
 
     /**
@@ -98,7 +98,7 @@ export class EditDynamicText extends EditDynamicTextBase implements EditDynamicT
         const { node } = content.peek(position);
         if (node instanceof DynamicText) {
             const { expression } = node;
-            return new EditDynamicText({ position, expression });
+            return new SetDynamicTextExpression({ position, expression });
         } else {
             return null;
         }

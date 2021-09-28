@@ -13,7 +13,6 @@ Model for collaborative rich text editing
 |  [DefaultFlowTheme](./scribing.defaultflowtheme.md) | Provides a theme for flow content |
 |  [DynamicText](./scribing.dynamictext.md) | Represents a dynamic text. |
 |  [EditButton](./scribing.editbutton.md) | Represents an operation that edit the content of a button |
-|  [EditDynamicText](./scribing.editdynamictext.md) | Represents an operation that edit the content of a button |
 |  [FlowBatch](./scribing.flowbatch.md) | Represents a batch of flow operations that are applied sequentially and atomically. |
 |  [FlowButton](./scribing.flowbutton.md) | Represents a button in flow content |
 |  [FlowButtonSelection](./scribing.flowbuttonselection.md) | Represents a selection inside a flow button |
@@ -40,6 +39,7 @@ Model for collaborative rich text editing
 |  [ParagraphTheme](./scribing.paragraphtheme.md) | Provides a theme for paragraph content |
 |  [RemoveRange](./scribing.removerange.md) | Represents an operation that removes a range of flow. |
 |  [RunScript](./scribing.runscript.md) | An interaction that runs a script |
+|  [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) | Represents an operation that edit the content of a button |
 |  [TextRun](./scribing.textrun.md) | A run of text with uniform styling |
 |  [TextStyle](./scribing.textstyle.md) | Represents the styling that is applied to text. |
 |  [UnformatParagraph](./scribing.unformatparagraph.md) | Represents an operation that unapplies a paragraph style to a range of flow content. |
@@ -53,8 +53,6 @@ Model for collaborative rich text editing
 |  [DynamicTextProps](./scribing.dynamictextprops.md) | Properties of [DynamicText](./scribing.dynamictext.md) |
 |  [EditButtonData](./scribing.editbuttondata.md) | Data of [EditButton](./scribing.editbutton.md) |
 |  [EditButtonProps](./scribing.editbuttonprops.md) | Properties of [EditButton](./scribing.editbutton.md) |
-|  [EditDynamicTextData](./scribing.editdynamictextdata.md) | Data of [EditDynamicText](./scribing.editdynamictext.md) |
-|  [EditDynamicTextProps](./scribing.editdynamictextprops.md) | Properties of [EditDynamicText](./scribing.editdynamictext.md) |
 |  [FlowBatchProps](./scribing.flowbatchprops.md) | Properties of [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowButtonData](./scribing.flowbuttondata.md) | Data of [FlowButton](./scribing.flowbutton.md) |
 |  [FlowButtonProps](./scribing.flowbuttonprops.md) | Properties of [FlowButton](./scribing.flowbutton.md) |
@@ -81,6 +79,8 @@ Model for collaborative rich text editing
 |  [RemoveRangeData](./scribing.removerangedata.md) | Data of remove range operations |
 |  [RemoveRangeProps](./scribing.removerangeprops.md) | Properties of remove range opertions |
 |  [RunScriptProps](./scribing.runscriptprops.md) | Properties for [RunScript](./scribing.runscript.md) |
+|  [SetDynamicTextExpressionData](./scribing.setdynamictextexpressiondata.md) | Data of [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
+|  [SetDynamicTextExpressionProps](./scribing.setdynamictextexpressionprops.md) | Properties of [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [TargetOptions](./scribing.targetoptions.md) | Provides options for the target flow |
 |  [TextRunProps](./scribing.textrunprops.md) | Properties of a text run |
 |  [TextStyleProps](./scribing.textstyleprops.md) | Style properties for [text](./scribing.textrun.md) |
@@ -96,7 +96,6 @@ Model for collaborative rich text editing
 |  [DefaultFlowThemeBase](./scribing.defaultflowthemebase.md) | The base record class for [DefaultFlowTheme](./scribing.defaultflowtheme.md) |
 |  [DynamicTextBase](./scribing.dynamictextbase.md) | The base record class for [DynamicText](./scribing.dynamictext.md) |
 |  [EditButtonBase](./scribing.editbuttonbase.md) | The base record class for [EditButton](./scribing.editbutton.md) |
-|  [EditDynamicTextBase](./scribing.editdynamictextbase.md) | The base record class for [EditDynamicText](./scribing.editdynamictext.md) |
 |  [FlowBatchBase](./scribing.flowbatchbase.md) | The base record class for [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowButtonBase](./scribing.flowbuttonbase.md) | The base record class for [FlowButton](./scribing.flowbutton.md) |
 |  [FlowButtonSelectionBase](./scribing.flowbuttonselectionbase.md) | The base record class for [FlowButtonSelection](./scribing.flowbuttonselection.md) |
@@ -117,6 +116,7 @@ Model for collaborative rich text editing
 |  [ParagraphStyleVariantType](./scribing.paragraphstylevarianttype.md) | The run-time type that matches paragraph style variant values |
 |  [RemoveRangeBase](./scribing.removerangebase.md) | The base record class for [RemoveRange](./scribing.removerange.md) |
 |  [RunScriptBase](./scribing.runscriptbase.md) | The base record class for [RunScript](./scribing.runscript.md) |
+|  [SetDynamicTextExpressionBase](./scribing.setdynamictextexpressionbase.md) | The base record class for [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [TextRunBase](./scribing.textrunbase.md) | The base record class for [TextRun](./scribing.textrun.md) |
 |  [TextStyleBase](./scribing.textstylebase.md) | The base record class for [TextStyle](./scribing.textstyle.md) |
 |  [UnformatParagraphBase](./scribing.unformatparagraphbase.md) | The base record class for [UnformatParagraph](./scribing.unformatparagraph.md) |

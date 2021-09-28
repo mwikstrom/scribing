@@ -68,38 +68,6 @@ export interface EditButtonProps {
 }
 
 // @public @sealed
-export class EditDynamicText extends EditDynamicTextBase implements EditDynamicTextProps {
-    afterInsertion(range: FlowRange): FlowOperation | null;
-    afterRemoval(range: FlowRange): FlowOperation | null;
-    // @override
-    applyToContent(content: FlowContent): FlowContent;
-    // @override
-    applyToSelection(selection: FlowSelection): FlowSelection;
-    static readonly classType: Type<EditDynamicText>;
-    static fromData(data: EditDynamicTextData): EditDynamicText;
-    // @override
-    invert(content: FlowContent): FlowOperation | null;
-    // @override
-    transform(other: FlowOperation): FlowOperation | null;
-}
-
-// @public
-export const EditDynamicTextBase: RecordConstructor<EditDynamicTextProps, FlowOperation, EditDynamicTextData>;
-
-// @public
-export interface EditDynamicTextData {
-    at: number;
-    edit: "dynamic";
-    expr: string;
-}
-
-// @public
-export interface EditDynamicTextProps {
-    expression: string;
-    position: number;
-}
-
-// @public @sealed
 export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps> {
     constructor(props?: FlowBatchProps);
     afterInsertion(other: FlowRange): FlowOperation | null;
@@ -831,6 +799,38 @@ export const RunScriptBase: RecordConstructor<RunScriptProps, Interaction, RunSc
 // @public
 export interface RunScriptProps {
     script: string;
+}
+
+// @public @sealed
+export class SetDynamicTextExpression extends SetDynamicTextExpressionBase implements SetDynamicTextExpressionProps {
+    afterInsertion(range: FlowRange): FlowOperation | null;
+    afterRemoval(range: FlowRange): FlowOperation | null;
+    // @override
+    applyToContent(content: FlowContent): FlowContent;
+    // @override
+    applyToSelection(selection: FlowSelection): FlowSelection;
+    static readonly classType: Type<SetDynamicTextExpression>;
+    static fromData(data: SetDynamicTextExpressionData): SetDynamicTextExpression;
+    // @override
+    invert(content: FlowContent): FlowOperation | null;
+    // @override
+    transform(other: FlowOperation): FlowOperation | null;
+}
+
+// @public
+export const SetDynamicTextExpressionBase: RecordConstructor<SetDynamicTextExpressionProps, FlowOperation, SetDynamicTextExpressionData>;
+
+// @public
+export interface SetDynamicTextExpressionData {
+    at: number;
+    set: "dynamic_text_expression";
+    value: string;
+}
+
+// @public
+export interface SetDynamicTextExpressionProps {
+    expression: string;
+    position: number;
 }
 
 // @public
