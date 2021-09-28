@@ -253,9 +253,15 @@ export class FlowEditorState extends FlowEditorStateBase {
             redoStack = Object.freeze(mapNotNull(this.redoStack, op => operation.transform(op)));
         } else if (mine === "undo" && operation === this.undoStack[0]) {
             undoStack = Object.freeze(this.undoStack.slice(1));
-            redoStack = Object.freeze(filterNotNull([operation.invert(this.content), ...this.redoStack]));
+            redoStack = Object.freeze(filterNotNull([
+                operation.invert(this.content), 
+                ...this.redoStack.slice(0, MAX_UNDO_LENGTH - 1)
+            ]));
         } else {
-            undoStack = Object.freeze(filterNotNull([operation.invert(this.content), ...this.undoStack]));
+            undoStack = Object.freeze(filterNotNull([
+                operation.invert(this.content),
+                ...this.undoStack.slice(0, MAX_UNDO_LENGTH - 1)
+            ]));
             if (mine === "redo" && operation === this.redoStack[0]) {
                 redoStack = Object.freeze(this.redoStack.slice(1));
             } else {
@@ -268,4 +274,4 @@ export class FlowEditorState extends FlowEditorStateBase {
 }
 
 let EMPTY_CACHE: FlowEditorState | undefined;
-
+const MAX_UNDO_LENGTH = 200;
