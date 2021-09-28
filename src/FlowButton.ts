@@ -1,9 +1,20 @@
-import { frozen, RecordClass, recordClassType, RecordType, recordType, type, validating } from "paratype";
+import { 
+    frozen, 
+    nullType, 
+    RecordClass, 
+    recordClassType, 
+    RecordType, 
+    recordType, 
+    type, 
+    unionType, 
+    validating
+} from "paratype";
 import { FlowContent } from "./FlowContent";
 import { FlowNode } from "./FlowNode";
 import { FlowRange } from "./FlowRange";
 import { FlowRangeSelection } from "./FlowRangeSelection";
 import { FlowTheme } from "./FlowTheme";
+import { Interaction } from "./Interaction";
 import { FlowNodeRegistry } from "./internal/class-registry";
 import { ParagraphStyle, ParagraphStyleProps } from "./ParagraphStyle";
 import { ParagraphTheme } from "./ParagraphTheme";
@@ -11,16 +22,20 @@ import { TextStyle, TextStyleProps } from "./TextStyle";
 
 const Props = {
     content: FlowContent.classType,
+    action: unionType(nullType, Interaction.baseType),
 };
 
 const Data = {
     button: FlowContent.classType,
+    action: Interaction.baseType,
 };
 
 const PropsType: RecordType<FlowButtonProps> = recordType(Props);
-const DataType: RecordType<FlowButtonData> = recordType(Data);
+const DataType: RecordType<FlowButtonData> = recordType(Data).withOptional("action");
 
-const propsToData = ({ content: button }: FlowButtonProps): FlowButtonData => ({ button });
+const propsToData = ({ content: button, action }: FlowButtonProps): FlowButtonData => (
+    action ? { button, action } : { button }
+);
 
 /**
  * The base record class for {@link FlowButton}
@@ -34,6 +49,7 @@ export const FlowButtonBase = RecordClass(PropsType, FlowNode, DataType, propsTo
  */
 export interface FlowButtonProps {
     content: FlowContent;
+    action: Interaction | null;
 }
 
 /**
@@ -42,6 +58,7 @@ export interface FlowButtonProps {
  */
 export interface FlowButtonData {
     button: FlowContent;
+    action?: Interaction;
 }
 
 /**
@@ -61,8 +78,8 @@ export class FlowButton extends FlowButtonBase {
 
     /** Gets an instance of the current class from the specified data */
     public static fromData(@type(DataType) data: FlowButtonData): FlowButton {
-        const { button: content } = data;
-        return new FlowButton({ content });
+        const { button: content, action = null } = data;
+        return new FlowButton({ content, action });
     }
 
     /** {@inheritdoc FlowNode.formatText} */

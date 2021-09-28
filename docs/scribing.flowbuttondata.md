@@ -16,5 +16,6 @@ export interface FlowButtonData
 
 |  Property | Type | Description |
 |  --- | --- | --- |
+|  [action?](./scribing.flowbuttondata.action.md) | [Interaction](./scribing.interaction.md) | <i>(Optional)</i> |
 |  [button](./scribing.flowbuttondata.button.md) | [FlowContent](./scribing.flowcontent.md) |  |
 

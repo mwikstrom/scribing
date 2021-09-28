@@ -16,5 +16,6 @@ export interface FlowButtonProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
+|  [action](./scribing.flowbuttonprops.action.md) | [Interaction](./scribing.interaction.md) \| null |  |
 |  [content](./scribing.flowbuttonprops.content.md) | [FlowContent](./scribing.flowcontent.md) |  |
 

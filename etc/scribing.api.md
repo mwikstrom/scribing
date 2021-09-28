@@ -115,11 +115,15 @@ export const FlowButtonBase: RecordConstructor<FlowButtonProps, FlowNode, FlowBu
 // @public
 export interface FlowButtonData {
     // (undocumented)
+    action?: Interaction;
+    // (undocumented)
     button: FlowContent;
 }
 
 // @public
 export interface FlowButtonProps {
+    // (undocumented)
+    action: Interaction | null;
     // (undocumented)
     content: FlowContent;
 }
@@ -799,6 +803,38 @@ export const RunScriptBase: RecordConstructor<RunScriptProps, Interaction, RunSc
 // @public
 export interface RunScriptProps {
     script: string;
+}
+
+// @public @sealed
+export class SetButtonAction extends SetButtonActionBase implements SetButtonActionProps {
+    afterInsertion(range: FlowRange): FlowOperation | null;
+    afterRemoval(range: FlowRange): FlowOperation | null;
+    // @override
+    applyToContent(content: FlowContent): FlowContent;
+    // @override
+    applyToSelection(selection: FlowSelection): FlowSelection;
+    static readonly classType: Type<SetButtonAction>;
+    static fromData(data: SetButtonActionData): SetButtonAction;
+    // @override
+    invert(content: FlowContent): FlowOperation | null;
+    // @override
+    transform(other: FlowOperation): FlowOperation | null;
+}
+
+// @public
+export const SetButtonActionBase: RecordConstructor<SetButtonActionProps, FlowOperation, SetButtonActionData>;
+
+// @public
+export interface SetButtonActionData {
+    at: number;
+    set: "button_action";
+    value: Interaction | null;
+}
+
+// @public
+export interface SetButtonActionProps {
+    action: Interaction | null;
+    position: number;
 }
 
 // @public @sealed

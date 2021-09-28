@@ -44,6 +44,7 @@ export * from "./InsertContent";
 export * from "./RemoveRange";
 export * from "./NestedFlowOperation";
 export * from "./EditButton";
+export * from "./SetButtonAction";
 export * from "./SetDynamicTextExpression";
 
 // Selection

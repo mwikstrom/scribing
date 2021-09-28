@@ -39,6 +39,7 @@ Model for collaborative rich text editing
 |  [ParagraphTheme](./scribing.paragraphtheme.md) | Provides a theme for paragraph content |
 |  [RemoveRange](./scribing.removerange.md) | Represents an operation that removes a range of flow. |
 |  [RunScript](./scribing.runscript.md) | An interaction that runs a script |
+|  [SetButtonAction](./scribing.setbuttonaction.md) | Represents an operation that edit the content of a button |
 |  [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) | Represents an operation that edit the content of a button |
 |  [TextRun](./scribing.textrun.md) | A run of text with uniform styling |
 |  [TextStyle](./scribing.textstyle.md) | Represents the styling that is applied to text. |
@@ -79,6 +80,8 @@ Model for collaborative rich text editing
 |  [RemoveRangeData](./scribing.removerangedata.md) | Data of remove range operations |
 |  [RemoveRangeProps](./scribing.removerangeprops.md) | Properties of remove range opertions |
 |  [RunScriptProps](./scribing.runscriptprops.md) | Properties for [RunScript](./scribing.runscript.md) |
+|  [SetButtonActionData](./scribing.setbuttonactiondata.md) | Data of [SetButtonAction](./scribing.setbuttonaction.md) |
+|  [SetButtonActionProps](./scribing.setbuttonactionprops.md) | Properties of [SetButtonAction](./scribing.setbuttonaction.md) |
 |  [SetDynamicTextExpressionData](./scribing.setdynamictextexpressiondata.md) | Data of [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [SetDynamicTextExpressionProps](./scribing.setdynamictextexpressionprops.md) | Properties of [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [TargetOptions](./scribing.targetoptions.md) | Provides options for the target flow |
@@ -116,6 +119,7 @@ Model for collaborative rich text editing
 |  [ParagraphStyleVariantType](./scribing.paragraphstylevarianttype.md) | The run-time type that matches paragraph style variant values |
 |  [RemoveRangeBase](./scribing.removerangebase.md) | The base record class for [RemoveRange](./scribing.removerange.md) |
 |  [RunScriptBase](./scribing.runscriptbase.md) | The base record class for [RunScript](./scribing.runscript.md) |
+|  [SetButtonActionBase](./scribing.setbuttonactionbase.md) | The base record class for [SetButtonAction](./scribing.setbuttonaction.md) |
 |  [SetDynamicTextExpressionBase](./scribing.setdynamictextexpressionbase.md) | The base record class for [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [TextRunBase](./scribing.textrunbase.md) | The base record class for [TextRun](./scribing.textrun.md) |
 |  [TextStyleBase](./scribing.textstylebase.md) | The base record class for [TextStyle](./scribing.textstyle.md) |
