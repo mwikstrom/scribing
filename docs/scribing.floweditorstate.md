@@ -31,6 +31,6 @@ export declare class FlowEditorState extends FlowEditorStateBase
 |  [getUniformParagraphStyle(diff)](./scribing.floweditorstate.getuniformparagraphstyle.md) |  | Gets a uniform paragraph style from the current selection |
 |  [getUniformTextStyle(diff)](./scribing.floweditorstate.getuniformtextstyle.md) |  | Gets a uniform text style from the current selection |
 |  [redo()](./scribing.floweditorstate.redo.md) |  | Redoes the most recent undone operation |
-|  [toggleFormttingSymbols()](./scribing.floweditorstate.toggleformttingsymbols.md) |  | Toggles whether formatting symbols are shown |
+|  [toggleFormattingMarks()](./scribing.floweditorstate.toggleformattingmarks.md) |  | Toggles whether formatting symbols are shown |
 |  [undo()](./scribing.floweditorstate.undo.md) |  | Undoes the most recent operation |
 

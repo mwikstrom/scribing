@@ -36,7 +36,7 @@ export interface FlowEditorStateProps {
     caret: TextStyle;
     undoStack: readonly FlowOperation[];
     redoStack: readonly FlowOperation[];
-    formattingSymbols: boolean;
+    formattingMarks: boolean;
 }
 
 /**
@@ -57,7 +57,7 @@ const Props = {
     caret: TextStyle.classType,
     undoStack: operationStackType,
     redoStack: operationStackType,
-    formattingSymbols: booleanType,
+    formattingMarks: booleanType,
 };
 
 const Data = {
@@ -67,7 +67,7 @@ const Data = {
     caret: Props.caret,
     undo: Props.undoStack,
     redo: Props.redoStack,
-    formattingSymbols: Props.formattingSymbols,
+    formattingMarks: Props.formattingMarks,
 };
 
 const PropsType: RecordType<FlowEditorStateProps> = recordType(Props);
@@ -81,7 +81,7 @@ const propsToData = (props: FlowEditorStateProps): FlowEditorStateData => {
         caret, 
         undoStack, 
         redoStack,
-        formattingSymbols,
+        formattingMarks,
     } = props;
     const data: FlowEditorStateData = {};
     
@@ -109,8 +109,8 @@ const propsToData = (props: FlowEditorStateProps): FlowEditorStateData => {
         data.redo = redoStack;
     }
 
-    if (formattingSymbols) {
-        data.formattingSymbols = formattingSymbols;
+    if (formattingMarks) {
+        data.formattingMarks = formattingMarks;
     }
 
     return data;
@@ -146,7 +146,7 @@ export class FlowEditorState extends FlowEditorStateBase {
             caret,
             undo: undoStack,
             redo: redoStack,
-            formattingSymbols,
+            formattingMarks,
         } = data;
 
         return FlowEditorState.empty.merge({
@@ -156,7 +156,7 @@ export class FlowEditorState extends FlowEditorStateBase {
             caret,
             undoStack,
             redoStack,
-            formattingSymbols,
+            formattingMarks,
         });
     }
 
@@ -170,7 +170,7 @@ export class FlowEditorState extends FlowEditorStateBase {
                 caret: TextStyle.empty,
                 undoStack: Object.freeze([]),
                 redoStack: Object.freeze([]),
-                formattingSymbols: false,
+                formattingMarks: false,
             });
         }
         return EMPTY_CACHE;
@@ -225,8 +225,8 @@ export class FlowEditorState extends FlowEditorStateBase {
     }
 
     /** Toggles whether formatting symbols are shown */
-    public toggleFormttingSymbols(): FlowEditorState {
-        return this.set("formattingSymbols", !this.formattingSymbols);
+    public toggleFormattingMarks(): FlowEditorState {
+        return this.set("formattingMarks", !this.formattingMarks);
     }
 
     /** Undoes the most recent operation */

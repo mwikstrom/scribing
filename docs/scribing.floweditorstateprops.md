@@ -18,7 +18,7 @@ export interface FlowEditorStateProps
 |  --- | --- | --- |
 |  [caret](./scribing.floweditorstateprops.caret.md) | [TextStyle](./scribing.textstyle.md) |  |
 |  [content](./scribing.floweditorstateprops.content.md) | [FlowContent](./scribing.flowcontent.md) |  |
-|  [formattingSymbols](./scribing.floweditorstateprops.formattingsymbols.md) | boolean |  |
+|  [formattingMarks](./scribing.floweditorstateprops.formattingmarks.md) | boolean |  |
 |  [redoStack](./scribing.floweditorstateprops.redostack.md) | readonly [FlowOperation](./scribing.flowoperation.md)<!-- -->\[\] |  |
 |  [selection](./scribing.floweditorstateprops.selection.md) | [FlowSelection](./scribing.flowselection.md) \| null |  |
 |  [theme](./scribing.floweditorstateprops.theme.md) | [FlowTheme](./scribing.flowtheme.md) |  |
