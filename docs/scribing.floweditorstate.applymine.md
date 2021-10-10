@@ -9,7 +9,7 @@ Gets a new flow editor state, based on the current state, and with the specified
 <b>Signature:</b>
 
 ```typescript
-applyMine(operation: FlowOperation): FlowEditorState;
+applyMine(operation: FlowOperation, options?: ApplyMineOptions): FlowEditorState;
 ```
 
 ## Parameters
@@ -17,6 +17,7 @@ applyMine(operation: FlowOperation): FlowEditorState;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  operation | [FlowOperation](./scribing.flowoperation.md) | The operation to apply |
+|  options | [ApplyMineOptions](./scribing.applymineoptions.md) | Optional options that control how the operation is applied. |
 
 <b>Returns:</b>
 

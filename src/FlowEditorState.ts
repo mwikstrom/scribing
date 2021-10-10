@@ -123,6 +123,14 @@ const propsToData = (props: FlowEditorStateProps): FlowEditorStateData => {
 export const FlowEditorStateBase = RecordClass(PropsType, Object, DataType, propsToData);
 
 /**
+ * Options for the {@link FlowEditorState.applyMine} method
+ * @public
+ */
+export interface ApplyMineOptions {
+    keepSelection?: boolean;
+}
+
+/**
  * Immutable state record for a flow content editor
  * @public
  * @sealed
@@ -204,19 +212,19 @@ export class FlowEditorState extends FlowEditorStateBase {
      * Gets a new flow editor state, based on the current state, and with the specified
      * operation applied.
      * @param operation - The operation to apply
-     * @param theme - Theme of the flow content
+     * @param options - Optional options that control how the operation is applied.
      */
     public applyMine(
         @type(lazyType(FlowOperationRegistry.close)) operation: FlowOperation,
+            options?: ApplyMineOptions,
     ): FlowEditorState {
-        return this.#apply(operation, true);
+        return this.#apply(operation, true, options);
     }
 
     /**
      * Gets a new flow editor state, based on the current state, and with the specified
      * operation applied.
      * @param operation - The operation to apply
-     * @param theme - Theme of the flow content
      */
     public applyTheirs(
         @type(lazyType(FlowOperationRegistry.close)) operation: FlowOperation,
@@ -241,9 +249,15 @@ export class FlowEditorState extends FlowEditorStateBase {
         return operation ? this.#apply(operation, "redo") : this;
     }
 
-    #apply(operation: FlowOperation, mine: boolean | "undo" | "redo"): FlowEditorState {
+    #apply(
+        operation: FlowOperation,
+        mine: boolean | "undo" | "redo",
+        options: ApplyMineOptions = {},
+    ): FlowEditorState {
+        const { keepSelection } = options;
         const content = operation.applyToContent(this.content, this.theme);
-        const selection = this.selection ? operation.applyToSelection(this.selection, !!mine) : null;
+        const selection = keepSelection ? this.selection : 
+            this.selection ? operation.applyToSelection(this.selection, !!mine) : null;
         const caret = !mine && selection ? this.caret : TextStyle.empty;
         let undoStack: readonly FlowOperation[];
         let redoStack: readonly FlowOperation[];

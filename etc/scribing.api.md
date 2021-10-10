@@ -10,6 +10,12 @@ import { RecordConstructor } from 'paratype';
 import { RecordObject } from 'paratype';
 import { Type } from 'paratype';
 
+// @public
+export interface ApplyMineOptions {
+    // (undocumented)
+    keepSelection?: boolean;
+}
+
 // @public @sealed
 export class DefaultFlowTheme extends DefaultFlowThemeBase {
     constructor();
@@ -220,7 +226,7 @@ export class FlowCursor {
 
 // @public @sealed
 export class FlowEditorState extends FlowEditorStateBase {
-    applyMine(operation: FlowOperation): FlowEditorState;
+    applyMine(operation: FlowOperation, options?: ApplyMineOptions): FlowEditorState;
     applyTheirs(operation: FlowOperation): FlowEditorState;
     static readonly classType: Type<FlowEditorState>;
     static get empty(): FlowEditorState;

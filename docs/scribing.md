@@ -50,6 +50,7 @@ Model for collaborative rich text editing
 
 |  Interface | Description |
 |  --- | --- |
+|  [ApplyMineOptions](./scribing.applymineoptions.md) | Options for the [FlowEditorState.applyMine()](./scribing.floweditorstate.applymine.md) method |
 |  [DynamicTextData](./scribing.dynamictextdata.md) | Data of line break nodes |
 |  [DynamicTextProps](./scribing.dynamictextprops.md) | Properties of [DynamicText](./scribing.dynamictext.md) |
 |  [EditButtonData](./scribing.editbuttondata.md) | Data of [EditButton](./scribing.editbutton.md) |
