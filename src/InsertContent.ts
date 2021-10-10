@@ -131,7 +131,7 @@ export class InsertContent extends InsertContentBase implements InsertContentPro
      * {@inheritDoc FlowOperation.invert}
      */
     invert(): FlowOperation | null {
-        return new RemoveRange({ range: FlowRange.at(this.position, this.content.size) });
+        return new RemoveRange({ range: FlowRange.at(this.position, this.content.size).reverse() });
     }
 
     /**
