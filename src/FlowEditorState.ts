@@ -276,7 +276,7 @@ export class FlowEditorState extends FlowEditorStateBase {
                 undoStack = this.undoStack;
             } else {
                 const merged = options.mergeUndo && this.undoStack.length > 0 ?
-                    this.undoStack[0].mergeNext(inverted) :
+                    inverted.mergeNext(this.undoStack[0]) :
                     null;
 
                 const keep = merged !== null ? 
