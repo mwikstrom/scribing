@@ -107,6 +107,17 @@ export class SetButtonAction extends SetButtonActionBase implements SetButtonAct
     }
 
     /**
+     * {@inheritdoc FlowOperation.mergeNext}
+     */
+    mergeNext(next: FlowOperation): FlowOperation | null {
+        if (next instanceof SetButtonAction && next.position === this.position) {
+            return this.set("action", next.action);
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * {@inheritDoc FlowOperation.transform}
      * @override
      */

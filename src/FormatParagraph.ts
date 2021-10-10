@@ -103,6 +103,17 @@ export class FormatParagraph extends FormatParagraphBase implements Readonly<For
     }
 
     /**
+     * {@inheritdoc FlowOperation.mergeNext}
+     */
+    mergeNext(next: FlowOperation): FlowOperation | null {
+        if (next instanceof FormatParagraph && this.range.equals(next.range)) {
+            return this.set("style", this.style.merge(next.style));
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * {@inheritDoc FlowOperation.transform}
      * @override
      */

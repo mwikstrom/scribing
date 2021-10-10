@@ -135,6 +135,17 @@ export class InsertContent extends InsertContentBase implements InsertContentPro
     }
 
     /**
+     * {@inheritdoc FlowOperation.mergeNext}
+     */
+    mergeNext(next: FlowOperation): FlowOperation | null {
+        if (next instanceof InsertContent && next.position === this.position + this.content.size) {
+            return this.set("content", FlowContent.fromData([...this.content.nodes, ...next.content.nodes]));
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * {@inheritDoc FlowOperation.toData}
      */
     toData(): InsertContentData {

@@ -103,6 +103,17 @@ export class FormatText extends FormatTextBase implements Readonly<FormatTextPro
     }
 
     /**
+     * {@inheritdoc FlowOperation.mergeNext}
+     */
+    mergeNext(next: FlowOperation): FlowOperation | null {
+        if (next instanceof FormatText && this.range.equals(next.range)) {
+            return this.set("style", this.style.merge(next.style));
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * {@inheritDoc FlowOperation.transform}
      * @override
      */

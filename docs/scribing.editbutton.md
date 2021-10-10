@@ -29,4 +29,5 @@ export declare class EditButton extends EditButtonBase implements EditButtonProp
 |  [createReplacementNode(content, before)](./scribing.editbutton.createreplacementnode.md) |  | Creates a replacement node |
 |  [fromData(data)](./scribing.editbutton.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
 |  [getInnerContentFromNode(node)](./scribing.editbutton.getinnercontentfromnode.md) |  | Gets the inner content |
+|  [mergeNext(next)](./scribing.editbutton.mergenext.md) |  | Returns an operation that keeps the intention of the current operation and the specified subsequent operation as they were performed as an atomic operation. |
 

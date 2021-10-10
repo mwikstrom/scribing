@@ -81,6 +81,21 @@ export class RemoveRange extends RemoveRangeBase implements Readonly<RemoveRange
     }
 
     /**
+     * {@inheritdoc FlowOperation.mergeNext}
+     */
+    mergeNext(next: FlowOperation): FlowOperation | null {
+        if (
+            next instanceof RemoveRange &&
+            this.range.isBackward === next.range.isBackward &&
+            this.range.first === next.range.anchor
+        ) {
+            return this.set("range", this.range.inflate(next.range.size));
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * {@inheritDoc FlowOperation.transform}
      * @override
      */

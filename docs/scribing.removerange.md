@@ -32,5 +32,6 @@ export declare class RemoveRange extends RemoveRangeBase implements Readonly<Rem
 |  [applyToSelection(selection, mine)](./scribing.removerange.applytoselection.md) |  | Applies the current operation on the specified selection and returns the updated result. |
 |  [fromData(data)](./scribing.removerange.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
 |  [invert(content)](./scribing.removerange.invert.md) |  | Returns an operation that negates the effect of the current operation. |
+|  [mergeNext(next)](./scribing.removerange.mergenext.md) |  | Returns an operation that keeps the intention of the current operation and the specified subsequent operation as they were performed as an atomic operation. |
 |  [transform(other)](./scribing.removerange.transform.md) |  | Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation. |
 

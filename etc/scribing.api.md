@@ -13,7 +13,7 @@ import { Type } from 'paratype';
 // @public
 export interface ApplyMineOptions {
     // (undocumented)
-    keepSelection?: boolean;
+    mergeUndo?: boolean;
 }
 
 // @public @sealed
@@ -55,6 +55,7 @@ export class EditButton extends EditButtonBase implements EditButtonProps {
     createReplacementNode(content: FlowContent, before: FlowNode): FlowNode;
     static fromData(data: EditButtonData): EditButton;
     getInnerContentFromNode(node: FlowNode): FlowContent;
+    mergeNext(next: FlowOperation): FlowOperation | null;
 }
 
 // @public
@@ -85,6 +86,7 @@ export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps>
     static fromArray(operations: FlowOperation[]): FlowOperation | null;
     static fromData(data: FlowBatchData): FlowBatch;
     invert(content: FlowContent): FlowOperation | null;
+    mergeNext(next: FlowOperation): FlowOperation | null;
     transform(other: FlowOperation): FlowOperation | null;
 }
 
@@ -296,6 +298,7 @@ export abstract class FlowOperation {
     static readonly baseType: Type<FlowOperation>;
     static fromJsonValue(value: JsonValue): FlowOperation;
     abstract invert(content: FlowContent): FlowOperation | null;
+    abstract mergeNext(next: FlowOperation): FlowOperation | null;
     abstract toData(): unknown;
     toJsonValue(): JsonValue;
     abstract transform(other: FlowOperation): FlowOperation | null;
@@ -416,6 +419,7 @@ export class FormatParagraph extends FormatParagraphBase implements Readonly<For
     static fromData(data: FormatParagraphData): FormatParagraph;
     // @override
     invert(content: FlowContent): FlowOperation | null;
+    mergeNext(next: FlowOperation): FlowOperation | null;
     // @override
     transform(other: FlowOperation): FlowOperation | null;
 }
@@ -446,6 +450,7 @@ export class FormatText extends FormatTextBase implements Readonly<FormatTextPro
     static fromData(data: FormatTextData): FormatText;
     // @override
     invert(content: FlowContent): FlowOperation | null;
+    mergeNext(next: FlowOperation): FlowOperation | null;
     // @override
     transform(other: FlowOperation): FlowOperation | null;
 }
@@ -489,6 +494,7 @@ export class InsertContent extends InsertContentBase implements InsertContentPro
     static readonly classType: Type<InsertContent>;
     static fromData(data: InsertContentData): InsertContent;
     invert(): FlowOperation | null;
+    mergeNext(next: FlowOperation): FlowOperation | null;
     toData(): InsertContentData;
     transform(other: FlowOperation): FlowOperation | null;
     // @internal
@@ -781,6 +787,7 @@ export class RemoveRange extends RemoveRangeBase implements Readonly<RemoveRange
     static fromData(data: RemoveRangeData): RemoveRange;
     // @override
     invert(content: FlowContent): InsertContent;
+    mergeNext(next: FlowOperation): FlowOperation | null;
     // @override
     transform(other: FlowOperation): FlowOperation | null;
 }
@@ -823,6 +830,7 @@ export class SetButtonAction extends SetButtonActionBase implements SetButtonAct
     static fromData(data: SetButtonActionData): SetButtonAction;
     // @override
     invert(content: FlowContent): FlowOperation | null;
+    mergeNext(next: FlowOperation): FlowOperation | null;
     // @override
     transform(other: FlowOperation): FlowOperation | null;
 }
@@ -855,6 +863,7 @@ export class SetDynamicTextExpression extends SetDynamicTextExpressionBase imple
     static fromData(data: SetDynamicTextExpressionData): SetDynamicTextExpression;
     // @override
     invert(content: FlowContent): FlowOperation | null;
+    mergeNext(next: FlowOperation): FlowOperation | null;
     // @override
     transform(other: FlowOperation): FlowOperation | null;
 }
@@ -996,6 +1005,7 @@ export class UnformatParagraph extends UnformatParagraphBase implements Readonly
     static fromData(data: UnformatParagraphData): UnformatParagraph;
     // @override
     invert(content: FlowContent): FlowOperation | null;
+    mergeNext(next: FlowOperation): FlowOperation | null;
     // @override
     transform(other: FlowOperation): FlowOperation | null;
 }
@@ -1026,6 +1036,7 @@ export class UnformatText extends UnformatTextBase implements Readonly<UnformatT
     static fromData(data: UnformatTextData): UnformatText;
     // @override
     invert(content: FlowContent): FlowOperation | null;
+    mergeNext(next: FlowOperation): FlowOperation | null;
     // @override
     transform(other: FlowOperation): FlowOperation | null;
 }

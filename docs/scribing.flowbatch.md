@@ -39,5 +39,6 @@ export declare class FlowBatch extends FlowBatchBase implements Readonly<FlowBat
 |  [fromArray(operations)](./scribing.flowbatch.fromarray.md) | <code>static</code> | Gets a single operation that represents the specified array of operations, or <code>null</code> when the specified array is empty. |
 |  [fromData(data)](./scribing.flowbatch.fromdata.md) | <code>static</code> | Gets a [FlowBatch](./scribing.flowbatch.md) from the specified data |
 |  [invert(content)](./scribing.flowbatch.invert.md) |  | Returns an operation that negates the effect of the current operation. |
+|  [mergeNext(next)](./scribing.flowbatch.mergenext.md) |  | Returns an operation that keeps the intention of the current operation and the specified subsequent operation as they were performed as an atomic operation. |
 |  [transform(other)](./scribing.flowbatch.transform.md) |  | Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation. |
 

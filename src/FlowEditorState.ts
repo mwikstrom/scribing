@@ -127,7 +127,7 @@ export const FlowEditorStateBase = RecordClass(PropsType, Object, DataType, prop
  * @public
  */
 export interface ApplyMineOptions {
-    keepSelection?: boolean;
+    mergeUndo?: boolean;
 }
 
 /**
@@ -254,10 +254,8 @@ export class FlowEditorState extends FlowEditorStateBase {
         mine: boolean | "undo" | "redo",
         options: ApplyMineOptions = {},
     ): FlowEditorState {
-        const { keepSelection } = options;
         const content = operation.applyToContent(this.content, this.theme);
-        const selection = keepSelection ? this.selection : 
-            this.selection ? operation.applyToSelection(this.selection, !!mine) : null;
+        const selection = this.selection ? operation.applyToSelection(this.selection, !!mine) : null;
         const caret = !mine && selection ? this.caret : TextStyle.empty;
         let undoStack: readonly FlowOperation[];
         let redoStack: readonly FlowOperation[];
@@ -272,10 +270,22 @@ export class FlowEditorState extends FlowEditorStateBase {
                 ...this.redoStack.slice(0, MAX_UNDO_LENGTH - 1)
             ]));
         } else {
-            undoStack = Object.freeze(filterNotNull([
-                operation.invert(this.content),
-                ...this.undoStack.slice(0, MAX_UNDO_LENGTH - 1)
-            ]));
+            const inverted = operation.invert(this.content);
+
+            if (inverted === null) {
+                undoStack = this.undoStack;
+            } else {
+                const merged = options.mergeUndo && this.undoStack.length > 0 ?
+                    this.undoStack[0].mergeNext(inverted) :
+                    null;
+
+                const keep = merged !== null ? 
+                    this.undoStack.slice(1) : 
+                    this.undoStack.slice(0, MAX_UNDO_LENGTH - 1);
+
+                undoStack = Object.freeze([merged ?? inverted, ...keep]);
+            }
+
             if (mine === "redo" && operation === this.redoStack[0]) {
                 redoStack = Object.freeze(this.redoStack.slice(1));
             } else {

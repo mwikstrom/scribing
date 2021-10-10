@@ -105,6 +105,17 @@ export class SetDynamicTextExpression extends SetDynamicTextExpressionBase imple
     }
 
     /**
+     * {@inheritdoc FlowOperation.mergeNext}
+     */
+    mergeNext(next: FlowOperation): FlowOperation | null {
+        if (next instanceof SetDynamicTextExpression && next.position === this.position) {
+            return this.set("expression", next.expression);
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * {@inheritDoc FlowOperation.transform}
      * @override
      */

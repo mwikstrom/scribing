@@ -107,6 +107,33 @@ export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps>
         return this.set("operations", Object.freeze(newOperations));
     }
 
+    /**
+     * {@inheritdoc FlowOperation.mergeNext}
+     */
+    mergeNext(next: FlowOperation): FlowOperation | null {
+        if (next instanceof FlowBatch && next.operations.length === 0) {
+            return this;
+        }
+
+        if (this.operations.length === 0) {
+            return next;
+        }
+
+        const last = this.operations[this.operations.length - 1];
+        const merged = last.mergeNext(next);
+
+        if (merged === null) {
+            return null;
+        }
+
+        const newOperations = [
+            ...this.operations.slice(0, this.operations.length - 1),
+            merged,
+        ];
+
+        return this.set("operations", Object.freeze(newOperations));
+    }
+
     /** 
      * {@inheritDoc FlowOperation.transform}
      */

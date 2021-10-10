@@ -16,5 +16,5 @@ export interface ApplyMineOptions
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [keepSelection?](./scribing.applymineoptions.keepselection.md) | boolean | <i>(Optional)</i> |
+|  [mergeUndo?](./scribing.applymineoptions.mergeundo.md) | boolean | <i>(Optional)</i> |
 

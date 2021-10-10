@@ -101,6 +101,17 @@ export class UnformatText extends UnformatTextBase implements Readonly<UnformatT
     }
 
     /**
+     * {@inheritdoc FlowOperation.mergeNext}
+     */
+    mergeNext(next: FlowOperation): FlowOperation | null {
+        if (next instanceof UnformatText && this.range.equals(next.range)) {
+            return this.set("style", this.style.merge(next.style));
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * {@inheritDoc FlowOperation.transform}
      * @override
      */

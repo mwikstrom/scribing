@@ -105,6 +105,17 @@ export class UnformatParagraph extends UnformatParagraphBase implements Readonly
     }
 
     /**
+     * {@inheritdoc FlowOperation.mergeNext}
+     */
+    mergeNext(next: FlowOperation): FlowOperation | null {
+        if (next instanceof UnformatParagraph && this.range.equals(next.range)) {
+            return this.set("style", this.style.merge(next.style));
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * {@inheritDoc FlowOperation.transform}
      * @override
      */

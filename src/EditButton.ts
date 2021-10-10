@@ -87,6 +87,19 @@ export class EditButton extends EditButtonBase implements EditButtonProps {
         return new EditButton(props);
     }
 
+    /**
+     * {@inheritdoc FlowOperation.mergeNext}
+     */
+    mergeNext(next: FlowOperation): FlowOperation | null {
+        if (next instanceof EditButton && next.position === this.position) {
+            const merged = this.inner.mergeNext(next.inner);
+            if (merged !== null) {
+                return this.set("inner", merged);
+            }
+        }
+        return null;
+    }
+
     /** 
      * {@inheritDoc NestedFlowOperation.createReplacementNode}
      */

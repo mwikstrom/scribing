@@ -28,6 +28,17 @@ export abstract class FlowOperation {
     abstract invert(content: FlowContent): FlowOperation | null;
 
     /**
+     * Returns an operation that keeps the intention of the current operation and the specified subsequent
+     * operation as they were performed as an atomic operation.
+     * @param next - The next operation to be merged
+     * @remarks
+     * Although a batch operation can fulfill the purpose of keeping the intent of both operations, the
+     * idea is that this method shall NOT return a batch, but only return a non-null result when the
+     * current operation can be rewritten to include the intention of the subsequent operation too.
+     */
+    abstract mergeNext(next: FlowOperation): FlowOperation | null;
+
+    /**
      * Transforms the specified operation to with respect to change implied by the current operation so that
      * the intent of the operation is retained when it is applied after the current operation.
      * 
