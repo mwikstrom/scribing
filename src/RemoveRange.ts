@@ -89,7 +89,7 @@ export class RemoveRange extends RemoveRangeBase implements Readonly<RemoveRange
             this.range.isBackward === next.range.isBackward &&
             this.range.first === next.range.anchor
         ) {
-            return this.set("range", this.range.inflate(next.range.size));
+            return this.set("range", next.range.inflate(this.range.size));
         } else {
             return null;
         }
