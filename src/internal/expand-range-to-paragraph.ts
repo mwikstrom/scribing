@@ -23,34 +23,21 @@ export function expandRangeToParagraph(
     content: FlowContent,
     insertStyle?: ParagraphStyle,
 ): FlowRange | InsertContent {
-    let foundBreak = false;
+    // Check if the specified range ends with a paragraph break
+    let endsWithBreak = range.size > 0 && content.peek(range.last - 1).node instanceof ParagraphBreak;
 
-    // Check if there's a paragraph break in the selected range
-    if (range.size > 0) {
-        for (const node of content.peek(range.first).range(range.size)) {
-            if (node instanceof ParagraphBreak) {
-                foundBreak = true;
-                break;
-            }
-        }
-    }
-
-    if (foundBreak) {
-        return range;
-    }
-
-    // If we didn't find a paragraph break, then we'll try to expand the range
+    // If it doesn't end with a paragraph break, then we'll try to expand the range
     // to include the closest following paragraph break.
     let delta = 0;
     for (const node of content.peek(range.last).after) {
         delta += node.size;
         if (node instanceof ParagraphBreak) {
-            foundBreak = true;
+            endsWithBreak = true;
             break;
         }
     }
 
-    if (foundBreak) {
+    if (endsWithBreak) {
         // We found a break. Inflate range.
         return range.inflate(delta);
     }
