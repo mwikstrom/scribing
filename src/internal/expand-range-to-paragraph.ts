@@ -5,11 +5,24 @@ import { ParagraphBreak } from "../ParagraphBreak";
 import { ParagraphStyle } from "../ParagraphStyle";
 
 /** @internal */
-export const expandRangeToParagraph = (
+export function expandRangeToParagraph(
     range: FlowRange,
     content: FlowContent,
-    insertStyle: ParagraphStyle = ParagraphStyle.empty,
-): FlowRange | InsertContent => {
+): FlowRange;
+
+/** @internal */
+export function expandRangeToParagraph(
+    range: FlowRange,
+    content: FlowContent,
+    insertStyle: ParagraphStyle,
+): FlowRange | InsertContent;
+
+/** @internal */
+export function expandRangeToParagraph(
+    range: FlowRange,
+    content: FlowContent,
+    insertStyle?: ParagraphStyle,
+): FlowRange | InsertContent {
     let foundBreak = false;
 
     // Check if there's a paragraph break in the selected range
@@ -44,10 +57,15 @@ export const expandRangeToParagraph = (
 
     // We didn't find a break, so this is a trailing paragraph.
     // To format it we need to append a styled paragraph break!
+
+    if (!insertStyle) {
+        return range;
+    }
+
     return new InsertContent({
         position: range.last + delta,
         content: FlowContent.fromData([
             new ParagraphBreak({ style: insertStyle }),
         ]),
     });
-};
+}

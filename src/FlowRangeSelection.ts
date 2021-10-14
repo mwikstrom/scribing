@@ -72,7 +72,8 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
         theme?: FlowTheme,
         diff?: Set<keyof ParagraphStyleProps>,
     ): ParagraphStyle {
-        const { first, size } = this.range;
+        const range = expandRangeToParagraph(this.range, content);
+        const { first, size } = range;
         const cursor = content.peek(first);
         let paraStyle = cursor.getParagraphStyle() ?? ParagraphStyle.empty;
         let paraTheme = theme?.getParagraphTheme(paraStyle?.variant ?? "normal");
