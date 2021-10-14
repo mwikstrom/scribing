@@ -9,7 +9,7 @@ The run-time type that represents this class
 <b>Signature:</b>
 
 ```typescript
-static readonly classType: import("paratype").Type<import("paratype").RecordObject<Partial<{
+static readonly classType: Type<import("paratype").RecordObject<Partial<{
         bold: boolean;
         italic: boolean;
         underline: boolean;
@@ -18,7 +18,7 @@ static readonly classType: import("paratype").Type<import("paratype").RecordObje
         fontFamily: "body" | "heading" | "monospace";
         fontSize: number;
         link: Interaction | null;
-        color: "default" | "primary" | "secondary" | "warning" | "error" | "information" | "success" | "subtle";
+        color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
     }>, Partial<{
         bold: boolean;
         italic: boolean;
@@ -28,7 +28,7 @@ static readonly classType: import("paratype").Type<import("paratype").RecordObje
         fontFamily: "body" | "heading" | "monospace";
         fontSize: number;
         link: Interaction | null;
-        color: "default" | "primary" | "secondary" | "warning" | "error" | "information" | "success" | "subtle";
+        color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
     }>> & import("paratype").Equatable & Readonly<Partial<{
         bold: boolean;
         italic: boolean;
@@ -38,6 +38,6 @@ static readonly classType: import("paratype").Type<import("paratype").RecordObje
         fontFamily: "body" | "heading" | "monospace";
         fontSize: number;
         link: Interaction | null;
-        color: "default" | "primary" | "secondary" | "warning" | "error" | "information" | "success" | "subtle";
+        color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
     }>> & TextStyle>;
 ```

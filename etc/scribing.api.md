@@ -890,6 +890,15 @@ export interface TargetOptions {
     theme?: FlowTheme;
 }
 
+// @public
+export const TEXT_COLORS: readonly ["default", "subtle", "primary", "secondary", "information", "success", "warning", "error"];
+
+// @public
+export type TextColor = (typeof TEXT_COLORS)[number];
+
+// @public
+export const TextColorType: Type<TextColor>;
+
 // @public @sealed
 export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
     constructor(props?: TextRunProps);
@@ -931,7 +940,7 @@ export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps>
     fontFamily: "body" | "heading" | "monospace";
     fontSize: number;
     link: Interaction | null;
-    color: "default" | "primary" | "secondary" | "warning" | "error" | "information" | "success" | "subtle";
+    color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
     }>, Partial<{
     bold: boolean;
     italic: boolean;
@@ -941,17 +950,17 @@ export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps>
     fontFamily: "body" | "heading" | "monospace";
     fontSize: number;
     link: Interaction | null;
-    color: "default" | "primary" | "secondary" | "warning" | "error" | "information" | "success" | "subtle";
+    color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
     }>> & Equatable & Readonly<Partial<{
-    bold: boolean;
-    italic: boolean;
-    underline: boolean;
-    strike: boolean;
-    baseline: "normal" | "sub" | "super";
-    fontFamily: "body" | "heading" | "monospace";
-    fontSize: number;
-    link: Interaction | null;
-    color: "default" | "primary" | "secondary" | "warning" | "error" | "information" | "success" | "subtle";
+        bold: boolean;
+        italic: boolean;
+        underline: boolean;
+        strike: boolean;
+        baseline: "normal" | "sub" | "super";
+        fontFamily: "body" | "heading" | "monospace";
+        fontSize: number;
+        link: Interaction | null;
+        color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
     }>> & TextStyle>;
     static get empty(): TextStyle;
     get isEmpty(): boolean;
@@ -967,7 +976,7 @@ baseline: "normal" | "sub" | "super";
 fontFamily: "body" | "heading" | "monospace";
 fontSize: number;
 link: Interaction | null;
-color: "default" | "primary" | "secondary" | "warning" | "error" | "information" | "success" | "subtle";
+color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
 }>, Object, Partial<{
 bold: boolean;
 italic: boolean;
@@ -977,14 +986,14 @@ baseline: "normal" | "sub" | "super";
 fontFamily: "body" | "heading" | "monospace";
 fontSize: number;
 link: Interaction | null;
-color: "default" | "primary" | "secondary" | "warning" | "error" | "information" | "success" | "subtle";
+color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
 }>>;
 
 // @public
 export interface TextStyleProps {
     baseline?: "normal" | "sub" | "super";
     bold?: boolean;
-    color?: "default" | "primary" | "secondary" | "warning" | "error" | "information" | "success" | "subtle";
+    color?: TextColor;
     fontFamily?: "body" | "heading" | "monospace";
     fontSize?: number;
     italic?: boolean;

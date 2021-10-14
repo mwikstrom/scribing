@@ -18,7 +18,7 @@ TextStyleBase: import("paratype").RecordConstructor<Partial<{
     fontFamily: "body" | "heading" | "monospace";
     fontSize: number;
     link: Interaction | null;
-    color: "default" | "primary" | "secondary" | "warning" | "error" | "information" | "success" | "subtle";
+    color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
 }>, Object, Partial<{
     bold: boolean;
     italic: boolean;
@@ -28,6 +28,6 @@ TextStyleBase: import("paratype").RecordConstructor<Partial<{
     fontFamily: "body" | "heading" | "monospace";
     fontSize: number;
     link: Interaction | null;
-    color: "default" | "primary" | "secondary" | "warning" | "error" | "information" | "success" | "subtle";
+    color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
 }>>
 ```

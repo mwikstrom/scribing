@@ -122,6 +122,8 @@ Model for collaborative rich text editing
 |  [RunScriptBase](./scribing.runscriptbase.md) | The base record class for [RunScript](./scribing.runscript.md) |
 |  [SetButtonActionBase](./scribing.setbuttonactionbase.md) | The base record class for [SetButtonAction](./scribing.setbuttonaction.md) |
 |  [SetDynamicTextExpressionBase](./scribing.setdynamictextexpressionbase.md) | The base record class for [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
+|  [TEXT\_COLORS](./scribing.text_colors.md) | Read-only array that contains all text colors |
+|  [TextColorType](./scribing.textcolortype.md) | The run-time type that matches text color values |
 |  [TextRunBase](./scribing.textrunbase.md) | The base record class for [TextRun](./scribing.textrun.md) |
 |  [TextStyleBase](./scribing.textstylebase.md) | The base record class for [TextStyle](./scribing.textstyle.md) |
 |  [UnformatParagraphBase](./scribing.unformatparagraphbase.md) | The base record class for [UnformatParagraph](./scribing.unformatparagraph.md) |
@@ -136,5 +138,6 @@ Model for collaborative rich text editing
 |  [FlowRangeTuple](./scribing.flowrangetuple.md) | Data for a [FlowRange](./scribing.flowrange.md) represented by a tuple where the first value is the anchor position and the second value is the focus position. |
 |  [ListMarkerKind](./scribing.listmarkerkind.md) | List styles |
 |  [ParagraphStyleVariant](./scribing.paragraphstylevariant.md) | Paragraph style variant |
+|  [TextColor](./scribing.textcolor.md) | Text color |
 |  [TextRunData](./scribing.textrundata.md) | Data contract for a text run |
 
