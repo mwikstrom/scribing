@@ -86,6 +86,7 @@ class DefaultParagraphTheme extends ParagraphTheme {
         });
 
         this.#para = new ParagraphStyle({
+            variant: variant,
             alignment: "start",
             direction: "ltr",
             lineSpacing: variant === "preamble" ? 110 : 100,
