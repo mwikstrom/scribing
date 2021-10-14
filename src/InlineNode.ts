@@ -35,8 +35,14 @@ export abstract class InlineNode extends FlowNode {
      * @override
      */
     public getUniformTextStyle(theme?: ParagraphTheme): TextStyle {
+        let { style } = this;
+        
+        if (style.link && theme) {
+            style = theme.getLinkStyle().merge(style);
+        }
+
         const ambient = this.#getAmbientStyle(theme);
-        return ambient.isEmpty ? this.style : ambient.merge(this.style);
+        return ambient.isEmpty ? style : ambient.merge(style);
     }
 
     /**
