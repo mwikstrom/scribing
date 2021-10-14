@@ -117,7 +117,12 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
         
         if (size === 0) {            
             const ambient = paraTheme?.getAmbientTextStyle() ?? TextStyle.empty;
-            const style = cursor.getTextStyle() ?? TextStyle.empty;
+            let style = cursor.getTextStyle() ?? TextStyle.empty;
+
+            if (style.link && paraTheme) {
+                style = paraTheme.getLinkStyle().merge(style);
+            }
+    
             return ambient.isEmpty ? style : ambient.merge(style);
         }
 
