@@ -114,7 +114,7 @@ export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreak
 
     /** {@inheritdoc FlowNode.unformatAmbient} */
     public unformatAmbient(theme: ParagraphTheme): this {
-        return this.unformatParagraph(theme.getAmbientParagraphStyle());
+        return this.unformatParagraph(theme.getAmbientParagraphStyle().unset("variant"));
     }
 
     /** {@inheritdoc FlowNode.unformatParagraph} */
