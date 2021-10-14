@@ -89,8 +89,8 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
         let result = ParagraphStyle.empty;
         for (const node of cursor.range(size)) {
             if (node instanceof ParagraphBreak) {
-                paraStyle = cursor.getParagraphStyle() ?? ParagraphStyle.empty;
-                paraTheme = theme?.getParagraphTheme(paraStyle?.variant ?? "normal");
+                paraStyle = node.style;
+                paraTheme = theme?.getParagraphTheme(paraStyle.variant ?? "normal");
             }
             const style = node.getUniformParagraphStyle(paraTheme, diff);
             if (style) {
