@@ -26,6 +26,7 @@ export declare abstract class NestedFlowSelection extends FlowSelection
 |  --- | --- | --- |
 |  [afterInsertion(range)](./scribing.nestedflowselection.afterinsertion.md) |  | Transforms the current selection so that its intended boundary is preserved after the specified range was inserted. |
 |  [afterRemoval(range, mine)](./scribing.nestedflowselection.afterremoval.md) |  | Transforms the current selection so that its intended boundary is preserved after the specified range was inserted. |
+|  [formatList(content, kind)](./scribing.nestedflowselection.formatlist.md) |  | Creates an operation that applies the specified list format to the current selection. |
 |  [formatParagraph(style, options)](./scribing.nestedflowselection.formatparagraph.md) |  | Creates an operation that applies the specified paragraph style on the current selection |
 |  [formatText(style, options)](./scribing.nestedflowselection.formattext.md) |  | Creates an operation that applies the specified text style on the current selection |
 |  [getInnerContent(outer)](./scribing.nestedflowselection.getinnercontent.md) |  | Gets the inner content |

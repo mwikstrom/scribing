@@ -29,6 +29,7 @@ export declare class FlowRangeSelection extends FlowRangeSelectionBase implement
 |  --- | --- | --- |
 |  [afterInsertion(range, mine)](./scribing.flowrangeselection.afterinsertion.md) |  | Transforms the current selection so that its intended boundary is preserved after the specified range was inserted. |
 |  [afterRemoval(range, mine)](./scribing.flowrangeselection.afterremoval.md) |  | Transforms the current selection so that its intended boundary is preserved after the specified range was inserted. |
+|  [formatList(content, kind)](./scribing.flowrangeselection.formatlist.md) |  | Creates an operation that applies the specified list format to the current selection. |
 |  [formatParagraph(style, options)](./scribing.flowrangeselection.formatparagraph.md) |  | Creates an operation that applies the specified paragraph style on the current selection |
 |  [formatText(style)](./scribing.flowrangeselection.formattext.md) |  | Creates an operation that applies the specified text style on the current selection |
 |  [getUniformParagraphStyle(content, theme, diff)](./scribing.flowrangeselection.getuniformparagraphstyle.md) |  | Gets the uniform paragraph style of the current selection |

@@ -111,6 +111,17 @@ export abstract class NestedFlowSelection extends FlowSelection {
     }
 
     /**
+     * {@inheritDoc FlowSelection.formatList}
+     * @override
+     */
+    public formatList(content: FlowContent, kind: "ordered" | "unordered" | null): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerContent = this.getInnerContent(content);
+        const innerOperation = innerSelection.formatList(innerContent, kind);
+        return this.#wrapOperation(innerOperation);
+    }
+
+    /**
      * {@inheritDoc FlowSelection.formatParagraph}
      * @override
      */

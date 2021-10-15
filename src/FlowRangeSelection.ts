@@ -1,4 +1,5 @@
 import { frozen, lazyType, RecordClass, recordClassType, recordType, RecordType, type, validating } from "paratype";
+import { OrderedListMarkerKindType } from ".";
 import { FlowBatch } from "./FlowBatch";
 import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
@@ -16,7 +17,7 @@ import { splitRangeByUniformParagraphStyle } from "./internal/split-range-by-par
 import { transformRangeAfterInsertion, transformRangeAfterRemoval } from "./internal/transform-helpers";
 import { filterNotNull, mapNotNull } from "./internal/utils";
 import { ParagraphBreak } from "./ParagraphBreak";
-import { ParagraphStyle, ParagraphStyleProps } from "./ParagraphStyle";
+import { ParagraphStyle, ParagraphStyleProps, UnorderedListMarkerKindType } from "./ParagraphStyle";
 import { RemoveRange } from "./RemoveRange";
 import { TextStyle, TextStyleProps } from "./TextStyle";
 import { UnformatParagraph } from "./UnformatParagraph";
@@ -147,6 +148,55 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
         return result;
     }
  
+    /**
+     * {@inheritDoc FlowSelection.formatList}
+     * @override
+     */
+    public formatList(content: FlowContent, kind: "ordered" | "unordered" | null): FlowOperation | null {
+        const { range } = this;
+        const insertionStyle = kind === null ? null : ParagraphStyle.empty.merge({
+            listLevel: 1,
+            listMarker: kind,
+        });
+
+        const expanded = expandRangeToParagraph(range, content, insertionStyle);
+        if (expanded instanceof FlowOperation) {
+            return expanded;
+        }
+
+        const splitKeys = ["hideListMarker", "listLevel", "listMarker"] as const;
+        const subRanges = splitRangeByUniformParagraphStyle(expanded, content, ...splitKeys);
+        const allMarkersHidden = subRanges.every(([,{hideListMarker}]) => hideListMarker);
+        const allMarkersShown = subRanges.every(([,{hideListMarker}]) => !hideListMarker);
+
+        return FlowBatch.fromArray(mapNotNull(subRanges, ([r, {listLevel = 0, listMarker}]) => {
+            let apply = ParagraphStyle.empty;
+
+            if (listLevel > 0) {
+                if (allMarkersHidden && kind !== null) {
+                    apply = apply.set("hideListMarker", false);
+                } else if (allMarkersShown && kind === null) {
+                    apply = apply.set("hideListMarker", true);
+                }
+            } else if (kind) {
+                apply = apply.set("listLevel", 1);
+            }
+            
+            if (
+                (kind === "ordered" && !OrderedListMarkerKindType.test(listMarker)) ||
+                (kind === "unordered" && !UnorderedListMarkerKindType.test(listMarker))
+            ) {
+                apply = apply.set("listMarker", kind);
+            }
+
+            if (apply.isEmpty) {
+                return null;
+            }
+
+            return new FormatParagraph({ range: r, style: apply });
+        }));
+    }
+
     /**
      * {@inheritDoc FlowSelection.formatParagraph}
      * @override

@@ -64,6 +64,13 @@ export abstract class FlowSelection {
     }
 
     /**
+     * Creates an operation that applies the specified list format to the current selection.
+     * @param content - The selected content
+     * @param kind - The list kind to apply
+     */
+    public abstract formatList(content: FlowContent, kind: "ordered" | "unordered" | null): FlowOperation | null;
+
+    /**
      * Creates an operation that applies the specified paragraph style on the current selection
      * @param style - The style to apply
      * @param options - Options that provide operation behavior

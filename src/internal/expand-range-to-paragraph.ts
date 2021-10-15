@@ -14,14 +14,14 @@ export function expandRangeToParagraph(
 export function expandRangeToParagraph(
     range: FlowRange,
     content: FlowContent,
-    insertStyle: ParagraphStyle,
+    insertStyle: ParagraphStyle | null,
 ): FlowRange | InsertContent;
 
 /** @internal */
 export function expandRangeToParagraph(
     range: FlowRange,
     content: FlowContent,
-    insertStyle?: ParagraphStyle,
+    insertStyle: ParagraphStyle | null = null,
 ): FlowRange | InsertContent {
     // Check if the specified range ends with a paragraph break
     let endsWithBreak = range.size > 0 && content.peek(range.last - 1).node instanceof ParagraphBreak;

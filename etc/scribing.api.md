@@ -342,6 +342,8 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
     static readonly classType: Type<RecordObject<FlowRangeSelectionProps, FlowRangeSelectionProps> & Equatable & Readonly<FlowRangeSelectionProps> & FlowRangeSelection>;
     // @override
+    formatList(content: FlowContent, kind: "ordered" | "unordered" | null): FlowOperation | null;
+    // @override
     formatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
     // @override
     formatText(style: TextStyle): FlowOperation | null;
@@ -384,6 +386,7 @@ export abstract class FlowSelection {
     abstract afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
     static readonly baseType: Type<FlowSelection>;
     decrementListLevel(content: FlowContent, delta?: number): FlowOperation | null;
+    abstract formatList(content: FlowContent, kind: "ordered" | "unordered" | null): FlowOperation | null;
     abstract formatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
     abstract formatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
     static fromJsonValue(value: JsonValue): FlowSelection;
@@ -581,6 +584,8 @@ export abstract class NestedFlowSelection extends FlowSelection {
     afterInsertion(range: FlowRange): FlowSelection | null;
     // @override
     afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
+    // @override
+    formatList(content: FlowContent, kind: "ordered" | "unordered" | null): FlowOperation | null;
     // @override
     formatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
     // @override
