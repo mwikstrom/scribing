@@ -229,6 +229,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
                         return formatListLevel(
                             subrange,
                             content,
+                            current,
                             target,
                         );
                     }

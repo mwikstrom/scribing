@@ -9,18 +9,26 @@ import { mapNotNull } from "./utils";
 export const formatListLevel = (
     range: FlowRange,
     content: FlowContent,
-    level: number,
+    current: number,
+    target: number,
 ): FlowOperation | null => {
-    if (range.isCollapsed) {
+    if (range.isCollapsed || current === target) {
         return null;
+    }
+
+    let formatStyle = ParagraphStyle.empty.set("listLevel", target);
+
+    // When going from list level zero we'll hide the marker initially
+    if (current === 0) {
+        formatStyle = formatStyle.set("hideListMarker", true);
     }
 
     const formatOp = new FormatParagraph({
         range,
-        style: ParagraphStyle.empty.set("listLevel", level),
+        style: formatStyle,
     });
 
-    if (level > 0) {
+    if (target > 0) {
         return formatOp;
     }
 
@@ -37,13 +45,13 @@ export const formatListLevel = (
     const unformatOps = mapNotNull(
         splitRangeByUniformParagraphStyle(range, content, ...unformatKeys),
         ([subrange, props]) => {
-            const style = ParagraphStyle.empty.merge(props);
-            if (style.isEmpty || subrange.isCollapsed) {
+            const unformatStyle = ParagraphStyle.empty.merge(props);
+            if (unformatStyle.isEmpty || subrange.isCollapsed) {
                 return null;
             } else {
                 return new UnformatParagraph({
                     range: subrange,
-                    style,
+                    style: unformatStyle,
                 });
             }
         },

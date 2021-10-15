@@ -88,6 +88,7 @@ export const insertParaBreak = (
                 return formatListLevel(
                     FlowRange.at(splitParaCursor.position, splitPara.size),
                     target,
+                    listLevel,
                     listLevel - 1,
                 );
             }
