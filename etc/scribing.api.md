@@ -474,7 +474,7 @@ export abstract class InlineNode extends FlowNode {
     formatParagraph(): this;
     formatText(style: TextStyle): this;
     // @override
-    getUniformParagraphStyle(theme?: ParagraphTheme): ParagraphStyle | null;
+    getUniformParagraphStyle(): ParagraphStyle | null;
     // @override
     getUniformTextStyle(theme?: ParagraphTheme): TextStyle;
     abstract set(key: "style", value: TextStyle): this;
@@ -546,10 +546,10 @@ export interface LineBreakProps {
 }
 
 // @public
-export const LIST_MARKER_KINDS: readonly ["unordered", "ordered", "disc", "circle", "square", "dash", "decimal", "lower-alpha", "upper-alpha", "lower-roman", "upper-roman"];
+export const LIST_MARKER_KINDS: readonly ["ordered", "decimal", "lower-alpha", "upper-alpha", "lower-roman", "upper-roman", "unordered", "disc", "circle", "square", "dash"];
 
 // @public
-export type ListMarkerKind = (typeof LIST_MARKER_KINDS)[number];
+export type ListMarkerKind = OrderedListMarkerKind | UnorderedListMarkerKind;
 
 // @public
 export const ListMarkerKindType: Type<ListMarkerKind>;
@@ -630,6 +630,15 @@ export interface OpenUrlProps {
 }
 
 // @public
+export const ORDERED_LIST_MARKER_KINDS: readonly ["ordered", "decimal", "lower-alpha", "upper-alpha", "lower-roman", "upper-roman"];
+
+// @public
+export type OrderedListMarkerKind = (typeof ORDERED_LIST_MARKER_KINDS)[number];
+
+// @public
+export const OrderedListMarkerKindType: Type<ListMarkerKind>;
+
+// @public
 export const PARAGRAPH_STYLE_VARIANTS: readonly ["normal", "h1", "h2", "h3", "h4", "h5", "h6", "title", "subtitle", "preamble", "code"];
 
 // @public @sealed
@@ -674,7 +683,7 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
     spaceAbove: number;
     spaceBelow: number;
     listLevel: number;
-    listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
+    listMarker: ListMarkerKind;
     hideListMarker: boolean;
     listCounter: number | "auto" | "reset" | "resume";
     listCounterPrefix: string;
@@ -687,7 +696,7 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
     spaceAbove: number;
     spaceBelow: number;
     listLevel: number;
-    listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
+    listMarker: ListMarkerKind;
     hideListMarker: boolean;
     listCounter: number | "auto" | "reset" | "resume";
     listCounterPrefix: string;
@@ -700,7 +709,7 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
         spaceAbove: number;
         spaceBelow: number;
         listLevel: number;
-        listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
+        listMarker: ListMarkerKind;
         hideListMarker: boolean;
         listCounter: number | "auto" | "reset" | "resume";
         listCounterPrefix: string;
@@ -719,7 +728,7 @@ lineSpacing: number;
 spaceAbove: number;
 spaceBelow: number;
 listLevel: number;
-listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
+listMarker: ListMarkerKind;
 hideListMarker: boolean;
 listCounter: number | "auto" | "reset" | "resume";
 listCounterPrefix: string;
@@ -732,7 +741,7 @@ lineSpacing: number;
 spaceAbove: number;
 spaceBelow: number;
 listLevel: number;
-listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
+listMarker: ListMarkerKind;
 hideListMarker: boolean;
 listCounter: number | "auto" | "reset" | "resume";
 listCounterPrefix: string;
@@ -1063,5 +1072,14 @@ export interface UnformatTextProps {
     range: FlowRange;
     style: TextStyle;
 }
+
+// @public
+export const UNORDERED_LIST_MARKER_KINDS: readonly ["unordered", "disc", "circle", "square", "dash"];
+
+// @public
+export type UnorderedListMarkerKind = (typeof UNORDERED_LIST_MARKER_KINDS)[number];
+
+// @public
+export const UnorderedListMarkerKindType: Type<ListMarkerKind>;
 
 ```

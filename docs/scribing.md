@@ -111,9 +111,11 @@ Model for collaborative rich text editing
 |  [FormatTextBase](./scribing.formattextbase.md) | The base record class for [FormatText](./scribing.formattext.md) |
 |  [InsertContentBase](./scribing.insertcontentbase.md) | The base record class for [InsertContent](./scribing.insertcontent.md) |
 |  [LineBreakBase](./scribing.linebreakbase.md) | The base record class for [LineBreak](./scribing.linebreak.md) |
-|  [LIST\_MARKER\_KINDS](./scribing.list_marker_kinds.md) | Read-only array that contains all list styles |
-|  [ListMarkerKindType](./scribing.listmarkerkindtype.md) | The run-time type that matches list style values |
+|  [LIST\_MARKER\_KINDS](./scribing.list_marker_kinds.md) | Read-only array that contains all list marker styles |
+|  [ListMarkerKindType](./scribing.listmarkerkindtype.md) | The run-time type that matches all list marker style values |
 |  [OpenUrlBase](./scribing.openurlbase.md) | The base record class for [OpenUrl](./scribing.openurl.md) |
+|  [ORDERED\_LIST\_MARKER\_KINDS](./scribing.ordered_list_marker_kinds.md) | Read-only array that contains ordered list marker styles |
+|  [OrderedListMarkerKindType](./scribing.orderedlistmarkerkindtype.md) | The run-time type that matches ordered list marker style values |
 |  [PARAGRAPH\_STYLE\_VARIANTS](./scribing.paragraph_style_variants.md) | Read-only array that contains all paragraph style variants |
 |  [ParagraphBreakBase](./scribing.paragraphbreakbase.md) | The base record class for [ParagraphBreak](./scribing.paragraphbreak.md) |
 |  [ParagraphStyleBase](./scribing.paragraphstylebase.md) | The base record class for [ParagraphStyle](./scribing.paragraphstyle.md) |
@@ -128,6 +130,8 @@ Model for collaborative rich text editing
 |  [TextStyleBase](./scribing.textstylebase.md) | The base record class for [TextStyle](./scribing.textstyle.md) |
 |  [UnformatParagraphBase](./scribing.unformatparagraphbase.md) | The base record class for [UnformatParagraph](./scribing.unformatparagraph.md) |
 |  [UnformatTextBase](./scribing.unformattextbase.md) | The base record class for [UnformatText](./scribing.unformattext.md) |
+|  [UNORDERED\_LIST\_MARKER\_KINDS](./scribing.unordered_list_marker_kinds.md) | Read-only array that contains unordered list marker styles |
+|  [UnorderedListMarkerKindType](./scribing.unorderedlistmarkerkindtype.md) | The run-time type that matches unordered list marker style values |
 
 ## Type Aliases
 
@@ -136,8 +140,10 @@ Model for collaborative rich text editing
 |  [FlowBatchData](./scribing.flowbatchdata.md) | Data of [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowContentData](./scribing.flowcontentdata.md) | Flow content data is an array of [nodes](./scribing.flownode.md) |
 |  [FlowRangeTuple](./scribing.flowrangetuple.md) | Data for a [FlowRange](./scribing.flowrange.md) represented by a tuple where the first value is the anchor position and the second value is the focus position. |
-|  [ListMarkerKind](./scribing.listmarkerkind.md) | List styles |
+|  [ListMarkerKind](./scribing.listmarkerkind.md) | List marker styles |
+|  [OrderedListMarkerKind](./scribing.orderedlistmarkerkind.md) | Ordered list marker styles |
 |  [ParagraphStyleVariant](./scribing.paragraphstylevariant.md) | Paragraph style variant |
 |  [TextColor](./scribing.textcolor.md) | Text color |
 |  [TextRunData](./scribing.textrundata.md) | Data contract for a text run |
+|  [UnorderedListMarkerKind](./scribing.unorderedlistmarkerkind.md) | Unordered list marker styles |
 

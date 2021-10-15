@@ -136,23 +136,31 @@ export const PARAGRAPH_STYLE_VARIANTS = Object.freeze([
 export const ParagraphStyleVariantType: Type<ParagraphStyleVariant> = enumType(PARAGRAPH_STYLE_VARIANTS);
 
 /**
- * List styles
+ * List marker styles
  * @public
  */
-export type ListMarkerKind = (typeof LIST_MARKER_KINDS)[number];
+export type ListMarkerKind = OrderedListMarkerKind | UnorderedListMarkerKind;
+
+/**
+ * Ordered list marker styles
+ * @public
+ */
+export type OrderedListMarkerKind = (typeof ORDERED_LIST_MARKER_KINDS)[number];
+
+/**
+ * Unordered list marker styles
+ * @public
+ */
+export type UnorderedListMarkerKind = (typeof UNORDERED_LIST_MARKER_KINDS)[number];
 
 // TODO: Support hierarchical markers (useful for headings)
+
 /**
- * Read-only array that contains all list styles
+ * Read-only array that contains ordered list marker styles
  * @public
  */
-export const LIST_MARKER_KINDS = Object.freeze([
-    "unordered", // alternating: disc, circle, square
+export const ORDERED_LIST_MARKER_KINDS = Object.freeze([
     "ordered", // alternating: decimal, lower-alpha, lower-roman
-    "disc",
-    "circle",
-    "square",
-    "dash",
     "decimal",
     "lower-alpha",
     "upper-alpha",
@@ -161,7 +169,40 @@ export const LIST_MARKER_KINDS = Object.freeze([
 ] as const);
 
 /**
- * The run-time type that matches list style values
+ * Read-only array that contains unordered list marker styles
+ * @public
+ */
+export const UNORDERED_LIST_MARKER_KINDS = Object.freeze([
+    "unordered", // alternating: disc, circle, square
+    "disc",
+    "circle",
+    "square",
+    "dash",
+] as const);
+
+/**
+ * Read-only array that contains all list marker styles
+ * @public
+ */
+export const LIST_MARKER_KINDS = Object.freeze([
+    ...ORDERED_LIST_MARKER_KINDS,
+    ...UNORDERED_LIST_MARKER_KINDS,
+] as const);
+
+/**
+ * The run-time type that matches unordered list marker style values
+ * @public
+ */
+export const UnorderedListMarkerKindType: Type<ListMarkerKind> = enumType(UNORDERED_LIST_MARKER_KINDS);
+
+/**
+ * The run-time type that matches ordered list marker style values
+ * @public
+ */
+export const OrderedListMarkerKindType: Type<ListMarkerKind> = enumType(ORDERED_LIST_MARKER_KINDS);
+
+/**
+ * The run-time type that matches all list marker style values
  * @public
  */
 export const ListMarkerKindType: Type<ListMarkerKind> = enumType(LIST_MARKER_KINDS);

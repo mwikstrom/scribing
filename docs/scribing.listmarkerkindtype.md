@@ -4,7 +4,7 @@
 
 ## ListMarkerKindType variable
 
-The run-time type that matches list style values
+The run-time type that matches all list marker style values
 
 <b>Signature:</b>
 

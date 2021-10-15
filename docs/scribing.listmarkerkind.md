@@ -4,12 +4,12 @@
 
 ## ListMarkerKind type
 
-List styles
+List marker styles
 
 <b>Signature:</b>
 
 ```typescript
-export declare type ListMarkerKind = (typeof LIST_MARKER_KINDS)[number];
+export declare type ListMarkerKind = OrderedListMarkerKind | UnorderedListMarkerKind;
 ```
-<b>References:</b> [LIST\_MARKER\_KINDS](./scribing.list_marker_kinds.md)
+<b>References:</b> [OrderedListMarkerKind](./scribing.orderedlistmarkerkind.md)<!-- -->, [UnorderedListMarkerKind](./scribing.unorderedlistmarkerkind.md)
 

@@ -17,7 +17,7 @@ ParagraphStyleBase: import("paratype").RecordConstructor<Partial<{
     spaceAbove: number;
     spaceBelow: number;
     listLevel: number;
-    listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
+    listMarker: ListMarkerKind;
     hideListMarker: boolean;
     listCounter: number | "auto" | "reset" | "resume";
     listCounterPrefix: string;
@@ -30,7 +30,7 @@ ParagraphStyleBase: import("paratype").RecordConstructor<Partial<{
     spaceAbove: number;
     spaceBelow: number;
     listLevel: number;
-    listMarker: "unordered" | "ordered" | "disc" | "circle" | "square" | "dash" | "decimal" | "lower-alpha" | "upper-alpha" | "lower-roman" | "upper-roman";
+    listMarker: ListMarkerKind;
     hideListMarker: boolean;
     listCounter: number | "auto" | "reset" | "resume";
     listCounterPrefix: string;

@@ -4,10 +4,10 @@
 
 ## LIST\_MARKER\_KINDS variable
 
-Read-only array that contains all list styles
+Read-only array that contains all list marker styles
 
 <b>Signature:</b>
 
 ```typescript
-LIST_MARKER_KINDS: readonly ["unordered", "ordered", "disc", "circle", "square", "dash", "decimal", "lower-alpha", "upper-alpha", "lower-roman", "upper-roman"]
+LIST_MARKER_KINDS: readonly ["ordered", "decimal", "lower-alpha", "upper-alpha", "lower-roman", "upper-roman", "unordered", "disc", "circle", "square", "dash"]
 ```
