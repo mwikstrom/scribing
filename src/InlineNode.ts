@@ -25,9 +25,8 @@ export abstract class InlineNode extends FlowNode {
      * {@inheritDoc FlowNode.getUniformParagraphStyle}
      * @override
      */
-    public getUniformParagraphStyle(theme?: ParagraphTheme): ParagraphStyle | null {
-        const ambient = theme?.getAmbientParagraphStyle() ?? ParagraphStyle.empty;
-        return ambient;
+    public getUniformParagraphStyle(): ParagraphStyle | null {
+        return null;
     }
 
     /**
