@@ -14,7 +14,7 @@ import { formatListLevel } from "./internal/format-list-level";
 import { insertParaBreak } from "./internal/insert-para-break";
 import { splitRangeByUniformParagraphStyle } from "./internal/split-range-by-paragraph-style";
 import { transformRangeAfterInsertion, transformRangeAfterRemoval } from "./internal/transform-helpers";
-import { mapNotNull } from "./internal/utils";
+import { filterNotNull, mapNotNull } from "./internal/utils";
 import { ParagraphBreak } from "./ParagraphBreak";
 import { ParagraphStyle, ParagraphStyleProps } from "./ParagraphStyle";
 import { RemoveRange } from "./RemoveRange";
@@ -157,6 +157,16 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     ): FlowOperation | null {
         const { target: content } = options;
         const { range } = this;
+
+        // When applying the normal paragraph variant, then the intention is
+        // actually to unformat (clear) that style because the normal variant
+        // is implicitly the default variant.
+        let unformatNormal = false;
+        if (style.has("variant", "normal") && content) {
+            style = style.unset("variant");
+            unformatNormal = true;
+        }
+
         const expanded = content ? expandRangeToParagraph(range, content, style) : range;
 
         if (expanded instanceof FlowOperation) {
@@ -164,7 +174,21 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
         } else if (expanded.isCollapsed) {
             return null;
         } else {
-            return new FormatParagraph({ range: expanded, style });
+            const formatOp = style.isEmpty ? null : new FormatParagraph({ range: expanded, style });
+
+            if (!unformatNormal || !content) {
+                return formatOp;
+            }
+
+            return FlowBatch.fromArray(filterNotNull([
+                formatOp,
+                ...splitRangeByUniformParagraphStyle(expanded, content, "variant").map(
+                    ([subrange, { variant }]) => new UnformatParagraph({
+                        range: subrange,
+                        style: ParagraphStyle.empty.set("variant", variant),
+                    }),
+                )
+            ]));
         }
     }
     
