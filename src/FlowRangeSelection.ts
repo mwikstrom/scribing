@@ -183,10 +183,10 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
             return FlowBatch.fromArray(filterNotNull([
                 formatOp,
                 ...splitRangeByUniformParagraphStyle(expanded, content, "variant").map(
-                    ([subrange, { variant }]) => new UnformatParagraph({
+                    ([subrange, { variant }]) => variant ? new UnformatParagraph({
                         range: subrange,
                         style: ParagraphStyle.empty.set("variant", variant),
-                    }),
+                    }) : null,
                 )
             ]));
         }
