@@ -26,19 +26,19 @@ export class BoxStyle extends BoxStyleBase implements Readonly<BoxStyleProps> {
     variant: "basic" | "contained" | "outlined" | "alert" | "quote";
     color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
     inline: boolean;
-    condition: string | null;
+    source: string | null;
     interaction: Interaction | null;
     }>, Partial<{
     variant: "basic" | "contained" | "outlined" | "alert" | "quote";
     color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
     inline: boolean;
-    condition: string | null;
+    source: string | null;
     interaction: Interaction | null;
     }>> & Equatable & Readonly<Partial<{
         variant: "basic" | "contained" | "outlined" | "alert" | "quote";
         color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
         inline: boolean;
-        condition: string | null;
+        source: string | null;
         interaction: Interaction | null;
     }>> & BoxStyle>;
     static get empty(): BoxStyle;
@@ -50,22 +50,22 @@ export const BoxStyleBase: RecordConstructor<Partial<{
 variant: "basic" | "contained" | "outlined" | "alert" | "quote";
 color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
 inline: boolean;
-condition: string | null;
+source: string | null;
 interaction: Interaction | null;
 }>, Object, Partial<{
 variant: "basic" | "contained" | "outlined" | "alert" | "quote";
 color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
 inline: boolean;
-condition: string | null;
+source: string | null;
 interaction: Interaction | null;
 }>>;
 
 // @public
 export interface BoxStyleProps {
     color?: FlowColor;
-    condition?: string | null;
     inline?: boolean;
     interaction?: Interaction | null;
+    source?: string | null;
     variant?: BoxVariant;
 }
 

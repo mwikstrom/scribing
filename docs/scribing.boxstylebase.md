@@ -13,13 +13,13 @@ BoxStyleBase: import("paratype").RecordConstructor<Partial<{
     variant: "basic" | "contained" | "outlined" | "alert" | "quote";
     color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
     inline: boolean;
-    condition: string | null;
+    source: string | null;
     interaction: Interaction | null;
 }>, Object, Partial<{
     variant: "basic" | "contained" | "outlined" | "alert" | "quote";
     color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
     inline: boolean;
-    condition: string | null;
+    source: string | null;
     interaction: Interaction | null;
 }>>
 ```
