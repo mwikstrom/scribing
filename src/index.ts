@@ -12,6 +12,7 @@ export * from "./OpenUrl";
 export * from "./RunScript";
 
 // Styles
+export * from "./FlowColor";
 export * from "./ParagraphStyle";
 export * from "./TextStyle";
 

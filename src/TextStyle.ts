@@ -7,10 +7,10 @@ import {
     RecordClass,
     recordClassType,
     recordType,
-    Type,
     unionType,
     validating
 } from "paratype";
+import { FlowColor, FlowColorType } from "./FlowColor";
 import { Interaction } from "./Interaction";
 
 /**
@@ -61,41 +61,13 @@ export interface TextStyleProps {
     /**
      * The text's foreground color
      */
-    color?: TextColor;
+    color?: FlowColor;
 
     // TODO: by name inheritance
     // TODO: background color
     // TODO: small caps
     // TODO: language
 }
-
-/**
- * Text color
- * @public
- */
-export type TextColor = (typeof TEXT_COLORS)[number];
-
-/**
- * Read-only array that contains all text colors
- * @public
- */
-export const TEXT_COLORS = Object.freeze([
-    "default",
-    "subtle",
-    "primary",
-    "secondary",
-    "information",
-    "success",
-    "warning",
-    "error",
-] as const);
-
-/**
- * The run-time type that matches text color values
- * @public
- */
-export const TextColorType: Type<TextColor> = enumType(TEXT_COLORS);
-
 
 const Props = {
     bold: booleanType,
@@ -109,7 +81,7 @@ const Props = {
         value => value >= 10 && value <= 1000,
     ),
     link: unionType(nullType, Interaction.baseType),
-    color: TextColorType,
+    color: FlowColorType,
 };
 
 const PropsType = recordType(Props).asPartial();

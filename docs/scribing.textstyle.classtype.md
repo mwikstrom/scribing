@@ -9,7 +9,7 @@ The run-time type that represents this class
 <b>Signature:</b>
 
 ```typescript
-static readonly classType: Type<import("paratype").RecordObject<Partial<{
+static readonly classType: import("paratype").Type<import("paratype").RecordObject<Partial<{
         bold: boolean;
         italic: boolean;
         underline: boolean;

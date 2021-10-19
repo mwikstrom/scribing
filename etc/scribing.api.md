@@ -74,6 +74,9 @@ export interface EditButtonProps {
     position: number;
 }
 
+// @public
+export const FLOW_COLORS: readonly ["default", "subtle", "primary", "secondary", "information", "success", "warning", "error"];
+
 // @public @sealed
 export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps> {
     constructor(props?: FlowBatchProps);
@@ -168,6 +171,12 @@ export interface FlowButtonSelectionProps {
     // (undocumented)
     position: number;
 }
+
+// @public
+export type FlowColor = (typeof FLOW_COLORS)[number];
+
+// @public
+export const FlowColorType: Type<FlowColor>;
 
 // @public @sealed
 export class FlowContent extends FlowContentBase implements Readonly<FlowContentProps> {
@@ -904,15 +913,6 @@ export interface TargetOptions {
     theme?: FlowTheme;
 }
 
-// @public
-export const TEXT_COLORS: readonly ["default", "subtle", "primary", "secondary", "information", "success", "warning", "error"];
-
-// @public
-export type TextColor = (typeof TEXT_COLORS)[number];
-
-// @public
-export const TextColorType: Type<TextColor>;
-
 // @public @sealed
 export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
     constructor(props?: TextRunProps);
@@ -966,15 +966,15 @@ export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps>
     link: Interaction | null;
     color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
     }>> & Equatable & Readonly<Partial<{
-        bold: boolean;
-        italic: boolean;
-        underline: boolean;
-        strike: boolean;
-        baseline: "normal" | "sub" | "super";
-        fontFamily: "body" | "heading" | "monospace";
-        fontSize: number;
-        link: Interaction | null;
-        color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
+    bold: boolean;
+    italic: boolean;
+    underline: boolean;
+    strike: boolean;
+    baseline: "normal" | "sub" | "super";
+    fontFamily: "body" | "heading" | "monospace";
+    fontSize: number;
+    link: Interaction | null;
+    color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
     }>> & TextStyle>;
     static get empty(): TextStyle;
     get isEmpty(): boolean;
@@ -1007,7 +1007,7 @@ color: "default" | "subtle" | "primary" | "secondary" | "information" | "success
 export interface TextStyleProps {
     baseline?: "normal" | "sub" | "super";
     bold?: boolean;
-    color?: TextColor;
+    color?: FlowColor;
     fontFamily?: "body" | "heading" | "monospace";
     fontSize?: number;
     italic?: boolean;

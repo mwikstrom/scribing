@@ -9,5 +9,5 @@ The text's foreground color
 <b>Signature:</b>
 
 ```typescript
-color?: TextColor;
+color?: FlowColor;
 ```
