@@ -1,4 +1,4 @@
-import { DefaultFlowTheme, FlowButtonSelection, FlowContent, FlowRange, FlowRangeSelection } from "../src";
+import { DefaultFlowTheme, FlowBoxSelection, FlowContent, FlowRange, FlowRangeSelection } from "../src";
 
 describe("FlowRangeSelection", () => {
     it("can insert over existing content", () => {
@@ -357,14 +357,14 @@ describe("FlowRangeSelection", () => {
         });
     });
 
-    it("can edit button content", () => {
+    it("can edit box content", () => {
         const theme = DefaultFlowTheme.instance;
         const contentBefore = FlowContent.fromJsonValue([
             "foo",
-            { button: ["hello!"]},
+            { box: ["hello!"]},
             "bar",
         ]);
-        const selectionBefore = new FlowButtonSelection({
+        const selectionBefore = new FlowBoxSelection({
             position: 3,
             content: new FlowRangeSelection({ range: FlowRange.at(5) }),
         });
@@ -372,12 +372,12 @@ describe("FlowRangeSelection", () => {
         const contentAfter = operation?.applyToContent(contentBefore, theme);
         expect(contentAfter?.toJsonValue()).toMatchObject([
             "foo",
-            { button: ["hello world!"]},
+            { box: ["hello world!"]},
             "bar",
         ]);
         const selectionAfter = operation?.applyToSelection(selectionBefore, true);
         expect(selectionAfter?.toJsonValue()).toMatchObject({
-            button: 3,
+            box: 3,
             content: { range: [11, 11] },
         });
     });

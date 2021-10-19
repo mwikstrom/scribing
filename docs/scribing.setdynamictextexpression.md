@@ -4,7 +4,7 @@
 
 ## SetDynamicTextExpression class
 
-Represents an operation that edit the content of a button
+Represents an operation that sets the expression of dynamic text
 
 <b>Signature:</b>
 

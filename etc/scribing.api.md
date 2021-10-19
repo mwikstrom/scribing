@@ -109,26 +109,26 @@ export interface DynamicTextProps {
 }
 
 // @public @sealed
-export class EditButton extends EditButtonBase implements EditButtonProps {
-    static readonly classType: Type<EditButton>;
+export class EditBox extends EditBoxBase implements EditBoxProps {
+    static readonly classType: Type<EditBox>;
     createReplacementNode(content: FlowContent, before: FlowNode): FlowNode;
-    static fromData(data: EditButtonData): EditButton;
+    static fromData(data: EditBoxData): EditBox;
     getInnerContentFromNode(node: FlowNode): FlowContent;
     mergeNext(next: FlowOperation): FlowOperation | null;
 }
 
 // @public
-export const EditButtonBase: RecordConstructor<EditButtonProps, NestedFlowOperation, EditButtonData>;
+export const EditBoxBase: RecordConstructor<EditBoxProps, NestedFlowOperation, EditBoxData>;
 
 // @public
-export interface EditButtonData {
+export interface EditBoxData {
     at: number;
-    edit: "button";
+    edit: "box";
     op: FlowOperation;
 }
 
 // @public
-export interface EditButtonProps {
+export interface EditBoxProps {
     inner: FlowOperation;
     position: number;
 }
@@ -164,11 +164,11 @@ export interface FlowBatchProps {
 }
 
 // @public @sealed
-export class FlowButton extends FlowButtonBase {
-    static readonly classType: Type<FlowButton>;
+export class FlowBox extends FlowBoxBase {
+    static readonly classType: Type<FlowBox>;
     formatParagraph(style: ParagraphStyle, theme?: FlowTheme): this;
     formatText(style: TextStyle, theme?: FlowTheme): this;
-    static fromData(data: FlowButtonData): FlowButton;
+    static fromData(data: FlowBoxData): FlowBox;
     // @override
     getUniformParagraphStyle(theme?: ParagraphTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle | null;
     // @override
@@ -180,28 +180,28 @@ export class FlowButton extends FlowButtonBase {
 }
 
 // @public
-export const FlowButtonBase: RecordConstructor<FlowButtonProps, FlowNode, FlowButtonData>;
+export const FlowBoxBase: RecordConstructor<FlowBoxProps, FlowNode, FlowBoxData>;
 
 // @public
-export interface FlowButtonData {
+export interface FlowBoxData {
     // (undocumented)
-    action?: Interaction;
+    box: FlowContent;
     // (undocumented)
-    button: FlowContent;
+    style?: BoxStyle;
 }
 
 // @public
-export interface FlowButtonProps {
-    // (undocumented)
-    action: Interaction | null;
+export interface FlowBoxProps {
     // (undocumented)
     content: FlowContent;
+    // (undocumented)
+    style: BoxStyle;
 }
 
 // @public @sealed
-export class FlowButtonSelection extends FlowButtonSelectionBase {
-    static readonly classType: Type<FlowButtonSelection>;
-    static fromData(data: FlowButtonSelectionData): FlowButtonSelection;
+export class FlowBoxSelection extends FlowBoxSelectionBase {
+    static readonly classType: Type<FlowBoxSelection>;
+    static fromData(data: FlowBoxSelectionData): FlowBoxSelection;
     // @override
     protected getInnerContentFromNode(node: FlowNode): FlowContent;
     // @override
@@ -213,18 +213,18 @@ export class FlowButtonSelection extends FlowButtonSelectionBase {
 }
 
 // @public
-export const FlowButtonSelectionBase: RecordConstructor<FlowButtonSelectionProps, NestedFlowSelection, FlowButtonSelectionData>;
+export const FlowBoxSelectionBase: RecordConstructor<FlowBoxSelectionProps, NestedFlowSelection, FlowBoxSelectionData>;
 
 // @public
-export interface FlowButtonSelectionData {
+export interface FlowBoxSelectionData {
     // (undocumented)
-    button: number;
+    box: number;
     // (undocumented)
     content: FlowSelection;
 }
 
 // @public
-export interface FlowButtonSelectionProps {
+export interface FlowBoxSelectionProps {
     // (undocumented)
     content: FlowSelection;
     // (undocumented)
@@ -898,39 +898,6 @@ export const RunScriptBase: RecordConstructor<RunScriptProps, Interaction, RunSc
 // @public
 export interface RunScriptProps {
     script: string;
-}
-
-// @public @sealed
-export class SetButtonAction extends SetButtonActionBase implements SetButtonActionProps {
-    afterInsertion(range: FlowRange): FlowOperation | null;
-    afterRemoval(range: FlowRange): FlowOperation | null;
-    // @override
-    applyToContent(content: FlowContent): FlowContent;
-    // @override
-    applyToSelection(selection: FlowSelection): FlowSelection;
-    static readonly classType: Type<SetButtonAction>;
-    static fromData(data: SetButtonActionData): SetButtonAction;
-    // @override
-    invert(content: FlowContent): FlowOperation | null;
-    mergeNext(next: FlowOperation): FlowOperation | null;
-    // @override
-    transform(other: FlowOperation): FlowOperation | null;
-}
-
-// @public
-export const SetButtonActionBase: RecordConstructor<SetButtonActionProps, FlowOperation, SetButtonActionData>;
-
-// @public
-export interface SetButtonActionData {
-    at: number;
-    set: "button_action";
-    value: Interaction | null;
-}
-
-// @public
-export interface SetButtonActionProps {
-    action: Interaction | null;
-    position: number;
 }
 
 // @public @sealed

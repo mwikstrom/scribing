@@ -23,7 +23,7 @@ export * from "./InlineNode";
 export * from "./LineBreak";
 export * from "./ParagraphBreak";
 export * from "./TextRun";
-export * from "./FlowButton";
+export * from "./FlowBox";
 export * from "./DynamicText";
 
 // Content
@@ -45,15 +45,14 @@ export * from "./UnformatText";
 export * from "./InsertContent";
 export * from "./RemoveRange";
 export * from "./NestedFlowOperation";
-export * from "./EditButton";
-export * from "./SetButtonAction";
+export * from "./EditBox";
 export * from "./SetDynamicTextExpression";
 
 // Selection
 export * from "./FlowSelection";
 export * from "./FlowRangeSelection";
 export * from "./NestedFlowSelection";
-export * from "./FlowButtonSelection";
+export * from "./FlowBoxSelection";
 
 // Editor
 export * from "./FlowEditorState";
