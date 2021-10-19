@@ -1,4 +1,5 @@
 import { JsonValue, lazyType } from "paratype";
+import { BoxStyle } from "./BoxStyle";
 import { FlowTheme } from "./FlowTheme";
 import { FlowNodeRegistry } from "./internal/class-registry";
 import { ParagraphStyle, ParagraphStyleProps } from "./ParagraphStyle";
@@ -26,6 +27,13 @@ export abstract class FlowNode {
      * except {@link TextRun|text runs}, are defined to have size 1.
      */
     abstract readonly size: number;
+
+    /**
+     * Applies the specified box style on the current node and returns the updated node.
+     * @param style - The box style to apply
+     * @param theme - Theme of the current content
+     */
+    abstract formatBox(style: BoxStyle, theme?: FlowTheme): FlowNode;
 
     /**
      * Applies the specified paragraph style on the current node and returns the updated node.
@@ -74,6 +82,12 @@ export abstract class FlowNode {
      * @param theme - The theme that provides ambient styling
      */
     abstract unformatAmbient(theme: ParagraphTheme): FlowNode;
+
+    /**
+     * Unapplies the specified box style from the current node and returns the updated node.
+     * @param style - The box style to unapply
+     */
+    abstract unformatBox(style: BoxStyle): FlowNode;
 
     /**
      * Unapplies the specified paragraph style from the current node and returns the updated node.

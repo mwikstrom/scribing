@@ -84,6 +84,11 @@ export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreak
         super(props);
     }
 
+    /** {@inheritdoc FlowNode.formatBox} */
+    public formatBox(): this {
+        return this;
+    }
+    
     /** {@inheritdoc FlowNode.formatParagraph} */
     public formatParagraph(@type(Props.style) style: ParagraphStyle): this {
         return this.set("style", this.style.merge(style));
@@ -115,6 +120,11 @@ export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreak
     /** {@inheritdoc FlowNode.unformatAmbient} */
     public unformatAmbient(theme: ParagraphTheme): this {
         return this.unformatParagraph(theme.getAmbientParagraphStyle().unset("variant"));
+    }
+
+    /** {@inheritdoc FlowNode.unformatBox} */
+    public unformatBox(): this {
+        return this;
     }
 
     /** {@inheritdoc FlowNode.unformatParagraph} */

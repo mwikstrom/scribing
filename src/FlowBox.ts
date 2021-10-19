@@ -80,6 +80,11 @@ export class FlowBox extends FlowBoxBase {
         return new FlowBox({ content, style });
     }
 
+    /** {@inheritdoc FlowNode.formatBox} */
+    public formatBox(@type(Props.style) style: BoxStyle): this {
+        return this.set("style", this.style.merge(style));
+    }
+
     /** {@inheritdoc FlowNode.formatText} */
     public formatText(style: TextStyle, theme?: FlowTheme): this {
         const range = FlowRange.at(0, this.content.size);
@@ -121,6 +126,11 @@ export class FlowBox extends FlowBoxBase {
     /** {@inheritdoc FlowNode.unformatAmbient} */
     public unformatAmbient(theme: ParagraphTheme): this {
         return this.set("content", this.content.unformatAmbient(theme.getFlowTheme()));
+    }
+
+    /** {@inheritdoc FlowNode.unformatBox} */
+    public unformatBox(@type(Props.style) style: BoxStyle): this {
+        return this.set("style", this.style.unmerge(style));
     }
 
     /** {@inheritdoc FlowNode.unformatText} */

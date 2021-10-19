@@ -13,6 +13,7 @@ import {
     type, 
     validating, 
 } from "paratype";
+import { BoxStyle } from "./BoxStyle";
 import { FlowCursor } from "./FlowCursor";
 import { FlowNode } from "./FlowNode";
 import { FlowRange } from "./FlowRange";
@@ -137,6 +138,22 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     }
 
     /**
+     * Applies box style to a range
+     * 
+     * @param range - The range to format
+     * @param style - The style to apply
+     * @returns The updated flow content
+     */
+    formatBox(
+        @type(FlowRange.classType) range: FlowRange, 
+        @type(BoxStyle.classType) style: BoxStyle,
+            theme?: FlowTheme,
+    ): FlowContent {
+        // TODO: Verify theme arg
+        return this.set("nodes", this.#formatRange(range, node => node.formatBox(style, theme), theme));
+    }
+
+    /**
      * Applies paragraph style to a range
      * 
      * @param range - The range to format
@@ -256,6 +273,20 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
         return this.set("nodes", Object.freeze(FlowContent.unformatAmbient(this.nodes, theme)));
     }
     
+    /**
+     * Unapplies box style to a range
+     * 
+     * @param range - The range to format
+     * @param style - The style to unapply
+     * @returns The updated flow content
+     */
+    unformatBox(
+        @type(FlowRange.classType) range: FlowRange, 
+        @type(BoxStyle.classType) style: BoxStyle
+    ): FlowContent {
+        return this.set("nodes", this.#formatRange(range, node => node.unformatBox(style)));
+    }
+
     /**
      * Unapplies paragraph style to a range
      * 

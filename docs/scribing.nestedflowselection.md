@@ -26,6 +26,7 @@ export declare abstract class NestedFlowSelection extends FlowSelection
 |  --- | --- | --- |
 |  [afterInsertion(range)](./scribing.nestedflowselection.afterinsertion.md) |  | Transforms the current selection so that its intended boundary is preserved after the specified range was inserted. |
 |  [afterRemoval(range, mine)](./scribing.nestedflowselection.afterremoval.md) |  | Transforms the current selection so that its intended boundary is preserved after the specified range was inserted. |
+|  [formatBox(style, options)](./scribing.nestedflowselection.formatbox.md) |  | Creates an operation that applies the specified box style on the current selection |
 |  [formatList(content, kind)](./scribing.nestedflowselection.formatlist.md) |  | Creates an operation that applies the specified list format to the current selection. |
 |  [formatParagraph(style, options)](./scribing.nestedflowselection.formatparagraph.md) |  | Creates an operation that applies the specified paragraph style on the current selection |
 |  [formatText(style, options)](./scribing.nestedflowselection.formattext.md) |  | Creates an operation that applies the specified text style on the current selection |
@@ -42,6 +43,7 @@ export declare abstract class NestedFlowSelection extends FlowSelection
 |  [set(key, value)](./scribing.nestedflowselection.set.md) |  | Returns a copy of the current object with the specified property merged in |
 |  [setInnerSelection(value)](./scribing.nestedflowselection.setinnerselection.md) |  | Returns a copy of this selection with the specified inner selection merged in |
 |  [transformRanges(transform, options)](./scribing.nestedflowselection.transformranges.md) |  | Transforms all ranges in the current selection |
+|  [unformatBox(style)](./scribing.nestedflowselection.unformatbox.md) |  | Creates an operation that unapplies the specified box style on the current selection |
 |  [unformatParagraph(style)](./scribing.nestedflowselection.unformatparagraph.md) |  | Creates an operation that unapplies the specified paragraph style on the current selection |
 |  [unformatText(style)](./scribing.nestedflowselection.unformattext.md) |  | Creates an operation that unapplies the specified paragraph style on the current selection |
 

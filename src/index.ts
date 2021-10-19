@@ -38,6 +38,8 @@ export * from "./DefaultFlowTheme";
 // Operations
 export * from "./FlowOperation";
 export * from "./FlowBatch";
+export * from "./FormatBox";
+export * from "./UnformatBox";
 export * from "./FormatParagraph";
 export * from "./UnformatParagraph";
 export * from "./FormatText";

@@ -6,6 +6,7 @@ import { FlowRange } from "./FlowRange";
 import { FlowSelectionRegistry } from "./internal/class-registry";
 import { ParagraphStyle, ParagraphStyleProps } from "./ParagraphStyle";
 import { TextStyle, TextStyleProps } from "./TextStyle";
+import { BoxStyle } from "./BoxStyle";
 
 /**
  * Represents a selection of flow content
@@ -62,6 +63,15 @@ export abstract class FlowSelection {
     public decrementListLevel(content: FlowContent, delta = 1): FlowOperation | null {
         return this.incrementListLevel(content, -delta);
     }
+
+    /**
+     * Creates an operation that applies the specified box style on the current selection
+     * @param style - The style to apply
+     * @param options - Options that provide operation behavior
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract formatBox(style: BoxStyle, options?: TargetOptions): FlowOperation | null;
 
     /**
      * Creates an operation that applies the specified list format to the current selection.
@@ -123,6 +133,14 @@ export abstract class FlowSelection {
         transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null,
         options?: TargetOptions
     ): FlowSelection | null;
+
+    /**
+     * Creates an operation that unapplies the specified box style on the current selection
+     * @param style - The style to unapply
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract unformatBox(style: BoxStyle): FlowOperation | null;
 
     /**
      * Creates an operation that unapplies the specified paragraph style on the current selection

@@ -1,11 +1,12 @@
 import { frozen, lazyType, RecordClass, recordClassType, recordType, RecordType, type, validating } from "paratype";
-import { OrderedListMarkerKindType } from ".";
+import { BoxStyle } from "./BoxStyle";
 import { FlowBatch } from "./FlowBatch";
 import { FlowContent } from "./FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
 import { TargetOptions, FlowSelection, RemoveFlowSelectionOptions } from "./FlowSelection";
 import { FlowTheme } from "./FlowTheme";
+import { FormatBox } from "./FormatBox";
 import { FormatParagraph } from "./FormatParagraph";
 import { FormatText } from "./FormatText";
 import { InsertContent } from "./InsertContent";
@@ -17,9 +18,15 @@ import { splitRangeByUniformParagraphStyle } from "./internal/split-range-by-par
 import { transformRangeAfterInsertion, transformRangeAfterRemoval } from "./internal/transform-helpers";
 import { filterNotNull, mapNotNull } from "./internal/utils";
 import { ParagraphBreak } from "./ParagraphBreak";
-import { ParagraphStyle, ParagraphStyleProps, UnorderedListMarkerKindType } from "./ParagraphStyle";
+import {
+    OrderedListMarkerKindType,
+    ParagraphStyle,
+    ParagraphStyleProps,
+    UnorderedListMarkerKindType
+} from "./ParagraphStyle";
 import { RemoveRange } from "./RemoveRange";
 import { TextStyle, TextStyleProps } from "./TextStyle";
+import { UnformatBox } from "./UnformatBox";
 import { UnformatParagraph } from "./UnformatParagraph";
 import { UnformatText } from "./UnformatText";
 
@@ -198,6 +205,19 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     }
 
     /**
+     * {@inheritDoc FlowSelection.formatBox}
+     * @override
+     */
+    public formatBox(@type(BoxStyle.classType) style: BoxStyle): FlowOperation | null {
+        const { range } = this;
+        if (range.isCollapsed) {
+            return null;
+        } else {
+            return new FormatBox({ range, style });
+        }
+    }
+
+    /**
      * {@inheritDoc FlowSelection.formatParagraph}
      * @override
      */
@@ -363,6 +383,19 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
             return null;
         } else {
             return new UnformatParagraph({ range, style });
+        }
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.unformatBox}
+     * @override
+     */
+    public unformatBox(@type(BoxStyle.classType) style: BoxStyle): FlowOperation | null {
+        const { range } = this;
+        if (range.isCollapsed) {
+            return null;
+        } else {
+            return new UnformatBox({ range, style });
         }
     }
 

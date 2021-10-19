@@ -166,6 +166,7 @@ export interface FlowBatchProps {
 // @public @sealed
 export class FlowBox extends FlowBoxBase {
     static readonly classType: Type<FlowBox>;
+    formatBox(style: BoxStyle): this;
     formatParagraph(style: ParagraphStyle, theme?: FlowTheme): this;
     formatText(style: TextStyle, theme?: FlowTheme): this;
     static fromData(data: FlowBoxData): FlowBox;
@@ -175,6 +176,7 @@ export class FlowBox extends FlowBoxBase {
     getUniformTextStyle(theme?: ParagraphTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
     readonly size = 1;
     unformatAmbient(theme: ParagraphTheme): this;
+    unformatBox(style: BoxStyle): this;
     unformatParagraph(style: ParagraphStyle): this;
     unformatText(style: TextStyle): this;
 }
@@ -244,6 +246,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     append(theme: FlowTheme | undefined, ...nodes: readonly FlowNode[]): FlowContent;
     static readonly classType: Type<FlowContent>;
     copy(range: FlowRange): FlowContent;
+    formatBox(range: FlowRange, style: BoxStyle, theme?: FlowTheme): FlowContent;
     formatParagraph(range: FlowRange, style: ParagraphStyle, theme?: FlowTheme): FlowContent;
     formatText(range: FlowRange, style: TextStyle, theme?: FlowTheme): FlowContent;
     static fromData(data: FlowContentData): FlowContent;
@@ -257,6 +260,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     get size(): number;
     toJsonValue(): JsonValue;
     unformatAmbient(theme: FlowTheme): FlowContent;
+    unformatBox(range: FlowRange, style: BoxStyle): FlowContent;
     unformatParagraph(range: FlowRange, style: ParagraphStyle): FlowContent;
     unformatText(range: FlowRange, style: TextStyle): FlowContent;
 }
@@ -342,6 +346,7 @@ export interface FlowEditorStateProps {
 // @public
 export abstract class FlowNode {
     static readonly baseType: Type<FlowNode>;
+    abstract formatBox(style: BoxStyle, theme?: FlowTheme): FlowNode;
     abstract formatParagraph(style: ParagraphStyle, theme?: FlowTheme): FlowNode;
     abstract formatText(style: TextStyle, theme?: FlowTheme): FlowNode;
     static fromJsonValue(value: JsonValue): FlowNode;
@@ -351,6 +356,7 @@ export abstract class FlowNode {
     abstract toData(): unknown;
     toJsonValue(): JsonValue;
     abstract unformatAmbient(theme: ParagraphTheme): FlowNode;
+    abstract unformatBox(style: BoxStyle): FlowNode;
     abstract unformatParagraph(style: ParagraphStyle): FlowNode;
     abstract unformatText(style: TextStyle): FlowNode;
 }
@@ -410,6 +416,8 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
     static readonly classType: Type<RecordObject<FlowRangeSelectionProps, FlowRangeSelectionProps> & Equatable & Readonly<FlowRangeSelectionProps> & FlowRangeSelection>;
     // @override
+    formatBox(style: BoxStyle): FlowOperation | null;
+    // @override
     formatList(content: FlowContent, kind: "ordered" | "unordered" | null): FlowOperation | null;
     // @override
     formatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
@@ -429,6 +437,8 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
     // @override
     transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;
+    // @override
+    unformatBox(style: BoxStyle): FlowOperation | null;
     // @override
     unformatParagraph(style: ParagraphStyle): FlowOperation | null;
     // @override
@@ -454,6 +464,7 @@ export abstract class FlowSelection {
     abstract afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
     static readonly baseType: Type<FlowSelection>;
     decrementListLevel(content: FlowContent, delta?: number): FlowOperation | null;
+    abstract formatBox(style: BoxStyle, options?: TargetOptions): FlowOperation | null;
     abstract formatList(content: FlowContent, kind: "ordered" | "unordered" | null): FlowOperation | null;
     abstract formatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
     abstract formatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
@@ -466,6 +477,7 @@ export abstract class FlowSelection {
     abstract remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
     toJsonValue(): JsonValue;
     abstract transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;
+    abstract unformatBox(style: BoxStyle): FlowOperation | null;
     abstract unformatParagraph(style: ParagraphStyle): FlowOperation | null;
     abstract unformatText(style: TextStyle): FlowOperation | null;
 }
@@ -476,6 +488,37 @@ export abstract class FlowTheme {
     static fromJsonValue(value: JsonValue): FlowTheme;
     abstract getParagraphTheme(variant: ParagraphVariant): ParagraphTheme;
     toJsonValue(): JsonValue;
+}
+
+// @public @sealed
+export class FormatBox extends FormatBoxBase implements Readonly<FormatBoxProps> {
+    afterInsertion(other: FlowRange): FlowOperation | null;
+    afterRemoval(other: FlowRange): FlowOperation | null;
+    // @override
+    applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent;
+    // @override
+    applyToSelection(selection: FlowSelection): FlowSelection;
+    static readonly classType: Type<FormatBox>;
+    static fromData(data: FormatBoxData): FormatBox;
+    // @override
+    invert(content: FlowContent): FlowOperation | null;
+    mergeNext(next: FlowOperation): FlowOperation | null;
+    // @override
+    transform(other: FlowOperation): FlowOperation | null;
+}
+
+// @public
+export const FormatBoxBase: RecordConstructor<FormatBoxProps, FlowOperation, FormatBoxData>;
+
+// @public
+export interface FormatBoxData extends FormatBoxProps {
+    format: "box";
+}
+
+// @public
+export interface FormatBoxProps {
+    range: FlowRange;
+    style: BoxStyle;
 }
 
 // @public @sealed
@@ -542,6 +585,7 @@ export interface FormatTextProps {
 
 // @public
 export abstract class InlineNode extends FlowNode {
+    formatBox(): this;
     formatParagraph(): this;
     formatText(style: TextStyle): this;
     // @override
@@ -551,6 +595,7 @@ export abstract class InlineNode extends FlowNode {
     abstract set(key: "style", value: TextStyle): this;
     abstract readonly style: TextStyle;
     unformatAmbient(theme: ParagraphTheme): this;
+    unformatBox(): this;
     unformatParagraph(): this;
     unformatText(style: TextStyle): this;
 }
@@ -653,6 +698,8 @@ export abstract class NestedFlowSelection extends FlowSelection {
     // @override
     afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
     // @override
+    formatBox(style: BoxStyle, options?: TargetOptions): FlowOperation | null;
+    // @override
     formatList(content: FlowContent, kind: "ordered" | "unordered" | null): FlowOperation | null;
     // @override
     formatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
@@ -680,6 +727,8 @@ export abstract class NestedFlowSelection extends FlowSelection {
     protected abstract setInnerSelection(value: FlowSelection): NestedFlowSelection;
     // @override
     transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;
+    // @override
+    unformatBox(style: BoxStyle): FlowOperation | null;
     // @override
     unformatParagraph(style: ParagraphStyle): FlowOperation | null;
     // @override
@@ -718,6 +767,7 @@ export const PARAGRAPH_VARIANTS: readonly ["normal", "h1", "h2", "h3", "h4", "h5
 export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreakProps {
     constructor(props?: ParagraphBreakProps);
     static readonly classType: Type<ParagraphBreak>;
+    formatBox(): this;
     formatParagraph(style: ParagraphStyle): this;
     formatText(): this;
     static fromData(data: ParagraphBreakData): ParagraphBreak;
@@ -727,6 +777,7 @@ export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreak
     getUniformTextStyle(theme?: ParagraphTheme): TextStyle;
     readonly size = 1;
     unformatAmbient(theme: ParagraphTheme): this;
+    unformatBox(): this;
     unformatParagraph(style: ParagraphStyle): this;
     unformatText(): this;
 }
@@ -1040,6 +1091,37 @@ export interface TextStyleProps {
     link?: Interaction | null;
     strike?: boolean;
     underline?: boolean;
+}
+
+// @public @sealed
+export class UnformatBox extends UnformatBoxBase implements Readonly<UnformatBoxProps> {
+    afterInsertion(other: FlowRange): FlowOperation | null;
+    afterRemoval(other: FlowRange): FlowOperation | null;
+    // @override
+    applyToContent(content: FlowContent): FlowContent;
+    // @override
+    applyToSelection(selection: FlowSelection): FlowSelection;
+    static readonly classType: Type<UnformatBox>;
+    static fromData(data: UnformatBoxData): UnformatBox;
+    // @override
+    invert(content: FlowContent): FlowOperation | null;
+    mergeNext(next: FlowOperation): FlowOperation | null;
+    // @override
+    transform(other: FlowOperation): FlowOperation | null;
+}
+
+// @public
+export const UnformatBoxBase: RecordConstructor<UnformatBoxProps, FlowOperation, UnformatBoxData>;
+
+// @public
+export interface UnformatBoxData extends UnformatBoxProps {
+    unformat: "box";
+}
+
+// @public
+export interface UnformatBoxProps {
+    range: FlowRange;
+    style: BoxStyle;
 }
 
 // @public @sealed

@@ -23,6 +23,7 @@ export declare abstract class FlowNode
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [formatBox(style, theme)](./scribing.flownode.formatbox.md) |  | Applies the specified box style on the current node and returns the updated node. |
 |  [formatParagraph(style, theme)](./scribing.flownode.formatparagraph.md) |  | Applies the specified paragraph style on the current node and returns the updated node. |
 |  [formatText(style, theme)](./scribing.flownode.formattext.md) |  | Applies the specified text style on the current node and returns the updated node. |
 |  [fromJsonValue(value)](./scribing.flownode.fromjsonvalue.md) | <code>static</code> | Converts the specified JSON value to a flow node |
@@ -31,6 +32,7 @@ export declare abstract class FlowNode
 |  [toData()](./scribing.flownode.todata.md) |  | Converts the current flow node to data |
 |  [toJsonValue()](./scribing.flownode.tojsonvalue.md) |  | Converts the current flow node to a JSON value |
 |  [unformatAmbient(theme)](./scribing.flownode.unformatambient.md) |  | Unapplies the ambient style of the specified theme from the current node and returns the updated node. |
+|  [unformatBox(style)](./scribing.flownode.unformatbox.md) |  | Unapplies the specified box style from the current node and returns the updated node. |
 |  [unformatParagraph(style)](./scribing.flownode.unformatparagraph.md) |  | Unapplies the specified paragraph style from the current node and returns the updated node. |
 |  [unformatText(style)](./scribing.flownode.unformattext.md) |  | Unapplies the specified text style from the current node and returns the updated node. |
 

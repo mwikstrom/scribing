@@ -24,6 +24,7 @@ export declare abstract class FlowSelection
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
 |  [decrementListLevel(content, delta)](./scribing.flowselection.decrementlistlevel.md) |  | Creates an operation that decrements the list level of the current selection |
+|  [formatBox(style, options)](./scribing.flowselection.formatbox.md) |  | Creates an operation that applies the specified box style on the current selection |
 |  [formatList(content, kind)](./scribing.flowselection.formatlist.md) |  | Creates an operation that applies the specified list format to the current selection. |
 |  [formatParagraph(style, options)](./scribing.flowselection.formatparagraph.md) |  | Creates an operation that applies the specified paragraph style on the current selection |
 |  [formatText(style, options)](./scribing.flowselection.formattext.md) |  | Creates an operation that applies the specified text style on the current selection |
@@ -35,6 +36,7 @@ export declare abstract class FlowSelection
 |  [remove(options)](./scribing.flowselection.remove.md) |  | Creates an operation that removes the content of the current selection |
 |  [toJsonValue()](./scribing.flowselection.tojsonvalue.md) |  | Converts the current selection to a JSON value |
 |  [transformRanges(transform, options)](./scribing.flowselection.transformranges.md) |  | Transforms all ranges in the current selection |
+|  [unformatBox(style)](./scribing.flowselection.unformatbox.md) |  | Creates an operation that unapplies the specified box style on the current selection |
 |  [unformatParagraph(style)](./scribing.flowselection.unformatparagraph.md) |  | Creates an operation that unapplies the specified paragraph style on the current selection |
 |  [unformatText(style)](./scribing.flowselection.unformattext.md) |  | Creates an operation that unapplies the specified text style on the current selection |
 

@@ -23,12 +23,14 @@ export declare abstract class InlineNode extends FlowNode
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [formatBox()](./scribing.inlinenode.formatbox.md) |  | Applies the specified box style on the current node and returns the updated node. |
 |  [formatParagraph()](./scribing.inlinenode.formatparagraph.md) |  | Applies the specified paragraph style on the current node and returns the updated node. |
 |  [formatText(style)](./scribing.inlinenode.formattext.md) |  | Applies the specified text style on the current node and returns the updated node. |
 |  [getUniformParagraphStyle()](./scribing.inlinenode.getuniformparagraphstyle.md) |  | Gets a uniform paragraph style from the current node |
 |  [getUniformTextStyle(theme)](./scribing.inlinenode.getuniformtextstyle.md) |  | Gets a uniform text style from the current node |
 |  [set(key, value)](./scribing.inlinenode.set.md) |  | Returns a copy of the current object with the specified property merged in |
 |  [unformatAmbient(theme)](./scribing.inlinenode.unformatambient.md) |  | Unapplies the ambient style of the specified theme from the current node and returns the updated node. |
+|  [unformatBox()](./scribing.inlinenode.unformatbox.md) |  | Unapplies the specified box style from the current node and returns the updated node. |
 |  [unformatParagraph()](./scribing.inlinenode.unformatparagraph.md) |  | Unapplies the specified paragraph style from the current node and returns the updated node. |
 |  [unformatText(style)](./scribing.inlinenode.unformattext.md) |  | Unapplies the specified text style from the current node and returns the updated node. |
 

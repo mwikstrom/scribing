@@ -11,6 +11,11 @@ export abstract class InlineNode extends FlowNode {
     /** The text style of the current node */
     public abstract readonly style: TextStyle;
 
+    /** {@inheritdoc FlowNode.formatBox} */
+    public formatBox(): this {
+        return this;
+    }
+
     /** {@inheritdoc FlowNode.formatText} */
     public formatText(style: TextStyle): this {
         return this.set("style", this.style.merge(style));
@@ -60,6 +65,11 @@ export abstract class InlineNode extends FlowNode {
     public unformatAmbient(theme: ParagraphTheme): this {
         const ambient = this.#getAmbientStyle(theme);
         return this.unformatText(ambient);
+    }
+
+    /** {@inheritdoc FlowNode.unformatBox} */
+    public unformatBox(): this {
+        return this;
     }
 
     /** {@inheritdoc FlowNode.unformatText} */

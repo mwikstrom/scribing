@@ -36,6 +36,7 @@ export declare class FlowContent extends FlowContentBase implements Readonly<Flo
 |  [append(nodes)](./scribing.flowcontent.append.md) |  | Appends the specified nodes |
 |  [append(theme, nodes)](./scribing.flowcontent.append_1.md) |  | Appends the specified nodes |
 |  [copy(range)](./scribing.flowcontent.copy.md) |  | Extracts a range of flow content |
+|  [formatBox(range, style, theme)](./scribing.flowcontent.formatbox.md) |  | Applies box style to a range |
 |  [formatParagraph(range, style, theme)](./scribing.flowcontent.formatparagraph.md) |  | Applies paragraph style to a range |
 |  [formatText(range, style, theme)](./scribing.flowcontent.formattext.md) |  | Applies text style to a range |
 |  [fromData(data)](./scribing.flowcontent.fromdata.md) | <code>static</code> | Gets flow content from the specified data |
@@ -48,6 +49,7 @@ export declare class FlowContent extends FlowContentBase implements Readonly<Flo
 |  [replace(remove, insert)](./scribing.flowcontent.replace.md) |  | Replaces the specified range with the specified nodes |
 |  [toJsonValue()](./scribing.flowcontent.tojsonvalue.md) |  | Gets a JSON value representation of the current content |
 |  [unformatAmbient(theme)](./scribing.flowcontent.unformatambient.md) |  | Unapplies the ambient style of the specified theme from the current content. |
+|  [unformatBox(range, style)](./scribing.flowcontent.unformatbox.md) |  | Unapplies box style to a range |
 |  [unformatParagraph(range, style)](./scribing.flowcontent.unformatparagraph.md) |  | Unapplies paragraph style to a range |
 |  [unformatText(range, style)](./scribing.flowcontent.unformattext.md) |  | Unapplies text style to a range |
 

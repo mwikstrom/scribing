@@ -25,12 +25,14 @@ export declare class FlowBox extends FlowBoxBase
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [formatBox(style)](./scribing.flowbox.formatbox.md) |  | Applies the specified box style on the current node and returns the updated node. |
 |  [formatParagraph(style, theme)](./scribing.flowbox.formatparagraph.md) |  | Applies the specified paragraph style on the current node and returns the updated node. |
 |  [formatText(style, theme)](./scribing.flowbox.formattext.md) |  | Applies the specified text style on the current node and returns the updated node. |
 |  [fromData(data)](./scribing.flowbox.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
 |  [getUniformParagraphStyle(theme, diff)](./scribing.flowbox.getuniformparagraphstyle.md) |  | Gets a uniform paragraph style from the current node |
 |  [getUniformTextStyle(theme, diff)](./scribing.flowbox.getuniformtextstyle.md) |  | Gets a uniform text style from the current node |
 |  [unformatAmbient(theme)](./scribing.flowbox.unformatambient.md) |  | Unapplies the ambient style of the specified theme from the current node and returns the updated node. |
+|  [unformatBox(style)](./scribing.flowbox.unformatbox.md) |  | Unapplies the specified box style from the current node and returns the updated node. |
 |  [unformatParagraph(style)](./scribing.flowbox.unformatparagraph.md) |  | Unapplies the specified paragraph style from the current node and returns the updated node. |
 |  [unformatText(style)](./scribing.flowbox.unformattext.md) |  | Unapplies the specified text style from the current node and returns the updated node. |
 

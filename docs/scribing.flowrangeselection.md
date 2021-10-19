@@ -29,6 +29,7 @@ export declare class FlowRangeSelection extends FlowRangeSelectionBase implement
 |  --- | --- | --- |
 |  [afterInsertion(range, mine)](./scribing.flowrangeselection.afterinsertion.md) |  | Transforms the current selection so that its intended boundary is preserved after the specified range was inserted. |
 |  [afterRemoval(range, mine)](./scribing.flowrangeselection.afterremoval.md) |  | Transforms the current selection so that its intended boundary is preserved after the specified range was inserted. |
+|  [formatBox(style)](./scribing.flowrangeselection.formatbox.md) |  | Creates an operation that applies the specified box style on the current selection |
 |  [formatList(content, kind)](./scribing.flowrangeselection.formatlist.md) |  | Creates an operation that applies the specified list format to the current selection. |
 |  [formatParagraph(style, options)](./scribing.flowrangeselection.formatparagraph.md) |  | Creates an operation that applies the specified paragraph style on the current selection |
 |  [formatText(style)](./scribing.flowrangeselection.formattext.md) |  | Creates an operation that applies the specified text style on the current selection |
@@ -38,6 +39,7 @@ export declare class FlowRangeSelection extends FlowRangeSelectionBase implement
 |  [insert(content, options)](./scribing.flowrangeselection.insert.md) |  | Creates an operation that inserts the specified content into the current selection |
 |  [remove(options)](./scribing.flowrangeselection.remove.md) |  | Creates an operation that removes the content of the current selection |
 |  [transformRanges(transform, options)](./scribing.flowrangeselection.transformranges.md) |  | Transforms all ranges in the current selection |
+|  [unformatBox(style)](./scribing.flowrangeselection.unformatbox.md) |  | Creates an operation that unapplies the specified box style on the current selection |
 |  [unformatParagraph(style)](./scribing.flowrangeselection.unformatparagraph.md) |  | Creates an operation that unapplies the specified paragraph style on the current selection |
 |  [unformatText(style)](./scribing.flowrangeselection.unformattext.md) |  | Creates an operation that unapplies the specified text style on the current selection |
 

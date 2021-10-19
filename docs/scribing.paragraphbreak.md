@@ -33,12 +33,14 @@ export declare class ParagraphBreak extends ParagraphBreakBase implements Paragr
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [formatBox()](./scribing.paragraphbreak.formatbox.md) |  | Applies the specified box style on the current node and returns the updated node. |
 |  [formatParagraph(style)](./scribing.paragraphbreak.formatparagraph.md) |  | Applies the specified paragraph style on the current node and returns the updated node. |
 |  [formatText()](./scribing.paragraphbreak.formattext.md) |  | Applies the specified text style on the current node and returns the updated node. |
 |  [fromData(data)](./scribing.paragraphbreak.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
 |  [getUniformParagraphStyle(theme)](./scribing.paragraphbreak.getuniformparagraphstyle.md) |  | Gets a uniform paragraph style from the current node |
 |  [getUniformTextStyle(theme)](./scribing.paragraphbreak.getuniformtextstyle.md) |  | Gets a uniform text style from the current node |
 |  [unformatAmbient(theme)](./scribing.paragraphbreak.unformatambient.md) |  | Unapplies the ambient style of the specified theme from the current node and returns the updated node. |
+|  [unformatBox()](./scribing.paragraphbreak.unformatbox.md) |  | Unapplies the specified box style from the current node and returns the updated node. |
 |  [unformatParagraph(style)](./scribing.paragraphbreak.unformatparagraph.md) |  | Unapplies the specified paragraph style from the current node and returns the updated node. |
 |  [unformatText()](./scribing.paragraphbreak.unformattext.md) |  | Unapplies the specified text style from the current node and returns the updated node. |
 

@@ -1,3 +1,4 @@
+import { BoxStyle } from "./BoxStyle";
 import { FlowContent } from "./FlowContent";
 import { FlowNode } from "./FlowNode";
 import { FlowOperation } from "./FlowOperation";
@@ -111,6 +112,20 @@ export abstract class NestedFlowSelection extends FlowSelection {
     }
 
     /**
+     * {@inheritDoc FlowSelection.formatBox}
+     * @override
+     */
+    public formatBox(
+        style: BoxStyle,
+        options: TargetOptions = {},
+    ): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerOptions = this.#getInnerOptions(options);
+        const innerOperation = innerSelection.formatBox(style, innerOptions);
+        return this.#wrapOperation(innerOperation);
+    }
+
+    /**
      * {@inheritDoc FlowSelection.formatList}
      * @override
      */
@@ -194,6 +209,16 @@ export abstract class NestedFlowSelection extends FlowSelection {
         const innerOptions = this.#getInnerOptions(options);
         const transformedInner = innerSelection.transformRanges(transform, innerOptions);
         return this.#wrapSelection(transformedInner);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.unformatBox}
+     * @override
+     */
+    public unformatBox(style: BoxStyle): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerOperation = innerSelection.unformatBox(style);
+        return this.#wrapOperation(innerOperation);
     }
 
     /**

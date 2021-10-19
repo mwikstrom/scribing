@@ -26,6 +26,7 @@ Model for collaborative rich text editing
 |  [FlowRangeSelection](./scribing.flowrangeselection.md) | Represents a range of selected flow content |
 |  [FlowSelection](./scribing.flowselection.md) | Represents a selection of flow content |
 |  [FlowTheme](./scribing.flowtheme.md) | Provides a theme for flow content |
+|  [FormatBox](./scribing.formatbox.md) | Represents an operation that applies a box style to a range of flow content. |
 |  [FormatParagraph](./scribing.formatparagraph.md) | Represents an operation that applies a paragraph style to a range of flow content. |
 |  [FormatText](./scribing.formattext.md) | Represents an operation that applies a text style to a range of flow content. |
 |  [InlineNode](./scribing.inlinenode.md) | Represents an inline node |
@@ -43,6 +44,7 @@ Model for collaborative rich text editing
 |  [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) | Represents an operation that sets the expression of dynamic text |
 |  [TextRun](./scribing.textrun.md) | A run of text with uniform styling |
 |  [TextStyle](./scribing.textstyle.md) | Represents the styling that is applied to text. |
+|  [UnformatBox](./scribing.unformatbox.md) | Represents an operation that unapplies a box style to a range of flow content. |
 |  [UnformatParagraph](./scribing.unformatparagraph.md) | Represents an operation that unapplies a paragraph style to a range of flow content. |
 |  [UnformatText](./scribing.unformattext.md) | Represents an operation that unapplies a text style to a range of flow content. |
 
@@ -66,6 +68,8 @@ Model for collaborative rich text editing
 |  [FlowEditorStateProps](./scribing.floweditorstateprops.md) | Properties for [FlowEditorState](./scribing.floweditorstate.md) |
 |  [FlowRangeProps](./scribing.flowrangeprops.md) | Non-computed properties of a [FlowRange](./scribing.flowrange.md) |
 |  [FlowRangeSelectionProps](./scribing.flowrangeselectionprops.md) | Properties of flow range selections |
+|  [FormatBoxData](./scribing.formatboxdata.md) | Data of format box operations |
+|  [FormatBoxProps](./scribing.formatboxprops.md) | Properties of format box operations |
 |  [FormatParagraphData](./scribing.formatparagraphdata.md) | Data of format paragraph operations |
 |  [FormatParagraphProps](./scribing.formatparagraphprops.md) | Properties of format paragraph operations |
 |  [FormatTextData](./scribing.formattextdata.md) | Data of format text operations |
@@ -87,6 +91,8 @@ Model for collaborative rich text editing
 |  [TargetOptions](./scribing.targetoptions.md) | Provides options for the target flow |
 |  [TextRunProps](./scribing.textrunprops.md) | Properties of a text run |
 |  [TextStyleProps](./scribing.textstyleprops.md) | Style properties for [text](./scribing.textrun.md) |
+|  [UnformatBoxData](./scribing.unformatboxdata.md) | Data of unformat box operations |
+|  [UnformatBoxProps](./scribing.unformatboxprops.md) | Properties of unformat box operations |
 |  [UnformatParagraphData](./scribing.unformatparagraphdata.md) | Data of unformat paragraph operations |
 |  [UnformatParagraphProps](./scribing.unformatparagraphprops.md) | Properties of unformat paragraph operations |
 |  [UnformatTextData](./scribing.unformattextdata.md) | Data of unformat text operations |
@@ -111,6 +117,7 @@ Model for collaborative rich text editing
 |  [FlowEditorStateBase](./scribing.floweditorstatebase.md) | The base record class for [FlowEditorState](./scribing.floweditorstate.md) |
 |  [FlowRangeBase](./scribing.flowrangebase.md) | The base record class for [FlowRange](./scribing.flowrange.md) |
 |  [FlowRangeSelectionBase](./scribing.flowrangeselectionbase.md) | The base record class for [FlowRangeSelection](./scribing.flowrangeselection.md) |
+|  [FormatBoxBase](./scribing.formatboxbase.md) | The base record class for [FormatBox](./scribing.formatbox.md) |
 |  [FormatParagraphBase](./scribing.formatparagraphbase.md) | The base record class for [FormatParagraph](./scribing.formatparagraph.md) |
 |  [FormatTextBase](./scribing.formattextbase.md) | The base record class for [FormatText](./scribing.formattext.md) |
 |  [InsertContentBase](./scribing.insertcontentbase.md) | The base record class for [InsertContent](./scribing.insertcontent.md) |
@@ -129,6 +136,7 @@ Model for collaborative rich text editing
 |  [SetDynamicTextExpressionBase](./scribing.setdynamictextexpressionbase.md) | The base record class for [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [TextRunBase](./scribing.textrunbase.md) | The base record class for [TextRun](./scribing.textrun.md) |
 |  [TextStyleBase](./scribing.textstylebase.md) | The base record class for [TextStyle](./scribing.textstyle.md) |
+|  [UnformatBoxBase](./scribing.unformatboxbase.md) | The base record class for [UnformatBox](./scribing.unformatbox.md) |
 |  [UnformatParagraphBase](./scribing.unformatparagraphbase.md) | The base record class for [UnformatParagraph](./scribing.unformatparagraph.md) |
 |  [UnformatTextBase](./scribing.unformattextbase.md) | The base record class for [UnformatText](./scribing.unformattext.md) |
 |  [UNORDERED\_LIST\_MARKER\_KINDS](./scribing.unordered_list_marker_kinds.md) | Read-only array that contains unordered list marker styles |
