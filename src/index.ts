@@ -13,6 +13,7 @@ export * from "./RunScript";
 
 // Styles
 export * from "./FlowColor";
+export * from "./BoxStyle";
 export * from "./ParagraphStyle";
 export * from "./TextStyle";
 

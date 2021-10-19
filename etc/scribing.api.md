@@ -16,6 +16,65 @@ export interface ApplyMineOptions {
     mergeUndo?: boolean;
 }
 
+// @public
+export const BOX_VARIANTS: readonly ["basic", "contained", "outlined", "alert", "quote"];
+
+// @public @sealed
+export class BoxStyle extends BoxStyleBase implements Readonly<BoxStyleProps> {
+    constructor(props?: BoxStyleProps);
+    static readonly classType: Type<RecordObject<Partial<{
+    variant: "basic" | "contained" | "outlined" | "alert" | "quote";
+    color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
+    inline: boolean;
+    condition: string | null;
+    interaction: Interaction | null;
+    }>, Partial<{
+    variant: "basic" | "contained" | "outlined" | "alert" | "quote";
+    color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
+    inline: boolean;
+    condition: string | null;
+    interaction: Interaction | null;
+    }>> & Equatable & Readonly<Partial<{
+        variant: "basic" | "contained" | "outlined" | "alert" | "quote";
+        color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
+        inline: boolean;
+        condition: string | null;
+        interaction: Interaction | null;
+    }>> & BoxStyle>;
+    static get empty(): BoxStyle;
+    get isEmpty(): boolean;
+}
+
+// @public
+export const BoxStyleBase: RecordConstructor<Partial<{
+variant: "basic" | "contained" | "outlined" | "alert" | "quote";
+color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
+inline: boolean;
+condition: string | null;
+interaction: Interaction | null;
+}>, Object, Partial<{
+variant: "basic" | "contained" | "outlined" | "alert" | "quote";
+color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
+inline: boolean;
+condition: string | null;
+interaction: Interaction | null;
+}>>;
+
+// @public
+export interface BoxStyleProps {
+    color?: FlowColor;
+    condition?: string | null;
+    inline?: boolean;
+    interaction?: Interaction | null;
+    variant?: BoxVariant;
+}
+
+// @public
+export type BoxVariant = (typeof BOX_VARIANTS)[number];
+
+// @public
+export const BoxVariantType: Type<BoxVariant>;
+
 // @public @sealed
 export class DefaultFlowTheme extends DefaultFlowThemeBase {
     constructor();

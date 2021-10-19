@@ -10,6 +10,7 @@ Model for collaborative rich text editing
 
 |  Class | Description |
 |  --- | --- |
+|  [BoxStyle](./scribing.boxstyle.md) | Represents the styling that is applied to box content. |
 |  [DefaultFlowTheme](./scribing.defaultflowtheme.md) | Provides a theme for flow content |
 |  [DynamicText](./scribing.dynamictext.md) | Represents a dynamic text. |
 |  [EditButton](./scribing.editbutton.md) | Represents an operation that edit the content of a button |
@@ -51,6 +52,7 @@ Model for collaborative rich text editing
 |  Interface | Description |
 |  --- | --- |
 |  [ApplyMineOptions](./scribing.applymineoptions.md) | Options for the [FlowEditorState.applyMine()](./scribing.floweditorstate.applymine.md) method |
+|  [BoxStyleProps](./scribing.boxstyleprops.md) | Style properties for box content |
 |  [DynamicTextData](./scribing.dynamictextdata.md) | Data of line break nodes |
 |  [DynamicTextProps](./scribing.dynamictextprops.md) | Properties of [DynamicText](./scribing.dynamictext.md) |
 |  [EditButtonData](./scribing.editbuttondata.md) | Data of [EditButton](./scribing.editbutton.md) |
@@ -97,6 +99,9 @@ Model for collaborative rich text editing
 
 |  Variable | Description |
 |  --- | --- |
+|  [BOX\_VARIANTS](./scribing.box_variants.md) | Read-only array that contains all box style variants |
+|  [BoxStyleBase](./scribing.boxstylebase.md) | The base record class for [BoxStyle](./scribing.boxstyle.md) |
+|  [BoxVariantType](./scribing.boxvarianttype.md) | The run-time type that matches box style variant values |
 |  [DefaultFlowThemeBase](./scribing.defaultflowthemebase.md) | The base record class for [DefaultFlowTheme](./scribing.defaultflowtheme.md) |
 |  [DynamicTextBase](./scribing.dynamictextbase.md) | The base record class for [DynamicText](./scribing.dynamictext.md) |
 |  [EditButtonBase](./scribing.editbuttonbase.md) | The base record class for [EditButton](./scribing.editbutton.md) |
@@ -137,6 +142,7 @@ Model for collaborative rich text editing
 
 |  Type Alias | Description |
 |  --- | --- |
+|  [BoxVariant](./scribing.boxvariant.md) | Box style variant |
 |  [FlowBatchData](./scribing.flowbatchdata.md) | Data of [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowColor](./scribing.flowcolor.md) | Flow content color |
 |  [FlowContentData](./scribing.flowcontentdata.md) | Flow content data is an array of [nodes](./scribing.flownode.md) |

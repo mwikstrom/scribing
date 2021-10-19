@@ -1,0 +1,114 @@
+import { 
+    booleanType,
+    enumType, 
+    frozen, 
+    nullType, 
+    RecordClass, 
+    recordClassType, 
+    recordType, 
+    stringType, 
+    Type, 
+    unionType, 
+    validating
+} from "paratype";
+import { FlowColor, FlowColorType } from "./FlowColor";
+import { Interaction } from "./Interaction";
+
+/**
+ * Style properties for box content
+ * @public
+ */
+export interface BoxStyleProps {
+    /**
+     * The style variant of the box.
+     */
+    variant?: BoxVariant;
+
+    /**
+     * Color of the box
+     */
+    color?: FlowColor;
+
+    /**
+     * Determines whether the box shall be rendered inline
+     */
+    inline?: boolean;
+
+    /**
+     * The script condition that must evaluate to true for the box to be displayed
+     */
+    condition?: string | null;
+
+    /**
+     * The interaction that shall be invoked when the box is clicked
+     */
+    interaction?: Interaction | null;
+}
+
+/**
+ * Box style variant
+ * @public
+ */
+export type BoxVariant = (typeof BOX_VARIANTS)[number];
+
+/**
+ * Read-only array that contains all box style variants
+ * @public
+ */
+export const BOX_VARIANTS = Object.freeze([
+    "basic",
+    "contained",
+    "outlined",
+    "alert",
+    "quote",
+] as const);
+
+/**
+ * The run-time type that matches box style variant values
+ * @public
+ */
+export const BoxVariantType: Type<BoxVariant> = enumType(BOX_VARIANTS);
+
+const Props = {
+    variant: BoxVariantType,
+    color: FlowColorType,
+    inline: booleanType,
+    condition: unionType(nullType, stringType),
+    interaction: unionType(nullType, Interaction.baseType),
+};
+
+const PropsType = recordType(Props).asPartial();
+
+/**
+ * The base record class for {@link BoxStyle}
+ * @public
+ */
+export const BoxStyleBase = RecordClass(PropsType);
+ 
+/**
+ * Represents the styling that is applied to box content.
+ * 
+ * @public
+ * @sealed
+ */
+@frozen
+@validating
+export class BoxStyle extends BoxStyleBase implements Readonly<BoxStyleProps> {
+    /** The run-time type that represents this class */
+    public static readonly classType = recordClassType(() => BoxStyle);
+
+    /** Gets an empty box style */
+    public static get empty(): BoxStyle {
+        if (!EMPTY_CACHE) {
+            EMPTY_CACHE = new BoxStyle();
+        }
+        return EMPTY_CACHE;
+    }
+
+    /** Determines whether the current style is empty */
+    public get isEmpty(): boolean { return BoxStyle.empty.equals(this); }
+
+    constructor(props: BoxStyleProps = {}) { super(props); }
+}
+
+let EMPTY_CACHE: BoxStyle | undefined;
