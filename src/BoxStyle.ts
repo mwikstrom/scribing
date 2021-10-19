@@ -35,9 +35,9 @@ export interface BoxStyleProps {
     inline?: boolean;
 
     /**
-     * The script condition that must evaluate to true for the box to be displayed
+     * The script that act as a data source for the box
      */
-    condition?: string | null;
+    source?: string | null;
 
     /**
      * The interaction that shall be invoked when the box is clicked
@@ -73,7 +73,7 @@ const Props = {
     variant: BoxVariantType,
     color: FlowColorType,
     inline: booleanType,
-    condition: unionType(nullType, stringType),
+    source: unionType(nullType, stringType),
     interaction: unionType(nullType, Interaction.baseType),
 };
 
