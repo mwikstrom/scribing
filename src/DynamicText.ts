@@ -23,9 +23,9 @@ const Data = {
 };
 const PropsType: RecordType<DynamicTextProps> = recordType(Props);
 const DataType: RecordType<DynamicTextData> = recordType(Data).withOptional("style");
-const propsToData = ({expression: dynamic, style}: DynamicTextProps): DynamicTextData => ({
-    dynamic, style
-});
+const propsToData = ({expression: dynamic, style}: DynamicTextProps): DynamicTextData => (
+    style.isEmpty ? { dynamic } : { dynamic, style }
+);
 
 /**
  * The base record class for {@link DynamicText}
