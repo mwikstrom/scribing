@@ -9,14 +9,14 @@ Gets a flow theme for the specified paragraph variant
 <b>Signature:</b>
 
 ```typescript
-getParagraphTheme(variant: ParagraphStyleVariant): ParagraphTheme;
+getParagraphTheme(variant: ParagraphVariant): ParagraphTheme;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  variant | [ParagraphStyleVariant](./scribing.paragraphstylevariant.md) |  |
+|  variant | [ParagraphVariant](./scribing.paragraphvariant.md) |  |
 
 <b>Returns:</b>
 

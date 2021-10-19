@@ -42,7 +42,7 @@ export interface ParagraphStyleProps {
     /**
      * The style variant of the paragraph.
      */
-    variant?: ParagraphStyleVariant;
+    variant?: ParagraphVariant;
 
     /**
      * The amount of space between lines, as a percentage of normal, where normal is represented as `100`.
@@ -109,13 +109,13 @@ export interface ParagraphStyleProps {
  * Paragraph style variant
  * @public
  */
-export type ParagraphStyleVariant = (typeof PARAGRAPH_STYLE_VARIANTS)[number];
+export type ParagraphVariant = (typeof PARAGRAPH_VARIANTS)[number];
 
 /**
  * Read-only array that contains all paragraph style variants
  * @public
  */
-export const PARAGRAPH_STYLE_VARIANTS = Object.freeze([
+export const PARAGRAPH_VARIANTS = Object.freeze([
     "normal",
     "h1",
     "h2",
@@ -133,7 +133,7 @@ export const PARAGRAPH_STYLE_VARIANTS = Object.freeze([
  * The run-time type that matches paragraph style variant values
  * @public
  */
-export const ParagraphStyleVariantType: Type<ParagraphStyleVariant> = enumType(PARAGRAPH_STYLE_VARIANTS);
+export const ParagraphVariantType: Type<ParagraphVariant> = enumType(PARAGRAPH_VARIANTS);
 
 /**
  * List marker styles
@@ -222,7 +222,7 @@ const counterTextType = stringType
 const Props = {
     alignment: enumType(["start", "center", "end", "justify"]),
     direction: enumType(["ltr", "rtl"]),
-    variant: ParagraphStyleVariantType,
+    variant: ParagraphVariantType,
     lineSpacing: percentage10to1000,
     spaceAbove: percentage10to1000,
     spaceBelow: percentage10to1000,

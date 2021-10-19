@@ -118,10 +118,10 @@ Model for collaborative rich text editing
 |  [OpenUrlBase](./scribing.openurlbase.md) | The base record class for [OpenUrl](./scribing.openurl.md) |
 |  [ORDERED\_LIST\_MARKER\_KINDS](./scribing.ordered_list_marker_kinds.md) | Read-only array that contains ordered list marker styles |
 |  [OrderedListMarkerKindType](./scribing.orderedlistmarkerkindtype.md) | The run-time type that matches ordered list marker style values |
-|  [PARAGRAPH\_STYLE\_VARIANTS](./scribing.paragraph_style_variants.md) | Read-only array that contains all paragraph style variants |
+|  [PARAGRAPH\_VARIANTS](./scribing.paragraph_variants.md) | Read-only array that contains all paragraph style variants |
 |  [ParagraphBreakBase](./scribing.paragraphbreakbase.md) | The base record class for [ParagraphBreak](./scribing.paragraphbreak.md) |
 |  [ParagraphStyleBase](./scribing.paragraphstylebase.md) | The base record class for [ParagraphStyle](./scribing.paragraphstyle.md) |
-|  [ParagraphStyleVariantType](./scribing.paragraphstylevarianttype.md) | The run-time type that matches paragraph style variant values |
+|  [ParagraphVariantType](./scribing.paragraphvarianttype.md) | The run-time type that matches paragraph style variant values |
 |  [RemoveRangeBase](./scribing.removerangebase.md) | The base record class for [RemoveRange](./scribing.removerange.md) |
 |  [RunScriptBase](./scribing.runscriptbase.md) | The base record class for [RunScript](./scribing.runscript.md) |
 |  [SetButtonActionBase](./scribing.setbuttonactionbase.md) | The base record class for [SetButtonAction](./scribing.setbuttonaction.md) |
@@ -143,7 +143,7 @@ Model for collaborative rich text editing
 |  [FlowRangeTuple](./scribing.flowrangetuple.md) | Data for a [FlowRange](./scribing.flowrange.md) represented by a tuple where the first value is the anchor position and the second value is the focus position. |
 |  [ListMarkerKind](./scribing.listmarkerkind.md) | List marker styles |
 |  [OrderedListMarkerKind](./scribing.orderedlistmarkerkind.md) | Ordered list marker styles |
-|  [ParagraphStyleVariant](./scribing.paragraphstylevariant.md) | Paragraph style variant |
+|  [ParagraphVariant](./scribing.paragraphvariant.md) | Paragraph style variant |
 |  [TextRunData](./scribing.textrundata.md) | Data contract for a text run |
 |  [UnorderedListMarkerKind](./scribing.unorderedlistmarkerkind.md) | Unordered list marker styles |
 

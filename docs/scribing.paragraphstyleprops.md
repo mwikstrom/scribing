@@ -27,5 +27,5 @@ export interface ParagraphStyleProps
 |  [listMarker?](./scribing.paragraphstyleprops.listmarker.md) | [ListMarkerKind](./scribing.listmarkerkind.md) | <i>(Optional)</i> Specifies the list marker kind |
 |  [spaceAbove?](./scribing.paragraphstyleprops.spaceabove.md) | number | <i>(Optional)</i> The amount of space before the paragraph, as a percentage of the user agent's default font size, where normal is represented as <code>100</code>. |
 |  [spaceBelow?](./scribing.paragraphstyleprops.spacebelow.md) | number | <i>(Optional)</i> The amount of space before the paragraph, as a percentage of the user agent's default font size, where normal is represented as <code>100</code>. |
-|  [variant?](./scribing.paragraphstyleprops.variant.md) | [ParagraphStyleVariant](./scribing.paragraphstylevariant.md) | <i>(Optional)</i> The style variant of the paragraph. |
+|  [variant?](./scribing.paragraphstyleprops.variant.md) | [ParagraphVariant](./scribing.paragraphvariant.md) | <i>(Optional)</i> The style variant of the paragraph. |
 

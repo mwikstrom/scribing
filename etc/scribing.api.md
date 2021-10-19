@@ -20,7 +20,7 @@ export interface ApplyMineOptions {
 export class DefaultFlowTheme extends DefaultFlowThemeBase {
     constructor();
     static readonly classType: Type<RecordObject<    {}, "default"> & Equatable & Readonly<{}> & DefaultFlowTheme>;
-    getParagraphTheme(variant: ParagraphStyleVariant): ParagraphTheme;
+    getParagraphTheme(variant: ParagraphVariant): ParagraphTheme;
     static get instance(): DefaultFlowTheme;
 }
 
@@ -415,7 +415,7 @@ export abstract class FlowSelection {
 export abstract class FlowTheme {
     static readonly baseType: Type<FlowTheme>;
     static fromJsonValue(value: JsonValue): FlowTheme;
-    abstract getParagraphTheme(variant: ParagraphStyleVariant): ParagraphTheme;
+    abstract getParagraphTheme(variant: ParagraphVariant): ParagraphTheme;
     toJsonValue(): JsonValue;
 }
 
@@ -653,7 +653,7 @@ export type OrderedListMarkerKind = (typeof ORDERED_LIST_MARKER_KINDS)[number];
 export const OrderedListMarkerKindType: Type<ListMarkerKind>;
 
 // @public
-export const PARAGRAPH_STYLE_VARIANTS: readonly ["normal", "h1", "h2", "h3", "h4", "h5", "h6", "title", "subtitle", "preamble", "code"];
+export const PARAGRAPH_VARIANTS: readonly ["normal", "h1", "h2", "h3", "h4", "h5", "h6", "title", "subtitle", "preamble", "code"];
 
 // @public @sealed
 export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreakProps {
@@ -775,14 +775,8 @@ export interface ParagraphStyleProps {
     listMarker?: ListMarkerKind;
     spaceAbove?: number;
     spaceBelow?: number;
-    variant?: ParagraphStyleVariant;
+    variant?: ParagraphVariant;
 }
-
-// @public
-export type ParagraphStyleVariant = (typeof PARAGRAPH_STYLE_VARIANTS)[number];
-
-// @public
-export const ParagraphStyleVariantType: Type<ParagraphStyleVariant>;
 
 // @public
 export abstract class ParagraphTheme {
@@ -790,8 +784,14 @@ export abstract class ParagraphTheme {
     abstract getAmbientTextStyle(): TextStyle;
     abstract getFlowTheme(): FlowTheme;
     abstract getLinkStyle(): TextStyle;
-    abstract getNextVariant(): ParagraphStyleVariant;
+    abstract getNextVariant(): ParagraphVariant;
 }
+
+// @public
+export type ParagraphVariant = (typeof PARAGRAPH_VARIANTS)[number];
+
+// @public
+export const ParagraphVariantType: Type<ParagraphVariant>;
 
 // @public
 export interface RemoveFlowSelectionOptions extends TargetOptions {

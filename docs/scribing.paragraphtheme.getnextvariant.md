@@ -9,9 +9,9 @@ Gets the default variant of the next paragraph
 <b>Signature:</b>
 
 ```typescript
-abstract getNextVariant(): ParagraphStyleVariant;
+abstract getNextVariant(): ParagraphVariant;
 ```
 <b>Returns:</b>
 
-[ParagraphStyleVariant](./scribing.paragraphstylevariant.md)
+[ParagraphVariant](./scribing.paragraphvariant.md)
 

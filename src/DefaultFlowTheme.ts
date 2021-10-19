@@ -10,7 +10,7 @@ import {
 } from "paratype";
 import { FlowTheme } from "./FlowTheme";
 import { FlowThemeRegistry } from "./internal/class-registry";
-import { ParagraphStyle, ParagraphStyleVariant } from "./ParagraphStyle";
+import { ParagraphStyle, ParagraphVariant } from "./ParagraphStyle";
 import { ParagraphTheme } from "./ParagraphTheme";
 import { TextStyle, TextStyleProps } from "./TextStyle";
 
@@ -34,7 +34,7 @@ export const DefaultFlowThemeBase = RecordClass(PropsType, FlowTheme, DataType, 
 @validating
 @FlowThemeRegistry.register
 export class DefaultFlowTheme extends DefaultFlowThemeBase {
-    #cachedVariants = new Map<ParagraphStyleVariant, DefaultParagraphTheme>();
+    #cachedVariants = new Map<ParagraphVariant, DefaultParagraphTheme>();
 
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => DefaultFlowTheme);
@@ -50,7 +50,7 @@ export class DefaultFlowTheme extends DefaultFlowThemeBase {
     constructor() { super({}); }
 
     /** {@inheritdoc FlowTheme.getParagraphTheme} */
-    getParagraphTheme(variant: ParagraphStyleVariant): ParagraphTheme {
+    getParagraphTheme(variant: ParagraphVariant): ParagraphTheme {
         let result = this.#cachedVariants.get(variant);
         if (!result) {
             result = new DefaultParagraphTheme(variant);
@@ -68,9 +68,9 @@ class DefaultParagraphTheme extends ParagraphTheme {
     #text: TextStyle;
     #para: ParagraphStyle;
     #link: TextStyle;
-    #next: ParagraphStyleVariant;
+    #next: ParagraphVariant;
 
-    constructor(variant: ParagraphStyleVariant) {
+    constructor(variant: ParagraphVariant) {
         super();
 
         this.#text = new TextStyle({
@@ -124,7 +124,7 @@ class DefaultParagraphTheme extends ParagraphTheme {
     }
 
     /** {@inheritdoc ParagraphTheme.getNextVariant} */
-    getNextVariant(): ParagraphStyleVariant {
+    getNextVariant(): ParagraphVariant {
         return this.#next;
     }
 
@@ -134,9 +134,9 @@ class DefaultParagraphTheme extends ParagraphTheme {
     }
 }
 
-const isHeading = (variant: ParagraphStyleVariant): boolean => /^h[1-6]$/.test(variant);
+const isHeading = (variant: ParagraphVariant): boolean => /^h[1-6]$/.test(variant);
 
-const getFontFamily = (variant: ParagraphStyleVariant): TextStyleProps["fontFamily"] => {
+const getFontFamily = (variant: ParagraphVariant): TextStyleProps["fontFamily"] => {
     if (variant === "code") {
         return "monospace";
     } else if (isHeading(variant) || variant === "title" || variant === "subtitle") {
@@ -146,7 +146,7 @@ const getFontFamily = (variant: ParagraphStyleVariant): TextStyleProps["fontFami
     }
 };
 
-const getFontSize = (variant: ParagraphStyleVariant): number => {
+const getFontSize = (variant: ParagraphVariant): number => {
     switch (variant) {
     case "title": return 300;
     case "subtitle": return 125;
@@ -162,7 +162,7 @@ const getFontSize = (variant: ParagraphStyleVariant): number => {
     }
 };
 
-const getSpaceAbove = (variant: ParagraphStyleVariant): number => {
+const getSpaceAbove = (variant: ParagraphVariant): number => {
     if (variant === "title") {
         return 300;
     } else if (variant === "subtitle") {
@@ -172,7 +172,7 @@ const getSpaceAbove = (variant: ParagraphStyleVariant): number => {
     }
 };
 
-const getSpaceBelow = (variant: ParagraphStyleVariant): number => {
+const getSpaceBelow = (variant: ParagraphVariant): number => {
     switch (variant) {
     case "subtitle": return 200;
     case "h1": return 134;

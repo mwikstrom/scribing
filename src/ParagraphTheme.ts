@@ -1,5 +1,5 @@
 import type { FlowTheme } from "./FlowTheme";
-import { ParagraphStyle, ParagraphStyleVariant } from "./ParagraphStyle";
+import { ParagraphStyle, ParagraphVariant } from "./ParagraphStyle";
 import { TextStyle } from "./TextStyle";
 
 /**
@@ -32,5 +32,5 @@ export abstract class ParagraphTheme {
     /** 
      * Gets the default variant of the next paragraph
      */
-    abstract getNextVariant(): ParagraphStyleVariant;
+    abstract getNextVariant(): ParagraphVariant;
 }

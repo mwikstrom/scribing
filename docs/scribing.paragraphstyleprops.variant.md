@@ -9,5 +9,5 @@ The style variant of the paragraph.
 <b>Signature:</b>
 
 ```typescript
-variant?: ParagraphStyleVariant;
+variant?: ParagraphVariant;
 ```

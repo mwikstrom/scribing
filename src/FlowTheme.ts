@@ -1,5 +1,5 @@
 import { JsonValue, lazyType } from "paratype";
-import { ParagraphStyleVariant } from ".";
+import { ParagraphVariant } from ".";
 import { FlowThemeRegistry } from "./internal/class-registry";
 import { ParagraphTheme } from "./ParagraphTheme";
 
@@ -22,5 +22,5 @@ export abstract class FlowTheme {
     }
 
     /** Gets a flow theme for the specified paragraph variant */
-    abstract getParagraphTheme(variant: ParagraphStyleVariant): ParagraphTheme;
+    abstract getParagraphTheme(variant: ParagraphVariant): ParagraphTheme;
 }
