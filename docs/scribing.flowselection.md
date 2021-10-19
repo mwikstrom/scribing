@@ -29,11 +29,13 @@ export declare abstract class FlowSelection
 |  [formatParagraph(style, options)](./scribing.flowselection.formatparagraph.md) |  | Creates an operation that applies the specified paragraph style on the current selection |
 |  [formatText(style, options)](./scribing.flowselection.formattext.md) |  | Creates an operation that applies the specified text style on the current selection |
 |  [fromJsonValue(value)](./scribing.flowselection.fromjsonvalue.md) | <code>static</code> | Converts the specified JSON value to a flow selection |
+|  [getUniformBoxStyle(content, theme, diff)](./scribing.flowselection.getuniformboxstyle.md) |  | Gets the uniform box style of the current selection |
 |  [getUniformParagraphStyle(content, theme, diff)](./scribing.flowselection.getuniformparagraphstyle.md) |  | Gets the uniform paragraph style of the current selection |
 |  [getUniformTextStyle(content, theme, diff)](./scribing.flowselection.getuniformtextstyle.md) |  | Gets the uniform text style of the current selection |
 |  [incrementListLevel(content, delta)](./scribing.flowselection.incrementlistlevel.md) |  | Creates an operation that increments the list level of the current selection |
 |  [insert(content, options)](./scribing.flowselection.insert.md) |  | Creates an operation that inserts the specified content into the current selection |
 |  [remove(options)](./scribing.flowselection.remove.md) |  | Creates an operation that removes the content of the current selection |
+|  [setDynamicTextExpression(content, expression)](./scribing.flowselection.setdynamictextexpression.md) |  | Creates an operation that sets the specified dynamic text expression in the current selection |
 |  [toJsonValue()](./scribing.flowselection.tojsonvalue.md) |  | Converts the current selection to a JSON value |
 |  [transformRanges(transform, options)](./scribing.flowselection.transformranges.md) |  | Transforms all ranges in the current selection |
 |  [unformatBox(style)](./scribing.flowselection.unformatbox.md) |  | Creates an operation that unapplies the specified box style on the current selection |

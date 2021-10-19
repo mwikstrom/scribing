@@ -1,7 +1,10 @@
 import { frozen, lazyType, RecordClass, recordClassType, recordType, RecordType, type, validating } from "paratype";
-import { BoxStyle } from "./BoxStyle";
+import { BoxStyle, BoxStyleProps } from "./BoxStyle";
+import { DynamicText } from "./DynamicText";
 import { FlowBatch } from "./FlowBatch";
+import { FlowBox } from "./FlowBox";
 import { FlowContent } from "./FlowContent";
+import { FlowCursor } from "./FlowCursor";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
 import { TargetOptions, FlowSelection, RemoveFlowSelectionOptions } from "./FlowSelection";
@@ -25,6 +28,7 @@ import {
     UnorderedListMarkerKindType
 } from "./ParagraphStyle";
 import { RemoveRange } from "./RemoveRange";
+import { SetDynamicTextExpression } from "./SetDynamicTextExpression";
 import { TextStyle, TextStyleProps } from "./TextStyle";
 import { UnformatBox } from "./UnformatBox";
 import { UnformatParagraph } from "./UnformatParagraph";
@@ -69,6 +73,33 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      */
     public get isCollapsed(): boolean {
         return this.range.isCollapsed;
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.getUniformBoxStyle}
+     * @override
+     */
+    public getUniformBoxStyle(
+        content: FlowContent,
+        theme?: FlowTheme,
+        diff?: Set<keyof BoxStyleProps>,
+    ): BoxStyle {
+        const { first, size } = this.range;
+        const cursor = content.peek(first);
+
+        if (!diff) {
+            diff = new Set();
+        }
+
+        let result = BoxStyle.empty;
+        for (const node of cursor.range(size)) {
+            if (node instanceof FlowBox) {
+                const { style } = node;
+                result = result.merge(style, diff);
+            }
+        }
+
+        return result;
     }
 
     /**
@@ -353,6 +384,31 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
         } else {
             return null;
         }
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.setDynamicTextExpression}
+     * @override
+     */
+    public setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null {
+        const { range } = this;
+        const operations: SetDynamicTextExpression[] = [];
+
+        for (
+            let cursor: FlowCursor | null = content.peek(range.first);
+            cursor?.node;
+            cursor = cursor.moveToStartOfNextNode()
+        ) {
+            const { node, position, offset } = cursor;
+            if (node instanceof DynamicText) {
+                operations.push(new SetDynamicTextExpression({
+                    position: position - offset,
+                    expression,
+                }));
+            }
+        }
+
+        return FlowBatch.fromArray(operations);
     }
 
     /**

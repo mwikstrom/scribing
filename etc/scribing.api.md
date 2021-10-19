@@ -424,6 +424,8 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     // @override
     formatText(style: TextStyle): FlowOperation | null;
     // @override
+    getUniformBoxStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof BoxStyleProps>): BoxStyle;
+    // @override
     getUniformParagraphStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle;
     // @override
     getUniformTextStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
@@ -435,6 +437,8 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     get isCollapsed(): boolean;
     // @override
     remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
+    // @override
+    setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null;
     // @override
     transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;
     // @override
@@ -469,12 +473,14 @@ export abstract class FlowSelection {
     abstract formatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
     abstract formatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
     static fromJsonValue(value: JsonValue): FlowSelection;
+    abstract getUniformBoxStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof BoxStyleProps>): BoxStyle;
     abstract getUniformParagraphStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle;
     abstract getUniformTextStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
     abstract incrementListLevel(content: FlowContent, delta?: number): FlowOperation | null;
     abstract insert(content: FlowContent, options?: TargetOptions): FlowOperation | null;
     abstract get isCollapsed(): boolean;
     abstract remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
+    abstract setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null;
     toJsonValue(): JsonValue;
     abstract transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;
     abstract unformatBox(style: BoxStyle): FlowOperation | null;
@@ -711,6 +717,8 @@ export abstract class NestedFlowSelection extends FlowSelection {
     protected abstract getOuterOperation(inner: FlowOperation): FlowOperation;
     protected getSelectedNode(outer: FlowContent): FlowNode;
     // @override
+    getUniformBoxStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof BoxStyleProps>): BoxStyle;
+    // @override
     getUniformParagraphStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle;
     // @override
     getUniformTextStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
@@ -724,6 +732,8 @@ export abstract class NestedFlowSelection extends FlowSelection {
     // @override
     remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
     abstract set(key: "position", value: number): this;
+    // @override
+    setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null;
     protected abstract setInnerSelection(value: FlowSelection): NestedFlowSelection;
     // @override
     transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;

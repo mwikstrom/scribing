@@ -35,12 +35,14 @@ export declare abstract class NestedFlowSelection extends FlowSelection
 |  [getInnerSelection()](./scribing.nestedflowselection.getinnerselection.md) |  | Gets the inner selection |
 |  [getOuterOperation(inner)](./scribing.nestedflowselection.getouteroperation.md) |  | Wraps the specified operation so that it applies the outer selection |
 |  [getSelectedNode(outer)](./scribing.nestedflowselection.getselectednode.md) |  | Gets the selected (outer) node |
+|  [getUniformBoxStyle(content, theme, diff)](./scribing.nestedflowselection.getuniformboxstyle.md) |  | Gets the uniform box style of the current selection |
 |  [getUniformParagraphStyle(content, theme, diff)](./scribing.nestedflowselection.getuniformparagraphstyle.md) |  | Gets the uniform paragraph style of the current selection |
 |  [getUniformTextStyle(content, theme, diff)](./scribing.nestedflowselection.getuniformtextstyle.md) |  | Gets the uniform text style of the current selection |
 |  [incrementListLevel(content, delta)](./scribing.nestedflowselection.incrementlistlevel.md) |  | Creates an operation that increments the list level of the current selection |
 |  [insert(content, options)](./scribing.nestedflowselection.insert.md) |  | Creates an operation that inserts the specified content into the current selection |
 |  [remove(options)](./scribing.nestedflowselection.remove.md) |  | Creates an operation that removes the content of the current selection |
 |  [set(key, value)](./scribing.nestedflowselection.set.md) |  | Returns a copy of the current object with the specified property merged in |
+|  [setDynamicTextExpression(content, expression)](./scribing.nestedflowselection.setdynamictextexpression.md) |  | Creates an operation that sets the specified dynamic text expression in the current selection |
 |  [setInnerSelection(value)](./scribing.nestedflowselection.setinnerselection.md) |  | Returns a copy of this selection with the specified inner selection merged in |
 |  [transformRanges(transform, options)](./scribing.nestedflowselection.transformranges.md) |  | Transforms all ranges in the current selection |
 |  [unformatBox(style)](./scribing.nestedflowselection.unformatbox.md) |  | Creates an operation that unapplies the specified box style on the current selection |

@@ -1,4 +1,4 @@
-import { BoxStyle } from "./BoxStyle";
+import { BoxStyle, BoxStyleProps } from "./BoxStyle";
 import { FlowContent } from "./FlowContent";
 import { FlowNode } from "./FlowNode";
 import { FlowOperation } from "./FlowOperation";
@@ -81,6 +81,20 @@ export abstract class NestedFlowSelection extends FlowSelection {
     public get isCollapsed(): boolean {
         const innerSelection = this.getInnerSelection();
         return innerSelection.isCollapsed;
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.getUniformBoxStyle}
+     * @override
+     */
+    public getUniformBoxStyle(
+        content: FlowContent,
+        theme?: FlowTheme,
+        diff?: Set<keyof BoxStyleProps>,
+    ): BoxStyle {
+        const innerSelection = this.getInnerSelection();
+        const innerContent = this.getInnerContent(content);
+        return innerSelection.getUniformBoxStyle(innerContent, theme, diff);
     }
 
     /**
@@ -194,6 +208,17 @@ export abstract class NestedFlowSelection extends FlowSelection {
         const innerSelection = this.getInnerSelection();
         const innerOptions = this.#getInnerOptions(options);
         const innerOperation = innerSelection.remove(innerOptions);
+        return this.#wrapOperation(innerOperation);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.setDynamicTextExpression}
+     * @override
+     */
+    public setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerContent = this.getInnerContent(content);
+        const innerOperation = innerSelection.setDynamicTextExpression(innerContent, expression);
         return this.#wrapOperation(innerOperation);
     }
 

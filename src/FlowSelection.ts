@@ -6,7 +6,7 @@ import { FlowRange } from "./FlowRange";
 import { FlowSelectionRegistry } from "./internal/class-registry";
 import { ParagraphStyle, ParagraphStyleProps } from "./ParagraphStyle";
 import { TextStyle, TextStyleProps } from "./TextStyle";
-import { BoxStyle } from "./BoxStyle";
+import { BoxStyle, BoxStyleProps } from "./BoxStyle";
 
 /**
  * Represents a selection of flow content
@@ -28,6 +28,18 @@ export abstract class FlowSelection {
 
     /** Determines whether the current selection is collapsed */
     public abstract get isCollapsed(): boolean;
+
+    /**
+     * Gets the uniform box style of the current selection
+     * @param content - The selected content
+     * @param theme - Theme of the selected content
+     * @param diff - An optional set that is populated with style keys with non-uniform values
+     */
+    public abstract getUniformBoxStyle(
+        content: FlowContent,
+        theme?: FlowTheme,
+        diff?: Set<keyof BoxStyleProps>,
+    ): BoxStyle;
 
     /**
      * Gets the uniform paragraph style of the current selection
@@ -123,6 +135,15 @@ export abstract class FlowSelection {
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
     public abstract remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
+
+    /**
+     * Creates an operation that sets the specified dynamic text expression in the current selection
+     * @param content - The selected content
+     * @param expression - The expression to set
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null;
 
     /**
      * Transforms all ranges in the current selection
