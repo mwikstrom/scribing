@@ -22,6 +22,7 @@ export const BOX_VARIANTS: readonly ["basic", "contained", "outlined", "alert", 
 // @public @sealed
 export class BoxStyle extends BoxStyleBase implements Readonly<BoxStyleProps> {
     constructor(props?: BoxStyleProps);
+    static get ambient(): BoxStyle;
     static readonly classType: Type<RecordObject<Partial<{
     variant: "basic" | "contained" | "outlined" | "alert" | "quote";
     color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
