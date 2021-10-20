@@ -8,6 +8,7 @@ import {
     validating
 } from "paratype";
 import { BoxStyle } from "./BoxStyle";
+import { DefaultFlowTheme } from "./DefaultFlowTheme";
 import { FlowContent } from "./FlowContent";
 import { FlowNode } from "./FlowNode";
 import { FlowRange } from "./FlowRange";
@@ -108,7 +109,7 @@ export class FlowBox extends FlowBoxBase {
     ): ParagraphStyle | null {
         const range = FlowRange.at(0, this.content.size);
         const selection = new FlowRangeSelection({ range });
-        return selection.getUniformParagraphStyle(this.content, theme?.getFlowTheme(), diff);
+        return selection.getUniformParagraphStyle(this.content, this.getInnerTheme(theme), diff);
     }
 
     /**
@@ -121,14 +122,14 @@ export class FlowBox extends FlowBoxBase {
     ): TextStyle {
         const range = FlowRange.at(0, this.content.size);
         const selection = new FlowRangeSelection({ range });
-        return selection.getUniformTextStyle(this.content, theme?.getFlowTheme(), diff);
+        return selection.getUniformTextStyle(this.content, this.getInnerTheme(theme), diff);
     }
 
     /** {@inheritdoc FlowNode.unformatAmbient} */
     public unformatAmbient(theme: ParagraphTheme): this {
         return this.merge({
             style: this.style.unmerge(BoxStyle.ambient),
-            content: this.content.unformatAmbient(theme.getFlowTheme()),
+            content: this.content.unformatAmbient(this.getInnerTheme(theme)),
         });
     }
 
@@ -147,5 +148,9 @@ export class FlowBox extends FlowBoxBase {
     public unformatParagraph(style: ParagraphStyle): this {
         const range = FlowRange.at(0, this.content.size);
         return this.set("content", this.content.unformatParagraph(range, style));
+    }
+
+    private getInnerTheme(outer: ParagraphTheme | undefined): FlowTheme {
+        return (outer?.getFlowTheme() ?? DefaultFlowTheme.instance).getBoxTheme(this.style);
     }
 }
