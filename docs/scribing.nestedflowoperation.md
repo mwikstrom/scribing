@@ -31,6 +31,7 @@ export declare abstract class NestedFlowOperation extends FlowOperation
 |  [createReplacementNode(content, before)](./scribing.nestedflowoperation.createreplacementnode.md) |  | Creates a replacement node |
 |  [getInnerContent(outer)](./scribing.nestedflowoperation.getinnercontent.md) |  | Gets the inner content |
 |  [getInnerContentFromNode(node)](./scribing.nestedflowoperation.getinnercontentfromnode.md) |  | Gets the inner content |
+|  [getInnerThemeFromNode(node, outer)](./scribing.nestedflowoperation.getinnerthemefromnode.md) |  | Gets the inner theme |
 |  [getTargetNode(outer)](./scribing.nestedflowoperation.gettargetnode.md) |  | Gets the target node |
 |  [invert(content)](./scribing.nestedflowoperation.invert.md) |  | Returns an operation that negates the effect of the current operation. |
 |  [set(key, value)](./scribing.nestedflowoperation.set.md) |  | Returns a copy of the current object with the specified property merged in |

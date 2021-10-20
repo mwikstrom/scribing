@@ -116,6 +116,7 @@ export class EditBox extends EditBoxBase implements EditBoxProps {
     createReplacementNode(content: FlowContent, before: FlowNode): FlowNode;
     static fromData(data: EditBoxData): EditBox;
     getInnerContentFromNode(node: FlowNode): FlowContent;
+    getInnerThemeFromNode(node: FlowNode, outer?: FlowTheme): FlowTheme;
     mergeNext(next: FlowOperation): FlowOperation | null;
 }
 
@@ -693,6 +694,7 @@ export abstract class NestedFlowOperation extends FlowOperation {
     protected abstract createReplacementNode(content: FlowContent, before: FlowNode): FlowNode;
     protected getInnerContent(outer: FlowContent): FlowContent;
     protected abstract getInnerContentFromNode(node: FlowNode): FlowContent;
+    protected abstract getInnerThemeFromNode(node: FlowNode, outer?: FlowTheme): FlowTheme;
     protected getTargetNode(outer: FlowContent): FlowNode;
     abstract inner: FlowOperation;
     invert(content: FlowContent): FlowOperation | null;

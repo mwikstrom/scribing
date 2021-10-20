@@ -29,5 +29,6 @@ export declare class EditBox extends EditBoxBase implements EditBoxProps
 |  [createReplacementNode(content, before)](./scribing.editbox.createreplacementnode.md) |  | Creates a replacement node |
 |  [fromData(data)](./scribing.editbox.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
 |  [getInnerContentFromNode(node)](./scribing.editbox.getinnercontentfromnode.md) |  | Gets the inner content |
+|  [getInnerThemeFromNode(node, outer)](./scribing.editbox.getinnerthemefromnode.md) |  | Gets the inner theme |
 |  [mergeNext(next)](./scribing.editbox.mergenext.md) |  | Returns an operation that keeps the intention of the current operation and the specified subsequent operation as they were performed as an atomic operation. |
 
