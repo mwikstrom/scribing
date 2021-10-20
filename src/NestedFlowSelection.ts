@@ -56,7 +56,7 @@ export abstract class NestedFlowSelection extends FlowSelection {
      * @param outerContent - The outer content
      * @param outerTheme - The outer theme
      */
-    protected getInnerTheme(outerContent: FlowContent, outerTheme: FlowTheme): FlowTheme {
+    protected getInnerTheme(outerContent: FlowContent, outerTheme?: FlowTheme): FlowTheme {
         const node = this.getSelectedNode(outerContent);
         return this.getInnerThemeFromNode(node, outerTheme);
     }
@@ -72,7 +72,7 @@ export abstract class NestedFlowSelection extends FlowSelection {
      * @param node - The selected node
      * @param outer - The outer theme
      */
-     protected abstract getInnerThemeFromNode(node: FlowNode, outer: FlowTheme): FlowTheme;
+     protected abstract getInnerThemeFromNode(node: FlowNode, outer?: FlowTheme): FlowTheme;
 
     /**
      * Gets the inner selection
@@ -111,7 +111,8 @@ export abstract class NestedFlowSelection extends FlowSelection {
     ): BoxStyle {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
-        return innerSelection.getUniformBoxStyle(innerContent, theme, diff);
+        const innerTheme = this.getInnerTheme(content, theme);
+        return innerSelection.getUniformBoxStyle(innerContent, innerTheme, diff);
     }
 
     /**
@@ -125,7 +126,8 @@ export abstract class NestedFlowSelection extends FlowSelection {
     ): ParagraphStyle {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
-        return innerSelection.getUniformParagraphStyle(innerContent, theme, diff);
+        const innerTheme = this.getInnerTheme(content, theme);
+        return innerSelection.getUniformParagraphStyle(innerContent, innerTheme, diff);
     }
 
     /**
@@ -139,7 +141,8 @@ export abstract class NestedFlowSelection extends FlowSelection {
     ): TextStyle {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
-        return innerSelection.getUniformTextStyle(innerContent, theme, diff);
+        const innerTheme = this.getInnerTheme(content, theme);
+        return innerSelection.getUniformTextStyle(innerContent, innerTheme, diff);
     }
 
     /**
@@ -317,7 +320,7 @@ export abstract class NestedFlowSelection extends FlowSelection {
             const { target: outerContent, theme: outerTheme, ...rest } = options;
             if (outerContent) {
                 const target = this.getInnerContent(outerContent);
-                const theme = outerTheme ? this.getInnerTheme(outerContent, outerTheme) : void(0);
+                const theme = this.getInnerTheme(outerContent, outerTheme);
                 return { target, theme, ...rest } as T;
             }            
         }

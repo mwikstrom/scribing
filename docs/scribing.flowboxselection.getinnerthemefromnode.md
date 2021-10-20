@@ -10,7 +10,7 @@ Gets the inner theme
 
 ```typescript
 /** @override */
-protected getInnerThemeFromNode(node: FlowNode, outer: FlowTheme): FlowTheme;
+protected getInnerThemeFromNode(node: FlowNode, outer?: FlowTheme): FlowTheme;
 ```
 
 ## Parameters

@@ -9,7 +9,7 @@ Gets the inner theme
 <b>Signature:</b>
 
 ```typescript
-protected abstract getInnerThemeFromNode(node: FlowNode, outer: FlowTheme): FlowTheme;
+protected abstract getInnerThemeFromNode(node: FlowNode, outer?: FlowTheme): FlowTheme;
 ```
 
 ## Parameters

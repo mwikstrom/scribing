@@ -9,6 +9,7 @@ import {
     type, 
     validating 
 } from "paratype";
+import { DefaultFlowTheme } from "./DefaultFlowTheme";
 import { EditBox } from "./EditBox";
 import { FlowBox } from "./FlowBox";
 import { FlowContent } from "./FlowContent";
@@ -94,9 +95,9 @@ export class FlowBoxSelection extends FlowBoxSelectionBase {
      * {@inheritDoc NestedFlowSelection.getInnerThemeFromNode}
      * @override
      */
-    protected getInnerThemeFromNode(node: FlowNode, outer: FlowTheme): FlowTheme {
+    protected getInnerThemeFromNode(node: FlowNode, outer?: FlowTheme): FlowTheme {
         if (node instanceof FlowBox) {
-            return outer.getBoxTheme(node.style);
+            return (outer ?? DefaultFlowTheme.instance).getBoxTheme(node.style);
         } else {
             throw new Error(`Expected a flow box at position ${this.position}`);
         }

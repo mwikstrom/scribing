@@ -212,7 +212,7 @@ export class FlowBoxSelection extends FlowBoxSelectionBase {
     // @override
     protected getInnerSelection(): FlowSelection;
     // @override
-    protected getInnerThemeFromNode(node: FlowNode, outer: FlowTheme): FlowTheme;
+    protected getInnerThemeFromNode(node: FlowNode, outer?: FlowTheme): FlowTheme;
     // @override
     protected getOuterOperation(inner: FlowOperation): FlowOperation;
     // @override
@@ -721,8 +721,8 @@ export abstract class NestedFlowSelection extends FlowSelection {
     protected getInnerContent(outer: FlowContent): FlowContent;
     protected abstract getInnerContentFromNode(node: FlowNode): FlowContent;
     protected abstract getInnerSelection(): FlowSelection;
-    protected getInnerTheme(outerContent: FlowContent, outerTheme: FlowTheme): FlowTheme;
-    protected abstract getInnerThemeFromNode(node: FlowNode, outer: FlowTheme): FlowTheme;
+    protected getInnerTheme(outerContent: FlowContent, outerTheme?: FlowTheme): FlowTheme;
+    protected abstract getInnerThemeFromNode(node: FlowNode, outer?: FlowTheme): FlowTheme;
     protected abstract getOuterOperation(inner: FlowOperation): FlowOperation;
     protected getSelectedNode(outer: FlowContent): FlowNode;
     // @override
