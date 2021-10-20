@@ -8,6 +8,7 @@ import {
     Type, 
     validating 
 } from "paratype";
+import { BoxStyle } from "./BoxStyle";
 import { FlowTheme } from "./FlowTheme";
 import { FlowThemeRegistry } from "./internal/class-registry";
 import { ParagraphStyle, ParagraphVariant } from "./ParagraphStyle";
@@ -34,7 +35,7 @@ export const DefaultFlowThemeBase = RecordClass(PropsType, FlowTheme, DataType, 
 @validating
 @FlowThemeRegistry.register
 export class DefaultFlowTheme extends DefaultFlowThemeBase {
-    #cachedVariants = new Map<ParagraphVariant, DefaultParagraphTheme>();
+    readonly #root = getDefaultBoxTheme(BoxStyle.empty);
 
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => DefaultFlowTheme);
@@ -49,40 +50,96 @@ export class DefaultFlowTheme extends DefaultFlowThemeBase {
 
     constructor() { super({}); }
 
+    /** {@inheritdoc FlowTheme.getBoxTheme} */
+    getBoxTheme(style: BoxStyle): FlowTheme {
+        return this.#root.getBoxTheme(style);
+    }
+
     /** {@inheritdoc FlowTheme.getParagraphTheme} */
     getParagraphTheme(variant: ParagraphVariant): ParagraphTheme {
-        let result = this.#cachedVariants.get(variant);
+        return this.#root.getParagraphTheme(variant);
+    }
+}
+
+let CACHED_ROOT: DefaultFlowTheme | undefined;
+const CACHED_BOX = new Map<BoxStyle, DefaultBoxTheme>();
+const MAPPED_BOX_STYLES = new WeakMap<BoxStyle, BoxStyle>();
+
+function getDefaultBoxTheme(style: BoxStyle): DefaultBoxTheme {
+    let theme = CACHED_BOX.get(style);
+
+    if (!theme) {
+        let mapped = MAPPED_BOX_STYLES.get(style);
+
+        if (mapped) {
+            theme = CACHED_BOX.get(mapped);
+        } else {
+            for (const [key, value] of CACHED_BOX.entries()) {
+                if (style.equals(key)) {
+                    MAPPED_BOX_STYLES.set(style, key);
+                    mapped = key;
+                    theme = value;
+                    break;
+                }
+            }
+        }
+
+        if (!theme) {
+            CACHED_BOX.set(style, theme = new DefaultBoxTheme(style));
+        }
+    }
+
+    return theme;
+}
+
+@frozen
+@validating
+class DefaultBoxTheme extends FlowTheme {
+    readonly #box: BoxStyle;
+    readonly #paragraphCache = new Map<ParagraphVariant, DefaultParagraphTheme>();
+
+    constructor(style: BoxStyle) {
+        super();
+        this.#box = style;
+    }
+
+    /** {@inheritdoc FlowTheme.getBoxTheme} */
+    getBoxTheme(style: BoxStyle): FlowTheme {
+        return getDefaultBoxTheme(style);
+    }
+
+    /** {@inheritdoc FlowTheme.getParagraphTheme} */
+    getParagraphTheme(variant: ParagraphVariant): ParagraphTheme {
+        let result = this.#paragraphCache.get(variant);
         if (!result) {
-            result = new DefaultParagraphTheme(variant);
-            this.#cachedVariants.set(variant, result);
+            result = new DefaultParagraphTheme(this.#box, variant);
+            this.#paragraphCache.set(variant, result);
         }
         return result;
     }
 }
 
-let CACHED_ROOT: DefaultFlowTheme | undefined;
-
 @frozen
 @validating
 class DefaultParagraphTheme extends ParagraphTheme {
-    #text: TextStyle;
-    #para: ParagraphStyle;
-    #link: TextStyle;
-    #next: ParagraphVariant;
+    readonly #text: TextStyle;
+    readonly #para: ParagraphStyle;
+    readonly #link: TextStyle;
+    readonly #next: ParagraphVariant;
 
-    constructor(variant: ParagraphVariant) {
+    constructor(box: BoxStyle, variant: ParagraphVariant) {
         super();
 
         this.#text = new TextStyle({
             fontFamily: getFontFamily(variant),
             fontSize: getFontSize(variant),
             bold: isHeading(variant),
-            italic: false,
+            italic: box.variant === "quote",
             underline: false,
             strike: false,
             baseline: "normal",
             link: null,
-            color: variant === "subtitle" ? "subtle" : "default",
+            color: box.color ?? (variant === "subtitle" ? "subtle" : "default"),
         });
 
         this.#para = new ParagraphStyle({

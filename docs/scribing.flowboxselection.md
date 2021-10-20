@@ -27,6 +27,7 @@ export declare class FlowBoxSelection extends FlowBoxSelectionBase
 |  [fromData(data)](./scribing.flowboxselection.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
 |  [getInnerContentFromNode(node)](./scribing.flowboxselection.getinnercontentfromnode.md) |  | Gets the inner content |
 |  [getInnerSelection()](./scribing.flowboxselection.getinnerselection.md) |  | Gets the inner selection |
+|  [getInnerThemeFromNode(node, outer)](./scribing.flowboxselection.getinnerthemefromnode.md) |  | Gets the inner theme |
 |  [getOuterOperation(inner)](./scribing.flowboxselection.getouteroperation.md) |  | Wraps the specified operation so that it applies the outer selection |
 |  [setInnerSelection(value)](./scribing.flowboxselection.setinnerselection.md) |  | Returns a copy of this selection with the specified inner selection merged in |
 

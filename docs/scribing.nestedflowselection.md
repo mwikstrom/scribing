@@ -33,6 +33,8 @@ export declare abstract class NestedFlowSelection extends FlowSelection
 |  [getInnerContent(outer)](./scribing.nestedflowselection.getinnercontent.md) |  | Gets the inner content |
 |  [getInnerContentFromNode(node)](./scribing.nestedflowselection.getinnercontentfromnode.md) |  | Gets the inner content |
 |  [getInnerSelection()](./scribing.nestedflowselection.getinnerselection.md) |  | Gets the inner selection |
+|  [getInnerTheme(outerContent, outerTheme)](./scribing.nestedflowselection.getinnertheme.md) |  | Gets the inner theme |
+|  [getInnerThemeFromNode(node, outer)](./scribing.nestedflowselection.getinnerthemefromnode.md) |  | Gets the inner theme |
 |  [getOuterOperation(inner)](./scribing.nestedflowselection.getouteroperation.md) |  | Wraps the specified operation so that it applies the outer selection |
 |  [getSelectedNode(outer)](./scribing.nestedflowselection.getselectednode.md) |  | Gets the selected (outer) node |
 |  [getUniformBoxStyle(content, theme, diff)](./scribing.nestedflowselection.getuniformboxstyle.md) |  | Gets the uniform box style of the current selection |

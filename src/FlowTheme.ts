@@ -1,6 +1,7 @@
 import { JsonValue, lazyType } from "paratype";
-import { ParagraphVariant } from ".";
+import { BoxStyle } from "./BoxStyle";
 import { FlowThemeRegistry } from "./internal/class-registry";
+import { ParagraphVariant } from "./ParagraphStyle";
 import { ParagraphTheme } from "./ParagraphTheme";
 
 /**
@@ -21,6 +22,9 @@ export abstract class FlowTheme {
         return FlowTheme.baseType.toJsonValue(this);
     }
 
-    /** Gets a flow theme for the specified paragraph variant */
+    /** Gets a theme for the specified paragraph variant */
     abstract getParagraphTheme(variant: ParagraphVariant): ParagraphTheme;
+
+    /** Gets a theme for the specified box style */
+    abstract getBoxTheme(style: BoxStyle): FlowTheme;
 }

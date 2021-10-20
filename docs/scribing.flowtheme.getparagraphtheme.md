@@ -4,7 +4,7 @@
 
 ## FlowTheme.getParagraphTheme() method
 
-Gets a flow theme for the specified paragraph variant
+Gets a theme for the specified paragraph variant
 
 <b>Signature:</b>
 

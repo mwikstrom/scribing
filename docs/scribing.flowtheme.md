@@ -23,6 +23,7 @@ export declare abstract class FlowTheme
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
 |  [fromJsonValue(value)](./scribing.flowtheme.fromjsonvalue.md) | <code>static</code> | Converts the specified JSON value to a flow theme |
-|  [getParagraphTheme(variant)](./scribing.flowtheme.getparagraphtheme.md) |  | Gets a flow theme for the specified paragraph variant |
+|  [getBoxTheme(style)](./scribing.flowtheme.getboxtheme.md) |  | Gets a theme for the specified box style |
+|  [getParagraphTheme(variant)](./scribing.flowtheme.getparagraphtheme.md) |  | Gets a theme for the specified paragraph variant |
 |  [toJsonValue()](./scribing.flowtheme.tojsonvalue.md) |  | Converts the current theme to a JSON value |
 

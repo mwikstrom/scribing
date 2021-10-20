@@ -79,6 +79,7 @@ export const BoxVariantType: Type<BoxVariant>;
 export class DefaultFlowTheme extends DefaultFlowThemeBase {
     constructor();
     static readonly classType: Type<RecordObject<    {}, "default"> & Equatable & Readonly<{}> & DefaultFlowTheme>;
+    getBoxTheme(style: BoxStyle): FlowTheme;
     getParagraphTheme(variant: ParagraphVariant): ParagraphTheme;
     static get instance(): DefaultFlowTheme;
 }
@@ -208,6 +209,8 @@ export class FlowBoxSelection extends FlowBoxSelectionBase {
     protected getInnerContentFromNode(node: FlowNode): FlowContent;
     // @override
     protected getInnerSelection(): FlowSelection;
+    // @override
+    protected getInnerThemeFromNode(node: FlowNode, outer: FlowTheme): FlowTheme;
     // @override
     protected getOuterOperation(inner: FlowOperation): FlowOperation;
     // @override
@@ -492,6 +495,7 @@ export abstract class FlowSelection {
 export abstract class FlowTheme {
     static readonly baseType: Type<FlowTheme>;
     static fromJsonValue(value: JsonValue): FlowTheme;
+    abstract getBoxTheme(style: BoxStyle): FlowTheme;
     abstract getParagraphTheme(variant: ParagraphVariant): ParagraphTheme;
     toJsonValue(): JsonValue;
 }
@@ -714,6 +718,8 @@ export abstract class NestedFlowSelection extends FlowSelection {
     protected getInnerContent(outer: FlowContent): FlowContent;
     protected abstract getInnerContentFromNode(node: FlowNode): FlowContent;
     protected abstract getInnerSelection(): FlowSelection;
+    protected getInnerTheme(outerContent: FlowContent, outerTheme: FlowTheme): FlowTheme;
+    protected abstract getInnerThemeFromNode(node: FlowNode, outer: FlowTheme): FlowTheme;
     protected abstract getOuterOperation(inner: FlowOperation): FlowOperation;
     protected getSelectedNode(outer: FlowContent): FlowNode;
     // @override

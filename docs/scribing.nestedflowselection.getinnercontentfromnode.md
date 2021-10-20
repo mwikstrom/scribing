@@ -16,7 +16,7 @@ protected abstract getInnerContentFromNode(node: FlowNode): FlowContent;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  node | [FlowNode](./scribing.flownode.md) |  |
+|  node | [FlowNode](./scribing.flownode.md) | The selected node |
 
 <b>Returns:</b>
 

@@ -15,6 +15,7 @@ import { FlowContent } from "./FlowContent";
 import { FlowNode } from "./FlowNode";
 import { FlowOperation } from "./FlowOperation";
 import { FlowSelection } from "./FlowSelection";
+import { FlowTheme } from "./FlowTheme";
 import { FlowSelectionRegistry } from "./internal/class-registry";
 import { NestedFlowSelection } from "./NestedFlowSelection";
 
@@ -84,6 +85,18 @@ export class FlowBoxSelection extends FlowBoxSelectionBase {
     protected getInnerContentFromNode(node: FlowNode): FlowContent {
         if (node instanceof FlowBox) {
             return node.content;
+        } else {
+            throw new Error(`Expected a flow box at position ${this.position}`);
+        }
+    }
+
+    /**
+     * {@inheritDoc NestedFlowSelection.getInnerThemeFromNode}
+     * @override
+     */
+    protected getInnerThemeFromNode(node: FlowNode, outer: FlowTheme): FlowTheme {
+        if (node instanceof FlowBox) {
+            return outer.getBoxTheme(node.style);
         } else {
             throw new Error(`Expected a flow box at position ${this.position}`);
         }

@@ -52,10 +52,27 @@ export abstract class NestedFlowSelection extends FlowSelection {
     }
 
     /**
+     * Gets the inner theme
+     * @param outerContent - The outer content
+     * @param outerTheme - The outer theme
+     */
+    protected getInnerTheme(outerContent: FlowContent, outerTheme: FlowTheme): FlowTheme {
+        const node = this.getSelectedNode(outerContent);
+        return this.getInnerThemeFromNode(node, outerTheme);
+    }
+
+    /**
      * Gets the inner content
-     * @param outer - The selected node
+     * @param node - The selected node
      */
     protected abstract getInnerContentFromNode(node: FlowNode): FlowContent;
+
+    /**
+     * Gets the inner theme
+     * @param node - The selected node
+     * @param outer - The outer theme
+     */
+     protected abstract getInnerThemeFromNode(node: FlowNode, outer: FlowTheme): FlowTheme;
 
     /**
      * Gets the inner selection
@@ -297,10 +314,11 @@ export abstract class NestedFlowSelection extends FlowSelection {
 
     #getInnerOptions<T extends TargetOptions>(options?: T): T | undefined {
         if (options) {
-            const { target: outer, ...rest } = options;
-            if (outer) {
-                const target = this.getInnerContent(outer);
-                return { target, ...rest } as T;
+            const { target: outerContent, theme: outerTheme, ...rest } = options;
+            if (outerContent) {
+                const target = this.getInnerContent(outerContent);
+                const theme = outerTheme ? this.getInnerTheme(outerContent, outerTheme) : void(0);
+                return { target, theme, ...rest } as T;
             }            
         }
         return options;
