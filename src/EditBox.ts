@@ -9,10 +9,12 @@ import {
     type, 
     validating 
 } from "paratype";
+import { DefaultFlowTheme } from "./DefaultFlowTheme";
 import { FlowBox } from "./FlowBox";
 import { FlowContent } from "./FlowContent";
 import { FlowNode } from "./FlowNode";
 import { FlowOperation } from "./FlowOperation";
+import { FlowTheme } from "./FlowTheme";
 import { FlowOperationRegistry } from "./internal/class-registry";
 import { NestedFlowOperation } from "./NestedFlowOperation";
 
@@ -117,6 +119,17 @@ export class EditBox extends EditBoxBase implements EditBoxProps {
     getInnerContentFromNode(node: FlowNode): FlowContent {
         if (node instanceof FlowBox) {
             return node.content;
+        } else {
+            throw new Error(`Expected a flow box at position ${this.position}`);
+        }
+    }
+
+    /** 
+     * {@inheritDoc NestedFlowOperation.getInnerThemeFromNode}
+     */
+    getInnerThemeFromNode(node: FlowNode, outer?: FlowTheme): FlowTheme {
+        if (node instanceof FlowBox) {
+            return (outer ?? DefaultFlowTheme.instance).getBoxTheme(node.style);
         } else {
             throw new Error(`Expected a flow box at position ${this.position}`);
         }

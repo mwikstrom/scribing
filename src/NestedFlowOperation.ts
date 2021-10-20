@@ -73,9 +73,16 @@ export abstract class NestedFlowOperation extends FlowOperation {
 
     /**
      * Gets the inner content
-     * @param outer - The selected node
+     * @param node - The selected node
      */
     protected abstract getInnerContentFromNode(node: FlowNode): FlowContent;
+
+    /**
+     * Gets the inner theme
+     * @param node - The selected node
+     * @param outer - The outer theme
+     */
+    protected abstract getInnerThemeFromNode(node: FlowNode, outer?: FlowTheme): FlowTheme;
 
     /**
      * {@inheritDoc FlowOperation.afterInsertion}
@@ -124,7 +131,8 @@ export abstract class NestedFlowOperation extends FlowOperation {
     applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent {
         const nodeBefore = this.getTargetNode(content);
         const innerBefore = this.getInnerContentFromNode(nodeBefore);
-        const innerAfter = this.inner.applyToContent(innerBefore, theme);
+        const innerTheme = this.getInnerThemeFromNode(nodeBefore, theme);
+        const innerAfter = this.inner.applyToContent(innerBefore, innerTheme);
         const nodeAfter = this.createReplacementNode(innerAfter, nodeBefore);
         const range = FlowRange.at(this.position, nodeBefore.size);
         return content.replace(range, nodeAfter);
