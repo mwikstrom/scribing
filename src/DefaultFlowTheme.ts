@@ -122,6 +122,7 @@ class DefaultBoxTheme extends FlowTheme {
 @frozen
 @validating
 class DefaultParagraphTheme extends ParagraphTheme {
+    readonly #box: BoxStyle;
     readonly #text: TextStyle;
     readonly #para: ParagraphStyle;
     readonly #link: TextStyle;
@@ -129,6 +130,8 @@ class DefaultParagraphTheme extends ParagraphTheme {
 
     constructor(box: BoxStyle, variant: ParagraphVariant) {
         super();
+
+        this.#box = box;
 
         this.#text = new TextStyle({
             fontFamily: getFontFamily(variant),
@@ -187,7 +190,7 @@ class DefaultParagraphTheme extends ParagraphTheme {
 
     /** {@inheritdoc ParagraphTheme.getFlowTheme} */
     getFlowTheme(): FlowTheme {
-        return DefaultFlowTheme.instance;
+        return getDefaultBoxTheme(this.#box);
     }
 }
 
