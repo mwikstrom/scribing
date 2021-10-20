@@ -31,9 +31,10 @@ const Data = {
 const PropsType: RecordType<FlowBoxProps> = recordType(Props);
 const DataType: RecordType<FlowBoxData> = recordType(Data).withOptional("style");
 
-const propsToData = ({ content: box, style }: FlowBoxProps): FlowBoxData => (
-    style.isEmpty ? { box } : { box, style }
-);
+const propsToData = ({ content: box, style }: FlowBoxProps): FlowBoxData => {
+    style = style.unmerge(BoxStyle.ambient);
+    return style.isEmpty ? { box } : { box, style };
+};
 
 /**
  * The base record class for {@link FlowBox}
