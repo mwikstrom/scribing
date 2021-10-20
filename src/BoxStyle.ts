@@ -97,6 +97,20 @@ export class BoxStyle extends BoxStyleBase implements Readonly<BoxStyleProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => BoxStyle);
 
+    /** Gets the ambient box style */
+    public static get ambient(): BoxStyle {
+        if (!AMBIENT_CACHE) {
+            AMBIENT_CACHE = new BoxStyle({
+                variant: "basic",
+                color: "default",
+                inline: true,
+                source: null,
+                interaction: null,
+            });
+        }
+        return AMBIENT_CACHE;
+    }
+
     /** Gets an empty box style */
     public static get empty(): BoxStyle {
         if (!EMPTY_CACHE) {
@@ -112,3 +126,4 @@ export class BoxStyle extends BoxStyleBase implements Readonly<BoxStyleProps> {
 }
 
 let EMPTY_CACHE: BoxStyle | undefined;
+let AMBIENT_CACHE: BoxStyle | undefined;

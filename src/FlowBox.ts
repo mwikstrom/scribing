@@ -125,7 +125,10 @@ export class FlowBox extends FlowBoxBase {
 
     /** {@inheritdoc FlowNode.unformatAmbient} */
     public unformatAmbient(theme: ParagraphTheme): this {
-        return this.set("content", this.content.unformatAmbient(theme.getFlowTheme()));
+        return this.merge({
+            style: this.style.unmerge(BoxStyle.ambient),
+            content: this.content.unformatAmbient(theme.getFlowTheme()),
+        });
     }
 
     /** {@inheritdoc FlowNode.unformatBox} */

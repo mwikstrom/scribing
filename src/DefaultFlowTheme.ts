@@ -62,34 +62,33 @@ export class DefaultFlowTheme extends DefaultFlowThemeBase {
 }
 
 let CACHED_ROOT: DefaultFlowTheme | undefined;
-const CACHED_BOX = new Map<BoxStyle, DefaultBoxTheme>();
-const MAPPED_BOX_STYLES = new WeakMap<BoxStyle, BoxStyle>();
+const STRONG_BOX_CACHE = new Map<BoxStyle, DefaultBoxTheme>();
+const WEAK_BOX_CACHE = new WeakMap<BoxStyle, DefaultBoxTheme>();
 
 function getDefaultBoxTheme(style: BoxStyle): DefaultBoxTheme {
-    let theme = CACHED_BOX.get(style);
+    let result = WEAK_BOX_CACHE.get(style);
 
-    if (!theme) {
-        let mapped = MAPPED_BOX_STYLES.get(style);
+    if (!result) {
+        const strong = style.unmerge(BoxStyle.ambient);
+        result = STRONG_BOX_CACHE.get(strong);
 
-        if (mapped) {
-            theme = CACHED_BOX.get(mapped);
-        } else {
-            for (const [key, value] of CACHED_BOX.entries()) {
-                if (style.equals(key)) {
-                    MAPPED_BOX_STYLES.set(style, key);
-                    mapped = key;
-                    theme = value;
+        if (!result) {
+            for (const [key, value] of STRONG_BOX_CACHE.entries()) {
+                if (strong.equals(key)) {
+                    result = value;
                     break;
                 }
             }
-        }
 
-        if (!theme) {
-            CACHED_BOX.set(style, theme = new DefaultBoxTheme(style));
+            if (!result) {
+                STRONG_BOX_CACHE.set(strong, result = new DefaultBoxTheme(strong));
+            }
         }
+    
+        WEAK_BOX_CACHE.set(style, result);
     }
 
-    return theme;
+    return result;
 }
 
 @frozen
