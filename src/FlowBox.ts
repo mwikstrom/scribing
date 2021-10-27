@@ -90,13 +90,13 @@ export class FlowBox extends FlowBoxBase {
     /** {@inheritdoc FlowNode.formatText} */
     public formatText(style: TextStyle, theme?: FlowTheme): this {
         const range = FlowRange.at(0, this.content.size);
-        return this.set("content", this.content.formatText(range, style, theme));
+        return this.set("content", this.content.formatText(range, style, this.getInnerTheme(theme)));
     }
 
     /** {@inheritdoc FlowNode.formatParagraph} */
     public formatParagraph(style: ParagraphStyle, theme?: FlowTheme): this {
         const range = FlowRange.at(0, this.content.size);
-        return this.set("content", this.content.formatParagraph(range, style, theme));
+        return this.set("content", this.content.formatParagraph(range, style, this.getInnerTheme(theme)));
     }
 
     /**
@@ -150,7 +150,10 @@ export class FlowBox extends FlowBoxBase {
         return this.set("content", this.content.unformatParagraph(range, style));
     }
 
-    private getInnerTheme(outer: ParagraphTheme | undefined): FlowTheme {
-        return (outer?.getFlowTheme() ?? DefaultFlowTheme.instance).getBoxTheme(this.style);
+    private getInnerTheme(outer: ParagraphTheme | FlowTheme | undefined): FlowTheme {
+        if (outer instanceof ParagraphTheme) {
+            outer = outer.getFlowTheme();
+        }
+        return (outer ?? DefaultFlowTheme.instance).getBoxTheme(this.style);
     }
 }
