@@ -19,6 +19,7 @@ static readonly classType: import("paratype").Type<import("paratype").RecordObje
         fontSize: number;
         link: Interaction | null;
         color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
+        spellcheck: boolean;
     }>, Partial<{
         bold: boolean;
         italic: boolean;
@@ -29,6 +30,7 @@ static readonly classType: import("paratype").Type<import("paratype").RecordObje
         fontSize: number;
         link: Interaction | null;
         color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
+        spellcheck: boolean;
     }>> & import("paratype").Equatable & Readonly<Partial<{
         bold: boolean;
         italic: boolean;
@@ -39,5 +41,6 @@ static readonly classType: import("paratype").Type<import("paratype").RecordObje
         fontSize: number;
         link: Interaction | null;
         color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
+        spellcheck: boolean;
     }>> & TextStyle>;
 ```

@@ -63,6 +63,11 @@ export interface TextStyleProps {
      */
     color?: FlowColor;
 
+    /**
+     * Determines whether text shall be checked for spelling errors
+     */
+    spellcheck?: boolean;
+
     // TODO: by name inheritance
     // TODO: background color
     // TODO: small caps
@@ -82,6 +87,7 @@ const Props = {
     ),
     link: unionType(nullType, Interaction.baseType),
     color: FlowColorType,
+    spellcheck: booleanType,
 };
 
 const PropsType = recordType(Props).asPartial();

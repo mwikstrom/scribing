@@ -142,6 +142,7 @@ class DefaultParagraphTheme extends ParagraphTheme {
             baseline: "normal",
             link: null,
             color: box.color ?? (variant === "subtitle" ? "subtle" : "default"),
+            spellcheck: variant !== "code",
         });
 
         this.#para = new ParagraphStyle({

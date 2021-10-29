@@ -1051,6 +1051,7 @@ export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps>
     fontSize: number;
     link: Interaction | null;
     color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
+    spellcheck: boolean;
     }>, Partial<{
     bold: boolean;
     italic: boolean;
@@ -1061,6 +1062,7 @@ export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps>
     fontSize: number;
     link: Interaction | null;
     color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
+    spellcheck: boolean;
     }>> & Equatable & Readonly<Partial<{
     bold: boolean;
     italic: boolean;
@@ -1071,6 +1073,7 @@ export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps>
     fontSize: number;
     link: Interaction | null;
     color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
+    spellcheck: boolean;
     }>> & TextStyle>;
     static get empty(): TextStyle;
     get isEmpty(): boolean;
@@ -1087,6 +1090,7 @@ fontFamily: "body" | "heading" | "monospace";
 fontSize: number;
 link: Interaction | null;
 color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
+spellcheck: boolean;
 }>, Object, Partial<{
 bold: boolean;
 italic: boolean;
@@ -1097,6 +1101,7 @@ fontFamily: "body" | "heading" | "monospace";
 fontSize: number;
 link: Interaction | null;
 color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
+spellcheck: boolean;
 }>>;
 
 // @public
@@ -1108,6 +1113,7 @@ export interface TextStyleProps {
     fontSize?: number;
     italic?: boolean;
     link?: Interaction | null;
+    spellcheck?: boolean;
     strike?: boolean;
     underline?: boolean;
 }
