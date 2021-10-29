@@ -11,24 +11,9 @@ import {
 import { Interaction } from "./Interaction";
 import { InteractionRegistry } from "./internal/class-registry";
 
-const urlType = stringType.restrict(
-    "Must be an absolute https URL",
-    value => {
-        if (!/^https:\/\//.test(value)) {
-            return false;
-        }
-
-        try {
-            new URL(value);
-            return true;
-        } catch (err) {
-            return false;
-        }
-    }
-);
-const Props = { url: urlType };
+const Props = { url: stringType };
 const PropsType: RecordType<OpenUrlProps> = recordType(Props);
-const DataType: Type<string> = urlType;
+const DataType: Type<string> = stringType;
 const propsToData = ({url}: OpenUrlProps) => url;
 
 /**
