@@ -9,7 +9,7 @@ Predefined icon
 <b>Signature:</b>
 
 ```typescript
-export declare type PredefinedIcon = (typeof PREDEFINED_ICONS)[number];
+export declare type PredefinedIcon = (typeof PREDEFINED_ICON_NAMES)[number];
 ```
-<b>References:</b> [PREDEFINED\_ICONS](./scribing.predefined_icons.md)
+<b>References:</b> [PREDEFINED\_ICON\_NAMES](./scribing.predefined_icon_names.md)
 

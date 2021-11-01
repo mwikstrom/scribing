@@ -366,7 +366,7 @@ export interface FlowIconData {
 
 // @public
 export interface FlowIconProps {
-    path: string;
+    name: string;
     style: TextStyle;
 }
 
@@ -1033,13 +1033,13 @@ export type ParagraphVariant = (typeof PARAGRAPH_VARIANTS)[number];
 export const ParagraphVariantType: Type<ParagraphVariant>;
 
 // @public
-export const PREDEFINED_ICONS: readonly ["information", "success", "warning", "error"];
+export const PREDEFINED_ICON_NAMES: readonly ["information", "success", "warning", "error"];
 
 // @public
-export type PredefinedIcon = (typeof PREDEFINED_ICONS)[number];
+export type PredefinedIcon = (typeof PREDEFINED_ICON_NAMES)[number];
 
 // @public
-export const PredefinedIconType: Type<PredefinedIcon>;
+export const PredefinedIconNameType: Type<PredefinedIcon>;
 
 // @public
 export interface RemoveFlowSelectionOptions extends TargetOptions {
@@ -1123,15 +1123,15 @@ export interface SetDynamicTextExpressionProps {
 }
 
 // @public @sealed
-export class SetIconPath extends SetIconPathBase implements SetIconPathProps {
+export class SetIconName extends SetIconNameBase implements SetIconNameProps {
     afterInsertion(range: FlowRange): FlowOperation | null;
     afterRemoval(range: FlowRange): FlowOperation | null;
     // @override
     applyToContent(content: FlowContent): FlowContent;
     // @override
     applyToSelection(selection: FlowSelection): FlowSelection;
-    static readonly classType: Type<SetIconPath>;
-    static fromData(data: SetIconPathData): SetIconPath;
+    static readonly classType: Type<SetIconName>;
+    static fromData(data: SetIconNameData): SetIconName;
     // @override
     invert(content: FlowContent): FlowOperation | null;
     mergeNext(next: FlowOperation): FlowOperation | null;
@@ -1140,17 +1140,17 @@ export class SetIconPath extends SetIconPathBase implements SetIconPathProps {
 }
 
 // @public
-export const SetIconPathBase: RecordConstructor<SetIconPathProps, FlowOperation, SetIconPathData>;
+export const SetIconNameBase: RecordConstructor<SetIconNameProps, FlowOperation, SetIconNameData>;
 
 // @public
-export interface SetIconPathData {
+export interface SetIconNameData {
     at: number;
-    set: "icon_path";
+    set: "icon_name";
     value: string;
 }
 
 // @public
-export interface SetIconPathProps {
+export interface SetIconNameProps {
     position: number;
     value: string;
 }

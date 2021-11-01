@@ -24,30 +24,30 @@ const Props = {
 };
 
 const Data = {
-    set: constType("icon_path"),
+    set: constType("icon_name"),
     at: Props.position,
     value: Props.value,
 };
 
-const PropsType: RecordType<SetIconPathProps> = recordType(Props);
-const DataType: RecordType<SetIconPathData> = recordType(Data);
-const propsToData = ({position, value }: SetIconPathProps): SetIconPathData => ({
-    set: "icon_path",
+const PropsType: RecordType<SetIconNameProps> = recordType(Props);
+const DataType: RecordType<SetIconNameData> = recordType(Data);
+const propsToData = ({position, value }: SetIconNameProps): SetIconNameData => ({
+    set: "icon_name",
     at: position,
     value,
 });
 
 /**
- * The base record class for {@link SetIconPath}
+ * The base record class for {@link SetIconName}
  * @public
  */
-export const SetIconPathBase = RecordClass(PropsType, FlowOperation, DataType, propsToData);
+export const SetIconNameBase = RecordClass(PropsType, FlowOperation, DataType, propsToData);
 
 /**
- * Properties of {@link SetIconPath}
+ * Properties of {@link SetIconName}
  * @public
  */
-export interface SetIconPathProps {
+export interface SetIconNameProps {
     /** The affected position */
     position: number;
 
@@ -56,17 +56,17 @@ export interface SetIconPathProps {
 }
 
 /**
- * Data of {@link SetIconPath}
+ * Data of {@link SetIconName}
  * @public
  */
-export interface SetIconPathData {
+export interface SetIconNameData {
     /** Data discriminator */
-    set: "icon_path";
+    set: "icon_name";
 
-    /** {@inheritdoc SetIconPathProps.position} */
+    /** {@inheritdoc SetIconNameProps.position} */
     at: number;
 
-    /** {@inheritdoc SetIconPathProps.value} */
+    /** {@inheritdoc SetIconNameProps.value} */
     value: string;
 }
 
@@ -78,15 +78,15 @@ export interface SetIconPathData {
 @frozen
 @validating
 @FlowOperationRegistry.register
-export class SetIconPath extends SetIconPathBase implements SetIconPathProps {
+export class SetIconName extends SetIconNameBase implements SetIconNameProps {
     /** The run-time type that represents this class */
-    public static readonly classType = recordClassType(() => SetIconPath);
+    public static readonly classType = recordClassType(() => SetIconName);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: SetIconPathData): SetIconPath {
+    public static fromData(@type(DataType) data: SetIconNameData): SetIconName {
         const { value, at: position } = data;
-        const props: SetIconPathProps = { value, position };
-        return new SetIconPath(props);
+        const props: SetIconNameProps = { value, position };
+        return new SetIconName(props);
     }
 
     /**
@@ -97,8 +97,8 @@ export class SetIconPath extends SetIconPathBase implements SetIconPathProps {
         const { position } = this;
         const { node } = content.peek(position);
         if (node instanceof FlowIcon) {
-            const { path } = node;
-            return new SetIconPath({ position, value: path });
+            const { name } = node;
+            return new SetIconName({ position, value: name });
         } else {
             return null;
         }
@@ -108,7 +108,7 @@ export class SetIconPath extends SetIconPathBase implements SetIconPathProps {
      * {@inheritdoc FlowOperation.mergeNext}
      */
     mergeNext(next: FlowOperation): FlowOperation | null {
-        if (next instanceof SetIconPath && next.position === this.position) {
+        if (next instanceof SetIconName && next.position === this.position) {
             return this.set("value", next.value);
         } else {
             return null;
@@ -134,7 +134,7 @@ export class SetIconPath extends SetIconPathBase implements SetIconPathProps {
         if (node instanceof FlowIcon) {
             return content.replace(
                 FlowRange.at(position, node.size),
-                node.set("path", value)
+                node.set("name", value)
             );
         } else {
             return content;

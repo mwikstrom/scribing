@@ -15,16 +15,16 @@ import { FlowNodeRegistry } from "./internal/class-registry";
 import { TextStyle } from "./TextStyle";
 
 const Props = {
-    path: stringType,
+    name: stringType,
     style: TextStyle.classType,
 };
 const Data = {
-    icon: Props.path,
+    icon: Props.name,
     style: Props.style,
 };
 const PropsType: RecordType<FlowIconProps> = recordType(Props);
 const DataType: RecordType<FlowIconData> = recordType(Data).withOptional("style");
-const propsToData = ({path: icon, style}: FlowIconProps): FlowIconData => (
+const propsToData = ({name: icon, style}: FlowIconProps): FlowIconData => (
     style.isEmpty ? { icon } : { icon, style }
 );
 
@@ -40,7 +40,7 @@ export const FlowIconBase = RecordClass(PropsType, InlineNode, DataType, propsTo
  */
 export interface FlowIconProps {
     /** The icon path data */
-    path: string;
+    name: string;
 
     /** Text style */
     style: TextStyle;
@@ -51,7 +51,7 @@ export interface FlowIconProps {
  * @public
  */
 export interface FlowIconData {
-    /** {@inheritdoc FlowIconProps.path} */
+    /** {@inheritdoc FlowIconProps.name} */
     icon: string;
 
     /** {@inheritdoc FlowIconProps.style} */
@@ -75,8 +75,8 @@ export class FlowIcon extends FlowIconBase implements FlowIconProps {
 
     /** Gets an instance of the current class from the specified data */
     public static fromData(@type(DataType) data: FlowIconData): FlowIcon {
-        const { icon: path, style = TextStyle.empty} = data;
-        const props: FlowIconProps = { path, style };
+        const { icon: name, style = TextStyle.empty} = data;
+        const props: FlowIconProps = { name, style };
         return new FlowIcon(props);
     }
 }
@@ -85,13 +85,13 @@ export class FlowIcon extends FlowIconBase implements FlowIconProps {
  * Predefined icon
  * @public
  */
-export type PredefinedIcon = (typeof PREDEFINED_ICONS)[number];
+export type PredefinedIcon = (typeof PREDEFINED_ICON_NAMES)[number];
 
 /**
  * Read-only array that contains all predefined icons
  * @public
  */
-export const PREDEFINED_ICONS = Object.freeze([
+export const PREDEFINED_ICON_NAMES = Object.freeze([
     "information",
     "success",
     "warning",
@@ -102,4 +102,4 @@ export const PREDEFINED_ICONS = Object.freeze([
  * The run-time type that matches predefined icon types
  * @public
  */
-export const PredefinedIconType: Type<PredefinedIcon> = enumType(PREDEFINED_ICONS);
+export const PredefinedIconNameType: Type<PredefinedIcon> = enumType(PREDEFINED_ICON_NAMES);

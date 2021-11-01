@@ -55,7 +55,7 @@ export * from "./NestedFlowOperation";
 export * from "./EditBox";
 export * from "./SetDynamicTextExpression";
 export * from "./SetImageSource";
-export * from "./SetIconPath";
+export * from "./SetIconName";
 
 // Selection
 export * from "./FlowSelection";

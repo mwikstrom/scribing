@@ -16,6 +16,6 @@ export interface FlowIconProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [path](./scribing.flowiconprops.path.md) | string | The icon path data |
+|  [name](./scribing.flowiconprops.name.md) | string | The icon path data |
 |  [style](./scribing.flowiconprops.style.md) | [TextStyle](./scribing.textstyle.md) | Text style |
 
