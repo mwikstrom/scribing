@@ -45,6 +45,8 @@ Model for collaborative rich text editing
 |  [RemoveRange](./scribing.removerange.md) | Represents an operation that removes a range of flow. |
 |  [RunScript](./scribing.runscript.md) | An interaction that runs a script |
 |  [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) | Represents an operation that sets the expression of dynamic text |
+|  [SetIconPath](./scribing.seticonpath.md) | Represents an operation that sets the path data of an icon |
+|  [SetImageSource](./scribing.setimagesource.md) | Represents an operation that sets the source of an image |
 |  [TextRun](./scribing.textrun.md) | A run of text with uniform styling |
 |  [TextStyle](./scribing.textstyle.md) | Represents the styling that is applied to text. |
 |  [UnformatBox](./scribing.unformatbox.md) | Represents an operation that unapplies a box style to a range of flow content. |
@@ -96,6 +98,10 @@ Model for collaborative rich text editing
 |  [RunScriptProps](./scribing.runscriptprops.md) | Properties for [RunScript](./scribing.runscript.md) |
 |  [SetDynamicTextExpressionData](./scribing.setdynamictextexpressiondata.md) | Data of [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [SetDynamicTextExpressionProps](./scribing.setdynamictextexpressionprops.md) | Properties of [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
+|  [SetIconPathData](./scribing.seticonpathdata.md) | Data of [SetIconPath](./scribing.seticonpath.md) |
+|  [SetIconPathProps](./scribing.seticonpathprops.md) | Properties of [SetIconPath](./scribing.seticonpath.md) |
+|  [SetImageSourceData](./scribing.setimagesourcedata.md) | Data of [SetImageSource](./scribing.setimagesource.md) |
+|  [SetImageSourceProps](./scribing.setimagesourceprops.md) | Properties of [SetImageSource](./scribing.setimagesource.md) |
 |  [TargetOptions](./scribing.targetoptions.md) | Provides options for the target flow |
 |  [TextRunProps](./scribing.textrunprops.md) | Properties of a text run |
 |  [TextStyleProps](./scribing.textstyleprops.md) | Style properties for [text](./scribing.textrun.md) |
@@ -147,6 +153,8 @@ Model for collaborative rich text editing
 |  [RemoveRangeBase](./scribing.removerangebase.md) | The base record class for [RemoveRange](./scribing.removerange.md) |
 |  [RunScriptBase](./scribing.runscriptbase.md) | The base record class for [RunScript](./scribing.runscript.md) |
 |  [SetDynamicTextExpressionBase](./scribing.setdynamictextexpressionbase.md) | The base record class for [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
+|  [SetIconPathBase](./scribing.seticonpathbase.md) | The base record class for [SetIconPath](./scribing.seticonpath.md) |
+|  [SetImageSourceBase](./scribing.setimagesourcebase.md) | The base record class for [SetImageSource](./scribing.setimagesource.md) |
 |  [TextRunBase](./scribing.textrunbase.md) | The base record class for [TextRun](./scribing.textrun.md) |
 |  [TextStyleBase](./scribing.textstylebase.md) | The base record class for [TextStyle](./scribing.textstyle.md) |
 |  [UnformatBoxBase](./scribing.unformatboxbase.md) | The base record class for [UnformatBox](./scribing.unformatbox.md) |

@@ -1122,6 +1122,72 @@ export interface SetDynamicTextExpressionProps {
     position: number;
 }
 
+// @public @sealed
+export class SetIconPath extends SetIconPathBase implements SetIconPathProps {
+    afterInsertion(range: FlowRange): FlowOperation | null;
+    afterRemoval(range: FlowRange): FlowOperation | null;
+    // @override
+    applyToContent(content: FlowContent): FlowContent;
+    // @override
+    applyToSelection(selection: FlowSelection): FlowSelection;
+    static readonly classType: Type<SetIconPath>;
+    static fromData(data: SetIconPathData): SetIconPath;
+    // @override
+    invert(content: FlowContent): FlowOperation | null;
+    mergeNext(next: FlowOperation): FlowOperation | null;
+    // @override
+    transform(other: FlowOperation): FlowOperation | null;
+}
+
+// @public
+export const SetIconPathBase: RecordConstructor<SetIconPathProps, FlowOperation, SetIconPathData>;
+
+// @public
+export interface SetIconPathData {
+    at: number;
+    set: "icon_path";
+    value: string;
+}
+
+// @public
+export interface SetIconPathProps {
+    position: number;
+    value: string;
+}
+
+// @public @sealed
+export class SetImageSource extends SetImageSourceBase implements SetImageSourceProps {
+    afterInsertion(range: FlowRange): FlowOperation | null;
+    afterRemoval(range: FlowRange): FlowOperation | null;
+    // @override
+    applyToContent(content: FlowContent): FlowContent;
+    // @override
+    applyToSelection(selection: FlowSelection): FlowSelection;
+    static readonly classType: Type<SetImageSource>;
+    static fromData(data: SetImageSourceData): SetImageSource;
+    // @override
+    invert(content: FlowContent): FlowOperation | null;
+    mergeNext(next: FlowOperation): FlowOperation | null;
+    // @override
+    transform(other: FlowOperation): FlowOperation | null;
+}
+
+// @public
+export const SetImageSourceBase: RecordConstructor<SetImageSourceProps, FlowOperation, SetImageSourceData>;
+
+// @public
+export interface SetImageSourceData {
+    at: number;
+    set: "image_source";
+    value: ImageSource;
+}
+
+// @public
+export interface SetImageSourceProps {
+    position: number;
+    value: ImageSource;
+}
+
 // @public
 export interface TargetOptions {
     target?: FlowContent;
