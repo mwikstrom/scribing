@@ -360,9 +360,6 @@ export const FlowIconBase: RecordConstructor<FlowIconProps, InlineNode, FlowIcon
 
 // @public
 export interface FlowIconData {
-    // Warning: (ae-unresolved-inheritdoc-reference) The @inheritDoc reference could not be resolved: No member was found with name "source"
-    //
-    // (undocumented)
     icon: string;
     style?: TextStyle;
 }

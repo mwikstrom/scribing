@@ -51,7 +51,7 @@ export interface FlowIconProps {
  * @public
  */
 export interface FlowIconData {
-    /** {@inheritdoc FlowIconProps.source} */
+    /** {@inheritdoc FlowIconProps.path} */
     icon: string;
 
     /** {@inheritdoc FlowIconProps.style} */

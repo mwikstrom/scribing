@@ -4,6 +4,7 @@
 
 ## FlowIconData.icon property
 
+The icon path data
 
 <b>Signature:</b>
 
