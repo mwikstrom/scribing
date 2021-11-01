@@ -21,15 +21,19 @@ export interface ImageSourceProps {
 
     /** Preferred image height (in pixels) */
     height: number;
+
+    /** Placeholder bitmap data (base64 encoded) */
+    placeholder?: string;
 }
 
 const Props = {
     url: stringType,
     width: positiveIntegerType,
     height: positiveIntegerType,
+    placeholder: stringType,
 };
 
-const PropsType = recordType(Props);
+const PropsType = recordType(Props).withOptional("placeholder");
 
 /**
  * The base record class for {@link ImageSource}
