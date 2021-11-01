@@ -20,54 +20,54 @@ import { transformRangeAfterInsertion, transformRangeAfterRemoval } from "./inte
 
 const Props = {
     position: nonNegativeIntegerType,
-    value: stringType,
+    data: stringType,
 };
 
 const Data = {
-    set: constType("icon_name"),
+    set: constType("icon"),
     at: Props.position,
-    value: Props.value,
+    data: Props.data,
 };
 
-const PropsType: RecordType<SetIconNameProps> = recordType(Props);
-const DataType: RecordType<SetIconNameData> = recordType(Data);
-const propsToData = ({position, value }: SetIconNameProps): SetIconNameData => ({
-    set: "icon_name",
+const PropsType: RecordType<SetIconProps> = recordType(Props);
+const DataType: RecordType<SetIconData> = recordType(Data);
+const propsToData = ({position, data }: SetIconProps): SetIconData => ({
+    set: "icon",
     at: position,
-    value,
+    data,
 });
 
 /**
- * The base record class for {@link SetIconName}
+ * The base record class for {@link SetIcon}
  * @public
  */
-export const SetIconNameBase = RecordClass(PropsType, FlowOperation, DataType, propsToData);
+export const SetIconBase = RecordClass(PropsType, FlowOperation, DataType, propsToData);
 
 /**
- * Properties of {@link SetIconName}
+ * Properties of {@link SetIcon}
  * @public
  */
-export interface SetIconNameProps {
+export interface SetIconProps {
     /** The affected position */
     position: number;
 
-    /** The value to assign */
-    value: string;
+    /** The data to assign */
+    data: string;
 }
 
 /**
- * Data of {@link SetIconName}
+ * Data of {@link SetIcon}
  * @public
  */
-export interface SetIconNameData {
+export interface SetIconData {
     /** Data discriminator */
-    set: "icon_name";
+    set: "icon";
 
-    /** {@inheritdoc SetIconNameProps.position} */
+    /** {@inheritdoc SetIconProps.position} */
     at: number;
 
-    /** {@inheritdoc SetIconNameProps.value} */
-    value: string;
+    /** {@inheritdoc SetIconProps.data} */
+    data: string;
 }
 
 /**
@@ -78,15 +78,15 @@ export interface SetIconNameData {
 @frozen
 @validating
 @FlowOperationRegistry.register
-export class SetIconName extends SetIconNameBase implements SetIconNameProps {
+export class SetIcon extends SetIconBase implements SetIconProps {
     /** The run-time type that represents this class */
-    public static readonly classType = recordClassType(() => SetIconName);
+    public static readonly classType = recordClassType(() => SetIcon);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: SetIconNameData): SetIconName {
-        const { value, at: position } = data;
-        const props: SetIconNameProps = { value, position };
-        return new SetIconName(props);
+    public static fromData(@type(DataType) input: SetIconData): SetIcon {
+        const { data, at: position } = input;
+        const props: SetIconProps = { data, position };
+        return new SetIcon(props);
     }
 
     /**
@@ -97,8 +97,8 @@ export class SetIconName extends SetIconNameBase implements SetIconNameProps {
         const { position } = this;
         const { node } = content.peek(position);
         if (node instanceof FlowIcon) {
-            const { name } = node;
-            return new SetIconName({ position, value: name });
+            const { data } = node;
+            return new SetIcon({ position, data });
         } else {
             return null;
         }
@@ -108,8 +108,8 @@ export class SetIconName extends SetIconNameBase implements SetIconNameProps {
      * {@inheritdoc FlowOperation.mergeNext}
      */
     mergeNext(next: FlowOperation): FlowOperation | null {
-        if (next instanceof SetIconName && next.position === this.position) {
-            return this.set("value", next.value);
+        if (next instanceof SetIcon && next.position === this.position) {
+            return this.set("data", next.data);
         } else {
             return null;
         }
@@ -129,12 +129,12 @@ export class SetIconName extends SetIconNameBase implements SetIconNameProps {
      * @override
      */
     applyToContent(content: FlowContent): FlowContent {
-        const { position, value } = this;
+        const { position, data } = this;
         const { node } = content.peek(position);
         if (node instanceof FlowIcon) {
             return content.replace(
                 FlowRange.at(position, node.size),
-                node.set("name", value)
+                node.set("data", data)
             );
         } else {
             return content;

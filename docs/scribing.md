@@ -45,7 +45,7 @@ Model for collaborative rich text editing
 |  [RemoveRange](./scribing.removerange.md) | Represents an operation that removes a range of flow. |
 |  [RunScript](./scribing.runscript.md) | An interaction that runs a script |
 |  [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) | Represents an operation that sets the expression of dynamic text |
-|  [SetIconName](./scribing.seticonname.md) | Represents an operation that sets the path data of an icon |
+|  [SetIcon](./scribing.seticon.md) | Represents an operation that sets the path data of an icon |
 |  [SetImageSource](./scribing.setimagesource.md) | Represents an operation that sets the source of an image |
 |  [TextRun](./scribing.textrun.md) | A run of text with uniform styling |
 |  [TextStyle](./scribing.textstyle.md) | Represents the styling that is applied to text. |
@@ -98,8 +98,8 @@ Model for collaborative rich text editing
 |  [RunScriptProps](./scribing.runscriptprops.md) | Properties for [RunScript](./scribing.runscript.md) |
 |  [SetDynamicTextExpressionData](./scribing.setdynamictextexpressiondata.md) | Data of [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [SetDynamicTextExpressionProps](./scribing.setdynamictextexpressionprops.md) | Properties of [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
-|  [SetIconNameData](./scribing.seticonnamedata.md) | Data of [SetIconName](./scribing.seticonname.md) |
-|  [SetIconNameProps](./scribing.seticonnameprops.md) | Properties of [SetIconName](./scribing.seticonname.md) |
+|  [SetIconData](./scribing.seticondata.md) | Data of [SetIcon](./scribing.seticon.md) |
+|  [SetIconProps](./scribing.seticonprops.md) | Properties of [SetIcon](./scribing.seticon.md) |
 |  [SetImageSourceData](./scribing.setimagesourcedata.md) | Data of [SetImageSource](./scribing.setimagesource.md) |
 |  [SetImageSourceProps](./scribing.setimagesourceprops.md) | Properties of [SetImageSource](./scribing.setimagesource.md) |
 |  [TargetOptions](./scribing.targetoptions.md) | Provides options for the target flow |
@@ -148,12 +148,12 @@ Model for collaborative rich text editing
 |  [ParagraphBreakBase](./scribing.paragraphbreakbase.md) | The base record class for [ParagraphBreak](./scribing.paragraphbreak.md) |
 |  [ParagraphStyleBase](./scribing.paragraphstylebase.md) | The base record class for [ParagraphStyle](./scribing.paragraphstyle.md) |
 |  [ParagraphVariantType](./scribing.paragraphvarianttype.md) | The run-time type that matches paragraph style variant values |
-|  [PREDEFINED\_ICON\_NAMES](./scribing.predefined_icon_names.md) | Read-only array that contains all predefined icons |
-|  [PredefinedIconNameType](./scribing.predefinediconnametype.md) | The run-time type that matches predefined icon types |
+|  [PREDEFINED\_ICONS](./scribing.predefined_icons.md) | Read-only array that contains all predefined icons |
+|  [PredefinedIconType](./scribing.predefinedicontype.md) | The run-time type that matches predefined icon types |
 |  [RemoveRangeBase](./scribing.removerangebase.md) | The base record class for [RemoveRange](./scribing.removerange.md) |
 |  [RunScriptBase](./scribing.runscriptbase.md) | The base record class for [RunScript](./scribing.runscript.md) |
 |  [SetDynamicTextExpressionBase](./scribing.setdynamictextexpressionbase.md) | The base record class for [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
-|  [SetIconNameBase](./scribing.seticonnamebase.md) | The base record class for [SetIconName](./scribing.seticonname.md) |
+|  [SetIconBase](./scribing.seticonbase.md) | The base record class for [SetIcon](./scribing.seticon.md) |
 |  [SetImageSourceBase](./scribing.setimagesourcebase.md) | The base record class for [SetImageSource](./scribing.setimagesource.md) |
 |  [TextRunBase](./scribing.textrunbase.md) | The base record class for [TextRun](./scribing.textrun.md) |
 |  [TextStyleBase](./scribing.textstylebase.md) | The base record class for [TextStyle](./scribing.textstyle.md) |
