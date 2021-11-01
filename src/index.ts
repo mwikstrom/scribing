@@ -22,6 +22,9 @@ export * from "./FlowNode";
 export * from "./FlowCursor";
 export * from "./FlowContent";
 
+// Media sources
+export * from "./ImageSource";
+
 // Nodes
 export * from "./InlineNode";
 export * from "./LineBreak";
@@ -29,6 +32,7 @@ export * from "./ParagraphBreak";
 export * from "./TextRun";
 export * from "./FlowBox";
 export * from "./DynamicText";
+export * from "./FlowImage";
 
 // Theme
 export * from "./ParagraphTheme";

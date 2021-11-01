@@ -20,6 +20,7 @@ Model for collaborative rich text editing
 |  [FlowContent](./scribing.flowcontent.md) | Flow content |
 |  [FlowCursor](./scribing.flowcursor.md) | Represents a position in flow content |
 |  [FlowEditorState](./scribing.floweditorstate.md) | Immutable state record for a flow content editor |
+|  [FlowImage](./scribing.flowimage.md) | Represents a dynamic text. |
 |  [FlowNode](./scribing.flownode.md) | A piece of flow content. |
 |  [FlowOperation](./scribing.flowoperation.md) | An abstraction of an operation that updates flow content. |
 |  [FlowRange](./scribing.flowrange.md) | Represents a range of flow content |
@@ -29,6 +30,7 @@ Model for collaborative rich text editing
 |  [FormatBox](./scribing.formatbox.md) | Represents an operation that applies a box style to a range of flow content. |
 |  [FormatParagraph](./scribing.formatparagraph.md) | Represents an operation that applies a paragraph style to a range of flow content. |
 |  [FormatText](./scribing.formattext.md) | Represents an operation that applies a text style to a range of flow content. |
+|  [ImageSource](./scribing.imagesource.md) | Represents the source of a [FlowImage](./scribing.flowimage.md) |
 |  [InlineNode](./scribing.inlinenode.md) | Represents an inline node |
 |  [InsertContent](./scribing.insertcontent.md) | Represents an operation that insert flow content. |
 |  [Interaction](./scribing.interaction.md) | A base class for interactions |
@@ -66,6 +68,8 @@ Model for collaborative rich text editing
 |  [FlowContentProps](./scribing.flowcontentprops.md) | Flow content properties |
 |  [FlowEditorStateData](./scribing.floweditorstatedata.md) | Data for [FlowEditorState](./scribing.floweditorstate.md) |
 |  [FlowEditorStateProps](./scribing.floweditorstateprops.md) | Properties for [FlowEditorState](./scribing.floweditorstate.md) |
+|  [FlowImageData](./scribing.flowimagedata.md) | Data of line break nodes |
+|  [FlowImageProps](./scribing.flowimageprops.md) | Properties of [FlowImage](./scribing.flowimage.md) |
 |  [FlowRangeProps](./scribing.flowrangeprops.md) | Non-computed properties of a [FlowRange](./scribing.flowrange.md) |
 |  [FlowRangeSelectionProps](./scribing.flowrangeselectionprops.md) | Properties of flow range selections |
 |  [FormatBoxData](./scribing.formatboxdata.md) | Data of format box operations |
@@ -74,6 +78,7 @@ Model for collaborative rich text editing
 |  [FormatParagraphProps](./scribing.formatparagraphprops.md) | Properties of format paragraph operations |
 |  [FormatTextData](./scribing.formattextdata.md) | Data of format text operations |
 |  [FormatTextProps](./scribing.formattextprops.md) | Properties of format text operations |
+|  [ImageSourceProps](./scribing.imagesourceprops.md) | Properties of [ImageSource](./scribing.imagesource.md) |
 |  [InsertContentData](./scribing.insertcontentdata.md) | Data of insert content operations |
 |  [InsertContentProps](./scribing.insertcontentprops.md) | Properties of insert content operations |
 |  [LineBreakData](./scribing.linebreakdata.md) | Data of line break nodes |
@@ -115,11 +120,13 @@ Model for collaborative rich text editing
 |  [FlowColorType](./scribing.flowcolortype.md) | The run-time type that matches text color values |
 |  [FlowContentBase](./scribing.flowcontentbase.md) | The base record class for [FlowContent](./scribing.flowcontent.md) |
 |  [FlowEditorStateBase](./scribing.floweditorstatebase.md) | The base record class for [FlowEditorState](./scribing.floweditorstate.md) |
+|  [FlowImageBase](./scribing.flowimagebase.md) | The base record class for [FlowImage](./scribing.flowimage.md) |
 |  [FlowRangeBase](./scribing.flowrangebase.md) | The base record class for [FlowRange](./scribing.flowrange.md) |
 |  [FlowRangeSelectionBase](./scribing.flowrangeselectionbase.md) | The base record class for [FlowRangeSelection](./scribing.flowrangeselection.md) |
 |  [FormatBoxBase](./scribing.formatboxbase.md) | The base record class for [FormatBox](./scribing.formatbox.md) |
 |  [FormatParagraphBase](./scribing.formatparagraphbase.md) | The base record class for [FormatParagraph](./scribing.formatparagraph.md) |
 |  [FormatTextBase](./scribing.formattextbase.md) | The base record class for [FormatText](./scribing.formattext.md) |
+|  [ImageSourceBase](./scribing.imagesourcebase.md) | The base record class for [ImageSource](./scribing.imagesource.md) |
 |  [InsertContentBase](./scribing.insertcontentbase.md) | The base record class for [InsertContent](./scribing.insertcontent.md) |
 |  [LineBreakBase](./scribing.linebreakbase.md) | The base record class for [LineBreak](./scribing.linebreak.md) |
 |  [LIST\_MARKER\_KINDS](./scribing.list_marker_kinds.md) | Read-only array that contains all list marker styles |

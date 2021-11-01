@@ -348,6 +348,28 @@ export interface FlowEditorStateProps {
     undoStack: readonly FlowOperation[];
 }
 
+// @public @sealed
+export class FlowImage extends FlowImageBase implements FlowImageProps {
+    static readonly classType: Type<FlowImage>;
+    static fromData(data: FlowImageData): FlowImage;
+    readonly size = 1;
+}
+
+// @public
+export const FlowImageBase: RecordConstructor<FlowImageProps, InlineNode, FlowImageData>;
+
+// @public
+export interface FlowImageData {
+    image: ImageSource;
+    style?: TextStyle;
+}
+
+// @public
+export interface FlowImageProps {
+    source: ImageSource;
+    style: TextStyle;
+}
+
 // @public
 export abstract class FlowNode {
     static readonly baseType: Type<FlowNode>;
@@ -593,6 +615,41 @@ export interface FormatTextData extends FormatTextProps {
 export interface FormatTextProps {
     range: FlowRange;
     style: TextStyle;
+}
+
+// @public @sealed
+export class ImageSource extends ImageSourceBase implements Readonly<ImageSourceProps> {
+    static readonly classType: Type<RecordObject<    {
+    url: string;
+    width: number;
+    height: number;
+    }, {
+    url: string;
+    width: number;
+    height: number;
+    }> & Equatable & Readonly<{
+    url: string;
+    width: number;
+    height: number;
+    }> & ImageSource>;
+}
+
+// @public
+export const ImageSourceBase: RecordConstructor<    {
+url: string;
+width: number;
+height: number;
+}, Object, {
+url: string;
+width: number;
+height: number;
+}>;
+
+// @public
+export interface ImageSourceProps {
+    height: number;
+    url: string;
+    width: number;
 }
 
 // @public
