@@ -17,6 +17,7 @@ export interface ImageSourceProps
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [height](./scribing.imagesourceprops.height.md) | number | Preferred image height (in pixels) |
+|  [placeholder?](./scribing.imagesourceprops.placeholder.md) | string | <i>(Optional)</i> Placeholder bitmap data (base64 encoded) |
 |  [url](./scribing.imagesourceprops.url.md) | string | URL to the image |
 |  [width](./scribing.imagesourceprops.width.md) | number | Preferred image with (in pixels) |
 

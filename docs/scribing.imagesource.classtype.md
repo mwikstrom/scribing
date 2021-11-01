@@ -9,17 +9,35 @@ The run-time type that represents this class
 <b>Signature:</b>
 
 ```typescript
-static readonly classType: import("paratype").Type<import("paratype").RecordObject<{
+static readonly classType: import("paratype").Type<import("paratype").RecordObject<Omit<{
         url: string;
         width: number;
         height: number;
-    }, {
+        placeholder: string;
+    }, "placeholder"> & Partial<Pick<{
         url: string;
         width: number;
         height: number;
-    }> & import("paratype").Equatable & Readonly<{
+        placeholder: string;
+    }, "placeholder">>, Omit<{
         url: string;
         width: number;
         height: number;
-    }> & ImageSource>;
+        placeholder: string;
+    }, "placeholder"> & Partial<Pick<{
+        url: string;
+        width: number;
+        height: number;
+        placeholder: string;
+    }, "placeholder">>> & import("paratype").Equatable & Readonly<Omit<{
+        url: string;
+        width: number;
+        height: number;
+        placeholder: string;
+    }, "placeholder"> & Partial<Pick<{
+        url: string;
+        width: number;
+        height: number;
+        placeholder: string;
+    }, "placeholder">>> & ImageSource>;
 ```

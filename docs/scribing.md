@@ -20,6 +20,7 @@ Model for collaborative rich text editing
 |  [FlowContent](./scribing.flowcontent.md) | Flow content |
 |  [FlowCursor](./scribing.flowcursor.md) | Represents a position in flow content |
 |  [FlowEditorState](./scribing.floweditorstate.md) | Immutable state record for a flow content editor |
+|  [FlowIcon](./scribing.flowicon.md) | Represents a dynamic text. |
 |  [FlowImage](./scribing.flowimage.md) | Represents a dynamic text. |
 |  [FlowNode](./scribing.flownode.md) | A piece of flow content. |
 |  [FlowOperation](./scribing.flowoperation.md) | An abstraction of an operation that updates flow content. |
@@ -68,6 +69,8 @@ Model for collaborative rich text editing
 |  [FlowContentProps](./scribing.flowcontentprops.md) | Flow content properties |
 |  [FlowEditorStateData](./scribing.floweditorstatedata.md) | Data for [FlowEditorState](./scribing.floweditorstate.md) |
 |  [FlowEditorStateProps](./scribing.floweditorstateprops.md) | Properties for [FlowEditorState](./scribing.floweditorstate.md) |
+|  [FlowIconData](./scribing.flowicondata.md) | Data of line break nodes |
+|  [FlowIconProps](./scribing.flowiconprops.md) | Properties of [FlowIcon](./scribing.flowicon.md) |
 |  [FlowImageData](./scribing.flowimagedata.md) | Data of line break nodes |
 |  [FlowImageProps](./scribing.flowimageprops.md) | Properties of [FlowImage](./scribing.flowimage.md) |
 |  [FlowRangeProps](./scribing.flowrangeprops.md) | Non-computed properties of a [FlowRange](./scribing.flowrange.md) |
@@ -120,6 +123,7 @@ Model for collaborative rich text editing
 |  [FlowColorType](./scribing.flowcolortype.md) | The run-time type that matches text color values |
 |  [FlowContentBase](./scribing.flowcontentbase.md) | The base record class for [FlowContent](./scribing.flowcontent.md) |
 |  [FlowEditorStateBase](./scribing.floweditorstatebase.md) | The base record class for [FlowEditorState](./scribing.floweditorstate.md) |
+|  [FlowIconBase](./scribing.flowiconbase.md) | The base record class for [FlowIcon](./scribing.flowicon.md) |
 |  [FlowImageBase](./scribing.flowimagebase.md) | The base record class for [FlowImage](./scribing.flowimage.md) |
 |  [FlowRangeBase](./scribing.flowrangebase.md) | The base record class for [FlowRange](./scribing.flowrange.md) |
 |  [FlowRangeSelectionBase](./scribing.flowrangeselectionbase.md) | The base record class for [FlowRangeSelection](./scribing.flowrangeselection.md) |
@@ -138,6 +142,8 @@ Model for collaborative rich text editing
 |  [ParagraphBreakBase](./scribing.paragraphbreakbase.md) | The base record class for [ParagraphBreak](./scribing.paragraphbreak.md) |
 |  [ParagraphStyleBase](./scribing.paragraphstylebase.md) | The base record class for [ParagraphStyle](./scribing.paragraphstyle.md) |
 |  [ParagraphVariantType](./scribing.paragraphvarianttype.md) | The run-time type that matches paragraph style variant values |
+|  [PREDEFINED\_ICONS](./scribing.predefined_icons.md) | Read-only array that contains all predefined icons |
+|  [PredefinedIconType](./scribing.predefinedicontype.md) | The run-time type that matches predefined icon types |
 |  [RemoveRangeBase](./scribing.removerangebase.md) | The base record class for [RemoveRange](./scribing.removerange.md) |
 |  [RunScriptBase](./scribing.runscriptbase.md) | The base record class for [RunScript](./scribing.runscript.md) |
 |  [SetDynamicTextExpressionBase](./scribing.setdynamictextexpressionbase.md) | The base record class for [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
@@ -161,6 +167,7 @@ Model for collaborative rich text editing
 |  [ListMarkerKind](./scribing.listmarkerkind.md) | List marker styles |
 |  [OrderedListMarkerKind](./scribing.orderedlistmarkerkind.md) | Ordered list marker styles |
 |  [ParagraphVariant](./scribing.paragraphvariant.md) | Paragraph style variant |
+|  [PredefinedIcon](./scribing.predefinedicon.md) | Predefined icon |
 |  [TextRunData](./scribing.textrundata.md) | Data contract for a text run |
 |  [UnorderedListMarkerKind](./scribing.unorderedlistmarkerkind.md) | Unordered list marker styles |
 

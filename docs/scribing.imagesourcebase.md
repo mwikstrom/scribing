@@ -9,13 +9,25 @@ The base record class for [ImageSource](./scribing.imagesource.md)
 <b>Signature:</b>
 
 ```typescript
-ImageSourceBase: import("paratype").RecordConstructor<{
+ImageSourceBase: import("paratype").RecordConstructor<Omit<{
     url: string;
     width: number;
     height: number;
-}, Object, {
+    placeholder: string;
+}, "placeholder"> & Partial<Pick<{
     url: string;
     width: number;
     height: number;
-}>
+    placeholder: string;
+}, "placeholder">>, Object, Omit<{
+    url: string;
+    width: number;
+    height: number;
+    placeholder: string;
+}, "placeholder"> & Partial<Pick<{
+    url: string;
+    width: number;
+    height: number;
+    placeholder: string;
+}, "placeholder">>>
 ```

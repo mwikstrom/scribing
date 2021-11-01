@@ -349,6 +349,31 @@ export interface FlowEditorStateProps {
 }
 
 // @public @sealed
+export class FlowIcon extends FlowIconBase implements FlowIconProps {
+    static readonly classType: Type<FlowIcon>;
+    static fromData(data: FlowIconData): FlowIcon;
+    readonly size = 1;
+}
+
+// @public
+export const FlowIconBase: RecordConstructor<FlowIconProps, InlineNode, FlowIconData>;
+
+// @public
+export interface FlowIconData {
+    // Warning: (ae-unresolved-inheritdoc-reference) The @inheritDoc reference could not be resolved: No member was found with name "source"
+    //
+    // (undocumented)
+    icon: string;
+    style?: TextStyle;
+}
+
+// @public
+export interface FlowIconProps {
+    path: string;
+    style: TextStyle;
+}
+
+// @public @sealed
 export class FlowImage extends FlowImageBase implements FlowImageProps {
     static readonly classType: Type<FlowImage>;
     static fromData(data: FlowImageData): FlowImage;
@@ -619,35 +644,66 @@ export interface FormatTextProps {
 
 // @public @sealed
 export class ImageSource extends ImageSourceBase implements Readonly<ImageSourceProps> {
-    static readonly classType: Type<RecordObject<    {
+    static readonly classType: Type<RecordObject<Omit<{
     url: string;
     width: number;
     height: number;
-    }, {
+    placeholder: string;
+    }, "placeholder"> & Partial<Pick<{
     url: string;
     width: number;
     height: number;
-    }> & Equatable & Readonly<{
+    placeholder: string;
+    }, "placeholder">>, Omit<{
     url: string;
     width: number;
     height: number;
-    }> & ImageSource>;
+    placeholder: string;
+    }, "placeholder"> & Partial<Pick<{
+    url: string;
+    width: number;
+    height: number;
+    placeholder: string;
+    }, "placeholder">>> & Equatable & Readonly<Omit<{
+    url: string;
+    width: number;
+    height: number;
+    placeholder: string;
+    }, "placeholder"> & Partial<Pick<{
+    url: string;
+    width: number;
+    height: number;
+    placeholder: string;
+    }, "placeholder">>> & ImageSource>;
 }
 
 // @public
-export const ImageSourceBase: RecordConstructor<    {
+export const ImageSourceBase: RecordConstructor<Omit<{
 url: string;
 width: number;
 height: number;
-}, Object, {
+placeholder: string;
+}, "placeholder"> & Partial<Pick<{
 url: string;
 width: number;
 height: number;
-}>;
+placeholder: string;
+}, "placeholder">>, Object, Omit<{
+url: string;
+width: number;
+height: number;
+placeholder: string;
+}, "placeholder"> & Partial<Pick<{
+url: string;
+width: number;
+height: number;
+placeholder: string;
+}, "placeholder">>>;
 
 // @public
 export interface ImageSourceProps {
     height: number;
+    placeholder?: string;
     url: string;
     width: number;
 }
@@ -978,6 +1034,15 @@ export type ParagraphVariant = (typeof PARAGRAPH_VARIANTS)[number];
 
 // @public
 export const ParagraphVariantType: Type<ParagraphVariant>;
+
+// @public
+export const PREDEFINED_ICONS: readonly ["information", "success", "warning", "error"];
+
+// @public
+export type PredefinedIcon = (typeof PREDEFINED_ICONS)[number];
+
+// @public
+export const PredefinedIconType: Type<PredefinedIcon>;
 
 // @public
 export interface RemoveFlowSelectionOptions extends TargetOptions {

@@ -32,6 +32,7 @@ export * from "./ParagraphBreak";
 export * from "./TextRun";
 export * from "./FlowBox";
 export * from "./DynamicText";
+export * from "./FlowIcon";
 export * from "./FlowImage";
 
 // Theme
