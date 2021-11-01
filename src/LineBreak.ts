@@ -1,7 +1,6 @@
 import {
     constType,
     frozen,
-    lazyType,
     RecordClass,
     recordClassType,
     recordType,
@@ -14,7 +13,7 @@ import { FlowNodeRegistry } from "./internal/class-registry";
 import { TextStyle } from "./TextStyle";
 
 const Props = {
-    style: lazyType(() => TextStyle.classType),
+    style: TextStyle.classType,
 };
 const Data = {
     break: constType("line"),

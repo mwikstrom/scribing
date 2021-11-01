@@ -1,7 +1,6 @@
 import { 
     frozen, 
     integerType, 
-    lazyType, 
     RecordClass, 
     recordClassType, 
     RecordType, 
@@ -39,7 +38,7 @@ const Props = {
             `A single text run cannot be longer than ${MAX_CHARS} characters`,
             value => value.length <= MAX_CHARS,
         ),
-    style: lazyType(() => TextStyle.classType),
+    style: TextStyle.classType,
 };
 
 const PropsType: RecordType<TextRunProps> = recordType(Props);

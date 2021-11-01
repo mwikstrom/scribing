@@ -17,18 +17,18 @@ export * from "./BoxStyle";
 export * from "./ParagraphStyle";
 export * from "./TextStyle";
 
-// Nodes
+// Content
 export * from "./FlowNode";
+export * from "./FlowCursor";
+export * from "./FlowContent";
+
+// Nodes
 export * from "./InlineNode";
 export * from "./LineBreak";
 export * from "./ParagraphBreak";
 export * from "./TextRun";
 export * from "./FlowBox";
 export * from "./DynamicText";
-
-// Content
-export * from "./FlowCursor";
-export * from "./FlowContent";
 
 // Theme
 export * from "./ParagraphTheme";

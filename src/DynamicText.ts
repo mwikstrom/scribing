@@ -1,6 +1,5 @@
 import {
     frozen,
-    lazyType,
     RecordClass,
     recordClassType,
     recordType,
@@ -15,7 +14,7 @@ import { TextStyle } from "./TextStyle";
 
 const Props = {
     expression: stringType,
-    style: lazyType(() => TextStyle.classType),
+    style: TextStyle.classType,
 };
 const Data = {
     dynamic: stringType,
