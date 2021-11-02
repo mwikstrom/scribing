@@ -401,7 +401,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
 
         for (
             let cursor: FlowCursor | null = content.peek(range.first);
-            cursor?.node;
+            cursor?.node && cursor.position < range.last;
             cursor = cursor.moveToStartOfNextNode()
         ) {
             const { node, position, offset } = cursor;
@@ -426,7 +426,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
 
         for (
             let cursor: FlowCursor | null = content.peek(range.first);
-            cursor?.node;
+            cursor?.node && cursor.position < range.last;
             cursor = cursor.moveToStartOfNextNode()
         ) {
             const { node, position, offset } = cursor;
@@ -451,7 +451,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
 
         for (
             let cursor: FlowCursor | null = content.peek(range.first);
-            cursor?.node;
+            cursor?.node && cursor.position < range.last;
             cursor = cursor.moveToStartOfNextNode()
         ) {
             const { node, position, offset } = cursor;
