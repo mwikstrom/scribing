@@ -40,6 +40,8 @@ export declare class FlowRangeSelection extends FlowRangeSelectionBase implement
 |  [insert(content, options)](./scribing.flowrangeselection.insert.md) |  | Creates an operation that inserts the specified content into the current selection |
 |  [remove(options)](./scribing.flowrangeselection.remove.md) |  | Creates an operation that removes the content of the current selection |
 |  [setDynamicTextExpression(content, expression)](./scribing.flowrangeselection.setdynamictextexpression.md) |  | Creates an operation that sets the specified dynamic text expression in the current selection |
+|  [setIcon(content, data)](./scribing.flowrangeselection.seticon.md) |  | Creates an operation that sets the specified icon data in the current selection |
+|  [setImageSource(content, source)](./scribing.flowrangeselection.setimagesource.md) |  | Creates an operation that sets the specified image source in the current selection |
 |  [transformRanges(transform, options)](./scribing.flowrangeselection.transformranges.md) |  | Transforms all ranges in the current selection |
 |  [unformatBox(style)](./scribing.flowrangeselection.unformatbox.md) |  | Creates an operation that unapplies the specified box style on the current selection |
 |  [unformatParagraph(style)](./scribing.flowrangeselection.unformatparagraph.md) |  | Creates an operation that unapplies the specified paragraph style on the current selection |

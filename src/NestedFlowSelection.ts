@@ -5,6 +5,7 @@ import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
 import { FlowSelection, RemoveFlowSelectionOptions, TargetOptions } from "./FlowSelection";
 import { FlowTheme } from "./FlowTheme";
+import { ImageSource } from "./ImageSource";
 import { transformRangeAfterInsertion, transformRangeAfterRemoval } from "./internal/transform-helpers";
 import { ParagraphStyle, ParagraphStyleProps } from "./ParagraphStyle";
 import { TextStyle, TextStyleProps } from "./TextStyle";
@@ -239,6 +240,28 @@ export abstract class NestedFlowSelection extends FlowSelection {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
         const innerOperation = innerSelection.setDynamicTextExpression(innerContent, expression);
+        return this.#wrapOperation(innerOperation);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.setIcon}
+     * @override
+     */
+    public setIcon(content: FlowContent, data: string): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerContent = this.getInnerContent(content);
+        const innerOperation = innerSelection.setIcon(innerContent, data);
+        return this.#wrapOperation(innerOperation);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.setIcon}
+     * @override
+     */
+    public setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerContent = this.getInnerContent(content);
+        const innerOperation = innerSelection.setImageSource(innerContent, source);
         return this.#wrapOperation(innerOperation);
     }
 

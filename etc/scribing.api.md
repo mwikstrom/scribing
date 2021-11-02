@@ -489,6 +489,10 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     // @override
     setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null;
     // @override
+    setIcon(content: FlowContent, data: string): FlowOperation | null;
+    // @override
+    setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
+    // @override
     transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;
     // @override
     unformatBox(style: BoxStyle): FlowOperation | null;
@@ -530,6 +534,8 @@ export abstract class FlowSelection {
     abstract get isCollapsed(): boolean;
     abstract remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
     abstract setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null;
+    abstract setIcon(content: FlowContent, data: string): FlowOperation | null;
+    abstract setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
     toJsonValue(): JsonValue;
     abstract transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;
     abstract unformatBox(style: BoxStyle): FlowOperation | null;
@@ -853,6 +859,10 @@ export abstract class NestedFlowSelection extends FlowSelection {
     abstract set(key: "position", value: number): this;
     // @override
     setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null;
+    // @override
+    setIcon(content: FlowContent, data: string): FlowOperation | null;
+    // @override
+    setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
     protected abstract setInnerSelection(value: FlowSelection): NestedFlowSelection;
     // @override
     transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;

@@ -36,6 +36,8 @@ export declare abstract class FlowSelection
 |  [insert(content, options)](./scribing.flowselection.insert.md) |  | Creates an operation that inserts the specified content into the current selection |
 |  [remove(options)](./scribing.flowselection.remove.md) |  | Creates an operation that removes the content of the current selection |
 |  [setDynamicTextExpression(content, expression)](./scribing.flowselection.setdynamictextexpression.md) |  | Creates an operation that sets the specified dynamic text expression in the current selection |
+|  [setIcon(content, data)](./scribing.flowselection.seticon.md) |  | Creates an operation that sets the specified icon data in the current selection |
+|  [setImageSource(content, source)](./scribing.flowselection.setimagesource.md) |  | Creates an operation that sets the specified image source in the current selection |
 |  [toJsonValue()](./scribing.flowselection.tojsonvalue.md) |  | Converts the current selection to a JSON value |
 |  [transformRanges(transform, options)](./scribing.flowselection.transformranges.md) |  | Transforms all ranges in the current selection |
 |  [unformatBox(style)](./scribing.flowselection.unformatbox.md) |  | Creates an operation that unapplies the specified box style on the current selection |

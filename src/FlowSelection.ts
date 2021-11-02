@@ -7,6 +7,7 @@ import { FlowSelectionRegistry } from "./internal/class-registry";
 import { ParagraphStyle, ParagraphStyleProps } from "./ParagraphStyle";
 import { TextStyle, TextStyleProps } from "./TextStyle";
 import { BoxStyle, BoxStyleProps } from "./BoxStyle";
+import { ImageSource } from "./ImageSource";
 
 /**
  * Represents a selection of flow content
@@ -144,6 +145,24 @@ export abstract class FlowSelection {
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
     public abstract setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null;
+
+    /**
+     * Creates an operation that sets the specified icon data in the current selection
+     * @param content - The selected content
+     * @param data - The icon data to set
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract setIcon(content: FlowContent, data: string): FlowOperation | null;
+
+    /**
+     * Creates an operation that sets the specified image source in the current selection
+     * @param content - The selected content
+     * @param source - The image source to set
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
 
     /**
      * Transforms all ranges in the current selection

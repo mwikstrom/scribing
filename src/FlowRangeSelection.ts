@@ -5,6 +5,8 @@ import { FlowBatch } from "./FlowBatch";
 import { FlowBox } from "./FlowBox";
 import { FlowContent } from "./FlowContent";
 import { FlowCursor } from "./FlowCursor";
+import { FlowIcon } from "./FlowIcon";
+import { FlowImage } from "./FlowImage";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "./FlowRange";
 import { TargetOptions, FlowSelection, RemoveFlowSelectionOptions } from "./FlowSelection";
@@ -12,6 +14,7 @@ import { FlowTheme } from "./FlowTheme";
 import { FormatBox } from "./FormatBox";
 import { FormatParagraph } from "./FormatParagraph";
 import { FormatText } from "./FormatText";
+import { ImageSource } from "./ImageSource";
 import { InsertContent } from "./InsertContent";
 import { FlowSelectionRegistry } from "./internal/class-registry";
 import { expandRangeToParagraph } from "./internal/expand-range-to-paragraph";
@@ -29,6 +32,8 @@ import {
 } from "./ParagraphStyle";
 import { RemoveRange } from "./RemoveRange";
 import { SetDynamicTextExpression } from "./SetDynamicTextExpression";
+import { SetIcon } from "./SetIcon";
+import { SetImageSource } from "./SetImageSource";
 import { TextStyle, TextStyleProps } from "./TextStyle";
 import { UnformatBox } from "./UnformatBox";
 import { UnformatParagraph } from "./UnformatParagraph";
@@ -404,6 +409,56 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
                 operations.push(new SetDynamicTextExpression({
                     position: position - offset,
                     expression,
+                }));
+            }
+        }
+
+        return FlowBatch.fromArray(operations);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.setIcon}
+     * @override
+     */
+    public setIcon(content: FlowContent, data: string): FlowOperation | null {
+        const { range } = this;
+        const operations: SetIcon[] = [];
+
+        for (
+            let cursor: FlowCursor | null = content.peek(range.first);
+            cursor?.node;
+            cursor = cursor.moveToStartOfNextNode()
+        ) {
+            const { node, position, offset } = cursor;
+            if (node instanceof FlowIcon) {
+                operations.push(new SetIcon({
+                    position: position - offset,
+                    data,
+                }));
+            }
+        }
+
+        return FlowBatch.fromArray(operations);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.setImageSource}
+     * @override
+     */
+    public setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null {
+        const { range } = this;
+        const operations: SetImageSource[] = [];
+
+        for (
+            let cursor: FlowCursor | null = content.peek(range.first);
+            cursor?.node;
+            cursor = cursor.moveToStartOfNextNode()
+        ) {
+            const { node, position, offset } = cursor;
+            if (node instanceof FlowImage) {
+                operations.push(new SetImageSource({
+                    position: position - offset,
+                    value: source,
                 }));
             }
         }
