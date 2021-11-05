@@ -16,7 +16,7 @@ export interface ImageSourceProps {
     /** URL to the image */
     url: string;
 
-    /** Preferred image with (in pixels) */
+    /** Preferred image width (in pixels) */
     width: number;
 
     /** Preferred image height (in pixels) */
