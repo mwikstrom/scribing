@@ -130,6 +130,16 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     }
 
     /**
+     * Marks the specified upload as completed
+     * @param id - Identifies the completed upload
+     * @param url - URL of the uploaded resource
+     */
+    completeUpload(id: string, url: string): FlowContent {
+        const range = FlowRange.at(0, this.size);
+        return this.set("nodes", this.#replace(range, node => node.completeUpload(id, url)));
+    }
+
+    /**
      * Extracts a range of flow content
      * @param range - The range to be extracted
      */
@@ -151,7 +161,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
             theme?: FlowTheme,
     ): FlowContent {
         // TODO: Verify theme arg
-        return this.set("nodes", this.#formatRange(range, node => node.formatBox(style, theme), theme));
+        return this.set("nodes", this.#replace(range, node => node.formatBox(style, theme), theme));
     }
 
     /**
@@ -167,7 +177,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
             theme?: FlowTheme,
     ): FlowContent {
         // TODO: Verify theme arg
-        return this.set("nodes", this.#formatRange(range, node => node.formatParagraph(style, theme), theme));
+        return this.set("nodes", this.#replace(range, node => node.formatParagraph(style, theme), theme));
     }
 
     /**
@@ -183,7 +193,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
             theme?: FlowTheme,
     ): FlowContent {
         // TODO: Verify theme arg
-        return this.set("nodes", this.#formatRange(range, node => node.formatText(style, theme), theme));
+        return this.set("nodes", this.#replace(range, node => node.formatText(style, theme), theme));
     }
 
     /**
@@ -199,7 +209,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
         @type(integerType) delta: number,
             theme?: FlowTheme,
     ): FlowContent {
-        return this.set("nodes", this.#formatRange(range, node => {
+        return this.set("nodes", this.#replace(range, node => {
             if (node instanceof ParagraphBreak) {
                 const { listLevel: before = 0 } = node.style;
                 const after = Math.max(0, Math.min(9, before + delta));
@@ -290,7 +300,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
         @type(FlowRange.classType) range: FlowRange, 
         @type(BoxStyle.classType) style: BoxStyle
     ): FlowContent {
-        return this.set("nodes", this.#formatRange(range, node => node.unformatBox(style)));
+        return this.set("nodes", this.#replace(range, node => node.unformatBox(style)));
     }
 
     /**
@@ -304,7 +314,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
         @type(FlowRange.classType) range: FlowRange, 
         @type(ParagraphStyle.classType) style: ParagraphStyle
     ): FlowContent {
-        return this.set("nodes", this.#formatRange(range, node => node.unformatParagraph(style)));
+        return this.set("nodes", this.#replace(range, node => node.unformatParagraph(style)));
     }
 
     /**
@@ -317,13 +327,13 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
         @type(FlowRange.classType) range: FlowRange,
         @type(TextStyle.classType) style: TextStyle
     ): FlowContent {
-        return this.set("nodes", this.#formatRange(range, node => node.unformatText(style)));
+        return this.set("nodes", this.#replace(range, node => node.unformatText(style)));
     }
     
-    #formatRange(range: FlowRange, formatter: (node: FlowNode) => FlowNode, theme?: FlowTheme): readonly FlowNode[] {
+    #replace(range: FlowRange, callback: (node: FlowNode) => FlowNode, theme?: FlowTheme): readonly FlowNode[] {
         const first = this.peek(range.first);
         const before = first.before;
-        const inner = Array.from(first.range(range.size)).map(formatter);
+        const inner = Array.from(first.range(range.size)).map(callback);
         const after = first.move(range.size).after;
         let result = Array.from(FlowContent.merge(before, inner, after));
         if (theme) {

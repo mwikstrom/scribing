@@ -27,5 +27,6 @@ export declare class FlowImage extends FlowImageBase implements FlowImageProps
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [completeUpload(id, url)](./scribing.flowimage.completeupload.md) |  | Marks the specified upload as completed |
 |  [fromData(data)](./scribing.flowimage.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
 

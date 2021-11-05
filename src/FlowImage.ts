@@ -7,6 +7,7 @@ import {
     type,
     validating
 } from "paratype";
+import { FlowNode } from "./FlowNode";
 import { ImageSource } from "./ImageSource";
 import { InlineNode } from "./InlineNode";
 import { FlowNodeRegistry } from "./internal/class-registry";
@@ -76,5 +77,18 @@ export class FlowImage extends FlowImageBase implements FlowImageProps {
         const { image: source, style = TextStyle.empty} = data;
         const props: FlowImageProps = { source, style };
         return new FlowImage(props);
+    }
+
+    /**
+     * {@inheritdoc FlowNode.completeUpload}
+     * @override
+     */
+    completeUpload(id: string, url: string): FlowNode {
+        const { source } = this;
+        if (source.upload === id) {
+            return this.set("source", source.unset("upload").set("url", url));
+        } else {
+            return this;
+        }
     }
 }

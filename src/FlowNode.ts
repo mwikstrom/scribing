@@ -29,6 +29,16 @@ export abstract class FlowNode {
     abstract readonly size: number;
 
     /**
+     * Marks the specified upload as completed
+     * @param id - Identifies the completed upload
+     * @param url - URL of the uploaded resource
+     */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    completeUpload(id: string, url: string): FlowNode {
+        return this;
+    }
+
+    /**
      * Applies the specified box style on the current node and returns the updated node.
      * @param style - The box style to apply
      * @param theme - Theme of the current content

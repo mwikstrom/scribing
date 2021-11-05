@@ -250,6 +250,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     append(...nodes: readonly FlowNode[]): FlowContent;
     append(theme: FlowTheme | undefined, ...nodes: readonly FlowNode[]): FlowContent;
     static readonly classType: Type<FlowContent>;
+    completeUpload(id: string, url: string): FlowContent;
     copy(range: FlowRange): FlowContent;
     formatBox(range: FlowRange, style: BoxStyle, theme?: FlowTheme): FlowContent;
     formatParagraph(range: FlowRange, style: ParagraphStyle, theme?: FlowTheme): FlowContent;
@@ -374,6 +375,8 @@ export interface FlowIconProps {
 // @public @sealed
 export class FlowImage extends FlowImageBase implements FlowImageProps {
     static readonly classType: Type<FlowImage>;
+    // @override
+    completeUpload(id: string, url: string): FlowNode;
     static fromData(data: FlowImageData): FlowImage;
     readonly size = 1;
 }
@@ -396,6 +399,7 @@ export interface FlowImageProps {
 // @public
 export abstract class FlowNode {
     static readonly baseType: Type<FlowNode>;
+    completeUpload(id: string, url: string): FlowNode;
     abstract formatBox(style: BoxStyle, theme?: FlowTheme): FlowNode;
     abstract formatParagraph(style: ParagraphStyle, theme?: FlowTheme): FlowNode;
     abstract formatText(style: TextStyle, theme?: FlowTheme): FlowNode;

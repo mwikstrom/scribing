@@ -23,6 +23,7 @@ export declare abstract class FlowNode
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [completeUpload(id, url)](./scribing.flownode.completeupload.md) |  | Marks the specified upload as completed |
 |  [formatBox(style, theme)](./scribing.flownode.formatbox.md) |  | Applies the specified box style on the current node and returns the updated node. |
 |  [formatParagraph(style, theme)](./scribing.flownode.formatparagraph.md) |  | Applies the specified paragraph style on the current node and returns the updated node. |
 |  [formatText(style, theme)](./scribing.flownode.formattext.md) |  | Applies the specified text style on the current node and returns the updated node. |
