@@ -14,30 +14,36 @@ static readonly classType: import("paratype").Type<import("paratype").RecordObje
         width: number;
         height: number;
         placeholder: string;
-    }, "placeholder"> & Partial<Pick<{
+        upload: string;
+    }, "placeholder" | "upload"> & Partial<Pick<{
         url: string;
         width: number;
         height: number;
         placeholder: string;
-    }, "placeholder">>, Omit<{
+        upload: string;
+    }, "placeholder" | "upload">>, Omit<{
         url: string;
         width: number;
         height: number;
         placeholder: string;
-    }, "placeholder"> & Partial<Pick<{
+        upload: string;
+    }, "placeholder" | "upload"> & Partial<Pick<{
         url: string;
         width: number;
         height: number;
         placeholder: string;
-    }, "placeholder">>> & import("paratype").Equatable & Readonly<Omit<{
+        upload: string;
+    }, "placeholder" | "upload">>> & import("paratype").Equatable & Readonly<Omit<{
         url: string;
         width: number;
         height: number;
         placeholder: string;
-    }, "placeholder"> & Partial<Pick<{
+        upload: string;
+    }, "placeholder" | "upload"> & Partial<Pick<{
         url: string;
         width: number;
         height: number;
         placeholder: string;
-    }, "placeholder">>> & ImageSource>;
+        upload: string;
+    }, "placeholder" | "upload">>> & ImageSource>;
 ```

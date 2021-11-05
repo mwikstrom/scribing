@@ -14,20 +14,24 @@ ImageSourceBase: import("paratype").RecordConstructor<Omit<{
     width: number;
     height: number;
     placeholder: string;
-}, "placeholder"> & Partial<Pick<{
+    upload: string;
+}, "placeholder" | "upload"> & Partial<Pick<{
     url: string;
     width: number;
     height: number;
     placeholder: string;
-}, "placeholder">>, Object, Omit<{
+    upload: string;
+}, "placeholder" | "upload">>, Object, Omit<{
     url: string;
     width: number;
     height: number;
     placeholder: string;
-}, "placeholder"> & Partial<Pick<{
+    upload: string;
+}, "placeholder" | "upload"> & Partial<Pick<{
     url: string;
     width: number;
     height: number;
     placeholder: string;
-}, "placeholder">>>
+    upload: string;
+}, "placeholder" | "upload">>>
 ```

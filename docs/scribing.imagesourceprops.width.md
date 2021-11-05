@@ -4,7 +4,7 @@
 
 ## ImageSourceProps.width property
 
-Preferred image with (in pixels)
+Preferred image width (in pixels)
 
 <b>Signature:</b>
 

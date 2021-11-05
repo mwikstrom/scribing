@@ -13,6 +13,7 @@ import {
     type, 
     validating, 
 } from "paratype";
+import { FlowRangeSelection } from ".";
 import { BoxStyle } from "./BoxStyle";
 import { FlowCursor } from "./FlowCursor";
 import { FlowNode } from "./FlowNode";
@@ -258,6 +259,11 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
      */
     replace(remove: FlowRange, ...insert: FlowNode[]): FlowContent {
         return this.remove(remove).insert(remove.first, ...insert);
+    }
+
+    /** Gets a selection that span over all content */
+    selectAll(): FlowRangeSelection {
+        return new FlowRangeSelection({ range: FlowRange.at(0, this.size )});
     }
 
     /** Gets a JSON value representation of the current content */

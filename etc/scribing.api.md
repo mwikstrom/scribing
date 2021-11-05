@@ -262,6 +262,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     peek(position?: number): FlowCursor;
     remove(range: FlowRange): FlowContent;
     replace(remove: FlowRange, ...insert: FlowNode[]): FlowContent;
+    selectAll(): FlowRangeSelection;
     get size(): number;
     toJsonValue(): JsonValue;
     unformatAmbient(theme: FlowTheme): FlowContent;
@@ -652,32 +653,38 @@ export class ImageSource extends ImageSourceBase implements Readonly<ImageSource
     width: number;
     height: number;
     placeholder: string;
-    }, "placeholder"> & Partial<Pick<{
+    upload: string;
+    }, "placeholder" | "upload"> & Partial<Pick<{
     url: string;
     width: number;
     height: number;
     placeholder: string;
-    }, "placeholder">>, Omit<{
+    upload: string;
+    }, "placeholder" | "upload">>, Omit<{
     url: string;
     width: number;
     height: number;
     placeholder: string;
-    }, "placeholder"> & Partial<Pick<{
+    upload: string;
+    }, "placeholder" | "upload"> & Partial<Pick<{
     url: string;
     width: number;
     height: number;
     placeholder: string;
-    }, "placeholder">>> & Equatable & Readonly<Omit<{
+    upload: string;
+    }, "placeholder" | "upload">>> & Equatable & Readonly<Omit<{
     url: string;
     width: number;
     height: number;
     placeholder: string;
-    }, "placeholder"> & Partial<Pick<{
+    upload: string;
+    }, "placeholder" | "upload"> & Partial<Pick<{
     url: string;
     width: number;
     height: number;
     placeholder: string;
-    }, "placeholder">>> & ImageSource>;
+    upload: string;
+    }, "placeholder" | "upload">>> & ImageSource>;
 }
 
 // @public
@@ -686,22 +693,26 @@ url: string;
 width: number;
 height: number;
 placeholder: string;
-}, "placeholder"> & Partial<Pick<{
+upload: string;
+}, "placeholder" | "upload"> & Partial<Pick<{
 url: string;
 width: number;
 height: number;
 placeholder: string;
-}, "placeholder">>, Object, Omit<{
+upload: string;
+}, "placeholder" | "upload">>, Object, Omit<{
 url: string;
 width: number;
 height: number;
 placeholder: string;
-}, "placeholder"> & Partial<Pick<{
+upload: string;
+}, "placeholder" | "upload"> & Partial<Pick<{
 url: string;
 width: number;
 height: number;
 placeholder: string;
-}, "placeholder">>>;
+upload: string;
+}, "placeholder" | "upload">>>;
 
 // @public
 export interface ImageSourceProps {

@@ -20,5 +20,5 @@ export interface ImageSourceProps
 |  [placeholder?](./scribing.imagesourceprops.placeholder.md) | string | <i>(Optional)</i> Placeholder bitmap data (base64 encoded) |
 |  [upload?](./scribing.imagesourceprops.upload.md) | string | <i>(Optional)</i> Identifies an upload operation that will replace this image source |
 |  [url](./scribing.imagesourceprops.url.md) | string | URL to the image |
-|  [width](./scribing.imagesourceprops.width.md) | number | Preferred image with (in pixels) |
+|  [width](./scribing.imagesourceprops.width.md) | number | Preferred image width (in pixels) |
 

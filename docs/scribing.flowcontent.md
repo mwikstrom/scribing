@@ -47,6 +47,7 @@ export declare class FlowContent extends FlowContentBase implements Readonly<Flo
 |  [peek(position)](./scribing.flowcontent.peek.md) |  | Gets a cursor |
 |  [remove(range)](./scribing.flowcontent.remove.md) |  | Removes a range of flow content |
 |  [replace(remove, insert)](./scribing.flowcontent.replace.md) |  | Replaces the specified range with the specified nodes |
+|  [selectAll()](./scribing.flowcontent.selectall.md) |  | Gets a selection that span over all content |
 |  [toJsonValue()](./scribing.flowcontent.tojsonvalue.md) |  | Gets a JSON value representation of the current content |
 |  [unformatAmbient(theme)](./scribing.flowcontent.unformatambient.md) |  | Unapplies the ambient style of the specified theme from the current content. |
 |  [unformatBox(range, style)](./scribing.flowcontent.unformatbox.md) |  | Unapplies box style to a range |
