@@ -34,9 +34,10 @@ const Props = {
     width: positiveIntegerType,
     height: positiveIntegerType,
     placeholder: stringType,
+    upload: stringType,
 };
 
-const PropsType = recordType(Props).withOptional("placeholder");
+const PropsType = recordType(Props).withOptional("placeholder", "upload");
 
 /**
  * The base record class for {@link ImageSource}
