@@ -707,6 +707,7 @@ placeholder: string;
 export interface ImageSourceProps {
     height: number;
     placeholder?: string;
+    upload?: string;
     url: string;
     width: number;
 }

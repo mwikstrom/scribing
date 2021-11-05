@@ -24,6 +24,9 @@ export interface ImageSourceProps {
 
     /** Placeholder bitmap data (base64 encoded) */
     placeholder?: string;
+
+    /** Identifies an upload operation that will replace this image source */
+    upload?: string;
 }
 
 const Props = {
