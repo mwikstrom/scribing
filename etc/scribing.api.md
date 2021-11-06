@@ -77,6 +77,38 @@ export type BoxVariant = (typeof BOX_VARIANTS)[number];
 export const BoxVariantType: Type<BoxVariant>;
 
 // @public @sealed
+export class CompleteUpload extends CompleteUploadBase implements CompleteUploadProps {
+    afterInsertion(): this;
+    afterRemoval(): this;
+    // @override
+    applyToContent(content: FlowContent): FlowContent;
+    // @override
+    applyToSelection(selection: FlowSelection): FlowSelection;
+    static readonly classType: Type<CompleteUpload>;
+    static fromData(data: CompleteUploadData): CompleteUpload;
+    // @override
+    invert(): null;
+    mergeNext(): null;
+    // @override
+    transform(other: FlowOperation): FlowOperation | null;
+}
+
+// @public
+export const CompleteUploadBase: RecordConstructor<CompleteUploadProps, FlowOperation, CompleteUploadData>;
+
+// @public
+export interface CompleteUploadData {
+    complete_upload: string;
+    url: string;
+}
+
+// @public
+export interface CompleteUploadProps {
+    id: string;
+    url: string;
+}
+
+// @public @sealed
 export class DefaultFlowTheme extends DefaultFlowThemeBase {
     constructor();
     static readonly classType: Type<RecordObject<    {}, "default"> & Equatable & Readonly<{}> & DefaultFlowTheme>;

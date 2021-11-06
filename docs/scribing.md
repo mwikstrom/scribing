@@ -11,6 +11,7 @@ Model for collaborative rich text editing
 |  Class | Description |
 |  --- | --- |
 |  [BoxStyle](./scribing.boxstyle.md) | Represents the styling that is applied to box content. |
+|  [CompleteUpload](./scribing.completeupload.md) | Represents an operation that completes an upload |
 |  [DefaultFlowTheme](./scribing.defaultflowtheme.md) | Provides a theme for flow content |
 |  [DynamicText](./scribing.dynamictext.md) | Represents a dynamic text. |
 |  [EditBox](./scribing.editbox.md) | Represents an operation that edit the contents of a box |
@@ -59,6 +60,8 @@ Model for collaborative rich text editing
 |  --- | --- |
 |  [ApplyMineOptions](./scribing.applymineoptions.md) | Options for the [FlowEditorState.applyMine()](./scribing.floweditorstate.applymine.md) method |
 |  [BoxStyleProps](./scribing.boxstyleprops.md) | Style properties for box content |
+|  [CompleteUploadData](./scribing.completeuploaddata.md) | Data of [CompleteUpload](./scribing.completeupload.md) |
+|  [CompleteUploadProps](./scribing.completeuploadprops.md) | Properties of [CompleteUpload](./scribing.completeupload.md) |
 |  [DynamicTextData](./scribing.dynamictextdata.md) | Data of line break nodes |
 |  [DynamicTextProps](./scribing.dynamictextprops.md) | Properties of [DynamicText](./scribing.dynamictext.md) |
 |  [EditBoxData](./scribing.editboxdata.md) | Data of [EditBox](./scribing.editbox.md) |
@@ -119,6 +122,7 @@ Model for collaborative rich text editing
 |  [BOX\_VARIANTS](./scribing.box_variants.md) | Read-only array that contains all box style variants |
 |  [BoxStyleBase](./scribing.boxstylebase.md) | The base record class for [BoxStyle](./scribing.boxstyle.md) |
 |  [BoxVariantType](./scribing.boxvarianttype.md) | The run-time type that matches box style variant values |
+|  [CompleteUploadBase](./scribing.completeuploadbase.md) | The base record class for [CompleteUpload](./scribing.completeupload.md) |
 |  [DefaultFlowThemeBase](./scribing.defaultflowthemebase.md) | The base record class for [DefaultFlowTheme](./scribing.defaultflowtheme.md) |
 |  [DynamicTextBase](./scribing.dynamictextbase.md) | The base record class for [DynamicText](./scribing.dynamictext.md) |
 |  [EditBoxBase](./scribing.editboxbase.md) | The base record class for [EditBox](./scribing.editbox.md) |

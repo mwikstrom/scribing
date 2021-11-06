@@ -56,6 +56,7 @@ export * from "./EditBox";
 export * from "./SetDynamicTextExpression";
 export * from "./SetImageSource";
 export * from "./SetIcon";
+export * from "./CompleteUpload";
 
 // Selection
 export * from "./FlowSelection";
