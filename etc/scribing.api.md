@@ -292,6 +292,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     incrementListLevel(range: FlowRange, delta: number, theme?: FlowTheme): FlowContent;
     insert(position: number, ...nodes: readonly FlowNode[]): FlowContent;
     insert(position: number, theme: FlowTheme | undefined, ...nodes: readonly FlowNode[]): FlowContent;
+    static readonly jsonMimeType = "application/vnd.scribing-flow+json";
     peek(position?: number): FlowCursor;
     remove(range: FlowRange): FlowContent;
     replace(remove: FlowRange, ...insert: FlowNode[]): FlowContent;

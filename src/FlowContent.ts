@@ -77,6 +77,9 @@ export type FlowContentData = readonly FlowNode[];
 @frozen
 @validating
 export class FlowContent extends FlowContentBase implements Readonly<FlowContentProps> {
+    /** The MIME type that should be used for flow content JSON data */
+    public static readonly jsonMimeType = "application/vnd.scribing-flow+json";
+
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => FlowContent);
 
