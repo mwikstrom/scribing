@@ -82,6 +82,11 @@ export class FlowBox extends FlowBoxBase {
         return new FlowBox({ content, style });
     }
 
+    /** {@inheritdoc FlowNode.completeUpload} */
+    completeUpload(id: string, url: string): FlowNode {
+        return this.set("content", this.content.completeUpload(id, url));
+    }
+
     /** {@inheritdoc FlowNode.formatBox} */
     public formatBox(@type(Props.style) style: BoxStyle): this {
         return this.set("style", this.style.merge(style));

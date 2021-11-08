@@ -1,0 +1,453 @@
+import { 
+    arrayType,
+    frozen, 
+    mapType, 
+    RecordClass, 
+    recordClassType, 
+    RecordType, 
+    recordType, 
+    type, 
+    validating
+} from "paratype";
+import { FlowContent } from ".";
+import { BoxStyle } from "./BoxStyle";
+import { FlowNode } from "./FlowNode";
+import { FlowRange } from "./FlowRange";
+import { FlowRangeSelection } from "./FlowRangeSelection";
+import { FlowTableCell } from "./FlowTableCell";
+import { FlowTableRow } from "./FlowTableRow";
+import { FlowTheme } from "./FlowTheme";
+import { FlowNodeRegistry } from "./internal/class-registry";
+import { ParagraphStyle, ParagraphStyleProps } from "./ParagraphStyle";
+import { ParagraphTheme } from "./ParagraphTheme";
+import { TableColumnStyle } from "./TableColumnStyle";
+import { TableStyle } from "./TableStyle";
+import { TextStyle, TextStyleProps } from "./TextStyle";
+
+const RowArrayType = arrayType(FlowTableRow.classType);
+const ColumnStyleArrayType = arrayType(TableColumnStyle.classType);
+const FrozenRowArrayType = RowArrayType.frozen();
+const FrozenColumnStyleArrayType = ColumnStyleArrayType.frozen();
+
+const Props = {
+    rows: FrozenRowArrayType,
+    columns: FrozenColumnStyleArrayType,
+    style: TableStyle.classType,
+};
+
+const Data = {
+    table: RowArrayType,
+    columns: mapType(TableColumnStyle.classType),
+    style: TableStyle.classType,
+};
+
+const PropsType: RecordType<FlowTableProps> = recordType(Props);
+const DataType: RecordType<FlowTableData> = recordType(Data).withOptional("columns", "style");
+
+const propsToData = ({ rows, columns: columnArray, style }: FlowTableProps): FlowTableData  => {
+    const data: FlowTableData = { table: [...rows] };
+    const columns = new Map<string, TableColumnStyle>();
+
+    for (let i = 0; i < columnArray.length; ++i) {
+        const style = columnArray[i];
+        if (!style.isEmpty) {
+            columns.set(i.toString(10), style);
+        }
+    }
+
+    if (columns.size > 0) {
+        data.columns = columns;
+    }
+
+    if (!style.isEmpty) {
+        data.style = style;
+    }
+
+    return data;
+};
+
+/**
+ * The base record class for {@link FlowTable}
+ * @public
+ */
+export const FlowTableBase = RecordClass(PropsType, FlowNode, DataType, propsToData);
+
+/**
+ * Properties of {@link FlowTable}
+ * @public
+ */
+export interface FlowTableProps {
+    rows: readonly FlowTableRow[];
+    columns: readonly TableColumnStyle[];
+    style: TableStyle;
+}
+
+/**
+ * Data of {@link FlowTable}
+ * @public
+ */
+export interface FlowTableData {
+    table: FlowTableRow[];
+    columns?: Map<string, TableColumnStyle>;
+    style?: TableStyle;
+}
+
+const MAX_ROWS = 1000;
+const MAX_COLUMNS = 100;
+
+/** @public */
+export type TableRowGroup = typeof TABLE_ROW_GROUPS[number];
+
+/** @public */
+export const TABLE_ROW_GROUPS = Object.freeze(["header", "body", "footer"] as const);
+
+/** @public */
+export type TableColumnGroup = typeof TABLE_COLUMN_GROUPS[number];
+
+/** @public */
+export const TABLE_COLUMN_GROUPS = Object.freeze(["start", "body", "end"] as const);
+
+/**
+ * Represents a flow table cell
+ * @public
+ * @sealed
+ */
+@frozen
+@validating
+@FlowNodeRegistry.register
+export class FlowTable extends FlowTableBase {
+    /** The run-time type that represents this class */
+    public static readonly classType = recordClassType(() => FlowTable);
+
+    /** {@inheritdoc FlowNode.size} */
+    public readonly size = 1;
+
+    readonly #headerRowCount: number;   
+    readonly #bodyRowCount: number; 
+    readonly #footerRowCount: number;
+    readonly #startHeaderColumnCount: number;
+    readonly #bodyColumnCount: number;
+    readonly #endHeaderColumnCount: number;
+    readonly #rowByCell: readonly number[];
+    readonly #columnByCell: readonly number[];
+
+    constructor(props: FlowTableProps) {
+        super(props);
+
+        const columnCount = this.columns.length;
+        const rowCount = this.rows.length;
+
+        if (columnCount < 1) {
+            throw new RangeError("Flow table must have at least one column");
+        } else if (columnCount > MAX_COLUMNS) {
+            throw new RangeError(`Flow table cannot have more than ${MAX_COLUMNS} columns`);
+        }
+
+        if (rowCount < 1) {
+            throw new RangeError("Flow table must have at least one row");
+        } else if (rowCount > MAX_ROWS) {
+            throw new RangeError(`Flow table cannot have more than ${MAX_ROWS} rows`);
+        }
+
+        const { 
+            headerRows: styledHeadRows = 0, 
+            footerRows: styledFootRows = 0, 
+            startHeaderColumns: styledStartCols = 0, 
+            endHeaderColumns: styledEndCols = 0
+        } = this.style;
+
+        this.#headerRowCount = Math.max(0, Math.min(rowCount, styledHeadRows));
+        this.#footerRowCount = Math.max(0, Math.min(rowCount - this.#headerRowCount, styledFootRows));
+        this.#bodyRowCount = rowCount - this.#headerRowCount - this.#footerRowCount;
+        this.#startHeaderColumnCount = Math.max(0, Math.min(columnCount, styledStartCols));
+        this.#endHeaderColumnCount = Math.max(0, Math.min(columnCount - this.#startHeaderColumnCount, styledEndCols));
+        this.#bodyColumnCount = columnCount - this.#startHeaderColumnCount - this.#endHeaderColumnCount;
+
+        const straddlingColumns = new Array<number>(columnCount).fill(0);
+        const cellCount = rowCount * columnCount;
+        const rowsByCell = new Array<number>(cellCount);
+        const columnsByCell = new Array<number>(cellCount);
+
+        let rowIndex = 0;
+        for (const group of TABLE_ROW_GROUPS) {
+            for (const { cells: cellsOnRow } of this.getRows(group)) {
+                processTableRow(rowIndex, cellsOnRow, straddlingColumns, rowsByCell, columnsByCell);
+                ++rowIndex;
+                if (straddlingColumns.every(value => value > 0)) {
+                    throw new RangeError(`Flow table row #${rowIndex} consists of straddling cells only`);
+                }
+            }
+
+            if (straddlingColumns.some(value => value > 0)) {
+                throw new RangeError(`Flow table ${group} has overflowing straddling cells`);
+            }
+        }
+
+        this.#rowByCell = rowsByCell;
+        this.#columnByCell = columnsByCell;
+    }    
+
+    /** Gets an instance of the current class from the specified data */
+    public static fromData(@type(DataType) data: FlowTableData): FlowTable {
+        const { table: rows, columns: columnMap, style = TableStyle.empty } = data;
+        const cellsOnFirstRow = rows[0]?.cells ?? [];
+        const columnCount = cellsOnFirstRow.reduce((prev, curr) => prev + curr.cols, 0);
+        const columnStyles = new Array<TableColumnStyle>(columnCount).fill(TableColumnStyle.empty);
+
+        if (columnMap) {
+            for (const [key, value] of columnMap.entries()) {
+                let index: number;
+                if (!/^[0-9]+$/.test(key) || (index = parseInt(key, 10)) < 0 || index >= columnCount) {
+                    throw new RangeError(
+                        `Table column style has invalid key: '${key}' (Column count is ${columnCount})`
+                    );
+                }
+                columnStyles[index] = value;
+            }
+        }
+
+        return new FlowTable({ rows, columns: columnStyles, style });
+    }
+
+    public getColumnStartIndex(group?: TableColumnGroup): number {
+        if (group === "body") {
+            return this.#startHeaderColumnCount;
+        } else if (group === "end") {
+            return this.#startHeaderColumnCount + this.#bodyColumnCount;
+        } else {
+            return 0;
+        }
+    }
+
+    public getColumnCount(group?: TableColumnGroup): number {
+        if (group === void(0)) {
+            return this.columns.length;
+        } else if (group === "start") {
+            return this.#startHeaderColumnCount;
+        } else if (group === "body") {
+            return this.#bodyColumnCount;
+        } else if (group === "end") {
+            return this.#endHeaderColumnCount;
+        } else {
+            return 0;
+        }
+    }
+
+    public getRowStartIndex(group?: TableRowGroup): number {
+        if (group === "body") {
+            return this.#headerRowCount;
+        } else if (group === "footer") {
+            return this.#headerRowCount + this.#bodyRowCount;
+        } else {
+            return 0;
+        }
+    }
+
+    public getRowCount(group?: TableRowGroup): number {
+        if (group === void(0)) {
+            return this.rows.length;
+        } else if (group === "header") {
+            return this.#headerRowCount;
+        } else if (group === "body") {
+            return this.#bodyRowCount;
+        } else if (group === "footer") {
+            return this.#footerRowCount;
+        } else {
+            return 0;
+        }
+    }
+
+    public *getRows(group?: TableRowGroup): Iterable<FlowTableRow> {
+        const startIndex = this.getRowStartIndex(group);
+        const endIndex = startIndex + this.getRowCount(group);
+        const { rows } = this;
+        for (let i = startIndex; i < endIndex; ++i) {
+            yield rows[i];
+        }
+    }
+
+    public getRowIndex(rowPosition: number, columnPosition: number): number {
+        return this.#rowByCell[this.#getTableIndex(rowPosition, columnPosition)];
+    }
+
+    public getCellIndex(rowPosition: number, columnPosition: number): number {
+        return this.#columnByCell[this.#getTableIndex(rowPosition, columnPosition)];
+    }
+
+    public getRow(rowPosition: number, columnPosition: number): FlowTableRow | null {
+        return this.rows[this.getRowIndex(rowPosition, columnPosition)] ?? null;
+    }
+
+    public getCell(rowPosition: number, columnPosition: number): FlowTableCell | null {
+        return this.getRow(rowPosition, columnPosition)?.cells[this.getCellIndex(rowPosition, columnPosition)] ?? null;
+    }
+
+    /** {@inheritdoc FlowNode.completeUpload} */
+    completeUpload(id: string, url: string): FlowNode {
+        return this.#updateAllContent(content => content.completeUpload(id, url));
+    }
+
+    /** {@inheritdoc FlowNode.formatBox} */
+    public formatBox(style: BoxStyle, theme?: FlowTheme): this {
+        return this.#updateAllContent(content => content.formatBox(FlowRange.at(0, content.size), style, theme));
+    }
+
+    /** {@inheritdoc FlowNode.formatText} */
+    public formatText(style: TextStyle, theme?: FlowTheme): this {
+        return this.#updateAllContent(content => content.formatText(FlowRange.at(0, content.size), style, theme));
+    }
+
+    /** {@inheritdoc FlowNode.formatParagraph} */
+    public formatParagraph(style: ParagraphStyle, theme?: FlowTheme): this {
+        return this.#updateAllContent(content => content.formatParagraph(FlowRange.at(0, content.size), style, theme));
+    }
+
+    /**
+     * {@inheritDoc FlowNode.getUniformParagraphStyle}
+     * @override
+     */
+    public getUniformParagraphStyle(
+        theme?: ParagraphTheme,
+        diff: Set<keyof ParagraphStyleProps> = new Set(),
+    ): ParagraphStyle | null {
+        let result = ParagraphStyle.empty;
+        this.#visitAllContent(content => {
+            const range = FlowRange.at(0, content.size);
+            const selection = new FlowRangeSelection({ range });
+            const uniform = selection.getUniformParagraphStyle(content, theme?.getFlowTheme(), diff);
+            result = result.merge(uniform, diff);
+        });
+        return result;
+    }
+
+    /**
+     * {@inheritDoc FlowNode.getUniformTextStyle}
+     * @override
+     */
+    public getUniformTextStyle(
+        theme?: ParagraphTheme,
+        diff: Set<keyof TextStyleProps> = new Set(),
+    ): TextStyle {
+        let result = TextStyle.empty;
+        this.#visitAllContent(content => {
+            const range = FlowRange.at(0, content.size);
+            const selection = new FlowRangeSelection({ range });
+            const uniform = selection.getUniformTextStyle(content, theme?.getFlowTheme(), diff);
+            result = result.merge(uniform, diff);
+        });
+        return result;
+    }
+
+    /** {@inheritdoc FlowNode.unformatAmbient} */
+    public unformatAmbient(theme: ParagraphTheme): this {
+        return this.#updateAllContent(content => content.unformatAmbient(theme.getFlowTheme()));
+    }
+
+    /** {@inheritdoc FlowNode.unformatBox} */
+    public unformatBox(style: BoxStyle): this {
+        return this.#updateAllContent(content => content.unformatBox(FlowRange.at(0, content.size), style));
+    }
+
+    /** {@inheritdoc FlowNode.unformatText} */
+    public unformatText(style: TextStyle): this {
+        return this.#updateAllContent(content => content.unformatText(FlowRange.at(0, content.size), style));
+    }
+
+    /** {@inheritdoc FlowNode.unformatParagraph} */
+    public unformatParagraph(style: ParagraphStyle): this {
+        return this.#updateAllContent(content => content.unformatParagraph(FlowRange.at(0, content.size), style));
+    }
+
+    #updateAllContent(callback: (content: FlowContent) => FlowContent): this {
+        let tableChanged = false;
+        const updatedRowArray = new Array<FlowTableRow>(this.rows.length);
+
+        for (let r = 0; r < updatedRowArray.length; ++r) {
+            const oldRow = this.rows[r];
+            const updatedCellArray = new Array<FlowTableCell>(oldRow.cells.length);
+            let rowChanged = false;
+            
+            for (let c = 0; c < updatedCellArray.length; ++c) {
+                const oldCell = oldRow.cells[c];
+                const oldContent = oldCell.content;
+                const newContent = callback(oldContent);
+                const cellChanged = !oldContent.equals(newContent);
+                updatedCellArray[c] = cellChanged ? oldCell.set("content", newContent) : oldCell;
+                rowChanged = rowChanged || cellChanged;
+            }
+
+            updatedRowArray[r] = rowChanged ? oldRow.set("cells", Object.freeze(updatedCellArray)) : oldRow;
+            tableChanged = tableChanged || rowChanged;
+        }
+
+        if (!tableChanged) {
+            return this;
+        }
+
+        // TODO: PERF: Since we're not updating the table structure we could safely skip validating it in the ctor
+        return this.set("rows", Object.freeze(updatedRowArray));
+    }
+
+    #visitAllContent(callback: (content: FlowContent) => void): void {
+        for (const row of this.rows) {
+            for (const cell of row.cells) {
+                callback(cell.content);
+            }
+        }
+    }
+
+    #getTableIndex(rowPosition: number, columnPosition: number): number {
+        return rowPosition * this.columns.length + columnPosition;
+    }
+}
+
+const processTableRow = (
+    rowIndex: number,
+    cellsOnRow: readonly FlowTableCell[],
+    straddlingColumns: number[],
+    rowsByCell: number[],
+    columnsByCell: number[],
+): void => {
+    let cellIndexOnRow = 0;
+                
+    for (let colIndex = 0; colIndex < straddlingColumns.length; ++colIndex) {
+        const straddleCount = straddlingColumns[colIndex];
+        if (straddleCount > 0) {
+            straddlingColumns[colIndex] = straddleCount - 1;
+        } else if (cellIndexOnRow >= cellsOnRow.length) {
+            throw new RangeError(`Flow table row #${rowIndex} has too few cells`);
+        } else {
+            const cell = cellsOnRow[cellIndexOnRow];
+            processTableCell(rowIndex, colIndex, cell, straddlingColumns, rowsByCell, columnsByCell);
+            ++cellIndexOnRow;
+            colIndex += cell.cols - 1;
+        }
+    }
+
+    if (cellsOnRow.length >= cellIndexOnRow) {
+        throw new RangeError(`Flow table row #${rowIndex} has too many cells`);
+    }
+};
+
+const processTableCell = (
+    rowIndex: number,
+    colIndex: number,
+    cell: FlowTableCell,
+    straddlingColumns: number[],
+    rowsByCell: number[],
+    columnsByCell: number[],
+): void => {
+    const straddleCount = cell.rows - 1;
+    for (let c = 0; c < cell.cols; ++c) {
+        if (straddleCount !== (straddlingColumns[colIndex + c] += straddleCount)) {
+            const msg = `Column #${colIndex} in flow table row #${rowIndex} is overflowing a straddled cell`;
+            throw new RangeError(msg);
+        }
+
+        for (let r = 0; r < cell.rows; ++r) {
+            const cellIndex = (rowIndex + r) * straddlingColumns.length + c;
+            rowsByCell[cellIndex] = rowIndex;
+            columnsByCell[cellIndex] = colIndex;
+        }
+    }
+};

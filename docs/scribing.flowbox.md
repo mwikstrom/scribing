@@ -25,6 +25,7 @@ export declare class FlowBox extends FlowBoxBase
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [completeUpload(id, url)](./scribing.flowbox.completeupload.md) |  | Marks the specified upload as completed |
 |  [formatBox(style)](./scribing.flowbox.formatbox.md) |  | Applies the specified box style on the current node and returns the updated node. |
 |  [formatParagraph(style, theme)](./scribing.flowbox.formatparagraph.md) |  | Applies the specified paragraph style on the current node and returns the updated node. |
 |  [formatText(style, theme)](./scribing.flowbox.formattext.md) |  | Applies the specified text style on the current node and returns the updated node. |

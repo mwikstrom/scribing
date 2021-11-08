@@ -16,6 +16,8 @@ export * from "./FlowColor";
 export * from "./BoxStyle";
 export * from "./ParagraphStyle";
 export * from "./TextStyle";
+export * from "./TableColumnStyle";
+export * from "./TableStyle";
 
 // Content
 export * from "./FlowNode";
@@ -24,6 +26,10 @@ export * from "./FlowContent";
 
 // Media sources
 export * from "./ImageSource";
+
+// Table structure
+export * from "./FlowTableCell";
+export * from "./FlowTableRow";
 
 // Nodes
 export * from "./InlineNode";
@@ -34,6 +40,7 @@ export * from "./FlowBox";
 export * from "./DynamicText";
 export * from "./FlowIcon";
 export * from "./FlowImage";
+export * from "./FlowTable";
 
 // Theme
 export * from "./ParagraphTheme";

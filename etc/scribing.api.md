@@ -201,6 +201,7 @@ export interface FlowBatchProps {
 // @public @sealed
 export class FlowBox extends FlowBoxBase {
     static readonly classType: Type<FlowBox>;
+    completeUpload(id: string, url: string): FlowNode;
     formatBox(style: BoxStyle): this;
     formatParagraph(style: ParagraphStyle, theme?: FlowTheme): this;
     formatText(style: TextStyle, theme?: FlowTheme): this;
@@ -579,6 +580,114 @@ export abstract class FlowSelection {
     abstract unformatBox(style: BoxStyle): FlowOperation | null;
     abstract unformatParagraph(style: ParagraphStyle): FlowOperation | null;
     abstract unformatText(style: TextStyle): FlowOperation | null;
+}
+
+// @public @sealed
+export class FlowTable extends FlowTableBase {
+    constructor(props: FlowTableProps);
+    static readonly classType: Type<FlowTable>;
+    completeUpload(id: string, url: string): FlowNode;
+    formatBox(style: BoxStyle, theme?: FlowTheme): this;
+    formatParagraph(style: ParagraphStyle, theme?: FlowTheme): this;
+    formatText(style: TextStyle, theme?: FlowTheme): this;
+    static fromData(data: FlowTableData): FlowTable;
+    // (undocumented)
+    getCell(rowPosition: number, columnPosition: number): FlowTableCell | null;
+    // (undocumented)
+    getCellIndex(rowPosition: number, columnPosition: number): number;
+    // (undocumented)
+    getColumnCount(group?: TableColumnGroup): number;
+    // (undocumented)
+    getColumnStartIndex(group?: TableColumnGroup): number;
+    // (undocumented)
+    getRow(rowPosition: number, columnPosition: number): FlowTableRow | null;
+    // (undocumented)
+    getRowCount(group?: TableRowGroup): number;
+    // (undocumented)
+    getRowIndex(rowPosition: number, columnPosition: number): number;
+    // (undocumented)
+    getRows(group?: TableRowGroup): Iterable<FlowTableRow>;
+    // (undocumented)
+    getRowStartIndex(group?: TableRowGroup): number;
+    // @override
+    getUniformParagraphStyle(theme?: ParagraphTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle | null;
+    // @override
+    getUniformTextStyle(theme?: ParagraphTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
+    readonly size = 1;
+    unformatAmbient(theme: ParagraphTheme): this;
+    unformatBox(style: BoxStyle): this;
+    unformatParagraph(style: ParagraphStyle): this;
+    unformatText(style: TextStyle): this;
+}
+
+// @public
+export const FlowTableBase: RecordConstructor<FlowTableProps, FlowNode, FlowTableData>;
+
+// @public @sealed
+export class FlowTableCell extends FlowTableCellBase {
+    static readonly classType: Type<FlowTableCell>;
+    static fromData(data: FlowTableCellData): FlowTableCell;
+}
+
+// @public
+export const FlowTableCellBase: RecordConstructor<FlowTableCellProps, Object, FlowTableCellData>;
+
+// @public
+export interface FlowTableCellData {
+    // (undocumented)
+    cols?: number;
+    // (undocumented)
+    content: FlowContent;
+    // (undocumented)
+    rows?: number;
+}
+
+// @public
+export interface FlowTableCellProps {
+    // (undocumented)
+    cols: number;
+    // (undocumented)
+    content: FlowContent;
+    // (undocumented)
+    rows: number;
+}
+
+// @public
+export interface FlowTableData {
+    // (undocumented)
+    columns?: Map<string, TableColumnStyle>;
+    // (undocumented)
+    style?: TableStyle;
+    // (undocumented)
+    table: FlowTableRow[];
+}
+
+// @public
+export interface FlowTableProps {
+    // (undocumented)
+    columns: readonly TableColumnStyle[];
+    // (undocumented)
+    rows: readonly FlowTableRow[];
+    // (undocumented)
+    style: TableStyle;
+}
+
+// @public @sealed
+export class FlowTableRow extends FlowTableRowBase {
+    static readonly classType: Type<FlowTableRow>;
+    static fromData(data: FlowTableRowData): FlowTableRow;
+}
+
+// @public
+export const FlowTableRowBase: RecordConstructor<FlowTableRowProps, Object, FlowTableRowData>;
+
+// @public
+export type FlowTableRowData = readonly FlowTableCell[];
+
+// @public
+export interface FlowTableRowProps {
+    // (undocumented)
+    cells: readonly FlowTableCell[];
 }
 
 // @public
@@ -1245,6 +1354,106 @@ export interface SetImageSourceData {
 export interface SetImageSourceProps {
     position: number;
     value: ImageSource;
+}
+
+// @public (undocumented)
+export const TABLE_COLUMN_GROUPS: readonly ["start", "body", "end"];
+
+// @public (undocumented)
+export const TABLE_ROW_GROUPS: readonly ["header", "body", "footer"];
+
+// @public (undocumented)
+export type TableColumnGroup = typeof TABLE_COLUMN_GROUPS[number];
+
+// @public @sealed
+export class TableColumnStyle extends TableColumnStyleBase implements Readonly<TableColumnStyleProps> {
+    constructor(props?: TableColumnStyleProps);
+    static readonly classType: Type<RecordObject<Partial<{
+    width: number;
+    }>, Partial<{
+    width: number;
+    }>> & Equatable & Readonly<Partial<{
+    width: number;
+    }>> & TableColumnStyle>;
+    static get empty(): TableColumnStyle;
+    get isEmpty(): boolean;
+}
+
+// @public
+export const TableColumnStyleBase: RecordConstructor<Partial<{
+width: number;
+}>, Object, Partial<{
+width: number;
+}>>;
+
+// @public
+export interface TableColumnStyleProps {
+    // (undocumented)
+    width?: number;
+}
+
+// @public (undocumented)
+export type TableRowGroup = typeof TABLE_ROW_GROUPS[number];
+
+// @public @sealed
+export class TableStyle extends TableStyleBase implements Readonly<TableStyleProps> {
+    constructor(props?: TableStyleProps);
+    static get ambient(): TableStyle;
+    static readonly classType: Type<RecordObject<Partial<{
+    inline: boolean;
+    source: string | null;
+    headerRows: number;
+    footerRows: number;
+    startHeaderColumns: number;
+    endHeaderColumns: number;
+    }>, Partial<{
+    inline: boolean;
+    source: string | null;
+    headerRows: number;
+    footerRows: number;
+    startHeaderColumns: number;
+    endHeaderColumns: number;
+    }>> & Equatable & Readonly<Partial<{
+    inline: boolean;
+    source: string | null;
+    headerRows: number;
+    footerRows: number;
+    startHeaderColumns: number;
+    endHeaderColumns: number;
+    }>> & TableStyle>;
+    static get empty(): TableStyle;
+    get isEmpty(): boolean;
+}
+
+// @public
+export const TableStyleBase: RecordConstructor<Partial<{
+inline: boolean;
+source: string | null;
+headerRows: number;
+footerRows: number;
+startHeaderColumns: number;
+endHeaderColumns: number;
+}>, Object, Partial<{
+inline: boolean;
+source: string | null;
+headerRows: number;
+footerRows: number;
+startHeaderColumns: number;
+endHeaderColumns: number;
+}>>;
+
+// @public
+export interface TableStyleProps {
+    // (undocumented)
+    endHeaderColumns?: number;
+    // (undocumented)
+    footerRows?: number;
+    // (undocumented)
+    headerRows?: number;
+    inline?: boolean;
+    source?: string | null;
+    // (undocumented)
+    startHeaderColumns?: number;
 }
 
 // @public

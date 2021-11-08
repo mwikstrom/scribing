@@ -28,6 +28,9 @@ Model for collaborative rich text editing
 |  [FlowRange](./scribing.flowrange.md) | Represents a range of flow content |
 |  [FlowRangeSelection](./scribing.flowrangeselection.md) | Represents a range of selected flow content |
 |  [FlowSelection](./scribing.flowselection.md) | Represents a selection of flow content |
+|  [FlowTable](./scribing.flowtable.md) | Represents a flow table cell |
+|  [FlowTableCell](./scribing.flowtablecell.md) | Represents a flow table cell |
+|  [FlowTableRow](./scribing.flowtablerow.md) | Represents a flow table row |
 |  [FlowTheme](./scribing.flowtheme.md) | Provides a theme for flow content |
 |  [FormatBox](./scribing.formatbox.md) | Represents an operation that applies a box style to a range of flow content. |
 |  [FormatParagraph](./scribing.formatparagraph.md) | Represents an operation that applies a paragraph style to a range of flow content. |
@@ -48,6 +51,8 @@ Model for collaborative rich text editing
 |  [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) | Represents an operation that sets the expression of dynamic text |
 |  [SetIcon](./scribing.seticon.md) | Represents an operation that sets the path data of an icon |
 |  [SetImageSource](./scribing.setimagesource.md) | Represents an operation that sets the source of an image |
+|  [TableColumnStyle](./scribing.tablecolumnstyle.md) | Represents the styling that is applied to a flow table column |
+|  [TableStyle](./scribing.tablestyle.md) | Represents the styling that is applied to flow table content |
 |  [TextRun](./scribing.textrun.md) | A run of text with uniform styling |
 |  [TextStyle](./scribing.textstyle.md) | Represents the styling that is applied to text. |
 |  [UnformatBox](./scribing.unformatbox.md) | Represents an operation that unapplies a box style to a range of flow content. |
@@ -80,6 +85,11 @@ Model for collaborative rich text editing
 |  [FlowImageProps](./scribing.flowimageprops.md) | Properties of [FlowImage](./scribing.flowimage.md) |
 |  [FlowRangeProps](./scribing.flowrangeprops.md) | Non-computed properties of a [FlowRange](./scribing.flowrange.md) |
 |  [FlowRangeSelectionProps](./scribing.flowrangeselectionprops.md) | Properties of flow range selections |
+|  [FlowTableCellData](./scribing.flowtablecelldata.md) | Data of [FlowTableCell](./scribing.flowtablecell.md) |
+|  [FlowTableCellProps](./scribing.flowtablecellprops.md) | Properties of [FlowTableCell](./scribing.flowtablecell.md) |
+|  [FlowTableData](./scribing.flowtabledata.md) | Data of [FlowTable](./scribing.flowtable.md) |
+|  [FlowTableProps](./scribing.flowtableprops.md) | Properties of [FlowTable](./scribing.flowtable.md) |
+|  [FlowTableRowProps](./scribing.flowtablerowprops.md) | Properties of [FlowTableRow](./scribing.flowtablerow.md) |
 |  [FormatBoxData](./scribing.formatboxdata.md) | Data of format box operations |
 |  [FormatBoxProps](./scribing.formatboxprops.md) | Properties of format box operations |
 |  [FormatParagraphData](./scribing.formatparagraphdata.md) | Data of format paragraph operations |
@@ -105,6 +115,8 @@ Model for collaborative rich text editing
 |  [SetIconProps](./scribing.seticonprops.md) | Properties of [SetIcon](./scribing.seticon.md) |
 |  [SetImageSourceData](./scribing.setimagesourcedata.md) | Data of [SetImageSource](./scribing.setimagesource.md) |
 |  [SetImageSourceProps](./scribing.setimagesourceprops.md) | Properties of [SetImageSource](./scribing.setimagesource.md) |
+|  [TableColumnStyleProps](./scribing.tablecolumnstyleprops.md) | Style properties for a table column |
+|  [TableStyleProps](./scribing.tablestyleprops.md) | Style properties for tables |
 |  [TargetOptions](./scribing.targetoptions.md) | Provides options for the target flow |
 |  [TextRunProps](./scribing.textrunprops.md) | Properties of a text run |
 |  [TextStyleProps](./scribing.textstyleprops.md) | Style properties for [text](./scribing.textrun.md) |
@@ -137,6 +149,9 @@ Model for collaborative rich text editing
 |  [FlowImageBase](./scribing.flowimagebase.md) | The base record class for [FlowImage](./scribing.flowimage.md) |
 |  [FlowRangeBase](./scribing.flowrangebase.md) | The base record class for [FlowRange](./scribing.flowrange.md) |
 |  [FlowRangeSelectionBase](./scribing.flowrangeselectionbase.md) | The base record class for [FlowRangeSelection](./scribing.flowrangeselection.md) |
+|  [FlowTableBase](./scribing.flowtablebase.md) | The base record class for [FlowTable](./scribing.flowtable.md) |
+|  [FlowTableCellBase](./scribing.flowtablecellbase.md) | The base record class for [FlowTableCell](./scribing.flowtablecell.md) |
+|  [FlowTableRowBase](./scribing.flowtablerowbase.md) | The base record class for [FlowTableRow](./scribing.flowtablerow.md) |
 |  [FormatBoxBase](./scribing.formatboxbase.md) | The base record class for [FormatBox](./scribing.formatbox.md) |
 |  [FormatParagraphBase](./scribing.formatparagraphbase.md) | The base record class for [FormatParagraph](./scribing.formatparagraph.md) |
 |  [FormatTextBase](./scribing.formattextbase.md) | The base record class for [FormatText](./scribing.formattext.md) |
@@ -159,6 +174,10 @@ Model for collaborative rich text editing
 |  [SetDynamicTextExpressionBase](./scribing.setdynamictextexpressionbase.md) | The base record class for [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [SetIconBase](./scribing.seticonbase.md) | The base record class for [SetIcon](./scribing.seticon.md) |
 |  [SetImageSourceBase](./scribing.setimagesourcebase.md) | The base record class for [SetImageSource](./scribing.setimagesource.md) |
+|  [TABLE\_COLUMN\_GROUPS](./scribing.table_column_groups.md) |  |
+|  [TABLE\_ROW\_GROUPS](./scribing.table_row_groups.md) |  |
+|  [TableColumnStyleBase](./scribing.tablecolumnstylebase.md) | The base record class for [TableColumnStyle](./scribing.tablecolumnstyle.md) |
+|  [TableStyleBase](./scribing.tablestylebase.md) | The base record class for [TableStyle](./scribing.tablestyle.md) |
 |  [TextRunBase](./scribing.textrunbase.md) | The base record class for [TextRun](./scribing.textrun.md) |
 |  [TextStyleBase](./scribing.textstylebase.md) | The base record class for [TextStyle](./scribing.textstyle.md) |
 |  [UnformatBoxBase](./scribing.unformatboxbase.md) | The base record class for [UnformatBox](./scribing.unformatbox.md) |
@@ -176,10 +195,13 @@ Model for collaborative rich text editing
 |  [FlowColor](./scribing.flowcolor.md) | Flow content color |
 |  [FlowContentData](./scribing.flowcontentdata.md) | Flow content data is an array of [nodes](./scribing.flownode.md) |
 |  [FlowRangeTuple](./scribing.flowrangetuple.md) | Data for a [FlowRange](./scribing.flowrange.md) represented by a tuple where the first value is the anchor position and the second value is the focus position. |
+|  [FlowTableRowData](./scribing.flowtablerowdata.md) | Data of [FlowTableRow](./scribing.flowtablerow.md) |
 |  [ListMarkerKind](./scribing.listmarkerkind.md) | List marker styles |
 |  [OrderedListMarkerKind](./scribing.orderedlistmarkerkind.md) | Ordered list marker styles |
 |  [ParagraphVariant](./scribing.paragraphvariant.md) | Paragraph style variant |
 |  [PredefinedIcon](./scribing.predefinedicon.md) | Predefined icon |
+|  [TableColumnGroup](./scribing.tablecolumngroup.md) |  |
+|  [TableRowGroup](./scribing.tablerowgroup.md) |  |
 |  [TextRunData](./scribing.textrundata.md) | Data contract for a text run |
 |  [UnorderedListMarkerKind](./scribing.unorderedlistmarkerkind.md) | Unordered list marker styles |
 
