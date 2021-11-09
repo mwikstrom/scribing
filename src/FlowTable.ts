@@ -9,7 +9,7 @@ import {
     type, 
     validating
 } from "paratype";
-import { CellPointer, DefaultFlowTheme, FlowContent } from ".";
+import { CellPosition, DefaultFlowTheme, FlowContent } from ".";
 import { BoxStyle } from "./BoxStyle";
 import { FlowNode } from "./FlowNode";
 import { FlowRange } from "./FlowRange";
@@ -327,8 +327,8 @@ export class FlowTable extends FlowTableBase {
         return rowObj?.cells[cellIndex] ?? null;
     }
 
-    public getCellVariant(pointer: CellPointer): TableCellVariant {
-        const { row, column } = pointer;
+    public getCellVariant(position: CellPosition): TableCellVariant {
+        const { row, column } = position;
         const rowGroup = this.getRowGroup(row, column);
         const colGroup = this.getColumnGroup(row, column);
 
@@ -340,16 +340,16 @@ export class FlowTable extends FlowTableBase {
     }
 
     public getCellTheme(row: number, column: number, outer?: FlowTheme): FlowTheme {
-        const variant = this.getCellVariant(new CellPointer({row, column}));
+        const variant = this.getCellVariant(new CellPosition({row, column}));
         return (outer ?? DefaultFlowTheme.instance).getCellTheme(variant);
     }
 
-    public getCellContent(pointer: CellPointer): FlowContent {
+    public getCellContent(position: CellPosition): FlowContent {
         // TODO: IMPLEMENT. HANDLE MERGED CONTENT?!
         throw new Error("NOT IMPLEMENTED");
     }
 
-    public replaceCellContent(pointer: CellPointer, newContent: FlowContent): this {
+    public replaceCellContent(position: CellPosition, newContent: FlowContent): this {
         // TODO: IMPLEMENT. HANDLE MERGED CONTENT?!
         throw new Error("NOT IMPLEMENTED");
     }

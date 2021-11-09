@@ -17,11 +17,11 @@ import { FlowOperation } from "./FlowOperation";
 import { FlowTheme } from "./FlowTheme";
 import { FlowOperationRegistry } from "./internal/class-registry";
 import { NestedFlowOperation } from "./NestedFlowOperation";
-import { CellPointer } from "./CellPointer";
+import { CellPosition } from "./CellPosition";
 
 const Props = {
     position: nonNegativeIntegerType,
-    cell: CellPointer.classType,
+    cell: CellPosition.classType,
     inner: FlowOperation.baseType,
 };
 
@@ -56,7 +56,7 @@ export interface EditTableCellProps {
     position: number;
 
     /** The table cell to edit */
-    cell: CellPointer;
+    cell: CellPosition;
 
     /** The inner operation that shall be applied to the table cell */
     inner: FlowOperation;
@@ -74,7 +74,7 @@ export interface EditTableCellData {
     table: number;
 
     /** {@inheritdoc EditTableCellProps.cell} */
-    cell: CellPointer;
+    cell: CellPosition;
 
     /** {@inheritdoc EditTableCellProps.inner} */
     op: FlowOperation;

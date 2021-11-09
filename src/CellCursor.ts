@@ -1,5 +1,5 @@
 import { frozen, validating } from "paratype";
-import { CellPointer } from "./CellPointer";
+import { CellPosition } from "./CellPosition";
 import { FlowTableCell } from "./FlowTableCell";
 
 /**
@@ -13,7 +13,7 @@ export class CellCursor {
         throw new Error("NOT IMPL");
     }
 
-    public get pointer(): CellPointer {
+    public get position(): CellPosition {
         throw new Error("NOT IMPL");
     }
 
@@ -21,7 +21,7 @@ export class CellCursor {
         throw new Error("NOT IMPL");
     }
 
-    public goto(pointer: CellPointer): CellCursor | null {
+    public goto(position: CellPosition): CellCursor | null {
         throw new Error("NOT IMPL");
     }
 } 

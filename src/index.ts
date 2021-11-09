@@ -3,9 +3,9 @@
  * @packageDocumentation
  */
 
-// Range and pointers
+// Range and positions
 export * from "./FlowRange";
-export * from "./CellPointer";
+export * from "./CellPosition";
 
 // Interactions
 export * from "./Interaction";

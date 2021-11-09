@@ -15,13 +15,13 @@ const Props = {
     column: nonNegativeIntegerType,
     row: nonNegativeIntegerType,
 };
-const PropsType: RecordType<CellPointerProps> = recordType(Props);
+const PropsType: RecordType<CellPositionProps> = recordType(Props);
 const PATTERN = /^([A-Z]+)([1-9][0-9]*)$/;
-const DataType: Type<CellPointerData> = stringType.restrict(
-    "Must be a valid cell pointer",
+const DataType: Type<CellPositionData> = stringType.restrict(
+    "Must be a valid cell position",
     value => PATTERN.test(value),
 );
-const propsToData = ({column, row}: CellPointerProps): CellPointerData => {
+const propsToData = ({column, row}: CellPositionProps): CellPositionData => {
     let columnChars = "";
     while (column >= 26) {
         const rem = column % 26;
@@ -33,16 +33,16 @@ const propsToData = ({column, row}: CellPointerProps): CellPointerData => {
 };
 
 /**
- * The base record class for {@link CellPointer}
+ * The base record class for {@link CellPosition}
  * @public
  */
-export const CellPointerBase =  RecordClass(PropsType, Object, DataType, propsToData);
+export const CellPositionBase =  RecordClass(PropsType, Object, DataType, propsToData);
 
 /**
- * Non-computed properties of a {@link CellPointer}
+ * Non-computed properties of a {@link CellPosition}
  * @public
  */
-export interface CellPointerProps {
+export interface CellPositionProps {
     /**
      * The zero-based column index
      */
@@ -55,30 +55,30 @@ export interface CellPointerProps {
 }
 
 /**
- * Data for a {@link CellPointer} represented by a string with leading upper case
+ * Data for a {@link CellPosition} represented by a string with leading upper case
  * ascii letters that represents the column index, followed by ascii digits that
  * represetnts the row index (one-based).
  * 
  * For example; `A1` represents row 0 and column 0, and `DF45` represents row 44 and column 109.
  * @public
  */
-export type CellPointerData = string;
+export type CellPositionData = string;
 
 /**
- * Represents a pointer to a table cell
+ * Represents the position of a cell in a table
  * @public
  * @sealed
  */
 @frozen
 @validating
-export class CellPointer extends CellPointerBase implements Readonly<CellPointerProps> {
+export class CellPosition extends CellPositionBase implements Readonly<CellPositionProps> {
     /** The run-time type that represents this class */
-    public static readonly classType = recordClassType(() => CellPointer);
+    public static readonly classType = recordClassType(() => CellPosition);
 
     /**
-     * Gets a cell pointer from the specified string
+     * Gets a cell position from the specified string
      */
-    public static fromData(@type(DataType) data: CellPointerData): CellPointer {
+    public static fromData(@type(DataType) data: CellPositionData): CellPosition {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const [, columnChars, rowDigits] = PATTERN.exec(data)!;
         let column = -1;
@@ -89,10 +89,10 @@ export class CellPointer extends CellPointerBase implements Readonly<CellPointer
             multiplier /= 26;
         }
         const row = parseInt(rowDigits, 10) - 1;
-        return new CellPointer({ column, row });
+        return new CellPosition({ column, row });
     }
 
-    /** Gets a string representation of the current cell pointer */
+    /** Gets a string representation of the current cell position */
     public toString(): string {
         return propsToData(this);
     }
