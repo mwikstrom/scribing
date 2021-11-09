@@ -93,7 +93,7 @@ export class CellPosition extends CellPositionBase implements Readonly<CellPosit
             }
             return column;
         } else if (throwOnError) {
-            throw new TypeError(`Cannot parse invalid row index: ${input}`);
+            throw new TypeError(`Cannot parse invalid column index: ${input}`);
         } else {
             return null;
         }
@@ -111,7 +111,7 @@ export class CellPosition extends CellPositionBase implements Readonly<CellPosit
             }
             return String.fromCharCode(65 + input) + result;
         } else if (throwOnError) {
-            throw new TypeError(`Cannot stringigy invalid row index: ${input}`);
+            throw new TypeError(`Cannot stringify invalid column index: ${input}`);
         } else {
             return null;
         }
@@ -135,7 +135,7 @@ export class CellPosition extends CellPositionBase implements Readonly<CellPosit
         if (Number.isSafeInteger(input) && input >= 0) {
             return (input + 1).toFixed();
         } else if (throwOnError) {
-            throw new TypeError(`Cannot stringigy invalid row index: ${input}`);
+            throw new TypeError(`Cannot stringify invalid row index: ${input}`);
         } else {
             return null;
         }
