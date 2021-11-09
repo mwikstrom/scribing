@@ -528,7 +528,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      * @override
      */
     afterInsertion(range: FlowRange, mine: boolean): FlowSelection | null {
-        // Translate when insertion is mine and occurs at the current carent (collapsed selection)
+        // Translate when insertion is mine and occurs at the caret (collapsed selection)
         if (mine && this.range.isCollapsed && this.range.focus === range.first) {
             return this.set("range", FlowRange.at(range.last));
         }
