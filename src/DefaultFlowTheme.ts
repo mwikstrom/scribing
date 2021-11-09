@@ -36,38 +36,36 @@ export const DefaultFlowThemeBase = RecordClass(PropsType, FlowTheme, DataType, 
 @validating
 @FlowThemeRegistry.register
 export class DefaultFlowTheme extends DefaultFlowThemeBase {
-    readonly #root = getDefaultBoxTheme(BoxStyle.empty);
-
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => DefaultFlowTheme);
 
     /** Gets a cached instance of the default flow theme */
     public static get instance(): DefaultFlowTheme {
-        if (!CACHED_ROOT) {
-            CACHED_ROOT = new DefaultFlowTheme();
+        if (!CACHED_INSTANCE) {
+            CACHED_INSTANCE = new DefaultFlowTheme();
         }
-        return CACHED_ROOT;
+        return CACHED_INSTANCE;
     }
 
     constructor() { super({}); }
 
     /** {@inheritdoc FlowTheme.getBoxTheme} */
     getBoxTheme(style: BoxStyle): FlowTheme {
-        return this.#root.getBoxTheme(style);
+        return getDefaultBoxTheme(style);
     }
 
     /** {@inheritdoc FlowTheme.getBoxTheme} */
     getCellTheme(variant: TableCellVariant): FlowTheme {
-        return this.#root.getCellTheme(variant);
+        return getDefaultBoxTheme(BoxStyle.empty).getCellTheme(variant);
     }
 
     /** {@inheritdoc FlowTheme.getParagraphTheme} */
     getParagraphTheme(variant: ParagraphVariant): ParagraphTheme {
-        return this.#root.getParagraphTheme(variant);
+        return getDefaultBoxTheme(BoxStyle.empty).getParagraphTheme(variant);
     }
 }
 
-let CACHED_ROOT: DefaultFlowTheme | undefined;
+let CACHED_INSTANCE: DefaultFlowTheme | undefined;
 const STRONG_BOX_CACHE = new Map<BoxStyle, DefaultBoxTheme>();
 const WEAK_BOX_CACHE = new WeakMap<BoxStyle, DefaultBoxTheme>();
 
@@ -97,15 +95,14 @@ function getDefaultBoxTheme(style: BoxStyle): DefaultBoxTheme {
     return result;
 }
 
-@frozen
-@validating
 class DefaultBoxTheme extends FlowTheme {
-    readonly #box: BoxStyle;
-    readonly #paragraphCache = new Map<ParagraphVariant, DefaultParagraphTheme>();
+    readonly #boxStyle: BoxStyle;
+    readonly #cellThemeCache = new Map<TableCellVariant, DefaultCellTheme>();
+    #defaultCellTheme: DefaultCellTheme | undefined;
 
     constructor(style: BoxStyle) {
         super();
-        this.#box = style;
+        this.#boxStyle = style;
     }
 
     /** {@inheritdoc FlowTheme.getBoxTheme} */
@@ -115,15 +112,50 @@ class DefaultBoxTheme extends FlowTheme {
 
     /** {@inheritdoc FlowTheme.getCellTheme} */
     getCellTheme(variant: TableCellVariant): FlowTheme {
-        return this; // TODO: IMPLEMENT getCellTheme
+        let result = this.#cellThemeCache.get(variant);
+        if (!result) {
+            result = new DefaultCellTheme(this.#boxStyle, variant);
+            this.#cellThemeCache.set(variant, result);
+        }
+        return result;
     }
     
     /** {@inheritdoc FlowTheme.getParagraphTheme} */
     getParagraphTheme(variant: ParagraphVariant): ParagraphTheme {
-        let result = this.#paragraphCache.get(variant);
+        if (!this.#defaultCellTheme) {
+            this.#defaultCellTheme = new DefaultCellTheme(this.#boxStyle, undefined);
+        }
+        return this.#defaultCellTheme.getParagraphTheme(variant);
+    }
+}
+
+class DefaultCellTheme extends FlowTheme {
+    readonly #boxStyle: BoxStyle;
+    readonly #cellVariant: TableCellVariant | undefined;
+    readonly #paragraphThemeCache = new Map<ParagraphVariant, DefaultParagraphTheme>();
+
+    constructor(boxStyle: BoxStyle, cellVariant: TableCellVariant | undefined) {
+        super();
+        this.#boxStyle = boxStyle;
+        this.#cellVariant = cellVariant;
+    }
+
+    /** {@inheritdoc FlowTheme.getBoxTheme} */
+    getBoxTheme(style: BoxStyle): FlowTheme {
+        return getDefaultBoxTheme(style);
+    }
+
+    /** {@inheritdoc FlowTheme.getCellTheme} */
+    getCellTheme(variant: TableCellVariant): FlowTheme {
+        return getDefaultBoxTheme(this.#boxStyle).getCellTheme(variant);
+    }
+    
+    /** {@inheritdoc FlowTheme.getParagraphTheme} */
+    getParagraphTheme(variant: ParagraphVariant): ParagraphTheme {
+        let result = this.#paragraphThemeCache.get(variant);
         if (!result) {
-            result = new DefaultParagraphTheme(this.#box, variant, undefined); // TODO: Apply current table cell variant
-            this.#paragraphCache.set(variant, result);
+            result = new DefaultParagraphTheme(this.#boxStyle, variant, this.#cellVariant);
+            this.#paragraphThemeCache.set(variant, result);
         }
         return result;
     }
