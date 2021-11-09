@@ -344,8 +344,17 @@ export class FlowTable extends FlowTableBase {
     }
 
     public getCellContent(row: number, column: number): FlowContent {
+        const tableIndex = this.#getTableIndex(row, column);
+        const mapping = this.#mappingByTableIndex[tableIndex];
+        if (!mapping) {
+            throw new Error(`Invalid table position (row=${row}, column=${column})`);
+        }
+        const internalRow = row - mapping.rowIndex;
+        const internalColumn = column - mapping.columnIndex;
+        const cell = this.rows[mapping.rowIndex].cells[mapping.rowCellIndex];
         // TODO: IMPLEMENT. HANDLE MERGED CONTENT?!
         throw new Error("NOT IMPLEMENTED");
+        //return cell.getContent(internalRow, internalColumn);
     }
 
     public replaceCellContent(row: number, column: number, newContent: FlowContent): this {
