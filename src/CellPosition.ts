@@ -92,6 +92,26 @@ export class CellPosition extends CellPositionBase implements Readonly<CellPosit
         return new CellPosition({ column, row });
     }
 
+    /** Determines whether the current position is equal to the other position */
+    public equals(other: CellPositionProps): boolean {
+        return this.row === other.row && this.column === other.column;
+    }
+
+    /** Compares the current position with the specified position */
+    public compare(other: CellPositionProps): -1 | 0 | 1 {
+        if (this.row < other.row) {
+            return -1;
+        } else if (this.row > other.row) {
+            return 1;
+        } else if (this.column < other.column) {
+            return -1;
+        } else if (this.column > other.column) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
     /** Gets a string representation of the current cell position */
     public toString(): string {
         return propsToData(this);
