@@ -11,6 +11,12 @@ export abstract class InlineNode extends FlowNode {
     /** The text style of the current node */
     public abstract readonly style: TextStyle;
 
+    /** {@inheritdoc FlowNode.completeUpload} */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    public completeUpload(id: string, url: string): FlowNode {
+        return this;
+    }
+
     /** {@inheritdoc FlowNode.formatBox} */
     public formatBox(): this {
         return this;

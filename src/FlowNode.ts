@@ -33,10 +33,7 @@ export abstract class FlowNode {
      * @param id - Identifies the completed upload
      * @param url - URL of the uploaded resource
      */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    completeUpload(id: string, url: string): FlowNode {
-        return this;
-    }
+    abstract completeUpload(id: string, url: string): FlowNode;
 
     /**
      * Applies the specified box style on the current node and returns the updated node.

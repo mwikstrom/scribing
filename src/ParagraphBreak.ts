@@ -84,6 +84,11 @@ export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreak
         super(props);
     }
 
+    /** {@inheritdoc FlowNode.completeUpload} */
+    public completeUpload(): this {
+        return this;
+    }
+
     /** {@inheritdoc FlowNode.formatBox} */
     public formatBox(): this {
         return this;
