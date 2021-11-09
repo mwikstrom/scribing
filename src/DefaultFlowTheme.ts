@@ -9,6 +9,7 @@ import {
     validating 
 } from "paratype";
 import { BoxStyle } from "./BoxStyle";
+import { TableCellVariant } from "./FlowTable";
 import { FlowTheme } from "./FlowTheme";
 import { FlowThemeRegistry } from "./internal/class-registry";
 import { ParagraphStyle, ParagraphVariant } from "./ParagraphStyle";
@@ -53,6 +54,11 @@ export class DefaultFlowTheme extends DefaultFlowThemeBase {
     /** {@inheritdoc FlowTheme.getBoxTheme} */
     getBoxTheme(style: BoxStyle): FlowTheme {
         return this.#root.getBoxTheme(style);
+    }
+
+    /** {@inheritdoc FlowTheme.getBoxTheme} */
+    getCellTheme(variant: TableCellVariant): FlowTheme {
+        return this.#root.getCellTheme(variant);
     }
 
     /** {@inheritdoc FlowTheme.getParagraphTheme} */
@@ -107,11 +113,16 @@ class DefaultBoxTheme extends FlowTheme {
         return getDefaultBoxTheme(style);
     }
 
+    /** {@inheritdoc FlowTheme.getCellTheme} */
+    getCellTheme(variant: TableCellVariant): FlowTheme {
+        return this; // TODO: IMPLEMENT getCellTheme
+    }
+    
     /** {@inheritdoc FlowTheme.getParagraphTheme} */
     getParagraphTheme(variant: ParagraphVariant): ParagraphTheme {
         let result = this.#paragraphCache.get(variant);
         if (!result) {
-            result = new DefaultParagraphTheme(this.#box, variant);
+            result = new DefaultParagraphTheme(this.#box, variant, undefined); // TODO: Apply current table cell variant
             this.#paragraphCache.set(variant, result);
         }
         return result;
@@ -127,31 +138,31 @@ class DefaultParagraphTheme extends ParagraphTheme {
     readonly #link: TextStyle;
     readonly #next: ParagraphVariant;
 
-    constructor(box: BoxStyle, variant: ParagraphVariant) {
+    constructor(box: BoxStyle, paraVariant: ParagraphVariant, cellVariant: TableCellVariant | undefined) {
         super();
 
         this.#box = box;
 
         this.#text = new TextStyle({
-            fontFamily: getFontFamily(variant),
-            fontSize: getFontSize(variant),
-            bold: isHeading(variant),
-            italic: box.variant === "quote",
+            fontFamily: getFontFamily(paraVariant),
+            fontSize: getFontSize(paraVariant),
+            bold: isHeadingParagraph(paraVariant) || isHeadingCell(cellVariant),
+            italic: box.variant === "quote" || isFooterCell(cellVariant),
             underline: false,
             strike: false,
             baseline: "normal",
             link: null,
-            color: box.color ?? (variant === "subtitle" ? "subtle" : "default"),
-            spellcheck: variant !== "code",
+            color: box.color ?? (paraVariant === "subtitle" ? "subtle" : "default"),
+            spellcheck: paraVariant !== "code",
         });
 
         this.#para = new ParagraphStyle({
-            variant: variant,
+            variant: paraVariant,
             alignment: "start",
             direction: "ltr",
-            lineSpacing: variant === "preamble" ? 110 : 100,
-            spaceAbove: getSpaceAbove(variant),
-            spaceBelow: getSpaceBelow(variant),
+            lineSpacing: paraVariant === "preamble" ? 110 : 100,
+            spaceAbove: getSpaceAbove(paraVariant),
+            spaceBelow: getSpaceBelow(paraVariant),
             listLevel: 0,
             listMarker: "unordered",
             hideListMarker: false,
@@ -165,7 +176,7 @@ class DefaultParagraphTheme extends ParagraphTheme {
             color: "primary",
         });
 
-        this.#next = variant === "title" ? "subtitle" : variant === "code" ? "code" : "normal";
+        this.#next = paraVariant === "title" ? "subtitle" : paraVariant === "code" ? "code" : "normal";
     }
 
     /** {@inheritdoc ParagraphTheme.getAmbientTextStyle} */
@@ -194,12 +205,19 @@ class DefaultParagraphTheme extends ParagraphTheme {
     }
 }
 
-const isHeading = (variant: ParagraphVariant): boolean => /^h[1-6]$/.test(variant);
+const isHeadingParagraph = (variant: ParagraphVariant): boolean => /^h[1-6]$/.test(variant);
+
+const isHeadingCell = (variant: TableCellVariant | undefined): boolean => !!variant && (    
+    /^header/.test(variant) ||
+    /^(start|end)-column$/.test(variant)
+);
+
+const isFooterCell = (variant: TableCellVariant | undefined): boolean => !!variant && /^footer/.test(variant);
 
 const getFontFamily = (variant: ParagraphVariant): TextStyleProps["fontFamily"] => {
     if (variant === "code") {
         return "monospace";
-    } else if (isHeading(variant) || variant === "title" || variant === "subtitle") {
+    } else if (isHeadingParagraph(variant) || variant === "title" || variant === "subtitle") {
         return "heading";
     } else {
         return "body";

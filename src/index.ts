@@ -64,6 +64,7 @@ export * from "./SetDynamicTextExpression";
 export * from "./SetImageSource";
 export * from "./SetIcon";
 export * from "./CompleteUpload";
+export * from "./EditTableCell";
 
 // Selection
 export * from "./FlowSelection";

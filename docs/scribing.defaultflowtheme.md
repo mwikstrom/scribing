@@ -32,5 +32,6 @@ export declare class DefaultFlowTheme extends DefaultFlowThemeBase
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
 |  [getBoxTheme(style)](./scribing.defaultflowtheme.getboxtheme.md) |  | Gets a theme for the specified box style |
+|  [getCellTheme(variant)](./scribing.defaultflowtheme.getcelltheme.md) |  | Gets a theme for the specified box style |
 |  [getParagraphTheme(variant)](./scribing.defaultflowtheme.getparagraphtheme.md) |  | Gets a theme for the specified paragraph variant |
 

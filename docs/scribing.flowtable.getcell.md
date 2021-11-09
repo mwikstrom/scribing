@@ -7,15 +7,15 @@
 <b>Signature:</b>
 
 ```typescript
-getCell(rowPosition: number, columnPosition: number): FlowTableCell | null;
+getCell(row: number, column: number): FlowTableCell | null;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  rowPosition | number |  |
-|  columnPosition | number |  |
+|  row | number |  |
+|  column | number |  |
 
 <b>Returns:</b>
 

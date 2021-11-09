@@ -113,6 +113,7 @@ export class DefaultFlowTheme extends DefaultFlowThemeBase {
     constructor();
     static readonly classType: Type<RecordObject<    {}, "default"> & Equatable & Readonly<{}> & DefaultFlowTheme>;
     getBoxTheme(style: BoxStyle): FlowTheme;
+    getCellTheme(variant: TableCellVariant): FlowTheme;
     getParagraphTheme(variant: ParagraphVariant): ParagraphTheme;
     static get instance(): DefaultFlowTheme;
 }
@@ -166,6 +167,36 @@ export interface EditBoxData {
 export interface EditBoxProps {
     inner: FlowOperation;
     position: number;
+}
+
+// @public @sealed
+export class EditTableCell extends EditTableCellBase implements EditTableCellProps {
+    static readonly classType: Type<EditTableCell>;
+    createReplacementNode(content: FlowContent, before: FlowNode): FlowNode;
+    static fromData(data: EditTableCellData): EditTableCell;
+    getInnerContentFromNode(node: FlowNode): FlowContent;
+    getInnerThemeFromNode(node: FlowNode, outer?: FlowTheme): FlowTheme;
+    mergeNext(next: FlowOperation): FlowOperation | null;
+}
+
+// @public
+export const EditTableCellBase: RecordConstructor<EditTableCellProps, NestedFlowOperation, EditTableCellData>;
+
+// @public
+export interface EditTableCellData {
+    at: number;
+    column: number;
+    edit: "cell";
+    op: FlowOperation;
+    row: number;
+}
+
+// @public
+export interface EditTableCellProps {
+    column: number;
+    inner: FlowOperation;
+    position: number;
+    row: number;
 }
 
 // @public
@@ -592,19 +623,31 @@ export class FlowTable extends FlowTableBase {
     formatText(style: TextStyle, theme?: FlowTheme): this;
     static fromData(data: FlowTableData): FlowTable;
     // (undocumented)
-    getCell(rowPosition: number, columnPosition: number): FlowTableCell | null;
+    getCell(row: number, column: number): FlowTableCell | null;
     // (undocumented)
-    getCellIndex(rowPosition: number, columnPosition: number): number;
+    getCellContent(row: number, column: number): FlowContent;
+    // (undocumented)
+    getCellTheme(row: number, column: number, outer?: FlowTheme): FlowTheme;
+    // (undocumented)
+    getCellVariant(row: number, column: number): TableCellVariant;
     // (undocumented)
     getColumnCount(group?: TableColumnGroup): number;
     // (undocumented)
+    getColumnGroup(row: number, column: number): TableColumnGroup;
+    // (undocumented)
+    getColumnIndex(row: number, column: number): number;
+    // (undocumented)
     getColumnStartIndex(group?: TableColumnGroup): number;
     // (undocumented)
-    getRow(rowPosition: number, columnPosition: number): FlowTableRow | null;
+    getRow(row: number, column: number): FlowTableRow | null;
+    // (undocumented)
+    getRowCellIndex(row: number, column: number): number;
     // (undocumented)
     getRowCount(group?: TableRowGroup): number;
     // (undocumented)
-    getRowIndex(rowPosition: number, columnPosition: number): number;
+    getRowGroup(row: number, column: number): TableRowGroup;
+    // (undocumented)
+    getRowIndex(row: number, column: number): number;
     // (undocumented)
     getRows(group?: TableRowGroup): Iterable<FlowTableRow>;
     // (undocumented)
@@ -613,6 +656,8 @@ export class FlowTable extends FlowTableBase {
     getUniformParagraphStyle(theme?: ParagraphTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle | null;
     // @override
     getUniformTextStyle(theme?: ParagraphTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
+    // (undocumented)
+    replaceCellContent(row: number, column: number, newContent: FlowContent): this;
     readonly size = 1;
     unformatAmbient(theme: ParagraphTheme): this;
     unformatBox(style: BoxStyle): this;
@@ -695,6 +740,7 @@ export abstract class FlowTheme {
     static readonly baseType: Type<FlowTheme>;
     static fromJsonValue(value: JsonValue): FlowTheme;
     abstract getBoxTheme(style: BoxStyle): FlowTheme;
+    abstract getCellTheme(variant: TableCellVariant): FlowTheme;
     abstract getParagraphTheme(variant: ParagraphVariant): ParagraphTheme;
     toJsonValue(): JsonValue;
 }
@@ -1357,10 +1403,16 @@ export interface SetImageSourceProps {
 }
 
 // @public (undocumented)
+export const TABLE_CELL_VARIANTS: readonly ["header", "header-start-column", "header-end-column", "body", "body-start-column", "body-end-column", "footer", "footer-start-column", "footer-end-column"];
+
+// @public (undocumented)
 export const TABLE_COLUMN_GROUPS: readonly ["start", "body", "end"];
 
 // @public (undocumented)
 export const TABLE_ROW_GROUPS: readonly ["header", "body", "footer"];
+
+// @public (undocumented)
+export type TableCellVariant = typeof TABLE_CELL_VARIANTS[number];
 
 // @public (undocumented)
 export type TableColumnGroup = typeof TABLE_COLUMN_GROUPS[number];

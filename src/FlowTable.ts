@@ -9,7 +9,7 @@ import {
     type, 
     validating
 } from "paratype";
-import { FlowContent } from ".";
+import { DefaultFlowTheme, FlowContent } from ".";
 import { BoxStyle } from "./BoxStyle";
 import { FlowNode } from "./FlowNode";
 import { FlowRange } from "./FlowRange";
@@ -107,6 +107,22 @@ export type TableColumnGroup = typeof TABLE_COLUMN_GROUPS[number];
 /** @public */
 export const TABLE_COLUMN_GROUPS = Object.freeze(["start", "body", "end"] as const);
 
+/** @public */
+export type TableCellVariant = typeof TABLE_CELL_VARIANTS[number];
+
+/** @public */
+export const TABLE_CELL_VARIANTS = Object.freeze([
+    "header", 
+    "header-start-column",
+    "header-end-column",
+    "body", 
+    "body-start-column",
+    "body-end-column", 
+    "footer",
+    "footer-start-column",
+    "footer-end-column",
+] as const);
+
 /**
  * Represents a flow table cell
  * @public
@@ -128,8 +144,7 @@ export class FlowTable extends FlowTableBase {
     readonly #startHeaderColumnCount: number;
     readonly #bodyColumnCount: number;
     readonly #endHeaderColumnCount: number;
-    readonly #rowByCell: readonly number[];
-    readonly #columnByCell: readonly number[];
+    readonly #mappingByTableIndex: readonly CellMapping[];
 
     constructor(props: FlowTableProps) {
         super(props);
@@ -165,13 +180,12 @@ export class FlowTable extends FlowTableBase {
 
         const straddlingColumns = new Array<number>(columnCount).fill(0);
         const cellCount = rowCount * columnCount;
-        const rowsByCell = new Array<number>(cellCount);
-        const columnsByCell = new Array<number>(cellCount);
+        const mappingByTableIndex = new Array<CellMapping>(cellCount);
 
         let rowIndex = 0;
         for (const group of TABLE_ROW_GROUPS) {
             for (const { cells: cellsOnRow } of this.getRows(group)) {
-                processTableRow(rowIndex, cellsOnRow, straddlingColumns, rowsByCell, columnsByCell);
+                processTableRow(rowIndex, cellsOnRow, straddlingColumns, mappingByTableIndex);
                 ++rowIndex;
                 if (straddlingColumns.every(value => value > 0)) {
                     throw new RangeError(`Flow table row #${rowIndex} consists of straddling cells only`);
@@ -183,8 +197,7 @@ export class FlowTable extends FlowTableBase {
             }
         }
 
-        this.#rowByCell = rowsByCell;
-        this.#columnByCell = columnsByCell;
+        this.#mappingByTableIndex = mappingByTableIndex;
     }    
 
     /** Gets an instance of the current class from the specified data */
@@ -266,20 +279,78 @@ export class FlowTable extends FlowTableBase {
         }
     }
 
-    public getRowIndex(rowPosition: number, columnPosition: number): number {
-        return this.#rowByCell[this.#getTableIndex(rowPosition, columnPosition)];
+    public getRowIndex(row: number, column: number): number {
+        const tableIndex = this.#getTableIndex(row, column);
+        return this.#mappingByTableIndex[tableIndex].rowIndex;
     }
 
-    public getCellIndex(rowPosition: number, columnPosition: number): number {
-        return this.#columnByCell[this.#getTableIndex(rowPosition, columnPosition)];
+    public getColumnIndex(row: number, column: number): number {
+        const tableIndex = this.#getTableIndex(row, column);
+        return this.#mappingByTableIndex[tableIndex].columnIndex;
     }
 
-    public getRow(rowPosition: number, columnPosition: number): FlowTableRow | null {
-        return this.rows[this.getRowIndex(rowPosition, columnPosition)] ?? null;
+    public getRowCellIndex(row: number, column: number): number {
+        const tableIndex = this.#getTableIndex(row, column);
+        return this.#mappingByTableIndex[tableIndex].rowCellIndex;
+    }    
+
+    public getRow(row: number, column: number): FlowTableRow | null {
+        const rowIndex = this.getRowIndex(row, column);
+        return this.rows[rowIndex] ?? null;
     }
 
-    public getCell(rowPosition: number, columnPosition: number): FlowTableCell | null {
-        return this.getRow(rowPosition, columnPosition)?.cells[this.getCellIndex(rowPosition, columnPosition)] ?? null;
+    public getRowGroup(row: number, column: number): TableRowGroup {
+        const rowIndex = this.getRowIndex(row, column);
+        if (rowIndex < this.getRowStartIndex("body")) {
+            return "header";
+        } else if (rowIndex >= this.getRowStartIndex("footer")) {
+            return "footer";
+        } else {
+            return "body";
+        }
+    }
+
+    public getColumnGroup(row: number, column: number): TableColumnGroup {
+        const columnIndex = this.getColumnIndex(row, column);
+        if (columnIndex < this.getColumnStartIndex("body")) {
+            return "start";
+        } else if (columnIndex >= this.getColumnStartIndex("end")) {
+            return "end";
+        } else {
+            return "body";
+        }
+    }
+
+    public getCell(row: number, column: number): FlowTableCell | null {
+        const rowObj = this.getRow(row, column);
+        const cellIndex = this.getRowCellIndex(row, column);
+        return rowObj?.cells[cellIndex] ?? null;
+    }
+
+    public getCellVariant(row: number, column: number): TableCellVariant {
+        const rowGroup = this.getRowGroup(row, column);
+        const colGroup = this.getColumnGroup(row, column);
+
+        if (colGroup === "body") {
+            return rowGroup;
+        } else {
+            return `${rowGroup}-${colGroup}-column`;
+        }
+    }
+
+    public getCellTheme(row: number, column: number, outer?: FlowTheme): FlowTheme {
+        const variant = this.getCellVariant(row, column);
+        return (outer ?? DefaultFlowTheme.instance).getCellTheme(variant);
+    }
+
+    public getCellContent(row: number, column: number): FlowContent {
+        // TODO: IMPLEMENT. HANDLE MERGED CONTENT?!
+        throw new Error("NOT IMPLEMENTED");
+    }
+
+    public replaceCellContent(row: number, column: number, newContent: FlowContent): this {
+        // TODO: IMPLEMENT. HANDLE MERGED CONTENT?!
+        throw new Error("NOT IMPLEMENTED");
     }
 
     /** {@inheritdoc FlowNode.completeUpload} */
@@ -289,17 +360,23 @@ export class FlowTable extends FlowTableBase {
 
     /** {@inheritdoc FlowNode.formatBox} */
     public formatBox(style: BoxStyle, theme?: FlowTheme): this {
-        return this.#updateAllContent(content => content.formatBox(FlowRange.at(0, content.size), style, theme));
+        return this.#updateAllContent((content, row, column) => 
+            content.formatBox(FlowRange.at(0, content.size), style, this.getCellTheme(row, column, theme))
+        );
     }
 
     /** {@inheritdoc FlowNode.formatText} */
     public formatText(style: TextStyle, theme?: FlowTheme): this {
-        return this.#updateAllContent(content => content.formatText(FlowRange.at(0, content.size), style, theme));
+        return this.#updateAllContent((content, row, column) => 
+            content.formatText(FlowRange.at(0, content.size), style, this.getCellTheme(row, column, theme))
+        );
     }
 
     /** {@inheritdoc FlowNode.formatParagraph} */
     public formatParagraph(style: ParagraphStyle, theme?: FlowTheme): this {
-        return this.#updateAllContent(content => content.formatParagraph(FlowRange.at(0, content.size), style, theme));
+        return this.#updateAllContent((content, row, column) => 
+            content.formatParagraph(FlowRange.at(0, content.size), style, this.getCellTheme(row, column, theme))
+        );
     }
 
     /**
@@ -311,10 +388,11 @@ export class FlowTable extends FlowTableBase {
         diff: Set<keyof ParagraphStyleProps> = new Set(),
     ): ParagraphStyle | null {
         let result = ParagraphStyle.empty;
-        this.#visitAllContent(content => {
+        this.#visitAllContent((content, row, column) => {
             const range = FlowRange.at(0, content.size);
             const selection = new FlowRangeSelection({ range });
-            const uniform = selection.getUniformParagraphStyle(content, theme?.getFlowTheme(), diff);
+            const innerTheme =  this.getCellTheme(row, column, theme?.getFlowTheme());
+            const uniform = selection.getUniformParagraphStyle(content, innerTheme, diff);
             result = result.merge(uniform, diff);
         });
         return result;
@@ -329,10 +407,11 @@ export class FlowTable extends FlowTableBase {
         diff: Set<keyof TextStyleProps> = new Set(),
     ): TextStyle {
         let result = TextStyle.empty;
-        this.#visitAllContent(content => {
+        this.#visitAllContent((content, row, column) => {
             const range = FlowRange.at(0, content.size);
             const selection = new FlowRangeSelection({ range });
-            const uniform = selection.getUniformTextStyle(content, theme?.getFlowTheme(), diff);
+            const innerTheme =  this.getCellTheme(row, column, theme?.getFlowTheme());
+            const uniform = selection.getUniformTextStyle(content, innerTheme, diff);
             result = result.merge(uniform, diff);
         });
         return result;
@@ -340,7 +419,9 @@ export class FlowTable extends FlowTableBase {
 
     /** {@inheritdoc FlowNode.unformatAmbient} */
     public unformatAmbient(theme: ParagraphTheme): this {
-        return this.#updateAllContent(content => content.unformatAmbient(theme.getFlowTheme()));
+        return this.#updateAllContent((content, row, column) => 
+            content.unformatAmbient(this.getCellTheme(row, column, theme?.getFlowTheme()))
+        );
     }
 
     /** {@inheritdoc FlowNode.unformatBox} */
@@ -358,7 +439,7 @@ export class FlowTable extends FlowTableBase {
         return this.#updateAllContent(content => content.unformatParagraph(FlowRange.at(0, content.size), style));
     }
 
-    #updateAllContent(callback: (content: FlowContent) => FlowContent): this {
+    #updateAllContent(callback: (content: FlowContent, row: number, column: number) => FlowContent): this {
         let tableChanged = false;
         const updatedRowArray = new Array<FlowTableRow>(this.rows.length);
 
@@ -370,7 +451,7 @@ export class FlowTable extends FlowTableBase {
             for (let c = 0; c < updatedCellArray.length; ++c) {
                 const oldCell = oldRow.cells[c];
                 const oldContent = oldCell.content;
-                const newContent = callback(oldContent);
+                const newContent = callback(oldContent, r, c);
                 const cellChanged = !oldContent.equals(newContent);
                 updatedCellArray[c] = cellChanged ? oldCell.set("content", newContent) : oldCell;
                 rowChanged = rowChanged || cellChanged;
@@ -388,25 +469,32 @@ export class FlowTable extends FlowTableBase {
         return this.set("rows", Object.freeze(updatedRowArray));
     }
 
-    #visitAllContent(callback: (content: FlowContent) => void): void {
-        for (const row of this.rows) {
-            for (const cell of row.cells) {
-                callback(cell.content);
+    #visitAllContent(callback: (content: FlowContent, row: number, column: number) => void): void {
+        const { rows } = this;
+        for (let r = 0; r < rows.length; ++r) {
+            const { cells } = rows[r];
+            for (let c = 0; c < cells.length; ++c) {
+                callback(cells[c].content, r, c);
             }
         }
     }
 
-    #getTableIndex(rowPosition: number, columnPosition: number): number {
-        return rowPosition * this.columns.length + columnPosition;
+    #getTableIndex(row: number, column: number): number {
+        return row * this.columns.length + column;
     }
+}
+
+interface CellMapping {
+    rowIndex: number;
+    columnIndex: number;
+    rowCellIndex: number;
 }
 
 const processTableRow = (
     rowIndex: number,
     cellsOnRow: readonly FlowTableCell[],
     straddlingColumns: number[],
-    rowsByCell: number[],
-    columnsByCell: number[],
+    mappingByTableIndex: CellMapping[],
 ): void => {
     let cellIndexOnRow = 0;
                 
@@ -418,7 +506,14 @@ const processTableRow = (
             throw new RangeError(`Flow table row #${rowIndex} has too few cells`);
         } else {
             const cell = cellsOnRow[cellIndexOnRow];
-            processTableCell(rowIndex, colIndex, cell, straddlingColumns, rowsByCell, columnsByCell);
+            processTableCell(
+                rowIndex,
+                colIndex,
+                cellIndexOnRow,
+                cell,
+                straddlingColumns,
+                mappingByTableIndex
+            );
             ++cellIndexOnRow;
             colIndex += cell.cols - 1;
         }
@@ -431,23 +526,26 @@ const processTableRow = (
 
 const processTableCell = (
     rowIndex: number,
-    colIndex: number,
+    columnIndex: number,
+    rowCellIndex: number,
     cell: FlowTableCell,
     straddlingColumns: number[],
-    rowsByCell: number[],
-    columnsByCell: number[],
+    mappingByTableIndex: CellMapping[],
 ): void => {
     const straddleCount = cell.rows - 1;
     for (let c = 0; c < cell.cols; ++c) {
-        if (straddleCount !== (straddlingColumns[colIndex + c] += straddleCount)) {
-            const msg = `Column #${colIndex} in flow table row #${rowIndex} is overflowing a straddled cell`;
+        if (straddleCount !== (straddlingColumns[columnIndex + c] += straddleCount)) {
+            const msg = `Column #${columnIndex} in flow table row #${rowIndex} is overflowing a straddled cell`;
             throw new RangeError(msg);
         }
 
         for (let r = 0; r < cell.rows; ++r) {
-            const cellIndex = (rowIndex + r) * straddlingColumns.length + c;
-            rowsByCell[cellIndex] = rowIndex;
-            columnsByCell[cellIndex] = colIndex;
+            const tableIndex = (rowIndex + r) * straddlingColumns.length + c;
+            mappingByTableIndex[tableIndex] = {
+                rowIndex,
+                columnIndex,
+                rowCellIndex,
+            };
         }
     }
 };

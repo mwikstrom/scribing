@@ -15,6 +15,7 @@ Model for collaborative rich text editing
 |  [DefaultFlowTheme](./scribing.defaultflowtheme.md) | Provides a theme for flow content |
 |  [DynamicText](./scribing.dynamictext.md) | Represents a dynamic text. |
 |  [EditBox](./scribing.editbox.md) | Represents an operation that edit the contents of a box |
+|  [EditTableCell](./scribing.edittablecell.md) | Represents an operation that edit the contents of a box |
 |  [FlowBatch](./scribing.flowbatch.md) | Represents a batch of flow operations that are applied sequentially and atomically. |
 |  [FlowBox](./scribing.flowbox.md) | Represents a flow box |
 |  [FlowBoxSelection](./scribing.flowboxselection.md) | Represents a selection inside a flow box |
@@ -71,6 +72,8 @@ Model for collaborative rich text editing
 |  [DynamicTextProps](./scribing.dynamictextprops.md) | Properties of [DynamicText](./scribing.dynamictext.md) |
 |  [EditBoxData](./scribing.editboxdata.md) | Data of [EditBox](./scribing.editbox.md) |
 |  [EditBoxProps](./scribing.editboxprops.md) | Properties of [EditBox](./scribing.editbox.md) |
+|  [EditTableCellData](./scribing.edittablecelldata.md) | Data of [EditTableCell](./scribing.edittablecell.md) |
+|  [EditTableCellProps](./scribing.edittablecellprops.md) | Properties of [EditTableCell](./scribing.edittablecell.md) |
 |  [FlowBatchProps](./scribing.flowbatchprops.md) | Properties of [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowBoxData](./scribing.flowboxdata.md) | Data of [FlowBox](./scribing.flowbox.md) |
 |  [FlowBoxProps](./scribing.flowboxprops.md) | Properties of [FlowBox](./scribing.flowbox.md) |
@@ -138,6 +141,7 @@ Model for collaborative rich text editing
 |  [DefaultFlowThemeBase](./scribing.defaultflowthemebase.md) | The base record class for [DefaultFlowTheme](./scribing.defaultflowtheme.md) |
 |  [DynamicTextBase](./scribing.dynamictextbase.md) | The base record class for [DynamicText](./scribing.dynamictext.md) |
 |  [EditBoxBase](./scribing.editboxbase.md) | The base record class for [EditBox](./scribing.editbox.md) |
+|  [EditTableCellBase](./scribing.edittablecellbase.md) | The base record class for [EditTableCell](./scribing.edittablecell.md) |
 |  [FLOW\_COLORS](./scribing.flow_colors.md) | Read-only array that contains all flow content colors |
 |  [FlowBatchBase](./scribing.flowbatchbase.md) | The base record class for [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowBoxBase](./scribing.flowboxbase.md) | The base record class for [FlowBox](./scribing.flowbox.md) |
@@ -174,6 +178,7 @@ Model for collaborative rich text editing
 |  [SetDynamicTextExpressionBase](./scribing.setdynamictextexpressionbase.md) | The base record class for [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [SetIconBase](./scribing.seticonbase.md) | The base record class for [SetIcon](./scribing.seticon.md) |
 |  [SetImageSourceBase](./scribing.setimagesourcebase.md) | The base record class for [SetImageSource](./scribing.setimagesource.md) |
+|  [TABLE\_CELL\_VARIANTS](./scribing.table_cell_variants.md) |  |
 |  [TABLE\_COLUMN\_GROUPS](./scribing.table_column_groups.md) |  |
 |  [TABLE\_ROW\_GROUPS](./scribing.table_row_groups.md) |  |
 |  [TableColumnStyleBase](./scribing.tablecolumnstylebase.md) | The base record class for [TableColumnStyle](./scribing.tablecolumnstyle.md) |
@@ -200,6 +205,7 @@ Model for collaborative rich text editing
 |  [OrderedListMarkerKind](./scribing.orderedlistmarkerkind.md) | Ordered list marker styles |
 |  [ParagraphVariant](./scribing.paragraphvariant.md) | Paragraph style variant |
 |  [PredefinedIcon](./scribing.predefinedicon.md) | Predefined icon |
+|  [TableCellVariant](./scribing.tablecellvariant.md) |  |
 |  [TableColumnGroup](./scribing.tablecolumngroup.md) |  |
 |  [TableRowGroup](./scribing.tablerowgroup.md) |  |
 |  [TextRunData](./scribing.textrundata.md) | Data contract for a text run |
