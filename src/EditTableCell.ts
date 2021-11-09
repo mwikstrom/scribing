@@ -17,29 +17,27 @@ import { FlowOperation } from "./FlowOperation";
 import { FlowTheme } from "./FlowTheme";
 import { FlowOperationRegistry } from "./internal/class-registry";
 import { NestedFlowOperation } from "./NestedFlowOperation";
+import { CellPointer } from "./CellPointer";
 
 const Props = {
     position: nonNegativeIntegerType,
-    row: nonNegativeIntegerType,
-    column: nonNegativeIntegerType,
+    cell: CellPointer.classType,
     inner: FlowOperation.baseType,
 };
 
 const Data = {
     edit: constType("cell"),
-    at: Props.position,
-    row: Props.row,
-    column: Props.column,
+    table: Props.position,
+    cell: Props.cell,
     op: Props.inner,
 };
 
 const PropsType: RecordType<EditTableCellProps> = recordType(Props);
 const DataType: RecordType<EditTableCellData> = recordType(Data);
-const propsToData = ({position, row, column, inner }: EditTableCellProps): EditTableCellData => ({
+const propsToData = ({position, cell, inner }: EditTableCellProps): EditTableCellData => ({
     edit: "cell",
-    at: position,
-    row,
-    column,
+    table: position,
+    cell,
     op: inner,
 });
 
@@ -57,13 +55,10 @@ export interface EditTableCellProps {
     /** The table position */
     position: number;
 
-    /** The table row to edit */
-    row: number;
+    /** The table cell to edit */
+    cell: CellPointer;
 
-    /** The table column to edit */
-    column: number;
-
-    /** The inner operation that shall be applied on the table cell's content */
+    /** The inner operation that shall be applied to the table cell */
     inner: FlowOperation;
 }
 
@@ -76,13 +71,10 @@ export interface EditTableCellData {
     edit: "cell";
 
     /** {@inheritdoc EditTableCellProps.position} */
-    at: number;
+    table: number;
 
-    /** {@inheritdoc EditTableCellProps.row} */
-    row: number;
-
-    /** {@inheritdoc EditTableCellProps.column} */
-    column: number;
+    /** {@inheritdoc EditTableCellProps.cell} */
+    cell: CellPointer;
 
     /** {@inheritdoc EditTableCellProps.inner} */
     op: FlowOperation;
@@ -102,8 +94,8 @@ export class EditTableCell extends EditTableCellBase implements EditTableCellPro
 
     /** Gets an instance of the current class from the specified data */
     public static fromData(@type(DataType) data: EditTableCellData): EditTableCell {
-        const { op: inner, at: position, row, column } = data;
-        const props: EditTableCellProps = { inner, position, row, column };
+        const { op: inner, table: position, cell } = data;
+        const props: EditTableCellProps = { inner, position, cell };
         return new EditTableCell(props);
     }
 
@@ -114,8 +106,7 @@ export class EditTableCell extends EditTableCellBase implements EditTableCellPro
         if (
             next instanceof EditTableCell && 
             next.position === this.position && 
-            next.row == this.row && 
-            next.column == this.column
+            next.cell.equals(this.cell)
         ) {
             const merged = this.inner.mergeNext(next.inner);
             if (merged !== null) {
@@ -130,7 +121,7 @@ export class EditTableCell extends EditTableCellBase implements EditTableCellPro
      */
     createReplacementNode(content: FlowContent, before: FlowNode): FlowNode {
         if (before instanceof FlowTable) {
-            return before.replaceCellContent(this.row, this.column, content);
+            return before.replaceCellContent(this.cell, content);
         } else {
             throw new Error("Expected a flow table to replace");
         }
@@ -141,7 +132,7 @@ export class EditTableCell extends EditTableCellBase implements EditTableCellPro
      */
     getInnerContentFromNode(node: FlowNode): FlowContent {
         if (node instanceof FlowTable) {
-            return node.getCellContent(this.row, this.column);
+            return node.getCellContent(this.cell);
         } else {
             throw new Error(`Expected a flow table at position ${this.position}`);
         }
@@ -152,7 +143,7 @@ export class EditTableCell extends EditTableCellBase implements EditTableCellPro
      */
     getInnerThemeFromNode(node: FlowNode, outer?: FlowTheme): FlowTheme {
         if (node instanceof FlowTable) {
-            const variant = node.getCellVariant(this.row, this.column);
+            const variant = node.getCellVariant(this.cell);
             return (outer ?? DefaultFlowTheme.instance).getCellTheme(variant);
         } else {
             throw new Error(`Expected a flow table at position ${this.position}`);

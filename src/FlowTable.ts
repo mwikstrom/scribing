@@ -9,7 +9,7 @@ import {
     type, 
     validating
 } from "paratype";
-import { DefaultFlowTheme, FlowContent } from ".";
+import { CellPointer, DefaultFlowTheme, FlowContent } from ".";
 import { BoxStyle } from "./BoxStyle";
 import { FlowNode } from "./FlowNode";
 import { FlowRange } from "./FlowRange";
@@ -327,7 +327,8 @@ export class FlowTable extends FlowTableBase {
         return rowObj?.cells[cellIndex] ?? null;
     }
 
-    public getCellVariant(row: number, column: number): TableCellVariant {
+    public getCellVariant(pointer: CellPointer): TableCellVariant {
+        const { row, column } = pointer;
         const rowGroup = this.getRowGroup(row, column);
         const colGroup = this.getColumnGroup(row, column);
 
@@ -339,25 +340,16 @@ export class FlowTable extends FlowTableBase {
     }
 
     public getCellTheme(row: number, column: number, outer?: FlowTheme): FlowTheme {
-        const variant = this.getCellVariant(row, column);
+        const variant = this.getCellVariant(new CellPointer({row, column}));
         return (outer ?? DefaultFlowTheme.instance).getCellTheme(variant);
     }
 
-    public getCellContent(row: number, column: number): FlowContent {
-        const tableIndex = this.#getTableIndex(row, column);
-        const mapping = this.#mappingByTableIndex[tableIndex];
-        if (!mapping) {
-            throw new Error(`Invalid table position (row=${row}, column=${column})`);
-        }
-        const internalRow = row - mapping.rowIndex;
-        const internalColumn = column - mapping.columnIndex;
-        const cell = this.rows[mapping.rowIndex].cells[mapping.rowCellIndex];
+    public getCellContent(pointer: CellPointer): FlowContent {
         // TODO: IMPLEMENT. HANDLE MERGED CONTENT?!
         throw new Error("NOT IMPLEMENTED");
-        //return cell.getContent(internalRow, internalColumn);
     }
 
-    public replaceCellContent(row: number, column: number, newContent: FlowContent): this {
+    public replaceCellContent(pointer: CellPointer, newContent: FlowContent): this {
         // TODO: IMPLEMENT. HANDLE MERGED CONTENT?!
         throw new Error("NOT IMPLEMENTED");
     }
