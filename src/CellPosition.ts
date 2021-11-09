@@ -21,16 +21,10 @@ const DataType: Type<CellPositionData> = stringType.restrict(
     "Must be a valid cell position",
     value => PATTERN.test(value),
 );
-const propsToData = ({column, row}: CellPositionProps): CellPositionData => {
-    let columnChars = "";
-    while (column >= 26) {
-        const rem = column % 26;
-        columnChars = String.fromCharCode(65 + rem) + columnChars;
-        column = (column - rem) / 26 - 1;
-    }
-    columnChars = String.fromCharCode(65 + column) + columnChars;
-    return `${columnChars}${(row + 1).toFixed()}`;
-};
+const propsToData = ({column, row}: CellPositionProps): CellPositionData => (
+    CellPosition.stringifyColumnIndex(column, true) + 
+    CellPosition.stringifyRowIndex(row, true)
+);
 
 /**
  * The base record class for {@link CellPosition}
@@ -81,15 +75,70 @@ export class CellPosition extends CellPositionBase implements Readonly<CellPosit
     public static fromData(@type(DataType) data: CellPositionData): CellPosition {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const [, columnChars, rowDigits] = PATTERN.exec(data)!;
-        let column = -1;
-        let multiplier = 26 ** (columnChars.length - 1);
-        for (let i = 0; i < columnChars.length; ++i) {
-            const charValue = columnChars.charCodeAt(i) - 64;
-            column += charValue * multiplier;
-            multiplier /= 26;
-        }
-        const row = parseInt(rowDigits, 10) - 1;
+        const column = CellPosition.parseColumnIndex(columnChars, true);
+        const row = CellPosition.parseRowIndex(rowDigits, true);
         return new CellPosition({ column, row });
+    }
+
+    public static parseColumnIndex(input: string, throwOnError?: false): number | null;
+    public static parseColumnIndex(input: string, throwOnError: true): number;
+    public static parseColumnIndex(input: string, throwOnError?: boolean): number | null {
+        if (typeof input === "string" && /^[A-Z]+$/.test(input)) {
+            let column = -1;
+            let multiplier = 26 ** (input.length - 1);
+            for (let i = 0; i < input.length; ++i) {
+                const charValue = input.charCodeAt(i) - 64;
+                column += charValue * multiplier;
+                multiplier /= 26;
+            }
+            return column;
+        } else if (throwOnError) {
+            throw new TypeError(`Cannot parse invalid row index: ${input}`);
+        } else {
+            return null;
+        }
+    }
+
+    public static stringifyColumnIndex(input: number, throwOnError?: false): string | null;
+    public static stringifyColumnIndex(input: number, throwOnError: true): string;
+    public static stringifyColumnIndex(input: number, throwOnError?: boolean): string | null {
+        if (Number.isSafeInteger(input) && input >= 0) {
+            let result = "";
+            while (input >= 26) {
+                const rem = input % 26;
+                result = String.fromCharCode(65 + rem) + result;
+                input = (input - rem) / 26 - 1;
+            }
+            return String.fromCharCode(65 + input) + result;
+        } else if (throwOnError) {
+            throw new TypeError(`Cannot stringigy invalid row index: ${input}`);
+        } else {
+            return null;
+        }
+    }
+
+    public static parseRowIndex(input: string, throwOnError?: false): number | null;
+    public static parseRowIndex(input: string, throwOnError: true): number;
+    public static parseRowIndex(input: string, throwOnError?: boolean): number | null {
+        if (typeof input === "string" && /^[1-9][0-9]*$/.test(input)) {
+            return parseInt(input, 10) - 1;
+        } else if (throwOnError) {
+            throw new TypeError(`Cannot parse invalid row index: ${input}`);
+        } else {
+            return null;
+        }
+    }
+
+    public static stringifyRowIndex(input: number, throwOnError?: false): string | null;
+    public static stringifyRowIndex(input: number, throwOnError: true): string;
+    public static stringifyRowIndex(input: number, throwOnError?: boolean): string | null {
+        if (Number.isSafeInteger(input) && input >= 0) {
+            return (input + 1).toFixed();
+        } else if (throwOnError) {
+            throw new TypeError(`Cannot stringigy invalid row index: ${input}`);
+        } else {
+            return null;
+        }
     }
 
     /** Determines whether the current position is equal to the other position */
