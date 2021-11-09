@@ -12,26 +12,21 @@ import { FlowContent } from "./FlowContent";
 
 const Props = {
     content: FlowContent.classType,
-    cols: positiveIntegerType,
-    rows: positiveIntegerType,
+    colSpan: positiveIntegerType,
+    rowSpan: positiveIntegerType,
 };
 
-const Data = {
-    content: FlowContent.classType,
-    cols: positiveIntegerType,
-    rows: positiveIntegerType,
-};
-
+const Data = Props;
 const PropsType: RecordType<FlowTableCellProps> = recordType(Props);
-const DataType: RecordType<FlowTableCellData> = recordType(Data).withOptional("cols", "rows");
+const DataType: RecordType<FlowTableCellData> = recordType(Data).withOptional("colSpan", "rowSpan");
 
-const propsToData = ({ content, cols, rows }: FlowTableCellProps): FlowTableCellData => {
+const propsToData = ({ content, colSpan, rowSpan }: FlowTableCellProps): FlowTableCellData => {
     const result: FlowTableCellData = { content };
-    if (cols !== 1) {
-        result.cols = cols;
+    if (colSpan !== 1) {
+        result.colSpan = colSpan;
     }
-    if (rows !== 1) {
-        result.rows = rows;
+    if (rowSpan !== 1) {
+        result.rowSpan = rowSpan;
     }
     return result;
 };
@@ -48,8 +43,8 @@ export const FlowTableCellBase = RecordClass(PropsType, Object, DataType, propsT
  */
 export interface FlowTableCellProps {
     content: FlowContent;
-    cols: number;
-    rows: number;
+    colSpan: number;
+    rowSpan: number;
 }
 
 /**
@@ -58,8 +53,8 @@ export interface FlowTableCellProps {
  */
 export interface FlowTableCellData {
     content: FlowContent;
-    cols?: number;
-    rows?: number;
+    colSpan?: number;
+    rowSpan?: number;
 }
 
 /**
@@ -75,7 +70,7 @@ export class FlowTableCell extends FlowTableCellBase {
 
     /** Gets an instance of the current class from the specified data */
     public static fromData(@type(DataType) data: FlowTableCellData): FlowTableCell {
-        const { content, cols = 1, rows = 1 } = data;
-        return new FlowTableCell({ content, cols, rows });
+        const { content, colSpan = 1, rowSpan = 1 } = data;
+        return new FlowTableCell({ content, colSpan, rowSpan });
     }
 }

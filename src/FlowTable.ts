@@ -204,7 +204,7 @@ export class FlowTable extends FlowTableBase {
     public static fromData(@type(DataType) data: FlowTableData): FlowTable {
         const { table: rows, columns: columnMap, style = TableStyle.empty } = data;
         const cellsOnFirstRow = rows[0]?.cells ?? [];
-        const columnCount = cellsOnFirstRow.reduce((prev, curr) => prev + curr.cols, 0);
+        const columnCount = cellsOnFirstRow.reduce((prev, curr) => prev + curr.colSpan, 0);
         const columnStyles = new Array<TableColumnStyle>(columnCount).fill(TableColumnStyle.empty);
 
         if (columnMap) {
@@ -516,7 +516,7 @@ const processTableRow = (
                 mappingByTableIndex
             );
             ++cellIndexOnRow;
-            colIndex += cell.cols - 1;
+            colIndex += cell.colSpan - 1;
         }
     }
 
@@ -533,14 +533,14 @@ const processTableCell = (
     straddlingColumns: number[],
     mappingByTableIndex: CellMapping[],
 ): void => {
-    const straddleCount = cell.rows - 1;
-    for (let c = 0; c < cell.cols; ++c) {
+    const straddleCount = cell.rowSpan - 1;
+    for (let c = 0; c < cell.colSpan; ++c) {
         if (straddleCount !== (straddlingColumns[columnIndex + c] += straddleCount)) {
             const msg = `Column #${columnIndex} in flow table row #${rowIndex} is overflowing a straddled cell`;
             throw new RangeError(msg);
         }
 
-        for (let r = 0; r < cell.rows; ++r) {
+        for (let r = 0; r < cell.rowSpan; ++r) {
             const tableIndex = (rowIndex + r) * straddlingColumns.length + c;
             mappingByTableIndex[tableIndex] = {
                 rowIndex,
