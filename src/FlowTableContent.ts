@@ -133,7 +133,7 @@ export class FlowTableContent {
         return this.#defaultCell;
     }
 
-    public editContent(position: CellPosition, operation: FlowOperation): FlowTableContent {
+    public edit(position: CellPosition, operation: FlowOperation): FlowTableContent {
         throw new Error("NOT IMPL");
     }
 
@@ -153,11 +153,11 @@ export class FlowTableContent {
         throw new Error("NOT IMPL");
     }
 
-    public mergeCell(position: CellPosition, colSpan: number, rowSpan: number): FlowTableContent {
+    public merge(position: CellPosition, colSpan: number, rowSpan: number): FlowTableContent {
         throw new Error("NOT IMPL");
     }
 
-    public splitMergedCell(position: CellPosition, content = FlowContent.empty): FlowTableContent {
+    public split(position: CellPosition, content = FlowContent.empty): FlowTableContent {
         throw new Error("NOT IMPL");
     }
 
