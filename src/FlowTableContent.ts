@@ -1,6 +1,5 @@
 import { CellPosition } from "./CellPosition";
 import { FlowContent } from "./FlowContent";
-import { FlowOperation } from "./FlowOperation";
 import { FlowTableCell } from "./FlowTableCell";
 
 /**
@@ -116,32 +115,59 @@ export class FlowTableContent {
     }
 
     public map<T>(callback: (cell: FlowTableCell, position: CellPosition) => T): T[] {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        return this.positions.map(pos => callback(this.getCell(pos)!, pos));
+        return this.positions.map(pos => callback(this.getCell(pos, true), pos));
     }
 
-    public getCell(position: CellPosition): FlowTableCell | null {
+    public getCell(position: CellPosition, throwOnError?: boolean): FlowTableCell | null;
+    public getCell(position: CellPosition, throwOnError: true): FlowTableCell;
+    public getCell(position: CellPosition, throwOnError?: boolean): FlowTableCell | null {
         const key = position.toString();
         const cell = this.#cells.get(key);
         if (cell) {
             return cell;
         }
         const { columnCount, rowCount } = this;
-        if (this.#spans.has(key) || position.row >= rowCount || position.column >= columnCount) {
+        const spanningKey = this.#spans.get(key);
+        if (spanningKey) {
+            const message = `Table position ${position} is overlapped by ${spanningKey}`;
+            if (throwOnError) throw new Error(message);
+            console.warn(message);
+            return null;
+        }
+        if (
+            position.row < 0 || 
+            position.row >= rowCount || 
+            position.column < 0 ||
+            position.column >= columnCount
+        ) {
+            const message = `Table position ${position} is out of range`;
+            if (throwOnError) throw new RangeError(message);
+            console.warn(message);
             return null;
         }
         return this.#defaultCell;
     }
 
-    public edit(position: CellPosition, operation: FlowOperation): FlowTableContent {
-        throw new Error("NOT IMPL");
+    public setContent(position: CellPosition, content: FlowContent): FlowTableContent {
+        const before = this.getCell(position, true);
+        const after = before.set("content", content);
+        return this.#update((key, cell) => {
+            if (position === CellPosition.parse(key) && cell === before) {
+                return [key, after];
+            } else {
+                return [key, cell];
+            }
+        });
     }
 
     public insertColumn(index: number, count = 1): FlowTableContent {
-        if (index < 0 || index > this.#columnCount || count <= 0) {
+        if (count < 0) {
+            throw new RangeError("Cannot insert a negative number of columns");
+        } else if (count === 0) {
             return this;
+        } else if (index < 0 || index > this.#columnCount) {
+            throw new RangeError(`Column index ${index} is out of range`);
         }
-
         return this.#update((key, cell) => {
             const pos = CellPosition.parse(key, true);
             if (pos.column >= index) {
@@ -158,10 +184,15 @@ export class FlowTableContent {
     }
 
     public removeColumn(index: number, count = 1): FlowTableContent {
-        if (index < 0 || index + count > this.#columnCount || count <= 0) {
+        if (count < 0) {
+            throw new RangeError("Cannot remove a negative number of columns");
+        } else if (count === 0) {
             return this;
+        } else if (index < 0) {
+            throw new RangeError(`Column index ${index} is out of range`);
+        } else if (index + count >= this.#columnCount) {
+            throw new RangeError(`Column index ${index + count} is out of range`);
         }
-
         return this.#update((key, cell) => {
             const pos = CellPosition.parse(key, true);
             if (pos.column >= index + count) {
@@ -182,10 +213,13 @@ export class FlowTableContent {
     }
 
     public insertRow(index: number, count = 1): FlowTableContent {
-        if (index < 0 || index > this.#rowCount || count <= 0) {
+        if (count < 0) {
+            throw new RangeError("Cannot insert a negative number of rows");
+        } else if (count === 0) {
             return this;
+        } else if (index < 0 || index > this.#rowCount) {
+            throw new RangeError(`Row index ${index} is out of range`);
         }
-
         return this.#update((key, cell) => {
             const pos = CellPosition.parse(key, true);
             if (pos.row >= index) {
@@ -203,10 +237,15 @@ export class FlowTableContent {
 
 
     public removeRow(index: number, count = 1): FlowTableContent {
-        if (index < 0 || index + count > this.#rowCount || count <= 0) {
+        if (count < 0) {
+            throw new RangeError("Cannot remove a negative number of rows");
+        } else if (count === 0) {
             return this;
+        } else if (index < 0) {
+            throw new RangeError(`Row index ${index} is out of range`);
+        } else if (index + count >= this.#rowCount) {
+            throw new RangeError(`Row index ${index + count} is out of range`);
         }
-
         return this.#update((key, cell) => {
             const pos = CellPosition.parse(key, true);
             if (pos.row >= index + count) {
