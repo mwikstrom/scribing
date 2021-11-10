@@ -69,10 +69,17 @@ export class CellPosition extends CellPositionBase implements Readonly<CellPosit
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => CellPosition);
 
+    /** Gets a cell position at the specified row and column */
+    public static at(row: number, column: number): CellPosition {
+        // TODO: Use cache (to reuse cell position instances)
+        return new CellPosition({ column, row });
+    }
+
     /**
      * Gets a cell position from the specified string
      */
     public static fromData(@type(DataType) data: CellPositionData): CellPosition {
+        // TODO: Use cache (to reuse cell position instances)
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const [, columnChars, rowDigits] = PATTERN.exec(data)!;
         const column = CellPosition.parseColumnIndex(columnChars, true);

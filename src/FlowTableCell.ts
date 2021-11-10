@@ -92,7 +92,7 @@ export class FlowTableCell extends FlowTableCellBase {
             for (let c = 0; c < colSpan; ++c) {
                 const row = rootRow + r;
                 const column = rootColumn + c;
-                result[r * colSpan + c] = new CellPosition({ row, column });
+                result[r * colSpan + c] = CellPosition.at(row, column);
             }
         }
         return result;
