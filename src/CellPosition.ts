@@ -172,4 +172,9 @@ export class CellPosition extends CellPositionBase implements Readonly<CellPosit
     public toString(): string {
         return propsToData(this);
     }
+
+    /** Gets a string representation of the current cell position */
+    public valueOf(): string {
+        return propsToData(this);
+    }
 }
