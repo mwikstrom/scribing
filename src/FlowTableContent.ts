@@ -45,7 +45,7 @@ export class FlowTableContent {
         for (const entry of sorted) {
             const position = entry[0];
             let cell = entry[1];
-            const key = position.valueOf();
+            const key = position.toString();
 
             // Skip duplicate cell positions
             if (this.#cells.has(key)) {
@@ -67,7 +67,7 @@ export class FlowTableContent {
             // once.
             let colSpan = 1;
             while (colSpan < cell.colSpan) {
-                const spannedKey = CellPosition.at(position.row, position.column + colSpan).valueOf();
+                const spannedKey = CellPosition.at(position.row, position.column + colSpan).toString();
                 const conflictKey = this.#spans.get(spannedKey);
                 if (conflictKey) {
                     if (throwOnError) throw new Error(
@@ -90,7 +90,7 @@ export class FlowTableContent {
 
             // Mark overlapped cells
             for (const spanned of cell.getSpannedPositions(position)) {
-                this.#spans.set(spanned.valueOf(), key);
+                this.#spans.set(spanned.toString(), key);
             }
 
             // Keep track of cells, column count and row count
@@ -121,7 +121,7 @@ export class FlowTableContent {
     }
 
     public getCell(position: CellPosition): FlowTableCell | null {
-        const key = position.valueOf();
+        const key = position.toString();
         const cell = this.#cells.get(key);
         if (cell) {
             return cell;
@@ -137,16 +137,68 @@ export class FlowTableContent {
         throw new Error("NOT IMPL");
     }
 
-    public insertColumn(index: number, count = 1, content = FlowContent.empty): FlowTableContent {
-        throw new Error("NOT IMPL");
+    public insertColumn(index: number, count = 1): FlowTableContent {
+        if (index < 0 || index > this.columnCount || count <= 0) {
+            return this;
+        }
+
+        const result = this.#emptyClone();
+        result.#columnCount += count;
+        result.#spans = new Map(this.#spans);
+       
+        for (const [key, cell] of this.#cells) {
+            const pos = CellPosition.parse(key, true);
+            if (pos.column >= index) {
+                // cell is positioned at or after insertion point. increment position.
+                result.#cells.set(CellPosition.at(pos.row, pos.column + count).toString(), cell);
+            } else if (pos.column + cell.colSpan > index) {
+                // cell is positioned before insertion point but spans over it. increment span.
+                const updated = cell.set("colSpan", cell.colSpan + count);
+                for (const spanned of updated.getSpannedPositions(pos)) {
+                    this.#spans.set(spanned.toString(), key);
+                }
+                result.#cells.set(key, updated);
+            } else {
+                // cell is unaffected
+                result.#cells.set(key, cell);
+            }
+        }
+
+        return result;
     }
 
     public removeColumn(index: number, count = 1): FlowTableContent {
         throw new Error("NOT IMPL");
     }
 
-    public insertRow(index: number, count = 1, content = FlowContent.empty): FlowTableContent {
-        throw new Error("NOT IMPL");
+    public insertRow(index: number, count = 1): FlowTableContent {
+        if (index < 0 || index > this.rowCount || count <= 0) {
+            return this;
+        }
+
+        const result = this.#emptyClone();
+        result.#rowCount += count;
+        result.#spans = new Map(this.#spans);
+       
+        for (const [key, cell] of this.#cells) {
+            const pos = CellPosition.parse(key, true);
+            if (pos.row >= index) {
+                // cell is positioned at or after insertion point. increment position.
+                result.#cells.set(CellPosition.at(pos.row + count, pos.column).toString(), cell);
+            } else if (pos.row + cell.rowSpan > index) {
+                // cell is positioned before insertion point but spans over it. increment span.
+                const updated = cell.set("rowSpan", cell.rowSpan + count);
+                for (const spanned of updated.getSpannedPositions(pos)) {
+                    this.#spans.set(spanned.toString(), key);
+                }
+                result.#cells.set(key, updated);
+            } else {
+                // cell is unaffected
+                result.#cells.set(key, cell);
+            }
+        }
+
+        return result;
     }
 
     public removeRow(index: number, count = 1): FlowTableContent {
@@ -157,15 +209,23 @@ export class FlowTableContent {
         throw new Error("NOT IMPL");
     }
 
-    public split(position: CellPosition, content = FlowContent.empty): FlowTableContent {
+    public split(position: CellPosition): FlowTableContent {
         throw new Error("NOT IMPL");
+    }
+
+    #emptyClone(): FlowTableContent {
+        const result = new FlowTableContent();
+        result.#defaultCell = this.#defaultCell;
+        result.#columnCount = this.#columnCount;
+        result.#rowCount = this.#rowCount;
+        return result;
     }
 
     *#iterate(): Iterable<CellPosition> {
         const { rowCount, columnCount } = this;
         const first = rowCount > 0 && columnCount > 0 ? CellPosition.at(0, 0) : null;
         for (let pos = first; pos !== null; pos = pos.next(columnCount, rowCount)) {
-            if (!this.#spans.has(pos.valueOf())) {
+            if (!this.#spans.has(pos.toString())) {
                 yield pos;
             }
         }
