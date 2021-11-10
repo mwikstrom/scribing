@@ -10,6 +10,7 @@ import {
     unionType, 
     validating
 } from "paratype";
+import { CellPosition } from "./CellPosition";
 import { FlowContent } from "./FlowContent";
 
 const Props = {
@@ -81,5 +82,19 @@ export class FlowTableCell extends FlowTableCellBase {
         const record = FlowContent.classType.test(data) ? { content: data } : data;
         const { content, colSpan = 1, rowSpan = 1 } = record;
         return new FlowTableCell({ content, colSpan, rowSpan });
+    }
+
+    public getPositions(root: CellPosition): CellPosition[] {
+        const { row: rootRow, column: rootColumn } = root;
+        const { rowSpan, colSpan } = this;
+        const result = new Array<CellPosition>(rowSpan * colSpan);
+        for (let r = 0; r < rowSpan; ++r) {
+            for (let c = 0; c < colSpan; ++c) {
+                const row = rootRow + r;
+                const column = rootColumn + c;
+                result[r * colSpan + c] = new CellPosition({ row, column });
+            }
+        }
+        return result;
     }
 }
