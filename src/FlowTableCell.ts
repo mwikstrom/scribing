@@ -84,15 +84,15 @@ export class FlowTableCell extends FlowTableCellBase {
         return new FlowTableCell({ content, colSpan, rowSpan });
     }
 
-    public getPositions(root: CellPosition): CellPosition[] {
+    public getSpannedPositions(root: CellPosition): CellPosition[] {
         const { row: rootRow, column: rootColumn } = root;
         const { rowSpan, colSpan } = this;
-        const result = new Array<CellPosition>(rowSpan * colSpan);
+        const result = new Array<CellPosition>(rowSpan * colSpan - 1);
         for (let r = 0; r < rowSpan; ++r) {
-            for (let c = 0; c < colSpan; ++c) {
+            for (let c = r ? 0 : 1; c < colSpan; ++c) {
                 const row = rootRow + r;
                 const column = rootColumn + c;
-                result[r * colSpan + c] = CellPosition.at(row, column);
+                result[r * colSpan + c - 1] = CellPosition.at(row, column);
             }
         }
         return result;

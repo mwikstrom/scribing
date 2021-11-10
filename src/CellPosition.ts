@@ -81,7 +81,7 @@ export class CellPosition extends CellPositionBase implements Readonly<CellPosit
         return CellPosition.parse(data, true);
     }
 
-    public static parse(input: string, throwOnError?: false): CellPosition | null;
+    public static parse(input: string, throwOnError?: boolean): CellPosition | null;
     public static parse(input: string, throwOnError: true): CellPosition;
     public static parse(input: string, throwOnError?: boolean): CellPosition | null {
         // TODO: Use cache (to reuse cell position instances)
@@ -101,7 +101,7 @@ export class CellPosition extends CellPositionBase implements Readonly<CellPosit
         return null;
     }
 
-    public static parseColumnIndex(input: string, throwOnError?: false): number | null;
+    public static parseColumnIndex(input: string, throwOnError?: boolean): number | null;
     public static parseColumnIndex(input: string, throwOnError: true): number;
     public static parseColumnIndex(input: string, throwOnError?: boolean): number | null {
         if (typeof input === "string" && /^[A-Z]+$/.test(input)) {
@@ -120,7 +120,7 @@ export class CellPosition extends CellPositionBase implements Readonly<CellPosit
         }
     }
 
-    public static stringifyColumnIndex(input: number, throwOnError?: false): string | null;
+    public static stringifyColumnIndex(input: number, throwOnError?: boolean): string | null;
     public static stringifyColumnIndex(input: number, throwOnError: true): string;
     public static stringifyColumnIndex(input: number, throwOnError?: boolean): string | null {
         if (Number.isSafeInteger(input) && input >= 0) {
@@ -138,7 +138,7 @@ export class CellPosition extends CellPositionBase implements Readonly<CellPosit
         }
     }
 
-    public static parseRowIndex(input: string, throwOnError?: false): number | null;
+    public static parseRowIndex(input: string, throwOnError?: boolean): number | null;
     public static parseRowIndex(input: string, throwOnError: true): number;
     public static parseRowIndex(input: string, throwOnError?: boolean): number | null {
         if (typeof input === "string" && /^[1-9][0-9]*$/.test(input)) {
@@ -150,7 +150,7 @@ export class CellPosition extends CellPositionBase implements Readonly<CellPosit
         }
     }
 
-    public static stringifyRowIndex(input: number, throwOnError?: false): string | null;
+    public static stringifyRowIndex(input: number, throwOnError?: boolean): string | null;
     public static stringifyRowIndex(input: number, throwOnError: true): string;
     public static stringifyRowIndex(input: number, throwOnError?: boolean): string | null {
         if (Number.isSafeInteger(input) && input >= 0) {
