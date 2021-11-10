@@ -83,6 +83,14 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => FlowContent);
 
+    /** Gets empty flow content */
+    public static get empty(): FlowContent {
+        if (!EMPTY_CACHE) {
+            EMPTY_CACHE = new FlowContent({ nodes: Object.freeze([]) });
+        }
+        return EMPTY_CACHE;
+    }
+
     /** Gets flow content from the specified data */
     public static fromData(@type(NodeArrayType) data: FlowContentData): FlowContent {
         const props: FlowContentProps = { nodes: Object.freeze(Array.from(FlowContent.merge(data))) };
@@ -435,3 +443,5 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
         return null;
     }
 }
+
+let EMPTY_CACHE: FlowContent | undefined;
