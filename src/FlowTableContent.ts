@@ -138,71 +138,92 @@ export class FlowTableContent {
     }
 
     public insertColumn(index: number, count = 1): FlowTableContent {
-        if (index < 0 || index > this.columnCount || count <= 0) {
+        if (index < 0 || index > this.#columnCount || count <= 0) {
             return this;
         }
 
-        const result = this.#emptyClone();
-        result.#columnCount += count;
-        result.#spans = new Map(this.#spans);
-       
-        for (const [key, cell] of this.#cells) {
+        return this.#update((key, cell) => {
             const pos = CellPosition.parse(key, true);
             if (pos.column >= index) {
                 // cell is positioned at or after insertion point. increment position.
-                result.#cells.set(CellPosition.at(pos.row, pos.column + count).toString(), cell);
+                return [CellPosition.at(pos.row, pos.column + count).toString(), cell];
             } else if (pos.column + cell.colSpan > index) {
                 // cell is positioned before insertion point but spans over it. increment span.
-                const updated = cell.set("colSpan", cell.colSpan + count);
-                for (const spanned of updated.getSpannedPositions(pos)) {
-                    this.#spans.set(spanned.toString(), key);
-                }
-                result.#cells.set(key, updated);
+                return [key, cell.set("colSpan", cell.colSpan + count)];
             } else {
                 // cell is unaffected
-                result.#cells.set(key, cell);
+                return [key, cell];
             }
-        }
-
-        return result;
+        });
     }
 
     public removeColumn(index: number, count = 1): FlowTableContent {
-        throw new Error("NOT IMPL");
-    }
-
-    public insertRow(index: number, count = 1): FlowTableContent {
-        if (index < 0 || index > this.rowCount || count <= 0) {
+        if (index < 0 || index + count > this.#columnCount || count <= 0) {
             return this;
         }
 
-        const result = this.#emptyClone();
-        result.#rowCount += count;
-        result.#spans = new Map(this.#spans);
-       
-        for (const [key, cell] of this.#cells) {
+        return this.#update((key, cell) => {
+            const pos = CellPosition.parse(key, true);
+            if (pos.column >= index + count) {
+                // cell is positioned at or after removed range. decrement position.
+                return [CellPosition.at(pos.row, pos.column - count).toString(), cell];
+            } else if (pos.column >= index) {
+                // cell is positioned within removed range. discard it!
+                return null;
+            } else if (pos.column + cell.colSpan > index) {
+                // cell is positioned before removed range but spans over (or into) it. decrement span.
+                const delta = Math.min(count, pos.column + cell.colSpan - index);
+                return [key, cell.set("colSpan", cell.colSpan - delta)];
+            } else {
+                // cell is unaffected
+                return [key, cell];
+            }
+        });
+    }
+
+    public insertRow(index: number, count = 1): FlowTableContent {
+        if (index < 0 || index > this.#rowCount || count <= 0) {
+            return this;
+        }
+
+        return this.#update((key, cell) => {
             const pos = CellPosition.parse(key, true);
             if (pos.row >= index) {
                 // cell is positioned at or after insertion point. increment position.
-                result.#cells.set(CellPosition.at(pos.row + count, pos.column).toString(), cell);
+                return [CellPosition.at(pos.row + count, pos.column).toString(), cell];
             } else if (pos.row + cell.rowSpan > index) {
                 // cell is positioned before insertion point but spans over it. increment span.
-                const updated = cell.set("rowSpan", cell.rowSpan + count);
-                for (const spanned of updated.getSpannedPositions(pos)) {
-                    this.#spans.set(spanned.toString(), key);
-                }
-                result.#cells.set(key, updated);
+                return [key, cell.set("rowSpan", cell.rowSpan + count)];
             } else {
                 // cell is unaffected
-                result.#cells.set(key, cell);
+                return [key, cell];
             }
-        }
-
-        return result;
+        });
     }
 
+
     public removeRow(index: number, count = 1): FlowTableContent {
-        throw new Error("NOT IMPL");
+        if (index < 0 || index + count > this.#rowCount || count <= 0) {
+            return this;
+        }
+
+        return this.#update((key, cell) => {
+            const pos = CellPosition.parse(key, true);
+            if (pos.row >= index + count) {
+                // cell is positioned at or after removed range. decrement position.
+                return [CellPosition.at(pos.row - count, pos.column).toString(), cell];
+            } else if (pos.row >= index) {
+                // cell is positioned within removed range. discard it!
+                return null;
+            } else if (pos.row + cell.rowSpan > index) {
+                // cell is positioned before removed range but spans over (or into) it. decrement span.
+                const delta = Math.min(count, pos.row + cell.rowSpan - index);
+                return [key, cell.set("rowSpan", cell.rowSpan - delta)];
+            } else {
+                // cell is unaffected
+                return [key, cell];
+            }
+        });
     }
 
     public merge(position: CellPosition, colSpan: number, rowSpan: number): FlowTableContent {
@@ -213,11 +234,24 @@ export class FlowTableContent {
         throw new Error("NOT IMPL");
     }
 
-    #emptyClone(): FlowTableContent {
+    #update(callback: (key: string, cell: FlowTableCell) => [string, FlowTableCell] | null): FlowTableContent {
         const result = new FlowTableContent();
+
         result.#defaultCell = this.#defaultCell;
         result.#columnCount = this.#columnCount;
         result.#rowCount = this.#rowCount;
+
+        for (const [key, cell] of this.#cells) {
+            const mapped = callback(key, cell);
+            if (mapped) {
+                const [mappedKey, mappedCell] = mapped;
+                result.#cells.set(mappedKey, mappedCell);
+                for (const spanned of mappedCell.getSpannedPositions(CellPosition.parse(mappedKey, true))) {
+                    result.#spans.set(spanned.toString(), key);
+                }
+            }
+        }
+
         return result;
     }
 
