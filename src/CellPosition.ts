@@ -182,6 +182,19 @@ export class CellPosition extends CellPositionBase implements Readonly<CellPosit
         }
     }
 
+    /** Gets the next cell position */
+    public next(columnCount = Infinity, rowCount = Infinity): CellPosition | null {
+        const nextColumn = this.column + 1;
+        if (nextColumn < columnCount) {
+            return CellPosition.at(this.row, nextColumn);
+        }
+        const nextRow = this.row + 1;
+        if (nextRow < rowCount) {
+            return CellPosition.at(nextRow, 0);
+        }
+        return null;
+    }
+
     /** Gets a string representation of the current cell position */
     public toString(): string {
         return propsToData(this);
