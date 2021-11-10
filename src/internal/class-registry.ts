@@ -1,9 +1,9 @@
 import { Type, unionType } from "paratype";
-import { FlowNode } from "../FlowNode";
-import { FlowOperation } from "../FlowOperation";
-import { FlowSelection } from "../FlowSelection";
-import { FlowTheme } from "../FlowTheme";
-import { Interaction } from "../Interaction";
+import { FlowNode } from "../nodes/FlowNode";
+import { FlowOperation } from "../operations/FlowOperation";
+import { FlowSelection } from "../selection/FlowSelection";
+import { FlowTheme } from "../styles/FlowTheme";
+import { Interaction } from "../interaction/Interaction";
 
 /** @internal */
 export interface RegistrableClass<T> {

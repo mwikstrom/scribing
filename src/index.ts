@@ -4,74 +4,74 @@
  */
 
 // Range and positions
-export * from "./FlowRange";
-export * from "./CellPosition";
+export * from "./selection/FlowRange";
+export * from "./selection/CellPosition";
 
 // Interactions
-export * from "./Interaction";
-export * from "./OpenUrl";
-export * from "./RunScript";
+export * from "./interaction/Interaction";
+export * from "./interaction/OpenUrl";
+export * from "./interaction/RunScript";
 
 // Styles
-export * from "./FlowColor";
-export * from "./BoxStyle";
-export * from "./ParagraphStyle";
-export * from "./TextStyle";
-export * from "./TableColumnStyle";
-export * from "./TableStyle";
+export * from "./styles/FlowColor";
+export * from "./styles/BoxStyle";
+export * from "./styles/ParagraphStyle";
+export * from "./styles/TextStyle";
+export * from "./styles/TableColumnStyle";
+export * from "./styles/TableStyle";
 
 // Content
-export * from "./FlowNode";
-export * from "./FlowCursor";
-export * from "./FlowContent";
+export * from "./nodes/FlowNode";
+export * from "./selection/FlowCursor";
+export * from "./structure/FlowContent";
 
 // Media sources
-export * from "./ImageSource";
+export * from "./structure/ImageSource";
 
 // Table structure
-export * from "./FlowTableCell";
-export * from "./FlowTableRow";
+export * from "./structure/FlowTableContent";
+export * from "./structure/FlowTableCell";
 
 // Nodes
-export * from "./InlineNode";
-export * from "./LineBreak";
-export * from "./ParagraphBreak";
-export * from "./TextRun";
-export * from "./FlowBox";
-export * from "./DynamicText";
-export * from "./FlowIcon";
-export * from "./FlowImage";
-export * from "./FlowTable";
+export * from "./nodes/InlineNode";
+export * from "./nodes/LineBreak";
+export * from "./nodes/ParagraphBreak";
+export * from "./nodes/TextRun";
+export * from "./nodes/FlowBox";
+export * from "./nodes/DynamicText";
+export * from "./nodes/FlowIcon";
+export * from "./nodes/FlowImage";
+export * from "./nodes/FlowTable";
 
 // Theme
-export * from "./ParagraphTheme";
-export * from "./FlowTheme";
-export * from "./DefaultFlowTheme";
+export * from "./styles/ParagraphTheme";
+export * from "./styles/FlowTheme";
+export * from "./styles/DefaultFlowTheme";
 
 // Operations
-export * from "./FlowOperation";
-export * from "./FlowBatch";
-export * from "./FormatBox";
-export * from "./UnformatBox";
-export * from "./FormatParagraph";
-export * from "./UnformatParagraph";
-export * from "./FormatText";
-export * from "./UnformatText";
-export * from "./InsertContent";
-export * from "./RemoveRange";
-export * from "./NestedFlowOperation";
-export * from "./EditBox";
-export * from "./SetDynamicTextExpression";
-export * from "./SetImageSource";
-export * from "./SetIcon";
-export * from "./CompleteUpload";
-export * from "./EditTableCell";
+export * from "./operations/FlowOperation";
+export * from "./operations/FlowBatch";
+export * from "./operations/FormatBox";
+export * from "./operations/UnformatBox";
+export * from "./operations/FormatParagraph";
+export * from "./operations/UnformatParagraph";
+export * from "./operations/FormatText";
+export * from "./operations/UnformatText";
+export * from "./operations/InsertContent";
+export * from "./operations/RemoveRange";
+export * from "./operations/NestedFlowOperation";
+export * from "./operations/EditBox";
+export * from "./operations/SetDynamicTextExpression";
+export * from "./operations/SetImageSource";
+export * from "./operations/SetIcon";
+export * from "./operations/CompleteUpload";
+export * from "./operations/EditTableCell";
 
 // Selection
-export * from "./FlowSelection";
-export * from "./FlowRangeSelection";
-export * from "./NestedFlowSelection";
-export * from "./FlowBoxSelection";
+export * from "./selection/FlowSelection";
+export * from "./selection/FlowRangeSelection";
+export * from "./selection/NestedFlowSelection";
+export * from "./selection/FlowBoxSelection";
 
 // Editor
-export * from "./FlowEditorState";
+export * from "./structure/FlowEditorState";

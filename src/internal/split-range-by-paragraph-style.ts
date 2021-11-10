@@ -1,7 +1,7 @@
-import { FlowContent } from "../FlowContent";
-import { FlowRange } from "../FlowRange";
-import { ParagraphBreak } from "../ParagraphBreak";
-import { ParagraphStyle, ParagraphStyleProps } from "../ParagraphStyle";
+import { FlowContent } from "../structure/FlowContent";
+import { FlowRange } from "../selection/FlowRange";
+import { ParagraphBreak } from "../nodes/ParagraphBreak";
+import { ParagraphStyle, ParagraphStyleProps } from "../styles/ParagraphStyle";
 
 /** @internal */
 export const splitRangeByUniformParagraphStyle = <K extends keyof ParagraphStyleProps>(

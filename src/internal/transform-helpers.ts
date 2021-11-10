@@ -1,4 +1,4 @@
-import { FlowRange } from "../FlowRange";
+import { FlowRange } from "../selection/FlowRange";
 
 /** @internal */
 export interface FlowRangeOperation {

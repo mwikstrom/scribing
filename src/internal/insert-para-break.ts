@@ -1,13 +1,13 @@
-import { FlowBatch } from "../FlowBatch";
-import { FlowContent } from "../FlowContent";
-import { FlowOperation } from "../FlowOperation";
-import { FlowRange } from "../FlowRange";
-import { FlowTheme } from "../FlowTheme";
-import { FormatParagraph } from "../FormatParagraph";
-import { InsertContent } from "../InsertContent";
-import { ParagraphBreak } from "../ParagraphBreak";
-import { ParagraphStyle } from "../ParagraphStyle";
-import { UnformatParagraph } from "../UnformatParagraph";
+import { FlowBatch } from "../operations/FlowBatch";
+import { FlowContent } from "../structure/FlowContent";
+import { FlowOperation } from "../operations/FlowOperation";
+import { FlowRange } from "../selection/FlowRange";
+import { FlowTheme } from "../styles/FlowTheme";
+import { FormatParagraph } from "../operations/FormatParagraph";
+import { InsertContent } from "../operations/InsertContent";
+import { ParagraphBreak } from "../nodes/ParagraphBreak";
+import { ParagraphStyle } from "../styles/ParagraphStyle";
+import { UnformatParagraph } from "../operations/UnformatParagraph";
 import { formatListLevel } from "./format-list-level";
 
 /** @internal */

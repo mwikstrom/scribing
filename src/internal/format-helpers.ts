@@ -1,9 +1,9 @@
 import { RecordObject } from "paratype";
-import { FlowBatch } from "../FlowBatch";
-import { FlowContent } from "../FlowContent";
-import { FlowNode } from "../FlowNode";
-import { FlowOperation } from "../FlowOperation";
-import { FlowRange } from "../FlowRange";
+import { FlowBatch } from "../operations/FlowBatch";
+import { FlowContent } from "../structure/FlowContent";
+import { FlowNode } from "../nodes/FlowNode";
+import { FlowOperation } from "../operations/FlowOperation";
+import { FlowRange } from "../selection/FlowRange";
 
 /** @internal */
 export interface FormatOpProps<S> {

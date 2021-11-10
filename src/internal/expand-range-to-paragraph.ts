@@ -1,8 +1,8 @@
-import { FlowContent } from "../FlowContent";
-import { FlowRange } from "../FlowRange";
-import { InsertContent } from "../InsertContent";
-import { ParagraphBreak } from "../ParagraphBreak";
-import { ParagraphStyle } from "../ParagraphStyle";
+import { FlowContent } from "../structure/FlowContent";
+import { FlowRange } from "../selection/FlowRange";
+import { InsertContent } from "../operations/InsertContent";
+import { ParagraphBreak } from "../nodes/ParagraphBreak";
+import { ParagraphStyle } from "../styles/ParagraphStyle";
 
 /** @internal */
 export function expandRangeToParagraph(

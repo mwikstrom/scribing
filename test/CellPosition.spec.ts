@@ -1,4 +1,4 @@
-import { CellPosition } from "../src/CellPosition";
+import { CellPosition } from "../src/selection/CellPosition";
 
 describe("CellPosition", () => {
     it("can parse A1", () => {

@@ -1,7 +1,7 @@
 import { FlowBatch, FormatParagraph, ParagraphStyle, ParagraphStyleProps, UnformatParagraph } from "..";
-import { FlowContent } from "../FlowContent";
-import { FlowOperation } from "../FlowOperation";
-import { FlowRange } from "../FlowRange";
+import { FlowContent } from "../structure/FlowContent";
+import { FlowOperation } from "../operations/FlowOperation";
+import { FlowRange } from "../selection/FlowRange";
 import { splitRangeByUniformParagraphStyle } from "./split-range-by-paragraph-style";
 import { mapNotNull } from "./utils";
 
