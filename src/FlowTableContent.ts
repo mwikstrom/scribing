@@ -1,3 +1,4 @@
+import { classType, JsonValue, mapType, PathArray, ErrorCallback, lazyType } from "paratype";
 import { CellPosition } from "./CellPosition";
 import { FlowContent } from "./FlowContent";
 import { FlowTableCell } from "./FlowTableCell";
@@ -10,21 +11,34 @@ interface FlowTableContentOptions {
     defaultContent?: FlowContent;
 }
 
+const DataType = mapType(FlowTableCell.classType);
+
 /**
  * @public
  * @sealed
  */
 export class FlowTableContent {
-    #defaultCell: FlowTableCell;
+    #defaultContent: FlowContent;
     #cells = new Map<string, FlowTableCell>();
     #spans = new Map<string, string>();
-    #columnCount = 0;
-    #rowCount = 0;
+    #columnCount = 1;
+    #rowCount = 1;
     #positionArrayCache: readonly CellPosition[] | undefined;
+
+    static readonly classType = lazyType(() => classType<
+        typeof FlowTableContent, FlowTableContent, [Map<string, FlowTableCell>]
+    >(FlowTableContent));
+
+    static fromJsonValue(value: JsonValue, error?: ErrorCallback, path?: PathArray): FlowTableContent {
+        const data = DataType.fromJsonValue(value, error, path);
+        const defaultContent = data.get("default")?.content;
+        data.delete("default");
+        return new FlowTableContent(data, { defaultContent });
+    }
 
     constructor(cells: Iterable<[string, FlowTableCell]> = [], options: FlowTableContentOptions = {}) {
         const { throwOnError = false, defaultContent = FlowContent.empty } = options;
-        this.#defaultCell = FlowTableCell.fromData(defaultContent);
+        this.#defaultContent = defaultContent;
 
         // Sort the given cells by position
         const sorted: [CellPosition, FlowTableCell][] = [];
@@ -114,6 +128,18 @@ export class FlowTableContent {
         return this.#positionArrayCache;
     }
 
+    public toJsonValue(error?: ErrorCallback, path?: PathArray): JsonValue {
+        const data = new Map([...this.#cells, ["default", FlowTableCell.fromData(this.#defaultContent)]]);
+
+        // Ensure that the bottom-right cell is filled to maintain row and column count
+        const lastKey = CellPosition.at(this.#rowCount - 1, this.#columnCount - 1).toString();
+        if (!this.#cells.has(lastKey) && !this.#spans.has(lastKey)) {
+            data.set(lastKey, FlowTableCell.fromData(this.#defaultContent));
+        }
+
+        return DataType.toJsonValue(data, error, path);
+    }
+
     public map<T>(callback: (cell: FlowTableCell, position: CellPosition) => T): T[] {
         return this.positions.map(pos => callback(this.getCell(pos, true), pos));
     }
@@ -145,13 +171,31 @@ export class FlowTableContent {
             console.warn(message);
             return null;
         }
-        return this.#defaultCell;
+        return FlowTableCell.fromData(this.#defaultContent);
     }
 
     public setContent(position: CellPosition, content: FlowContent): FlowTableContent {
         const before = this.getCell(position, true);
         const after = before.set("content", content);
         return this.#replaceCell(position, after);
+    }
+
+    public updateAllContent(
+        callback: (content: FlowContent, position: CellPosition) => FlowContent
+    ): FlowTableContent {
+        const changed = new Map<string, FlowTableCell>();
+        for (const position of this.positions) {
+            const cell = this.getCell(position, true);
+            const oldContent = cell.content;
+            const newContent = callback(oldContent, position);
+            if (!oldContent.equals(newContent)) {
+                changed.set(position.toString(), cell.set("content", newContent));
+            }
+        }
+        if (changed.size === 0) {
+            return this;
+        }
+        return this.#update((key, cell) => [key, changed.get(key) ?? cell]);
     }
 
     public insertColumn(index: number, count = 1): FlowTableContent {
@@ -302,7 +346,7 @@ export class FlowTableContent {
     #update(callback: (key: string, cell: FlowTableCell) => [string, FlowTableCell] | null): FlowTableContent {
         const result = new FlowTableContent();
 
-        result.#defaultCell = this.#defaultCell;
+        result.#defaultContent = this.#defaultContent;
         result.#columnCount = this.#columnCount;
         result.#rowCount = this.#rowCount;
 
