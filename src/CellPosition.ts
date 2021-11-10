@@ -6,7 +6,6 @@ import {
     RecordType, 
     recordType, 
     stringType, 
-    type, 
     Type, 
     validating, 
 } from "paratype";
@@ -78,13 +77,28 @@ export class CellPosition extends CellPositionBase implements Readonly<CellPosit
     /**
      * Gets a cell position from the specified string
      */
-    public static fromData(@type(DataType) data: CellPositionData): CellPosition {
+    public static fromData(data: CellPositionData): CellPosition {
+        return CellPosition.parse(data, true);
+    }
+
+    public static parse(input: string, throwOnError?: false): CellPosition | null;
+    public static parse(input: string, throwOnError: true): CellPosition;
+    public static parse(input: string, throwOnError?: boolean): CellPosition | null {
         // TODO: Use cache (to reuse cell position instances)
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        const [, columnChars, rowDigits] = PATTERN.exec(data)!;
-        const column = CellPosition.parseColumnIndex(columnChars, true);
-        const row = CellPosition.parseRowIndex(rowDigits, true);
-        return new CellPosition({ column, row });
+        if (typeof input === "string") {
+            const match = PATTERN.exec(input);
+            if (match) {
+                const column = CellPosition.parseColumnIndex(match[1]);
+                const row = CellPosition.parseRowIndex(match[2]);
+                if (typeof column === "number" && typeof row === "number") {
+                    return new CellPosition({ column, row });
+                }
+            }
+        }
+        if (throwOnError) {
+            throw new TypeError(`Cannot parse invalid cell position: ${input}`);
+        }
+        return null;
     }
 
     public static parseColumnIndex(input: string, throwOnError?: false): number | null;
