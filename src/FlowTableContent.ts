@@ -5,7 +5,7 @@ import { FlowTableCell } from "./FlowTableCell";
 /**
  * @public
  */
-interface FlowTableContentInitOptions {
+interface FlowTableContentOptions {
     throwOnError?: boolean;
     defaultContent?: FlowContent;
 }
@@ -22,7 +22,7 @@ export class FlowTableContent {
     #rowCount = 0;
     #positionArrayCache: readonly CellPosition[] | undefined;
 
-    constructor(cells: Iterable<[string, FlowTableCell]> = [], options: FlowTableContentInitOptions = {}) {
+    constructor(cells: Iterable<[string, FlowTableCell]> = [], options: FlowTableContentOptions = {}) {
         const { throwOnError = false, defaultContent = FlowContent.empty } = options;
         this.#defaultCell = FlowTableCell.fromData(defaultContent);
 
@@ -151,13 +151,7 @@ export class FlowTableContent {
     public setContent(position: CellPosition, content: FlowContent): FlowTableContent {
         const before = this.getCell(position, true);
         const after = before.set("content", content);
-        return this.#update((key, cell) => {
-            if (position === CellPosition.parse(key) && cell === before) {
-                return [key, after];
-            } else {
-                return [key, cell];
-            }
-        });
+        return this.#replaceCell(position, after);
     }
 
     public insertColumn(index: number, count = 1): FlowTableContent {
@@ -266,11 +260,43 @@ export class FlowTableContent {
     }
 
     public merge(position: CellPosition, colSpan: number, rowSpan: number): FlowTableContent {
-        throw new Error("NOT IMPL");
+        const target = position.toString();
+        const before = this.getCell(position, true);
+        const after = before.merge({ colSpan, rowSpan });
+        const slated = new Set(after.getSpannedPositions(position, true).map(pos => pos.toString()));
+        for (const key of slated) {
+            const pos = CellPosition.parse(key, true);
+            const cell = this.getCell(pos, true);
+            if (cell.colSpan !== 1 || cell.rowSpan !== 1) {
+                throw new Error(`Table position ${key} is already merged`);
+            }
+        }
+        return this.#update((key, cell) => {
+            if (key === target) {
+                return [key, after];
+            } else if (slated.has(key)) {
+                return null;
+            } else {
+                return [key, cell];
+            }
+        });
     }
 
     public split(position: CellPosition): FlowTableContent {
-        throw new Error("NOT IMPL");
+        const before = this.getCell(position, true);
+        const after = before.merge({ colSpan: 1, rowSpan: 1 });
+        return this.#replaceCell(position, after);
+    }
+
+    #replaceCell(position: CellPosition, replacement: FlowTableCell): FlowTableContent {
+        const target = position.toString();
+        return this.#update((key, cell) => {
+            if (key === target) {
+                return [key, replacement];
+            } else {
+                return [key, cell];
+            }
+        });        
     }
 
     #update(callback: (key: string, cell: FlowTableCell) => [string, FlowTableCell] | null): FlowTableContent {
