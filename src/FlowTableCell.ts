@@ -5,7 +5,9 @@ import {
     recordClassType, 
     RecordType, 
     recordType, 
+    Type, 
     type, 
+    unionType, 
     validating
 } from "paratype";
 import { FlowContent } from "./FlowContent";
@@ -16,19 +18,25 @@ const Props = {
     rowSpan: positiveIntegerType,
 };
 
-const Data = Props;
 const PropsType: RecordType<FlowTableCellProps> = recordType(Props);
-const DataType: RecordType<FlowTableCellData> = recordType(Data).withOptional("colSpan", "rowSpan");
+const DataType: Type<FlowTableCellData> = unionType(
+    recordType(Props).withOptional("colSpan", "rowSpan"),
+    FlowContent.classType
+);
 
 const propsToData = ({ content, colSpan, rowSpan }: FlowTableCellProps): FlowTableCellData => {
-    const result: FlowTableCellData = { content };
-    if (colSpan !== 1) {
-        result.colSpan = colSpan;
+    if (colSpan === 1 && rowSpan === 1) {
+        return content;
+    } else {
+        const record: FlowTableCellData = { content };
+        if (colSpan !== 1) {
+            record.colSpan = colSpan;
+        }
+        if (rowSpan !== 1) {
+            record.rowSpan = rowSpan;
+        }
+        return record;
     }
-    if (rowSpan !== 1) {
-        result.rowSpan = rowSpan;
-    }
-    return result;
 };
 
 /**
@@ -51,11 +59,11 @@ export interface FlowTableCellProps {
  * Data of {@link FlowTableCell}
  * @public
  */
-export interface FlowTableCellData {
+export type FlowTableCellData = FlowContent | {
     content: FlowContent;
     colSpan?: number;
     rowSpan?: number;
-}
+};
 
 /**
  * Represents a flow table cell
@@ -70,7 +78,8 @@ export class FlowTableCell extends FlowTableCellBase {
 
     /** Gets an instance of the current class from the specified data */
     public static fromData(@type(DataType) data: FlowTableCellData): FlowTableCell {
-        const { content, colSpan = 1, rowSpan = 1 } = data;
+        const record = FlowContent.classType.test(data) ? { content: data } : data;
+        const { content, colSpan = 1, rowSpan = 1 } = record;
         return new FlowTableCell({ content, colSpan, rowSpan });
     }
 }
