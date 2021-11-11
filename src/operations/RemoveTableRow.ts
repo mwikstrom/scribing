@@ -126,8 +126,8 @@ export class RemoveTableRow extends RemoveTableRowBase implements RemoveTableRow
     }
 
     /** {@inheritdoc TableOperation.applyToCellRange} */
-    protected applyToCellRange(range: CellRange, mine: boolean): CellRange | null {
-        return range.afterRemoveRow(this.row, this.count, mine);
+    protected applyToCellRange(range: CellRange): CellRange | null {
+        return range.afterRemoveRow(this.row, this.count);
     }
     afterInsertColumn(): TableOperation | null {
         // This operation applies to all columns, so it's unaffected

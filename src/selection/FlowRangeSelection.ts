@@ -21,7 +21,7 @@ import { expandRangeToParagraph } from "../internal/expand-range-to-paragraph";
 import { formatListLevel } from "../internal/format-list-level";
 import { insertParaBreak } from "../internal/insert-para-break";
 import { splitRangeByUniformParagraphStyle } from "../internal/split-range-by-paragraph-style";
-import { transformRangeAfterInsertFlow, transformRangeAfterRemoveFlow } from "../internal/transform-helpers";
+import { getRangeAfterInsertion, getRangeAfterRemoval } from "../internal/transform-helpers";
 import { filterNotNull, mapNotNull } from "../internal/utils";
 import { ParagraphBreak } from "../nodes/ParagraphBreak";
 import {
@@ -629,7 +629,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
             return this.set("range", FlowRange.at(range.last));
         }
 
-        const updated = transformRangeAfterInsertFlow(this.range, range);
+        const updated = getRangeAfterInsertion(this.range, range);
         return this.set("range", updated);
     }
 
@@ -638,7 +638,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      * @override
      */
     afterRemoveFlow(range: FlowRange, mine: boolean): FlowSelection | null {
-        const updated = transformRangeAfterRemoveFlow(this.range, range, mine);
+        const updated = getRangeAfterRemoval(this.range, range, mine);
         if (updated === null) {
             return null;
         } else {

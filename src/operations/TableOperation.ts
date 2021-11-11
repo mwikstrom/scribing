@@ -2,7 +2,7 @@ import { FlowContent } from "../structure/FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "../selection/FlowRange";
 import { FlowSelection } from "../selection/FlowSelection";
-import { transformRangeAfterInsertFlow, transformRangeAfterRemoveFlow } from "../internal/transform-helpers";
+import { getRangeAfterInsertion, getRangeAfterRemoval } from "../internal/transform-helpers";
 import { FlowTable } from "../nodes/FlowTable";
 import { FlowTableSelection } from "../selection/FlowTableSelection";
 import { CellRange } from "../selection/CellRange";
@@ -101,7 +101,7 @@ export abstract class TableOperation extends FlowOperation {
      */
     afterInsertFlow(range: FlowRange): FlowOperation | null {
         const before = FlowRange.at(this.position, 1);
-        const after = transformRangeAfterInsertFlow(before, range);
+        const after = getRangeAfterInsertion(before, range);
         return this.#wrapPosition(after);
     }
 
@@ -110,7 +110,7 @@ export abstract class TableOperation extends FlowOperation {
      */
     afterRemoveFlow(range: FlowRange): FlowOperation | null {
         const before = FlowRange.at(this.position, 1);
-        const after = transformRangeAfterRemoveFlow(before, range);
+        const after = getRangeAfterRemoval(before, range);
         return this.#wrapPosition(after);
     }
 

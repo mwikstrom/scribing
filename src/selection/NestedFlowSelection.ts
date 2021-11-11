@@ -6,7 +6,7 @@ import { FlowRange } from "./FlowRange";
 import { FlowSelection, RemoveFlowSelectionOptions, TargetOptions } from "./FlowSelection";
 import { FlowTheme } from "../styles/FlowTheme";
 import { ImageSource } from "../structure/ImageSource";
-import { transformRangeAfterInsertFlow, transformRangeAfterRemoveFlow } from "../internal/transform-helpers";
+import { getRangeAfterInsertion, getRangeAfterRemoval } from "../internal/transform-helpers";
 import { ParagraphStyle, ParagraphStyleProps } from "../styles/ParagraphStyle";
 import { TextStyle, TextStyleProps } from "../styles/TextStyle";
 import { TableStyle } from "../styles/TableStyle";
@@ -454,7 +454,7 @@ export abstract class NestedFlowSelection extends FlowSelection {
      */
     afterInsertFlow(range: FlowRange): FlowSelection | null {
         const before = FlowRange.at(this.position, 1);
-        const after = transformRangeAfterInsertFlow(before, range);
+        const after = getRangeAfterInsertion(before, range);
         return this.#wrapPosition(after);
     }
 
@@ -464,7 +464,7 @@ export abstract class NestedFlowSelection extends FlowSelection {
      */
     afterRemoveFlow(range: FlowRange, mine: boolean): FlowSelection | null {
         const before = FlowRange.at(this.position, 1);
-        const after = transformRangeAfterRemoveFlow(before, range, mine);
+        const after = getRangeAfterRemoval(before, range, mine);
         return this.#wrapPosition(after);
     }
 

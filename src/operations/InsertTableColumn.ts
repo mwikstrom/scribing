@@ -126,8 +126,8 @@ export class InsertTableColumn extends InsertTableColumnBase implements InsertTa
     }
 
     /** {@inheritdoc TableOperation.applyToCellRange} */
-    protected applyToCellRange(range: CellRange, mine: boolean): CellRange | null {
-        return range.afterInsertColumn(this.column, this.count, mine);
+    protected applyToCellRange(range: CellRange): CellRange | null {
+        return range.afterInsertColumn(this.column, this.count);
     }
 
     afterInsertColumn(index: number, count: number): TableOperation | null {

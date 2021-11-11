@@ -126,8 +126,8 @@ export class InsertTableRow extends InsertTableRowBase implements InsertTableRow
     }
 
     /** {@inheritdoc TableOperation.applyToCellRange} */
-    protected applyToCellRange(range: CellRange, mine: boolean): CellRange | null {
-        return range.afterInsertRow(this.row, this.count, mine);
+    protected applyToCellRange(range: CellRange): CellRange | null {
+        return range.afterInsertRow(this.row, this.count);
     }
 
     afterInsertColumn(): TableOperation | null {

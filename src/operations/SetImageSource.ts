@@ -15,7 +15,7 @@ import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "../selection/FlowRange";
 import { FlowSelection } from "../selection/FlowSelection";
 import { FlowOperationRegistry } from "../internal/class-registry";
-import { transformRangeAfterInsertFlow, transformRangeAfterRemoveFlow } from "../internal/transform-helpers";
+import { getRangeAfterInsertion, getRangeAfterRemoval } from "../internal/transform-helpers";
 import { ImageSource } from "../structure/ImageSource";
 
 const Props = {
@@ -155,7 +155,7 @@ export class SetImageSource extends SetImageSourceBase implements SetImageSource
      */
     afterInsertFlow(range: FlowRange): FlowOperation | null {
         const before = FlowRange.at(this.position, 1);
-        const after = transformRangeAfterInsertFlow(before, range);
+        const after = getRangeAfterInsertion(before, range);
         return this.#wrapPosition(after);
     }
 
@@ -164,7 +164,7 @@ export class SetImageSource extends SetImageSourceBase implements SetImageSource
      */
     afterRemoveFlow(range: FlowRange): FlowOperation | null {
         const before = FlowRange.at(this.position, 1);
-        const after = transformRangeAfterRemoveFlow(before, range);
+        const after = getRangeAfterRemoval(before, range);
         return this.#wrapPosition(after);
     }
 

@@ -23,7 +23,7 @@ const coreTransformRangeOpAfterInsertFlow = <T extends FlowRangeOperation>(
     other: FlowRange,
     edgeInflating: boolean,
 ): T | null => {
-    const target = transformRangeAfterInsertFlow(op.range, other, edgeInflating);
+    const target = getRangeAfterInsertion(op.range, other, edgeInflating);
     return op.set("range", target);
 };
 
@@ -32,7 +32,7 @@ export const transformRangeOpAfterRemoveFlow = <T extends FlowRangeOperation>(
     op: T,
     other: FlowRange,
 ): T | null => {
-    const target = transformRangeAfterRemoveFlow(op.range, other);
+    const target = getRangeAfterRemoval(op.range, other);
     if (target === null) {
         return null;
     }
@@ -40,7 +40,7 @@ export const transformRangeOpAfterRemoveFlow = <T extends FlowRangeOperation>(
 };
 
 /** @internal */
-export const transformRangeAfterInsertFlow = (
+export const getRangeAfterInsertion = (
     target: FlowRange,
     inserted: FlowRange,
     inflateAtTargetEdges = false,
@@ -62,7 +62,7 @@ export const transformRangeAfterInsertFlow = (
 };
 
 /** @internal */
-export const transformRangeAfterRemoveFlow = (
+export const getRangeAfterRemoval = (
     target: FlowRange,
     removed: FlowRange,
     keepCollapsed = false,

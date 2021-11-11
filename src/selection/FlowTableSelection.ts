@@ -15,7 +15,7 @@ import { FlowTheme } from "../styles/FlowTheme";
 import { FlowSelectionRegistry } from "../internal/class-registry";
 import { CellRange } from "./CellRange";
 import { FlowRange } from "./FlowRange";
-import { transformRangeAfterInsertFlow, transformRangeAfterRemoveFlow } from "../internal/transform-helpers";
+import { getRangeAfterInsertion, getRangeAfterRemoval } from "../internal/transform-helpers";
 import { TextStyle, TextStyleProps } from "../styles/TextStyle";
 import { BoxStyle, BoxStyleProps } from "../styles/BoxStyle";
 import { FlowTable } from "../nodes/FlowTable";
@@ -415,7 +415,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      */
     afterInsertFlow(range: FlowRange): FlowSelection | null {
         const before = FlowRange.at(this.position, 1);
-        const after = transformRangeAfterInsertFlow(before, range);
+        const after = getRangeAfterInsertion(before, range);
         return this.#wrapPosition(after);
     }
 
@@ -425,7 +425,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      */
     afterRemoveFlow(range: FlowRange, mine: boolean): FlowSelection | null {
         const before = FlowRange.at(this.position, 1);
-        const after = transformRangeAfterRemoveFlow(before, range, mine);
+        const after = getRangeAfterRemoval(before, range, mine);
         return this.#wrapPosition(after);
     }
 
