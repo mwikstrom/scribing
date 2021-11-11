@@ -17,7 +17,7 @@ import { FlowTheme } from "../styles/FlowTheme";
 import { FlowOperationRegistry } from "../internal/class-registry";
 import { invertFormatOp } from "../internal/format-helpers";
 import { 
-    transformEdgeInflatingRangeOpafterInsertFlow, 
+    transformEdgeInflatingRangeOpAfterInsertFlow, 
     transformRangeOpAfterRemoveFlow
 } from "../internal/transform-helpers";
 import { ParagraphBreak } from "../nodes/ParagraphBreak";
@@ -143,7 +143,7 @@ export class FormatParagraph extends FormatParagraphBase implements Readonly<For
      * {@inheritDoc FlowOperation.afterInsertFlow}
      */
     afterInsertFlow(other: FlowRange): FlowOperation | null {
-        return transformEdgeInflatingRangeOpafterInsertFlow(this, other);
+        return transformEdgeInflatingRangeOpAfterInsertFlow(this, other);
     }
 
     /** 

@@ -17,7 +17,7 @@ import { FlowTheme } from "../styles/FlowTheme";
 import { FlowOperationRegistry } from "../internal/class-registry";
 import { invertFormatOp } from "../internal/format-helpers";
 import { 
-    transformEdgeInflatingRangeOpafterInsertFlow, 
+    transformEdgeInflatingRangeOpAfterInsertFlow, 
     transformRangeOpAfterRemoveFlow
 } from "../internal/transform-helpers";
 import { BoxStyle, BoxStyleProps } from "../styles/BoxStyle";
@@ -143,7 +143,7 @@ export class FormatBox extends FormatBoxBase implements Readonly<FormatBoxProps>
      * {@inheritDoc FlowOperation.afterInsertFlow}
      */
     afterInsertFlow(other: FlowRange): FlowOperation | null {
-        return transformEdgeInflatingRangeOpafterInsertFlow(this, other);
+        return transformEdgeInflatingRangeOpAfterInsertFlow(this, other);
     }
 
     /** 

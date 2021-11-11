@@ -17,7 +17,7 @@ import { FormatBox } from "./FormatBox";
 import { FlowOperationRegistry } from "../internal/class-registry";
 import { invertUnformatOp } from "../internal/format-helpers";
 import { 
-    transformEdgeInflatingRangeOpafterInsertFlow, 
+    transformEdgeInflatingRangeOpAfterInsertFlow, 
     transformRangeOpAfterRemoveFlow
 } from "../internal/transform-helpers";
 import { BoxStyle, BoxStyleProps } from "../styles/BoxStyle";
@@ -145,7 +145,7 @@ export class UnformatBox extends UnformatBoxBase implements Readonly<UnformatBox
      * {@inheritDoc FlowOperation.afterInsertFlow}
      */
     afterInsertFlow(other: FlowRange): FlowOperation | null {
-        return transformEdgeInflatingRangeOpafterInsertFlow(this, other);
+        return transformEdgeInflatingRangeOpAfterInsertFlow(this, other);
     }
 
     /** 

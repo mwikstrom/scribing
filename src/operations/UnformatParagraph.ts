@@ -17,7 +17,7 @@ import { FormatParagraph } from "./FormatParagraph";
 import { FlowOperationRegistry } from "../internal/class-registry";
 import { invertUnformatOp } from "../internal/format-helpers";
 import { 
-    transformEdgeInflatingRangeOpafterInsertFlow, 
+    transformEdgeInflatingRangeOpAfterInsertFlow, 
     transformRangeOpAfterRemoveFlow
 } from "../internal/transform-helpers";
 import { ParagraphBreak } from "../nodes/ParagraphBreak";
@@ -145,7 +145,7 @@ export class UnformatParagraph extends UnformatParagraphBase implements Readonly
      * {@inheritDoc FlowOperation.afterInsertFlow}
      */
     afterInsertFlow(other: FlowRange): FlowOperation | null {
-        return transformEdgeInflatingRangeOpafterInsertFlow(this, other);
+        return transformEdgeInflatingRangeOpAfterInsertFlow(this, other);
     }
 
     /** 

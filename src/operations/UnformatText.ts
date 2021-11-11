@@ -18,7 +18,7 @@ import { InlineNode } from "../nodes/InlineNode";
 import { FlowOperationRegistry } from "../internal/class-registry";
 import { invertUnformatOp } from "../internal/format-helpers";
 import { 
-    transformEdgeInflatingRangeOpafterInsertFlow, 
+    transformEdgeInflatingRangeOpAfterInsertFlow, 
     transformRangeOpAfterRemoveFlow
 } from "../internal/transform-helpers";
 import { TextStyle, TextStyleProps } from "../styles/TextStyle";
@@ -141,7 +141,7 @@ export class UnformatText extends UnformatTextBase implements Readonly<UnformatT
      * {@inheritDoc FlowOperation.afterInsertFlow}
      */
     afterInsertFlow(other: FlowRange): FlowOperation | null {
-        return transformEdgeInflatingRangeOpafterInsertFlow(this, other);
+        return transformEdgeInflatingRangeOpAfterInsertFlow(this, other);
     }
 
     /** 

@@ -18,7 +18,7 @@ import { InlineNode } from "../nodes/InlineNode";
 import { FlowOperationRegistry } from "../internal/class-registry";
 import { invertFormatOp } from "../internal/format-helpers";
 import { 
-    transformEdgeInflatingRangeOpafterInsertFlow, 
+    transformEdgeInflatingRangeOpAfterInsertFlow, 
     transformRangeOpAfterRemoveFlow
 } from "../internal/transform-helpers";
 import { TextStyle, TextStyleProps } from "../styles/TextStyle";
@@ -143,7 +143,7 @@ export class FormatText extends FormatTextBase implements Readonly<FormatTextPro
      * {@inheritDoc FlowOperation.afterInsertFlow}
      */
     afterInsertFlow(other: FlowRange): FlowOperation | null {
-        return transformEdgeInflatingRangeOpafterInsertFlow(this, other);
+        return transformEdgeInflatingRangeOpAfterInsertFlow(this, other);
     }
 
     /** 

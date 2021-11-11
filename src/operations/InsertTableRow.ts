@@ -15,6 +15,7 @@ import { TableOperation } from "./TableOperation";
 import { FlowTable } from "../nodes/FlowTable";
 import { CellRange } from "../selection/CellRange";
 import { RemoveTableRow } from "./RemoveTableRow";
+import { insertionAfterInsertion, insertionAfterRemoval } from "../internal/transform-helpers";
 
 const Props = {
     position: nonNegativeIntegerType,
@@ -139,21 +140,11 @@ export class InsertTableRow extends InsertTableRowBase implements InsertTableRow
         return this;
     }
 
-    afterInsertRow(index: number, count: number): TableOperation | null{
-        if (this.row < index) {
-            return this;
-        } else {
-            return this.set("row", this.row + count);
-        }
+    afterInsertRow(index: number, count: number): TableOperation | null {
+        return insertionAfterInsertion(this, "row", index, count);
     }
 
-    afterRemoveRow(index: number, count: number): TableOperation | null{
-        if (this.row < index) {
-            return this;
-        } else if (this.row >= index + count) {
-            return this.set("row", this.row + count);
-        } else {
-            return null;
-        }
+    afterRemoveRow(index: number, count: number): TableOperation | null {
+        return insertionAfterRemoval(this, "row", index, count);
     }
 }

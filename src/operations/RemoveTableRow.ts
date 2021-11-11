@@ -15,6 +15,7 @@ import { TableOperation } from "./TableOperation";
 import { FlowTable } from "../nodes/FlowTable";
 import { CellRange } from "../selection/CellRange";
 import { InsertTableRow } from "./InsertTableRow";
+import { removalAfterInsertion, removalAfterRemoval } from "../internal/transform-helpers";
 
 const Props = {
     position: nonNegativeIntegerType,
@@ -139,8 +140,10 @@ export class RemoveTableRow extends RemoveTableRowBase implements RemoveTableRow
     }
 
     afterInsertRow(index: number, count: number): TableOperation | null{
+        return removalAfterInsertion(this, "row", index, count);
     }
 
     afterRemoveRow(index: number, count: number): TableOperation | null{
+        return removalAfterRemoval(this, "row", index, count);
     }
 }

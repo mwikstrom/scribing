@@ -7,18 +7,18 @@ export interface FlowRangeOperation {
 }
 
 /** @internal */
-export const transformRangeOpafterInsertFlow = <T extends FlowRangeOperation>(
+export const transformRangeOpAfterInsertFlow = <T extends FlowRangeOperation>(
     op: T,
     other: FlowRange,
-): T | null => coreTransformRangeOpafterInsertFlow(op, other, false);
+): T | null => coreTransformRangeOpAfterInsertFlow(op, other, false);
 
 /** @internal */
-export const transformEdgeInflatingRangeOpafterInsertFlow = <T extends FlowRangeOperation>(
+export const transformEdgeInflatingRangeOpAfterInsertFlow = <T extends FlowRangeOperation>(
     op: T,
     other: FlowRange,
-): T | null => coreTransformRangeOpafterInsertFlow(op, other, true);
+): T | null => coreTransformRangeOpAfterInsertFlow(op, other, true);
 
-const coreTransformRangeOpafterInsertFlow = <T extends FlowRangeOperation>(
+const coreTransformRangeOpAfterInsertFlow = <T extends FlowRangeOperation>(
     op: T,
     other: FlowRange,
     edgeInflating: boolean,
@@ -89,4 +89,87 @@ export const transformRangeAfterRemoveFlow = (
     }
 
     return target;
+};
+
+/** @internal */
+export const insertionAfterInsertion = <T, K extends string>(
+    op: T & Record<K | "count", number> & { set(key: K | "count", value: number): T },
+    key: K,
+    index: number,
+    count: number,
+): T => {
+    if (index > op[key]) {
+        // other insertion was made after our position
+        return op;
+    } else {
+        // other insertion was made at or before our position
+        return op.set(key, op[key] + count);
+    }
+};
+
+/** @internal */
+export const insertionAfterRemoval = <T, K extends string>(
+    op: T & Record<K | "count", number> & { set(key: K | "count", value: number): T },
+    key: K,
+    index: number,
+    count: number,
+): T | null => {
+    if (index > op[key]) {
+        // other removal was made after our position
+        return op;
+    } else if (index + count <= op[key]) {
+        // other removal was made before out position
+        return op.set(key, op[key] - count);
+    } else {
+        // other removal cover our insertion point
+        return null;
+    }
+};
+
+/** @internal */
+export const removalAfterInsertion = <T, K extends string>(
+    op: T & Record<K | "count", number> & { set(key: K | "count", value: number): T },
+    key: K,
+    index: number,
+    count: number,
+): T => {
+    if (index <= op[key]) {
+        // other insertion before our position
+        return op.set(key, op[key] + count);
+    } else if (index >= op[key] + op.count) {
+        // other insertion after our removed range
+        return op;
+    } else {         
+        // other insertion inside our removed range  
+        return op.set("count", op.count + count);
+    }
+};
+
+/** @internal */
+export const removalAfterRemoval = <T extends { set(key: K | "count", value: number): T }, K extends string>(
+    op: T & Record<K | "count", number>,
+    key: K,
+    index: number,
+    count: number,
+): T | null => {
+    if (index >= op[key] + op.count) {
+        // other removal after our removed range
+        return op;
+    } else if (index + count < op[key]) {
+        // other removal before our the start or our remval
+        return op.set(key, op.count - count);
+    } else if (index <= op[key] && index + count >= op[key] + op.count) {
+        // other removal covers our removal
+        return null;
+    } else if (index <= op[key] && index + count < op[key] + op.count) {
+        // other removal overlap the start of our removal
+        const delta = index + count - op[key];
+        return op.set("count", op.count - delta).set(key, op[key] + delta);
+    } else {
+        // other removal overlap the end of our removal
+        // -or-
+        // other removal is inside out removal
+        const delta = Math.min(count, op[key] + op.count - index);
+        return op.set("count", op.count - delta);
+    }
 };
