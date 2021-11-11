@@ -6,6 +6,7 @@
 // Range and positions
 export * from "./selection/FlowRange";
 export * from "./selection/CellPosition";
+export * from "./selection/CellRange";
 
 // Interactions
 export * from "./interaction/Interaction";
@@ -72,6 +73,7 @@ export * from "./selection/FlowSelection";
 export * from "./selection/FlowRangeSelection";
 export * from "./selection/NestedFlowSelection";
 export * from "./selection/FlowBoxSelection";
+export * from "./selection/FlowTableSelection";
 export * from "./selection/FlowTableCellSelection";
 
 // Editor

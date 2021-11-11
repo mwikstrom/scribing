@@ -13,7 +13,6 @@ import {
     type, 
     validating, 
 } from "paratype";
-import { FlowRangeSelection } from "..";
 import { BoxStyle } from "../styles/BoxStyle";
 import { FlowCursor } from "../selection/FlowCursor";
 import { FlowNode } from "../nodes/FlowNode";
@@ -25,6 +24,8 @@ import { ParagraphStyle } from "../styles/ParagraphStyle";
 import { ParagraphTheme } from "../styles/ParagraphTheme";
 import { TextRun } from "../nodes/TextRun";
 import { TextStyle } from "../styles/TextStyle";
+import { FlowSelection } from "../selection/FlowSelection";
+import { FlowRangeSelection } from "../selection/FlowRangeSelection";
 
 const NodeArrayType = arrayType(lazyType(FlowNodeRegistry.close));
 const RestrictedNodeArrayType = NodeArrayType
@@ -283,7 +284,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     }
 
     /** Gets a selection that span over all content */
-    selectAll(): FlowRangeSelection {
+    selectAll(): FlowSelection {
         return new FlowRangeSelection({ range: FlowRange.at(0, this.size )});
     }
 
