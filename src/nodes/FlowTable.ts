@@ -138,6 +138,14 @@ export class FlowTable extends FlowTableBase {
         return "body";
     }
 
+    public getCellContent(position: CellPosition): FlowContent {
+        return this.content.getCell(position, true).content;
+    }
+
+    public setCellContent(position: CellPosition, content: FlowContent): FlowTable {
+        return this.set("content", this.content.setContent(position, content));
+    }
+
     public getCellVariant(position: CellPosition): TableCellVariant {
         const rowGroup = this.getRowGroup(position);
         const colGroup = this.getColumnGroup(position);

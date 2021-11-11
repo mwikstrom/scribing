@@ -121,7 +121,7 @@ export class EditTableCell extends EditTableCellBase implements EditTableCellPro
      */
     createReplacementNode(content: FlowContent, before: FlowNode): FlowNode {
         if (before instanceof FlowTable) {
-            return before.replaceCellContent(this.cell, content);
+            return before.setCellContent(this.cell, content);
         } else {
             throw new Error("Expected a flow table to replace");
         }
