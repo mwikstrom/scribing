@@ -67,6 +67,7 @@ export * from "./operations/SetImageSource";
 export * from "./operations/SetIcon";
 export * from "./operations/CompleteUpload";
 export * from "./operations/EditTableCell";
+export * from "./operations/ResetContent";
 
 // Selection
 export * from "./selection/FlowSelection";
