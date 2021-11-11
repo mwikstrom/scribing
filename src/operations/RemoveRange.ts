@@ -15,7 +15,7 @@ import { FlowRange } from "../selection/FlowRange";
 import { FlowSelection } from "../selection/FlowSelection";
 import { InsertContent } from "./InsertContent";
 import { FlowOperationRegistry } from "../internal/class-registry";
-import {  transformRangeOpAfterInsertion, transformRangeOpAfterRemoval } from "../internal/transform-helpers";
+import {  transformRangeOpafterInsertFlow, transformRangeOpAfterRemoveFlow } from "../internal/transform-helpers";
 
 const Props = {
     range: lazyType(() => FlowRange.classType),
@@ -100,7 +100,7 @@ export class RemoveRange extends RemoveRangeBase implements Readonly<RemoveRange
      * @override
      */
     transform(other: FlowOperation): FlowOperation | null {
-        return other.afterRemoval(this.range);
+        return other.afterRemoveFlow(this.range);
     }
 
     /**
@@ -116,20 +116,20 @@ export class RemoveRange extends RemoveRangeBase implements Readonly<RemoveRange
      * @override
      */
     applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null {
-        return selection.afterRemoval(this.range, mine);
+        return selection.afterRemoveFlow(this.range, mine);
     }
 
     /** 
-     * {@inheritDoc FlowOperation.afterInsertion}
+     * {@inheritDoc FlowOperation.afterInsertFlow}
      */
-    afterInsertion(other: FlowRange): FlowOperation | null {
-        return transformRangeOpAfterInsertion(this, other);
+    afterInsertFlow(other: FlowRange): FlowOperation | null {
+        return transformRangeOpafterInsertFlow(this, other);
     }
 
     /** 
-     * {@inheritDoc FlowOperation.afterRemoval}
+     * {@inheritDoc FlowOperation.afterRemoveFlow}
      */
-    afterRemoval(other: FlowRange): FlowOperation | null {
-        return transformRangeOpAfterRemoval(this, other);
+    afterRemoveFlow(other: FlowRange): FlowOperation | null {
+        return transformRangeOpAfterRemoveFlow(this, other);
     }
 }

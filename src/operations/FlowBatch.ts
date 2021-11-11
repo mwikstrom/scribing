@@ -174,17 +174,17 @@ export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps>
     }
 
     /** 
-     * {@inheritDoc FlowOperation.afterInsertion}
+     * {@inheritDoc FlowOperation.afterInsertFlow}
      */
-    afterInsertion(other: FlowRange): FlowOperation | null {
-        return this.#map(op => op.afterInsertion(other));
+    afterInsertFlow(other: FlowRange): FlowOperation | null {
+        return this.#map(op => op.afterInsertFlow(other));
     }
 
     /** 
-     * {@inheritDoc FlowOperation.afterRemoval}
+     * {@inheritDoc FlowOperation.afterRemoveFlow}
      */
-    afterRemoval(other: FlowRange): FlowOperation | null {
-        return this.#map(op => op.afterRemoval(other));
+    afterRemoveFlow(other: FlowRange): FlowOperation | null {
+        return this.#map(op => op.afterRemoveFlow(other));
     }
 
     #map(func: (op: FlowOperation) => FlowOperation | null): FlowBatch | null {

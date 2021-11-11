@@ -21,7 +21,7 @@ import { expandRangeToParagraph } from "../internal/expand-range-to-paragraph";
 import { formatListLevel } from "../internal/format-list-level";
 import { insertParaBreak } from "../internal/insert-para-break";
 import { splitRangeByUniformParagraphStyle } from "../internal/split-range-by-paragraph-style";
-import { transformRangeAfterInsertion, transformRangeAfterRemoval } from "../internal/transform-helpers";
+import { transformRangeAfterInsertFlow, transformRangeAfterRemoveFlow } from "../internal/transform-helpers";
 import { filterNotNull, mapNotNull } from "../internal/utils";
 import { ParagraphBreak } from "../nodes/ParagraphBreak";
 import {
@@ -620,25 +620,25 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     }
 
     /**
-     * {@inheritDoc FlowSelection.afterInsertion}
+     * {@inheritDoc FlowSelection.afterInsertFlow}
      * @override
      */
-    afterInsertion(range: FlowRange, mine: boolean): FlowSelection | null {
+    afterInsertFlow(range: FlowRange, mine: boolean): FlowSelection | null {
         // Translate when insertion is mine and occurs at the caret (collapsed selection)
         if (mine && this.range.isCollapsed && this.range.focus === range.first) {
             return this.set("range", FlowRange.at(range.last));
         }
 
-        const updated = transformRangeAfterInsertion(this.range, range);
+        const updated = transformRangeAfterInsertFlow(this.range, range);
         return this.set("range", updated);
     }
 
     /**
-     * {@inheritDoc FlowSelection.afterInsertion}
+     * {@inheritDoc FlowSelection.afterInsertFlow}
      * @override
      */
-    afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null {
-        const updated = transformRangeAfterRemoval(this.range, range, mine);
+    afterRemoveFlow(range: FlowRange, mine: boolean): FlowSelection | null {
+        const updated = transformRangeAfterRemoveFlow(this.range, range, mine);
         if (updated === null) {
             return null;
         } else {

@@ -82,12 +82,12 @@ export abstract class FlowOperation {
      * range was inserted.
      * @internal
      */
-    abstract afterInsertion(other: FlowRange): FlowOperation | null;
+    abstract afterInsertFlow(other: FlowRange): FlowOperation | null;
 
     /**
      * Transforms the current operation so that its intent is preserved after the specified
      * range was removed.
      * @internal
      */
-     abstract afterRemoval(other: FlowRange): FlowOperation | null;
+     abstract afterRemoveFlow(other: FlowRange): FlowOperation | null;
 }

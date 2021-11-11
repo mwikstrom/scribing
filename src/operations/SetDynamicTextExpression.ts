@@ -16,7 +16,7 @@ import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "../selection/FlowRange";
 import { FlowSelection } from "../selection/FlowSelection";
 import { FlowOperationRegistry } from "../internal/class-registry";
-import { transformRangeAfterInsertion, transformRangeAfterRemoval } from "../internal/transform-helpers";
+import { transformRangeAfterInsertFlow, transformRangeAfterRemoveFlow } from "../internal/transform-helpers";
 
 const Props = {
     position: nonNegativeIntegerType,
@@ -151,20 +151,20 @@ export class SetDynamicTextExpression extends SetDynamicTextExpressionBase imple
     }
 
     /** 
-     * {@inheritDoc FlowOperation.afterInsertion}
+     * {@inheritDoc FlowOperation.afterInsertFlow}
      */
-    afterInsertion(range: FlowRange): FlowOperation | null {
+    afterInsertFlow(range: FlowRange): FlowOperation | null {
         const before = FlowRange.at(this.position, 1);
-        const after = transformRangeAfterInsertion(before, range);
+        const after = transformRangeAfterInsertFlow(before, range);
         return this.#wrapPosition(after);
     }
 
     /** 
-     * {@inheritDoc FlowOperation.afterRemoval}
+     * {@inheritDoc FlowOperation.afterRemoveFlow}
      */
-    afterRemoval(range: FlowRange): FlowOperation | null {
+    afterRemoveFlow(range: FlowRange): FlowOperation | null {
         const before = FlowRange.at(this.position, 1);
-        const after = transformRangeAfterRemoval(before, range);
+        const after = transformRangeAfterRemoveFlow(before, range);
         return this.#wrapPosition(after);
     }
 

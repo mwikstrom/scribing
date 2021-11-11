@@ -309,14 +309,14 @@ export abstract class FlowSelection {
      * range was inserted.
      * @internal
      */
-    abstract afterInsertion(range: FlowRange, mine: boolean): FlowSelection | null;
+    abstract afterInsertFlow(range: FlowRange, mine: boolean): FlowSelection | null;
 
     /**
      * Transforms the current selection so that its intended boundary is preserved after the specified
      * range was removed.
      * @internal
      */
-    abstract afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
+    abstract afterRemoveFlow(range: FlowRange, mine: boolean): FlowSelection | null;
 }
 
 /**

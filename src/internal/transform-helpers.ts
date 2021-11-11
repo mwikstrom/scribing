@@ -7,32 +7,32 @@ export interface FlowRangeOperation {
 }
 
 /** @internal */
-export const transformRangeOpAfterInsertion = <T extends FlowRangeOperation>(
+export const transformRangeOpafterInsertFlow = <T extends FlowRangeOperation>(
     op: T,
     other: FlowRange,
-): T | null => coreTransformRangeOpAfterInsertion(op, other, false);
+): T | null => coreTransformRangeOpafterInsertFlow(op, other, false);
 
 /** @internal */
-export const transformEdgeInflatingRangeOpAfterInsertion = <T extends FlowRangeOperation>(
+export const transformEdgeInflatingRangeOpafterInsertFlow = <T extends FlowRangeOperation>(
     op: T,
     other: FlowRange,
-): T | null => coreTransformRangeOpAfterInsertion(op, other, true);
+): T | null => coreTransformRangeOpafterInsertFlow(op, other, true);
 
-const coreTransformRangeOpAfterInsertion = <T extends FlowRangeOperation>(
+const coreTransformRangeOpafterInsertFlow = <T extends FlowRangeOperation>(
     op: T,
     other: FlowRange,
     edgeInflating: boolean,
 ): T | null => {
-    const target = transformRangeAfterInsertion(op.range, other, edgeInflating);
+    const target = transformRangeAfterInsertFlow(op.range, other, edgeInflating);
     return op.set("range", target);
 };
 
 /** @internal */
-export const transformRangeOpAfterRemoval = <T extends FlowRangeOperation>(
+export const transformRangeOpAfterRemoveFlow = <T extends FlowRangeOperation>(
     op: T,
     other: FlowRange,
 ): T | null => {
-    const target = transformRangeAfterRemoval(op.range, other);
+    const target = transformRangeAfterRemoveFlow(op.range, other);
     if (target === null) {
         return null;
     }
@@ -40,7 +40,7 @@ export const transformRangeOpAfterRemoval = <T extends FlowRangeOperation>(
 };
 
 /** @internal */
-export const transformRangeAfterInsertion = (
+export const transformRangeAfterInsertFlow = (
     target: FlowRange,
     inserted: FlowRange,
     inflateAtTargetEdges = false,
@@ -62,7 +62,7 @@ export const transformRangeAfterInsertion = (
 };
 
 /** @internal */
-export const transformRangeAfterRemoval = (
+export const transformRangeAfterRemoveFlow = (
     target: FlowRange,
     removed: FlowRange,
     keepCollapsed = false,

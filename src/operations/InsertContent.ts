@@ -87,9 +87,9 @@ export class InsertContent extends InsertContentBase implements InsertContentPro
     }
 
     /** 
-     * {@inheritDoc FlowOperation.afterInsertion}
+     * {@inheritDoc FlowOperation.afterInsertFlow}
      */
-    afterInsertion(other: FlowRange): FlowOperation | null {
+    afterInsertFlow(other: FlowRange): FlowOperation | null {
         // Not affected when other insertion is empty
         if (other.isCollapsed) {
             return this;
@@ -105,9 +105,9 @@ export class InsertContent extends InsertContentBase implements InsertContentPro
     }
 
     /** 
-     * {@inheritDoc FlowOperation.afterRemoval}
+     * {@inheritDoc FlowOperation.afterRemoveFlow}
      */
-    afterRemoval(other: FlowRange): FlowOperation | null {
+    afterRemoveFlow(other: FlowRange): FlowOperation | null {
         // Not affected when the removed range is empty
         if (other.isCollapsed) {
             return this;
@@ -156,7 +156,7 @@ export class InsertContent extends InsertContentBase implements InsertContentPro
      * {@inheritDoc FlowOperation.transform}
      */
     transform(other: FlowOperation): FlowOperation | null {
-        return other.afterInsertion(FlowRange.at(this.position, this.content.size));
+        return other.afterInsertFlow(FlowRange.at(this.position, this.content.size));
     }
 
     /**
@@ -209,6 +209,6 @@ export class InsertContent extends InsertContentBase implements InsertContentPro
      * @override
      */
     applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null {
-        return selection.afterInsertion(FlowRange.at(this.position, this.content.size), mine);
+        return selection.afterInsertFlow(FlowRange.at(this.position, this.content.size), mine);
     }
 }

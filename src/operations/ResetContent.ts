@@ -121,16 +121,16 @@ export class ResetContent extends ResetContentBase implements ResetContentProps 
     }
 
     /** 
-     * {@inheritDoc FlowOperation.afterInsertion}
+     * {@inheritDoc FlowOperation.afterInsertFlow}
      */
-    afterInsertion(): FlowOperation | null {
+    afterInsertFlow(): FlowOperation | null {
         return this;
     }
 
     /** 
-     * {@inheritDoc FlowOperation.afterRemoval}
+     * {@inheritDoc FlowOperation.afterRemoveFlow}
      */
-    afterRemoval(): FlowOperation | null {
+    afterRemoveFlow(): FlowOperation | null {
         return this;
     }
 }

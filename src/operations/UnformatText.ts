@@ -18,8 +18,8 @@ import { InlineNode } from "../nodes/InlineNode";
 import { FlowOperationRegistry } from "../internal/class-registry";
 import { invertUnformatOp } from "../internal/format-helpers";
 import { 
-    transformEdgeInflatingRangeOpAfterInsertion, 
-    transformRangeOpAfterRemoval
+    transformEdgeInflatingRangeOpafterInsertFlow, 
+    transformRangeOpAfterRemoveFlow
 } from "../internal/transform-helpers";
 import { TextStyle, TextStyleProps } from "../styles/TextStyle";
 
@@ -138,16 +138,16 @@ export class UnformatText extends UnformatTextBase implements Readonly<UnformatT
     }
 
     /** 
-     * {@inheritDoc FlowOperation.afterInsertion}
+     * {@inheritDoc FlowOperation.afterInsertFlow}
      */
-    afterInsertion(other: FlowRange): FlowOperation | null {
-        return transformEdgeInflatingRangeOpAfterInsertion(this, other);
+    afterInsertFlow(other: FlowRange): FlowOperation | null {
+        return transformEdgeInflatingRangeOpafterInsertFlow(this, other);
     }
 
     /** 
-     * {@inheritDoc FlowOperation.afterRemoval}
+     * {@inheritDoc FlowOperation.afterRemoveFlow}
      */
-    afterRemoval(other: FlowRange): FlowOperation | null {
-        return transformRangeOpAfterRemoval(this, other);
+    afterRemoveFlow(other: FlowRange): FlowOperation | null {
+        return transformRangeOpAfterRemoveFlow(this, other);
     }
 }

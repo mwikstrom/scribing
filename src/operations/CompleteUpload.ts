@@ -127,17 +127,17 @@ export class CompleteUpload extends CompleteUploadBase implements CompleteUpload
     }
 
     /** 
-     * {@inheritDoc FlowOperation.afterInsertion}
+     * {@inheritDoc FlowOperation.afterInsertFlow}
      */
-    afterInsertion(): this {
+    afterInsertFlow(): this {
         // Applies to all content and is therefore not affected by other insertion
         return this;
     }
 
     /** 
-     * {@inheritDoc FlowOperation.afterRemoval}
+     * {@inheritDoc FlowOperation.afterRemoveFlow}
      */
-    afterRemoval(): this {
+    afterRemoveFlow(): this {
         // Applies to all content and is therefore not affected by other removal
         return this;
     }

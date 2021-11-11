@@ -15,7 +15,7 @@ import { FlowTheme } from "../styles/FlowTheme";
 import { FlowSelectionRegistry } from "../internal/class-registry";
 import { CellRange } from "./CellRange";
 import { FlowRange } from "./FlowRange";
-import { transformRangeAfterInsertion, transformRangeAfterRemoval } from "../internal/transform-helpers";
+import { transformRangeAfterInsertFlow, transformRangeAfterRemoveFlow } from "../internal/transform-helpers";
 import { TextStyle, TextStyleProps } from "../styles/TextStyle";
 import { BoxStyle, BoxStyleProps } from "../styles/BoxStyle";
 import { FlowTable } from "../nodes/FlowTable";
@@ -410,22 +410,22 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     }
 
     /**
-     * {@inheritDoc FlowSelection.afterInsertion}
+     * {@inheritDoc FlowSelection.afterInsertFlow}
      * @override
      */
-    afterInsertion(range: FlowRange): FlowSelection | null {
+    afterInsertFlow(range: FlowRange): FlowSelection | null {
         const before = FlowRange.at(this.position, 1);
-        const after = transformRangeAfterInsertion(before, range);
+        const after = transformRangeAfterInsertFlow(before, range);
         return this.#wrapPosition(after);
     }
 
     /**
-     * {@inheritDoc FlowSelection.afterInsertion}
+     * {@inheritDoc FlowSelection.afterInsertFlow}
      * @override
      */
-    afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null {
+    afterRemoveFlow(range: FlowRange, mine: boolean): FlowSelection | null {
         const before = FlowRange.at(this.position, 1);
-        const after = transformRangeAfterRemoval(before, range, mine);
+        const after = transformRangeAfterRemoveFlow(before, range, mine);
         return this.#wrapPosition(after);
     }
 

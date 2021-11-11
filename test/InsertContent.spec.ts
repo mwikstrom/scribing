@@ -6,7 +6,7 @@ describe("InsertContent", () => {
             insert: FlowContent.fromData([ TextRun.fromData("foobar") ]),
             at: 123,
         });
-        const after = before.afterInsertion(FlowRange.at(100));
+        const after = before.afterInsertFlow(FlowRange.at(100));
         expect(after).toBe(before);
     });
 
@@ -15,7 +15,7 @@ describe("InsertContent", () => {
             insert: FlowContent.fromData([ TextRun.fromData("foobar") ]),
             at: 123,
         });
-        const after = before.afterInsertion(FlowRange.at(200, 10));
+        const after = before.afterInsertFlow(FlowRange.at(200, 10));
         expect(after).toBe(before);
     });
 
@@ -24,7 +24,7 @@ describe("InsertContent", () => {
             insert: FlowContent.fromData([ TextRun.fromData("foobar") ]),
             at: 123,
         });
-        const after = before.afterInsertion(FlowRange.at(123, 10));
+        const after = before.afterInsertFlow(FlowRange.at(123, 10));
         expect(after?.toJsonValue()).toMatchObject({
             insert: ["foobar"],
             at: 133,
@@ -36,7 +36,7 @@ describe("InsertContent", () => {
             insert: FlowContent.fromData([ TextRun.fromData("foobar") ]),
             at: 123,
         });
-        const after = before.afterInsertion(FlowRange.at(100, 10));
+        const after = before.afterInsertFlow(FlowRange.at(100, 10));
         expect(after?.toJsonValue()).toMatchObject({
             insert: ["foobar"],
             at: 133,
@@ -48,7 +48,7 @@ describe("InsertContent", () => {
             insert: FlowContent.fromData([ TextRun.fromData("foobar") ]),
             at: 123,
         });
-        const after = before.afterRemoval(FlowRange.at(100));
+        const after = before.afterRemoveFlow(FlowRange.at(100));
         expect(after).toBe(before);
     });
 
@@ -57,7 +57,7 @@ describe("InsertContent", () => {
             insert: FlowContent.fromData([ TextRun.fromData("foobar") ]),
             at: 123,
         });
-        const after = before.afterRemoval(FlowRange.at(200, 10));
+        const after = before.afterRemoveFlow(FlowRange.at(200, 10));
         expect(after).toBe(before);
     });
 
@@ -66,7 +66,7 @@ describe("InsertContent", () => {
             insert: FlowContent.fromData([ TextRun.fromData("foobar") ]),
             at: 123,
         });
-        const after = before.afterRemoval(FlowRange.at(123, 10));
+        const after = before.afterRemoveFlow(FlowRange.at(123, 10));
         expect(after).toBe(before);
     });
 
@@ -75,7 +75,7 @@ describe("InsertContent", () => {
             insert: FlowContent.fromData([ TextRun.fromData("foobar") ]),
             at: 123,
         });
-        const after = before.afterRemoval(FlowRange.at(100, 10));
+        const after = before.afterRemoveFlow(FlowRange.at(100, 10));
         expect(after?.toJsonValue()).toMatchObject({
             insert: ["foobar"],
             at: 113,
@@ -87,7 +87,7 @@ describe("InsertContent", () => {
             insert: FlowContent.fromData([ TextRun.fromData("foobar") ]),
             at: 123,
         });
-        const after = before.afterRemoval(FlowRange.at(122, 1));
+        const after = before.afterRemoveFlow(FlowRange.at(122, 1));
         expect(after).toBeNull();
     });
 

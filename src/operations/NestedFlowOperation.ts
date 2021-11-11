@@ -4,7 +4,7 @@ import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "../selection/FlowRange";
 import { FlowSelection } from "../selection/FlowSelection";
 import { FlowTheme } from "../styles/FlowTheme";
-import { transformRangeAfterInsertion, transformRangeAfterRemoval } from "../internal/transform-helpers";
+import { transformRangeAfterInsertFlow, transformRangeAfterRemoveFlow } from "../internal/transform-helpers";
 import { NestedFlowSelection } from "../selection/NestedFlowSelection";
 
 /**
@@ -85,22 +85,22 @@ export abstract class NestedFlowOperation extends FlowOperation {
     protected abstract getInnerThemeFromNode(node: FlowNode, outer?: FlowTheme): FlowTheme;
 
     /**
-     * {@inheritDoc FlowOperation.afterInsertion}
+     * {@inheritDoc FlowOperation.afterInsertFlow}
      * @override
      */
-    public afterInsertion(range: FlowRange): FlowOperation | null {
+    public afterInsertFlow(range: FlowRange): FlowOperation | null {
         const before = FlowRange.at(this.position, 1);
-        const after = transformRangeAfterInsertion(before, range);
+        const after = transformRangeAfterInsertFlow(before, range);
         return this.#wrapPosition(after);
     }
 
     /**
-     * {@inheritDoc FlowOperation.afterRemoval}
+     * {@inheritDoc FlowOperation.afterRemoveFlow}
      * @override
      */
-    public afterRemoval(range: FlowRange): FlowOperation | null {
+    public afterRemoveFlow(range: FlowRange): FlowOperation | null {
         const before = FlowRange.at(this.position, 1);
-        const after = transformRangeAfterRemoval(before, range);
+        const after = transformRangeAfterRemoveFlow(before, range);
         return this.#wrapPosition(after);
     }
 
