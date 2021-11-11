@@ -26,6 +26,17 @@ import { ImageSource } from "../structure/ImageSource";
 import { ResetContent } from "../operations/ResetContent";
 import { TableStyle } from "../styles/TableStyle";
 import { TableColumnStyle } from "../styles/TableColumnStyle";
+import { FormatTable } from "../operations/FormatTable";
+import { UnformatTable } from "../operations/UnformatTable";
+import { FormatTableColumn } from "../operations/FormatTableColumn";
+import { UnformatTableColumn } from "../operations/UnformatTableColumn";
+import { InsertTableColumn } from "../operations/InsertTableColumn";
+import { InsertTableRow } from "../operations/InsertTableRow";
+import { RemoveTableColumn } from "../operations/RemoveTableColumn";
+import { RemoveTableRow } from "../operations/RemoveTableRow";
+import { MergeTableCell } from "../operations/MergeTableCell";
+import { CellPosition } from "./CellPosition";
+import { SplitTableCell } from "../operations/SplitTableCell";
 
 const Props = {
     position: nonNegativeIntegerType,
@@ -317,40 +328,63 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      * {@inheritDoc FlowSelection.formatTable}
      * @override
      */
-    public formatTable(style: TableStyle, options?: TargetOptions): FlowOperation | null {
-        return null;
+    public formatTable(style: TableStyle): FlowOperation | null {
+        return new FormatTable({ position: this.position, style });
     }
 
     /**
      * {@inheritDoc FlowSelection.unformatTable}
      * @override
      */
-    public unformatTable(style: TableStyle, options?: TargetOptions): FlowOperation | null {
-        return null;
+    public unformatTable(style: TableStyle): FlowOperation | null {
+        return new UnformatTable({ position: this.position, style });
     }
 
     /**
      * {@inheritDoc FlowSelection.formatTableColumn}
      * @override
      */
-    public formatTableColumn(style: TableColumnStyle, options?: TargetOptions) {
-        return null;
+    public formatTableColumn(style: TableColumnStyle): FlowOperation | null {
+        const { first, last } = this.range.columnRange;
+        const ops: FlowOperation[] = [];
+        for (let i = first; i <= last; ++i) {
+            ops.push(new FormatTableColumn({ 
+                position: this.position, 
+                column: i, 
+                style,
+            }));
+        }
+        return FlowBatch.fromArray(ops);
     }
 
     /**
      * {@inheritDoc FlowSelection.unformatTableColumn}
      * @override
      */
-    public unformatTableColumn(style: TableColumnStyle, options?: TargetOptions) {
-        return null;
+    public unformatTableColumn(style: TableColumnStyle): FlowOperation | null {
+        const { first, last } = this.range.columnRange;
+        const ops: FlowOperation[] = [];
+        for (let i = first; i <= last; ++i) {
+            ops.push(new UnformatTableColumn({ 
+                position: this.position, 
+                column: i, 
+                style, 
+            }));
+        }
+        return FlowBatch.fromArray(ops);
     }
 
     /**
      * {@inheritDoc FlowSelection.insertTableColumnBefore}
      * @override
      */
-    public insertTableColumnBefore(content: FlowContent, count?: number): FlowOperation | null {
-        return null;
+    public insertTableColumnBefore(_: FlowContent, count?: number): FlowOperation | null {
+        const range = this.range.columnRange;
+        return new InsertTableColumn({ 
+            position: this.position, 
+            column: range.first, 
+            count: count ?? range.size, 
+        });
     }
 
     /**
@@ -358,7 +392,12 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      * @override
      */
     public insertTableColumnAfter(content: FlowContent, count?: number): FlowOperation | null {
-        return null;
+        const range = this.range.columnRange;
+        return new InsertTableColumn({ 
+            position: this.position, 
+            column: range.last + 1, 
+            count: count ?? range.size, 
+        });
     }
 
     /**
@@ -366,7 +405,12 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      * @override
      */
     public insertTableRowBefore(content: FlowContent, count?: number): FlowOperation | null {
-        return null;
+        const range = this.range.rowRange;
+        return new InsertTableRow({ 
+            position: this.position, 
+            row: range.first, 
+            count: count ?? range.size, 
+        });
     }
 
     /**
@@ -374,39 +418,68 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      * @override
      */
     public insertTableRowAfter(content: FlowContent, count?: number): FlowOperation | null {
-        return null;
+        const range = this.range.rowRange;
+        return new InsertTableRow({ 
+            position: this.position, 
+            row: range.last + 1, 
+            count: count ?? range.size,
+        });
     }
 
     /**
      * {@inheritDoc FlowSelection.removeTableColumn}
      * @override
      */
-    public removeTableColumn(content: FlowContent): FlowOperation | null {
-        return null;
+    public removeTableColumn(): FlowOperation | null {
+        const range = this.range.columnRange;
+        return new RemoveTableColumn({
+            position: this.position,
+            column: range.first,
+            count: range.size,
+        });
     }
 
     /**
      * {@inheritDoc FlowSelection.removeTableRow}
      * @override
      */
-    public removeTableRow(content: FlowContent): FlowOperation | null {
-        return null;
+    public removeTableRow(): FlowOperation | null {
+        const range = this.range.rowRange;
+        return new RemoveTableRow({
+            position: this.position,
+            row: range.first,
+            count: range.size,
+        });
     }
 
     /**
      * {@inheritDoc FlowSelection.mergeTableCell}
      * @override
      */
-    public mergeTableCell(content: FlowContent): FlowOperation | null {
-        return null;
+    public mergeTableCell(): FlowOperation | null {
+        const { firstRowIndex, lastRowIndex, firstColumnIndex, lastColumnIndex } = this.range;
+        return new MergeTableCell({
+            position: this.position,
+            cell: CellPosition.at(firstRowIndex, firstColumnIndex),
+            colSpan: 1 + lastColumnIndex - firstColumnIndex,
+            rowSpan: 1 + lastRowIndex - firstRowIndex,
+        });
     }
 
     /**
      * {@inheritDoc FlowSelection.splitTableCell}
      * @override
      */
-    public splitTableCell(content: FlowContent): FlowOperation | null {
-        return null;
+    public splitTableCell(): FlowOperation | null {
+        const { firstRowIndex, firstColumnIndex, isSingleCell } = this.range;
+        if (isSingleCell) {            
+            return new SplitTableCell({
+                position: this.position,
+                cell: CellPosition.at(firstRowIndex, firstColumnIndex),
+            });    
+        } else {
+            return null;
+        }
     }
 
     /**

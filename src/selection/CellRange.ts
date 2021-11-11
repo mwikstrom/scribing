@@ -120,6 +120,10 @@ export class CellRange extends CellRangeBase implements Readonly<CellRangeProps>
         return Math.max(this.anchor.row, this.focus.row);
     }
 
+    public get isSingleCell(): boolean {
+        return this.anchor.equals(this.focus);
+    }
+
     /** Determines whether the current range is equal to the other range */
     public equals(other: CellRangeProps): boolean {
         return this.anchor.equals(other.anchor) && this.focus.equals(other.focus);
