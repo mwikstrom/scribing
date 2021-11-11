@@ -72,6 +72,7 @@ export * from "./selection/FlowSelection";
 export * from "./selection/FlowRangeSelection";
 export * from "./selection/NestedFlowSelection";
 export * from "./selection/FlowBoxSelection";
+export * from "./selection/FlowTableCellSelection";
 
 // Editor
 export * from "./structure/FlowEditorState";
