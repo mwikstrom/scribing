@@ -51,6 +51,7 @@ export * from "./styles/DefaultFlowTheme";
 
 // Operations
 export * from "./operations/FlowOperation";
+export * from "./operations/TableOperation";
 export * from "./operations/FlowBatch";
 export * from "./operations/FormatBox";
 export * from "./operations/UnformatBox";
@@ -68,6 +69,8 @@ export * from "./operations/SetIcon";
 export * from "./operations/CompleteUpload";
 export * from "./operations/EditTableCell";
 export * from "./operations/ResetContent";
+export * from "./operations/FormatTable";
+export * from "./operations/UnformatTable";
 
 // Selection
 export * from "./selection/FlowSelection";
