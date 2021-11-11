@@ -66,6 +66,7 @@ export const FlowTableBase = RecordClass(PropsType, FlowNode, DataType, propsToD
 export interface FlowTableProps {
     content: FlowTableContent;
     columns: Map<string, TableColumnStyle>;
+    // TODO: Add row styles
     style: TableStyle;
 }
 
@@ -78,34 +79,6 @@ export interface FlowTableData {
     columns?: Map<string, TableColumnStyle>;
     style?: TableStyle;
 }
-
-/** @public */
-export type TableRowGroup = typeof TABLE_ROW_GROUPS[number];
-
-/** @public */
-export const TABLE_ROW_GROUPS = Object.freeze(["header", "body", "footer"] as const);
-
-/** @public */
-export type TableColumnGroup = typeof TABLE_COLUMN_GROUPS[number];
-
-/** @public */
-export const TABLE_COLUMN_GROUPS = Object.freeze(["start", "body", "end"] as const);
-
-/** @public */
-export type TableCellVariant = typeof TABLE_CELL_VARIANTS[number];
-
-/** @public */
-export const TABLE_CELL_VARIANTS = Object.freeze([
-    "header", 
-    "header-start-column",
-    "header-end-column",
-    "body", 
-    "body-start-column",
-    "body-end-column", 
-    "footer",
-    "footer-start-column",
-    "footer-end-column",
-] as const);
 
 /**
  * Represents a flow table cell
@@ -126,40 +99,6 @@ export class FlowTable extends FlowTableBase {
     public static fromData(@type(DataType) data: FlowTableData): FlowTable {
         const { table: content, columns = new Map(), style = TableStyle.empty } = data;
         return new FlowTable({ content, columns: Object.freeze(columns), style });
-    }
-
-    public getRowGroup(position: CellPosition): TableRowGroup {
-        // TODO: IMPLEMENT
-        return "body";
-    }
-
-    public getColumnGroup(position: CellPosition): TableColumnGroup {
-        // TODO: IMPLEMENT
-        return "body";
-    }
-
-    public getCellContent(position: CellPosition): FlowContent {
-        return this.content.getCell(position, true).content;
-    }
-
-    public setCellContent(position: CellPosition, content: FlowContent): FlowTable {
-        return this.set("content", this.content.setContent(position, content));
-    }
-
-    public getCellVariant(position: CellPosition): TableCellVariant {
-        const rowGroup = this.getRowGroup(position);
-        const colGroup = this.getColumnGroup(position);
-
-        if (colGroup === "body") {
-            return rowGroup;
-        } else {
-            return `${rowGroup}-${colGroup}-column`;
-        }
-    }
-
-    public getCellTheme(position: CellPosition, outer?: FlowTheme): FlowTheme {
-        const variant = this.getCellVariant(position);
-        return (outer ?? DefaultFlowTheme.instance).getCellTheme(variant);
     }
 
     /** {@inheritdoc FlowNode.completeUpload} */
@@ -205,6 +144,12 @@ export class FlowTable extends FlowTableBase {
             result = result.merge(uniform, diff);
         });
         return result;
+    }
+
+    /** @internal */
+    getCellTheme(position: CellPosition, outer?: FlowTheme): FlowTheme {
+        // TODO: Table/cell theme
+        return outer ?? DefaultFlowTheme.instance;
     }
 
     /**

@@ -121,7 +121,7 @@ export class EditTableCell extends EditTableCellBase implements EditTableCellPro
      */
     createReplacementNode(content: FlowContent, before: FlowNode): FlowNode {
         if (before instanceof FlowTable) {
-            return before.setCellContent(this.cell, content);
+            return before.set("content", before.content.setContent(this.cell, content));
         } else {
             throw new Error("Expected a flow table to replace");
         }
@@ -132,7 +132,7 @@ export class EditTableCell extends EditTableCellBase implements EditTableCellPro
      */
     getInnerContentFromNode(node: FlowNode): FlowContent {
         if (node instanceof FlowTable) {
-            return node.getCellContent(this.cell);
+            return node.content.getCell(this.cell, true).content;
         } else {
             throw new Error(`Expected a flow table at position ${this.position}`);
         }
@@ -143,8 +143,8 @@ export class EditTableCell extends EditTableCellBase implements EditTableCellPro
      */
     getInnerThemeFromNode(node: FlowNode, outer?: FlowTheme): FlowTheme {
         if (node instanceof FlowTable) {
-            const variant = node.getCellVariant(this.cell);
-            return (outer ?? DefaultFlowTheme.instance).getCellTheme(variant);
+            // TODO: Support table theme
+            return (outer ?? DefaultFlowTheme.instance);
         } else {
             throw new Error(`Expected a flow table at position ${this.position}`);
         }

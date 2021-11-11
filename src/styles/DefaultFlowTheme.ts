@@ -9,7 +9,6 @@ import {
     validating 
 } from "paratype";
 import { BoxStyle } from "./BoxStyle";
-import { TableCellVariant } from "../nodes/FlowTable";
 import { FlowTheme } from "./FlowTheme";
 import { FlowThemeRegistry } from "../internal/class-registry";
 import { ParagraphStyle, ParagraphVariant } from "./ParagraphStyle";
@@ -54,11 +53,6 @@ export class DefaultFlowTheme extends DefaultFlowThemeBase {
         return getDefaultBoxTheme(style);
     }
 
-    /** {@inheritdoc FlowTheme.getBoxTheme} */
-    getCellTheme(variant: TableCellVariant): FlowTheme {
-        return getDefaultBoxTheme(BoxStyle.empty).getCellTheme(variant);
-    }
-
     /** {@inheritdoc FlowTheme.getParagraphTheme} */
     getParagraphTheme(variant: ParagraphVariant): ParagraphTheme {
         return getDefaultBoxTheme(BoxStyle.empty).getParagraphTheme(variant);
@@ -97,47 +91,11 @@ function getDefaultBoxTheme(style: BoxStyle): DefaultBoxTheme {
 
 class DefaultBoxTheme extends FlowTheme {
     readonly #boxStyle: BoxStyle;
-    readonly #cellThemeCache = new Map<TableCellVariant, DefaultCellTheme>();
-    #defaultCellTheme: DefaultCellTheme | undefined;
-
-    constructor(style: BoxStyle) {
-        super();
-        this.#boxStyle = style;
-    }
-
-    /** {@inheritdoc FlowTheme.getBoxTheme} */
-    getBoxTheme(style: BoxStyle): FlowTheme {
-        return getDefaultBoxTheme(style);
-    }
-
-    /** {@inheritdoc FlowTheme.getCellTheme} */
-    getCellTheme(variant: TableCellVariant): FlowTheme {
-        let result = this.#cellThemeCache.get(variant);
-        if (!result) {
-            result = new DefaultCellTheme(this.#boxStyle, variant);
-            this.#cellThemeCache.set(variant, result);
-        }
-        return result;
-    }
-    
-    /** {@inheritdoc FlowTheme.getParagraphTheme} */
-    getParagraphTheme(variant: ParagraphVariant): ParagraphTheme {
-        if (!this.#defaultCellTheme) {
-            this.#defaultCellTheme = new DefaultCellTheme(this.#boxStyle, undefined);
-        }
-        return this.#defaultCellTheme.getParagraphTheme(variant);
-    }
-}
-
-class DefaultCellTheme extends FlowTheme {
-    readonly #boxStyle: BoxStyle;
-    readonly #cellVariant: TableCellVariant | undefined;
     readonly #paragraphThemeCache = new Map<ParagraphVariant, DefaultParagraphTheme>();
 
-    constructor(boxStyle: BoxStyle, cellVariant: TableCellVariant | undefined) {
+    constructor(boxStyle: BoxStyle) {
         super();
         this.#boxStyle = boxStyle;
-        this.#cellVariant = cellVariant;
     }
 
     /** {@inheritdoc FlowTheme.getBoxTheme} */
@@ -145,16 +103,11 @@ class DefaultCellTheme extends FlowTheme {
         return getDefaultBoxTheme(style);
     }
 
-    /** {@inheritdoc FlowTheme.getCellTheme} */
-    getCellTheme(variant: TableCellVariant): FlowTheme {
-        return getDefaultBoxTheme(this.#boxStyle).getCellTheme(variant);
-    }
-    
     /** {@inheritdoc FlowTheme.getParagraphTheme} */
     getParagraphTheme(variant: ParagraphVariant): ParagraphTheme {
         let result = this.#paragraphThemeCache.get(variant);
         if (!result) {
-            result = new DefaultParagraphTheme(this.#boxStyle, variant, this.#cellVariant);
+            result = new DefaultParagraphTheme(this.#boxStyle, variant);
             this.#paragraphThemeCache.set(variant, result);
         }
         return result;
@@ -170,7 +123,7 @@ class DefaultParagraphTheme extends ParagraphTheme {
     readonly #link: TextStyle;
     readonly #next: ParagraphVariant;
 
-    constructor(box: BoxStyle, paraVariant: ParagraphVariant, cellVariant: TableCellVariant | undefined) {
+    constructor(box: BoxStyle, paraVariant: ParagraphVariant) {
         super();
 
         this.#box = box;
@@ -178,8 +131,8 @@ class DefaultParagraphTheme extends ParagraphTheme {
         this.#text = new TextStyle({
             fontFamily: getFontFamily(paraVariant),
             fontSize: getFontSize(paraVariant),
-            bold: isHeadingParagraph(paraVariant) || isHeadingCell(cellVariant),
-            italic: box.variant === "quote" || isFooterCell(cellVariant),
+            bold: isHeadingParagraph(paraVariant),
+            italic: box.variant === "quote",
             underline: false,
             strike: false,
             baseline: "normal",
@@ -238,13 +191,6 @@ class DefaultParagraphTheme extends ParagraphTheme {
 }
 
 const isHeadingParagraph = (variant: ParagraphVariant): boolean => /^h[1-6]$/.test(variant);
-
-const isHeadingCell = (variant: TableCellVariant | undefined): boolean => !!variant && (    
-    /^header/.test(variant) ||
-    /^(start|end)-column$/.test(variant)
-);
-
-const isFooterCell = (variant: TableCellVariant | undefined): boolean => !!variant && /^footer/.test(variant);
 
 const getFontFamily = (variant: ParagraphVariant): TextStyleProps["fontFamily"] => {
     if (variant === "code") {

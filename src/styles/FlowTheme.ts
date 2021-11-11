@@ -1,6 +1,5 @@
 import { JsonValue, lazyType } from "paratype";
 import { BoxStyle } from "./BoxStyle";
-import { TableCellVariant } from "../nodes/FlowTable";
 import { FlowThemeRegistry } from "../internal/class-registry";
 import { ParagraphVariant } from "./ParagraphStyle";
 import { ParagraphTheme } from "./ParagraphTheme";
@@ -28,7 +27,4 @@ export abstract class FlowTheme {
 
     /** Gets a theme for the specified box style */
     abstract getBoxTheme(style: BoxStyle): FlowTheme;
-
-    /** Gets a theme for the specified table cell variant */
-    abstract getCellTheme(variant: TableCellVariant): FlowTheme;
 }
