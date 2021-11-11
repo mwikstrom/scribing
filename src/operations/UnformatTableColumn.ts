@@ -26,7 +26,7 @@ const Props = {
 const Data = {
     unformat: constType("table_column"),
     column: Props.column,
-    at: Props.position,
+    table: Props.position,
     style: Props.style,
 };
 
@@ -34,7 +34,7 @@ const PropsType: RecordType<UnformatTableColumnProps> = recordType(Props);
 const DataType: RecordType<UnformatTableColumnData> = recordType(Data);
 const propsToData = ({position, column, style }: UnformatTableColumnProps): UnformatTableColumnData => ({
     unformat: "table_column",
-    at: position,
+    table: position,
     column,
     style,
 });
@@ -69,7 +69,7 @@ export interface UnformatTableColumnData {
     unformat: "table_column";
 
     /** {@inheritdoc UnformatTableColumnProps.position} */
-    at: number;
+    table: number;
 
     /** {@inheritdoc UnformatTableColumnProps.column} */
     column: number;
@@ -92,7 +92,7 @@ export class UnformatTableColumn extends UnformatTableColumnBase implements Unfo
 
     /** Gets an instance of the current class from the specified data */
     public static fromData(@type(DataType) input: UnformatTableColumnData): UnformatTableColumn {
-        const { style, at: position, column } = input;
+        const { style, table: position, column } = input;
         const props: UnformatTableColumnProps = { style, position, column };
         return new UnformatTableColumn(props);
     }

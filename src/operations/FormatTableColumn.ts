@@ -26,7 +26,7 @@ const Props = {
 const Data = {
     format: constType("table_column"),
     column: Props.column,
-    at: Props.position,
+    table: Props.position,
     style: Props.style,
 };
 
@@ -34,7 +34,7 @@ const PropsType: RecordType<FormatTableColumnProps> = recordType(Props);
 const DataType: RecordType<FormatTableColumnData> = recordType(Data);
 const propsToData = ({position, column, style }: FormatTableColumnProps): FormatTableColumnData => ({
     format: "table_column",
-    at: position,
+    table: position,
     column,
     style,
 });
@@ -69,7 +69,7 @@ export interface FormatTableColumnData {
     format: "table_column";
 
     /** {@inheritdoc FormatTableColumnProps.position} */
-    at: number;
+    table: number;
 
     /** {@inheritdoc FormatTableColumnProps.column} */
     column: number;
@@ -92,7 +92,7 @@ export class FormatTableColumn extends FormatTableColumnBase implements FormatTa
 
     /** Gets an instance of the current class from the specified data */
     public static fromData(@type(DataType) input: FormatTableColumnData): FormatTableColumn {
-        const { style, at: position, column } = input;
+        const { style, table: position, column } = input;
         const props: FormatTableColumnProps = { style, position, column };
         return new FormatTableColumn(props);
     }

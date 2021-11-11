@@ -25,7 +25,7 @@ const Props = {
 
 const Data = {
     insert: constType("table_row"),
-    at: Props.position,
+    table: Props.position,
     row: Props.row,
     count: Props.count,
 };
@@ -35,7 +35,7 @@ const DataType: RecordType<InsertTableRowData> = recordType(Data).withOptional("
 const propsToData = ({position, row, count }: InsertTableRowProps): InsertTableRowData => {
     const data: InsertTableRowData = {
         insert: "table_row",
-        at: position,
+        table: position,
         row,
     };
 
@@ -76,7 +76,7 @@ export interface InsertTableRowData {
     insert: "table_row";
 
     /** {@inheritdoc InsertTableRowProps.position} */
-    at: number;
+    table: number;
 
     /** {@inheritdoc InsertTableRowProps.row} */
     row: number;
@@ -99,7 +99,7 @@ export class InsertTableRow extends InsertTableRowBase implements InsertTableRow
 
     /** Gets an instance of the current class from the specified data */
     public static fromData(@type(DataType) input: InsertTableRowData): InsertTableRow {
-        const { at: position, row, count = 1} = input;
+        const { table: position, row, count = 1} = input;
         const props: InsertTableRowProps = { position, row, count };
         return new InsertTableRow(props);
     }

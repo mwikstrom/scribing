@@ -25,7 +25,7 @@ const Props = {
 
 const Data = {
     insert: constType("table_column"),
-    at: Props.position,
+    table: Props.position,
     column: Props.column,
     count: Props.count,
 };
@@ -35,7 +35,7 @@ const DataType: RecordType<InsertTableColumnData> = recordType(Data).withOptiona
 const propsToData = ({position, column, count }: InsertTableColumnProps): InsertTableColumnData => {
     const data: InsertTableColumnData = {
         insert: "table_column",
-        at: position,
+        table: position,
         column,
     };
 
@@ -76,7 +76,7 @@ export interface InsertTableColumnData {
     insert: "table_column";
 
     /** {@inheritdoc InsertTableColumnProps.position} */
-    at: number;
+    table: number;
 
     /** {@inheritdoc InsertTableColumnProps.column} */
     column: number;
@@ -99,7 +99,7 @@ export class InsertTableColumn extends InsertTableColumnBase implements InsertTa
 
     /** Gets an instance of the current class from the specified data */
     public static fromData(@type(DataType) input: InsertTableColumnData): InsertTableColumn {
-        const { at: position, column, count = 1} = input;
+        const { table: position, column, count = 1} = input;
         const props: InsertTableColumnProps = { position, column, count };
         return new InsertTableColumn(props);
     }

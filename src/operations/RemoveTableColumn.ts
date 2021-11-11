@@ -25,7 +25,7 @@ const Props = {
 
 const Data = {
     remove: constType("table_column"),
-    at: Props.position,
+    table: Props.position,
     column: Props.column,
     count: Props.count,
 };
@@ -35,7 +35,7 @@ const DataType: RecordType<RemoveTableColumnData> = recordType(Data).withOptiona
 const propsToData = ({position, column, count }: RemoveTableColumnProps): RemoveTableColumnData => {
     const data: RemoveTableColumnData = {
         remove: "table_column",
-        at: position,
+        table: position,
         column,
     };
 
@@ -76,7 +76,7 @@ export interface RemoveTableColumnData {
     remove: "table_column";
 
     /** {@inheritdoc RemoveTableColumnProps.position} */
-    at: number;
+    table: number;
 
     /** {@inheritdoc RemoveTableColumnProps.column} */
     column: number;
@@ -99,7 +99,7 @@ export class RemoveTableColumn extends RemoveTableColumnBase implements RemoveTa
 
     /** Gets an instance of the current class from the specified data */
     public static fromData(@type(DataType) input: RemoveTableColumnData): RemoveTableColumn {
-        const { at: position, column, count = 1} = input;
+        const { table: position, column, count = 1} = input;
         const props: RemoveTableColumnProps = { position, column, count };
         return new RemoveTableColumn(props);
     }
