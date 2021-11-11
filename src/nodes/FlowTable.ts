@@ -193,6 +193,29 @@ export class FlowTable extends FlowTableBase {
         return this.#updateAllContent(content => content.unformatParagraph(FlowRange.at(0, content.size), style));
     }
 
+    /** @internal */
+    formatColumn(index: number, style: TableColumnStyle): FlowTable {
+        const key = CellPosition.stringifyColumnIndex(index, true);
+        const before = this.columns.get(key) ?? TableColumnStyle.empty;
+        const after = before.merge(style);
+        const newColumns = new Map(this.columns);
+        newColumns.set(key, after);
+        return this.set("columns", newColumns);
+    }
+
+    /** @internal */
+    unformatColumn(index: number, style: TableColumnStyle): FlowTable {
+        const key = CellPosition.stringifyColumnIndex(index, true);
+        const before = this.columns.get(key);
+        if (!before) {
+            return this;
+        }
+        const after = before.unmerge(style);
+        const newColumns = new Map(this.columns);
+        newColumns.set(key, after);
+        return this.set("columns", newColumns);
+    }
+
     #updateAllContent(callback: (content: FlowContent, position: CellPosition) => FlowContent): this {
         return this.set("content", this.content.updateAllContent(callback));
     }

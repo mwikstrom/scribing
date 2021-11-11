@@ -23,7 +23,7 @@ const Props = {
 };
 
 const Data = {
-    format: constType("table"),
+    unformat: constType("table"),
     at: Props.position,
     style: Props.style,
 };
@@ -31,7 +31,7 @@ const Data = {
 const PropsType: RecordType<UnformatTableProps> = recordType(Props);
 const DataType: RecordType<UnformatTableData> = recordType(Data);
 const propsToData = ({position, style }: UnformatTableProps): UnformatTableData => ({
-    format: "table",
+    unformat: "table",
     at: position,
     style,
 });
@@ -60,7 +60,7 @@ export interface UnformatTableProps {
  */
 export interface UnformatTableData {
     /** Data discriminator */
-    format: "table";
+    unformat: "table";
 
     /** {@inheritdoc UnformatTableProps.position} */
     at: number;

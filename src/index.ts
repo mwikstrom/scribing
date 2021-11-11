@@ -71,6 +71,8 @@ export * from "./operations/EditTableCell";
 export * from "./operations/ResetContent";
 export * from "./operations/FormatTable";
 export * from "./operations/UnformatTable";
+export * from "./operations/FormatTableColumn";
+export * from "./operations/UnformatTableColumn";
 
 // Selection
 export * from "./selection/FlowSelection";
