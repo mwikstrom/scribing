@@ -23,6 +23,7 @@ import { ParagraphStyle, ParagraphStyleProps } from "../styles/ParagraphStyle";
 import { EditTableCell } from "../operations/EditTableCell";
 import { FlowBatch } from "../operations/FlowBatch";
 import { ImageSource } from "../structure/ImageSource";
+import { ResetContent } from "../operations/ResetContent";
 
 const Props = {
     position: nonNegativeIntegerType,
@@ -218,9 +219,12 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      */
     public remove(options: RemoveFlowSelectionOptions = {}): FlowOperation | null {
         const { target, theme } = options;
-        return this.#updateAllCellContent(target, theme, () => (
-            null // TODO: Should be: new ResetContent({ content: table.content.defaultCellContent })
-        ));
+        if (!target) {
+            return null;
+        }
+        const table = this.#getTableNode(target);
+        const op = new ResetContent({ content: table.content.defaultCellContent });
+        return this.#updateAllCellContent(target, theme, () => op);
     }
 
     /**

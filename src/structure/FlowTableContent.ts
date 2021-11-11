@@ -128,6 +128,10 @@ export class FlowTableContent {
         return this.#positionArrayCache;
     }
 
+    public get defaultCellContent(): FlowContent {
+        return this.#defaultContent;
+    }
+
     public toJsonValue(error?: ErrorCallback, path?: PathArray): JsonValue {
         const data = new Map([...this.#cells, ["default", FlowTableCell.fromData(this.#defaultContent)]]);
 
