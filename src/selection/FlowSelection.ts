@@ -199,6 +199,66 @@ export abstract class FlowSelection {
     public abstract unformatText(style: TextStyle): FlowOperation | null;
 
     /**
+     * Creates an operation that inserts a table column before the current selection.
+     * @param count - Optional. The number of columns to insert. Default is the number of selected columns.
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract insertTableColumnBefore(count?: number): FlowOperation | null;
+
+    /**
+     * Creates an operation that inserts a table column after the current selection.
+     * @param count - Optional. The number of columns to insert. Default is the number of selected columns.
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract insertTableColumnAfter(count?: number): FlowOperation | null;
+
+    /**
+     * Creates an operation that inserts a table row before the current selection.
+     * @param count - Optional. The number of rows to insert. Default is the number of selected rows.
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract insertTableRowBefore(count?: number): FlowOperation | null;
+
+    /**
+     * Creates an operation that inserts a table row after the current selection.
+     * @param count - Optional. The number of rows to insert. Default is the number of selected rows.
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract insertTableRowAfter(count?: number): FlowOperation | null;
+
+    /**
+     * Creates an operation that removes the selected table column
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract removeTableColumn(): FlowOperation | null;
+
+    /**
+     * Creates an operation that removes the selected table row
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract removeTableRow(): FlowOperation | null;
+
+    /**
+     * Creates an operation that merges the selected table cells.
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract mergeTableCell(): FlowOperation | null;
+
+    /**
+     * Creates an operation that splits the selected table cells (given that it is a merged cell)
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract splitTableCell(): FlowOperation | null;
+    
+    /**
      * Transforms the current selection so that its intended boundary is preserved after the specified
      * range was inserted.
      * @internal

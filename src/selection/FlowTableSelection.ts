@@ -306,6 +306,70 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     }
 
     /**
+     * {@inheritDoc FlowSelection.insertTableColumnBefore}
+     * @override
+     */
+    public insertTableColumnBefore(count?: number): FlowOperation | null {
+        return null;
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.insertTableColumnAfter}
+     * @override
+     */
+    public insertTableColumnAfter(count?: number): FlowOperation | null {
+        return null;
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.insertTableRowBefore}
+     * @override
+     */
+    public insertTableRowBefore(count?: number): FlowOperation | null {
+        return null;
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.insertTableRowAfter}
+     * @override
+     */
+    public insertTableRowAfter(count?: number): FlowOperation | null {
+        return null;
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.removeTableColumn}
+     * @override
+     */
+    public removeTableColumn(): FlowOperation | null {
+        return null;
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.removeTableRow}
+     * @override
+     */
+    public removeTableRow(): FlowOperation | null {
+        return null;
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.mergeTableCell}
+     * @override
+     */
+    public mergeTableCell(): FlowOperation | null {
+        return null;
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.splitTableCell}
+     * @override
+     */
+    public splitTableCell(): FlowOperation | null {
+        return null;
+    }
+
+    /**
      * {@inheritDoc FlowSelection.afterInsertion}
      * @override
      */
