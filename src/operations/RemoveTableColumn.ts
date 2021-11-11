@@ -128,4 +128,20 @@ export class RemoveTableColumn extends RemoveTableColumnBase implements RemoveTa
     protected applyToCellRange(range: CellRange, mine: boolean): CellRange | null {
         return range.afterRemoveColumn(this.column, this.count, mine);
     }
+
+    afterInsertColumn(index: number, count: number): TableOperation | null {
+    }
+
+    afterRemoveColumn(index: number, count: number): TableOperation | null{
+    }
+
+    afterInsertRow(): TableOperation | null{
+        // This operation applies to all rows, so it's unaffected
+        return this;
+    }
+
+    afterRemoveRow(): TableOperation | null{
+        // This operation applies to all rows, so it's unaffected
+        return this;
+    }
 }

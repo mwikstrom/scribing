@@ -114,6 +114,11 @@ export abstract class TableOperation extends FlowOperation {
         return this.#wrapPosition(after);
     }
 
+    abstract afterInsertColumn(index: number, count: number): TableOperation | null;
+    abstract afterRemoveColumn(index: number, count: number): TableOperation | null;
+    abstract afterInsertRow(index: number, count: number): TableOperation | null;
+    abstract afterRemoveRow(index: number, count: number): TableOperation | null;
+
     /**
      * Returns a copy of the current object with the specified property merged in
      *

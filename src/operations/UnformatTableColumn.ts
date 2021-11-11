@@ -128,4 +128,32 @@ export class UnformatTableColumn extends UnformatTableColumnBase implements Unfo
         // Formatting does not affect cell range
         return range;
     }
+
+    afterInsertColumn(index: number, count: number): TableOperation | null {
+        if (this.column < index) {
+            return this;
+        } else {
+            return this.set("column", this.column + count);
+        }
+    }
+
+    afterRemoveColumn(index: number, count: number): TableOperation | null{
+        if (this.column < index) {
+            return this;
+        } else if (this.column >= index + count) {
+            return this.set("column", this.column + count);
+        } else {
+            return null;
+        }
+    }
+
+    afterInsertRow(): TableOperation | null{
+        // This operation applies to all rows, so it's unaffected
+        return this;
+    }
+
+    afterRemoveRow(): TableOperation | null{
+        // This operation applies to all rows, so it's unaffected
+        return this;
+    }
 }

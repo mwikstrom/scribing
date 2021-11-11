@@ -119,4 +119,24 @@ export class UnformatTable extends UnformatTableBase implements UnformatTablePro
         // Formatting does not affect cell range
         return range;
     }
+
+    afterInsertColumn(): TableOperation | null {
+        // This operation applies to the whole table, so it's unaffected
+        return this;
+    }
+
+    afterRemoveColumn(): TableOperation | null{
+        // This operation applies to the whole table, so it's unaffected
+        return this;
+    }
+
+    afterInsertRow(): TableOperation | null{
+        // This operation applies to the whole table, so it's unaffected
+        return this;
+    }
+
+    afterRemoveRow(): TableOperation | null{
+        // This operation applies to the whole table, so it's unaffected
+        return this;
+    }
 }

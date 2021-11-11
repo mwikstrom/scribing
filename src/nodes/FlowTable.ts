@@ -193,7 +193,6 @@ export class FlowTable extends FlowTableBase {
         return this.#updateAllContent(content => content.unformatParagraph(FlowRange.at(0, content.size), style));
     }
 
-    /** @internal */
     formatColumn(index: number, style: TableColumnStyle): FlowTable {
         const key = CellPosition.stringifyColumnIndex(index, true);
         const before = this.columns.get(key) ?? TableColumnStyle.empty;
@@ -203,7 +202,6 @@ export class FlowTable extends FlowTableBase {
         return this.set("columns", newColumns);
     }
 
-    /** @internal */
     unformatColumn(index: number, style: TableColumnStyle): FlowTable {
         const key = CellPosition.stringifyColumnIndex(index, true);
         const before = this.columns.get(key);
@@ -214,6 +212,44 @@ export class FlowTable extends FlowTableBase {
         const newColumns = new Map(this.columns);
         newColumns.set(key, after);
         return this.set("columns", newColumns);
+    }
+
+    insertColumn(index: number, count = 1): FlowTable {
+        const newContent = this.content.insertColumn(index, count);
+        const newColumns = new Map();
+        for (const [key, style] of this.columns) {
+            const existing = CellPosition.parseColumnIndex(key);
+            if (existing === null || existing < index) {
+                newColumns.set(key, style);
+            } else {
+                newColumns.set(CellPosition.stringifyColumnIndex(existing + count), style);
+            }
+        }
+        return this.merge({ content: newContent, columns: newColumns });
+    }
+
+    removeColumn(index: number, count = 1): FlowTable {
+        const newContent = this.content.removeColumn(index, count);
+        const newColumns = new Map();
+        for (const [key, style] of this.columns) {
+            const existing = CellPosition.parseColumnIndex(key);
+            if (existing === null || existing < index) {
+                newColumns.set(key, style);
+            } else if (existing >= index + count) {
+                newColumns.set(CellPosition.stringifyColumnIndex(existing - count), style);
+            }
+        }
+        return this.merge({ content: newContent, columns: newColumns });
+    }
+
+    insertRow(index: number, count = 1): FlowTable {
+        const newContent = this.content.insertRow(index, count);
+        return this.set("content", newContent);
+    }
+
+    removeRow(index: number, count = 1): FlowTable {
+        const newContent = this.content.removeRow(index, count);
+        return this.set("content", newContent);
     }
 
     #updateAllContent(callback: (content: FlowContent, position: CellPosition) => FlowContent): this {
