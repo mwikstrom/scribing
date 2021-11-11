@@ -84,9 +84,9 @@ export abstract class TableOperation extends FlowOperation {
      * {@inheritDoc FlowOperation.applyToSelection}
      * @override
      */
-    applyToSelection(selection: FlowSelection): FlowSelection | null {
+    applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null {
         if (selection instanceof FlowTableSelection && selection.position === this.position) {
-            const updated = this.applyToCellRange(selection.range);
+            const updated = this.applyToCellRange(selection.range, mine);
             return updated ? selection.set("range", updated) : null;
         }
         // Does not affect selection
@@ -94,7 +94,7 @@ export abstract class TableOperation extends FlowOperation {
     }
 
     /** @internal */
-    protected abstract applyToCellRange(range: CellRange): CellRange | null;
+    protected abstract applyToCellRange(range: CellRange, mine: boolean): CellRange | null;
 
     /** 
      * {@inheritDoc FlowOperation.afterInsertFlow}

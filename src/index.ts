@@ -73,6 +73,8 @@ export * from "./operations/FormatTable";
 export * from "./operations/UnformatTable";
 export * from "./operations/FormatTableColumn";
 export * from "./operations/UnformatTableColumn";
+export * from "./operations/InsertTableColumn";
+export * from "./operations/RemoveTableColumn";
 
 // Selection
 export * from "./selection/FlowSelection";
