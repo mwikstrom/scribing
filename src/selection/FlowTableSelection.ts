@@ -24,6 +24,8 @@ import { EditTableCell } from "../operations/EditTableCell";
 import { FlowBatch } from "../operations/FlowBatch";
 import { ImageSource } from "../structure/ImageSource";
 import { ResetContent } from "../operations/ResetContent";
+import { TableStyle } from "../styles/TableStyle";
+import { TableColumnStyle } from "../styles/TableColumnStyle";
 
 const Props = {
     position: nonNegativeIntegerType,
@@ -282,26 +284,64 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      * {@inheritDoc FlowSelection.unformatBox}
      * @override
      */
-    public unformatBox(): FlowOperation | null {
-        // TODO: To support this we need the outer content (otherwise we don't know about the cells...)
-        return null;
+    public unformatBox(style: BoxStyle, options: TargetOptions = {}): FlowOperation | null {
+        const { target, theme } = options;
+        return this.#updateAllCellContent(target, theme, (cellContent, cellTheme) => (
+            cellContent.selectAll().unformatBox(style, { target: cellContent, theme: cellTheme })
+        ));
     }
 
     /**
      * {@inheritDoc FlowSelection.unformatParagraph}
      * @override
      */
-    public unformatParagraph(): FlowOperation | null {
-        // TODO: To support this we need the outer content (otherwise we don't know about the cells...)
-        return null;
+    public unformatParagraph(style: ParagraphStyle, options: TargetOptions = {}): FlowOperation | null {
+        const { target, theme } = options;
+        return this.#updateAllCellContent(target, theme, (cellContent, cellTheme) => (
+            cellContent.selectAll().unformatParagraph(style, { target: cellContent, theme: cellTheme })
+        ));
     }
 
     /**
      * {@inheritDoc FlowSelection.unformatParagraph}
      * @override
      */
-    public unformatText(): FlowOperation | null {
-        // TODO: To support this we need the outer content (otherwise we don't know about the cells...)
+    public unformatText(style: TextStyle, options: TargetOptions = {}): FlowOperation | null {
+        const { target, theme } = options;
+        return this.#updateAllCellContent(target, theme, (cellContent, cellTheme) => (
+            cellContent.selectAll().unformatText(style, { target: cellContent, theme: cellTheme })
+        ));
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.formatTable}
+     * @override
+     */
+    public formatTable(style: TableStyle, options?: TargetOptions): FlowOperation | null {
+        return null;
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.unformatTable}
+     * @override
+     */
+    public unformatTable(style: TableStyle, options?: TargetOptions): FlowOperation | null {
+        return null;
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.formatTableColumn}
+     * @override
+     */
+    public formatTableColumn(style: TableColumnStyle, options?: TargetOptions) {
+        return null;
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.unformatTableColumn}
+     * @override
+     */
+    public unformatTableColumn(style: TableColumnStyle, options?: TargetOptions) {
         return null;
     }
 
@@ -309,7 +349,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      * {@inheritDoc FlowSelection.insertTableColumnBefore}
      * @override
      */
-    public insertTableColumnBefore(count?: number): FlowOperation | null {
+    public insertTableColumnBefore(content: FlowContent, count?: number): FlowOperation | null {
         return null;
     }
 
@@ -317,7 +357,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      * {@inheritDoc FlowSelection.insertTableColumnAfter}
      * @override
      */
-    public insertTableColumnAfter(count?: number): FlowOperation | null {
+    public insertTableColumnAfter(content: FlowContent, count?: number): FlowOperation | null {
         return null;
     }
 
@@ -325,7 +365,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      * {@inheritDoc FlowSelection.insertTableRowBefore}
      * @override
      */
-    public insertTableRowBefore(count?: number): FlowOperation | null {
+    public insertTableRowBefore(content: FlowContent, count?: number): FlowOperation | null {
         return null;
     }
 
@@ -333,7 +373,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      * {@inheritDoc FlowSelection.insertTableRowAfter}
      * @override
      */
-    public insertTableRowAfter(count?: number): FlowOperation | null {
+    public insertTableRowAfter(content: FlowContent, count?: number): FlowOperation | null {
         return null;
     }
 
@@ -341,7 +381,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      * {@inheritDoc FlowSelection.removeTableColumn}
      * @override
      */
-    public removeTableColumn(): FlowOperation | null {
+    public removeTableColumn(content: FlowContent): FlowOperation | null {
         return null;
     }
 
@@ -349,7 +389,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      * {@inheritDoc FlowSelection.removeTableRow}
      * @override
      */
-    public removeTableRow(): FlowOperation | null {
+    public removeTableRow(content: FlowContent): FlowOperation | null {
         return null;
     }
 
@@ -357,7 +397,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      * {@inheritDoc FlowSelection.mergeTableCell}
      * @override
      */
-    public mergeTableCell(): FlowOperation | null {
+    public mergeTableCell(content: FlowContent): FlowOperation | null {
         return null;
     }
 
@@ -365,7 +405,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      * {@inheritDoc FlowSelection.splitTableCell}
      * @override
      */
-    public splitTableCell(): FlowOperation | null {
+    public splitTableCell(content: FlowContent): FlowOperation | null {
         return null;
     }
 

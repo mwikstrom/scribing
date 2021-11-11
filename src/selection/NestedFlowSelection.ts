@@ -9,6 +9,8 @@ import { ImageSource } from "../structure/ImageSource";
 import { transformRangeAfterInsertion, transformRangeAfterRemoval } from "../internal/transform-helpers";
 import { ParagraphStyle, ParagraphStyleProps } from "../styles/ParagraphStyle";
 import { TextStyle, TextStyleProps } from "../styles/TextStyle";
+import { TableStyle } from "../styles/TableStyle";
+import { TableColumnStyle } from "../styles/TableColumnStyle";
 
 /**
  * A nested selection at a specific flow position
@@ -283,9 +285,9 @@ export abstract class NestedFlowSelection extends FlowSelection {
      * {@inheritDoc FlowSelection.unformatBox}
      * @override
      */
-    public unformatBox(style: BoxStyle): FlowOperation | null {
+    public unformatBox(style: BoxStyle, options?: TargetOptions): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
-        const innerOperation = innerSelection.unformatBox(style);
+        const innerOperation = innerSelection.unformatBox(style, options);
         return this.#wrapOperation(innerOperation);
     }
 
@@ -293,9 +295,9 @@ export abstract class NestedFlowSelection extends FlowSelection {
      * {@inheritDoc FlowSelection.unformatParagraph}
      * @override
      */
-    public unformatParagraph(style: ParagraphStyle): FlowOperation | null {
+    public unformatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
-        const innerOperation = innerSelection.unformatParagraph(style);
+        const innerOperation = innerSelection.unformatParagraph(style, options);
         return this.#wrapOperation(innerOperation);
     }
 
@@ -303,9 +305,137 @@ export abstract class NestedFlowSelection extends FlowSelection {
      * {@inheritDoc FlowSelection.unformatParagraph}
      * @override
      */
-    public unformatText(style: TextStyle): FlowOperation | null {
+    public unformatText(style: TextStyle, options?: TargetOptions): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
-        const innerOperation = innerSelection.unformatText(style);
+        const innerOperation = innerSelection.unformatText(style, options);
+        return this.#wrapOperation(innerOperation);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.formatTable}
+     * @override
+     */
+    public formatTable(style: TableStyle, options?: TargetOptions): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerOperation = innerSelection.formatTable(style, options);
+        return this.#wrapOperation(innerOperation);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.unformatTable}
+     * @override
+     */
+    public unformatTable(style: TableStyle, options?: TargetOptions): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerOperation = innerSelection.unformatTable(style, options);
+        return this.#wrapOperation(innerOperation);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.formatTableColumn}
+     * @override
+     */
+    public formatTableColumn(style: TableColumnStyle, options?: TargetOptions): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerOperation = innerSelection.formatTableColumn(style, options);
+        return this.#wrapOperation(innerOperation);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.unformatTableColumn}
+     * @override
+     */
+    public unformatTableColumn(style: TableColumnStyle, options?: TargetOptions): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerOperation = innerSelection.unformatTableColumn(style, options);
+        return this.#wrapOperation(innerOperation);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.insertTableColumnBefore}
+     * @override
+     */
+    public insertTableColumnBefore(content: FlowContent, count?: number): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerContent = this.getInnerContent(content);
+        const innerOperation = innerSelection.insertTableColumnBefore(innerContent, count);
+        return this.#wrapOperation(innerOperation);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.insertTableColumnAfter}
+     * @override
+     */
+    public insertTableColumnAfter(content: FlowContent, count?: number): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerContent = this.getInnerContent(content);
+        const innerOperation = innerSelection.insertTableColumnAfter(innerContent, count);
+        return this.#wrapOperation(innerOperation);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.insertTableRowBefore}
+     * @override
+     */
+    public insertTableRowBefore(content: FlowContent, count?: number): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerContent = this.getInnerContent(content);
+        const innerOperation = innerSelection.insertTableRowBefore(innerContent, count);
+        return this.#wrapOperation(innerOperation);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.insertTableRowAfter}
+     * @override
+     */
+    public insertTableRowAfter(content: FlowContent, count?: number): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerContent = this.getInnerContent(content);
+        const innerOperation = innerSelection.insertTableRowAfter(innerContent, count);
+        return this.#wrapOperation(innerOperation);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.removeTableColumn}
+     * @override
+     */
+    public removeTableColumn(content: FlowContent): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerContent = this.getInnerContent(content);
+        const innerOperation = innerSelection.removeTableColumn(innerContent);
+        return this.#wrapOperation(innerOperation);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.removeTableRow}
+     * @override
+     */
+    public removeTableRow(content: FlowContent): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerContent = this.getInnerContent(content);
+        const innerOperation = innerSelection.removeTableRow(innerContent);
+        return this.#wrapOperation(innerOperation);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.mergeTableCell}
+     * @override
+     */
+    public mergeTableCell(content: FlowContent): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerContent = this.getInnerContent(content);
+        const innerOperation = innerSelection.mergeTableCell(innerContent);
+        return this.#wrapOperation(innerOperation);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.splitTableCell}
+     * @override
+     */
+    public splitTableCell(content: FlowContent): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerContent = this.getInnerContent(content);
+        const innerOperation = innerSelection.splitTableCell(innerContent);
         return this.#wrapOperation(innerOperation);
     }
 

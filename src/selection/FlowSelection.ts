@@ -8,6 +8,8 @@ import { ParagraphStyle, ParagraphStyleProps } from "../styles/ParagraphStyle";
 import { TextStyle, TextStyleProps } from "../styles/TextStyle";
 import { BoxStyle, BoxStyleProps } from "../styles/BoxStyle";
 import { ImageSource } from "../structure/ImageSource";
+import { TableStyle } from "../styles/TableStyle";
+import { TableColumnStyle } from "../styles/TableColumnStyle";
 
 /**
  * Represents a selection of flow content
@@ -180,7 +182,7 @@ export abstract class FlowSelection {
      * @remarks
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
-    public abstract unformatBox(style: BoxStyle): FlowOperation | null;
+    public abstract unformatBox(style: BoxStyle, options?: TargetOptions): FlowOperation | null;
 
     /**
      * Creates an operation that unapplies the specified paragraph style on the current selection
@@ -188,7 +190,7 @@ export abstract class FlowSelection {
      * @remarks
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
-    public abstract unformatParagraph(style: ParagraphStyle): FlowOperation | null;
+    public abstract unformatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
 
     /**
      * Creates an operation that unapplies the specified text style on the current selection
@@ -196,67 +198,111 @@ export abstract class FlowSelection {
      * @remarks
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
-    public abstract unformatText(style: TextStyle): FlowOperation | null;
+    public abstract unformatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
+
+    /**
+     * Creates an operation that applies the specified table style on the current selection
+     * @param content - The selected content
+     * @param style - The style to unapply
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract formatTable(style: TableStyle, options?: TargetOptions): FlowOperation | null;
+
+    /**
+     * Creates an operation that unapplies the specified table style on the current selection
+     * @param content - The selected content
+     * @param style - The style to unapply
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract unformatTable(style: TableStyle, options?: TargetOptions): FlowOperation | null;
+
+    /**
+     * Creates an operation that applies the specified table column style on the current selection
+     * @param content - The selected content
+     * @param style - The style to unapply
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract formatTableColumn(style: TableColumnStyle, options?: TargetOptions): FlowOperation | null;
+
+    /**
+     * Creates an operation that unapplies the specified table column style on the current selection
+     * @param content - The selected content
+     * @param style - The style to unapply
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract unformatTableColumn(style: TableColumnStyle, options?: TargetOptions): FlowOperation | null;
 
     /**
      * Creates an operation that inserts a table column before the current selection.
+     * @param content - The selected content
      * @param count - Optional. The number of columns to insert. Default is the number of selected columns.
      * @remarks
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
-    public abstract insertTableColumnBefore(count?: number): FlowOperation | null;
+    public abstract insertTableColumnBefore(content: FlowContent, count?: number): FlowOperation | null;
 
     /**
      * Creates an operation that inserts a table column after the current selection.
+     * @param content - The selected content
      * @param count - Optional. The number of columns to insert. Default is the number of selected columns.
      * @remarks
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
-    public abstract insertTableColumnAfter(count?: number): FlowOperation | null;
+    public abstract insertTableColumnAfter(content: FlowContent, count?: number): FlowOperation | null;
 
     /**
      * Creates an operation that inserts a table row before the current selection.
+     * @param content - The selected content
      * @param count - Optional. The number of rows to insert. Default is the number of selected rows.
      * @remarks
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
-    public abstract insertTableRowBefore(count?: number): FlowOperation | null;
+    public abstract insertTableRowBefore(content: FlowContent, count?: number): FlowOperation | null;
 
     /**
      * Creates an operation that inserts a table row after the current selection.
+     * @param content - The selected content
      * @param count - Optional. The number of rows to insert. Default is the number of selected rows.
      * @remarks
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
-    public abstract insertTableRowAfter(count?: number): FlowOperation | null;
+    public abstract insertTableRowAfter(content: FlowContent, count?: number): FlowOperation | null;
 
     /**
      * Creates an operation that removes the selected table column
+     * @param content - The selected content
      * @remarks
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
-    public abstract removeTableColumn(): FlowOperation | null;
+    public abstract removeTableColumn(content: FlowContent): FlowOperation | null;
 
     /**
      * Creates an operation that removes the selected table row
+     * @param content - The selected content
      * @remarks
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
-    public abstract removeTableRow(): FlowOperation | null;
+    public abstract removeTableRow(content: FlowContent): FlowOperation | null;
 
     /**
      * Creates an operation that merges the selected table cells.
+     * @param content - The selected content
      * @remarks
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
-    public abstract mergeTableCell(): FlowOperation | null;
+    public abstract mergeTableCell(content: FlowContent): FlowOperation | null;
 
     /**
      * Creates an operation that splits the selected table cells (given that it is a merged cell)
+     * @param content - The selected content
      * @remarks
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
-    public abstract splitTableCell(): FlowOperation | null;
+    public abstract splitTableCell(content: FlowContent): FlowOperation | null;
     
     /**
      * Transforms the current selection so that its intended boundary is preserved after the specified

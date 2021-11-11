@@ -524,6 +524,38 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     }
 
     /**
+     * {@inheritDoc FlowSelection.formatTable}
+     * @override
+     */
+    public formatTable(): FlowOperation | null {
+        return null;
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.unformatTable}
+     * @override
+     */
+    public unformatTable(): FlowOperation | null {
+        return null;
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.formatTableColumn}
+     * @override
+     */
+    public formatTableColumn(): FlowOperation | null {
+        return null;
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.unformatTableColumn}
+     * @override
+     */
+    public unformatTableColumn(): FlowOperation | null {
+        return null;
+    }
+
+    /**
      * {@inheritDoc FlowSelection.insertTableColumnBefore}
      * @override
      */
