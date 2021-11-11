@@ -77,6 +77,8 @@ export * from "./operations/InsertTableColumn";
 export * from "./operations/RemoveTableColumn";
 export * from "./operations/InsertTableRow";
 export * from "./operations/RemoveTableRow";
+export * from "./operations/MergeTableCell";
+export * from "./operations/SplitTableCell";
 
 // Selection
 export * from "./selection/FlowSelection";
