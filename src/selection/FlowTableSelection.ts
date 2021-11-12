@@ -37,6 +37,7 @@ import { RemoveTableRow } from "../operations/RemoveTableRow";
 import { MergeTableCell } from "../operations/MergeTableCell";
 import { CellPosition } from "./CellPosition";
 import { SplitTableCell } from "../operations/SplitTableCell";
+import { FlowRangeSelection } from "./FlowRangeSelection";
 
 const Props = {
     position: nonNegativeIntegerType,
@@ -116,7 +117,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     ): BoxStyle {
         let result = BoxStyle.empty;
         this.#forEachCellContent(content, theme, (cellContent, cellTheme) => {
-            const innerResult = content.selectAll().getUniformBoxStyle(cellContent, cellTheme, diff);
+            const innerResult = selectAll(content).getUniformBoxStyle(cellContent, cellTheme, diff);
             result = result.merge(innerResult, diff);
         });
         return result;
@@ -133,7 +134,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     ): ParagraphStyle {
         let result = ParagraphStyle.empty;
         this.#forEachCellContent(content, theme, (cellContent, cellTheme) => {
-            const innerResult = content.selectAll().getUniformParagraphStyle(cellContent, cellTheme, diff);
+            const innerResult = selectAll(content).getUniformParagraphStyle(cellContent, cellTheme, diff);
             result = result.merge(innerResult, diff);
         });
         return result;
@@ -150,7 +151,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     ): TextStyle {
         let result = TextStyle.empty;
         this.#forEachCellContent(content, theme, (cellContent, cellTheme) => {
-            const innerResult = content.selectAll().getUniformTextStyle(cellContent, cellTheme, diff);
+            const innerResult = selectAll(content).getUniformTextStyle(cellContent, cellTheme, diff);
             result = result.merge(innerResult, diff);
         });
         return result;
@@ -166,7 +167,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     ): FlowOperation | null {
         const { target, theme } = options;
         return this.#updateAllCellContent(target, theme, (cellContent, cellTheme) => (
-            cellContent.selectAll().formatBox(style, { target: cellContent, theme: cellTheme })
+            selectAll(cellContent).formatBox(style, { target: cellContent, theme: cellTheme })
         ));
     }
 
@@ -176,7 +177,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      */
     public formatList(content: FlowContent, kind: "ordered" | "unordered" | null): FlowOperation | null {
         return this.#updateAllCellContent(content, undefined, cellContent => (
-            cellContent.selectAll().formatList(cellContent, kind)
+            selectAll(cellContent).formatList(cellContent, kind)
         ));
     }
 
@@ -190,7 +191,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     ): FlowOperation | null {
         const { target, theme } = options;
         return this.#updateAllCellContent(target, theme, (cellContent, cellTheme) => (
-            cellContent.selectAll().formatParagraph(style, { target: cellContent, theme: cellTheme })
+            selectAll(cellContent).formatParagraph(style, { target: cellContent, theme: cellTheme })
         ));
     }
 
@@ -204,7 +205,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     ): FlowOperation | null {
         const { target, theme } = options;
         return this.#updateAllCellContent(target, theme, (cellContent, cellTheme) => (
-            cellContent.selectAll().formatText(style, { target: cellContent, theme: cellTheme })
+            selectAll(cellContent).formatText(style, { target: cellContent, theme: cellTheme })
         ));
     }
 
@@ -214,7 +215,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      */
     public incrementListLevel(content: FlowContent, delta?: number): FlowOperation | null {
         return this.#updateAllCellContent(content, undefined, cellContent => (
-            cellContent.selectAll().incrementListLevel(cellContent, delta)
+            selectAll(cellContent).incrementListLevel(cellContent, delta)
         ));
     }
 
@@ -246,7 +247,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      */
     public setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null {
         return this.#updateAllCellContent(content, undefined, cellContent => (
-            cellContent.selectAll().setDynamicTextExpression(cellContent, expression)
+            selectAll(cellContent).setDynamicTextExpression(cellContent, expression)
         ));
     }
 
@@ -256,7 +257,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      */
     public setIcon(content: FlowContent, data: string): FlowOperation | null {
         return this.#updateAllCellContent(content, undefined, cellContent => (
-            cellContent.selectAll().setIcon(cellContent, data)
+            selectAll(cellContent).setIcon(cellContent, data)
         ));
     }
 
@@ -266,7 +267,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      */
     public setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null {
         return this.#updateAllCellContent(content, undefined, cellContent => (
-            cellContent.selectAll().setImageSource(cellContent, source)
+            selectAll(cellContent).setImageSource(cellContent, source)
         ));
     }
 
@@ -298,7 +299,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     public unformatBox(style: BoxStyle, options: TargetOptions = {}): FlowOperation | null {
         const { target, theme } = options;
         return this.#updateAllCellContent(target, theme, (cellContent, cellTheme) => (
-            cellContent.selectAll().unformatBox(style, { target: cellContent, theme: cellTheme })
+            selectAll(cellContent).unformatBox(style, { target: cellContent, theme: cellTheme })
         ));
     }
 
@@ -309,7 +310,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     public unformatParagraph(style: ParagraphStyle, options: TargetOptions = {}): FlowOperation | null {
         const { target, theme } = options;
         return this.#updateAllCellContent(target, theme, (cellContent, cellTheme) => (
-            cellContent.selectAll().unformatParagraph(style, { target: cellContent, theme: cellTheme })
+            selectAll(cellContent).unformatParagraph(style, { target: cellContent, theme: cellTheme })
         ));
     }
 
@@ -320,7 +321,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     public unformatText(style: TextStyle, options: TargetOptions = {}): FlowOperation | null {
         const { target, theme } = options;
         return this.#updateAllCellContent(target, theme, (cellContent, cellTheme) => (
-            cellContent.selectAll().unformatText(style, { target: cellContent, theme: cellTheme })
+            selectAll(cellContent).unformatText(style, { target: cellContent, theme: cellTheme })
         ));
     }
 
@@ -564,3 +565,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
         }
     }
 }
+
+const selectAll = (content: FlowContent): FlowSelection => new FlowRangeSelection({
+    range: FlowRange.at(0, content.size )
+});

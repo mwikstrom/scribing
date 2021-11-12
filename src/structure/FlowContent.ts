@@ -24,8 +24,6 @@ import { ParagraphStyle } from "../styles/ParagraphStyle";
 import { ParagraphTheme } from "../styles/ParagraphTheme";
 import { TextRun } from "../nodes/TextRun";
 import { TextStyle } from "../styles/TextStyle";
-import { FlowSelection } from "../selection/FlowSelection";
-import { FlowRangeSelection } from "../selection/FlowRangeSelection";
 
 const NodeArrayType = arrayType(lazyType(FlowNodeRegistry.close));
 const RestrictedNodeArrayType = NodeArrayType
@@ -281,11 +279,6 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
      */
     replace(remove: FlowRange, ...insert: FlowNode[]): FlowContent {
         return this.remove(remove).insert(remove.first, ...insert);
-    }
-
-    /** Gets a selection that span over all content */
-    selectAll(): FlowSelection {
-        return new FlowRangeSelection({ range: FlowRange.at(0, this.size )});
     }
 
     /** Gets a JSON value representation of the current content */

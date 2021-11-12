@@ -52,7 +52,6 @@
     "tslib": "^2.3.0",
     "typescript": "^4.3.5"
   },
-  "dependencies": {},
   "peerDependencies": {
     "paratype": "0.x"
   }

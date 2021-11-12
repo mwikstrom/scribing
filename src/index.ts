@@ -21,6 +21,11 @@ export * from "./styles/TextStyle";
 export * from "./styles/TableColumnStyle";
 export * from "./styles/TableStyle";
 
+// Theme
+export * from "./styles/FlowTheme";
+export * from "./styles/ParagraphTheme";
+export * from "./styles/DefaultFlowTheme";
+
 // Content
 export * from "./nodes/FlowNode";
 export * from "./selection/FlowCursor";
@@ -30,8 +35,8 @@ export * from "./structure/FlowContent";
 export * from "./structure/ImageSource";
 
 // Table structure
-export * from "./structure/FlowTableContent";
 export * from "./structure/FlowTableCell";
+export * from "./structure/FlowTableContent";
 
 // Nodes
 export * from "./nodes/InlineNode";
@@ -43,11 +48,6 @@ export * from "./nodes/DynamicText";
 export * from "./nodes/FlowIcon";
 export * from "./nodes/FlowImage";
 export * from "./nodes/FlowTable";
-
-// Theme
-export * from "./styles/ParagraphTheme";
-export * from "./styles/FlowTheme";
-export * from "./styles/DefaultFlowTheme";
 
 // Operations
 export * from "./operations/FlowOperation";
