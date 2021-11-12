@@ -16,7 +16,7 @@ export interface FlowTableCellProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [cols](./scribing.flowtablecellprops.cols.md) | number |  |
+|  [colSpan](./scribing.flowtablecellprops.colspan.md) | number |  |
 |  [content](./scribing.flowtablecellprops.content.md) | [FlowContent](./scribing.flowcontent.md) |  |
-|  [rows](./scribing.flowtablecellprops.rows.md) | number |  |
+|  [rowSpan](./scribing.flowtablecellprops.rowspan.md) | number |  |
 

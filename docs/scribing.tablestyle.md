@@ -27,7 +27,7 @@ export declare class TableStyle extends TableStyleBase implements Readonly<Table
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [ambient](./scribing.tablestyle.ambient.md) | <code>static</code> | [TableStyle](./scribing.tablestyle.md) | Gets the ambient table style |
-|  [classType](./scribing.tablestyle.classtype.md) | <code>static</code> | import("paratype").Type&lt;import("paratype").RecordObject&lt;Partial&lt;{ inline: boolean; source: string \| null; headerRows: number; footerRows: number; startHeaderColumns: number; endHeaderColumns: number; }&gt;, Partial&lt;{ inline: boolean; source: string \| null; headerRows: number; footerRows: number; startHeaderColumns: number; endHeaderColumns: number; }&gt;&gt; &amp; import("paratype").Equatable &amp; Readonly&lt;Partial&lt;{ inline: boolean; source: string \| null; headerRows: number; footerRows: number; startHeaderColumns: number; endHeaderColumns: number; }&gt;&gt; &amp; [TableStyle](./scribing.tablestyle.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.tablestyle.classtype.md) | <code>static</code> | import("paratype").Type&lt;import("paratype").RecordObject&lt;Partial&lt;{ inline: boolean; }&gt;, Partial&lt;{ inline: boolean; }&gt;&gt; &amp; import("paratype").Equatable &amp; Readonly&lt;Partial&lt;{ inline: boolean; }&gt;&gt; &amp; [TableStyle](./scribing.tablestyle.md)<!-- -->&gt; | The run-time type that represents this class |
 |  [empty](./scribing.tablestyle.empty.md) | <code>static</code> | [TableStyle](./scribing.tablestyle.md) | Gets an empty table style |
 |  [isEmpty](./scribing.tablestyle.isempty.md) |  | boolean | Determines whether the current style is empty |
 

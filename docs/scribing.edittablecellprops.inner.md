@@ -4,7 +4,7 @@
 
 ## EditTableCellProps.inner property
 
-The inner operation that shall be applied on the table cell's content
+The inner operation that shall be applied to the table cell
 
 <b>Signature:</b>
 

@@ -9,7 +9,7 @@ Marks the specified upload as completed
 <b>Signature:</b>
 
 ```typescript
-completeUpload(id: string, url: string): FlowNode;
+abstract completeUpload(id: string, url: string): FlowNode;
 ```
 
 ## Parameters

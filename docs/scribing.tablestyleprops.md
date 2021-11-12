@@ -16,10 +16,5 @@ export interface TableStyleProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [endHeaderColumns?](./scribing.tablestyleprops.endheadercolumns.md) | number | <i>(Optional)</i> |
-|  [footerRows?](./scribing.tablestyleprops.footerrows.md) | number | <i>(Optional)</i> |
-|  [headerRows?](./scribing.tablestyleprops.headerrows.md) | number | <i>(Optional)</i> |
 |  [inline?](./scribing.tablestyleprops.inline.md) | boolean | <i>(Optional)</i> Determines whether the table shall be rendered inline |
-|  [source?](./scribing.tablestyleprops.source.md) | string \| null | <i>(Optional)</i> The script that act as a data source for table body rows |
-|  [startHeaderColumns?](./scribing.tablestyleprops.startheadercolumns.md) | number | <i>(Optional)</i> |
 

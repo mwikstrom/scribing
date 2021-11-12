@@ -16,8 +16,7 @@ export interface EditTableCellProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [column](./scribing.edittablecellprops.column.md) | number | The table column to edit |
-|  [inner](./scribing.edittablecellprops.inner.md) | [FlowOperation](./scribing.flowoperation.md) | The inner operation that shall be applied on the table cell's content |
+|  [cell](./scribing.edittablecellprops.cell.md) | [CellPosition](./scribing.cellposition.md) | The table cell to edit |
+|  [inner](./scribing.edittablecellprops.inner.md) | [FlowOperation](./scribing.flowoperation.md) | The inner operation that shall be applied to the table cell |
 |  [position](./scribing.edittablecellprops.position.md) | number | The table position |
-|  [row](./scribing.edittablecellprops.row.md) | number | The table row to edit |
 

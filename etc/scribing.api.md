@@ -5,7 +5,9 @@
 ```ts
 
 import { Equatable } from 'paratype';
+import { ErrorCallback } from 'paratype';
 import { JsonValue } from 'paratype';
+import { PathArray } from 'paratype';
 import { RecordConstructor } from 'paratype';
 import { RecordObject } from 'paratype';
 import { Type } from 'paratype';
@@ -77,9 +79,105 @@ export type BoxVariant = (typeof BOX_VARIANTS)[number];
 export const BoxVariantType: Type<BoxVariant>;
 
 // @public @sealed
+export class CellPosition extends CellPositionBase implements Readonly<CellPositionProps> {
+    static at(row: number, column: number): CellPosition;
+    static readonly classType: Type<CellPosition>;
+    compare(other: CellPositionProps): -1 | 0 | 1;
+    equals(other: CellPositionProps): boolean;
+    static fromData(data: CellPositionData): CellPosition;
+    next(columnCount?: number, rowCount?: number): CellPosition | null;
+    // (undocumented)
+    static parse(input: string, throwOnError?: boolean): CellPosition | null;
+    // (undocumented)
+    static parse(input: string, throwOnError: true): CellPosition;
+    // (undocumented)
+    static parseColumnIndex(input: string, throwOnError?: boolean): number | null;
+    // (undocumented)
+    static parseColumnIndex(input: string, throwOnError: true): number;
+    // (undocumented)
+    static parseRowIndex(input: string, throwOnError?: boolean): number | null;
+    // (undocumented)
+    static parseRowIndex(input: string, throwOnError: true): number;
+    // (undocumented)
+    static stringifyColumnIndex(input: number, throwOnError?: boolean): string | null;
+    // (undocumented)
+    static stringifyColumnIndex(input: number, throwOnError: true): string;
+    // (undocumented)
+    static stringifyRowIndex(input: number, throwOnError?: boolean): string | null;
+    // (undocumented)
+    static stringifyRowIndex(input: number, throwOnError: true): string;
+    toString(): string;
+    valueOf(): string;
+}
+
+// @public
+export const CellPositionBase: RecordConstructor<CellPositionProps, Object, string>;
+
+// @public
+export type CellPositionData = string;
+
+// @public
+export interface CellPositionProps {
+    column: number;
+    row: number;
+}
+
+// @public @sealed
+export class CellRange extends CellRangeBase implements Readonly<CellRangeProps> {
+    // (undocumented)
+    afterInsertColumn(index: number, count: number): CellRange;
+    // (undocumented)
+    afterInsertRow(index: number, count: number): CellRange;
+    // (undocumented)
+    afterRemoveColumn(index: number, count: number): CellRange | null;
+    // (undocumented)
+    afterRemoveRow(index: number, count: number): CellRange | null;
+    static at(anchor: CellPosition, focus?: CellPosition): CellRange;
+    static readonly classType: Type<CellRange>;
+    // (undocumented)
+    get columnRange(): FlowRange;
+    equals(other: CellRangeProps): boolean;
+    // (undocumented)
+    get firstColumnIndex(): number;
+    // (undocumented)
+    get firstRowIndex(): number;
+    static fromData(data: CellRangeData): CellRange;
+    // (undocumented)
+    get isSingleCell(): boolean;
+    // (undocumented)
+    get lastColumnIndex(): number;
+    // (undocumented)
+    get lastRowIndex(): number;
+    // (undocumented)
+    static parse(input: string, throwOnError?: boolean): CellRange | null;
+    // (undocumented)
+    static parse(input: string, throwOnError: true): CellRange;
+    // (undocumented)
+    get rowRange(): FlowRange;
+    // (undocumented)
+    setAxisRange(axis: "column" | "row", value: FlowRange): CellRange;
+    // (undocumented)
+    setAxisRange(axis: "column" | "row", value: FlowRange | null): CellRange | null;
+    toString(): string;
+    valueOf(): string;
+}
+
+// @public
+export const CellRangeBase: RecordConstructor<CellRangeProps, Object, string>;
+
+// @public
+export type CellRangeData = string;
+
+// @public
+export interface CellRangeProps {
+    anchor: CellPosition;
+    focus: CellPosition;
+}
+
+// @public @sealed
 export class CompleteUpload extends CompleteUploadBase implements CompleteUploadProps {
-    afterInsertion(): this;
-    afterRemoval(): this;
+    afterInsertFlow(): this;
+    afterRemoveFlow(): this;
     // @override
     applyToContent(content: FlowContent): FlowContent;
     // @override
@@ -113,7 +211,6 @@ export class DefaultFlowTheme extends DefaultFlowThemeBase {
     constructor();
     static readonly classType: Type<RecordObject<    {}, "default"> & Equatable & Readonly<{}> & DefaultFlowTheme>;
     getBoxTheme(style: BoxStyle): FlowTheme;
-    getCellTheme(variant: TableCellVariant): FlowTheme;
     getParagraphTheme(variant: ParagraphVariant): ParagraphTheme;
     static get instance(): DefaultFlowTheme;
 }
@@ -184,19 +281,17 @@ export const EditTableCellBase: RecordConstructor<EditTableCellProps, NestedFlow
 
 // @public
 export interface EditTableCellData {
-    at: number;
-    column: number;
+    cell: CellPosition;
     edit: "cell";
     op: FlowOperation;
-    row: number;
+    table: number;
 }
 
 // @public
 export interface EditTableCellProps {
-    column: number;
+    cell: CellPosition;
     inner: FlowOperation;
     position: number;
-    row: number;
 }
 
 // @public
@@ -205,8 +300,8 @@ export const FLOW_COLORS: readonly ["default", "subtle", "primary", "secondary",
 // @public @sealed
 export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps> {
     constructor(props?: FlowBatchProps);
-    afterInsertion(other: FlowRange): FlowOperation | null;
-    afterRemoval(other: FlowRange): FlowOperation | null;
+    afterInsertFlow(other: FlowRange): FlowOperation | null;
+    afterRemoveFlow(other: FlowRange): FlowOperation | null;
     applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent;
     // @override
     applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null;
@@ -316,6 +411,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     static readonly classType: Type<FlowContent>;
     completeUpload(id: string, url: string): FlowContent;
     copy(range: FlowRange): FlowContent;
+    static get empty(): FlowContent;
     formatBox(range: FlowRange, style: BoxStyle, theme?: FlowTheme): FlowContent;
     formatParagraph(range: FlowRange, style: ParagraphStyle, theme?: FlowTheme): FlowContent;
     formatText(range: FlowRange, style: TextStyle, theme?: FlowTheme): FlowContent;
@@ -328,7 +424,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     peek(position?: number): FlowCursor;
     remove(range: FlowRange): FlowContent;
     replace(remove: FlowRange, ...insert: FlowNode[]): FlowContent;
-    selectAll(): FlowRangeSelection;
+    selectAll(): FlowSelection;
     get size(): number;
     toJsonValue(): JsonValue;
     unformatAmbient(theme: FlowTheme): FlowContent;
@@ -464,7 +560,7 @@ export interface FlowImageProps {
 // @public
 export abstract class FlowNode {
     static readonly baseType: Type<FlowNode>;
-    completeUpload(id: string, url: string): FlowNode;
+    abstract completeUpload(id: string, url: string): FlowNode;
     abstract formatBox(style: BoxStyle, theme?: FlowTheme): FlowNode;
     abstract formatParagraph(style: ParagraphStyle, theme?: FlowTheme): FlowNode;
     abstract formatText(style: TextStyle, theme?: FlowTheme): FlowNode;
@@ -483,9 +579,9 @@ export abstract class FlowNode {
 // @public
 export abstract class FlowOperation {
     // @internal
-    abstract afterInsertion(other: FlowRange): FlowOperation | null;
+    abstract afterInsertFlow(other: FlowRange): FlowOperation | null;
     // @internal
-    abstract afterRemoval(other: FlowRange): FlowOperation | null;
+    abstract afterRemoveFlow(other: FlowRange): FlowOperation | null;
     abstract applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent;
     abstract applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null;
     static readonly baseType: Type<FlowOperation>;
@@ -530,9 +626,9 @@ export interface FlowRangeProps {
 // @public @sealed
 export class FlowRangeSelection extends FlowRangeSelectionBase implements Readonly<FlowRangeSelectionProps> {
     // @override
-    afterInsertion(range: FlowRange, mine: boolean): FlowSelection | null;
+    afterInsertFlow(range: FlowRange, mine: boolean): FlowSelection | null;
     // @override
-    afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
+    afterRemoveFlow(range: FlowRange, mine: boolean): FlowSelection | null;
     static readonly classType: Type<RecordObject<FlowRangeSelectionProps, FlowRangeSelectionProps> & Equatable & Readonly<FlowRangeSelectionProps> & FlowRangeSelection>;
     // @override
     formatBox(style: BoxStyle): FlowOperation | null;
@@ -540,6 +636,10 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     formatList(content: FlowContent, kind: "ordered" | "unordered" | null): FlowOperation | null;
     // @override
     formatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
+    // @override
+    formatTable(): FlowOperation | null;
+    // @override
+    formatTableColumn(): FlowOperation | null;
     // @override
     formatText(style: TextStyle): FlowOperation | null;
     // @override
@@ -553,9 +653,23 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     // @override
     insert(content: FlowContent, options?: TargetOptions): FlowOperation | null;
     // @override
+    insertTableColumnAfter(): FlowOperation | null;
+    // @override
+    insertTableColumnBefore(): FlowOperation | null;
+    // @override
+    insertTableRowAfter(): FlowOperation | null;
+    // @override
+    insertTableRowBefore(): FlowOperation | null;
+    // @override
     get isCollapsed(): boolean;
     // @override
+    mergeTableCell(): FlowOperation | null;
+    // @override
     remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
+    // @override
+    removeTableColumn(): FlowOperation | null;
+    // @override
+    removeTableRow(): FlowOperation | null;
     // @override
     setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null;
     // @override
@@ -563,11 +677,17 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     // @override
     setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
     // @override
+    splitTableCell(): FlowOperation | null;
+    // @override
     transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;
     // @override
     unformatBox(style: BoxStyle): FlowOperation | null;
     // @override
     unformatParagraph(style: ParagraphStyle): FlowOperation | null;
+    // @override
+    unformatTable(): FlowOperation | null;
+    // @override
+    unformatTableColumn(): FlowOperation | null;
     // @override
     unformatText(style: TextStyle): FlowOperation | null;
 }
@@ -586,14 +706,16 @@ export type FlowRangeTuple = [number, number];
 // @public
 export abstract class FlowSelection {
     // @internal
-    abstract afterInsertion(range: FlowRange, mine: boolean): FlowSelection | null;
+    abstract afterInsertFlow(range: FlowRange, mine: boolean): FlowSelection | null;
     // @internal
-    abstract afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
+    abstract afterRemoveFlow(range: FlowRange, mine: boolean): FlowSelection | null;
     static readonly baseType: Type<FlowSelection>;
     decrementListLevel(content: FlowContent, delta?: number): FlowOperation | null;
     abstract formatBox(style: BoxStyle, options?: TargetOptions): FlowOperation | null;
     abstract formatList(content: FlowContent, kind: "ordered" | "unordered" | null): FlowOperation | null;
     abstract formatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
+    abstract formatTable(style: TableStyle, options?: TargetOptions): FlowOperation | null;
+    abstract formatTableColumn(style: TableColumnStyle, options?: TargetOptions): FlowOperation | null;
     abstract formatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
     static fromJsonValue(value: JsonValue): FlowSelection;
     abstract getUniformBoxStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof BoxStyleProps>): BoxStyle;
@@ -601,66 +723,57 @@ export abstract class FlowSelection {
     abstract getUniformTextStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
     abstract incrementListLevel(content: FlowContent, delta?: number): FlowOperation | null;
     abstract insert(content: FlowContent, options?: TargetOptions): FlowOperation | null;
+    abstract insertTableColumnAfter(content: FlowContent, count?: number): FlowOperation | null;
+    abstract insertTableColumnBefore(content: FlowContent, count?: number): FlowOperation | null;
+    abstract insertTableRowAfter(content: FlowContent, count?: number): FlowOperation | null;
+    abstract insertTableRowBefore(content: FlowContent, count?: number): FlowOperation | null;
     abstract get isCollapsed(): boolean;
+    abstract mergeTableCell(content: FlowContent): FlowOperation | null;
     abstract remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
+    abstract removeTableColumn(content: FlowContent): FlowOperation | null;
+    abstract removeTableRow(content: FlowContent): FlowOperation | null;
     abstract setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null;
     abstract setIcon(content: FlowContent, data: string): FlowOperation | null;
     abstract setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
+    abstract splitTableCell(content: FlowContent): FlowOperation | null;
     toJsonValue(): JsonValue;
     abstract transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;
-    abstract unformatBox(style: BoxStyle): FlowOperation | null;
-    abstract unformatParagraph(style: ParagraphStyle): FlowOperation | null;
-    abstract unformatText(style: TextStyle): FlowOperation | null;
+    abstract unformatBox(style: BoxStyle, options?: TargetOptions): FlowOperation | null;
+    abstract unformatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
+    abstract unformatTable(style: TableStyle, options?: TargetOptions): FlowOperation | null;
+    abstract unformatTableColumn(style: TableColumnStyle, options?: TargetOptions): FlowOperation | null;
+    abstract unformatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
 }
 
 // @public @sealed
 export class FlowTable extends FlowTableBase {
-    constructor(props: FlowTableProps);
     static readonly classType: Type<FlowTable>;
     completeUpload(id: string, url: string): FlowNode;
     formatBox(style: BoxStyle, theme?: FlowTheme): this;
+    // (undocumented)
+    formatColumn(index: number, style: TableColumnStyle): FlowTable;
     formatParagraph(style: ParagraphStyle, theme?: FlowTheme): this;
     formatText(style: TextStyle, theme?: FlowTheme): this;
     static fromData(data: FlowTableData): FlowTable;
-    // (undocumented)
-    getCell(row: number, column: number): FlowTableCell | null;
-    // (undocumented)
-    getCellContent(row: number, column: number): FlowContent;
-    // (undocumented)
-    getCellTheme(row: number, column: number, outer?: FlowTheme): FlowTheme;
-    // (undocumented)
-    getCellVariant(row: number, column: number): TableCellVariant;
-    // (undocumented)
-    getColumnCount(group?: TableColumnGroup): number;
-    // (undocumented)
-    getColumnGroup(row: number, column: number): TableColumnGroup;
-    // (undocumented)
-    getColumnIndex(row: number, column: number): number;
-    // (undocumented)
-    getColumnStartIndex(group?: TableColumnGroup): number;
-    // (undocumented)
-    getRow(row: number, column: number): FlowTableRow | null;
-    // (undocumented)
-    getRowCellIndex(row: number, column: number): number;
-    // (undocumented)
-    getRowCount(group?: TableRowGroup): number;
-    // (undocumented)
-    getRowGroup(row: number, column: number): TableRowGroup;
-    // (undocumented)
-    getRowIndex(row: number, column: number): number;
-    // (undocumented)
-    getRows(group?: TableRowGroup): Iterable<FlowTableRow>;
-    // (undocumented)
-    getRowStartIndex(group?: TableRowGroup): number;
+    // @internal (undocumented)
+    getCellTheme(position: CellPosition, outer?: FlowTheme): FlowTheme;
     // @override
     getUniformParagraphStyle(theme?: ParagraphTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle | null;
     // @override
     getUniformTextStyle(theme?: ParagraphTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
     // (undocumented)
-    replaceCellContent(row: number, column: number, newContent: FlowContent): this;
+    insertColumn(index: number, count?: number): FlowTable;
+    // (undocumented)
+    insertRow(index: number, count?: number): FlowTable;
+    // (undocumented)
+    removeColumn(index: number, count?: number): FlowTable;
+    // (undocumented)
+    removeRow(index: number, count?: number): FlowTable;
     readonly size = 1;
     unformatAmbient(theme: ParagraphTheme): this;
     unformatBox(style: BoxStyle): this;
+    // (undocumented)
+    unformatColumn(index: number, style: TableColumnStyle): FlowTable;
     unformatParagraph(style: ParagraphStyle): this;
     unformatText(style: TextStyle): this;
 }
@@ -672,29 +785,109 @@ export const FlowTableBase: RecordConstructor<FlowTableProps, FlowNode, FlowTabl
 export class FlowTableCell extends FlowTableCellBase {
     static readonly classType: Type<FlowTableCell>;
     static fromData(data: FlowTableCellData): FlowTableCell;
+    // (undocumented)
+    getSpannedPositions(root: CellPosition, includeSelf?: boolean): CellPosition[];
 }
 
 // @public
 export const FlowTableCellBase: RecordConstructor<FlowTableCellProps, Object, FlowTableCellData>;
 
 // @public
-export interface FlowTableCellData {
-    // (undocumented)
-    cols?: number;
-    // (undocumented)
+export type FlowTableCellData = FlowContent | {
     content: FlowContent;
-    // (undocumented)
-    rows?: number;
-}
+    colSpan?: number;
+    rowSpan?: number;
+};
 
 // @public
 export interface FlowTableCellProps {
     // (undocumented)
-    cols: number;
+    colSpan: number;
     // (undocumented)
     content: FlowContent;
     // (undocumented)
-    rows: number;
+    rowSpan: number;
+}
+
+// @public @sealed
+export class FlowTableCellSelection extends FlowTableCellSelectionBase {
+    static readonly classType: Type<FlowTableCellSelection>;
+    static fromData(data: FlowTableCellSelectionData): FlowTableCellSelection;
+    // @override
+    protected getInnerContentFromNode(node: FlowNode): FlowContent;
+    // @override
+    protected getInnerSelection(): FlowSelection;
+    // @override
+    protected getInnerThemeFromNode(node: FlowNode, outer?: FlowTheme): FlowTheme;
+    // @override
+    protected getOuterOperation(inner: FlowOperation): FlowOperation;
+    // @override
+    protected setInnerSelection(value: FlowSelection): NestedFlowSelection;
+}
+
+// @public
+export const FlowTableCellSelectionBase: RecordConstructor<FlowTableCellSelectionProps, NestedFlowSelection, FlowTableCellSelectionData>;
+
+// @public
+export interface FlowTableCellSelectionData {
+    // (undocumented)
+    cell: CellPosition;
+    // (undocumented)
+    content: FlowSelection;
+    // (undocumented)
+    table: number;
+}
+
+// @public
+export interface FlowTableCellSelectionProps {
+    // (undocumented)
+    cell: CellPosition;
+    // (undocumented)
+    content: FlowSelection;
+    // (undocumented)
+    position: number;
+}
+
+// @public @sealed (undocumented)
+export class FlowTableContent {
+    // Warning: (ae-forgotten-export) The symbol "FlowTableContentOptions" needs to be exported by the entry point index.d.ts
+    constructor(cells?: Iterable<[string, FlowTableCell]>, options?: FlowTableContentOptions);
+    // (undocumented)
+    static readonly classType: Type<FlowTableContent>;
+    // (undocumented)
+    get columnCount(): number;
+    // (undocumented)
+    get defaultCellContent(): FlowContent;
+    // (undocumented)
+    static fromJsonValue(value: JsonValue, error?: ErrorCallback, path?: PathArray): FlowTableContent;
+    // (undocumented)
+    getCell(position: CellPosition, throwOnError?: boolean): FlowTableCell | null;
+    // (undocumented)
+    getCell(position: CellPosition, throwOnError: true): FlowTableCell;
+    // (undocumented)
+    insertColumn(index: number, count?: number): FlowTableContent;
+    // (undocumented)
+    insertRow(index: number, count?: number): FlowTableContent;
+    // (undocumented)
+    map<T>(callback: (cell: FlowTableCell, position: CellPosition) => T): T[];
+    // (undocumented)
+    merge(position: CellPosition, colSpan: number, rowSpan: number): FlowTableContent;
+    // (undocumented)
+    get positions(): readonly CellPosition[];
+    // (undocumented)
+    removeColumn(index: number, count?: number): FlowTableContent;
+    // (undocumented)
+    removeRow(index: number, count?: number): FlowTableContent;
+    // (undocumented)
+    get rowCount(): number;
+    // (undocumented)
+    setContent(position: CellPosition, content: FlowContent): FlowTableContent;
+    // (undocumented)
+    split(position: CellPosition): FlowTableContent;
+    // (undocumented)
+    toJsonValue(error?: ErrorCallback, path?: PathArray): JsonValue;
+    // (undocumented)
+    updateAllContent(callback: (content: FlowContent, position: CellPosition) => FlowContent): FlowTableContent;
 }
 
 // @public
@@ -704,35 +897,106 @@ export interface FlowTableData {
     // (undocumented)
     style?: TableStyle;
     // (undocumented)
-    table: FlowTableRow[];
+    table: FlowTableContent;
 }
 
 // @public
 export interface FlowTableProps {
     // (undocumented)
-    columns: readonly TableColumnStyle[];
+    columns: Map<string, TableColumnStyle>;
     // (undocumented)
-    rows: readonly FlowTableRow[];
+    content: FlowTableContent;
     // (undocumented)
     style: TableStyle;
 }
 
 // @public @sealed
-export class FlowTableRow extends FlowTableRowBase {
-    static readonly classType: Type<FlowTableRow>;
-    static fromData(data: FlowTableRowData): FlowTableRow;
+export class FlowTableSelection extends FlowTableSelectionBase {
+    // @override
+    afterInsertFlow(range: FlowRange): FlowSelection | null;
+    // @override
+    afterRemoveFlow(range: FlowRange, mine: boolean): FlowSelection | null;
+    static readonly classType: Type<FlowTableSelection>;
+    // @override
+    formatBox(style: BoxStyle, options?: TargetOptions): FlowOperation | null;
+    // @override
+    formatList(content: FlowContent, kind: "ordered" | "unordered" | null): FlowOperation | null;
+    // @override
+    formatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
+    // @override
+    formatTable(style: TableStyle): FlowOperation | null;
+    // @override
+    formatTableColumn(style: TableColumnStyle): FlowOperation | null;
+    // @override
+    formatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
+    static fromData(data: FlowTableSelectionData): FlowTableSelection;
+    // @override
+    getUniformBoxStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof BoxStyleProps>): BoxStyle;
+    // @override
+    getUniformParagraphStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle;
+    // @override
+    getUniformTextStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
+    // @override
+    incrementListLevel(content: FlowContent, delta?: number): FlowOperation | null;
+    // @override
+    insert(): FlowOperation | null;
+    // @override
+    insertTableColumnAfter(content: FlowContent, count?: number): FlowOperation | null;
+    // @override
+    insertTableColumnBefore(_: FlowContent, count?: number): FlowOperation | null;
+    // @override
+    insertTableRowAfter(content: FlowContent, count?: number): FlowOperation | null;
+    // @override
+    insertTableRowBefore(content: FlowContent, count?: number): FlowOperation | null;
+    // @override
+    get isCollapsed(): boolean;
+    // @override
+    mergeTableCell(): FlowOperation | null;
+    // @override
+    remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
+    // @override
+    removeTableColumn(): FlowOperation | null;
+    // @override
+    removeTableRow(): FlowOperation | null;
+    // @override
+    setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null;
+    // @override
+    setIcon(content: FlowContent, data: string): FlowOperation | null;
+    // @override
+    setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
+    // @override
+    splitTableCell(): FlowOperation | null;
+    // @override
+    transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;
+    // @override
+    unformatBox(style: BoxStyle, options?: TargetOptions): FlowOperation | null;
+    // @override
+    unformatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
+    // @override
+    unformatTable(style: TableStyle): FlowOperation | null;
+    // @override
+    unformatTableColumn(style: TableColumnStyle): FlowOperation | null;
+    // @override
+    unformatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
 }
 
 // @public
-export const FlowTableRowBase: RecordConstructor<FlowTableRowProps, Object, FlowTableRowData>;
+export const FlowTableSelectionBase: RecordConstructor<FlowTableSelectionProps, FlowSelection, FlowTableSelectionData>;
 
 // @public
-export type FlowTableRowData = readonly FlowTableCell[];
-
-// @public
-export interface FlowTableRowProps {
+export interface FlowTableSelectionData {
     // (undocumented)
-    cells: readonly FlowTableCell[];
+    range: CellRange;
+    // (undocumented)
+    table: number;
+}
+
+// @public
+export interface FlowTableSelectionProps {
+    // (undocumented)
+    position: number;
+    // (undocumented)
+    range: CellRange;
 }
 
 // @public
@@ -740,15 +1004,14 @@ export abstract class FlowTheme {
     static readonly baseType: Type<FlowTheme>;
     static fromJsonValue(value: JsonValue): FlowTheme;
     abstract getBoxTheme(style: BoxStyle): FlowTheme;
-    abstract getCellTheme(variant: TableCellVariant): FlowTheme;
     abstract getParagraphTheme(variant: ParagraphVariant): ParagraphTheme;
     toJsonValue(): JsonValue;
 }
 
 // @public @sealed
 export class FormatBox extends FormatBoxBase implements Readonly<FormatBoxProps> {
-    afterInsertion(other: FlowRange): FlowOperation | null;
-    afterRemoval(other: FlowRange): FlowOperation | null;
+    afterInsertFlow(other: FlowRange): FlowOperation | null;
+    afterRemoveFlow(other: FlowRange): FlowOperation | null;
     // @override
     applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent;
     // @override
@@ -778,8 +1041,8 @@ export interface FormatBoxProps {
 
 // @public @sealed
 export class FormatParagraph extends FormatParagraphBase implements Readonly<FormatParagraphProps> {
-    afterInsertion(other: FlowRange): FlowOperation | null;
-    afterRemoval(other: FlowRange): FlowOperation | null;
+    afterInsertFlow(other: FlowRange): FlowOperation | null;
+    afterRemoveFlow(other: FlowRange): FlowOperation | null;
     // @override
     applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent;
     // @override
@@ -808,9 +1071,91 @@ export interface FormatParagraphProps {
 }
 
 // @public @sealed
+export class FormatTable extends FormatTableBase implements FormatTableProps {
+    // (undocumented)
+    afterInsertColumn(): TableOperation | null;
+    // (undocumented)
+    afterInsertRow(): TableOperation | null;
+    // (undocumented)
+    afterRemoveColumn(): TableOperation | null;
+    // (undocumented)
+    afterRemoveRow(): TableOperation | null;
+    // (undocumented)
+    protected applyToCellRange(range: CellRange): CellRange | null;
+    // (undocumented)
+    protected applyToTable(table: FlowTable): FlowTable;
+    static readonly classType: Type<FormatTable>;
+    static fromData(input: FormatTableData): FormatTable;
+    // (undocumented)
+    protected invertForTable(): FlowOperation | null;
+    // (undocumented)
+    protected mergeNextInSameTable(next: TableOperation): FlowOperation | null;
+    // (undocumented)
+    protected transformInSameTable(other: TableOperation): FlowOperation | null;
+}
+
+// @public
+export const FormatTableBase: RecordConstructor<FormatTableProps, TableOperation, FormatTableData>;
+
+// @public @sealed
+export class FormatTableColumn extends FormatTableColumnBase implements FormatTableColumnProps {
+    // (undocumented)
+    afterInsertColumn(index: number, count: number): TableOperation | null;
+    // (undocumented)
+    afterInsertRow(): TableOperation | null;
+    // (undocumented)
+    afterRemoveColumn(index: number, count: number): TableOperation | null;
+    // (undocumented)
+    afterRemoveRow(): TableOperation | null;
+    // (undocumented)
+    protected applyToCellRange(range: CellRange): CellRange | null;
+    // (undocumented)
+    protected applyToTable(table: FlowTable): FlowTable;
+    static readonly classType: Type<FormatTableColumn>;
+    static fromData(input: FormatTableColumnData): FormatTableColumn;
+    // (undocumented)
+    protected invertForTable(): FlowOperation | null;
+    // (undocumented)
+    protected mergeNextInSameTable(next: TableOperation): FlowOperation | null;
+    // (undocumented)
+    protected transformInSameTable(other: TableOperation): FlowOperation | null;
+}
+
+// @public
+export const FormatTableColumnBase: RecordConstructor<FormatTableColumnProps, TableOperation, FormatTableColumnData>;
+
+// @public
+export interface FormatTableColumnData {
+    column: number;
+    format: "table_column";
+    style: TableColumnStyle;
+    table: number;
+}
+
+// @public
+export interface FormatTableColumnProps {
+    column: number;
+    position: number;
+    style: TableColumnStyle;
+}
+
+// @public
+export interface FormatTableData {
+    at: number;
+    format: "table";
+    style: TableStyle;
+}
+
+// @public
+export interface FormatTableProps {
+    position: number;
+    style: TableStyle;
+}
+
+// @public @sealed
 export class FormatText extends FormatTextBase implements Readonly<FormatTextProps> {
-    afterInsertion(other: FlowRange): FlowOperation | null;
-    afterRemoval(other: FlowRange): FlowOperation | null;
+    afterInsertFlow(other: FlowRange): FlowOperation | null;
+    afterRemoveFlow(other: FlowRange): FlowOperation | null;
     // @override
     applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent;
     // @override
@@ -917,6 +1262,7 @@ export interface ImageSourceProps {
 
 // @public
 export abstract class InlineNode extends FlowNode {
+    completeUpload(id: string, url: string): FlowNode;
     formatBox(): this;
     formatParagraph(): this;
     formatText(style: TextStyle): this;
@@ -934,8 +1280,8 @@ export abstract class InlineNode extends FlowNode {
 
 // @public @sealed
 export class InsertContent extends InsertContentBase implements InsertContentProps {
-    afterInsertion(other: FlowRange): FlowOperation | null;
-    afterRemoval(other: FlowRange): FlowOperation | null;
+    afterInsertFlow(other: FlowRange): FlowOperation | null;
+    afterRemoveFlow(other: FlowRange): FlowOperation | null;
     applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent;
     // @override
     applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null;
@@ -962,6 +1308,90 @@ export interface InsertContentData {
 export interface InsertContentProps {
     content: FlowContent;
     position: number;
+}
+
+// @public @sealed
+export class InsertTableColumn extends InsertTableColumnBase implements InsertTableColumnProps {
+    // (undocumented)
+    afterInsertColumn(index: number, count: number): TableOperation | null;
+    // (undocumented)
+    afterInsertRow(): TableOperation | null;
+    // (undocumented)
+    afterRemoveColumn(index: number, count: number): TableOperation | null;
+    // (undocumented)
+    afterRemoveRow(): TableOperation | null;
+    // (undocumented)
+    protected applyToCellRange(range: CellRange): CellRange | null;
+    // (undocumented)
+    protected applyToTable(table: FlowTable): FlowTable;
+    static readonly classType: Type<InsertTableColumn>;
+    static fromData(input: InsertTableColumnData): InsertTableColumn;
+    // (undocumented)
+    protected invertForTable(): FlowOperation | null;
+    // (undocumented)
+    protected mergeNextInSameTable(): FlowOperation | null;
+    // (undocumented)
+    protected transformInSameTable(other: TableOperation): FlowOperation | null;
+}
+
+// @public
+export const InsertTableColumnBase: RecordConstructor<InsertTableColumnProps, TableOperation, InsertTableColumnData>;
+
+// @public
+export interface InsertTableColumnData {
+    column: number;
+    count?: number;
+    insert: "table_column";
+    table: number;
+}
+
+// @public
+export interface InsertTableColumnProps {
+    column: number;
+    count: number;
+    position: number;
+}
+
+// @public @sealed
+export class InsertTableRow extends InsertTableRowBase implements InsertTableRowProps {
+    // (undocumented)
+    afterInsertColumn(): TableOperation | null;
+    // (undocumented)
+    afterInsertRow(index: number, count: number): TableOperation | null;
+    // (undocumented)
+    afterRemoveColumn(): TableOperation | null;
+    // (undocumented)
+    afterRemoveRow(index: number, count: number): TableOperation | null;
+    // (undocumented)
+    protected applyToCellRange(range: CellRange): CellRange | null;
+    // (undocumented)
+    protected applyToTable(table: FlowTable): FlowTable;
+    static readonly classType: Type<InsertTableRow>;
+    static fromData(input: InsertTableRowData): InsertTableRow;
+    // (undocumented)
+    protected invertForTable(): FlowOperation | null;
+    // (undocumented)
+    protected mergeNextInSameTable(): FlowOperation | null;
+    // (undocumented)
+    protected transformInSameTable(other: TableOperation): FlowOperation | null;
+}
+
+// @public
+export const InsertTableRowBase: RecordConstructor<InsertTableRowProps, TableOperation, InsertTableRowData>;
+
+// @public
+export interface InsertTableRowData {
+    count?: number;
+    insert: "table_row";
+    row: number;
+    table: number;
+}
+
+// @public
+export interface InsertTableRowProps {
+    count: number;
+    position: number;
+    row: number;
 }
 
 // @public
@@ -1002,12 +1432,64 @@ export type ListMarkerKind = OrderedListMarkerKind | UnorderedListMarkerKind;
 // @public
 export const ListMarkerKindType: Type<ListMarkerKind>;
 
+// @public @sealed
+export class MergeTableCell extends MergeTableCellBase implements MergeTableCellProps {
+    // (undocumented)
+    afterInsertAxis(axis: "row" | "column", index: number, count: number): TableOperation | null;
+    // (undocumented)
+    afterInsertColumn(index: number, count: number): TableOperation | null;
+    // (undocumented)
+    afterInsertRow(index: number, count: number): TableOperation | null;
+    // (undocumented)
+    afterRemoveAxis(axis: "row" | "column", index: number, count: number): TableOperation | null;
+    // (undocumented)
+    afterRemoveColumn(index: number, count: number): TableOperation | null;
+    // (undocumented)
+    afterRemoveRow(index: number, count: number): TableOperation | null;
+    // (undocumented)
+    protected applyToCellRange(range: CellRange): CellRange | null;
+    // (undocumented)
+    protected applyToTable(table: FlowTable): FlowTable;
+    static readonly classType: Type<MergeTableCell>;
+    static fromData(input: MergeTableCellData): MergeTableCell;
+    // (undocumented)
+    getAxisRange(axis: "row" | "column"): FlowRange;
+    // (undocumented)
+    protected invertForTable(): FlowOperation | null;
+    // (undocumented)
+    protected mergeNextInSameTable(): FlowOperation | null;
+    // (undocumented)
+    setAxisRange(axis: "row" | "column", range: FlowRange | null): TableOperation | null;
+    // (undocumented)
+    protected transformInSameTable(other: TableOperation): FlowOperation | null;
+}
+
+// @public
+export const MergeTableCellBase: RecordConstructor<MergeTableCellProps, TableOperation, MergeTableCellData>;
+
+// @public
+export interface MergeTableCellData {
+    cell: CellPosition;
+    colSpan: number;
+    merge: "table_cell";
+    rowSpan: number;
+    table: number;
+}
+
+// @public
+export interface MergeTableCellProps {
+    cell: CellPosition;
+    colSpan: number;
+    position: number;
+    rowSpan: number;
+}
+
 // @public
 export abstract class NestedFlowOperation extends FlowOperation {
     // @override
-    afterInsertion(range: FlowRange): FlowOperation | null;
+    afterInsertFlow(range: FlowRange): FlowOperation | null;
     // @override
-    afterRemoval(range: FlowRange): FlowOperation | null;
+    afterRemoveFlow(range: FlowRange): FlowOperation | null;
     applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent;
     // @override
     applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null;
@@ -1027,15 +1509,19 @@ export abstract class NestedFlowOperation extends FlowOperation {
 // @public
 export abstract class NestedFlowSelection extends FlowSelection {
     // @override
-    afterInsertion(range: FlowRange): FlowSelection | null;
+    afterInsertFlow(range: FlowRange): FlowSelection | null;
     // @override
-    afterRemoval(range: FlowRange, mine: boolean): FlowSelection | null;
+    afterRemoveFlow(range: FlowRange, mine: boolean): FlowSelection | null;
     // @override
     formatBox(style: BoxStyle, options?: TargetOptions): FlowOperation | null;
     // @override
     formatList(content: FlowContent, kind: "ordered" | "unordered" | null): FlowOperation | null;
     // @override
     formatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
+    // @override
+    formatTable(style: TableStyle, options?: TargetOptions): FlowOperation | null;
+    // @override
+    formatTableColumn(style: TableColumnStyle, options?: TargetOptions): FlowOperation | null;
     // @override
     formatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
     protected getInnerContent(outer: FlowContent): FlowContent;
@@ -1056,10 +1542,24 @@ export abstract class NestedFlowSelection extends FlowSelection {
     // @override
     insert(content: FlowContent, options?: TargetOptions): FlowOperation | null;
     // @override
+    insertTableColumnAfter(content: FlowContent, count?: number): FlowOperation | null;
+    // @override
+    insertTableColumnBefore(content: FlowContent, count?: number): FlowOperation | null;
+    // @override
+    insertTableRowAfter(content: FlowContent, count?: number): FlowOperation | null;
+    // @override
+    insertTableRowBefore(content: FlowContent, count?: number): FlowOperation | null;
+    // @override
     get isCollapsed(): boolean;
+    // @override
+    mergeTableCell(content: FlowContent): FlowOperation | null;
     abstract position: number;
     // @override
     remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
+    // @override
+    removeTableColumn(content: FlowContent): FlowOperation | null;
+    // @override
+    removeTableRow(content: FlowContent): FlowOperation | null;
     abstract set(key: "position", value: number): this;
     // @override
     setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null;
@@ -1069,13 +1569,19 @@ export abstract class NestedFlowSelection extends FlowSelection {
     setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
     protected abstract setInnerSelection(value: FlowSelection): NestedFlowSelection;
     // @override
+    splitTableCell(content: FlowContent): FlowOperation | null;
+    // @override
     transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;
     // @override
-    unformatBox(style: BoxStyle): FlowOperation | null;
+    unformatBox(style: BoxStyle, options?: TargetOptions): FlowOperation | null;
     // @override
-    unformatParagraph(style: ParagraphStyle): FlowOperation | null;
+    unformatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
     // @override
-    unformatText(style: TextStyle): FlowOperation | null;
+    unformatTable(style: TableStyle, options?: TargetOptions): FlowOperation | null;
+    // @override
+    unformatTableColumn(style: TableColumnStyle, options?: TargetOptions): FlowOperation | null;
+    // @override
+    unformatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
     // @internal
     updateInner(callback: (inner: FlowSelection) => FlowSelection | null): FlowSelection | null;
 }
@@ -1110,6 +1616,7 @@ export const PARAGRAPH_VARIANTS: readonly ["normal", "h1", "h2", "h3", "h4", "h5
 export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreakProps {
     constructor(props?: ParagraphBreakProps);
     static readonly classType: Type<ParagraphBreak>;
+    completeUpload(): this;
     formatBox(): this;
     formatParagraph(style: ParagraphStyle): this;
     formatText(): this;
@@ -1262,8 +1769,8 @@ export interface RemoveFlowSelectionOptions extends TargetOptions {
 
 // @public @sealed
 export class RemoveRange extends RemoveRangeBase implements Readonly<RemoveRangeProps> {
-    afterInsertion(other: FlowRange): FlowOperation | null;
-    afterRemoval(other: FlowRange): FlowOperation | null;
+    afterInsertFlow(other: FlowRange): FlowOperation | null;
+    afterRemoveFlow(other: FlowRange): FlowOperation | null;
     // @override
     applyToContent(content: FlowContent): FlowContent;
     // @override
@@ -1291,6 +1798,121 @@ export interface RemoveRangeProps {
 }
 
 // @public @sealed
+export class RemoveTableColumn extends RemoveTableColumnBase implements RemoveTableColumnProps {
+    // (undocumented)
+    afterInsertColumn(index: number, count: number): TableOperation | null;
+    // (undocumented)
+    afterInsertRow(): TableOperation | null;
+    // (undocumented)
+    afterRemoveColumn(index: number, count: number): TableOperation | null;
+    // (undocumented)
+    afterRemoveRow(): TableOperation | null;
+    // (undocumented)
+    protected applyToCellRange(range: CellRange): CellRange | null;
+    // (undocumented)
+    protected applyToTable(table: FlowTable): FlowTable;
+    static readonly classType: Type<RemoveTableColumn>;
+    static fromData(input: RemoveTableColumnData): RemoveTableColumn;
+    // (undocumented)
+    protected invertForTable(): FlowOperation | null;
+    // (undocumented)
+    protected mergeNextInSameTable(): FlowOperation | null;
+    // (undocumented)
+    protected transformInSameTable(other: TableOperation): FlowOperation | null;
+}
+
+// @public
+export const RemoveTableColumnBase: RecordConstructor<RemoveTableColumnProps, TableOperation, RemoveTableColumnData>;
+
+// @public
+export interface RemoveTableColumnData {
+    column: number;
+    count?: number;
+    remove: "table_column";
+    table: number;
+}
+
+// @public
+export interface RemoveTableColumnProps {
+    column: number;
+    count: number;
+    position: number;
+}
+
+// @public @sealed
+export class RemoveTableRow extends RemoveTableRowBase implements RemoveTableRowProps {
+    // (undocumented)
+    afterInsertColumn(): TableOperation | null;
+    // (undocumented)
+    afterInsertRow(index: number, count: number): TableOperation | null;
+    // (undocumented)
+    afterRemoveColumn(): TableOperation | null;
+    // (undocumented)
+    afterRemoveRow(index: number, count: number): TableOperation | null;
+    // (undocumented)
+    protected applyToCellRange(range: CellRange): CellRange | null;
+    // (undocumented)
+    protected applyToTable(table: FlowTable): FlowTable;
+    static readonly classType: Type<RemoveTableRow>;
+    static fromData(input: RemoveTableRowData): RemoveTableRow;
+    // (undocumented)
+    protected invertForTable(): FlowOperation | null;
+    // (undocumented)
+    protected mergeNextInSameTable(): FlowOperation | null;
+    // (undocumented)
+    protected transformInSameTable(other: TableOperation): FlowOperation | null;
+}
+
+// @public
+export const RemoveTableRowBase: RecordConstructor<RemoveTableRowProps, TableOperation, RemoveTableRowData>;
+
+// @public
+export interface RemoveTableRowData {
+    count?: number;
+    remove: "table_row";
+    row: number;
+    table: number;
+}
+
+// @public
+export interface RemoveTableRowProps {
+    count: number;
+    position: number;
+    row: number;
+}
+
+// @public @sealed
+export class ResetContent extends ResetContentBase implements ResetContentProps {
+    afterInsertFlow(): FlowOperation | null;
+    afterRemoveFlow(): FlowOperation | null;
+    // @override
+    applyToContent(): FlowContent;
+    // @override
+    applyToSelection(): FlowSelection;
+    static readonly classType: Type<ResetContent>;
+    static fromData(input: ResetContentData): ResetContent;
+    // @override
+    invert(content: FlowContent): FlowOperation | null;
+    mergeNext(next: FlowOperation): FlowOperation | null;
+    // @override
+    transform(): FlowOperation | null;
+}
+
+// @public
+export const ResetContentBase: RecordConstructor<ResetContentProps, FlowOperation, ResetContentData>;
+
+// @public
+export interface ResetContentData {
+    content: FlowContent;
+    reset: "content";
+}
+
+// @public
+export interface ResetContentProps {
+    content: FlowContent;
+}
+
+// @public @sealed
 export class RunScript extends RunScriptBase {
     static readonly classType: Type<RecordObject<RunScriptProps, RunScriptProps> & Equatable & Readonly<RunScriptProps> & RunScript>;
 }
@@ -1305,8 +1927,8 @@ export interface RunScriptProps {
 
 // @public @sealed
 export class SetDynamicTextExpression extends SetDynamicTextExpressionBase implements SetDynamicTextExpressionProps {
-    afterInsertion(range: FlowRange): FlowOperation | null;
-    afterRemoval(range: FlowRange): FlowOperation | null;
+    afterInsertFlow(range: FlowRange): FlowOperation | null;
+    afterRemoveFlow(range: FlowRange): FlowOperation | null;
     // @override
     applyToContent(content: FlowContent): FlowContent;
     // @override
@@ -1338,8 +1960,8 @@ export interface SetDynamicTextExpressionProps {
 
 // @public @sealed
 export class SetIcon extends SetIconBase implements SetIconProps {
-    afterInsertion(range: FlowRange): FlowOperation | null;
-    afterRemoval(range: FlowRange): FlowOperation | null;
+    afterInsertFlow(range: FlowRange): FlowOperation | null;
+    afterRemoveFlow(range: FlowRange): FlowOperation | null;
     // @override
     applyToContent(content: FlowContent): FlowContent;
     // @override
@@ -1371,8 +1993,8 @@ export interface SetIconProps {
 
 // @public @sealed
 export class SetImageSource extends SetImageSourceBase implements SetImageSourceProps {
-    afterInsertion(range: FlowRange): FlowOperation | null;
-    afterRemoval(range: FlowRange): FlowOperation | null;
+    afterInsertFlow(range: FlowRange): FlowOperation | null;
+    afterRemoveFlow(range: FlowRange): FlowOperation | null;
     // @override
     applyToContent(content: FlowContent): FlowContent;
     // @override
@@ -1402,20 +2024,49 @@ export interface SetImageSourceProps {
     value: ImageSource;
 }
 
-// @public (undocumented)
-export const TABLE_CELL_VARIANTS: readonly ["header", "header-start-column", "header-end-column", "body", "body-start-column", "body-end-column", "footer", "footer-start-column", "footer-end-column"];
+// @public @sealed
+export class SplitTableCell extends SplitTableCellBase implements SplitTableCellProps {
+    // (undocumented)
+    afterInsertAxis(axis: "row" | "column", index: number, count: number): TableOperation | null;
+    // (undocumented)
+    afterInsertColumn(index: number, count: number): TableOperation | null;
+    // (undocumented)
+    afterInsertRow(index: number, count: number): TableOperation | null;
+    // (undocumented)
+    afterRemoveAxis(axis: "row" | "column", index: number, count: number): TableOperation | null;
+    // (undocumented)
+    afterRemoveColumn(index: number, count: number): TableOperation | null;
+    // (undocumented)
+    afterRemoveRow(index: number, count: number): TableOperation | null;
+    // (undocumented)
+    protected applyToCellRange(range: CellRange): CellRange | null;
+    // (undocumented)
+    protected applyToTable(table: FlowTable): FlowTable;
+    static readonly classType: Type<SplitTableCell>;
+    static fromData(input: SplitTableCellData): SplitTableCell;
+    // (undocumented)
+    protected invertForTable(table: FlowTable): FlowOperation | null;
+    // (undocumented)
+    protected mergeNextInSameTable(): FlowOperation | null;
+    // (undocumented)
+    protected transformInSameTable(other: TableOperation): FlowOperation | null;
+}
 
-// @public (undocumented)
-export const TABLE_COLUMN_GROUPS: readonly ["start", "body", "end"];
+// @public
+export const SplitTableCellBase: RecordConstructor<SplitTableCellProps, TableOperation, SplitTableCellData>;
 
-// @public (undocumented)
-export const TABLE_ROW_GROUPS: readonly ["header", "body", "footer"];
+// @public
+export interface SplitTableCellData {
+    cell: CellPosition;
+    split: "table_cell";
+    table: number;
+}
 
-// @public (undocumented)
-export type TableCellVariant = typeof TABLE_CELL_VARIANTS[number];
-
-// @public (undocumented)
-export type TableColumnGroup = typeof TABLE_COLUMN_GROUPS[number];
+// @public
+export interface SplitTableCellProps {
+    cell: CellPosition;
+    position: number;
+}
 
 // @public @sealed
 export class TableColumnStyle extends TableColumnStyleBase implements Readonly<TableColumnStyleProps> {
@@ -1444,8 +2095,40 @@ export interface TableColumnStyleProps {
     width?: number;
 }
 
-// @public (undocumented)
-export type TableRowGroup = typeof TABLE_ROW_GROUPS[number];
+// @public @sealed
+export abstract class TableOperation extends FlowOperation {
+    // (undocumented)
+    abstract afterInsertColumn(index: number, count: number): TableOperation | null;
+    afterInsertFlow(range: FlowRange): FlowOperation | null;
+    // (undocumented)
+    abstract afterInsertRow(index: number, count: number): TableOperation | null;
+    // (undocumented)
+    abstract afterRemoveColumn(index: number, count: number): TableOperation | null;
+    afterRemoveFlow(range: FlowRange): FlowOperation | null;
+    // (undocumented)
+    abstract afterRemoveRow(index: number, count: number): TableOperation | null;
+    // @internal (undocumented)
+    protected abstract applyToCellRange(range: CellRange, mine: boolean): CellRange | null;
+    // @override
+    applyToContent(content: FlowContent): FlowContent;
+    // @override
+    applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null;
+    // @internal (undocumented)
+    protected abstract applyToTable(table: FlowTable): FlowTable;
+    // @override
+    invert(content: FlowContent): FlowOperation | null;
+    // @internal (undocumented)
+    protected abstract invertForTable(table: FlowTable): FlowOperation | null;
+    mergeNext(next: FlowOperation): FlowOperation | null;
+    // @internal (undocumented)
+    protected abstract mergeNextInSameTable(next: TableOperation): FlowOperation | null;
+    abstract readonly position: number;
+    abstract set(key: "position", value: number): this;
+    // @override
+    transform(other: FlowOperation): FlowOperation | null;
+    // @internal (undocumented)
+    protected abstract transformInSameTable(other: TableOperation): FlowOperation | null;
+}
 
 // @public @sealed
 export class TableStyle extends TableStyleBase implements Readonly<TableStyleProps> {
@@ -1453,25 +2136,10 @@ export class TableStyle extends TableStyleBase implements Readonly<TableStylePro
     static get ambient(): TableStyle;
     static readonly classType: Type<RecordObject<Partial<{
     inline: boolean;
-    source: string | null;
-    headerRows: number;
-    footerRows: number;
-    startHeaderColumns: number;
-    endHeaderColumns: number;
     }>, Partial<{
     inline: boolean;
-    source: string | null;
-    headerRows: number;
-    footerRows: number;
-    startHeaderColumns: number;
-    endHeaderColumns: number;
     }>> & Equatable & Readonly<Partial<{
     inline: boolean;
-    source: string | null;
-    headerRows: number;
-    footerRows: number;
-    startHeaderColumns: number;
-    endHeaderColumns: number;
     }>> & TableStyle>;
     static get empty(): TableStyle;
     get isEmpty(): boolean;
@@ -1480,32 +2148,13 @@ export class TableStyle extends TableStyleBase implements Readonly<TableStylePro
 // @public
 export const TableStyleBase: RecordConstructor<Partial<{
 inline: boolean;
-source: string | null;
-headerRows: number;
-footerRows: number;
-startHeaderColumns: number;
-endHeaderColumns: number;
 }>, Object, Partial<{
 inline: boolean;
-source: string | null;
-headerRows: number;
-footerRows: number;
-startHeaderColumns: number;
-endHeaderColumns: number;
 }>>;
 
 // @public
 export interface TableStyleProps {
-    // (undocumented)
-    endHeaderColumns?: number;
-    // (undocumented)
-    footerRows?: number;
-    // (undocumented)
-    headerRows?: number;
     inline?: boolean;
-    source?: string | null;
-    // (undocumented)
-    startHeaderColumns?: number;
 }
 
 // @public
@@ -1625,8 +2274,8 @@ export interface TextStyleProps {
 
 // @public @sealed
 export class UnformatBox extends UnformatBoxBase implements Readonly<UnformatBoxProps> {
-    afterInsertion(other: FlowRange): FlowOperation | null;
-    afterRemoval(other: FlowRange): FlowOperation | null;
+    afterInsertFlow(other: FlowRange): FlowOperation | null;
+    afterRemoveFlow(other: FlowRange): FlowOperation | null;
     // @override
     applyToContent(content: FlowContent): FlowContent;
     // @override
@@ -1656,8 +2305,8 @@ export interface UnformatBoxProps {
 
 // @public @sealed
 export class UnformatParagraph extends UnformatParagraphBase implements Readonly<UnformatParagraphProps> {
-    afterInsertion(other: FlowRange): FlowOperation | null;
-    afterRemoval(other: FlowRange): FlowOperation | null;
+    afterInsertFlow(other: FlowRange): FlowOperation | null;
+    afterRemoveFlow(other: FlowRange): FlowOperation | null;
     // @override
     applyToContent(content: FlowContent): FlowContent;
     // @override
@@ -1686,9 +2335,91 @@ export interface UnformatParagraphProps {
 }
 
 // @public @sealed
+export class UnformatTable extends UnformatTableBase implements UnformatTableProps {
+    // (undocumented)
+    afterInsertColumn(): TableOperation | null;
+    // (undocumented)
+    afterInsertRow(): TableOperation | null;
+    // (undocumented)
+    afterRemoveColumn(): TableOperation | null;
+    // (undocumented)
+    afterRemoveRow(): TableOperation | null;
+    // (undocumented)
+    protected applyToCellRange(range: CellRange): CellRange | null;
+    // (undocumented)
+    protected applyToTable(table: FlowTable): FlowTable;
+    static readonly classType: Type<UnformatTable>;
+    static fromData(input: UnformatTableData): UnformatTable;
+    // (undocumented)
+    protected invertForTable(): FlowOperation | null;
+    // (undocumented)
+    protected mergeNextInSameTable(next: TableOperation): FlowOperation | null;
+    // (undocumented)
+    protected transformInSameTable(other: TableOperation): FlowOperation | null;
+}
+
+// @public
+export const UnformatTableBase: RecordConstructor<UnformatTableProps, TableOperation, UnformatTableData>;
+
+// @public @sealed
+export class UnformatTableColumn extends UnformatTableColumnBase implements UnformatTableColumnProps {
+    // (undocumented)
+    afterInsertColumn(index: number, count: number): TableOperation | null;
+    // (undocumented)
+    afterInsertRow(): TableOperation | null;
+    // (undocumented)
+    afterRemoveColumn(index: number, count: number): TableOperation | null;
+    // (undocumented)
+    afterRemoveRow(): TableOperation | null;
+    // (undocumented)
+    protected applyToCellRange(range: CellRange): CellRange | null;
+    // (undocumented)
+    protected applyToTable(table: FlowTable): FlowTable;
+    static readonly classType: Type<UnformatTableColumn>;
+    static fromData(input: UnformatTableColumnData): UnformatTableColumn;
+    // (undocumented)
+    protected invertForTable(): FlowOperation | null;
+    // (undocumented)
+    protected mergeNextInSameTable(next: TableOperation): FlowOperation | null;
+    // (undocumented)
+    protected transformInSameTable(other: TableOperation): FlowOperation | null;
+}
+
+// @public
+export const UnformatTableColumnBase: RecordConstructor<UnformatTableColumnProps, TableOperation, UnformatTableColumnData>;
+
+// @public
+export interface UnformatTableColumnData {
+    column: number;
+    style: TableColumnStyle;
+    table: number;
+    unformat: "table_column";
+}
+
+// @public
+export interface UnformatTableColumnProps {
+    column: number;
+    position: number;
+    style: TableColumnStyle;
+}
+
+// @public
+export interface UnformatTableData {
+    at: number;
+    style: TableStyle;
+    unformat: "table";
+}
+
+// @public
+export interface UnformatTableProps {
+    position: number;
+    style: TableStyle;
+}
+
+// @public @sealed
 export class UnformatText extends UnformatTextBase implements Readonly<UnformatTextProps> {
-    afterInsertion(other: FlowRange): FlowOperation | null;
-    afterRemoval(other: FlowRange): FlowOperation | null;
+    afterInsertFlow(other: FlowRange): FlowOperation | null;
+    afterRemoveFlow(other: FlowRange): FlowOperation | null;
     // @override
     applyToContent(content: FlowContent): FlowContent;
     // @override

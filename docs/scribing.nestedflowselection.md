@@ -24,11 +24,13 @@ export declare abstract class NestedFlowSelection extends FlowSelection
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [afterInsertion(range)](./scribing.nestedflowselection.afterinsertion.md) |  | Transforms the current selection so that its intended boundary is preserved after the specified range was inserted. |
-|  [afterRemoval(range, mine)](./scribing.nestedflowselection.afterremoval.md) |  | Transforms the current selection so that its intended boundary is preserved after the specified range was inserted. |
+|  [afterInsertFlow(range)](./scribing.nestedflowselection.afterinsertflow.md) |  | Transforms the current selection so that its intended boundary is preserved after the specified range was inserted. |
+|  [afterRemoveFlow(range, mine)](./scribing.nestedflowselection.afterremoveflow.md) |  | Transforms the current selection so that its intended boundary is preserved after the specified range was removed. |
 |  [formatBox(style, options)](./scribing.nestedflowselection.formatbox.md) |  | Creates an operation that applies the specified box style on the current selection |
 |  [formatList(content, kind)](./scribing.nestedflowselection.formatlist.md) |  | Creates an operation that applies the specified list format to the current selection. |
 |  [formatParagraph(style, options)](./scribing.nestedflowselection.formatparagraph.md) |  | Creates an operation that applies the specified paragraph style on the current selection |
+|  [formatTable(style, options)](./scribing.nestedflowselection.formattable.md) |  | Creates an operation that applies the specified table style on the current selection |
+|  [formatTableColumn(style, options)](./scribing.nestedflowselection.formattablecolumn.md) |  | Creates an operation that applies the specified table column style on the current selection |
 |  [formatText(style, options)](./scribing.nestedflowselection.formattext.md) |  | Creates an operation that applies the specified text style on the current selection |
 |  [getInnerContent(outer)](./scribing.nestedflowselection.getinnercontent.md) |  | Gets the inner content |
 |  [getInnerContentFromNode(node)](./scribing.nestedflowselection.getinnercontentfromnode.md) |  | Gets the inner content |
@@ -42,14 +44,24 @@ export declare abstract class NestedFlowSelection extends FlowSelection
 |  [getUniformTextStyle(content, theme, diff)](./scribing.nestedflowselection.getuniformtextstyle.md) |  | Gets the uniform text style of the current selection |
 |  [incrementListLevel(content, delta)](./scribing.nestedflowselection.incrementlistlevel.md) |  | Creates an operation that increments the list level of the current selection |
 |  [insert(content, options)](./scribing.nestedflowselection.insert.md) |  | Creates an operation that inserts the specified content into the current selection |
+|  [insertTableColumnAfter(content, count)](./scribing.nestedflowselection.inserttablecolumnafter.md) |  | Creates an operation that inserts a table column after the current selection. |
+|  [insertTableColumnBefore(content, count)](./scribing.nestedflowselection.inserttablecolumnbefore.md) |  | Creates an operation that inserts a table column before the current selection. |
+|  [insertTableRowAfter(content, count)](./scribing.nestedflowselection.inserttablerowafter.md) |  | Creates an operation that inserts a table row after the current selection. |
+|  [insertTableRowBefore(content, count)](./scribing.nestedflowselection.inserttablerowbefore.md) |  | Creates an operation that inserts a table row before the current selection. |
+|  [mergeTableCell(content)](./scribing.nestedflowselection.mergetablecell.md) |  | Creates an operation that merges the selected table cells. |
 |  [remove(options)](./scribing.nestedflowselection.remove.md) |  | Creates an operation that removes the content of the current selection |
+|  [removeTableColumn(content)](./scribing.nestedflowselection.removetablecolumn.md) |  | Creates an operation that removes the selected table column |
+|  [removeTableRow(content)](./scribing.nestedflowselection.removetablerow.md) |  | Creates an operation that removes the selected table row |
 |  [set(key, value)](./scribing.nestedflowselection.set.md) |  | Returns a copy of the current object with the specified property merged in |
 |  [setDynamicTextExpression(content, expression)](./scribing.nestedflowselection.setdynamictextexpression.md) |  | Creates an operation that sets the specified dynamic text expression in the current selection |
 |  [setIcon(content, data)](./scribing.nestedflowselection.seticon.md) |  | Creates an operation that sets the specified icon data in the current selection |
 |  [setImageSource(content, source)](./scribing.nestedflowselection.setimagesource.md) |  | Creates an operation that sets the specified icon data in the current selection |
 |  [setInnerSelection(value)](./scribing.nestedflowselection.setinnerselection.md) |  | Returns a copy of this selection with the specified inner selection merged in |
+|  [splitTableCell(content)](./scribing.nestedflowselection.splittablecell.md) |  | Creates an operation that splits the selected table cells (given that it is a merged cell) |
 |  [transformRanges(transform, options)](./scribing.nestedflowselection.transformranges.md) |  | Transforms all ranges in the current selection |
-|  [unformatBox(style)](./scribing.nestedflowselection.unformatbox.md) |  | Creates an operation that unapplies the specified box style on the current selection |
-|  [unformatParagraph(style)](./scribing.nestedflowselection.unformatparagraph.md) |  | Creates an operation that unapplies the specified paragraph style on the current selection |
-|  [unformatText(style)](./scribing.nestedflowselection.unformattext.md) |  | Creates an operation that unapplies the specified paragraph style on the current selection |
+|  [unformatBox(style, options)](./scribing.nestedflowselection.unformatbox.md) |  | Creates an operation that unapplies the specified box style on the current selection |
+|  [unformatParagraph(style, options)](./scribing.nestedflowselection.unformatparagraph.md) |  | Creates an operation that unapplies the specified paragraph style on the current selection |
+|  [unformatTable(style, options)](./scribing.nestedflowselection.unformattable.md) |  | Creates an operation that unapplies the specified table style on the current selection |
+|  [unformatTableColumn(style, options)](./scribing.nestedflowselection.unformattablecolumn.md) |  | Creates an operation that unapplies the specified table column style on the current selection |
+|  [unformatText(style, options)](./scribing.nestedflowselection.unformattext.md) |  | Creates an operation that unapplies the specified paragraph style on the current selection |
 

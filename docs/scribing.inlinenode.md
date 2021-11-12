@@ -23,6 +23,7 @@ export declare abstract class InlineNode extends FlowNode
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [completeUpload(id, url)](./scribing.inlinenode.completeupload.md) |  | Marks the specified upload as completed |
 |  [formatBox()](./scribing.inlinenode.formatbox.md) |  | Applies the specified box style on the current node and returns the updated node. |
 |  [formatParagraph()](./scribing.inlinenode.formatparagraph.md) |  | Applies the specified paragraph style on the current node and returns the updated node. |
 |  [formatText(style)](./scribing.inlinenode.formattext.md) |  | Applies the specified text style on the current node and returns the updated node. |

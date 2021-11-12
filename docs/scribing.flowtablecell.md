@@ -18,11 +18,12 @@ export declare class FlowTableCell extends FlowTableCellBase
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.flowtablecell.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FlowTableCell](./scribing.flowtablecell.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.flowtablecell.classtype.md) | <code>static</code> | Type&lt;[FlowTableCell](./scribing.flowtablecell.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
 |  [fromData(data)](./scribing.flowtablecell.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
+|  [getSpannedPositions(root, includeSelf)](./scribing.flowtablecell.getspannedpositions.md) |  |  |
 

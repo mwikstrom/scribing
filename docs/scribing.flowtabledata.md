@@ -18,5 +18,5 @@ export interface FlowTableData
 |  --- | --- | --- |
 |  [columns?](./scribing.flowtabledata.columns.md) | Map&lt;string, [TableColumnStyle](./scribing.tablecolumnstyle.md)<!-- -->&gt; | <i>(Optional)</i> |
 |  [style?](./scribing.flowtabledata.style.md) | [TableStyle](./scribing.tablestyle.md) | <i>(Optional)</i> |
-|  [table](./scribing.flowtabledata.table.md) | [FlowTableRow](./scribing.flowtablerow.md)<!-- -->\[\] |  |
+|  [table](./scribing.flowtabledata.table.md) | [FlowTableContent](./scribing.flowtablecontent.md) |  |
 

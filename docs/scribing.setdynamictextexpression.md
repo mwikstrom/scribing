@@ -26,8 +26,8 @@ export declare class SetDynamicTextExpression extends SetDynamicTextExpressionBa
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [afterInsertion(range)](./scribing.setdynamictextexpression.afterinsertion.md) |  | Transforms the current operation so that its intent is preserved after the specified range was inserted. |
-|  [afterRemoval(range)](./scribing.setdynamictextexpression.afterremoval.md) |  | Transforms the current operation so that its intent is preserved after the specified range was removed. |
+|  [afterInsertFlow(range)](./scribing.setdynamictextexpression.afterinsertflow.md) |  | Transforms the current operation so that its intent is preserved after the specified range was inserted. |
+|  [afterRemoveFlow(range)](./scribing.setdynamictextexpression.afterremoveflow.md) |  | Transforms the current operation so that its intent is preserved after the specified range was removed. |
 |  [applyToContent(content)](./scribing.setdynamictextexpression.applytocontent.md) |  | Applies the current operation on the specified content and returns the updated result. |
 |  [applyToSelection(selection)](./scribing.setdynamictextexpression.applytoselection.md) |  | Applies the current operation on the specified selection and returns the updated result. |
 |  [fromData(data)](./scribing.setdynamictextexpression.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |

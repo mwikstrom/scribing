@@ -10,7 +10,7 @@ Creates an operation that unapplies the specified box style on the current selec
 
 ```typescript
 /** @override */
-unformatBox(style: BoxStyle): FlowOperation | null;
+unformatBox(style: BoxStyle, options?: TargetOptions): FlowOperation | null;
 ```
 
 ## Parameters
@@ -18,6 +18,7 @@ unformatBox(style: BoxStyle): FlowOperation | null;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  style | [BoxStyle](./scribing.boxstyle.md) | The style to unapply |
+|  options | [TargetOptions](./scribing.targetoptions.md) |  |
 
 <b>Returns:</b>
 

@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-table: FlowTableRow[];
+table: FlowTableContent;
 ```

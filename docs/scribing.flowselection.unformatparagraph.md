@@ -9,7 +9,7 @@ Creates an operation that unapplies the specified paragraph style on the current
 <b>Signature:</b>
 
 ```typescript
-abstract unformatParagraph(style: ParagraphStyle): FlowOperation | null;
+abstract unformatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
 ```
 
 ## Parameters
@@ -17,6 +17,7 @@ abstract unformatParagraph(style: ParagraphStyle): FlowOperation | null;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  style | [ParagraphStyle](./scribing.paragraphstyle.md) | The style to unapply |
+|  options | [TargetOptions](./scribing.targetoptions.md) |  |
 
 <b>Returns:</b>
 

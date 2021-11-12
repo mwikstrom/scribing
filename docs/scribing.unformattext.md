@@ -26,8 +26,8 @@ export declare class UnformatText extends UnformatTextBase implements Readonly<U
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [afterInsertion(other)](./scribing.unformattext.afterinsertion.md) |  | Transforms the current operation so that its intent is preserved after the specified range was inserted. |
-|  [afterRemoval(other)](./scribing.unformattext.afterremoval.md) |  | Transforms the current operation so that its intent is preserved after the specified range was removed. |
+|  [afterInsertFlow(other)](./scribing.unformattext.afterinsertflow.md) |  | Transforms the current operation so that its intent is preserved after the specified range was inserted. |
+|  [afterRemoveFlow(other)](./scribing.unformattext.afterremoveflow.md) |  | Transforms the current operation so that its intent is preserved after the specified range was removed. |
 |  [applyToContent(content)](./scribing.unformattext.applytocontent.md) |  | Applies the current operation on the specified content and returns the updated result. |
 |  [applyToSelection(selection)](./scribing.unformattext.applytoselection.md) |  | Applies the current operation on the specified selection and returns the updated result. |
 |  [fromData(data)](./scribing.unformattext.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |

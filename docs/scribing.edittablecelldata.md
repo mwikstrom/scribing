@@ -16,9 +16,8 @@ export interface EditTableCellData
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [at](./scribing.edittablecelldata.at.md) | number | The table position |
-|  [column](./scribing.edittablecelldata.column.md) | number | The table column to edit |
+|  [cell](./scribing.edittablecelldata.cell.md) | [CellPosition](./scribing.cellposition.md) | The table cell to edit |
 |  [edit](./scribing.edittablecelldata.edit.md) | "cell" | Data discriminator |
-|  [op](./scribing.edittablecelldata.op.md) | [FlowOperation](./scribing.flowoperation.md) | The inner operation that shall be applied on the table cell's content |
-|  [row](./scribing.edittablecelldata.row.md) | number | The table row to edit |
+|  [op](./scribing.edittablecelldata.op.md) | [FlowOperation](./scribing.flowoperation.md) | The inner operation that shall be applied to the table cell |
+|  [table](./scribing.edittablecelldata.table.md) | number | The table position |
 

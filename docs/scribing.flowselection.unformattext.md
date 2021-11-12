@@ -9,7 +9,7 @@ Creates an operation that unapplies the specified text style on the current sele
 <b>Signature:</b>
 
 ```typescript
-abstract unformatText(style: TextStyle): FlowOperation | null;
+abstract unformatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
 ```
 
 ## Parameters
@@ -17,6 +17,7 @@ abstract unformatText(style: TextStyle): FlowOperation | null;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  style | [TextStyle](./scribing.textstyle.md) | The style to unapply |
+|  options | [TargetOptions](./scribing.targetoptions.md) |  |
 
 <b>Returns:</b>
 

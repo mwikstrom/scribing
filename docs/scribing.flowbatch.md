@@ -32,8 +32,8 @@ export declare class FlowBatch extends FlowBatchBase implements Readonly<FlowBat
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [afterInsertion(other)](./scribing.flowbatch.afterinsertion.md) |  | Transforms the current operation so that its intent is preserved after the specified range was inserted. |
-|  [afterRemoval(other)](./scribing.flowbatch.afterremoval.md) |  | Transforms the current operation so that its intent is preserved after the specified range was removed. |
+|  [afterInsertFlow(other)](./scribing.flowbatch.afterinsertflow.md) |  | Transforms the current operation so that its intent is preserved after the specified range was inserted. |
+|  [afterRemoveFlow(other)](./scribing.flowbatch.afterremoveflow.md) |  | Transforms the current operation so that its intent is preserved after the specified range was removed. |
 |  [applyToContent(content, theme)](./scribing.flowbatch.applytocontent.md) |  | Applies the current operation on the specified content and returns the updated result. |
 |  [applyToSelection(selection, mine)](./scribing.flowbatch.applytoselection.md) |  | Applies the current operation on the specified selection and returns the updated result. |
 |  [fromArray(operations)](./scribing.flowbatch.fromarray.md) | <code>static</code> | Gets a single operation that represents the specified array of operations, or <code>null</code> when the specified array is empty. |

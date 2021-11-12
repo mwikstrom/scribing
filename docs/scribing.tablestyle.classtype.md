@@ -11,24 +11,9 @@ The run-time type that represents this class
 ```typescript
 static readonly classType: import("paratype").Type<import("paratype").RecordObject<Partial<{
         inline: boolean;
-        source: string | null;
-        headerRows: number;
-        footerRows: number;
-        startHeaderColumns: number;
-        endHeaderColumns: number;
     }>, Partial<{
         inline: boolean;
-        source: string | null;
-        headerRows: number;
-        footerRows: number;
-        startHeaderColumns: number;
-        endHeaderColumns: number;
     }>> & import("paratype").Equatable & Readonly<Partial<{
         inline: boolean;
-        source: string | null;
-        headerRows: number;
-        footerRows: number;
-        startHeaderColumns: number;
-        endHeaderColumns: number;
     }>> & TableStyle>;
 ```

@@ -10,7 +10,7 @@ Creates an operation that unapplies the specified paragraph style on the current
 
 ```typescript
 /** @override */
-unformatParagraph(style: ParagraphStyle): FlowOperation | null;
+unformatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation | null;
 ```
 
 ## Parameters
@@ -18,6 +18,7 @@ unformatParagraph(style: ParagraphStyle): FlowOperation | null;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  style | [ParagraphStyle](./scribing.paragraphstyle.md) | The style to unapply |
+|  options | [TargetOptions](./scribing.targetoptions.md) |  |
 
 <b>Returns:</b>
 

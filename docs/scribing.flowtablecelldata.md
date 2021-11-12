@@ -2,21 +2,18 @@
 
 [Home](./index.md) &gt; [scribing](./scribing.md) &gt; [FlowTableCellData](./scribing.flowtablecelldata.md)
 
-## FlowTableCellData interface
+## FlowTableCellData type
 
 Data of [FlowTableCell](./scribing.flowtablecell.md)
 
 <b>Signature:</b>
 
 ```typescript
-export interface FlowTableCellData 
+export declare type FlowTableCellData = FlowContent | {
+    content: FlowContent;
+    colSpan?: number;
+    rowSpan?: number;
+};
 ```
-
-## Properties
-
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [cols?](./scribing.flowtablecelldata.cols.md) | number | <i>(Optional)</i> |
-|  [content](./scribing.flowtablecelldata.content.md) | [FlowContent](./scribing.flowcontent.md) |  |
-|  [rows?](./scribing.flowtablecelldata.rows.md) | number | <i>(Optional)</i> |
+<b>References:</b> [FlowContent](./scribing.flowcontent.md)
 

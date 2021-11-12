@@ -11,17 +11,7 @@ The base record class for [TableStyle](./scribing.tablestyle.md)
 ```typescript
 TableStyleBase: import("paratype").RecordConstructor<Partial<{
     inline: boolean;
-    source: string | null;
-    headerRows: number;
-    footerRows: number;
-    startHeaderColumns: number;
-    endHeaderColumns: number;
 }>, Object, Partial<{
     inline: boolean;
-    source: string | null;
-    headerRows: number;
-    footerRows: number;
-    startHeaderColumns: number;
-    endHeaderColumns: number;
 }>>
 ```

@@ -26,8 +26,8 @@ export declare class FormatText extends FormatTextBase implements Readonly<Forma
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [afterInsertion(other)](./scribing.formattext.afterinsertion.md) |  | Transforms the current operation so that its intent is preserved after the specified range was inserted. |
-|  [afterRemoval(other)](./scribing.formattext.afterremoval.md) |  | Transforms the current operation so that its intent is preserved after the specified range was removed. |
+|  [afterInsertFlow(other)](./scribing.formattext.afterinsertflow.md) |  | Transforms the current operation so that its intent is preserved after the specified range was inserted. |
+|  [afterRemoveFlow(other)](./scribing.formattext.afterremoveflow.md) |  | Transforms the current operation so that its intent is preserved after the specified range was removed. |
 |  [applyToContent(content, theme)](./scribing.formattext.applytocontent.md) |  | Applies the current operation on the specified content and returns the updated result. |
 |  [applyToSelection(selection)](./scribing.formattext.applytoselection.md) |  | Applies the current operation on the specified selection and returns the updated result. |
 |  [fromData(data)](./scribing.formattext.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |

@@ -16,7 +16,7 @@ export interface FlowTableProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [columns](./scribing.flowtableprops.columns.md) | readonly [TableColumnStyle](./scribing.tablecolumnstyle.md)<!-- -->\[\] |  |
-|  [rows](./scribing.flowtableprops.rows.md) | readonly [FlowTableRow](./scribing.flowtablerow.md)<!-- -->\[\] |  |
+|  [columns](./scribing.flowtableprops.columns.md) | Map&lt;string, [TableColumnStyle](./scribing.tablecolumnstyle.md)<!-- -->&gt; |  |
+|  [content](./scribing.flowtableprops.content.md) | [FlowTableContent](./scribing.flowtablecontent.md) |  |
 |  [style](./scribing.flowtableprops.style.md) | [TableStyle](./scribing.tablestyle.md) |  |
 

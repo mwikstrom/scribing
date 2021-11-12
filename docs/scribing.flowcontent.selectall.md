@@ -9,9 +9,9 @@ Gets a selection that span over all content
 <b>Signature:</b>
 
 ```typescript
-selectAll(): FlowRangeSelection;
+selectAll(): FlowSelection;
 ```
 <b>Returns:</b>
 
-[FlowRangeSelection](./scribing.flowrangeselection.md)
+[FlowSelection](./scribing.flowselection.md)
 

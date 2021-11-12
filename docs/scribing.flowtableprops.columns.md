@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-columns: readonly TableColumnStyle[];
+columns: Map<string, TableColumnStyle>;
 ```

@@ -95,7 +95,7 @@ export class SplitTableCell extends SplitTableCellBase implements SplitTableCell
         return new MergeTableCell({ position, cell, colSpan, rowSpan });
     }
 
-    /** {@inheritdoc TableOperation.splitNextInSameTable} */
+    /** {@inheritdoc TableOperation.mergeNextInSameTable} */
     protected mergeNextInSameTable(): FlowOperation | null {
         return null;
     }

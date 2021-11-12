@@ -9,5 +9,5 @@ The run-time type that represents this class
 <b>Signature:</b>
 
 ```typescript
-static readonly classType: import("paratype").Type<FlowTableCell>;
+static readonly classType: Type<FlowTableCell>;
 ```

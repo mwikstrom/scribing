@@ -27,6 +27,8 @@ export declare abstract class FlowSelection
 |  [formatBox(style, options)](./scribing.flowselection.formatbox.md) |  | Creates an operation that applies the specified box style on the current selection |
 |  [formatList(content, kind)](./scribing.flowselection.formatlist.md) |  | Creates an operation that applies the specified list format to the current selection. |
 |  [formatParagraph(style, options)](./scribing.flowselection.formatparagraph.md) |  | Creates an operation that applies the specified paragraph style on the current selection |
+|  [formatTable(style, options)](./scribing.flowselection.formattable.md) |  | Creates an operation that applies the specified table style on the current selection |
+|  [formatTableColumn(style, options)](./scribing.flowselection.formattablecolumn.md) |  | Creates an operation that applies the specified table column style on the current selection |
 |  [formatText(style, options)](./scribing.flowselection.formattext.md) |  | Creates an operation that applies the specified text style on the current selection |
 |  [fromJsonValue(value)](./scribing.flowselection.fromjsonvalue.md) | <code>static</code> | Converts the specified JSON value to a flow selection |
 |  [getUniformBoxStyle(content, theme, diff)](./scribing.flowselection.getuniformboxstyle.md) |  | Gets the uniform box style of the current selection |
@@ -34,13 +36,23 @@ export declare abstract class FlowSelection
 |  [getUniformTextStyle(content, theme, diff)](./scribing.flowselection.getuniformtextstyle.md) |  | Gets the uniform text style of the current selection |
 |  [incrementListLevel(content, delta)](./scribing.flowselection.incrementlistlevel.md) |  | Creates an operation that increments the list level of the current selection |
 |  [insert(content, options)](./scribing.flowselection.insert.md) |  | Creates an operation that inserts the specified content into the current selection |
+|  [insertTableColumnAfter(content, count)](./scribing.flowselection.inserttablecolumnafter.md) |  | Creates an operation that inserts a table column after the current selection. |
+|  [insertTableColumnBefore(content, count)](./scribing.flowselection.inserttablecolumnbefore.md) |  | Creates an operation that inserts a table column before the current selection. |
+|  [insertTableRowAfter(content, count)](./scribing.flowselection.inserttablerowafter.md) |  | Creates an operation that inserts a table row after the current selection. |
+|  [insertTableRowBefore(content, count)](./scribing.flowselection.inserttablerowbefore.md) |  | Creates an operation that inserts a table row before the current selection. |
+|  [mergeTableCell(content)](./scribing.flowselection.mergetablecell.md) |  | Creates an operation that merges the selected table cells. |
 |  [remove(options)](./scribing.flowselection.remove.md) |  | Creates an operation that removes the content of the current selection |
+|  [removeTableColumn(content)](./scribing.flowselection.removetablecolumn.md) |  | Creates an operation that removes the selected table column |
+|  [removeTableRow(content)](./scribing.flowselection.removetablerow.md) |  | Creates an operation that removes the selected table row |
 |  [setDynamicTextExpression(content, expression)](./scribing.flowselection.setdynamictextexpression.md) |  | Creates an operation that sets the specified dynamic text expression in the current selection |
 |  [setIcon(content, data)](./scribing.flowselection.seticon.md) |  | Creates an operation that sets the specified icon data in the current selection |
 |  [setImageSource(content, source)](./scribing.flowselection.setimagesource.md) |  | Creates an operation that sets the specified image source in the current selection |
+|  [splitTableCell(content)](./scribing.flowselection.splittablecell.md) |  | Creates an operation that splits the selected table cells (given that it is a merged cell) |
 |  [toJsonValue()](./scribing.flowselection.tojsonvalue.md) |  | Converts the current selection to a JSON value |
 |  [transformRanges(transform, options)](./scribing.flowselection.transformranges.md) |  | Transforms all ranges in the current selection |
-|  [unformatBox(style)](./scribing.flowselection.unformatbox.md) |  | Creates an operation that unapplies the specified box style on the current selection |
-|  [unformatParagraph(style)](./scribing.flowselection.unformatparagraph.md) |  | Creates an operation that unapplies the specified paragraph style on the current selection |
-|  [unformatText(style)](./scribing.flowselection.unformattext.md) |  | Creates an operation that unapplies the specified text style on the current selection |
+|  [unformatBox(style, options)](./scribing.flowselection.unformatbox.md) |  | Creates an operation that unapplies the specified box style on the current selection |
+|  [unformatParagraph(style, options)](./scribing.flowselection.unformatparagraph.md) |  | Creates an operation that unapplies the specified paragraph style on the current selection |
+|  [unformatTable(style, options)](./scribing.flowselection.unformattable.md) |  | Creates an operation that unapplies the specified table style on the current selection |
+|  [unformatTableColumn(style, options)](./scribing.flowselection.unformattablecolumn.md) |  | Creates an operation that unapplies the specified table column style on the current selection |
+|  [unformatText(style, options)](./scribing.flowselection.unformattext.md) |  | Creates an operation that unapplies the specified text style on the current selection |
 

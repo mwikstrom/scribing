@@ -14,12 +14,6 @@ export declare class FlowTable extends FlowTableBase
 ```
 <b>Extends:</b> FlowTableBase
 
-## Constructors
-
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(props)](./scribing.flowtable._constructor_.md) |  | Constructs a new instance of the <code>FlowTable</code> class |
-
 ## Properties
 
 |  Property | Modifiers | Type | Description |
@@ -33,29 +27,19 @@ export declare class FlowTable extends FlowTableBase
 |  --- | --- | --- |
 |  [completeUpload(id, url)](./scribing.flowtable.completeupload.md) |  | Marks the specified upload as completed |
 |  [formatBox(style, theme)](./scribing.flowtable.formatbox.md) |  | Applies the specified box style on the current node and returns the updated node. |
+|  [formatColumn(index, style)](./scribing.flowtable.formatcolumn.md) |  |  |
 |  [formatParagraph(style, theme)](./scribing.flowtable.formatparagraph.md) |  | Applies the specified paragraph style on the current node and returns the updated node. |
 |  [formatText(style, theme)](./scribing.flowtable.formattext.md) |  | Applies the specified text style on the current node and returns the updated node. |
 |  [fromData(data)](./scribing.flowtable.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
-|  [getCell(row, column)](./scribing.flowtable.getcell.md) |  |  |
-|  [getCellContent(row, column)](./scribing.flowtable.getcellcontent.md) |  |  |
-|  [getCellTheme(row, column, outer)](./scribing.flowtable.getcelltheme.md) |  |  |
-|  [getCellVariant(row, column)](./scribing.flowtable.getcellvariant.md) |  |  |
-|  [getColumnCount(group)](./scribing.flowtable.getcolumncount.md) |  |  |
-|  [getColumnGroup(row, column)](./scribing.flowtable.getcolumngroup.md) |  |  |
-|  [getColumnIndex(row, column)](./scribing.flowtable.getcolumnindex.md) |  |  |
-|  [getColumnStartIndex(group)](./scribing.flowtable.getcolumnstartindex.md) |  |  |
-|  [getRow(row, column)](./scribing.flowtable.getrow.md) |  |  |
-|  [getRowCellIndex(row, column)](./scribing.flowtable.getrowcellindex.md) |  |  |
-|  [getRowCount(group)](./scribing.flowtable.getrowcount.md) |  |  |
-|  [getRowGroup(row, column)](./scribing.flowtable.getrowgroup.md) |  |  |
-|  [getRowIndex(row, column)](./scribing.flowtable.getrowindex.md) |  |  |
-|  [getRows(group)](./scribing.flowtable.getrows.md) |  |  |
-|  [getRowStartIndex(group)](./scribing.flowtable.getrowstartindex.md) |  |  |
 |  [getUniformParagraphStyle(theme, diff)](./scribing.flowtable.getuniformparagraphstyle.md) |  | Gets a uniform paragraph style from the current node |
 |  [getUniformTextStyle(theme, diff)](./scribing.flowtable.getuniformtextstyle.md) |  | Gets a uniform text style from the current node |
-|  [replaceCellContent(row, column, newContent)](./scribing.flowtable.replacecellcontent.md) |  |  |
+|  [insertColumn(index, count)](./scribing.flowtable.insertcolumn.md) |  |  |
+|  [insertRow(index, count)](./scribing.flowtable.insertrow.md) |  |  |
+|  [removeColumn(index, count)](./scribing.flowtable.removecolumn.md) |  |  |
+|  [removeRow(index, count)](./scribing.flowtable.removerow.md) |  |  |
 |  [unformatAmbient(theme)](./scribing.flowtable.unformatambient.md) |  | Unapplies the ambient style of the specified theme from the current node and returns the updated node. |
 |  [unformatBox(style)](./scribing.flowtable.unformatbox.md) |  | Unapplies the specified box style from the current node and returns the updated node. |
+|  [unformatColumn(index, style)](./scribing.flowtable.unformatcolumn.md) |  |  |
 |  [unformatParagraph(style)](./scribing.flowtable.unformatparagraph.md) |  | Unapplies the specified paragraph style from the current node and returns the updated node. |
 |  [unformatText(style)](./scribing.flowtable.unformattext.md) |  | Unapplies the specified text style from the current node and returns the updated node. |
 

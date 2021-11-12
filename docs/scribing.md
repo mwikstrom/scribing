@@ -11,6 +11,8 @@ Model for collaborative rich text editing
 |  Class | Description |
 |  --- | --- |
 |  [BoxStyle](./scribing.boxstyle.md) | Represents the styling that is applied to box content. |
+|  [CellPosition](./scribing.cellposition.md) | Represents the position of a cell in a table |
+|  [CellRange](./scribing.cellrange.md) | Represents a range of a cells in a table |
 |  [CompleteUpload](./scribing.completeupload.md) | Represents an operation that completes an upload |
 |  [DefaultFlowTheme](./scribing.defaultflowtheme.md) | Provides a theme for flow content |
 |  [DynamicText](./scribing.dynamictext.md) | Represents a dynamic text. |
@@ -31,16 +33,23 @@ Model for collaborative rich text editing
 |  [FlowSelection](./scribing.flowselection.md) | Represents a selection of flow content |
 |  [FlowTable](./scribing.flowtable.md) | Represents a flow table cell |
 |  [FlowTableCell](./scribing.flowtablecell.md) | Represents a flow table cell |
-|  [FlowTableRow](./scribing.flowtablerow.md) | Represents a flow table row |
+|  [FlowTableCellSelection](./scribing.flowtablecellselection.md) | Represents a selection inside a flow table cell |
+|  [FlowTableContent](./scribing.flowtablecontent.md) |  |
+|  [FlowTableSelection](./scribing.flowtableselection.md) | Represents a selection of cells in a flow table cell |
 |  [FlowTheme](./scribing.flowtheme.md) | Provides a theme for flow content |
 |  [FormatBox](./scribing.formatbox.md) | Represents an operation that applies a box style to a range of flow content. |
 |  [FormatParagraph](./scribing.formatparagraph.md) | Represents an operation that applies a paragraph style to a range of flow content. |
+|  [FormatTable](./scribing.formattable.md) | Represents an operation that applies a table style |
+|  [FormatTableColumn](./scribing.formattablecolumn.md) | Represents an operation that applies a table column style |
 |  [FormatText](./scribing.formattext.md) | Represents an operation that applies a text style to a range of flow content. |
 |  [ImageSource](./scribing.imagesource.md) | Represents the source of a [FlowImage](./scribing.flowimage.md) |
 |  [InlineNode](./scribing.inlinenode.md) | Represents an inline node |
 |  [InsertContent](./scribing.insertcontent.md) | Represents an operation that insert flow content. |
+|  [InsertTableColumn](./scribing.inserttablecolumn.md) | Represents an operation that inserts a table column |
+|  [InsertTableRow](./scribing.inserttablerow.md) | Represents an operation that inserts a table row |
 |  [Interaction](./scribing.interaction.md) | A base class for interactions |
 |  [LineBreak](./scribing.linebreak.md) | Represents a line break. |
+|  [MergeTableCell](./scribing.mergetablecell.md) | Represents an operation that merges a range of table cells into one |
 |  [NestedFlowOperation](./scribing.nestedflowoperation.md) | A nested operation at a specific flow position |
 |  [NestedFlowSelection](./scribing.nestedflowselection.md) | A nested selection at a specific flow position |
 |  [OpenUrl](./scribing.openurl.md) | An interaction that opens a URL |
@@ -48,16 +57,23 @@ Model for collaborative rich text editing
 |  [ParagraphStyle](./scribing.paragraphstyle.md) | Represents the styling that is applied to paragraph content. |
 |  [ParagraphTheme](./scribing.paragraphtheme.md) | Provides a theme for paragraph content |
 |  [RemoveRange](./scribing.removerange.md) | Represents an operation that removes a range of flow. |
+|  [RemoveTableColumn](./scribing.removetablecolumn.md) | Represents an operation that removes a table column |
+|  [RemoveTableRow](./scribing.removetablerow.md) | Represents an operation that removes a table row |
+|  [ResetContent](./scribing.resetcontent.md) | Represents an operation that sets the path data of an icon |
 |  [RunScript](./scribing.runscript.md) | An interaction that runs a script |
 |  [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) | Represents an operation that sets the expression of dynamic text |
 |  [SetIcon](./scribing.seticon.md) | Represents an operation that sets the path data of an icon |
 |  [SetImageSource](./scribing.setimagesource.md) | Represents an operation that sets the source of an image |
+|  [SplitTableCell](./scribing.splittablecell.md) | Represents an operation that splits a merged table cell |
 |  [TableColumnStyle](./scribing.tablecolumnstyle.md) | Represents the styling that is applied to a flow table column |
+|  [TableOperation](./scribing.tableoperation.md) | Represents an operation that updates a table node |
 |  [TableStyle](./scribing.tablestyle.md) | Represents the styling that is applied to flow table content |
 |  [TextRun](./scribing.textrun.md) | A run of text with uniform styling |
 |  [TextStyle](./scribing.textstyle.md) | Represents the styling that is applied to text. |
 |  [UnformatBox](./scribing.unformatbox.md) | Represents an operation that unapplies a box style to a range of flow content. |
 |  [UnformatParagraph](./scribing.unformatparagraph.md) | Represents an operation that unapplies a paragraph style to a range of flow content. |
+|  [UnformatTable](./scribing.unformattable.md) | Represents an operation that unapplies a table style |
+|  [UnformatTableColumn](./scribing.unformattablecolumn.md) | Represents an operation that unapplies a table column style |
 |  [UnformatText](./scribing.unformattext.md) | Represents an operation that unapplies a text style to a range of flow content. |
 
 ## Interfaces
@@ -66,6 +82,8 @@ Model for collaborative rich text editing
 |  --- | --- |
 |  [ApplyMineOptions](./scribing.applymineoptions.md) | Options for the [FlowEditorState.applyMine()](./scribing.floweditorstate.applymine.md) method |
 |  [BoxStyleProps](./scribing.boxstyleprops.md) | Style properties for box content |
+|  [CellPositionProps](./scribing.cellpositionprops.md) | Non-computed properties of a [CellPosition](./scribing.cellposition.md) |
+|  [CellRangeProps](./scribing.cellrangeprops.md) | Non-computed properties of a [CellRange](./scribing.cellrange.md) |
 |  [CompleteUploadData](./scribing.completeuploaddata.md) | Data of [CompleteUpload](./scribing.completeupload.md) |
 |  [CompleteUploadProps](./scribing.completeuploadprops.md) | Properties of [CompleteUpload](./scribing.completeupload.md) |
 |  [DynamicTextData](./scribing.dynamictextdata.md) | Data of line break nodes |
@@ -88,22 +106,34 @@ Model for collaborative rich text editing
 |  [FlowImageProps](./scribing.flowimageprops.md) | Properties of [FlowImage](./scribing.flowimage.md) |
 |  [FlowRangeProps](./scribing.flowrangeprops.md) | Non-computed properties of a [FlowRange](./scribing.flowrange.md) |
 |  [FlowRangeSelectionProps](./scribing.flowrangeselectionprops.md) | Properties of flow range selections |
-|  [FlowTableCellData](./scribing.flowtablecelldata.md) | Data of [FlowTableCell](./scribing.flowtablecell.md) |
 |  [FlowTableCellProps](./scribing.flowtablecellprops.md) | Properties of [FlowTableCell](./scribing.flowtablecell.md) |
+|  [FlowTableCellSelectionData](./scribing.flowtablecellselectiondata.md) | Data of [FlowTableCellSelection](./scribing.flowtablecellselection.md) |
+|  [FlowTableCellSelectionProps](./scribing.flowtablecellselectionprops.md) | Properties of [FlowTableCellSelection](./scribing.flowtablecellselection.md) |
 |  [FlowTableData](./scribing.flowtabledata.md) | Data of [FlowTable](./scribing.flowtable.md) |
 |  [FlowTableProps](./scribing.flowtableprops.md) | Properties of [FlowTable](./scribing.flowtable.md) |
-|  [FlowTableRowProps](./scribing.flowtablerowprops.md) | Properties of [FlowTableRow](./scribing.flowtablerow.md) |
+|  [FlowTableSelectionData](./scribing.flowtableselectiondata.md) | Data of [FlowTableSelection](./scribing.flowtableselection.md) |
+|  [FlowTableSelectionProps](./scribing.flowtableselectionprops.md) | Properties of [FlowTableSelection](./scribing.flowtableselection.md) |
 |  [FormatBoxData](./scribing.formatboxdata.md) | Data of format box operations |
 |  [FormatBoxProps](./scribing.formatboxprops.md) | Properties of format box operations |
 |  [FormatParagraphData](./scribing.formatparagraphdata.md) | Data of format paragraph operations |
 |  [FormatParagraphProps](./scribing.formatparagraphprops.md) | Properties of format paragraph operations |
+|  [FormatTableColumnData](./scribing.formattablecolumndata.md) | Data of [FormatTableColumn](./scribing.formattablecolumn.md) |
+|  [FormatTableColumnProps](./scribing.formattablecolumnprops.md) | Properties of [FormatTableColumn](./scribing.formattablecolumn.md) |
+|  [FormatTableData](./scribing.formattabledata.md) | Data of [FormatTable](./scribing.formattable.md) |
+|  [FormatTableProps](./scribing.formattableprops.md) | Properties of [FormatTable](./scribing.formattable.md) |
 |  [FormatTextData](./scribing.formattextdata.md) | Data of format text operations |
 |  [FormatTextProps](./scribing.formattextprops.md) | Properties of format text operations |
 |  [ImageSourceProps](./scribing.imagesourceprops.md) | Properties of [ImageSource](./scribing.imagesource.md) |
 |  [InsertContentData](./scribing.insertcontentdata.md) | Data of insert content operations |
 |  [InsertContentProps](./scribing.insertcontentprops.md) | Properties of insert content operations |
+|  [InsertTableColumnData](./scribing.inserttablecolumndata.md) | Data of [InsertTableColumn](./scribing.inserttablecolumn.md) |
+|  [InsertTableColumnProps](./scribing.inserttablecolumnprops.md) | Properties of [InsertTableColumn](./scribing.inserttablecolumn.md) |
+|  [InsertTableRowData](./scribing.inserttablerowdata.md) | Data of [InsertTableRow](./scribing.inserttablerow.md) |
+|  [InsertTableRowProps](./scribing.inserttablerowprops.md) | Properties of [InsertTableRow](./scribing.inserttablerow.md) |
 |  [LineBreakData](./scribing.linebreakdata.md) | Data of line break nodes |
 |  [LineBreakProps](./scribing.linebreakprops.md) | Properties of line break nodes |
+|  [MergeTableCellData](./scribing.mergetablecelldata.md) | Data of [MergeTableCell](./scribing.mergetablecell.md) |
+|  [MergeTableCellProps](./scribing.mergetablecellprops.md) | Properties of [MergeTableCell](./scribing.mergetablecell.md) |
 |  [OpenUrlProps](./scribing.openurlprops.md) | Properties for [OpenUrl](./scribing.openurl.md) |
 |  [ParagraphBreakData](./scribing.paragraphbreakdata.md) | Data of paragraph break nodes |
 |  [ParagraphBreakProps](./scribing.paragraphbreakprops.md) | Properties of paragraph break nodes |
@@ -111,6 +141,12 @@ Model for collaborative rich text editing
 |  [RemoveFlowSelectionOptions](./scribing.removeflowselectionoptions.md) | Options for [FlowSelection.remove()](./scribing.flowselection.remove.md) |
 |  [RemoveRangeData](./scribing.removerangedata.md) | Data of remove range operations |
 |  [RemoveRangeProps](./scribing.removerangeprops.md) | Properties of remove range opertions |
+|  [RemoveTableColumnData](./scribing.removetablecolumndata.md) | Data of [RemoveTableColumn](./scribing.removetablecolumn.md) |
+|  [RemoveTableColumnProps](./scribing.removetablecolumnprops.md) | Properties of [RemoveTableColumn](./scribing.removetablecolumn.md) |
+|  [RemoveTableRowData](./scribing.removetablerowdata.md) | Data of [RemoveTableRow](./scribing.removetablerow.md) |
+|  [RemoveTableRowProps](./scribing.removetablerowprops.md) | Properties of [RemoveTableRow](./scribing.removetablerow.md) |
+|  [ResetContentData](./scribing.resetcontentdata.md) | Data of [ResetContent](./scribing.resetcontent.md) |
+|  [ResetContentProps](./scribing.resetcontentprops.md) | Properties of [ResetContent](./scribing.resetcontent.md) |
 |  [RunScriptProps](./scribing.runscriptprops.md) | Properties for [RunScript](./scribing.runscript.md) |
 |  [SetDynamicTextExpressionData](./scribing.setdynamictextexpressiondata.md) | Data of [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [SetDynamicTextExpressionProps](./scribing.setdynamictextexpressionprops.md) | Properties of [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
@@ -118,6 +154,8 @@ Model for collaborative rich text editing
 |  [SetIconProps](./scribing.seticonprops.md) | Properties of [SetIcon](./scribing.seticon.md) |
 |  [SetImageSourceData](./scribing.setimagesourcedata.md) | Data of [SetImageSource](./scribing.setimagesource.md) |
 |  [SetImageSourceProps](./scribing.setimagesourceprops.md) | Properties of [SetImageSource](./scribing.setimagesource.md) |
+|  [SplitTableCellData](./scribing.splittablecelldata.md) | Data of [SplitTableCell](./scribing.splittablecell.md) |
+|  [SplitTableCellProps](./scribing.splittablecellprops.md) | Properties of [SplitTableCell](./scribing.splittablecell.md) |
 |  [TableColumnStyleProps](./scribing.tablecolumnstyleprops.md) | Style properties for a table column |
 |  [TableStyleProps](./scribing.tablestyleprops.md) | Style properties for tables |
 |  [TargetOptions](./scribing.targetoptions.md) | Provides options for the target flow |
@@ -127,6 +165,10 @@ Model for collaborative rich text editing
 |  [UnformatBoxProps](./scribing.unformatboxprops.md) | Properties of unformat box operations |
 |  [UnformatParagraphData](./scribing.unformatparagraphdata.md) | Data of unformat paragraph operations |
 |  [UnformatParagraphProps](./scribing.unformatparagraphprops.md) | Properties of unformat paragraph operations |
+|  [UnformatTableColumnData](./scribing.unformattablecolumndata.md) | Data of [UnformatTableColumn](./scribing.unformattablecolumn.md) |
+|  [UnformatTableColumnProps](./scribing.unformattablecolumnprops.md) | Properties of [UnformatTableColumn](./scribing.unformattablecolumn.md) |
+|  [UnformatTableData](./scribing.unformattabledata.md) | Data of [UnformatTable](./scribing.unformattable.md) |
+|  [UnformatTableProps](./scribing.unformattableprops.md) | Properties of [UnformatTable](./scribing.unformattable.md) |
 |  [UnformatTextData](./scribing.unformattextdata.md) | Data of unformat text operations |
 |  [UnformatTextProps](./scribing.unformattextprops.md) | Properties of unformat text operations |
 
@@ -137,6 +179,8 @@ Model for collaborative rich text editing
 |  [BOX\_VARIANTS](./scribing.box_variants.md) | Read-only array that contains all box style variants |
 |  [BoxStyleBase](./scribing.boxstylebase.md) | The base record class for [BoxStyle](./scribing.boxstyle.md) |
 |  [BoxVariantType](./scribing.boxvarianttype.md) | The run-time type that matches box style variant values |
+|  [CellPositionBase](./scribing.cellpositionbase.md) | The base record class for [CellPosition](./scribing.cellposition.md) |
+|  [CellRangeBase](./scribing.cellrangebase.md) | The base record class for [CellRange](./scribing.cellrange.md) |
 |  [CompleteUploadBase](./scribing.completeuploadbase.md) | The base record class for [CompleteUpload](./scribing.completeupload.md) |
 |  [DefaultFlowThemeBase](./scribing.defaultflowthemebase.md) | The base record class for [DefaultFlowTheme](./scribing.defaultflowtheme.md) |
 |  [DynamicTextBase](./scribing.dynamictextbase.md) | The base record class for [DynamicText](./scribing.dynamictext.md) |
@@ -155,15 +199,21 @@ Model for collaborative rich text editing
 |  [FlowRangeSelectionBase](./scribing.flowrangeselectionbase.md) | The base record class for [FlowRangeSelection](./scribing.flowrangeselection.md) |
 |  [FlowTableBase](./scribing.flowtablebase.md) | The base record class for [FlowTable](./scribing.flowtable.md) |
 |  [FlowTableCellBase](./scribing.flowtablecellbase.md) | The base record class for [FlowTableCell](./scribing.flowtablecell.md) |
-|  [FlowTableRowBase](./scribing.flowtablerowbase.md) | The base record class for [FlowTableRow](./scribing.flowtablerow.md) |
+|  [FlowTableCellSelectionBase](./scribing.flowtablecellselectionbase.md) | The base record class for [FlowTableCellSelection](./scribing.flowtablecellselection.md) |
+|  [FlowTableSelectionBase](./scribing.flowtableselectionbase.md) | The base record class for [FlowTableSelection](./scribing.flowtableselection.md) |
 |  [FormatBoxBase](./scribing.formatboxbase.md) | The base record class for [FormatBox](./scribing.formatbox.md) |
 |  [FormatParagraphBase](./scribing.formatparagraphbase.md) | The base record class for [FormatParagraph](./scribing.formatparagraph.md) |
+|  [FormatTableBase](./scribing.formattablebase.md) | The base record class for [FormatTable](./scribing.formattable.md) |
+|  [FormatTableColumnBase](./scribing.formattablecolumnbase.md) | The base record class for [FormatTableColumn](./scribing.formattablecolumn.md) |
 |  [FormatTextBase](./scribing.formattextbase.md) | The base record class for [FormatText](./scribing.formattext.md) |
 |  [ImageSourceBase](./scribing.imagesourcebase.md) | The base record class for [ImageSource](./scribing.imagesource.md) |
 |  [InsertContentBase](./scribing.insertcontentbase.md) | The base record class for [InsertContent](./scribing.insertcontent.md) |
+|  [InsertTableColumnBase](./scribing.inserttablecolumnbase.md) | The base record class for [InsertTableColumn](./scribing.inserttablecolumn.md) |
+|  [InsertTableRowBase](./scribing.inserttablerowbase.md) | The base record class for [InsertTableRow](./scribing.inserttablerow.md) |
 |  [LineBreakBase](./scribing.linebreakbase.md) | The base record class for [LineBreak](./scribing.linebreak.md) |
 |  [LIST\_MARKER\_KINDS](./scribing.list_marker_kinds.md) | Read-only array that contains all list marker styles |
 |  [ListMarkerKindType](./scribing.listmarkerkindtype.md) | The run-time type that matches all list marker style values |
+|  [MergeTableCellBase](./scribing.mergetablecellbase.md) | The base record class for [MergeTableCell](./scribing.mergetablecell.md) |
 |  [OpenUrlBase](./scribing.openurlbase.md) | The base record class for [OpenUrl](./scribing.openurl.md) |
 |  [ORDERED\_LIST\_MARKER\_KINDS](./scribing.ordered_list_marker_kinds.md) | Read-only array that contains ordered list marker styles |
 |  [OrderedListMarkerKindType](./scribing.orderedlistmarkerkindtype.md) | The run-time type that matches ordered list marker style values |
@@ -174,19 +224,22 @@ Model for collaborative rich text editing
 |  [PREDEFINED\_ICONS](./scribing.predefined_icons.md) | Read-only array that contains all predefined icons |
 |  [PredefinedIconType](./scribing.predefinedicontype.md) | The run-time type that matches predefined icon types |
 |  [RemoveRangeBase](./scribing.removerangebase.md) | The base record class for [RemoveRange](./scribing.removerange.md) |
+|  [RemoveTableColumnBase](./scribing.removetablecolumnbase.md) | The base record class for [RemoveTableColumn](./scribing.removetablecolumn.md) |
+|  [RemoveTableRowBase](./scribing.removetablerowbase.md) | The base record class for [RemoveTableRow](./scribing.removetablerow.md) |
+|  [ResetContentBase](./scribing.resetcontentbase.md) | The base record class for [ResetContent](./scribing.resetcontent.md) |
 |  [RunScriptBase](./scribing.runscriptbase.md) | The base record class for [RunScript](./scribing.runscript.md) |
 |  [SetDynamicTextExpressionBase](./scribing.setdynamictextexpressionbase.md) | The base record class for [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [SetIconBase](./scribing.seticonbase.md) | The base record class for [SetIcon](./scribing.seticon.md) |
 |  [SetImageSourceBase](./scribing.setimagesourcebase.md) | The base record class for [SetImageSource](./scribing.setimagesource.md) |
-|  [TABLE\_CELL\_VARIANTS](./scribing.table_cell_variants.md) |  |
-|  [TABLE\_COLUMN\_GROUPS](./scribing.table_column_groups.md) |  |
-|  [TABLE\_ROW\_GROUPS](./scribing.table_row_groups.md) |  |
+|  [SplitTableCellBase](./scribing.splittablecellbase.md) | The base record class for [SplitTableCell](./scribing.splittablecell.md) |
 |  [TableColumnStyleBase](./scribing.tablecolumnstylebase.md) | The base record class for [TableColumnStyle](./scribing.tablecolumnstyle.md) |
 |  [TableStyleBase](./scribing.tablestylebase.md) | The base record class for [TableStyle](./scribing.tablestyle.md) |
 |  [TextRunBase](./scribing.textrunbase.md) | The base record class for [TextRun](./scribing.textrun.md) |
 |  [TextStyleBase](./scribing.textstylebase.md) | The base record class for [TextStyle](./scribing.textstyle.md) |
 |  [UnformatBoxBase](./scribing.unformatboxbase.md) | The base record class for [UnformatBox](./scribing.unformatbox.md) |
 |  [UnformatParagraphBase](./scribing.unformatparagraphbase.md) | The base record class for [UnformatParagraph](./scribing.unformatparagraph.md) |
+|  [UnformatTableBase](./scribing.unformattablebase.md) | The base record class for [UnformatTable](./scribing.unformattable.md) |
+|  [UnformatTableColumnBase](./scribing.unformattablecolumnbase.md) | The base record class for [UnformatTableColumn](./scribing.unformattablecolumn.md) |
 |  [UnformatTextBase](./scribing.unformattextbase.md) | The base record class for [UnformatText](./scribing.unformattext.md) |
 |  [UNORDERED\_LIST\_MARKER\_KINDS](./scribing.unordered_list_marker_kinds.md) | Read-only array that contains unordered list marker styles |
 |  [UnorderedListMarkerKindType](./scribing.unorderedlistmarkerkindtype.md) | The run-time type that matches unordered list marker style values |
@@ -196,18 +249,17 @@ Model for collaborative rich text editing
 |  Type Alias | Description |
 |  --- | --- |
 |  [BoxVariant](./scribing.boxvariant.md) | Box style variant |
+|  [CellPositionData](./scribing.cellpositiondata.md) | Data for a [CellPosition](./scribing.cellposition.md) represented by a string with leading upper case ascii letters that represents the column index, followed by ascii digits that represetnts the row index (one-based).<!-- -->For example; <code>A1</code> represents row 0 and column 0, and <code>DF45</code> represents row 44 and column 109. |
+|  [CellRangeData](./scribing.cellrangedata.md) | Data for a [CellRange](./scribing.cellrange.md) |
 |  [FlowBatchData](./scribing.flowbatchdata.md) | Data of [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowColor](./scribing.flowcolor.md) | Flow content color |
 |  [FlowContentData](./scribing.flowcontentdata.md) | Flow content data is an array of [nodes](./scribing.flownode.md) |
 |  [FlowRangeTuple](./scribing.flowrangetuple.md) | Data for a [FlowRange](./scribing.flowrange.md) represented by a tuple where the first value is the anchor position and the second value is the focus position. |
-|  [FlowTableRowData](./scribing.flowtablerowdata.md) | Data of [FlowTableRow](./scribing.flowtablerow.md) |
+|  [FlowTableCellData](./scribing.flowtablecelldata.md) | Data of [FlowTableCell](./scribing.flowtablecell.md) |
 |  [ListMarkerKind](./scribing.listmarkerkind.md) | List marker styles |
 |  [OrderedListMarkerKind](./scribing.orderedlistmarkerkind.md) | Ordered list marker styles |
 |  [ParagraphVariant](./scribing.paragraphvariant.md) | Paragraph style variant |
 |  [PredefinedIcon](./scribing.predefinedicon.md) | Predefined icon |
-|  [TableCellVariant](./scribing.tablecellvariant.md) |  |
-|  [TableColumnGroup](./scribing.tablecolumngroup.md) |  |
-|  [TableRowGroup](./scribing.tablerowgroup.md) |  |
 |  [TextRunData](./scribing.textrundata.md) | Data contract for a text run |
 |  [UnorderedListMarkerKind](./scribing.unorderedlistmarkerkind.md) | Unordered list marker styles |
 

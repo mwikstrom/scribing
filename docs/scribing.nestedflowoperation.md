@@ -24,8 +24,8 @@ export declare abstract class NestedFlowOperation extends FlowOperation
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [afterInsertion(range)](./scribing.nestedflowoperation.afterinsertion.md) |  | Transforms the current operation so that its intent is preserved after the specified range was inserted. |
-|  [afterRemoval(range)](./scribing.nestedflowoperation.afterremoval.md) |  | Transforms the current operation so that its intent is preserved after the specified range was removed. |
+|  [afterInsertFlow(range)](./scribing.nestedflowoperation.afterinsertflow.md) |  | Transforms the current operation so that its intent is preserved after the specified range was inserted. |
+|  [afterRemoveFlow(range)](./scribing.nestedflowoperation.afterremoveflow.md) |  | Transforms the current operation so that its intent is preserved after the specified range was removed. |
 |  [applyToContent(content, theme)](./scribing.nestedflowoperation.applytocontent.md) |  | Applies the current operation on the specified content and returns the updated result. |
 |  [applyToSelection(selection, mine)](./scribing.nestedflowoperation.applytoselection.md) |  | Applies the current operation on the specified selection and returns the updated result. |
 |  [createReplacementNode(content, before)](./scribing.nestedflowoperation.createreplacementnode.md) |  | Creates a replacement node |
