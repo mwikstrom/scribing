@@ -1,5 +1,5 @@
 import { JsonValue, lazyType } from "paratype";
-import { FlowSelection } from "../selection/FlowSelection";
+import type { FlowSelection } from "../selection/FlowSelection";
 import { FlowContent } from "../structure/FlowContent";
 import { FlowRange } from "../selection/FlowRange";
 import { FlowTheme } from "../styles/FlowTheme";

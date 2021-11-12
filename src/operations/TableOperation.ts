@@ -1,10 +1,10 @@
 import { FlowContent } from "../structure/FlowContent";
 import { FlowOperation } from "./FlowOperation";
 import { FlowRange } from "../selection/FlowRange";
-import { FlowSelection } from "../selection/FlowSelection";
+import type { FlowSelection } from "../selection/FlowSelection";
 import { getRangeAfterInsertion, getRangeAfterRemoval } from "../internal/transform-helpers";
 import { FlowTable } from "../nodes/FlowTable";
-import { FlowTableSelection } from "../selection/FlowTableSelection";
+import type { FlowTableSelection } from "../selection/FlowTableSelection";
 import { CellRange } from "../selection/CellRange";
 
 /**
@@ -85,10 +85,11 @@ export abstract class TableOperation extends FlowOperation {
      * @override
      */
     applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null {
-        if (selection instanceof FlowTableSelection && selection.position === this.position) {
+        if (isFlowTableSelection(selection) && selection.position === this.position) {
             const updated = this.applyToCellRange(selection.range, mine);
             return updated ? selection.set("range", updated) : null;
         }
+
         // Does not affect selection
         return selection;
     }
@@ -138,4 +139,10 @@ export abstract class TableOperation extends FlowOperation {
             return null;
         }
     }
+}
+
+// This is a replacement for `selection instanceof FlowTableSelection` because we
+// cannot use such an expression here since that would cause a circular module dependency
+function isFlowTableSelection(selection: FlowSelection): selection is FlowTableSelection {
+    return "__is_table_selection__" in selection;
 }

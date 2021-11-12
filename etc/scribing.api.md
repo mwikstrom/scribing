@@ -911,6 +911,8 @@ export interface FlowTableProps {
 
 // @public @sealed
 export class FlowTableSelection extends FlowTableSelectionBase {
+    // @internal
+    readonly __is_table_selection__ = true;
     // @override
     afterInsertFlow(range: FlowRange): FlowSelection | null;
     // @override

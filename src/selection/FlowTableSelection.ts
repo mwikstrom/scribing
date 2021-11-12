@@ -98,6 +98,13 @@ export class FlowTableSelection extends FlowTableSelectionBase {
         return new FlowTableSelection({ position, range });
     }
 
+    /** 
+     * This property exists to allow late bound type checking (instead of using instanceof)
+     * It was added to avoid circular module dependency via TableOperation
+     * @internal 
+     */
+    readonly __is_table_selection__ = true;
+
     /**
      * {@inheritDoc FlowSelection.isCollapsed}
      * @override
