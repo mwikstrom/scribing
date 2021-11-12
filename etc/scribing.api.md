@@ -424,7 +424,6 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     peek(position?: number): FlowCursor;
     remove(range: FlowRange): FlowContent;
     replace(remove: FlowRange, ...insert: FlowNode[]): FlowContent;
-    selectAll(): FlowSelection;
     get size(): number;
     toJsonValue(): JsonValue;
     unformatAmbient(theme: FlowTheme): FlowContent;
