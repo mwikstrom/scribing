@@ -17,7 +17,7 @@ import { CellRange } from "../selection/CellRange";
 import { CellPosition } from "../selection/CellPosition";
 import { SplitTableCell } from "./SplitTableCell";
 import { getRangeAfterInsertion, getRangeAfterRemoval } from "../internal/transform-helpers";
-import { FlowRange } from "..";
+import { FlowRange } from "../selection/FlowRange";
 
 const Props = {
     position: nonNegativeIntegerType,
