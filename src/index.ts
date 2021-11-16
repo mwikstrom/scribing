@@ -48,6 +48,8 @@ export * from "./nodes/DynamicText";
 export * from "./nodes/FlowIcon";
 export * from "./nodes/FlowImage";
 export * from "./nodes/FlowTable";
+export * from "./nodes/StartMarkup";
+export * from "./nodes/EndMarkup";
 
 // Operations
 export * from "./operations/FlowOperation";

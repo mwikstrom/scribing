@@ -18,6 +18,7 @@ Model for collaborative rich text editing
 |  [DynamicText](./scribing.dynamictext.md) | Represents a dynamic text. |
 |  [EditBox](./scribing.editbox.md) | Represents an operation that edit the contents of a box |
 |  [EditTableCell](./scribing.edittablecell.md) | Represents an operation that edit the contents of a box |
+|  [EndMarkup](./scribing.endmarkup.md) | Represents a line break. |
 |  [FlowBatch](./scribing.flowbatch.md) | Represents a batch of flow operations that are applied sequentially and atomically. |
 |  [FlowBox](./scribing.flowbox.md) | Represents a flow box |
 |  [FlowBoxSelection](./scribing.flowboxselection.md) | Represents a selection inside a flow box |
@@ -65,6 +66,7 @@ Model for collaborative rich text editing
 |  [SetIcon](./scribing.seticon.md) | Represents an operation that sets the path data of an icon |
 |  [SetImageSource](./scribing.setimagesource.md) | Represents an operation that sets the source of an image |
 |  [SplitTableCell](./scribing.splittablecell.md) | Represents an operation that splits a merged table cell |
+|  [StartMarkup](./scribing.startmarkup.md) | Represents a line break. |
 |  [TableColumnStyle](./scribing.tablecolumnstyle.md) | Represents the styling that is applied to a flow table column |
 |  [TableOperation](./scribing.tableoperation.md) | Represents an operation that updates a table node |
 |  [TableStyle](./scribing.tablestyle.md) | Represents the styling that is applied to flow table content |
@@ -92,6 +94,8 @@ Model for collaborative rich text editing
 |  [EditBoxProps](./scribing.editboxprops.md) | Properties of [EditBox](./scribing.editbox.md) |
 |  [EditTableCellData](./scribing.edittablecelldata.md) | Data of [EditTableCell](./scribing.edittablecell.md) |
 |  [EditTableCellProps](./scribing.edittablecellprops.md) | Properties of [EditTableCell](./scribing.edittablecell.md) |
+|  [EndMarkupData](./scribing.endmarkupdata.md) | Data of [EndMarkup](./scribing.endmarkup.md) |
+|  [EndMarkupProps](./scribing.endmarkupprops.md) | Properties of [EndMarkup](./scribing.endmarkup.md) |
 |  [FlowBatchProps](./scribing.flowbatchprops.md) | Properties of [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowBoxData](./scribing.flowboxdata.md) | Data of [FlowBox](./scribing.flowbox.md) |
 |  [FlowBoxProps](./scribing.flowboxprops.md) | Properties of [FlowBox](./scribing.flowbox.md) |
@@ -156,6 +160,8 @@ Model for collaborative rich text editing
 |  [SetImageSourceProps](./scribing.setimagesourceprops.md) | Properties of [SetImageSource](./scribing.setimagesource.md) |
 |  [SplitTableCellData](./scribing.splittablecelldata.md) | Data of [SplitTableCell](./scribing.splittablecell.md) |
 |  [SplitTableCellProps](./scribing.splittablecellprops.md) | Properties of [SplitTableCell](./scribing.splittablecell.md) |
+|  [StartMarkupData](./scribing.startmarkupdata.md) | Data of [StartMarkup](./scribing.startmarkup.md) |
+|  [StartMarkupProps](./scribing.startmarkupprops.md) | Properties of [StartMarkup](./scribing.startmarkup.md) |
 |  [TableColumnStyleProps](./scribing.tablecolumnstyleprops.md) | Style properties for a table column |
 |  [TableStyleProps](./scribing.tablestyleprops.md) | Style properties for tables |
 |  [TargetOptions](./scribing.targetoptions.md) | Provides options for the target flow |
@@ -186,6 +192,7 @@ Model for collaborative rich text editing
 |  [DynamicTextBase](./scribing.dynamictextbase.md) | The base record class for [DynamicText](./scribing.dynamictext.md) |
 |  [EditBoxBase](./scribing.editboxbase.md) | The base record class for [EditBox](./scribing.editbox.md) |
 |  [EditTableCellBase](./scribing.edittablecellbase.md) | The base record class for [EditTableCell](./scribing.edittablecell.md) |
+|  [EndMarkupBase](./scribing.endmarkupbase.md) | The base record class for [EndMarkup](./scribing.endmarkup.md) |
 |  [FLOW\_COLORS](./scribing.flow_colors.md) | Read-only array that contains all flow content colors |
 |  [FlowBatchBase](./scribing.flowbatchbase.md) | The base record class for [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowBoxBase](./scribing.flowboxbase.md) | The base record class for [FlowBox](./scribing.flowbox.md) |
@@ -232,6 +239,7 @@ Model for collaborative rich text editing
 |  [SetIconBase](./scribing.seticonbase.md) | The base record class for [SetIcon](./scribing.seticon.md) |
 |  [SetImageSourceBase](./scribing.setimagesourcebase.md) | The base record class for [SetImageSource](./scribing.setimagesource.md) |
 |  [SplitTableCellBase](./scribing.splittablecellbase.md) | The base record class for [SplitTableCell](./scribing.splittablecell.md) |
+|  [StartMarkupBase](./scribing.startmarkupbase.md) | The base record class for [StartMarkup](./scribing.startmarkup.md) |
 |  [TableColumnStyleBase](./scribing.tablecolumnstylebase.md) | The base record class for [TableColumnStyle](./scribing.tablecolumnstyle.md) |
 |  [TableStyleBase](./scribing.tablestylebase.md) | The base record class for [TableStyle](./scribing.tablestyle.md) |
 |  [TextRunBase](./scribing.textrunbase.md) | The base record class for [TextRun](./scribing.textrun.md) |

@@ -296,6 +296,33 @@ export interface EditTableCellProps {
     position: number;
 }
 
+// @public @sealed
+export class EndMarkup extends EndMarkupBase implements EndMarkupProps {
+    constructor(props: EndMarkupProps);
+    static readonly classType: Type<EndMarkup>;
+    static fromData(data: EndMarkupData): EndMarkup;
+    readonly size = 1;
+}
+
+// @public
+export const EndMarkupBase: RecordConstructor<EndMarkupProps, InlineNode, EndMarkupData>;
+
+// @public
+export interface EndMarkupData {
+    // (undocumented)
+    end_markup: string;
+    // (undocumented)
+    style?: TextStyle;
+}
+
+// @public
+export interface EndMarkupProps {
+    // (undocumented)
+    style: TextStyle;
+    // (undocumented)
+    tag: string;
+}
+
 // @public
 export const FLOW_COLORS: readonly ["default", "subtle", "primary", "secondary", "information", "success", "warning", "error"];
 
@@ -2069,6 +2096,33 @@ export interface SplitTableCellData {
 export interface SplitTableCellProps {
     cell: CellPosition;
     position: number;
+}
+
+// @public @sealed
+export class StartMarkup extends StartMarkupBase implements StartMarkupProps {
+    constructor(props: StartMarkupProps);
+    static readonly classType: Type<StartMarkup>;
+    static fromData(data: StartMarkupData): StartMarkup;
+    readonly size = 1;
+}
+
+// @public
+export const StartMarkupBase: RecordConstructor<StartMarkupProps, InlineNode, StartMarkupData>;
+
+// @public
+export interface StartMarkupData {
+    // (undocumented)
+    start_markup: string;
+    // (undocumented)
+    style?: TextStyle;
+}
+
+// @public
+export interface StartMarkupProps {
+    // (undocumented)
+    style: TextStyle;
+    // (undocumented)
+    tag: string;
 }
 
 // @public @sealed
