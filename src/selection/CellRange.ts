@@ -124,6 +124,15 @@ export class CellRange extends CellRangeBase implements Readonly<CellRangeProps>
         return this.anchor.equals(this.focus);
     }
 
+    public contains(cell: CellPosition): boolean {
+        return (
+            cell.column >= this.firstColumnIndex && 
+            cell.column <= this.lastColumnIndex &&
+            cell.row >= this.firstRowIndex &&
+            cell.row <= this.lastRowIndex
+        );
+    }
+
     /** Determines whether the current range is equal to the other range */
     public equals(other: CellRangeProps): boolean {
         return this.anchor.equals(other.anchor) && this.focus.equals(other.focus);
