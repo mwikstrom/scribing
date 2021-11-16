@@ -38,6 +38,7 @@ export declare class CellRange extends CellRangeBase implements Readonly<CellRan
 |  [afterRemoveColumn(index, count)](./scribing.cellrange.afterremovecolumn.md) |  |  |
 |  [afterRemoveRow(index, count)](./scribing.cellrange.afterremoverow.md) |  |  |
 |  [at(anchor, focus)](./scribing.cellrange.at.md) | <code>static</code> | Gets a cell range |
+|  [contains(cell)](./scribing.cellrange.contains.md) |  |  |
 |  [equals(other)](./scribing.cellrange.equals.md) |  | Determines whether the current range is equal to the other range |
 |  [fromData(data)](./scribing.cellrange.fromdata.md) | <code>static</code> | Gets a cell range from the specified string |
 |  [parse(input, throwOnError)](./scribing.cellrange.parse.md) | <code>static</code> |  |

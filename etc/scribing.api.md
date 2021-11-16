@@ -136,6 +136,8 @@ export class CellRange extends CellRangeBase implements Readonly<CellRangeProps>
     static readonly classType: Type<CellRange>;
     // (undocumented)
     get columnRange(): FlowRange;
+    // (undocumented)
+    contains(cell: CellPosition): boolean;
     equals(other: CellRangeProps): boolean;
     // (undocumented)
     get firstColumnIndex(): number;
