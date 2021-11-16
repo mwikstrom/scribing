@@ -12,8 +12,6 @@ import { TextStyle, TextStyleProps } from "../styles/TextStyle";
 import { TableStyle } from "../styles/TableStyle";
 import { TableColumnStyle } from "../styles/TableColumnStyle";
 import { CellRange } from "./CellRange";
-import { FlowTableSelection } from "./FlowTableSelection";
-import { FlowRangeSelection } from "./FlowRangeSelection";
 
 /**
  * A nested selection at a specific flow position
@@ -300,12 +298,16 @@ export abstract class NestedFlowSelection extends FlowSelection {
                 ...rest, 
                 wrap: inner => {
                     if (inner instanceof CellRange) {
-                        inner = new FlowTableSelection({
-                            position: this.position,
-                            range: inner,
+                        // HACK: Convert from JSON value to avoid circular module dependency
+                        inner = FlowSelection.fromJsonValue({
+                            table: this.position,
+                            range: inner.toString(),
                         });
                     } else if (inner instanceof FlowRange) {
-                        inner = new FlowRangeSelection({ range: inner });
+                        // HACK: Convert from JSON value to avoid circular module dependency
+                        inner = FlowSelection.fromJsonValue({
+                            range: inner.toData(),
+                        });
                     }
                     return wrap(this.setInnerSelection(inner));
                 }

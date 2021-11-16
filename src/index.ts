@@ -85,9 +85,9 @@ export * from "./operations/SplitTableCell";
 // Selection
 export * from "./selection/FlowSelection";
 export * from "./selection/FlowRangeSelection";
+export * from "./selection/FlowTableSelection";
 export * from "./selection/NestedFlowSelection";
 export * from "./selection/FlowBoxSelection";
-export * from "./selection/FlowTableSelection";
 export * from "./selection/FlowTableCellSelection";
 
 // Editor
