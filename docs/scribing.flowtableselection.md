@@ -57,4 +57,5 @@ export declare class FlowTableSelection extends FlowTableSelectionBase
 |  [unformatTable(style)](./scribing.flowtableselection.unformattable.md) |  | Creates an operation that unapplies the specified table style on the current selection |
 |  [unformatTableColumn(style)](./scribing.flowtableselection.unformattablecolumn.md) |  | Creates an operation that unapplies the specified table column style on the current selection |
 |  [unformatText(style, options)](./scribing.flowtableselection.unformattext.md) |  | Creates an operation that unapplies the specified paragraph style on the current selection |
+|  [visitRanges(callback, options)](./scribing.flowtableselection.visitranges.md) |  | Transforms all ranges in the current selection |
 

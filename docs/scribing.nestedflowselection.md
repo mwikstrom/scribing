@@ -64,4 +64,5 @@ export declare abstract class NestedFlowSelection extends FlowSelection
 |  [unformatTable(style, options)](./scribing.nestedflowselection.unformattable.md) |  | Creates an operation that unapplies the specified table style on the current selection |
 |  [unformatTableColumn(style, options)](./scribing.nestedflowselection.unformattablecolumn.md) |  | Creates an operation that unapplies the specified table column style on the current selection |
 |  [unformatText(style, options)](./scribing.nestedflowselection.unformattext.md) |  | Creates an operation that unapplies the specified paragraph style on the current selection |
+|  [visitRanges(callback, options)](./scribing.nestedflowselection.visitranges.md) |  | Transforms all ranges in the current selection |
 

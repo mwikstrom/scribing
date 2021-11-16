@@ -58,4 +58,5 @@ export declare class FlowRangeSelection extends FlowRangeSelectionBase implement
 |  [unformatTable()](./scribing.flowrangeselection.unformattable.md) |  | Creates an operation that unapplies the specified table style on the current selection |
 |  [unformatTableColumn()](./scribing.flowrangeselection.unformattablecolumn.md) |  | Creates an operation that unapplies the specified table column style on the current selection |
 |  [unformatText(style)](./scribing.flowrangeselection.unformattext.md) |  | Creates an operation that unapplies the specified text style on the current selection |
+|  [visitRanges(callback, options)](./scribing.flowrangeselection.visitranges.md) |  | Transforms all ranges in the current selection |
 

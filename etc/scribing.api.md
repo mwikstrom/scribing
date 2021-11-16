@@ -718,6 +718,8 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     unformatTableColumn(): FlowOperation | null;
     // @override
     unformatText(style: TextStyle): FlowOperation | null;
+    // @override
+    visitRanges(callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void, options?: TargetOptions): void;
 }
 
 // @public
@@ -771,6 +773,7 @@ export abstract class FlowSelection {
     abstract unformatTable(style: TableStyle, options?: TargetOptions): FlowOperation | null;
     abstract unformatTableColumn(style: TableColumnStyle, options?: TargetOptions): FlowOperation | null;
     abstract unformatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
+    abstract visitRanges(callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void, options?: TargetOptions): void;
 }
 
 // @public @sealed
@@ -1008,6 +1011,8 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     unformatTableColumn(style: TableColumnStyle): FlowOperation | null;
     // @override
     unformatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
+    // @override
+    visitRanges(callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void, options?: TargetOptions): void;
 }
 
 // @public
@@ -1614,6 +1619,8 @@ export abstract class NestedFlowSelection extends FlowSelection {
     unformatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
     // @internal
     updateInner(callback: (inner: FlowSelection) => FlowSelection | null): FlowSelection | null;
+    // @override
+    visitRanges(callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void, options?: TargetOptions): void;
 }
 
 // @public @sealed
@@ -2512,5 +2519,11 @@ export type UnorderedListMarkerKind = (typeof UNORDERED_LIST_MARKER_KINDS)[numbe
 
 // @public
 export const UnorderedListMarkerKindType: Type<ListMarkerKind>;
+
+// @public
+export interface VisitRangeOptions extends TargetOptions {
+    // (undocumented)
+    wrap(inner: FlowSelection | CellRange | FlowRange): FlowSelection | null;
+}
 
 ```

@@ -9,7 +9,7 @@ import { FlowIcon } from "../nodes/FlowIcon";
 import { FlowImage } from "../nodes/FlowImage";
 import { FlowOperation } from "../operations/FlowOperation";
 import { FlowRange } from "./FlowRange";
-import { TargetOptions, FlowSelection, RemoveFlowSelectionOptions } from "./FlowSelection";
+import { TargetOptions, FlowSelection, RemoveFlowSelectionOptions, VisitRangeOptions } from "./FlowSelection";
 import { FlowTheme } from "../styles/FlowTheme";
 import { FormatBox } from "../operations/FormatBox";
 import { FormatParagraph } from "../operations/FormatParagraph";
@@ -38,6 +38,7 @@ import { TextStyle, TextStyleProps } from "../styles/TextStyle";
 import { UnformatBox } from "../operations/UnformatBox";
 import { UnformatParagraph } from "../operations/UnformatParagraph";
 import { UnformatText } from "../operations/UnformatText";
+import { CellRange } from "./CellRange";
 
 const Props = {
     range: lazyType(() => FlowRange.classType),
@@ -482,7 +483,27 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
         } else {
             return this.set("range", result);
         }
-    }    
+    }
+    
+    /**
+     * {@inheritDoc FlowSelection.transformRanges}
+     * @override
+     */
+    public visitRanges(
+        callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void,
+        options: TargetOptions = {},
+    ): void {
+        const wrap: VisitRangeOptions["wrap"] = inner => {
+            if (inner instanceof FlowRange) {
+                return this.set("range", inner);
+            } else if (inner instanceof FlowSelection) {
+                return inner;
+            } else {
+                return null;
+            }
+        };
+        callback(this.range, { ...options, wrap });
+    }
 
     /**
      * {@inheritDoc FlowSelection.unformatParagraph}

@@ -10,6 +10,7 @@ import { BoxStyle, BoxStyleProps } from "../styles/BoxStyle";
 import { ImageSource } from "../structure/ImageSource";
 import { TableStyle } from "../styles/TableStyle";
 import { TableColumnStyle } from "../styles/TableColumnStyle";
+import { CellRange } from "./CellRange";
 
 /**
  * Represents a selection of flow content
@@ -171,10 +172,21 @@ export abstract class FlowSelection {
      * @param transform - The transform to apply
      * @param options - Options that provide tranformation behavior
      */
+    // TODO: Deprecate this method. Use `visitRanges` instead.
     public abstract transformRanges(
         transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null,
         options?: TargetOptions
     ): FlowSelection | null;
+
+    /**
+     * Visit all ranges in the current selection
+     * @param callback - The callback to invoke for each range
+     * @param options - Options that provide visitor behavior
+     */
+    public abstract visitRanges(
+        callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void,
+        options?: TargetOptions,
+    ): void;
 
     /**
      * Creates an operation that unapplies the specified box style on the current selection
@@ -338,4 +350,12 @@ export interface TargetOptions {
 export interface RemoveFlowSelectionOptions extends TargetOptions {
     /** Controls what to remove when selection is collapsed */
     whenCollapsed?: "removeBackward" | "removeForward" | "noop";
+}
+
+/**
+ * Options for {@link FlowSelection.visitRanges}
+ * @public
+ */
+export interface VisitRangeOptions extends TargetOptions {
+    wrap(inner: FlowSelection | CellRange | FlowRange): FlowSelection | null;
 }

@@ -55,4 +55,5 @@ export declare abstract class FlowSelection
 |  [unformatTable(style, options)](./scribing.flowselection.unformattable.md) |  | Creates an operation that unapplies the specified table style on the current selection |
 |  [unformatTableColumn(style, options)](./scribing.flowselection.unformattablecolumn.md) |  | Creates an operation that unapplies the specified table column style on the current selection |
 |  [unformatText(style, options)](./scribing.flowselection.unformattext.md) |  | Creates an operation that unapplies the specified text style on the current selection |
+|  [visitRanges(callback, options)](./scribing.flowselection.visitranges.md) |  | Visit all ranges in the current selection |
 

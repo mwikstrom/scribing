@@ -10,7 +10,7 @@ import {
 } from "paratype";
 import { FlowContent } from "../structure/FlowContent";
 import { FlowOperation } from "../operations/FlowOperation";
-import { FlowSelection, RemoveFlowSelectionOptions, TargetOptions } from "./FlowSelection";
+import { FlowSelection, RemoveFlowSelectionOptions, TargetOptions, VisitRangeOptions } from "./FlowSelection";
 import { FlowTheme } from "../styles/FlowTheme";
 import { FlowSelectionRegistry } from "../internal/class-registry";
 import { CellRange } from "./CellRange";
@@ -297,6 +297,24 @@ export class FlowTableSelection extends FlowTableSelectionBase {
             changed = changed || !after || !before.equals(after);
         });
         return changed ? null : this;
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.transformRanges}
+     * @override
+     */
+    public visitRanges(
+        callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void,
+        options: TargetOptions = {},
+    ): void {
+        const wrap: VisitRangeOptions["wrap"] = inner => {
+            if (inner instanceof CellRange) {
+                return this.set("range", inner);
+            } else {
+                return null;
+            }
+        };
+        callback(this.range, { ...options, wrap });
     }
 
     /**

@@ -3,7 +3,7 @@ import { FlowContent } from "../structure/FlowContent";
 import { FlowNode } from "../nodes/FlowNode";
 import { FlowOperation } from "../operations/FlowOperation";
 import { FlowRange } from "./FlowRange";
-import { FlowSelection, RemoveFlowSelectionOptions, TargetOptions } from "./FlowSelection";
+import { FlowSelection, RemoveFlowSelectionOptions, TargetOptions, VisitRangeOptions } from "./FlowSelection";
 import { FlowTheme } from "../styles/FlowTheme";
 import { ImageSource } from "../structure/ImageSource";
 import { getRangeAfterInsertion, getRangeAfterRemoval } from "../internal/transform-helpers";
@@ -11,6 +11,9 @@ import { ParagraphStyle, ParagraphStyleProps } from "../styles/ParagraphStyle";
 import { TextStyle, TextStyleProps } from "../styles/TextStyle";
 import { TableStyle } from "../styles/TableStyle";
 import { TableColumnStyle } from "../styles/TableColumnStyle";
+import { CellRange } from "./CellRange";
+import { FlowTableSelection } from "./FlowTableSelection";
+import { FlowRangeSelection } from "./FlowRangeSelection";
 
 /**
  * A nested selection at a specific flow position
@@ -279,6 +282,35 @@ export abstract class NestedFlowSelection extends FlowSelection {
         const innerOptions = this.#getInnerOptions(options);
         const transformedInner = innerSelection.transformRanges(transform, innerOptions);
         return this.#wrapSelection(transformedInner);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.transformRanges}
+     * @override
+     */
+    public visitRanges(
+        callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void,
+        options?: TargetOptions,
+    ): void {
+        const innerSelection = this.getInnerSelection();
+        const innerOptions = this.#getInnerOptions(options);
+        innerSelection.visitRanges((range, {wrap, ...rest}) => callback(
+            range, 
+            {
+                ...rest, 
+                wrap: inner => {
+                    if (inner instanceof CellRange) {
+                        inner = new FlowTableSelection({
+                            position: this.position,
+                            range: inner,
+                        });
+                    } else if (inner instanceof FlowRange) {
+                        inner = new FlowRangeSelection({ range: inner });
+                    }
+                    return wrap(this.setInnerSelection(inner));
+                }
+            }
+        ), innerOptions);
     }
 
     /**

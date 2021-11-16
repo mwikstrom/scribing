@@ -177,6 +177,7 @@ Model for collaborative rich text editing
 |  [UnformatTableProps](./scribing.unformattableprops.md) | Properties of [UnformatTable](./scribing.unformattable.md) |
 |  [UnformatTextData](./scribing.unformattextdata.md) | Data of unformat text operations |
 |  [UnformatTextProps](./scribing.unformattextprops.md) | Properties of unformat text operations |
+|  [VisitRangeOptions](./scribing.visitrangeoptions.md) | Options for [FlowSelection.visitRanges()](./scribing.flowselection.visitranges.md) |
 
 ## Variables
 
