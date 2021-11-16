@@ -331,18 +331,18 @@ export class FlowBox extends FlowBoxBase {
     static readonly classType: Type<FlowBox>;
     completeUpload(id: string, url: string): FlowNode;
     formatBox(style: BoxStyle): this;
-    formatParagraph(style: ParagraphStyle, theme?: FlowTheme): this;
-    formatText(style: TextStyle, theme?: FlowTheme): this;
+    formatParagraph(): this;
+    formatText(): this;
     static fromData(data: FlowBoxData): FlowBox;
     // @override
-    getUniformParagraphStyle(theme?: ParagraphTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle | null;
+    getUniformParagraphStyle(): ParagraphStyle | null;
     // @override
-    getUniformTextStyle(theme?: ParagraphTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
+    getUniformTextStyle(): TextStyle | null;
     readonly size = 1;
-    unformatAmbient(theme: ParagraphTheme): this;
+    unformatAmbient(): this;
     unformatBox(style: BoxStyle): this;
-    unformatParagraph(style: ParagraphStyle): this;
-    unformatText(style: TextStyle): this;
+    unformatParagraph(): this;
+    unformatText(): this;
 }
 
 // @public
@@ -750,18 +750,18 @@ export abstract class FlowSelection {
 export class FlowTable extends FlowTableBase {
     static readonly classType: Type<FlowTable>;
     completeUpload(id: string, url: string): FlowNode;
-    formatBox(style: BoxStyle, theme?: FlowTheme): this;
+    formatBox(): this;
     // (undocumented)
     formatColumn(index: number, style: TableColumnStyle): FlowTable;
-    formatParagraph(style: ParagraphStyle, theme?: FlowTheme): this;
-    formatText(style: TextStyle, theme?: FlowTheme): this;
+    formatParagraph(): this;
+    formatText(): this;
     static fromData(data: FlowTableData): FlowTable;
     // @internal (undocumented)
     getCellTheme(position: CellPosition, outer?: FlowTheme): FlowTheme;
     // @override
-    getUniformParagraphStyle(theme?: ParagraphTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle | null;
+    getUniformParagraphStyle(): ParagraphStyle | null;
     // @override
-    getUniformTextStyle(theme?: ParagraphTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
+    getUniformTextStyle(): TextStyle | null;
     // (undocumented)
     insertColumn(index: number, count?: number): FlowTable;
     // (undocumented)
@@ -771,12 +771,12 @@ export class FlowTable extends FlowTableBase {
     // (undocumented)
     removeRow(index: number, count?: number): FlowTable;
     readonly size = 1;
-    unformatAmbient(theme: ParagraphTheme): this;
-    unformatBox(style: BoxStyle): this;
+    unformatAmbient(): this;
+    unformatBox(): this;
     // (undocumented)
     unformatColumn(index: number, style: TableColumnStyle): FlowTable;
-    unformatParagraph(style: ParagraphStyle): this;
-    unformatText(style: TextStyle): this;
+    unformatParagraph(): this;
+    unformatText(): this;
 }
 
 // @public

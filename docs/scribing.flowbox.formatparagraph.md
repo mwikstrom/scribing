@@ -9,16 +9,8 @@ Applies the specified paragraph style on the current node and returns the update
 <b>Signature:</b>
 
 ```typescript
-formatParagraph(style: ParagraphStyle, theme?: FlowTheme): this;
+formatParagraph(): this;
 ```
-
-## Parameters
-
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  style | [ParagraphStyle](./scribing.paragraphstyle.md) | The paragraph style to apply |
-|  theme | [FlowTheme](./scribing.flowtheme.md) | Theme of the current content |
-
 <b>Returns:</b>
 
 this

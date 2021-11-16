@@ -9,15 +9,8 @@ Unapplies the specified text style from the current node and returns the updated
 <b>Signature:</b>
 
 ```typescript
-unformatText(style: TextStyle): this;
+unformatText(): this;
 ```
-
-## Parameters
-
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  style | [TextStyle](./scribing.textstyle.md) | The text style to unapply |
-
 <b>Returns:</b>
 
 this

@@ -8,16 +8,11 @@ import {
     validating
 } from "paratype";
 import { BoxStyle } from "../styles/BoxStyle";
-import { DefaultFlowTheme } from "../styles/DefaultFlowTheme";
 import { FlowContent } from "../structure/FlowContent";
 import { FlowNode } from "./FlowNode";
-import { FlowRange } from "../selection/FlowRange";
-import { FlowRangeSelection } from "../selection/FlowRangeSelection";
-import { FlowTheme } from "../styles/FlowTheme";
 import { FlowNodeRegistry } from "../internal/class-registry";
-import { ParagraphStyle, ParagraphStyleProps } from "../styles/ParagraphStyle";
-import { ParagraphTheme } from "../styles/ParagraphTheme";
-import { TextStyle, TextStyleProps } from "../styles/TextStyle";
+import { ParagraphStyle } from "../styles/ParagraphStyle";
+import { TextStyle } from "../styles/TextStyle";
 
 const Props = {
     content: FlowContent.classType,
@@ -93,48 +88,58 @@ export class FlowBox extends FlowBoxBase {
     }
 
     /** {@inheritdoc FlowNode.formatText} */
-    public formatText(style: TextStyle, theme?: FlowTheme): this {
-        const range = FlowRange.at(0, this.content.size);
-        return this.set("content", this.content.formatText(range, style, this.getInnerTheme(theme)));
+    public formatText(/*style: TextStyle, theme?: FlowTheme*/): this {
+        return this;
+        // 2021-11-16: Do not cascade styling to nested content
+        // TODO: Either re-enable that behavior or cleanup these comments
+        // const range = FlowRange.at(0, this.content.size);
+        // return this.set("content", this.content.formatText(range, style, this.getInnerTheme(theme)));
     }
 
     /** {@inheritdoc FlowNode.formatParagraph} */
-    public formatParagraph(style: ParagraphStyle, theme?: FlowTheme): this {
-        const range = FlowRange.at(0, this.content.size);
-        return this.set("content", this.content.formatParagraph(range, style, this.getInnerTheme(theme)));
+    public formatParagraph(/*style: ParagraphStyle, theme?: FlowTheme*/): this {
+        return this;
+        // 2021-11-16: Do not cascade styling to nested content
+        // TODO: Either re-enable that behavior or cleanup these comments
+        // const range = FlowRange.at(0, this.content.size);
+        // return this.set("content", this.content.formatParagraph(range, style, this.getInnerTheme(theme)));
     }
 
     /**
      * {@inheritDoc FlowNode.getUniformParagraphStyle}
      * @override
      */
-    public getUniformParagraphStyle(
-        theme?: ParagraphTheme,
-        diff?: Set<keyof ParagraphStyleProps>,
+    public getUniformParagraphStyle(/*theme?: ParagraphTheme, diff?: Set<keyof ParagraphStyleProps>,*/
     ): ParagraphStyle | null {
-        const range = FlowRange.at(0, this.content.size);
-        const selection = new FlowRangeSelection({ range });
-        return selection.getUniformParagraphStyle(this.content, this.getInnerTheme(theme), diff);
+        return null;
+        // 2021-11-16: Do not cascade styling to nested content
+        // TODO: Either re-enable that behavior or cleanup these comments
+        // const range = FlowRange.at(0, this.content.size);
+        // const selection = new FlowRangeSelection({ range });
+        // return selection.getUniformParagraphStyle(this.content, this.getInnerTheme(theme), diff);
     }
 
     /**
      * {@inheritDoc FlowNode.getUniformTextStyle}
      * @override
      */
-    public getUniformTextStyle(
-        theme?: ParagraphTheme,
-        diff?: Set<keyof TextStyleProps>,
-    ): TextStyle {
-        const range = FlowRange.at(0, this.content.size);
-        const selection = new FlowRangeSelection({ range });
-        return selection.getUniformTextStyle(this.content, this.getInnerTheme(theme), diff);
+    public getUniformTextStyle(/*theme?: ParagraphTheme, diff?: Set<keyof TextStyleProps>,*/
+    ): TextStyle | null {
+        return null;
+        // 2021-11-16: Do not cascade styling to nested content
+        // TODO: Either re-enable that behavior or cleanup these comments
+        // const range = FlowRange.at(0, this.content.size);
+        // const selection = new FlowRangeSelection({ range });
+        // return selection.getUniformTextStyle(this.content, this.getInnerTheme(theme), diff);
     }
 
     /** {@inheritdoc FlowNode.unformatAmbient} */
-    public unformatAmbient(theme: ParagraphTheme): this {
+    public unformatAmbient(/*theme: ParagraphTheme*/): this {
         return this.merge({
             style: this.style.unmerge(BoxStyle.ambient),
-            content: this.content.unformatAmbient(this.getInnerTheme(theme)),
+            // 2021-11-16: Do not cascade styling to nested content
+            // TODO: Either re-enable that behavior or cleanup these comments
+            // content: this.content.unformatAmbient(this.getInnerTheme(theme)),
         });
     }
 
@@ -144,21 +149,29 @@ export class FlowBox extends FlowBoxBase {
     }
 
     /** {@inheritdoc FlowNode.unformatText} */
-    public unformatText(style: TextStyle): this {
-        const range = FlowRange.at(0, this.content.size);
-        return this.set("content", this.content.unformatText(range, style));
+    public unformatText(/*style: TextStyle*/): this {
+        return this;
+        // 2021-11-16: Do not cascade styling to nested content
+        // TODO: Either re-enable that behavior or cleanup these comments
+        // const range = FlowRange.at(0, this.content.size);
+        // return this.set("content", this.content.unformatText(range, style));
     }
 
     /** {@inheritdoc FlowNode.unformatParagraph} */
-    public unformatParagraph(style: ParagraphStyle): this {
-        const range = FlowRange.at(0, this.content.size);
-        return this.set("content", this.content.unformatParagraph(range, style));
+    public unformatParagraph(/*style: ParagraphStyle*/): this {
+        return this;
+        // 2021-11-16: Do not cascade styling to nested content
+        // TODO: Either re-enable that behavior or cleanup these comments
+        // const range = FlowRange.at(0, this.content.size);
+        // return this.set("content", this.content.unformatParagraph(range, style));
     }
 
-    private getInnerTheme(outer: ParagraphTheme | FlowTheme | undefined): FlowTheme {
+    // 2021-11-16: Do not cascade styling to nested content
+    // TODO: Either re-enable that behavior or cleanup these comments
+    /*private getInnerTheme(outer: ParagraphTheme | FlowTheme | undefined): FlowTheme {
         if (outer instanceof ParagraphTheme) {
             outer = outer.getFlowTheme();
         }
         return (outer ?? DefaultFlowTheme.instance).getBoxTheme(this.style);
-    }
+    }*/
 }

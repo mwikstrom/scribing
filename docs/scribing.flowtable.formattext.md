@@ -9,16 +9,8 @@ Applies the specified text style on the current node and returns the updated nod
 <b>Signature:</b>
 
 ```typescript
-formatText(style: TextStyle, theme?: FlowTheme): this;
+formatText(): this;
 ```
-
-## Parameters
-
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  style | [TextStyle](./scribing.textstyle.md) | The text style to apply |
-|  theme | [FlowTheme](./scribing.flowtheme.md) | Theme of the current content |
-
 <b>Returns:</b>
 
 this

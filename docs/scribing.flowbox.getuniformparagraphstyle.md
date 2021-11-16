@@ -10,16 +10,8 @@ Gets a uniform paragraph style from the current node
 
 ```typescript
 /** @override */
-getUniformParagraphStyle(theme?: ParagraphTheme, diff?: Set<keyof ParagraphStyleProps>): ParagraphStyle | null;
+getUniformParagraphStyle(): ParagraphStyle | null;
 ```
-
-## Parameters
-
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  theme | [ParagraphTheme](./scribing.paragraphtheme.md) | Theme of the current node |
-|  diff | Set&lt;keyof [ParagraphStyleProps](./scribing.paragraphstyleprops.md)<!-- -->&gt; | An optional set that is populated with style keys with non-uniform values |
-
 <b>Returns:</b>
 
 [ParagraphStyle](./scribing.paragraphstyle.md) \| null

@@ -10,17 +10,9 @@ Gets a uniform text style from the current node
 
 ```typescript
 /** @override */
-getUniformTextStyle(theme?: ParagraphTheme, diff?: Set<keyof TextStyleProps>): TextStyle;
+getUniformTextStyle(): TextStyle | null;
 ```
-
-## Parameters
-
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  theme | [ParagraphTheme](./scribing.paragraphtheme.md) | Theme of the current node |
-|  diff | Set&lt;keyof [TextStyleProps](./scribing.textstyleprops.md)<!-- -->&gt; | An optional set that is populated with style keys with non-uniform values |
-
 <b>Returns:</b>
 
-[TextStyle](./scribing.textstyle.md)
+[TextStyle](./scribing.textstyle.md) \| null
 

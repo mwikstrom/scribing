@@ -9,15 +9,8 @@ Unapplies the specified paragraph style from the current node and returns the up
 <b>Signature:</b>
 
 ```typescript
-unformatParagraph(style: ParagraphStyle): this;
+unformatParagraph(): this;
 ```
-
-## Parameters
-
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  style | [ParagraphStyle](./scribing.paragraphstyle.md) | The paragraph style to unapply |
-
 <b>Returns:</b>
 
 this

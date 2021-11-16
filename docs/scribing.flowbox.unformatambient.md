@@ -9,15 +9,8 @@ Unapplies the ambient style of the specified theme from the current node and ret
 <b>Signature:</b>
 
 ```typescript
-unformatAmbient(theme: ParagraphTheme): this;
+unformatAmbient(): this;
 ```
-
-## Parameters
-
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  theme | [ParagraphTheme](./scribing.paragraphtheme.md) | The theme that provides ambient styling |
-
 <b>Returns:</b>
 
 this

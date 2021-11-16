@@ -9,15 +9,8 @@ Unapplies the specified box style from the current node and returns the updated 
 <b>Signature:</b>
 
 ```typescript
-unformatBox(style: BoxStyle): this;
+unformatBox(): this;
 ```
-
-## Parameters
-
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  style | [BoxStyle](./scribing.boxstyle.md) | The box style to unapply |
-
 <b>Returns:</b>
 
 this
