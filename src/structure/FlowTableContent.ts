@@ -338,13 +338,19 @@ export class FlowTableContent {
 
     #replaceCell(position: CellPosition, replacement: FlowTableCell): FlowTableContent {
         const target = position.toString();
-        return this.#update((key, cell) => {
+        let replaced = false;
+        const result = this.#update((key, cell) => {
             if (key === target) {
+                replaced = true;
                 return [key, replacement];
             } else {
                 return [key, cell];
             }
         });        
+        if (!replaced) {
+            result.#cells.set(position.toString(), replacement);
+        }
+        return result;
     }
 
     #update(callback: (key: string, cell: FlowTableCell) => [string, FlowTableCell] | null): FlowTableContent {
