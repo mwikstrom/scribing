@@ -38,6 +38,7 @@ import { MergeTableCell } from "../operations/MergeTableCell";
 import { CellPosition } from "./CellPosition";
 import { SplitTableCell } from "../operations/SplitTableCell";
 import { FlowRangeSelection } from "./FlowRangeSelection";
+import { FlowTableCellSelection } from "./FlowTableCellSelection";
 
 const Props = {
     position: nonNegativeIntegerType,
@@ -311,6 +312,12 @@ export class FlowTableSelection extends FlowTableSelectionBase {
         const wrap: VisitRangeOptions["wrap"] = inner => {
             if (inner instanceof CellRange) {
                 return outerWrap(this.set("range", inner));
+            } else if (inner instanceof FlowRange) {
+                return outerWrap(new FlowTableCellSelection({
+                    position: this.position,
+                    cell: this.range.focus,
+                    content: new FlowRangeSelection({ range: inner }),
+                }));
             } else {
                 return outerWrap(inner);
             }
