@@ -299,10 +299,12 @@ export abstract class NestedFlowSelection extends FlowSelection {
                 return null;
             }
         };
+        const replace: VisitRangeOptions["replace"] = inner => outerWrap(inner);
         const innerSelection = this.getInnerSelection();
         const innerOptions = this.#getInnerOptions({
             ...rest,
             wrap,
+            replace,
             position: this.position,
             outer: this,
         });

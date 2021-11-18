@@ -24,5 +24,6 @@ export interface VisitRangeOptions extends TargetOptions
 
 |  Method | Description |
 |  --- | --- |
+|  [replace(inner)](./scribing.visitrangeoptions.replace.md) |  |
 |  [wrap(inner)](./scribing.visitrangeoptions.wrap.md) |  |
 

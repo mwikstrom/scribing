@@ -763,6 +763,8 @@ export abstract class FlowSelection {
     abstract removeTableColumn(content: FlowContent): FlowOperation | null;
     abstract removeTableRow(content: FlowContent): FlowOperation | null;
     // @internal (undocumented)
+    static readonly rootReplace: VisitRangeOptions["replace"];
+    // @internal (undocumented)
     static readonly rootWrap: VisitRangeOptions["wrap"];
     abstract setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null;
     abstract setIcon(content: FlowContent, data: string): FlowOperation | null;
@@ -2528,6 +2530,8 @@ export interface VisitRangeOptions extends TargetOptions {
     outer?: NestedFlowSelection;
     // (undocumented)
     position?: number;
+    // (undocumented)
+    replace(inner: FlowSelection): FlowSelection | null;
     // (undocumented)
     wrap(inner: FlowSelection | CellRange | FlowRange): FlowSelection | null;
 }

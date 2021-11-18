@@ -493,8 +493,8 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
         callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void,
         options: Partial<VisitRangeOptions> = {},
     ): void {
-        const { wrap = FlowSelection.rootWrap, ...rest } = options;
-        callback(this.range, { ...rest, wrap });
+        const { wrap = FlowSelection.rootWrap, replace = FlowSelection.rootReplace, ...rest } = options;
+        callback(this.range, { ...rest, wrap, replace });
     }
 
     /**

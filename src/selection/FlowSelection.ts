@@ -42,6 +42,11 @@ export abstract class FlowSelection {
         }
     };
 
+    /**
+     * @internal
+     */
+    static readonly rootReplace: VisitRangeOptions["replace"] = inner => inner;
+
     /** Converts the current selection to a JSON value */
     public toJsonValue(): JsonValue {
         return FlowSelection.baseType.toJsonValue(this);
@@ -375,6 +380,7 @@ export interface RemoveFlowSelectionOptions extends TargetOptions {
  */
 export interface VisitRangeOptions extends TargetOptions {
     wrap(inner: FlowSelection | CellRange | FlowRange): FlowSelection | null;
+    replace(inner: FlowSelection): FlowSelection | null;
     position?: number;
     outer?: NestedFlowSelection;
 }
