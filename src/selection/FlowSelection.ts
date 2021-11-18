@@ -11,6 +11,7 @@ import { ImageSource } from "../structure/ImageSource";
 import { TableStyle } from "../styles/TableStyle";
 import { TableColumnStyle } from "../styles/TableColumnStyle";
 import { CellRange } from "./CellRange";
+import type { NestedFlowSelection } from "./NestedFlowSelection";
 
 /**
  * Represents a selection of flow content
@@ -375,4 +376,5 @@ export interface RemoveFlowSelectionOptions extends TargetOptions {
 export interface VisitRangeOptions extends TargetOptions {
     wrap(inner: FlowSelection | CellRange | FlowRange): FlowSelection | null;
     position?: number;
+    outer?: NestedFlowSelection;
 }

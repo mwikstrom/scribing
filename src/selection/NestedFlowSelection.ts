@@ -300,7 +300,12 @@ export abstract class NestedFlowSelection extends FlowSelection {
             }
         };
         const innerSelection = this.getInnerSelection();
-        const innerOptions = { ...this.#getInnerOptions(rest), wrap, position: this.position };
+        const innerOptions = this.#getInnerOptions({
+            ...rest,
+            wrap,
+            position: this.position,
+            outer: this,
+        });
         innerSelection.visitRanges(callback, innerOptions);
     }
 

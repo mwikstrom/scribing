@@ -2525,6 +2525,8 @@ export const UnorderedListMarkerKindType: Type<ListMarkerKind>;
 // @public
 export interface VisitRangeOptions extends TargetOptions {
     // (undocumented)
+    outer?: NestedFlowSelection;
+    // (undocumented)
     position?: number;
     // (undocumented)
     wrap(inner: FlowSelection | CellRange | FlowRange): FlowSelection | null;
