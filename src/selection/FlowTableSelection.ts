@@ -552,7 +552,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
         ) => void
     ): void {
         const table = this.#getTableNode(content);
-        table.content.positions.forEach(position => {
+        table.content.positions.filter(position => this.range.contains(position)).forEach(position => {
             const cellTheme = table.getCellTheme(position, theme);
             const cellContent = table.content.getCell(position, true).content;
             callback(cellContent, cellTheme);
@@ -572,7 +572,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
         }
         const table = this.#getTableNode(content);
         const outer: EditTableCell[] = [];
-        table.content.positions.forEach(position => {
+        table.content.positions.filter(position => this.range.contains(position)).forEach(position => {
             const cellTheme = table.getCellTheme(position, theme);
             const cellContent = table.content.getCell(position, true).content;
             const inner = callback(cellContent, cellTheme);
