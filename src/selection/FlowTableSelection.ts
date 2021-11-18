@@ -125,7 +125,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     ): BoxStyle {
         let result = BoxStyle.empty;
         this.#forEachCellContent(content, theme, (cellContent, cellTheme) => {
-            const innerResult = selectAll(content).getUniformBoxStyle(cellContent, cellTheme, diff);
+            const innerResult = selectAll(cellContent).getUniformBoxStyle(cellContent, cellTheme, diff);
             result = result.merge(innerResult, diff);
         });
         return result;
@@ -142,7 +142,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     ): ParagraphStyle {
         let result = ParagraphStyle.empty;
         this.#forEachCellContent(content, theme, (cellContent, cellTheme) => {
-            const innerResult = selectAll(content).getUniformParagraphStyle(cellContent, cellTheme, diff);
+            const innerResult = selectAll(cellContent).getUniformParagraphStyle(cellContent, cellTheme, diff);
             result = result.merge(innerResult, diff);
         });
         return result;
@@ -159,7 +159,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     ): TextStyle {
         let result = TextStyle.empty;
         this.#forEachCellContent(content, theme, (cellContent, cellTheme) => {
-            const innerResult = selectAll(content).getUniformTextStyle(cellContent, cellTheme, diff);
+            const innerResult = selectAll(cellContent).getUniformTextStyle(cellContent, cellTheme, diff);
             result = result.merge(innerResult, diff);
         });
         return result;
