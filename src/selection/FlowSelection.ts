@@ -374,4 +374,5 @@ export interface RemoveFlowSelectionOptions extends TargetOptions {
  */
 export interface VisitRangeOptions extends TargetOptions {
     wrap(inner: FlowSelection | CellRange | FlowRange): FlowSelection | null;
+    position?: number;
 }

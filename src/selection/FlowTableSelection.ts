@@ -322,7 +322,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
                 return outerWrap(inner);
             }
         };
-        callback(this.range, { ...rest, wrap });
+        callback(this.range, { ...rest, wrap, position: this.position });
     }
 
     /**
