@@ -307,6 +307,7 @@ export abstract class NestedFlowSelection extends FlowSelection {
             replace,
             position: this.position,
             outer: this,
+            parent: options,
         });
         innerSelection.visitRanges(callback, innerOptions);
     }

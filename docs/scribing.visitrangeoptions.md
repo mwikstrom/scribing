@@ -18,6 +18,7 @@ export interface VisitRangeOptions extends TargetOptions
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [outer?](./scribing.visitrangeoptions.outer.md) | [NestedFlowSelection](./scribing.nestedflowselection.md) | <i>(Optional)</i> |
+|  [parent?](./scribing.visitrangeoptions.parent.md) | [TargetOptions](./scribing.targetoptions.md) | <i>(Optional)</i> |
 |  [position?](./scribing.visitrangeoptions.position.md) | number | <i>(Optional)</i> |
 
 ## Methods

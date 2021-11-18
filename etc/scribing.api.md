@@ -2529,6 +2529,8 @@ export interface VisitRangeOptions extends TargetOptions {
     // (undocumented)
     outer?: NestedFlowSelection;
     // (undocumented)
+    parent?: TargetOptions;
+    // (undocumented)
     position?: number;
     // (undocumented)
     replace(inner: FlowSelection): FlowSelection | null;

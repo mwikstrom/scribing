@@ -383,4 +383,5 @@ export interface VisitRangeOptions extends TargetOptions {
     replace(inner: FlowSelection): FlowSelection | null;
     position?: number;
     outer?: NestedFlowSelection;
+    parent?: TargetOptions;
 }

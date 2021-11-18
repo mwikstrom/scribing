@@ -323,7 +323,13 @@ export class FlowTableSelection extends FlowTableSelectionBase {
             }
         };
         const replace: VisitRangeOptions["replace"] = inner => outerWrap(inner);
-        callback(this.range, { ...rest, wrap, replace, position: this.position });
+        callback(this.range, { 
+            ...rest,
+            wrap,
+            replace,
+            position: this.position,
+            parent: options,
+        });
     }
 
     /**
