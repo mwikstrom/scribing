@@ -87,12 +87,12 @@ export class FlowTableCell extends FlowTableCellBase {
     public getSpannedPositions(root: CellPosition, includeSelf?: boolean): CellPosition[] {
         const { row: rootRow, column: rootColumn } = root;
         const { rowSpan, colSpan } = this;
-        const result = new Array<CellPosition>(rowSpan * (colSpan - (includeSelf ? 0 : 1)));
+        const result = new Array<CellPosition>(rowSpan * colSpan - (includeSelf ? 0 : 1));
         for (let r = 0; r < rowSpan; ++r) {
             for (let c = (r || includeSelf) ? 0 : 1; c < colSpan; ++c) {
                 const row = rootRow + r;
                 const column = rootColumn + c;
-                result[r * colSpan + c - 1] = CellPosition.at(row, column);
+                result[r * colSpan + c - (includeSelf ? 0 : 1)] = CellPosition.at(row, column);
             }
         }
         return result;
