@@ -719,7 +719,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     // @override
     unformatText(style: TextStyle): FlowOperation | null;
     // @override
-    visitRanges(callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void, options?: TargetOptions): void;
+    visitRanges(callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void, options?: Partial<VisitRangeOptions>): void;
 }
 
 // @public
@@ -762,6 +762,8 @@ export abstract class FlowSelection {
     abstract remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
     abstract removeTableColumn(content: FlowContent): FlowOperation | null;
     abstract removeTableRow(content: FlowContent): FlowOperation | null;
+    // @internal (undocumented)
+    static readonly rootWrap: VisitRangeOptions["wrap"];
     abstract setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null;
     abstract setIcon(content: FlowContent, data: string): FlowOperation | null;
     abstract setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
@@ -773,7 +775,7 @@ export abstract class FlowSelection {
     abstract unformatTable(style: TableStyle, options?: TargetOptions): FlowOperation | null;
     abstract unformatTableColumn(style: TableColumnStyle, options?: TargetOptions): FlowOperation | null;
     abstract unformatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
-    abstract visitRanges(callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void, options?: TargetOptions): void;
+    abstract visitRanges(callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void, options?: Partial<VisitRangeOptions>): void;
 }
 
 // @public @sealed
@@ -1012,7 +1014,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     // @override
     unformatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
     // @override
-    visitRanges(callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void, options?: TargetOptions): void;
+    visitRanges(callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void, options?: Partial<VisitRangeOptions>): void;
 }
 
 // @public
@@ -1620,7 +1622,7 @@ export abstract class NestedFlowSelection extends FlowSelection {
     // @internal
     updateInner(callback: (inner: FlowSelection) => FlowSelection | null): FlowSelection | null;
     // @override
-    visitRanges(callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void, options?: TargetOptions): void;
+    visitRanges(callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void, options?: Partial<VisitRangeOptions>): void;
 }
 
 // @public @sealed

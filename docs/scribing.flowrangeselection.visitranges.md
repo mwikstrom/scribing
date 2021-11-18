@@ -10,7 +10,7 @@ Transforms all ranges in the current selection
 
 ```typescript
 /** @override */
-visitRanges(callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void, options?: TargetOptions): void;
+visitRanges(callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void, options?: Partial<VisitRangeOptions>): void;
 ```
 
 ## Parameters
@@ -18,7 +18,7 @@ visitRanges(callback: (range: FlowRange | CellRange, options: VisitRangeOptions)
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  callback | (range: [FlowRange](./scribing.flowrange.md) \| [CellRange](./scribing.cellrange.md)<!-- -->, options: [VisitRangeOptions](./scribing.visitrangeoptions.md)<!-- -->) =&gt; void |  |
-|  options | [TargetOptions](./scribing.targetoptions.md) | Options that provide tranformation behavior |
+|  options | Partial&lt;[VisitRangeOptions](./scribing.visitrangeoptions.md)<!-- -->&gt; | Options that provide tranformation behavior |
 
 <b>Returns:</b>
 
