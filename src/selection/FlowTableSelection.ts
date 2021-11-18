@@ -305,16 +305,17 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      */
     public visitRanges(
         callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void,
-        options: TargetOptions = {},
+        options: Partial<VisitRangeOptions> = {},
     ): void {
+        const { wrap: outerWrap = FlowSelection.rootWrap, ...rest } = options;
         const wrap: VisitRangeOptions["wrap"] = inner => {
             if (inner instanceof CellRange) {
-                return this.set("range", inner);
+                return outerWrap(this.set("range", inner));
             } else {
-                return null;
+                return outerWrap(inner);
             }
         };
-        callback(this.range, { ...options, wrap });
+        callback(this.range, { ...rest, wrap });
     }
 
     /**

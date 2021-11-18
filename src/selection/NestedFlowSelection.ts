@@ -288,31 +288,20 @@ export abstract class NestedFlowSelection extends FlowSelection {
      */
     public visitRanges(
         callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void,
-        options?: TargetOptions,
+        options: Partial<VisitRangeOptions> = {},
     ): void {
-        const innerSelection = this.getInnerSelection();
-        const innerOptions = this.#getInnerOptions(options);
-        innerSelection.visitRanges((range, {wrap, ...rest}) => callback(
-            range, 
-            {
-                ...rest, 
-                wrap: inner => {
-                    if (inner instanceof CellRange) {
-                        // HACK: Convert from JSON value to avoid circular module dependency
-                        inner = FlowSelection.fromJsonValue({
-                            table: this.position,
-                            range: inner.toString(),
-                        });
-                    } else if (inner instanceof FlowRange) {
-                        // HACK: Convert from JSON value to avoid circular module dependency
-                        inner = FlowSelection.fromJsonValue({
-                            range: inner.toData(),
-                        });
-                    }
-                    return wrap(this.setInnerSelection(inner));
-                }
+        const { wrap: outerWrap = FlowSelection.rootWrap, ...rest } = options;
+        const wrap: VisitRangeOptions["wrap"] = inner => {
+            const innerWrapped = FlowSelection.rootWrap(inner);
+            if (innerWrapped) {
+                return outerWrap(this.setInnerSelection(innerWrapped));
+            } else {
+                return null;
             }
-        ), innerOptions);
+        };
+        const innerSelection = this.getInnerSelection();
+        const innerOptions = { ...this.#getInnerOptions(rest), wrap };
+        innerSelection.visitRanges(callback, innerOptions);
     }
 
     /**

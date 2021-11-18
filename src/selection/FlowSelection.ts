@@ -25,6 +25,22 @@ export abstract class FlowSelection {
         return FlowSelection.baseType.fromJsonValue(value);
     }
 
+    /**
+     * @internal
+     */
+    static readonly rootWrap: VisitRangeOptions["wrap"] = inner => {
+        if (inner instanceof FlowSelection) {
+            return inner;
+        } else if (inner instanceof FlowRange) {
+            // HACK: Convert from JSON value to avoid circular module dependency
+            return FlowSelection.fromJsonValue({
+                range: inner.toData(),
+            });
+        } else {
+            return null;
+        }
+    };
+
     /** Converts the current selection to a JSON value */
     public toJsonValue(): JsonValue {
         return FlowSelection.baseType.toJsonValue(this);
@@ -185,7 +201,7 @@ export abstract class FlowSelection {
      */
     public abstract visitRanges(
         callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void,
-        options?: TargetOptions,
+        options?: Partial<VisitRangeOptions>,
     ): void;
 
     /**
