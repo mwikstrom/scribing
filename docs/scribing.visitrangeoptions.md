@@ -13,6 +13,12 @@ export interface VisitRangeOptions extends TargetOptions
 ```
 <b>Extends:</b> [TargetOptions](./scribing.targetoptions.md)
 
+## Properties
+
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [position?](./scribing.visitrangeoptions.position.md) | number | <i>(Optional)</i> |
+
 ## Methods
 
 |  Method | Description |
