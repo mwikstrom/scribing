@@ -2,7 +2,7 @@ import { FlowContent } from "../structure/FlowContent";
 import { FlowOperation } from "../operations/FlowOperation";
 import { FlowRange } from "../selection/FlowRange";
 import { splitRangeByUniformParagraphStyle } from "./split-range-by-paragraph-style";
-import { mapNotNull } from "./utils";
+import { mapNotNull } from "../not-null";
 import { ParagraphStyle, ParagraphStyleProps } from "../styles/ParagraphStyle";
 import { FormatParagraph } from "../operations/FormatParagraph";
 import { UnformatParagraph } from "../operations/UnformatParagraph";

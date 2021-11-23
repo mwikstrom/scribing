@@ -22,7 +22,7 @@ import { formatListLevel } from "../internal/format-list-level";
 import { insertParaBreak } from "../internal/insert-para-break";
 import { splitRangeByUniformParagraphStyle } from "../internal/split-range-by-paragraph-style";
 import { getRangeAfterInsertion, getRangeAfterRemoval } from "../internal/transform-helpers";
-import { filterNotNull, mapNotNull } from "../internal/utils";
+import { filterNotNull, mapNotNull } from "../not-null";
 import { ParagraphBreak } from "../nodes/ParagraphBreak";
 import {
     OrderedListMarkerKindType,

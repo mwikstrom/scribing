@@ -3,6 +3,9 @@
  * @packageDocumentation
  */
 
+// Helper
+export * from "./not-null";
+
 // Range and positions
 export * from "./selection/FlowRange";
 export * from "./selection/CellPosition";

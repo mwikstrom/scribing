@@ -318,6 +318,9 @@ export interface EndMarkupProps {
 }
 
 // @public
+export const filterNotNull: <T>(array: readonly T[]) => Exclude<T, null | undefined>[];
+
+// @public
 export const FLOW_COLORS: readonly ["default", "subtle", "primary", "secondary", "information", "success", "warning", "error"];
 
 // @public @sealed
@@ -1420,6 +1423,9 @@ export type ListMarkerKind = OrderedListMarkerKind | UnorderedListMarkerKind;
 // @public
 export const ListMarkerKindType: Type<ListMarkerKind>;
 
+// @public
+export const mapNotNull: <A extends readonly unknown[], T>(array: A, callback: (value: A[number], index: number) => T | null | undefined) => Exclude<T, null | undefined>[];
+
 // @public @sealed
 export class MergeTableCell extends MergeTableCellBase implements MergeTableCellProps {
     // (undocumented)
@@ -1575,6 +1581,9 @@ export abstract class NestedFlowSelection extends FlowSelection {
     // @override
     visitRanges(callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void, options?: Partial<VisitRangeOptions>): void;
 }
+
+// @public
+export type NotNull<T> = Exclude<T, null | undefined>;
 
 // @public @sealed
 export class OpenUrl extends OpenUrlBase {

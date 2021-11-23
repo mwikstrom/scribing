@@ -190,6 +190,7 @@ Model for collaborative rich text editing
 |  [EditBoxBase](./scribing.editboxbase.md) | The base record class for [EditBox](./scribing.editbox.md) |
 |  [EditTableCellBase](./scribing.edittablecellbase.md) | The base record class for [EditTableCell](./scribing.edittablecell.md) |
 |  [EndMarkupBase](./scribing.endmarkupbase.md) | The base record class for [EndMarkup](./scribing.endmarkup.md) |
+|  [filterNotNull](./scribing.filternotnull.md) | Returns elements from the specified array that are not <code>null</code> nor <code>undefined</code> |
 |  [FLOW\_COLORS](./scribing.flow_colors.md) | Read-only array that contains all flow content colors |
 |  [FlowBatchBase](./scribing.flowbatchbase.md) | The base record class for [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowBoxBase](./scribing.flowboxbase.md) | The base record class for [FlowBox](./scribing.flowbox.md) |
@@ -216,6 +217,7 @@ Model for collaborative rich text editing
 |  [LineBreakBase](./scribing.linebreakbase.md) | The base record class for [LineBreak](./scribing.linebreak.md) |
 |  [LIST\_MARKER\_KINDS](./scribing.list_marker_kinds.md) | Read-only array that contains all list marker styles |
 |  [ListMarkerKindType](./scribing.listmarkerkindtype.md) | The run-time type that matches all list marker style values |
+|  [mapNotNull](./scribing.mapnotnull.md) | Applies the specified callback on every element in the specified array and returns the resulting elements that are not <code>null</code> nor <code>undefined</code>. |
 |  [MergeTableCellBase](./scribing.mergetablecellbase.md) | The base record class for [MergeTableCell](./scribing.mergetablecell.md) |
 |  [OpenUrlBase](./scribing.openurlbase.md) | The base record class for [OpenUrl](./scribing.openurl.md) |
 |  [ORDERED\_LIST\_MARKER\_KINDS](./scribing.ordered_list_marker_kinds.md) | Read-only array that contains ordered list marker styles |
@@ -261,6 +263,7 @@ Model for collaborative rich text editing
 |  [FlowRangeTuple](./scribing.flowrangetuple.md) | Data for a [FlowRange](./scribing.flowrange.md) represented by a tuple where the first value is the anchor position and the second value is the focus position. |
 |  [FlowTableCellData](./scribing.flowtablecelldata.md) | Data of [FlowTableCell](./scribing.flowtablecell.md) |
 |  [ListMarkerKind](./scribing.listmarkerkind.md) | List marker styles |
+|  [NotNull](./scribing.notnull.md) | Excludes <code>null</code> and <code>undefined</code> from the specified type |
 |  [OrderedListMarkerKind](./scribing.orderedlistmarkerkind.md) | Ordered list marker styles |
 |  [ParagraphVariant](./scribing.paragraphvariant.md) | Paragraph style variant |
 |  [PredefinedIcon](./scribing.predefinedicon.md) | Predefined icon |
