@@ -24,7 +24,6 @@ Model for collaborative rich text editing
 |  [FlowBoxSelection](./scribing.flowboxselection.md) | Represents a selection inside a flow box |
 |  [FlowContent](./scribing.flowcontent.md) | Flow content |
 |  [FlowCursor](./scribing.flowcursor.md) | Represents a position in flow content |
-|  [FlowEditorState](./scribing.floweditorstate.md) | Immutable state record for a flow content editor |
 |  [FlowIcon](./scribing.flowicon.md) | Represents a dynamic text. |
 |  [FlowImage](./scribing.flowimage.md) | Represents a dynamic text. |
 |  [FlowNode](./scribing.flownode.md) | A piece of flow content. |
@@ -82,7 +81,6 @@ Model for collaborative rich text editing
 
 |  Interface | Description |
 |  --- | --- |
-|  [ApplyMineOptions](./scribing.applymineoptions.md) | Options for the [FlowEditorState.applyMine()](./scribing.floweditorstate.applymine.md) method |
 |  [BoxStyleProps](./scribing.boxstyleprops.md) | Style properties for box content |
 |  [CellPositionProps](./scribing.cellpositionprops.md) | Non-computed properties of a [CellPosition](./scribing.cellposition.md) |
 |  [CellRangeProps](./scribing.cellrangeprops.md) | Non-computed properties of a [CellRange](./scribing.cellrange.md) |
@@ -102,8 +100,6 @@ Model for collaborative rich text editing
 |  [FlowBoxSelectionData](./scribing.flowboxselectiondata.md) | Data of [FlowBoxSelection](./scribing.flowboxselection.md) |
 |  [FlowBoxSelectionProps](./scribing.flowboxselectionprops.md) | Properties of [FlowBoxSelection](./scribing.flowboxselection.md) |
 |  [FlowContentProps](./scribing.flowcontentprops.md) | Flow content properties |
-|  [FlowEditorStateData](./scribing.floweditorstatedata.md) | Data for [FlowEditorState](./scribing.floweditorstate.md) |
-|  [FlowEditorStateProps](./scribing.floweditorstateprops.md) | Properties for [FlowEditorState](./scribing.floweditorstate.md) |
 |  [FlowIconData](./scribing.flowicondata.md) | Data of line break nodes |
 |  [FlowIconProps](./scribing.flowiconprops.md) | Properties of [FlowIcon](./scribing.flowicon.md) |
 |  [FlowImageData](./scribing.flowimagedata.md) | Data of line break nodes |
@@ -200,7 +196,6 @@ Model for collaborative rich text editing
 |  [FlowBoxSelectionBase](./scribing.flowboxselectionbase.md) | The base record class for [FlowBoxSelection](./scribing.flowboxselection.md) |
 |  [FlowColorType](./scribing.flowcolortype.md) | The run-time type that matches text color values |
 |  [FlowContentBase](./scribing.flowcontentbase.md) | The base record class for [FlowContent](./scribing.flowcontent.md) |
-|  [FlowEditorStateBase](./scribing.floweditorstatebase.md) | The base record class for [FlowEditorState](./scribing.floweditorstate.md) |
 |  [FlowIconBase](./scribing.flowiconbase.md) | The base record class for [FlowIcon](./scribing.flowicon.md) |
 |  [FlowImageBase](./scribing.flowimagebase.md) | The base record class for [FlowImage](./scribing.flowimage.md) |
 |  [FlowRangeBase](./scribing.flowrangebase.md) | The base record class for [FlowRange](./scribing.flowrange.md) |
