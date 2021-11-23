@@ -39,6 +39,8 @@ import { CellPosition } from "./CellPosition";
 import { SplitTableCell } from "../operations/SplitTableCell";
 import { FlowRangeSelection } from "./FlowRangeSelection";
 import { FlowTableCellSelection } from "./FlowTableCellSelection";
+import { RemoveRange } from "../operations/RemoveRange";
+import { InsertContent } from "../operations/InsertContent";
 
 const Props = {
     position: nonNegativeIntegerType,
@@ -497,14 +499,48 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      * {@inheritDoc FlowSelection.mergeTableCell}
      * @override
      */
-    public mergeTableCell(): FlowOperation | null {
+    public mergeTableCell(content: FlowContent): FlowOperation | null {
         const { firstRowIndex, lastRowIndex, firstColumnIndex, lastColumnIndex } = this.range;
-        return new MergeTableCell({
+        const table = this.#getTableNode(content);
+        const colSpan = 1 + lastColumnIndex - firstColumnIndex;
+        const rowSpan = 1 + lastRowIndex - firstRowIndex;
+        const mergedPos = CellPosition.at(firstRowIndex, firstColumnIndex);
+        const operations: FlowOperation[] = [];
+        let appendPos = table.content.getCell(mergedPos, true).content.size;
+
+        for (let r = firstRowIndex; r <= lastRowIndex; ++r) {
+            for (let c = r === firstRowIndex ? firstColumnIndex + 1 : firstColumnIndex; c <= lastColumnIndex; ++c) {
+                const spannedPos = CellPosition.at(r, c);
+                const spannedContent = table.content.getCell(spannedPos, true).content;
+                if (!spannedContent.equals(table.content.defaultCellContent)) {
+                    operations.push(new EditTableCell({
+                        position: this.position,
+                        cell: spannedPos,
+                        inner: new RemoveRange({
+                            range: FlowRange.at(0, spannedContent.size)
+                        }),
+                    }));
+                    operations.push(new EditTableCell({
+                        position: this.position,
+                        cell: mergedPos,
+                        inner: new InsertContent({
+                            position: appendPos,
+                            content: spannedContent,
+                        }),
+                    }));
+                    appendPos += spannedContent.size;
+                }
+            }
+        }
+
+        operations.push(new MergeTableCell({
             position: this.position,
-            cell: CellPosition.at(firstRowIndex, firstColumnIndex),
-            colSpan: 1 + lastColumnIndex - firstColumnIndex,
-            rowSpan: 1 + lastRowIndex - firstRowIndex,
-        });
+            cell: mergedPos,
+            colSpan,
+            rowSpan,
+        }));
+
+        return FlowBatch.fromArray(operations);
     }
 
     /**
