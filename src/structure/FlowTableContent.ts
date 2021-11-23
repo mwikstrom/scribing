@@ -210,7 +210,7 @@ export class FlowTableContent {
         } else if (index < 0 || index > this.#columnCount) {
             throw new RangeError(`Column index ${index} is out of range`);
         }
-        return this.#update((key, cell) => {
+        const updated = this.#update((key, cell) => {
             const pos = CellPosition.parse(key, true);
             if (pos.column >= index) {
                 // cell is positioned at or after insertion point. increment position.
@@ -223,6 +223,8 @@ export class FlowTableContent {
                 return [key, cell];
             }
         });
+        updated.#columnCount += count;
+        return updated;
     }
 
     public removeColumn(index: number, count = 1): FlowTableContent {
@@ -235,7 +237,7 @@ export class FlowTableContent {
         } else if (index + count >= this.#columnCount) {
             throw new RangeError(`Column index ${index + count} is out of range`);
         }
-        return this.#update((key, cell) => {
+        const updated = this.#update((key, cell) => {
             const pos = CellPosition.parse(key, true);
             if (pos.column >= index + count) {
                 // cell is positioned at or after removed range. decrement position.
@@ -252,6 +254,8 @@ export class FlowTableContent {
                 return [key, cell];
             }
         });
+        updated.#columnCount -= count;
+        return updated;
     }
 
     public insertRow(index: number, count = 1): FlowTableContent {
@@ -262,7 +266,7 @@ export class FlowTableContent {
         } else if (index < 0 || index > this.#rowCount) {
             throw new RangeError(`Row index ${index} is out of range`);
         }
-        return this.#update((key, cell) => {
+        const updated = this.#update((key, cell) => {
             const pos = CellPosition.parse(key, true);
             if (pos.row >= index) {
                 // cell is positioned at or after insertion point. increment position.
@@ -275,6 +279,8 @@ export class FlowTableContent {
                 return [key, cell];
             }
         });
+        updated.#rowCount += count;
+        return updated;
     }
 
 
@@ -288,7 +294,7 @@ export class FlowTableContent {
         } else if (index + count >= this.#rowCount) {
             throw new RangeError(`Row index ${index + count} is out of range`);
         }
-        return this.#update((key, cell) => {
+        const updated = this.#update((key, cell) => {
             const pos = CellPosition.parse(key, true);
             if (pos.row >= index + count) {
                 // cell is positioned at or after removed range. decrement position.
@@ -305,10 +311,11 @@ export class FlowTableContent {
                 return [key, cell];
             }
         });
+        updated.#rowCount -= count;
+        return updated;
     }
 
     public merge(position: CellPosition, colSpan: number, rowSpan: number): FlowTableContent {
-        const target = position.toString();
         const before = this.getCell(position, true);
         const after = before.merge({ colSpan, rowSpan });
         const slated = new Set(after.getSpannedPositions(position, true).map(pos => pos.toString()));
@@ -319,15 +326,7 @@ export class FlowTableContent {
                 throw new Error(`Table position ${key} is already merged`);
             }
         }
-        return this.#update((key, cell) => {
-            if (key === target) {
-                return [key, after];
-            } else if (slated.has(key)) {
-                return null;
-            } else {
-                return [key, cell];
-            }
-        });
+        return this.#replaceCell(position, after);
     }
 
     public split(position: CellPosition): FlowTableContent {

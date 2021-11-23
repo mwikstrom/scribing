@@ -424,7 +424,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
         return new InsertTableColumn({ 
             position: this.position, 
             column: range.first, 
-            count: count ?? range.size, 
+            count: count ?? (range.size + 1), 
         });
     }
 
@@ -437,7 +437,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
         return new InsertTableColumn({ 
             position: this.position, 
             column: range.last + 1, 
-            count: count ?? range.size, 
+            count: count ?? (range.size + 1), 
         });
     }
 
@@ -450,7 +450,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
         return new InsertTableRow({ 
             position: this.position, 
             row: range.first, 
-            count: count ?? range.size, 
+            count: count ?? (range.size + 1), 
         });
     }
 
@@ -463,7 +463,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
         return new InsertTableRow({ 
             position: this.position, 
             row: range.last + 1, 
-            count: count ?? range.size,
+            count: count ?? (range.size + 1),
         });
     }
 
@@ -476,7 +476,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
         return new RemoveTableColumn({
             position: this.position,
             column: range.first,
-            count: range.size,
+            count: range.size + 1,
         });
     }
 
@@ -489,7 +489,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
         return new RemoveTableRow({
             position: this.position,
             row: range.first,
-            count: range.size,
+            count: range.size + 1,
         });
     }
 
