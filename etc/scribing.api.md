@@ -940,7 +940,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     // @override
     get isCollapsed(): boolean;
     // @override
-    mergeTableCell(): FlowOperation | null;
+    mergeTableCell(content: FlowContent): FlowOperation | null;
     // @override
     remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
     // @override

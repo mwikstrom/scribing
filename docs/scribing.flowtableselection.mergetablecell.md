@@ -10,8 +10,15 @@ Creates an operation that merges the selected table cells.
 
 ```typescript
 /** @override */
-mergeTableCell(): FlowOperation | null;
+mergeTableCell(content: FlowContent): FlowOperation | null;
 ```
+
+## Parameters
+
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  content | [FlowContent](./scribing.flowcontent.md) | The selected content |
+
 <b>Returns:</b>
 
 [FlowOperation](./scribing.flowoperation.md) \| null

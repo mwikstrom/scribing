@@ -43,7 +43,7 @@ export declare class FlowTableSelection extends FlowTableSelectionBase
 |  [insertTableColumnBefore(\_, count)](./scribing.flowtableselection.inserttablecolumnbefore.md) |  | Creates an operation that inserts a table column before the current selection. |
 |  [insertTableRowAfter(content, count)](./scribing.flowtableselection.inserttablerowafter.md) |  | Creates an operation that inserts a table row after the current selection. |
 |  [insertTableRowBefore(content, count)](./scribing.flowtableselection.inserttablerowbefore.md) |  | Creates an operation that inserts a table row before the current selection. |
-|  [mergeTableCell()](./scribing.flowtableselection.mergetablecell.md) |  | Creates an operation that merges the selected table cells. |
+|  [mergeTableCell(content)](./scribing.flowtableselection.mergetablecell.md) |  | Creates an operation that merges the selected table cells. |
 |  [remove(options)](./scribing.flowtableselection.remove.md) |  | Creates an operation that removes the content of the current selection |
 |  [removeTableColumn()](./scribing.flowtableselection.removetablecolumn.md) |  | Creates an operation that removes the selected table column |
 |  [removeTableRow()](./scribing.flowtableselection.removetablerow.md) |  | Creates an operation that removes the selected table row |
