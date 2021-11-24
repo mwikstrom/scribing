@@ -5,8 +5,8 @@ import { FlowSelection } from "../selection/FlowSelection";
 /** @public */
 export interface FlowSyncInput {
     version: number;
-    operation: FlowOperation | null;
     selection: FlowSelection | null;
+    operation: FlowOperation | null;
 }
 
 /** @public */
