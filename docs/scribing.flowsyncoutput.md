@@ -17,5 +17,6 @@ export interface FlowSyncOutput
 |  --- | --- | --- |
 |  [merge](./scribing.flowsyncoutput.merge.md) | [FlowOperation](./scribing.flowoperation.md) \| null |  |
 |  [presence](./scribing.flowsyncoutput.presence.md) | [FlowPresence](./scribing.flowpresence.md)<!-- -->\[\] |  |
-|  [token](./scribing.flowsyncoutput.token.md) | string |  |
+|  [version](./scribing.flowsyncoutput.version.md) | number |  |
+|  [you](./scribing.flowsyncoutput.you.md) | string |  |
 

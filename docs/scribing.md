@@ -83,6 +83,10 @@ Model for collaborative rich text editing
 
 |  Interface | Description |
 |  --- | --- |
+|  [BlobConditions](./scribing.blobconditions.md) |  |
+|  [BlobReadResult](./scribing.blobreadresult.md) |  |
+|  [BlobStore](./scribing.blobstore.md) |  |
+|  [BlobWriteResult](./scribing.blobwriteresult.md) |  |
 |  [BoxStyleProps](./scribing.boxstyleprops.md) | Style properties for box content |
 |  [CellPositionProps](./scribing.cellpositionprops.md) | Non-computed properties of a [CellPosition](./scribing.cellposition.md) |
 |  [CellRangeProps](./scribing.cellrangeprops.md) | Non-computed properties of a [CellRange](./scribing.cellrange.md) |
@@ -111,7 +115,6 @@ Model for collaborative rich text editing
 |  [FlowRangeSelectionProps](./scribing.flowrangeselectionprops.md) | Properties of flow range selections |
 |  [FlowSyncInput](./scribing.flowsyncinput.md) |  |
 |  [FlowSyncOutput](./scribing.flowsyncoutput.md) |  |
-|  [FlowSyncProtocol](./scribing.flowsyncprotocol.md) |  |
 |  [FlowSyncSnapshot](./scribing.flowsyncsnapshot.md) |  |
 |  [FlowTableCellProps](./scribing.flowtablecellprops.md) | Properties of [FlowTableCell](./scribing.flowtablecell.md) |
 |  [FlowTableCellSelectionData](./scribing.flowtablecellselectiondata.md) | Data of [FlowTableCellSelection](./scribing.flowtablecellselection.md) |
@@ -155,6 +158,7 @@ Model for collaborative rich text editing
 |  [ResetContentData](./scribing.resetcontentdata.md) | Data of [ResetContent](./scribing.resetcontent.md) |
 |  [ResetContentProps](./scribing.resetcontentprops.md) | Properties of [ResetContent](./scribing.resetcontent.md) |
 |  [RunScriptProps](./scribing.runscriptprops.md) | Properties for [RunScript](./scribing.runscript.md) |
+|  [ServerSession](./scribing.serversession.md) |  |
 |  [SetDynamicTextExpressionData](./scribing.setdynamictextexpressiondata.md) | Data of [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [SetDynamicTextExpressionProps](./scribing.setdynamictextexpressionprops.md) | Properties of [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [SetIconData](./scribing.seticondata.md) | Data of [SetIcon](./scribing.seticon.md) |

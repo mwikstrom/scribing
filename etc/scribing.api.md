@@ -13,6 +13,36 @@ import { RecordObject } from 'paratype';
 import { RecordType } from 'paratype';
 import { Type } from 'paratype';
 
+// @public (undocumented)
+export interface BlobConditions {
+    // (undocumented)
+    ifMatch?: string;
+    // (undocumented)
+    ifNoneMatch?: string;
+}
+
+// @public (undocumented)
+export interface BlobReadResult {
+    // (undocumented)
+    blob: Blob;
+    // (undocumented)
+    etag: string;
+}
+
+// @public (undocumented)
+export interface BlobStore {
+    // (undocumented)
+    read(key: string): Promise<BlobReadResult | null>;
+    // (undocumented)
+    write(key: string, blob: Blob, conditions?: BlobConditions): Promise<BlobWriteResult | null>;
+}
+
+// @public (undocumented)
+export interface BlobWriteResult {
+    // (undocumented)
+    etag: string;
+}
+
 // @public
 export const BOX_VARIANTS: readonly ["basic", "contained", "outlined", "alert", "quote"];
 
@@ -424,6 +454,23 @@ export interface FlowBoxSelectionProps {
     position: number;
 }
 
+// Warning: (ae-internal-missing-underscore) The name "FlowChange" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export interface FlowChange {
+    // (undocumented)
+    at: Date;
+    // (undocumented)
+    by: ServerSession;
+    // (undocumented)
+    op: FlowOperation;
+}
+
+// Warning: (ae-internal-missing-underscore) The name "FlowChangeType" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const FlowChangeType: RecordType<FlowChange>;
+
 // @public
 export type FlowColor = (typeof FLOW_COLORS)[number];
 
@@ -491,6 +538,27 @@ export class FlowCursor {
     get position(): number;
     range(distance: number): Iterable<FlowNode>;
 }
+
+// Warning: (ae-internal-missing-underscore) The name "FlowHeadData" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export interface FlowHeadData {
+    // (undocumented)
+    content: FlowContent;
+    // (undocumented)
+    presence: FlowPresence[];
+    // (undocumented)
+    recent: FlowChange[];
+    // (undocumented)
+    theme: FlowTheme;
+    // (undocumented)
+    version: number;
+}
+
+// Warning: (ae-internal-missing-underscore) The name "FlowHeadDataType" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const FlowHeadDataType: RecordType<FlowHeadData>;
 
 // @public @sealed
 export class FlowIcon extends FlowIconBase implements FlowIconProps {
@@ -580,6 +648,8 @@ export interface FlowPresence {
     key: string;
     // (undocumented)
     name: string;
+    // (undocumented)
+    seen: Date;
     // (undocumented)
     selection: FlowSelection | null;
     // (undocumented)
@@ -749,12 +819,12 @@ export abstract class FlowSelection {
 }
 
 // @public (undocumented)
-export class FlowSyncClient implements FlowSyncProtocol {
+export class FlowSyncClient {
     constructor(url: string, fetcher?: typeof fetch);
     // (undocumented)
-    read(): Promise<FlowSyncSnapshot>;
+    read(): Promise<FlowSyncSnapshot | null>;
     // (undocumented)
-    sync(input: FlowSyncInput): Promise<FlowSyncOutput>;
+    sync(input: FlowSyncInput): Promise<FlowSyncOutput | null>;
     // (undocumented)
     get url(): string;
 }
@@ -766,7 +836,7 @@ export interface FlowSyncInput {
     // (undocumented)
     selection: FlowSelection | null;
     // (undocumented)
-    token: string;
+    version: number;
 }
 
 // @public (undocumented)
@@ -779,26 +849,23 @@ export interface FlowSyncOutput {
     // (undocumented)
     presence: FlowPresence[];
     // (undocumented)
-    token: string;
+    version: number;
+    // (undocumented)
+    you: string;
 }
 
 // @public (undocumented)
 export const FlowSyncOutputType: RecordType<FlowSyncOutput>;
 
 // @public (undocumented)
-export interface FlowSyncProtocol {
+export class FlowSyncServer {
+    constructor(blobStore: BlobStore);
     // (undocumented)
     read(): Promise<FlowSyncSnapshot>;
     // (undocumented)
-    sync(input: FlowSyncInput): Promise<FlowSyncOutput>;
-}
-
-// @public (undocumented)
-export class FlowSyncServer implements FlowSyncProtocol {
+    sync(input: FlowSyncInput, session: ServerSession): Promise<FlowSyncOutput | null>;
     // (undocumented)
-    read(): Promise<FlowSyncSnapshot>;
-    // (undocumented)
-    sync(input: FlowSyncInput): Promise<FlowSyncOutput>;
+    trim(): Promise<boolean>;
 }
 
 // @public (undocumented)
@@ -810,7 +877,7 @@ export interface FlowSyncSnapshot {
     // (undocumented)
     theme: FlowTheme;
     // (undocumented)
-    token: string;
+    version: number;
 }
 
 // @public (undocumented)
@@ -2007,6 +2074,21 @@ export const RunScriptBase: RecordConstructor<RunScriptProps, Interaction, RunSc
 export interface RunScriptProps {
     script: string;
 }
+
+// @public (undocumented)
+export interface ServerSession {
+    // (undocumented)
+    key: string;
+    // (undocumented)
+    name: string;
+    // (undocumented)
+    uid: string;
+}
+
+// Warning: (ae-internal-missing-underscore) The name "ServerSessionType" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const ServerSessionType: RecordType<ServerSession>;
 
 // @public @sealed
 export class SetDynamicTextExpression extends SetDynamicTextExpressionBase implements SetDynamicTextExpressionProps {

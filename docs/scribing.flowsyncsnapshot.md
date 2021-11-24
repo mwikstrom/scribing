@@ -18,5 +18,5 @@ export interface FlowSyncSnapshot
 |  [content](./scribing.flowsyncsnapshot.content.md) | [FlowContent](./scribing.flowcontent.md) |  |
 |  [presence](./scribing.flowsyncsnapshot.presence.md) | [FlowPresence](./scribing.flowpresence.md)<!-- -->\[\] |  |
 |  [theme](./scribing.flowsyncsnapshot.theme.md) | [FlowTheme](./scribing.flowtheme.md) |  |
-|  [token](./scribing.flowsyncsnapshot.token.md) | string |  |
+|  [version](./scribing.flowsyncsnapshot.version.md) | number |  |
 

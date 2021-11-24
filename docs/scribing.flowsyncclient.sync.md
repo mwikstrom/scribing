@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-sync(input: FlowSyncInput): Promise<FlowSyncOutput>;
+sync(input: FlowSyncInput): Promise<FlowSyncOutput | null>;
 ```
 
 ## Parameters
@@ -18,5 +18,5 @@ sync(input: FlowSyncInput): Promise<FlowSyncOutput>;
 
 <b>Returns:</b>
 
-Promise&lt;[FlowSyncOutput](./scribing.flowsyncoutput.md)<!-- -->&gt;
+Promise&lt;[FlowSyncOutput](./scribing.flowsyncoutput.md) \| null&gt;
 

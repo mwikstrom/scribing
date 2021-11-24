@@ -17,6 +17,7 @@ export interface FlowPresence
 |  --- | --- | --- |
 |  [key](./scribing.flowpresence.key.md) | string |  |
 |  [name](./scribing.flowpresence.name.md) | string |  |
+|  [seen](./scribing.flowpresence.seen.md) | Date |  |
 |  [selection](./scribing.flowpresence.selection.md) | [FlowSelection](./scribing.flowselection.md) \| null |  |
 |  [uid](./scribing.flowpresence.uid.md) | string |  |
 

@@ -8,9 +8,8 @@
 <b>Signature:</b>
 
 ```typescript
-export declare class FlowSyncClient implements FlowSyncProtocol 
+export declare class FlowSyncClient 
 ```
-<b>Implements:</b> [FlowSyncProtocol](./scribing.flowsyncprotocol.md)
 
 ## Constructors
 
