@@ -92,3 +92,12 @@ export * from "./selection/FlowTableSelection";
 export * from "./selection/NestedFlowSelection";
 export * from "./selection/FlowBoxSelection";
 export * from "./selection/FlowTableCellSelection";
+
+// Sync
+export * from "./sync/FlowPresence";
+export * from "./sync/FlowSyncInput";
+export * from "./sync/FlowSyncOutput";
+export * from "./sync/FlowSyncSnapshot";
+export * from "./sync/FlowSyncProtocol";
+export * from "./sync/FlowSyncClient";
+export * from "./sync/FlowSyncServer";

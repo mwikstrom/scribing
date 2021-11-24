@@ -31,6 +31,8 @@ Model for collaborative rich text editing
 |  [FlowRange](./scribing.flowrange.md) | Represents a range of flow content |
 |  [FlowRangeSelection](./scribing.flowrangeselection.md) | Represents a range of selected flow content |
 |  [FlowSelection](./scribing.flowselection.md) | Represents a selection of flow content |
+|  [FlowSyncClient](./scribing.flowsyncclient.md) |  |
+|  [FlowSyncServer](./scribing.flowsyncserver.md) |  |
 |  [FlowTable](./scribing.flowtable.md) | Represents a flow table cell |
 |  [FlowTableCell](./scribing.flowtablecell.md) | Represents a flow table cell |
 |  [FlowTableCellSelection](./scribing.flowtablecellselection.md) | Represents a selection inside a flow table cell |
@@ -104,8 +106,13 @@ Model for collaborative rich text editing
 |  [FlowIconProps](./scribing.flowiconprops.md) | Properties of [FlowIcon](./scribing.flowicon.md) |
 |  [FlowImageData](./scribing.flowimagedata.md) | Data of line break nodes |
 |  [FlowImageProps](./scribing.flowimageprops.md) | Properties of [FlowImage](./scribing.flowimage.md) |
+|  [FlowPresence](./scribing.flowpresence.md) |  |
 |  [FlowRangeProps](./scribing.flowrangeprops.md) | Non-computed properties of a [FlowRange](./scribing.flowrange.md) |
 |  [FlowRangeSelectionProps](./scribing.flowrangeselectionprops.md) | Properties of flow range selections |
+|  [FlowSyncInput](./scribing.flowsyncinput.md) |  |
+|  [FlowSyncOutput](./scribing.flowsyncoutput.md) |  |
+|  [FlowSyncProtocol](./scribing.flowsyncprotocol.md) |  |
+|  [FlowSyncSnapshot](./scribing.flowsyncsnapshot.md) |  |
 |  [FlowTableCellProps](./scribing.flowtablecellprops.md) | Properties of [FlowTableCell](./scribing.flowtablecell.md) |
 |  [FlowTableCellSelectionData](./scribing.flowtablecellselectiondata.md) | Data of [FlowTableCellSelection](./scribing.flowtablecellselection.md) |
 |  [FlowTableCellSelectionProps](./scribing.flowtablecellselectionprops.md) | Properties of [FlowTableCellSelection](./scribing.flowtablecellselection.md) |

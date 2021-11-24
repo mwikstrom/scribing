@@ -573,6 +573,18 @@ export abstract class FlowOperation {
     abstract transform(other: FlowOperation): FlowOperation | null;
 }
 
+// @public (undocumented)
+export interface FlowPresence {
+    // (undocumented)
+    key: string;
+    // (undocumented)
+    name: string;
+    // (undocumented)
+    selection: FlowSelection | null;
+    // (undocumented)
+    uid: string;
+}
+
 // @public @sealed
 export class FlowRange extends FlowRangeBase implements Readonly<FlowRangeProps> {
     static at(position: number, distance?: number): FlowRange;
@@ -730,6 +742,62 @@ export abstract class FlowSelection {
     abstract unformatTableColumn(style: TableColumnStyle, options?: TargetOptions): FlowOperation | null;
     abstract unformatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
     abstract visitRanges(callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void, options?: Partial<VisitRangeOptions>): void;
+}
+
+// @public (undocumented)
+export class FlowSyncClient implements FlowSyncProtocol {
+    // (undocumented)
+    read(): Promise<FlowSyncSnapshot>;
+    // (undocumented)
+    sync(input: FlowSyncInput): Promise<FlowSyncOutput>;
+}
+
+// @public (undocumented)
+export interface FlowSyncInput {
+    // (undocumented)
+    changes: readonly FlowOperation[];
+    // (undocumented)
+    selection: FlowSelection | null;
+    // (undocumented)
+    token: string;
+}
+
+// @public (undocumented)
+export interface FlowSyncOutput {
+    // (undocumented)
+    merge: readonly FlowOperation[];
+    // (undocumented)
+    presence: readonly FlowPresence[];
+    // (undocumented)
+    token: string;
+}
+
+// @public (undocumented)
+export interface FlowSyncProtocol {
+    // (undocumented)
+    read(): Promise<FlowSyncSnapshot>;
+    // (undocumented)
+    sync(input: FlowSyncInput): Promise<FlowSyncOutput>;
+}
+
+// @public (undocumented)
+export class FlowSyncServer implements FlowSyncProtocol {
+    // (undocumented)
+    read(): Promise<FlowSyncSnapshot>;
+    // (undocumented)
+    sync(input: FlowSyncInput): Promise<FlowSyncOutput>;
+}
+
+// @public (undocumented)
+export interface FlowSyncSnapshot {
+    // (undocumented)
+    content: FlowContent;
+    // (undocumented)
+    presence: readonly FlowPresence[];
+    // (undocumented)
+    theme: FlowTheme;
+    // (undocumented)
+    token: string;
 }
 
 // @public @sealed
