@@ -4,6 +4,7 @@
 
 ## BlobWriteResult interface
 
+
 <b>Signature:</b>
 
 ```typescript

@@ -4,6 +4,7 @@
 
 ## BlobReadResult interface
 
+
 <b>Signature:</b>
 
 ```typescript

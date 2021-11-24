@@ -4,6 +4,7 @@
 
 ## BlobStore interface
 
+
 <b>Signature:</b>
 
 ```typescript
