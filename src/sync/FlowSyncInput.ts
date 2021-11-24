@@ -1,17 +1,17 @@
-import { nullType, recordType, RecordType, stringType, unionType } from "paratype";
+import { nonNegativeIntegerType, nullType, recordType, RecordType, unionType } from "paratype";
 import { FlowOperation } from "../operations/FlowOperation";
 import { FlowSelection } from "../selection/FlowSelection";
 
 /** @public */
 export interface FlowSyncInput {
-    token: string;
+    version: number;
     operation: FlowOperation | null;
     selection: FlowSelection | null;
 }
 
 /** @public */
 export const FlowSyncInputType: RecordType<FlowSyncInput> = recordType({
-    token: stringType,
+    version: nonNegativeIntegerType,
     operation: unionType(FlowOperation.baseType, nullType),
     selection: unionType(FlowSelection.baseType, nullType),
 });

@@ -1,11 +1,11 @@
-import { arrayType, RecordType, recordType, stringType } from "paratype";
+import { arrayType, nonNegativeIntegerType, RecordType, recordType } from "paratype";
 import { FlowContent } from "../structure/FlowContent";
 import { FlowTheme } from "../styles/FlowTheme";
 import { FlowPresence, FlowPresenceType } from "./FlowPresence";
 
 /** @public */
 export interface FlowSyncSnapshot {
-    token: string;
+    version: number;
     content: FlowContent;
     theme: FlowTheme;
     presence: FlowPresence[];
@@ -13,7 +13,7 @@ export interface FlowSyncSnapshot {
 
 /** @public */
 export const FlowSyncSnapshotType: RecordType<FlowSyncSnapshot> = recordType({
-    token: stringType,
+    version: nonNegativeIntegerType,
     content: FlowContent.classType,
     theme: FlowTheme.baseType,
     presence: arrayType(FlowPresenceType),
