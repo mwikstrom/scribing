@@ -206,8 +206,12 @@ Model for collaborative rich text editing
 |  [FlowContentBase](./scribing.flowcontentbase.md) | The base record class for [FlowContent](./scribing.flowcontent.md) |
 |  [FlowIconBase](./scribing.flowiconbase.md) | The base record class for [FlowIcon](./scribing.flowicon.md) |
 |  [FlowImageBase](./scribing.flowimagebase.md) | The base record class for [FlowImage](./scribing.flowimage.md) |
+|  [FlowPresenceType](./scribing.flowpresencetype.md) |  |
 |  [FlowRangeBase](./scribing.flowrangebase.md) | The base record class for [FlowRange](./scribing.flowrange.md) |
 |  [FlowRangeSelectionBase](./scribing.flowrangeselectionbase.md) | The base record class for [FlowRangeSelection](./scribing.flowrangeselection.md) |
+|  [FlowSyncInputType](./scribing.flowsyncinputtype.md) |  |
+|  [FlowSyncOutputType](./scribing.flowsyncoutputtype.md) |  |
+|  [FlowSyncSnapshotType](./scribing.flowsyncsnapshottype.md) |  |
 |  [FlowTableBase](./scribing.flowtablebase.md) | The base record class for [FlowTable](./scribing.flowtable.md) |
 |  [FlowTableCellBase](./scribing.flowtablecellbase.md) | The base record class for [FlowTableCell](./scribing.flowtablecell.md) |
 |  [FlowTableCellSelectionBase](./scribing.flowtablecellselectionbase.md) | The base record class for [FlowTableCellSelection](./scribing.flowtablecellselection.md) |

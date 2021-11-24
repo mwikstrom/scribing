@@ -12,6 +12,18 @@ export declare class FlowSyncClient implements FlowSyncProtocol
 ```
 <b>Implements:</b> [FlowSyncProtocol](./scribing.flowsyncprotocol.md)
 
+## Constructors
+
+|  Constructor | Modifiers | Description |
+|  --- | --- | --- |
+|  [(constructor)(url, fetcher)](./scribing.flowsyncclient._constructor_.md) |  | Constructs a new instance of the <code>FlowSyncClient</code> class |
+
+## Properties
+
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [url](./scribing.flowsyncclient.url.md) |  | string |  |
+
 ## Methods
 
 |  Method | Modifiers | Description |

@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-operation?: FlowOperation | null;
+operation: FlowOperation | null;
 ```

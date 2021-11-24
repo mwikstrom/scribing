@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-presence: readonly FlowPresence[];
+presence: FlowPresence[];
 ```

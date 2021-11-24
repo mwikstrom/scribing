@@ -15,7 +15,7 @@ export interface FlowSyncInput
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [operation?](./scribing.flowsyncinput.operation.md) | [FlowOperation](./scribing.flowoperation.md) \| null | <i>(Optional)</i> |
-|  [selection?](./scribing.flowsyncinput.selection.md) | [FlowSelection](./scribing.flowselection.md) \| null | <i>(Optional)</i> |
+|  [operation](./scribing.flowsyncinput.operation.md) | [FlowOperation](./scribing.flowoperation.md) \| null |  |
+|  [selection](./scribing.flowsyncinput.selection.md) | [FlowSelection](./scribing.flowselection.md) \| null |  |
 |  [token](./scribing.flowsyncinput.token.md) | string |  |
 

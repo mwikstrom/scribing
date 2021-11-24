@@ -10,6 +10,7 @@ import { JsonValue } from 'paratype';
 import { PathArray } from 'paratype';
 import { RecordConstructor } from 'paratype';
 import { RecordObject } from 'paratype';
+import { RecordType } from 'paratype';
 import { Type } from 'paratype';
 
 // @public
@@ -585,6 +586,9 @@ export interface FlowPresence {
     uid: string;
 }
 
+// @public (undocumented)
+export const FlowPresenceType: RecordType<FlowPresence>;
+
 // @public @sealed
 export class FlowRange extends FlowRangeBase implements Readonly<FlowRangeProps> {
     static at(position: number, distance?: number): FlowRange;
@@ -746,31 +750,40 @@ export abstract class FlowSelection {
 
 // @public (undocumented)
 export class FlowSyncClient implements FlowSyncProtocol {
+    constructor(url: string, fetcher?: typeof fetch);
     // (undocumented)
     read(): Promise<FlowSyncSnapshot>;
     // (undocumented)
     sync(input: FlowSyncInput): Promise<FlowSyncOutput>;
+    // (undocumented)
+    get url(): string;
 }
 
 // @public (undocumented)
 export interface FlowSyncInput {
     // (undocumented)
-    operation?: FlowOperation | null;
+    operation: FlowOperation | null;
     // (undocumented)
-    selection?: FlowSelection | null;
+    selection: FlowSelection | null;
     // (undocumented)
     token: string;
 }
 
 // @public (undocumented)
+export const FlowSyncInputType: RecordType<FlowSyncInput>;
+
+// @public (undocumented)
 export interface FlowSyncOutput {
     // (undocumented)
-    merge?: FlowOperation;
+    merge: FlowOperation | null;
     // (undocumented)
-    presence: readonly FlowPresence[];
+    presence: FlowPresence[];
     // (undocumented)
     token: string;
 }
+
+// @public (undocumented)
+export const FlowSyncOutputType: RecordType<FlowSyncOutput>;
 
 // @public (undocumented)
 export interface FlowSyncProtocol {
@@ -793,12 +806,15 @@ export interface FlowSyncSnapshot {
     // (undocumented)
     content: FlowContent;
     // (undocumented)
-    presence: readonly FlowPresence[];
+    presence: FlowPresence[];
     // (undocumented)
     theme: FlowTheme;
     // (undocumented)
     token: string;
 }
+
+// @public (undocumented)
+export const FlowSyncSnapshotType: RecordType<FlowSyncSnapshot>;
 
 // @public @sealed
 export class FlowTable extends FlowTableBase {
