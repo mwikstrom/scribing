@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-merge: readonly FlowOperation[];
+merge?: FlowOperation;
 ```

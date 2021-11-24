@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-selection: FlowSelection | null;
+selection?: FlowSelection | null;
 ```

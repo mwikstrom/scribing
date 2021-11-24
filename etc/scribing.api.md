@@ -755,9 +755,9 @@ export class FlowSyncClient implements FlowSyncProtocol {
 // @public (undocumented)
 export interface FlowSyncInput {
     // (undocumented)
-    changes: readonly FlowOperation[];
+    operation?: FlowOperation | null;
     // (undocumented)
-    selection: FlowSelection | null;
+    selection?: FlowSelection | null;
     // (undocumented)
     token: string;
 }
@@ -765,7 +765,7 @@ export interface FlowSyncInput {
 // @public (undocumented)
 export interface FlowSyncOutput {
     // (undocumented)
-    merge: readonly FlowOperation[];
+    merge?: FlowOperation;
     // (undocumented)
     presence: readonly FlowPresence[];
     // (undocumented)

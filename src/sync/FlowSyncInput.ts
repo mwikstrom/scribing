@@ -4,6 +4,6 @@ import { FlowSelection } from "../selection/FlowSelection";
 /** @public */
 export interface FlowSyncInput {
     token: string;
-    changes: readonly FlowOperation[];
-    selection: FlowSelection | null;
+    operation?: FlowOperation | null;
+    selection?: FlowSelection | null;
 }

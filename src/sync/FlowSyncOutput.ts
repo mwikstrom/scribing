@@ -4,6 +4,6 @@ import { FlowPresence } from "./FlowPresence";
 /** @public */
 export interface FlowSyncOutput {
     token: string;
-    merge: readonly FlowOperation[];
+    merge?: FlowOperation;
     presence: readonly FlowPresence[];
 }
