@@ -16,14 +16,11 @@ import { FlowSelection } from "../../selection/FlowSelection";
 /** @public */
 export class FlowSyncServer {
     #blobStore: BlobStore;
+    #trimActive = false;
+    #trimTimer: ReturnType<typeof setTimeout> | null = null;
 
     constructor(blobStore: BlobStore) {
         this.#blobStore = blobStore;
-    }
-
-    clean(): Promise<void> {
-        // TODO: IMPLEMENT CLEAN
-        throw new Error("Method not implemented.");
     }
 
     async read(): Promise<FlowSyncSnapshot> {
@@ -58,9 +55,9 @@ export class FlowSyncServer {
                 presence,
             };
             
-            const newBlob = getHeadBlob(dataAfter);
+            const blob = getHeadBlob(dataAfter);
             const writeCondition = getWriteCondition(readResult);
-            const writeResult = await this.#blobStore.write(HEAD_BLOB_KEY, newBlob, writeCondition);
+            const writeResult = await this.#blobStore.write(HEAD_BLOB_KEY, blob, writeCondition);
             
             if (writeResult === null) {
                 continue;
@@ -73,10 +70,48 @@ export class FlowSyncServer {
                 you: session.key,
             };
 
+            if (shouldTrim(recent) && this.#trimTimer === null && !this.#trimActive) {
+                this.#trimTimer = setTimeout(() => this.trim(), TRIM_INTERVAL);
+            }
+
             return output;
         }
 
         throw new Error("Server ran out of attempts when trying to sync");
+    }
+
+    async trim(): Promise<boolean> {
+        if (this.#trimTimer !== null) {
+            clearTimeout(this.#trimTimer);
+            this.#trimTimer = null;
+        }
+
+        if (this.#trimActive) {
+            return false;
+        }
+
+        try {
+            this.#trimActive = true;
+            for (let attempt = 1; attempt <= 10; ++attempt) {
+                const readResult = await this.#blobStore.read(HEAD_BLOB_KEY);
+                if (readResult === null) {
+                    return false;
+                }
+                const { recent, ...rest } = await getHeadData(readResult);
+                const trimmed = getTrimmedRecent(recent);
+                const blob = getHeadBlob({ ...rest, recent: trimmed });
+                const writeCondition = getWriteCondition(readResult);
+                const writeResult = await this.#blobStore.write(HEAD_BLOB_KEY, blob, writeCondition);
+                
+                if (writeResult !== null) {
+                    return true;
+                }
+            }
+        } finally {
+            this.#trimActive = false;
+        }
+
+        return false;
     }
 }
 
@@ -189,6 +224,31 @@ const getSyncedPresence = (
     }
 ];
 
+const shouldTrim = (recent: readonly FlowChange[]): boolean => getTrimCount(recent) > 0;
+
+const getTrimCount = (recent: readonly FlowChange[]): number => {
+    let count = 0;
+    
+    for (const change of recent) {
+        if (getAge(change.at) > KEEP_RECENT_AGE) {
+            ++count;
+        } else {
+            break;
+        }
+    }
+
+    return Math.max(count, recent.length - MAX_RECENT_COUNT);
+};
+
+const getTrimmedRecent = (recent: readonly FlowChange[]): FlowChange[] => {
+    const keep = recent.length - getTrimCount(recent);
+    if (keep <= 0) {
+        return [];
+    } else {
+        return recent.slice(-keep);
+    }
+};
+
 const getAge = (value: Date): number => Date.now() - value.getTime();
 
 const CONFLICT_SYMBOL: unique symbol = Symbol("Conflict");
@@ -203,4 +263,9 @@ const INITIAL_HEAD_DATA: FlowHeadData = Object.freeze({
     presence: Object.freeze(new Array<FlowPresence>(0)) as FlowPresence[],
 });
 
-const MAX_PRESENCE_AGE = 10000; // 10 seconds
+const ONE_SECOND = 1000;
+const ONE_MINUTE = 60 * ONE_SECOND;
+const MAX_PRESENCE_AGE = 10 * ONE_SECOND;
+const KEEP_RECENT_AGE = 5 * ONE_MINUTE;
+const MAX_RECENT_COUNT = 1000;
+const TRIM_INTERVAL = 10 * ONE_SECOND;
