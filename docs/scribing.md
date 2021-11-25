@@ -31,7 +31,6 @@ Model for collaborative rich text editing
 |  [FlowRange](./scribing.flowrange.md) | Represents a range of flow content |
 |  [FlowRangeSelection](./scribing.flowrangeselection.md) | Represents a range of selected flow content |
 |  [FlowSelection](./scribing.flowselection.md) | Represents a selection of flow content |
-|  [FlowSyncClient](./scribing.flowsyncclient.md) |  |
 |  [FlowTable](./scribing.flowtable.md) | Represents a flow table cell |
 |  [FlowTableCell](./scribing.flowtablecell.md) | Represents a flow table cell |
 |  [FlowTableCellSelection](./scribing.flowtablecellselection.md) | Represents a selection inside a flow table cell |
@@ -43,6 +42,7 @@ Model for collaborative rich text editing
 |  [FormatTable](./scribing.formattable.md) | Represents an operation that applies a table style |
 |  [FormatTableColumn](./scribing.formattablecolumn.md) | Represents an operation that applies a table column style |
 |  [FormatText](./scribing.formattext.md) | Represents an operation that applies a text style to a range of flow content. |
+|  [HttpFlowSyncProtocol](./scribing.httpflowsyncprotocol.md) |  |
 |  [ImageSource](./scribing.imagesource.md) | Represents the source of a [FlowImage](./scribing.flowimage.md) |
 |  [InlineNode](./scribing.inlinenode.md) | Represents an inline node |
 |  [InsertContent](./scribing.insertcontent.md) | Represents an operation that insert flow content. |
@@ -82,6 +82,7 @@ Model for collaborative rich text editing
 
 |  Interface | Description |
 |  --- | --- |
+|  [BasicRequestInit](./scribing.basicrequestinit.md) |  |
 |  [BoxStyleProps](./scribing.boxstyleprops.md) | Style properties for box content |
 |  [CellPositionProps](./scribing.cellpositionprops.md) | Non-computed properties of a [CellPosition](./scribing.cellposition.md) |
 |  [CellRangeProps](./scribing.cellrangeprops.md) | Non-computed properties of a [CellRange](./scribing.cellrange.md) |
@@ -110,6 +111,7 @@ Model for collaborative rich text editing
 |  [FlowRangeSelectionProps](./scribing.flowrangeselectionprops.md) | Properties of flow range selections |
 |  [FlowSyncInput](./scribing.flowsyncinput.md) |  |
 |  [FlowSyncOutput](./scribing.flowsyncoutput.md) |  |
+|  [FlowSyncProtocol](./scribing.flowsyncprotocol.md) |  |
 |  [FlowSyncSnapshot](./scribing.flowsyncsnapshot.md) |  |
 |  [FlowTableCellProps](./scribing.flowtablecellprops.md) | Properties of [FlowTableCell](./scribing.flowtablecell.md) |
 |  [FlowTableCellSelectionData](./scribing.flowtablecellselectiondata.md) | Data of [FlowTableCellSelection](./scribing.flowtablecellselection.md) |
@@ -263,6 +265,7 @@ Model for collaborative rich text editing
 
 |  Type Alias | Description |
 |  --- | --- |
+|  [BasicFetch](./scribing.basicfetch.md) |  |
 |  [BoxVariant](./scribing.boxvariant.md) | Box style variant |
 |  [CellPositionData](./scribing.cellpositiondata.md) | Data for a [CellPosition](./scribing.cellposition.md) represented by a string with leading upper case ascii letters that represents the column index, followed by ascii digits that represetnts the row index (one-based).<!-- -->For example; <code>A1</code> represents row 0 and column 0, and <code>DF45</code> represents row 44 and column 109. |
 |  [CellRangeData](./scribing.cellrangedata.md) | Data for a [CellRange](./scribing.cellrange.md) |

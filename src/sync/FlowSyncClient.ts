@@ -1,52 +1,39 @@
-import { FlowSyncSnapshot, FlowSyncSnapshotType } from "./FlowSyncSnapshot";
-import { FlowSyncInput } from "./FlowSyncInput";
-import { FlowSyncOutput, FlowSyncOutputType } from "./FlowSyncOutput";
-import { JsonValue } from "paratype";
-import { FlowSyncInputType } from "..";
+import { nanoid } from "nanoid";
+import { FlowSyncProtocol, HttpFlowSyncProtocol } from "./FlowSyncProtocol";
 
 /** @public */
 export class FlowSyncClient {
-    readonly #url: string;
-    readonly #fetch: typeof fetch;
+    readonly #protocol: FlowSyncProtocol;
+    readonly #key: string;
 
-    constructor(url: string, fetcher = fetch) {
-        this.#url = url;
-        this.#fetch = fetcher;
+    constructor(url: string, key?: string);
+    constructor(protocol: FlowSyncProtocol, key?: string);
+    constructor(protocol: FlowSyncProtocol | string, key = getStaticKey()) {
+        this.#protocol = typeof protocol === "string" ? new HttpFlowSyncProtocol(protocol) : protocol;
+        this.#key = key;
     }
 
-    get url(): string {
-        return this.#url;
-    }
-
-    async read(): Promise<FlowSyncSnapshot | null> {
-        const response = await this.#fetch(this.#url);
-        if (response.ok) {
-            const json = await response.json() as JsonValue;
-            return FlowSyncSnapshotType.fromJsonValue(json);
-        } else if (response.status === 404) {
-            return null;
-        } else {
-            throw makeServerError(response);
-        }
-    }
-
-    async sync(input: FlowSyncInput): Promise<FlowSyncOutput | null> {
-        const response = await this.#fetch(this.#url, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(FlowSyncInputType.toJsonValue(input)),
-        });
-        if (response.ok) {
-            const json = await response.json() as JsonValue;
-            return FlowSyncOutputType.fromJsonValue(json);
-        } else if (response.status === 404 || response.status === 409) {
-            return null;
-        } else {
-            throw makeServerError(response);
-        }
+    public get key(): string {
+        return this.#key;
     }
 }
 
-const makeServerError = (response: Response): Error => new Error(
-    `Server responded with status: ${response.status} ${response.statusText}`
-);
+let STATIC_KEY: string | undefined;
+const getStaticKey = () => {
+    if (STATIC_KEY === void(0)) {
+        STATIC_KEY = nanoid();
+        try {
+            const fromStorage = localStorage.getItem(STORAGE_KEY);
+            if (fromStorage === null) {
+                localStorage.setItem(STORAGE_KEY, STATIC_KEY);
+            } else {
+                STATIC_KEY = fromStorage;
+            }
+        } catch (error) {
+            console.warn(`Could not read/write local storage key: ${STORAGE_KEY}`, error);
+        }
+    }
+    return STATIC_KEY;
+};
+
+const STORAGE_KEY = "Scribing.FlowSyncClient.Key";

@@ -13,6 +13,19 @@ import { RecordObject } from 'paratype';
 import { RecordType } from 'paratype';
 import { Type } from 'paratype';
 
+// @public (undocumented)
+export type BasicFetch = (url: string, init?: BasicRequestInit) => Promise<Response>;
+
+// @public (undocumented)
+export interface BasicRequestInit {
+    // (undocumented)
+    body: string;
+    // (undocumented)
+    headers?: Record<string, string>;
+    // (undocumented)
+    method?: string;
+}
+
 // @public
 export const BOX_VARIANTS: readonly ["basic", "contained", "outlined", "alert", "quote"];
 
@@ -751,18 +764,9 @@ export abstract class FlowSelection {
 }
 
 // @public (undocumented)
-export class FlowSyncClient {
-    constructor(url: string, fetcher?: typeof fetch);
-    // (undocumented)
-    read(): Promise<FlowSyncSnapshot | null>;
-    // (undocumented)
-    sync(input: FlowSyncInput): Promise<FlowSyncOutput | null>;
-    // (undocumented)
-    get url(): string;
-}
-
-// @public (undocumented)
 export interface FlowSyncInput {
+    // (undocumented)
+    key: string;
     // (undocumented)
     operation: FlowOperation | null;
     // (undocumented)
@@ -782,12 +786,18 @@ export interface FlowSyncOutput {
     presence: FlowPresence[];
     // (undocumented)
     version: number;
-    // (undocumented)
-    you: string;
 }
 
 // @public (undocumented)
 export const FlowSyncOutputType: RecordType<FlowSyncOutput>;
+
+// @public (undocumented)
+export interface FlowSyncProtocol {
+    // (undocumented)
+    read(): Promise<FlowSyncSnapshot | null>;
+    // (undocumented)
+    sync(input: FlowSyncInput): Promise<FlowSyncOutput | null>;
+}
 
 // @public (undocumented)
 export interface FlowSyncSnapshot {
@@ -1244,6 +1254,17 @@ export interface FormatTextData extends FormatTextProps {
 export interface FormatTextProps {
     range: FlowRange;
     style: TextStyle;
+}
+
+// @public (undocumented)
+export class HttpFlowSyncProtocol implements FlowSyncProtocol {
+    constructor(url: string, fetcher?: BasicFetch);
+    // (undocumented)
+    read(): Promise<FlowSyncSnapshot | null>;
+    // (undocumented)
+    sync(input: FlowSyncInput): Promise<FlowSyncOutput | null>;
+    // (undocumented)
+    get url(): string;
 }
 
 // @public @sealed

@@ -98,4 +98,4 @@ export * from "./sync/FlowPresence";
 export * from "./sync/FlowSyncInput";
 export * from "./sync/FlowSyncOutput";
 export * from "./sync/FlowSyncSnapshot";
-export * from "./sync/FlowSyncClient";
+export * from "./sync/FlowSyncProtocol";
