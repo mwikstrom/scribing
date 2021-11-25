@@ -99,8 +99,3 @@ export * from "./sync/FlowSyncInput";
 export * from "./sync/FlowSyncOutput";
 export * from "./sync/FlowSyncSnapshot";
 export * from "./sync/FlowSyncClient";
-export * from "./sync/server/ServerSession";
-export * from "./sync/server/FlowChange";
-export * from "./sync/server/FlowHeadData";
-export * from "./sync/server/BlobStore";
-export * from "./sync/server/FlowSyncServer";
