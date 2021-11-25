@@ -32,7 +32,6 @@ Model for collaborative rich text editing
 |  [FlowRangeSelection](./scribing.flowrangeselection.md) | Represents a range of selected flow content |
 |  [FlowSelection](./scribing.flowselection.md) | Represents a selection of flow content |
 |  [FlowSyncClient](./scribing.flowsyncclient.md) |  |
-|  [FlowSyncServer](./scribing.flowsyncserver.md) |  |
 |  [FlowTable](./scribing.flowtable.md) | Represents a flow table cell |
 |  [FlowTableCell](./scribing.flowtablecell.md) | Represents a flow table cell |
 |  [FlowTableCellSelection](./scribing.flowtablecellselection.md) | Represents a selection inside a flow table cell |
@@ -83,10 +82,6 @@ Model for collaborative rich text editing
 
 |  Interface | Description |
 |  --- | --- |
-|  [BlobConditions](./scribing.blobconditions.md) |  |
-|  [BlobReadResult](./scribing.blobreadresult.md) |  |
-|  [BlobStore](./scribing.blobstore.md) |  |
-|  [BlobWriteResult](./scribing.blobwriteresult.md) |  |
 |  [BoxStyleProps](./scribing.boxstyleprops.md) | Style properties for box content |
 |  [CellPositionProps](./scribing.cellpositionprops.md) | Non-computed properties of a [CellPosition](./scribing.cellposition.md) |
 |  [CellRangeProps](./scribing.cellrangeprops.md) | Non-computed properties of a [CellRange](./scribing.cellrange.md) |
@@ -158,7 +153,6 @@ Model for collaborative rich text editing
 |  [ResetContentData](./scribing.resetcontentdata.md) | Data of [ResetContent](./scribing.resetcontent.md) |
 |  [ResetContentProps](./scribing.resetcontentprops.md) | Properties of [ResetContent](./scribing.resetcontent.md) |
 |  [RunScriptProps](./scribing.runscriptprops.md) | Properties for [RunScript](./scribing.runscript.md) |
-|  [ServerSession](./scribing.serversession.md) |  |
 |  [SetDynamicTextExpressionData](./scribing.setdynamictextexpressiondata.md) | Data of [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [SetDynamicTextExpressionProps](./scribing.setdynamictextexpressionprops.md) | Properties of [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [SetIconData](./scribing.seticondata.md) | Data of [SetIcon](./scribing.seticon.md) |
