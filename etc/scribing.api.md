@@ -590,15 +590,13 @@ export abstract class FlowOperation {
 // @public (undocumented)
 export interface FlowPresence {
     // (undocumented)
-    key: string;
-    // (undocumented)
-    name: string;
+    client: string;
     // (undocumented)
     seen: Date;
     // (undocumented)
     selection: FlowSelection | null;
     // (undocumented)
-    uid: string;
+    user: string;
 }
 
 // @public (undocumented)
@@ -766,7 +764,7 @@ export abstract class FlowSelection {
 // @public (undocumented)
 export interface FlowSyncInput {
     // (undocumented)
-    key: string;
+    client: string;
     // (undocumented)
     operation: FlowOperation | null;
     // (undocumented)

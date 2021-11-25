@@ -4,7 +4,7 @@ import { FlowSelection } from "../selection/FlowSelection";
 
 /** @public */
 export interface FlowSyncInput {
-    key: string;
+    client: string;
     version: number;
     selection: FlowSelection | null;
     operation: FlowOperation | null;
@@ -12,7 +12,7 @@ export interface FlowSyncInput {
 
 /** @public */
 export const FlowSyncInputType: RecordType<FlowSyncInput> = recordType({
-    key: stringType,
+    client: stringType,
     version: nonNegativeIntegerType,
     operation: unionType(FlowOperation.baseType, nullType),
     selection: unionType(FlowSelection.baseType, nullType),
