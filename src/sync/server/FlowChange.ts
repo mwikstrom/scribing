@@ -1,4 +1,4 @@
-import { recordType, RecordType, timestampType } from "paratype";
+import { arrayType, recordType, RecordType, timestampType } from "paratype";
 import { FlowOperation } from "../../operations/FlowOperation";
 import { ServerSession, ServerSessionType } from "./ServerSession";
 
@@ -15,3 +15,6 @@ export const FlowChangeType: RecordType<FlowChange> = recordType({
     op: FlowOperation.baseType,
     by: ServerSessionType,
 });
+
+/** @internal */
+export const FlowChangeArrayType = arrayType(FlowChangeType);
