@@ -69,13 +69,26 @@ export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps>
      * or `null` when the specified array is empty.
      */
     public static fromArray(operations: FlowOperation[]): FlowOperation | null {
-        if (operations.length === 0) {
+        const queue = [...operations];
+        const flattened: FlowOperation[] = [];
+
+        for(;;) {
+            const next = queue.shift();
+            if (!next) {
+                break;
+            } else if (next instanceof FlowBatch) {
+                queue.unshift(...next.operations);
+            } else if (next instanceof FlowOperation) {
+                flattened.push(next);
+            }
+        }
+   
+        if (flattened.length === 0) {
             return null;
-        } else if (operations.length === 1) {
+        } else if (flattened.length === 1) {
             return operations[0];
         } else {
-            Object.freeze(operations);
-            return new FlowBatch({ operations });
+            return new FlowBatch({ operations: Object.freeze(flattened) });
         }
     }
 
