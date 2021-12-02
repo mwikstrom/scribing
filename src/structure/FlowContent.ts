@@ -92,6 +92,14 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
         return EMPTY_CACHE;
     }
 
+    /** Gets an empty paragraph */
+    public static get emptyParagraph(): FlowContent {
+        if (!EMPTY_PARA_CACHE) {
+            EMPTY_PARA_CACHE = new FlowContent({ nodes: Object.freeze([new ParagraphBreak()]) });
+        }
+        return EMPTY_PARA_CACHE;
+    }
+
     /** Gets flow content from the specified data */
     public static fromData(@type(NodeArrayType) data: FlowContentData): FlowContent {
         const props: FlowContentProps = { nodes: Object.freeze(Array.from(FlowContent.merge(data))) };
@@ -455,3 +463,4 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
 }
 
 let EMPTY_CACHE: FlowContent | undefined;
+let EMPTY_PARA_CACHE: FlowContent | undefined;
