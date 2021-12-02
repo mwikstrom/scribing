@@ -95,7 +95,7 @@ export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps>
         if (flattened.length === 0) {
             return null;
         } else if (flattened.length === 1) {
-            return operations[0];
+            return flattened[0];
         } else {
             return new FlowBatch({ operations: Object.freeze(flattened) });
         }
