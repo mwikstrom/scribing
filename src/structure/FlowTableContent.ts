@@ -101,13 +101,10 @@ export class FlowTableContent {
                 cell = cell.set("colSpan", colSpan);
             }
 
-            // Mark overlapped cells
-            for (const spanned of cell.getSpannedPositions(position)) {
-                this.#spans.set(spanned.toString(), key);
-            }
+            // Store cell (also marking overlapped cells)
+            this.#dangerouslySetCell(key, cell);
 
             // Keep track of cells, column count and row count
-            this.#cells.set(key, cell);
             this.#columnCount = Math.max(this.#columnCount, position.column + cell.colSpan);
             this.#rowCount = Math.max(this.#rowCount, position.row + cell.rowSpan);
         }
@@ -319,14 +316,15 @@ export class FlowTableContent {
         const before = this.getCell(position, true);
         const after = before.merge({ colSpan, rowSpan });
         const slated = new Set(after.getSpannedPositions(position, true).map(pos => pos.toString()));
-        for (const key of slated) {
-            const pos = CellPosition.parse(key, true);
-            const cell = this.getCell(pos, true);
-            if (cell.colSpan !== 1 || cell.rowSpan !== 1) {
+        return this.#update((key, cell) => {
+            if (!slated.has(key)) {
+                return [key, cell];
+            } else if (cell.colSpan !== 1 || cell.rowSpan !== 1) {
                 throw new Error(`Table position ${key} is already merged`);
-            }
-        }
-        return this.#replaceCell(position, after);
+            } else {
+                return null;
+            } 
+        }).#dangerouslySetCell(position.toString(), after);
     }
 
     public split(position: CellPosition): FlowTableContent {
@@ -347,7 +345,7 @@ export class FlowTableContent {
             }
         });        
         if (!replaced) {
-            result.#cells.set(position.toString(), replacement);
+            result.#dangerouslySetCell(target, replacement);
         }
         return result;
     }
@@ -363,10 +361,7 @@ export class FlowTableContent {
             const mapped = callback(key, cell);
             if (mapped) {
                 const [mappedKey, mappedCell] = mapped;
-                result.#cells.set(mappedKey, mappedCell);
-                for (const spanned of mappedCell.getSpannedPositions(CellPosition.parse(mappedKey, true))) {
-                    result.#spans.set(spanned.toString(), key);
-                }
+                result.#dangerouslySetCell(mappedKey, mappedCell);
             }
         }
 
@@ -381,5 +376,14 @@ export class FlowTableContent {
                 yield pos;
             }
         }
+    }
+
+    #dangerouslySetCell(key: string, cell: FlowTableCell): this {
+        const pos = CellPosition.parse(key, true);
+        this.#cells.set(key, cell);
+        for (const spanned of cell.getSpannedPositions(pos)) {
+            this.#spans.set(spanned.toString(), key);
+        }
+        return this;
     }
 }
