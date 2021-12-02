@@ -39,6 +39,7 @@ export declare class FlowContent extends FlowContentBase implements Readonly<Flo
 |  [append(theme, nodes)](./scribing.flowcontent.append_1.md) |  | Appends the specified nodes |
 |  [completeUpload(id, url)](./scribing.flowcontent.completeupload.md) |  | Marks the specified upload as completed |
 |  [copy(range)](./scribing.flowcontent.copy.md) |  | Extracts a range of flow content |
+|  [digest()](./scribing.flowcontent.digest.md) |  | Gets a cryptographic digest of the current content |
 |  [formatBox(range, style, theme)](./scribing.flowcontent.formatbox.md) |  | Applies box style to a range |
 |  [formatParagraph(range, style, theme)](./scribing.flowcontent.formatparagraph.md) |  | Applies paragraph style to a range |
 |  [formatText(range, style, theme)](./scribing.flowcontent.formattext.md) |  | Applies text style to a range |

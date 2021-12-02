@@ -76,6 +76,8 @@ export type FlowContentData = readonly FlowNode[];
 @frozen
 @validating
 export class FlowContent extends FlowContentBase implements Readonly<FlowContentProps> {
+    #cachedDigest: string | undefined;
+
     /** The MIME type that should be used for flow content JSON data */
     public static readonly jsonMimeType = "application/vnd.scribing-flow+json";
 
@@ -156,6 +158,20 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     copy(@type(FlowRange.classType) range: FlowRange): FlowContent {
         const cursor = this.peek(range.first);
         return this.set("nodes", Object.freeze(Array.from(cursor.range(range.size))));
+    }
+
+    /**
+     * Gets a cryptographic digest of the current content
+     */
+    async digest(): Promise<string> {
+        if (!this.#cachedDigest) {
+            const json = this.toJsonValue();
+            const text = JSON.stringify(json);
+            const data = new TextEncoder().encode(text);
+            const raw = await crypto.subtle.digest("SHA-384", data);
+            this.#cachedDigest = Buffer.from(raw).toString("base64");
+        }
+        return this.#cachedDigest;
     }
 
     /**

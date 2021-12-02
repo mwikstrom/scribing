@@ -451,6 +451,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     static readonly classType: Type<FlowContent>;
     completeUpload(id: string, url: string): FlowContent;
     copy(range: FlowRange): FlowContent;
+    digest(): Promise<string>;
     static get empty(): FlowContent;
     formatBox(range: FlowRange, style: BoxStyle, theme?: FlowTheme): FlowContent;
     formatParagraph(range: FlowRange, style: ParagraphStyle, theme?: FlowTheme): FlowContent;
@@ -779,6 +780,8 @@ export const FlowSyncInputType: RecordType<FlowSyncInput>;
 // @public (undocumented)
 export interface FlowSyncOutput {
     // (undocumented)
+    digest: string;
+    // (undocumented)
     merge: FlowOperation | null;
     // (undocumented)
     presence: FlowPresence[];
@@ -801,6 +804,8 @@ export interface FlowSyncProtocol {
 export interface FlowSyncSnapshot {
     // (undocumented)
     content: FlowContent;
+    // (undocumented)
+    digest: string;
     // (undocumented)
     presence: FlowPresence[];
     // (undocumented)
