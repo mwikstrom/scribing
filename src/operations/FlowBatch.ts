@@ -73,12 +73,21 @@ export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps>
         const flattened: FlowOperation[] = [];
 
         for(;;) {
-            const next = queue.shift();
+            let next = queue.shift();
             if (!next) {
                 break;
             } else if (next instanceof FlowBatch) {
                 queue.unshift(...next.operations);
             } else if (next instanceof FlowOperation) {
+                const prev = flattened.pop();
+                if (prev) {
+                    const merged = prev.mergeNext(next);
+                    if (merged) {
+                        next = merged;
+                    } else {
+                        flattened.push(prev);
+                    }
+                }
                 flattened.push(next);
             }
         }
