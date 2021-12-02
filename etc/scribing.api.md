@@ -453,6 +453,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     copy(range: FlowRange): FlowContent;
     digest(): Promise<string>;
     static get empty(): FlowContent;
+    static get emptyParagraph(): FlowContent;
     formatBox(range: FlowRange, style: BoxStyle, theme?: FlowTheme): FlowContent;
     formatParagraph(range: FlowRange, style: ParagraphStyle, theme?: FlowTheme): FlowContent;
     formatText(range: FlowRange, style: TextStyle, theme?: FlowTheme): FlowContent;
@@ -856,6 +857,8 @@ export const FlowTableBase: RecordConstructor<FlowTableProps, FlowNode, FlowTabl
 // @public @sealed
 export class FlowTableCell extends FlowTableCellBase {
     static readonly classType: Type<FlowTableCell>;
+    static get empty(): FlowTableCell;
+    static get emptyParagraph(): FlowTableCell;
     static fromData(data: FlowTableCellData): FlowTableCell;
     // (undocumented)
     getSpannedPositions(root: CellPosition, includeSelf?: boolean): CellPosition[];

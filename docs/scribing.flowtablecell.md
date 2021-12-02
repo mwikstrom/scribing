@@ -19,6 +19,8 @@ export declare class FlowTableCell extends FlowTableCellBase
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [classType](./scribing.flowtablecell.classtype.md) | <code>static</code> | Type&lt;[FlowTableCell](./scribing.flowtablecell.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [empty](./scribing.flowtablecell.empty.md) | <code>static</code> | [FlowTableCell](./scribing.flowtablecell.md) | Gets an empty table cell |
+|  [emptyParagraph](./scribing.flowtablecell.emptyparagraph.md) | <code>static</code> | [FlowTableCell](./scribing.flowtablecell.md) | Gets a table cell that contains an empty paragraph |
 
 ## Methods
 

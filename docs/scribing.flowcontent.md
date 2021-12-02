@@ -28,6 +28,7 @@ export declare class FlowContent extends FlowContentBase implements Readonly<Flo
 |  --- | --- | --- | --- |
 |  [classType](./scribing.flowcontent.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FlowContent](./scribing.flowcontent.md)<!-- -->&gt; | The run-time type that represents this class |
 |  [empty](./scribing.flowcontent.empty.md) | <code>static</code> | [FlowContent](./scribing.flowcontent.md) | Gets empty flow content |
+|  [emptyParagraph](./scribing.flowcontent.emptyparagraph.md) | <code>static</code> | [FlowContent](./scribing.flowcontent.md) | Gets an empty paragraph |
 |  [jsonMimeType](./scribing.flowcontent.jsonmimetype.md) | <code>static</code> | (not declared) | The MIME type that should be used for flow content JSON data |
 |  [size](./scribing.flowcontent.size.md) |  | number | Flow content size |
 
