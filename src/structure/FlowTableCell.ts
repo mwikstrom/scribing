@@ -77,6 +77,22 @@ export class FlowTableCell extends FlowTableCellBase {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => FlowTableCell);
 
+    /** Gets an empty table cell */
+    public static get empty(): FlowTableCell {
+        if (!EMPTY_CACHE) {
+            EMPTY_CACHE = new FlowTableCell({ content: FlowContent.empty, colSpan: 1, rowSpan: 1 });
+        }
+        return EMPTY_CACHE;
+    }
+
+    /** Gets a table cell that contains an empty paragraph */
+    public static get emptyParagraph(): FlowTableCell {
+        if (!EMPTY_PARA_CACHE) {
+            EMPTY_PARA_CACHE = new FlowTableCell({ content: FlowContent.emptyParagraph, colSpan: 1, rowSpan: 1 });
+        }
+        return EMPTY_PARA_CACHE;
+    }
+
     /** Gets an instance of the current class from the specified data */
     public static fromData(@type(DataType) data: FlowTableCellData): FlowTableCell {
         const record = FlowContent.classType.test(data) ? { content: data } : data;
@@ -98,3 +114,6 @@ export class FlowTableCell extends FlowTableCellBase {
         return result;
     }
 }
+
+let EMPTY_CACHE: FlowTableCell | undefined;
+let EMPTY_PARA_CACHE: FlowTableCell | undefined;
