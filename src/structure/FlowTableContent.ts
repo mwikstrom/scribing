@@ -130,7 +130,10 @@ export class FlowTableContent {
     }
 
     public toJsonValue(error?: ErrorCallback, path?: PathArray): JsonValue {
-        const data = new Map([...this.#cells, ["default", FlowTableCell.fromData(this.#defaultContent)]]);
+        const sorted = Array.from(this.#cells.entries())
+            .sort((a, b) => CellPosition.parse(a[0], true).compare(CellPosition.parse(b[0], true)));
+        const data = new Map(sorted);
+        data.set("default", FlowTableCell.fromData(this.#defaultContent));
 
         // Ensure that the bottom-right cell is filled to maintain row and column count
         const lastKey = CellPosition.at(this.#rowCount - 1, this.#columnCount - 1).toString();
