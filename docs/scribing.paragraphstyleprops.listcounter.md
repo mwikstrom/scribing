@@ -9,5 +9,5 @@ Specifies the list litem counter value
 <b>Signature:</b>
 
 ```typescript
-listCounter?: number | "auto" | "reset" | "resume";
+listCounter?: number | ListCounterAction;
 ```

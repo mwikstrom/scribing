@@ -13,6 +13,12 @@ import { RecordObject } from 'paratype';
 import { RecordType } from 'paratype';
 import { Type } from 'paratype';
 
+// @public
+export const BASELINE_OFFSETS: readonly ["normal", "sub", "super"];
+
+// @public
+export type BaselineOffset = (typeof BASELINE_OFFSETS)[number];
+
 // @public (undocumented)
 export type BasicFetch = (url: string, init?: BasicRequestInit) => Promise<Response>;
 
@@ -1087,6 +1093,12 @@ export abstract class FlowTheme {
     toJsonValue(): JsonValue;
 }
 
+// @public
+export const FONT_FAMILIES: readonly ["body", "heading", "monospace"];
+
+// @public
+export type FontFamily = (typeof FONT_FAMILIES)[number];
+
 // @public @sealed
 export class FormatBox extends FormatBoxBase implements Readonly<FormatBoxProps> {
     afterInsertFlow(other: FlowRange): FlowOperation | null;
@@ -1261,6 +1273,12 @@ export interface FormatTextProps {
     range: FlowRange;
     style: TextStyle;
 }
+
+// @public
+export const HORIZONTAL_ALIGNMENTS: readonly ["start", "center", "end", "justify"];
+
+// @public
+export type HorizontalAlignment = (typeof HORIZONTAL_ALIGNMENTS)[number];
 
 // @public (undocumented)
 export class HttpFlowSyncProtocol implements FlowSyncProtocol {
@@ -1514,7 +1532,13 @@ export interface LineBreakProps {
 }
 
 // @public
+export const LIST_COUNTER_ACTIONS: readonly ["auto", "reset", "resume"];
+
+// @public
 export const LIST_MARKER_KINDS: readonly ["ordered", "decimal", "lower-alpha", "upper-alpha", "lower-roman", "upper-roman", "unordered", "disc", "circle", "square", "dash"];
+
+// @public
+export type ListCounterAction = (typeof LIST_COUNTER_ACTIONS)[number];
 
 // @public
 export type ListMarkerKind = OrderedListMarkerKind | UnorderedListMarkerKind;
@@ -1822,11 +1846,11 @@ listCounterSuffix: string;
 
 // @public
 export interface ParagraphStyleProps {
-    alignment?: "start" | "center" | "end" | "justify";
-    direction?: "ltr" | "rtl";
+    alignment?: HorizontalAlignment;
+    direction?: ReadingDirection;
     hideListMarker?: boolean;
     lineSpacing?: number;
-    listCounter?: number | "auto" | "reset" | "resume";
+    listCounter?: number | ListCounterAction;
     listCounterPrefix?: string;
     listCounterSuffix?: string;
     listLevel?: number;
@@ -1859,6 +1883,12 @@ export type PredefinedIcon = (typeof PREDEFINED_ICONS)[number];
 
 // @public
 export const PredefinedIconType: Type<PredefinedIcon>;
+
+// @public
+export const READING_DIRECTIONS: readonly ["ltr", "rtl"];
+
+// @public
+export type ReadingDirection = (typeof READING_DIRECTIONS)[number];
 
 // @public
 export interface RemoveFlowSelectionOptions extends TargetOptions {
@@ -2385,10 +2415,10 @@ spellcheck: boolean;
 
 // @public
 export interface TextStyleProps {
-    baseline?: "normal" | "sub" | "super";
+    baseline?: BaselineOffset;
     bold?: boolean;
     color?: FlowColor;
-    fontFamily?: "body" | "heading" | "monospace";
+    fontFamily?: FontFamily;
     fontSize?: number;
     italic?: boolean;
     link?: Interaction | null;

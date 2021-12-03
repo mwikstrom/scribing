@@ -39,12 +39,12 @@ export interface TextStyleProps {
      * 
      * - `super`: Text is placed in the superscript position
      */
-    baseline?: "normal" | "sub" | "super";
+    baseline?: BaselineOffset;
 
     /**
      * The text's font family.
      */
-    fontFamily?: "body" | "heading" | "monospace";
+    fontFamily?: FontFamily;
 
     /**
      * The text's font size, as a percentage of the user agent's default font size,
@@ -74,13 +74,45 @@ export interface TextStyleProps {
     // TODO: language
 }
 
+/**
+ * Baseline offset
+ * @public
+ */
+export type BaselineOffset = (typeof BASELINE_OFFSETS)[number];
+
+/**
+ * Read-only array that contains all baseline offsets
+ * @public
+ */
+export const BASELINE_OFFSETS = Object.freeze([
+    "normal",
+    "sub",
+    "super"
+] as const);
+
+/**
+ * Font family
+ * @public
+ */
+export type FontFamily = (typeof FONT_FAMILIES)[number];
+
+/**
+ * Read-only array that contains all font families
+ * @public
+ */
+export const FONT_FAMILIES = Object.freeze([
+    "body",
+    "heading",
+    "monospace"
+] as const);
+
 const Props = {
     bold: booleanType,
     italic: booleanType,
     underline: booleanType,
     strike: booleanType,
-    baseline: enumType(["normal", "sub", "super"]),
-    fontFamily: enumType(["body", "heading", "monospace"]),
+    baseline: enumType(BASELINE_OFFSETS),
+    fontFamily: enumType(FONT_FAMILIES),
     fontSize: integerType.restrict(
         "Must be greater than or equal to 10 and less than or equal to 1000",
         value => value >= 10 && value <= 1000,

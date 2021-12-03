@@ -9,7 +9,7 @@ The text's vertical position.
 <b>Signature:</b>
 
 ```typescript
-baseline?: "normal" | "sub" | "super";
+baseline?: BaselineOffset;
 ```
 
 ## Remarks

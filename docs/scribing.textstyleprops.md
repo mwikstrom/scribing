@@ -16,10 +16,10 @@ export interface TextStyleProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [baseline?](./scribing.textstyleprops.baseline.md) | "normal" \| "sub" \| "super" | <i>(Optional)</i> The text's vertical position. |
+|  [baseline?](./scribing.textstyleprops.baseline.md) | [BaselineOffset](./scribing.baselineoffset.md) | <i>(Optional)</i> The text's vertical position. |
 |  [bold?](./scribing.textstyleprops.bold.md) | boolean | <i>(Optional)</i> Whether or not the text is rendered as bold. |
 |  [color?](./scribing.textstyleprops.color.md) | [FlowColor](./scribing.flowcolor.md) | <i>(Optional)</i> The text's foreground color |
-|  [fontFamily?](./scribing.textstyleprops.fontfamily.md) | "body" \| "heading" \| "monospace" | <i>(Optional)</i> The text's font family. |
+|  [fontFamily?](./scribing.textstyleprops.fontfamily.md) | [FontFamily](./scribing.fontfamily.md) | <i>(Optional)</i> The text's font family. |
 |  [fontSize?](./scribing.textstyleprops.fontsize.md) | number | <i>(Optional)</i> The text's font size, as a percentage of the user agent's default font size, where normal is represented as <code>100</code>. |
 |  [italic?](./scribing.textstyleprops.italic.md) | boolean | <i>(Optional)</i> Whether or not the text is italicized. |
 |  [link?](./scribing.textstyleprops.link.md) | [Interaction](./scribing.interaction.md) \| null | <i>(Optional)</i> When non-null, indicates that text shall be styled as a link with the specified interaction. |

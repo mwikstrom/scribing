@@ -16,11 +16,11 @@ export interface ParagraphStyleProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [alignment?](./scribing.paragraphstyleprops.alignment.md) | "start" \| "center" \| "end" \| "justify" | <i>(Optional)</i> The alignment for paragraph content. |
-|  [direction?](./scribing.paragraphstyleprops.direction.md) | "ltr" \| "rtl" | <i>(Optional)</i> The reading direction of paragraph content. |
+|  [alignment?](./scribing.paragraphstyleprops.alignment.md) | [HorizontalAlignment](./scribing.horizontalalignment.md) | <i>(Optional)</i> The alignment for paragraph content. |
+|  [direction?](./scribing.paragraphstyleprops.direction.md) | [ReadingDirection](./scribing.readingdirection.md) | <i>(Optional)</i> The reading direction of paragraph content. |
 |  [hideListMarker?](./scribing.paragraphstyleprops.hidelistmarker.md) | boolean | <i>(Optional)</i> Specifies whether the list marker is hidden |
 |  [lineSpacing?](./scribing.paragraphstyleprops.linespacing.md) | number | <i>(Optional)</i> The amount of space between lines, as a percentage of normal, where normal is represented as <code>100</code>. |
-|  [listCounter?](./scribing.paragraphstyleprops.listcounter.md) | number \| "auto" \| "reset" \| "resume" | <i>(Optional)</i> Specifies the list litem counter value |
+|  [listCounter?](./scribing.paragraphstyleprops.listcounter.md) | number \| [ListCounterAction](./scribing.listcounteraction.md) | <i>(Optional)</i> Specifies the list litem counter value |
 |  [listCounterPrefix?](./scribing.paragraphstyleprops.listcounterprefix.md) | string | <i>(Optional)</i> Specifies the list item counter prefix |
 |  [listCounterSuffix?](./scribing.paragraphstyleprops.listcountersuffix.md) | string | <i>(Optional)</i> Specifies the list item counter suffix |
 |  [listLevel?](./scribing.paragraphstyleprops.listlevel.md) | number | <i>(Optional)</i> Specifies the list level. Zero means not a list. |

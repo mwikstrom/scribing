@@ -9,7 +9,7 @@ The alignment for paragraph content.
 <b>Signature:</b>
 
 ```typescript
-alignment?: "start" | "center" | "end" | "justify";
+alignment?: HorizontalAlignment;
 ```
 
 ## Remarks

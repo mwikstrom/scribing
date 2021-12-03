@@ -186,6 +186,7 @@ Model for collaborative rich text editing
 
 |  Variable | Description |
 |  --- | --- |
+|  [BASELINE\_OFFSETS](./scribing.baseline_offsets.md) | Read-only array that contains all baseline offsets |
 |  [BOX\_VARIANTS](./scribing.box_variants.md) | Read-only array that contains all box style variants |
 |  [BoxStyleBase](./scribing.boxstylebase.md) | The base record class for [BoxStyle](./scribing.boxstyle.md) |
 |  [BoxVariantType](./scribing.boxvarianttype.md) | The run-time type that matches box style variant values |
@@ -216,16 +217,19 @@ Model for collaborative rich text editing
 |  [FlowTableCellBase](./scribing.flowtablecellbase.md) | The base record class for [FlowTableCell](./scribing.flowtablecell.md) |
 |  [FlowTableCellSelectionBase](./scribing.flowtablecellselectionbase.md) | The base record class for [FlowTableCellSelection](./scribing.flowtablecellselection.md) |
 |  [FlowTableSelectionBase](./scribing.flowtableselectionbase.md) | The base record class for [FlowTableSelection](./scribing.flowtableselection.md) |
+|  [FONT\_FAMILIES](./scribing.font_families.md) | Read-only array that contains all font families |
 |  [FormatBoxBase](./scribing.formatboxbase.md) | The base record class for [FormatBox](./scribing.formatbox.md) |
 |  [FormatParagraphBase](./scribing.formatparagraphbase.md) | The base record class for [FormatParagraph](./scribing.formatparagraph.md) |
 |  [FormatTableBase](./scribing.formattablebase.md) | The base record class for [FormatTable](./scribing.formattable.md) |
 |  [FormatTableColumnBase](./scribing.formattablecolumnbase.md) | The base record class for [FormatTableColumn](./scribing.formattablecolumn.md) |
 |  [FormatTextBase](./scribing.formattextbase.md) | The base record class for [FormatText](./scribing.formattext.md) |
+|  [HORIZONTAL\_ALIGNMENTS](./scribing.horizontal_alignments.md) | Read-only array that contains all horizontal alignment values |
 |  [ImageSourceBase](./scribing.imagesourcebase.md) | The base record class for [ImageSource](./scribing.imagesource.md) |
 |  [InsertContentBase](./scribing.insertcontentbase.md) | The base record class for [InsertContent](./scribing.insertcontent.md) |
 |  [InsertTableColumnBase](./scribing.inserttablecolumnbase.md) | The base record class for [InsertTableColumn](./scribing.inserttablecolumn.md) |
 |  [InsertTableRowBase](./scribing.inserttablerowbase.md) | The base record class for [InsertTableRow](./scribing.inserttablerow.md) |
 |  [LineBreakBase](./scribing.linebreakbase.md) | The base record class for [LineBreak](./scribing.linebreak.md) |
+|  [LIST\_COUNTER\_ACTIONS](./scribing.list_counter_actions.md) | Read-only array that contains all list counter actions |
 |  [LIST\_MARKER\_KINDS](./scribing.list_marker_kinds.md) | Read-only array that contains all list marker styles |
 |  [ListMarkerKindType](./scribing.listmarkerkindtype.md) | The run-time type that matches all list marker style values |
 |  [mapNotNull](./scribing.mapnotnull.md) | Applies the specified callback on every element in the specified array and returns the resulting elements that are not <code>null</code> nor <code>undefined</code>. |
@@ -239,6 +243,7 @@ Model for collaborative rich text editing
 |  [ParagraphVariantType](./scribing.paragraphvarianttype.md) | The run-time type that matches paragraph style variant values |
 |  [PREDEFINED\_ICONS](./scribing.predefined_icons.md) | Read-only array that contains all predefined icons |
 |  [PredefinedIconType](./scribing.predefinedicontype.md) | The run-time type that matches predefined icon types |
+|  [READING\_DIRECTIONS](./scribing.reading_directions.md) | Read-only array that contains all reading direction values |
 |  [RemoveRangeBase](./scribing.removerangebase.md) | The base record class for [RemoveRange](./scribing.removerange.md) |
 |  [RemoveTableColumnBase](./scribing.removetablecolumnbase.md) | The base record class for [RemoveTableColumn](./scribing.removetablecolumn.md) |
 |  [RemoveTableRowBase](./scribing.removetablerowbase.md) | The base record class for [RemoveTableRow](./scribing.removetablerow.md) |
@@ -265,6 +270,7 @@ Model for collaborative rich text editing
 
 |  Type Alias | Description |
 |  --- | --- |
+|  [BaselineOffset](./scribing.baselineoffset.md) | Baseline offset |
 |  [BasicFetch](./scribing.basicfetch.md) |  |
 |  [BoxVariant](./scribing.boxvariant.md) | Box style variant |
 |  [CellPositionData](./scribing.cellpositiondata.md) | Data for a [CellPosition](./scribing.cellposition.md) represented by a string with leading upper case ascii letters that represents the column index, followed by ascii digits that represetnts the row index (one-based).<!-- -->For example; <code>A1</code> represents row 0 and column 0, and <code>DF45</code> represents row 44 and column 109. |
@@ -274,11 +280,15 @@ Model for collaborative rich text editing
 |  [FlowContentData](./scribing.flowcontentdata.md) | Flow content data is an array of [nodes](./scribing.flownode.md) |
 |  [FlowRangeTuple](./scribing.flowrangetuple.md) | Data for a [FlowRange](./scribing.flowrange.md) represented by a tuple where the first value is the anchor position and the second value is the focus position. |
 |  [FlowTableCellData](./scribing.flowtablecelldata.md) | Data of [FlowTableCell](./scribing.flowtablecell.md) |
+|  [FontFamily](./scribing.fontfamily.md) | Font family |
+|  [HorizontalAlignment](./scribing.horizontalalignment.md) | Horizontal alignment |
+|  [ListCounterAction](./scribing.listcounteraction.md) | List counter action |
 |  [ListMarkerKind](./scribing.listmarkerkind.md) | List marker styles |
 |  [NotNull](./scribing.notnull.md) | Excludes <code>null</code> and <code>undefined</code> from the specified type |
 |  [OrderedListMarkerKind](./scribing.orderedlistmarkerkind.md) | Ordered list marker styles |
 |  [ParagraphVariant](./scribing.paragraphvariant.md) | Paragraph style variant |
 |  [PredefinedIcon](./scribing.predefinedicon.md) | Predefined icon |
+|  [ReadingDirection](./scribing.readingdirection.md) | Reading direction |
 |  [TextRunData](./scribing.textrundata.md) | Data contract for a text run |
 |  [UnorderedListMarkerKind](./scribing.unorderedlistmarkerkind.md) | Unordered list marker styles |
 

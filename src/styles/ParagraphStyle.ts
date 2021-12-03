@@ -28,7 +28,7 @@ export interface ParagraphStyleProps {
      * 
      * - `justify`: The paragraph is justify.
      */
-    alignment?: "start" | "center" | "end" | "justify";
+    alignment?: HorizontalAlignment;
 
     /**
      * The reading direction of paragraph content.
@@ -37,7 +37,7 @@ export interface ParagraphStyleProps {
      * 
      * - `rtl`: The content goes from right to left.
      */
-    direction?: "ltr" | "rtl";
+    direction?: ReadingDirection;
 
     /**
      * The style variant of the paragraph.
@@ -79,7 +79,7 @@ export interface ParagraphStyleProps {
     /**
      * Specifies the list litem counter value
      */
-    listCounter?: number | "auto" | "reset" | "resume";
+    listCounter?: number | ListCounterAction;
 
     /**
      * Specifies the list item counter prefix
@@ -127,6 +127,54 @@ export const PARAGRAPH_VARIANTS = Object.freeze([
     "subtitle",
     "preamble",
     "code",
+] as const);
+
+/**
+ * Horizontal alignment
+ * @public
+ */
+export type HorizontalAlignment = (typeof HORIZONTAL_ALIGNMENTS)[number];
+
+/**
+ * Read-only array that contains all horizontal alignment values
+ * @public
+ */
+export const HORIZONTAL_ALIGNMENTS = Object.freeze([
+    "start",
+    "center",
+    "end",
+    "justify",
+] as const);
+
+/**
+ * Reading direction
+ * @public
+ */
+export type ReadingDirection = (typeof READING_DIRECTIONS)[number];
+
+/**
+ * Read-only array that contains all reading direction values
+ * @public
+ */
+export const READING_DIRECTIONS = Object.freeze([
+    "ltr",
+    "rtl",
+] as const);
+
+/**
+ * List counter action
+ * @public
+ */
+export type ListCounterAction = (typeof LIST_COUNTER_ACTIONS)[number];
+
+/**
+ * Read-only array that contains all list counter actions
+ * @public
+ */
+export const LIST_COUNTER_ACTIONS = Object.freeze([
+    "auto",
+    "reset",
+    "resume",
 ] as const);
 
 /**
@@ -220,8 +268,8 @@ const counterTextType = stringType
     );
 
 const Props = {
-    alignment: enumType(["start", "center", "end", "justify"]),
-    direction: enumType(["ltr", "rtl"]),
+    alignment: enumType(HORIZONTAL_ALIGNMENTS),
+    direction: enumType(READING_DIRECTIONS),
     variant: ParagraphVariantType,
     lineSpacing: percentage10to1000,
     spaceAbove: percentage10to1000,
@@ -232,7 +280,7 @@ const Props = {
     ),
     listMarker: ListMarkerKindType,
     hideListMarker: booleanType,
-    listCounter: unionType(integerType, enumType(["auto", "reset", "resume"])),
+    listCounter: unionType(integerType, enumType(LIST_COUNTER_ACTIONS)),
     listCounterPrefix: counterTextType,
     listCounterSuffix: counterTextType,
 };

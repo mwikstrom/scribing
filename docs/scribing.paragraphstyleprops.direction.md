@@ -9,7 +9,7 @@ The reading direction of paragraph content.
 <b>Signature:</b>
 
 ```typescript
-direction?: "ltr" | "rtl";
+direction?: ReadingDirection;
 ```
 
 ## Remarks
