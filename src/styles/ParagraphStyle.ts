@@ -53,13 +53,13 @@ export interface ParagraphStyleProps {
      * The amount of space before the paragraph, as a percentage of the user agent's default font size, 
      * where normal is represented as `100`.
      */
-    spaceAbove?: number;
+    spaceBefore?: number;
 
     /**
-     * The amount of space before the paragraph, as a percentage of the user agent's default font size, 
+     * The amount of space after the paragraph, as a percentage of the user agent's default font size, 
      * where normal is represented as `100`.
      */
-    spaceBelow?: number;
+    spaceAfter?: number;
 
     /**
      * Specifies the list level. Zero means not a list.
@@ -272,8 +272,8 @@ const Props = {
     direction: enumType(READING_DIRECTIONS),
     variant: ParagraphVariantType,
     lineSpacing: percentage10to1000,
-    spaceAbove: percentage10to1000,
-    spaceBelow: percentage10to1000,
+    spaceBefore: percentage10to1000,
+    spaceAfter: percentage10to1000,
     listLevel: integerType.restrict(
         "Must be greater than or equal to zero and less than or equal to nine",
         value => value >= 0 && value <= 9,

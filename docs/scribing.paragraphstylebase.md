@@ -14,8 +14,8 @@ ParagraphStyleBase: import("paratype").RecordConstructor<Partial<{
     direction: "ltr" | "rtl";
     variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
     lineSpacing: number;
-    spaceAbove: number;
-    spaceBelow: number;
+    spaceBefore: number;
+    spaceAfter: number;
     listLevel: number;
     listMarker: ListMarkerKind;
     hideListMarker: boolean;
@@ -27,8 +27,8 @@ ParagraphStyleBase: import("paratype").RecordConstructor<Partial<{
     direction: "ltr" | "rtl";
     variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
     lineSpacing: number;
-    spaceAbove: number;
-    spaceBelow: number;
+    spaceBefore: number;
+    spaceAfter: number;
     listLevel: number;
     listMarker: ListMarkerKind;
     hideListMarker: boolean;

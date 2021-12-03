@@ -1776,8 +1776,8 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
     direction: "ltr" | "rtl";
     variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
     lineSpacing: number;
-    spaceAbove: number;
-    spaceBelow: number;
+    spaceBefore: number;
+    spaceAfter: number;
     listLevel: number;
     listMarker: ListMarkerKind;
     hideListMarker: boolean;
@@ -1789,8 +1789,8 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
     direction: "ltr" | "rtl";
     variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
     lineSpacing: number;
-    spaceAbove: number;
-    spaceBelow: number;
+    spaceBefore: number;
+    spaceAfter: number;
     listLevel: number;
     listMarker: ListMarkerKind;
     hideListMarker: boolean;
@@ -1802,8 +1802,8 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
         direction: "ltr" | "rtl";
         variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
         lineSpacing: number;
-        spaceAbove: number;
-        spaceBelow: number;
+        spaceBefore: number;
+        spaceAfter: number;
         listLevel: number;
         listMarker: ListMarkerKind;
         hideListMarker: boolean;
@@ -1821,8 +1821,8 @@ alignment: "start" | "center" | "end" | "justify";
 direction: "ltr" | "rtl";
 variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
 lineSpacing: number;
-spaceAbove: number;
-spaceBelow: number;
+spaceBefore: number;
+spaceAfter: number;
 listLevel: number;
 listMarker: ListMarkerKind;
 hideListMarker: boolean;
@@ -1834,8 +1834,8 @@ alignment: "start" | "center" | "end" | "justify";
 direction: "ltr" | "rtl";
 variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
 lineSpacing: number;
-spaceAbove: number;
-spaceBelow: number;
+spaceBefore: number;
+spaceAfter: number;
 listLevel: number;
 listMarker: ListMarkerKind;
 hideListMarker: boolean;
@@ -1855,8 +1855,8 @@ export interface ParagraphStyleProps {
     listCounterSuffix?: string;
     listLevel?: number;
     listMarker?: ListMarkerKind;
-    spaceAbove?: number;
-    spaceBelow?: number;
+    spaceAfter?: number;
+    spaceBefore?: number;
     variant?: ParagraphVariant;
 }
 
