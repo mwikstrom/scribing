@@ -101,7 +101,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
         for (const node of cursor.range(size)) {
             if (node instanceof FlowBox) {
                 const { style } = node;
-                result = result.merge(style, diff);
+                result = result.merge(BoxStyle.ambient.merge(style), diff);
             }
         }
 
