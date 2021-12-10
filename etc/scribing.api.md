@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="node" />
+
 import { Equatable } from 'paratype';
 import { ErrorCallback } from 'paratype';
 import { JsonValue } from 'paratype';
@@ -490,7 +492,7 @@ export const FlowContentBase: RecordConstructor<FlowContentProps, Object, FlowCo
 export type FlowContentData = readonly FlowNode[];
 
 // @public (undocumented)
-export type FlowContentHashFunc = (data: ArrayBuffer) => Promise<ArrayBuffer>;
+export type FlowContentHashFunc = (data: Uint8Array) => Promise<Buffer>;
 
 // @public
 export interface FlowContentProps {

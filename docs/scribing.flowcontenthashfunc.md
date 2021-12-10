@@ -8,5 +8,5 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type FlowContentHashFunc = (data: ArrayBuffer) => Promise<ArrayBuffer>;
+export declare type FlowContentHashFunc = (data: Uint8Array) => Promise<Buffer>;
 ```

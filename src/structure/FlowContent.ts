@@ -71,9 +71,12 @@ export type FlowContentData = readonly FlowNode[];
 /**
  * @public
  */
-export type FlowContentHashFunc = (data: ArrayBuffer) => Promise<ArrayBuffer>;
+export type FlowContentHashFunc = (data: Uint8Array) => Promise<Buffer>;
 
-let DEFAULT_HASH_FUNC: FlowContentHashFunc = data => crypto.subtle.digest("SHA-384", data);
+let DEFAULT_HASH_FUNC: FlowContentHashFunc = async data => {
+    const hash = await crypto.subtle.digest("SHA-384", data);
+    return Buffer.from(hash);
+};
 
 /**
  * Flow content
@@ -187,8 +190,8 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
             const json = this.toJsonValue();
             const text = JSON.stringify(json);
             const data = new TextEncoder().encode(text);
-            const raw = await hashFunc(data);
-            this.#cachedDigest = Buffer.from(raw).toString("base64");
+            const hash = await hashFunc(data);
+            this.#cachedDigest = hash.toString("base64");
             this.#cachedDigestFunc = hashFunc;
         }
         return this.#cachedDigest;
