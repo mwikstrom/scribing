@@ -1,4 +1,4 @@
-import { arrayType, nonNegativeIntegerType, RecordType, recordType, stringType } from "paratype";
+import { arrayType, booleanType, nonNegativeIntegerType, RecordType, recordType, stringType } from "paratype";
 import { FlowContent } from "../structure/FlowContent";
 import { FlowTheme } from "../styles/FlowTheme";
 import { FlowPresence, FlowPresenceType } from "./FlowPresence";
@@ -10,6 +10,7 @@ export interface FlowSyncSnapshot {
     digest: string;
     theme: FlowTheme;
     presence: FlowPresence[];
+    frozen: boolean;
 }
 
 /** @public */
@@ -19,4 +20,5 @@ export const FlowSyncSnapshotType: RecordType<FlowSyncSnapshot> = recordType({
     digest: stringType,
     theme: FlowTheme.baseType,
     presence: arrayType(FlowPresenceType),
+    frozen: booleanType,
 });

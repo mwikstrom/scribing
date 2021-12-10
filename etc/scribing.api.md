@@ -782,6 +782,8 @@ export interface FlowSyncInput {
     // (undocumented)
     client: string;
     // (undocumented)
+    frozen?: boolean;
+    // (undocumented)
     operation: FlowOperation | null;
     // (undocumented)
     selection: FlowSelection | null;
@@ -796,6 +798,8 @@ export const FlowSyncInputType: RecordType<FlowSyncInput>;
 export interface FlowSyncOutput {
     // (undocumented)
     digest: string;
+    // (undocumented)
+    frozen: boolean;
     // (undocumented)
     merge: FlowOperation | null;
     // (undocumented)
@@ -821,6 +825,8 @@ export interface FlowSyncSnapshot {
     content: FlowContent;
     // (undocumented)
     digest: string;
+    // (undocumented)
+    frozen: boolean;
     // (undocumented)
     presence: FlowPresence[];
     // (undocumented)

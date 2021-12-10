@@ -16,6 +16,7 @@ export interface FlowSyncInput
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [client](./scribing.flowsyncinput.client.md) | string |  |
+|  [frozen?](./scribing.flowsyncinput.frozen.md) | boolean | <i>(Optional)</i> |
 |  [operation](./scribing.flowsyncinput.operation.md) | [FlowOperation](./scribing.flowoperation.md) \| null |  |
 |  [selection](./scribing.flowsyncinput.selection.md) | [FlowSelection](./scribing.flowselection.md) \| null |  |
 |  [version](./scribing.flowsyncinput.version.md) | number |  |
