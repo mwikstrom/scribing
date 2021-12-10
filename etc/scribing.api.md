@@ -457,7 +457,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     static readonly classType: Type<FlowContent>;
     completeUpload(id: string, url: string): FlowContent;
     copy(range: FlowRange): FlowContent;
-    digest(): Promise<string>;
+    digest(hashFunc?: SubtleCrypto["digest"]): Promise<string>;
     static get empty(): FlowContent;
     static get emptyParagraph(): FlowContent;
     formatBox(range: FlowRange, style: BoxStyle, theme?: FlowTheme): FlowContent;

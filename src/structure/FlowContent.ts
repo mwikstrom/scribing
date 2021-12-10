@@ -171,12 +171,15 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     /**
      * Gets a cryptographic digest of the current content
      */
-    async digest(): Promise<string> {
+    async digest(hashFunc?: SubtleCrypto["digest"]): Promise<string> {
         if (!this.#cachedDigest) {
             const json = this.toJsonValue();
             const text = JSON.stringify(json);
             const data = new TextEncoder().encode(text);
-            const raw = await crypto.subtle.digest("SHA-384", data);
+            if (!hashFunc) {
+                hashFunc = crypto.subtle.digest;
+            }
+            const raw = await hashFunc("SHA-384", data);
             this.#cachedDigest = Buffer.from(raw).toString("base64");
         }
         return this.#cachedDigest;

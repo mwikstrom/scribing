@@ -9,8 +9,15 @@ Gets a cryptographic digest of the current content
 <b>Signature:</b>
 
 ```typescript
-digest(): Promise<string>;
+digest(hashFunc?: SubtleCrypto["digest"]): Promise<string>;
 ```
+
+## Parameters
+
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  hashFunc | SubtleCrypto\["digest"\] |  |
+
 <b>Returns:</b>
 
 Promise&lt;string&gt;
