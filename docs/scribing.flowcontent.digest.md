@@ -9,14 +9,14 @@ Gets a cryptographic digest of the current content
 <b>Signature:</b>
 
 ```typescript
-digest(hashFunc?: SubtleCrypto["digest"]): Promise<string>;
+digest(hashFunc?: FlowContentHashFunc): Promise<string>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  hashFunc | SubtleCrypto\["digest"\] |  |
+|  hashFunc | [FlowContentHashFunc](./scribing.flowcontenthashfunc.md) |  |
 
 <b>Returns:</b>
 

@@ -457,7 +457,10 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     static readonly classType: Type<FlowContent>;
     completeUpload(id: string, url: string): FlowContent;
     copy(range: FlowRange): FlowContent;
-    digest(hashFunc?: SubtleCrypto["digest"]): Promise<string>;
+    // (undocumented)
+    static get defaultHashFunc(): FlowContentHashFunc;
+    static set defaultHashFunc(func: FlowContentHashFunc);
+    digest(hashFunc?: FlowContentHashFunc): Promise<string>;
     static get empty(): FlowContent;
     static get emptyParagraph(): FlowContent;
     formatBox(range: FlowRange, style: BoxStyle, theme?: FlowTheme): FlowContent;
@@ -485,6 +488,9 @@ export const FlowContentBase: RecordConstructor<FlowContentProps, Object, FlowCo
 
 // @public
 export type FlowContentData = readonly FlowNode[];
+
+// @public (undocumented)
+export type FlowContentHashFunc = (data: ArrayBuffer) => Promise<ArrayBuffer>;
 
 // @public
 export interface FlowContentProps {

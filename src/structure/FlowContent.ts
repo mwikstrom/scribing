@@ -69,6 +69,13 @@ export interface FlowContentProps {
 export type FlowContentData = readonly FlowNode[];
 
 /**
+ * @public
+ */
+export type FlowContentHashFunc = (data: ArrayBuffer) => Promise<ArrayBuffer>;
+
+let DEFAULT_HASH_FUNC: FlowContentHashFunc = data => crypto.subtle.digest("SHA-384", data);
+
+/**
  * Flow content
  * @public
  * @sealed
@@ -77,12 +84,16 @@ export type FlowContentData = readonly FlowNode[];
 @validating
 export class FlowContent extends FlowContentBase implements Readonly<FlowContentProps> {
     #cachedDigest: string | undefined;
+    #cachedDigestFunc: FlowContentHashFunc | undefined;
 
     /** The MIME type that should be used for flow content JSON data */
     public static readonly jsonMimeType = "application/vnd.scribing-flow+json";
 
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => FlowContent);
+
+    static get defaultHashFunc(): FlowContentHashFunc { return DEFAULT_HASH_FUNC; }
+    static set defaultHashFunc(func: FlowContentHashFunc) { DEFAULT_HASH_FUNC = func; }
 
     /** Gets empty flow content */
     public static get empty(): FlowContent {
@@ -171,16 +182,14 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     /**
      * Gets a cryptographic digest of the current content
      */
-    async digest(hashFunc?: SubtleCrypto["digest"]): Promise<string> {
-        if (!this.#cachedDigest) {
+    async digest(hashFunc = FlowContent.defaultHashFunc): Promise<string> {
+        if (!this.#cachedDigest || this.#cachedDigestFunc !== hashFunc) {
             const json = this.toJsonValue();
             const text = JSON.stringify(json);
             const data = new TextEncoder().encode(text);
-            if (!hashFunc) {
-                hashFunc = crypto.subtle.digest;
-            }
-            const raw = await hashFunc("SHA-384", data);
+            const raw = await hashFunc(data);
             this.#cachedDigest = Buffer.from(raw).toString("base64");
+            this.#cachedDigestFunc = hashFunc;
         }
         return this.#cachedDigest;
     }

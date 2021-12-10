@@ -278,6 +278,7 @@ Model for collaborative rich text editing
 |  [FlowBatchData](./scribing.flowbatchdata.md) | Data of [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowColor](./scribing.flowcolor.md) | Flow content color |
 |  [FlowContentData](./scribing.flowcontentdata.md) | Flow content data is an array of [nodes](./scribing.flownode.md) |
+|  [FlowContentHashFunc](./scribing.flowcontenthashfunc.md) |  |
 |  [FlowRangeTuple](./scribing.flowrangetuple.md) | Data for a [FlowRange](./scribing.flowrange.md) represented by a tuple where the first value is the anchor position and the second value is the focus position. |
 |  [FlowTableCellData](./scribing.flowtablecelldata.md) | Data of [FlowTableCell](./scribing.flowtablecell.md) |
 |  [FontFamily](./scribing.fontfamily.md) | Font family |
