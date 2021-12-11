@@ -24,7 +24,7 @@ export class HttpFlowSyncProtocol implements FlowSyncProtocol {
     readonly #url: string;
     readonly #fetch: BasicFetch;
 
-    constructor(url: string, fetcher: BasicFetch = fetch) {
+    constructor(url: string, fetcher: BasicFetch = (...args) => fetch(...args)) {
         this.#url = url;
         this.#fetch = fetcher;
     }
