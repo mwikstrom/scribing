@@ -46,7 +46,7 @@ export class HttpFlowSyncProtocol implements FlowSyncProtocol {
     }
 
     async sync(input: FlowSyncInput): Promise<FlowSyncOutput | null> {
-        const response = await this.#fetch(this.#url, {
+        const response = await this.#fetch(this.#url + "/sync", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(FlowSyncInputType.toJsonValue(input)),
