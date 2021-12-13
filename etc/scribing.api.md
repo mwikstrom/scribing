@@ -327,6 +327,37 @@ export interface EditTableCellProps {
 }
 
 // @public @sealed
+export class EmptyMarkup extends EmptyMarkupBase implements EmptyMarkupProps {
+    constructor(props: EmptyMarkupProps);
+    static readonly classType: Type<EmptyMarkup>;
+    static fromData(data: EmptyMarkupData): EmptyMarkup;
+    readonly size = 1;
+}
+
+// @public
+export const EmptyMarkupBase: RecordConstructor<EmptyMarkupProps, InlineNode, EmptyMarkupData>;
+
+// @public
+export interface EmptyMarkupData {
+    // (undocumented)
+    attr?: Readonly<Map<string, string>>;
+    // (undocumented)
+    empty_markup: string;
+    // (undocumented)
+    style?: TextStyle;
+}
+
+// @public
+export interface EmptyMarkupProps {
+    // (undocumented)
+    attr: Readonly<Map<string, string>>;
+    // (undocumented)
+    style: TextStyle;
+    // (undocumented)
+    tag: string;
+}
+
+// @public @sealed
 export class EndMarkup extends EndMarkupBase implements EndMarkupProps {
     constructor(props: EndMarkupProps);
     static readonly classType: Type<EndMarkup>;

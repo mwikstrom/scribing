@@ -18,6 +18,7 @@ Model for collaborative rich text editing
 |  [DynamicText](./scribing.dynamictext.md) | Represents a dynamic text. |
 |  [EditBox](./scribing.editbox.md) | Represents an operation that edit the contents of a box |
 |  [EditTableCell](./scribing.edittablecell.md) | Represents an operation that edit the contents of a box |
+|  [EmptyMarkup](./scribing.emptymarkup.md) | Represents a line break. |
 |  [EndMarkup](./scribing.endmarkup.md) | Represents a line break. |
 |  [FlowBatch](./scribing.flowbatch.md) | Represents a batch of flow operations that are applied sequentially and atomically. |
 |  [FlowBox](./scribing.flowbox.md) | Represents a flow box |
@@ -96,6 +97,8 @@ Model for collaborative rich text editing
 |  [EditBoxProps](./scribing.editboxprops.md) | Properties of [EditBox](./scribing.editbox.md) |
 |  [EditTableCellData](./scribing.edittablecelldata.md) | Data of [EditTableCell](./scribing.edittablecell.md) |
 |  [EditTableCellProps](./scribing.edittablecellprops.md) | Properties of [EditTableCell](./scribing.edittablecell.md) |
+|  [EmptyMarkupData](./scribing.emptymarkupdata.md) | Data of [EmptyMarkup](./scribing.emptymarkup.md) |
+|  [EmptyMarkupProps](./scribing.emptymarkupprops.md) | Properties of [EmptyMarkup](./scribing.emptymarkup.md) |
 |  [EndMarkupData](./scribing.endmarkupdata.md) | Data of [EndMarkup](./scribing.endmarkup.md) |
 |  [EndMarkupProps](./scribing.endmarkupprops.md) | Properties of [EndMarkup](./scribing.endmarkup.md) |
 |  [FlowBatchProps](./scribing.flowbatchprops.md) | Properties of [FlowBatch](./scribing.flowbatch.md) |
@@ -201,6 +204,7 @@ Model for collaborative rich text editing
 |  [DynamicTextBase](./scribing.dynamictextbase.md) | The base record class for [DynamicText](./scribing.dynamictext.md) |
 |  [EditBoxBase](./scribing.editboxbase.md) | The base record class for [EditBox](./scribing.editbox.md) |
 |  [EditTableCellBase](./scribing.edittablecellbase.md) | The base record class for [EditTableCell](./scribing.edittablecell.md) |
+|  [EmptyMarkupBase](./scribing.emptymarkupbase.md) | The base record class for [EmptyMarkup](./scribing.emptymarkup.md) |
 |  [EndMarkupBase](./scribing.endmarkupbase.md) | The base record class for [EndMarkup](./scribing.endmarkup.md) |
 |  [filterNotNull](./scribing.filternotnull.md) | Returns elements from the specified array that are not <code>null</code> nor <code>undefined</code> |
 |  [FLOW\_COLORS](./scribing.flow_colors.md) | Read-only array that contains all flow content colors |

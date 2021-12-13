@@ -18,6 +18,7 @@ import { FlowOperationRegistry } from "../internal/class-registry";
 import { getRangeAfterInsertion, getRangeAfterRemoval } from "../internal/transform-helpers";
 import { StartMarkup } from "../nodes/StartMarkup";
 import { EndMarkup } from "../nodes/EndMarkup";
+import { EmptyMarkup } from "../nodes/EmptyMarkup";
 
 const Props = {
     position: nonNegativeIntegerType,
@@ -97,7 +98,7 @@ export class SetMarkupTag extends SetMarkupTagBase implements SetMarkupTagProps 
     invert(content: FlowContent): FlowOperation | null {
         const { position } = this;
         const { node } = content.peek(position);
-        if (node instanceof EndMarkup || node instanceof StartMarkup) {
+        if (node instanceof EndMarkup || node instanceof StartMarkup || node instanceof EmptyMarkup) {
             const { tag } = node;
             return new SetMarkupTag({ position, tag });
         } else {
@@ -132,7 +133,7 @@ export class SetMarkupTag extends SetMarkupTagBase implements SetMarkupTagProps 
     applyToContent(content: FlowContent): FlowContent {
         const { position, tag } = this;
         const { node } = content.peek(position);
-        if (node instanceof StartMarkup || node instanceof EndMarkup) {
+        if (node instanceof StartMarkup || node instanceof EndMarkup || node instanceof EmptyMarkup) {
             return content.replace(
                 FlowRange.at(position, node.size),
                 node.merge({ tag })
