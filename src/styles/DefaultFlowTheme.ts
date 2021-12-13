@@ -183,8 +183,8 @@ class DefaultParagraphTheme extends ParagraphTheme {
         this.#text = new TextStyle({
             fontFamily: getFontFamily(paraVariant),
             fontSize: getFontSize(paraVariant),
-            bold: isHeadingParagraph(paraVariant),
-            italic: box.variant === "quote",
+            bold: isBoldHeadingParagraph(paraVariant),
+            italic: box.variant === "quote" || paraVariant === "h6",
             underline: false,
             strike: false,
             baseline: "normal",
@@ -244,6 +244,7 @@ class DefaultParagraphTheme extends ParagraphTheme {
 }
 
 const isHeadingParagraph = (variant: ParagraphVariant): boolean => /^h[1-6]$/.test(variant);
+const isBoldHeadingParagraph = (variant: ParagraphVariant): boolean => /^h[1-4]$/.test(variant);
 
 const getFontFamily = (variant: ParagraphVariant): TextStyleProps["fontFamily"] => {
     if (variant === "code") {
@@ -263,8 +264,8 @@ const getFontSize = (variant: ParagraphVariant): number => {
     case "h2": return 150;
     case "h3": return 117;
     case "h4": return 100;
-    case "h5": return 83;
-    case "h6": return 67;
+    case "h5": return 100;
+    case "h6": return 100;
     case "code": return 90;
     case "preamble": return 110;
     default: return 100;
