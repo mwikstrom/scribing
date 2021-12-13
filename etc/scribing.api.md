@@ -2271,6 +2271,8 @@ export const StartMarkupBase: RecordConstructor<StartMarkupProps, InlineNode, St
 // @public
 export interface StartMarkupData {
     // (undocumented)
+    attr?: Readonly<Map<string, string>>;
+    // (undocumented)
     start_markup: string;
     // (undocumented)
     style?: TextStyle;
@@ -2278,6 +2280,8 @@ export interface StartMarkupData {
 
 // @public
 export interface StartMarkupProps {
+    // (undocumented)
+    attr: Readonly<Map<string, string>>;
     // (undocumented)
     style: TextStyle;
     // (undocumented)

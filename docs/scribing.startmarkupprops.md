@@ -16,6 +16,7 @@ export interface StartMarkupProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
+|  [attr](./scribing.startmarkupprops.attr.md) | Readonly&lt;Map&lt;string, string&gt;&gt; |  |
 |  [style](./scribing.startmarkupprops.style.md) | [TextStyle](./scribing.textstyle.md) |  |
 |  [tag](./scribing.startmarkupprops.tag.md) | string |  |
 

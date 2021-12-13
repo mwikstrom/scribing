@@ -1,5 +1,6 @@
 import {
     frozen,
+    mapType,
     RecordClass,
     recordClassType,
     recordType,
@@ -15,16 +16,25 @@ import { TextStyle } from "../styles/TextStyle";
 const Props = {
     tag: stringType,
     style: TextStyle.classType,
+    attr: mapType(stringType).frozen(),
 };
 const Data = {
     start_markup: stringType,
     style: Props.style,
+    attr: Props.attr,
 };
 const PropsType: RecordType<StartMarkupProps> = recordType(Props);
-const DataType: RecordType<StartMarkupData> = recordType(Data).withOptional("style");
-const propsToData = ({tag, style}: StartMarkupProps): StartMarkupData => (
-    style.isEmpty ? {start_markup: tag} : {start_markup: tag, style}
-);
+const DataType: RecordType<StartMarkupData> = recordType(Data).withOptional("style", "attr");
+const propsToData = ({tag, style, attr}: StartMarkupProps): StartMarkupData => {
+    const data: StartMarkupData = { start_markup: tag };
+    if (!style.isEmpty) {
+        data.style = style;
+    }
+    if (attr.size > 0) {
+        data.attr = attr;
+    }
+    return data;
+};
 
 /**
  * The base record class for {@link StartMarkup}
@@ -39,6 +49,7 @@ export const StartMarkupBase = RecordClass(PropsType, InlineNode, DataType, prop
 export interface StartMarkupProps {
     tag: string;
     style: TextStyle;
+    attr: Readonly<Map<string, string>>;
 }
 
 /**
@@ -48,6 +59,7 @@ export interface StartMarkupProps {
 export interface StartMarkupData {
     start_markup: string;
     style?: TextStyle;
+    attr?: Readonly<Map<string, string>>;
 }
 
 /**
@@ -67,8 +79,8 @@ export class StartMarkup extends StartMarkupBase implements StartMarkupProps {
 
     /** Gets an instance of the current class from the specified data */
     public static fromData(@type(DataType) data: StartMarkupData): StartMarkup {
-        const { start_markup: tag, style = TextStyle.empty} = data;
-        const props: StartMarkupProps = { tag, style };
+        const { start_markup: tag, style = TextStyle.empty, attr = new Map()} = data;
+        const props: StartMarkupProps = { tag, style, attr: Object.freeze(attr) };
         return new StartMarkup(props);
     }
 
