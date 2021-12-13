@@ -66,7 +66,12 @@ export interface TextStyleProps {
     /**
      * Determines whether text shall be checked for spelling errors
      */
-    spellcheck?: boolean;
+    spellcheck?: boolean;    
+
+    /**
+     * Determines whether text shall be translated
+     */
+    translate?: boolean;    
 
     // TODO: by name inheritance
     // TODO: background color
@@ -120,6 +125,7 @@ const Props = {
     link: unionType(nullType, Interaction.baseType),
     color: FlowColorType,
     spellcheck: booleanType,
+    translate: booleanType,
 };
 
 const PropsType = recordType(Props).asPartial();

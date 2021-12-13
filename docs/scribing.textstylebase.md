@@ -20,6 +20,7 @@ TextStyleBase: import("paratype").RecordConstructor<Partial<{
     link: Interaction | null;
     color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
     spellcheck: boolean;
+    translate: boolean;
 }>, Object, Partial<{
     bold: boolean;
     italic: boolean;
@@ -31,5 +32,6 @@ TextStyleBase: import("paratype").RecordConstructor<Partial<{
     link: Interaction | null;
     color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
     spellcheck: boolean;
+    translate: boolean;
 }>>
 ```

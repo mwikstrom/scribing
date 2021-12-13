@@ -25,5 +25,6 @@ export interface TextStyleProps
 |  [link?](./scribing.textstyleprops.link.md) | [Interaction](./scribing.interaction.md) \| null | <i>(Optional)</i> When non-null, indicates that text shall be styled as a link with the specified interaction. |
 |  [spellcheck?](./scribing.textstyleprops.spellcheck.md) | boolean | <i>(Optional)</i> Determines whether text shall be checked for spelling errors |
 |  [strike?](./scribing.textstyleprops.strike.md) | boolean | <i>(Optional)</i> Whether or not the text is struck through. |
+|  [translate?](./scribing.textstyleprops.translate.md) | boolean | <i>(Optional)</i> Determines whether text shall be translated |
 |  [underline?](./scribing.textstyleprops.underline.md) | boolean | <i>(Optional)</i> Whether or not the text is underlined. |
 
