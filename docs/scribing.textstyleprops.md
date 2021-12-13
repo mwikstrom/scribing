@@ -22,6 +22,7 @@ export interface TextStyleProps
 |  [fontFamily?](./scribing.textstyleprops.fontfamily.md) | [FontFamily](./scribing.fontfamily.md) | <i>(Optional)</i> The text's font family. |
 |  [fontSize?](./scribing.textstyleprops.fontsize.md) | number | <i>(Optional)</i> The text's font size, as a percentage of the user agent's default font size, where normal is represented as <code>100</code>. |
 |  [italic?](./scribing.textstyleprops.italic.md) | boolean | <i>(Optional)</i> Whether or not the text is italicized. |
+|  [lang?](./scribing.textstyleprops.lang.md) | string | <i>(Optional)</i> Specifies the written language |
 |  [link?](./scribing.textstyleprops.link.md) | [Interaction](./scribing.interaction.md) \| null | <i>(Optional)</i> When non-null, indicates that text shall be styled as a link with the specified interaction. |
 |  [spellcheck?](./scribing.textstyleprops.spellcheck.md) | boolean | <i>(Optional)</i> Determines whether text shall be checked for spelling errors |
 |  [strike?](./scribing.textstyleprops.strike.md) | boolean | <i>(Optional)</i> Whether or not the text is struck through. |

@@ -7,6 +7,7 @@ import {
     RecordClass,
     recordClassType,
     recordType,
+    stringType,
     unionType,
     validating
 } from "paratype";
@@ -73,10 +74,14 @@ export interface TextStyleProps {
      */
     translate?: boolean;    
 
+    /**
+     * Specifies the written language
+     */
+    lang?: string;
+
     // TODO: by name inheritance
     // TODO: background color
     // TODO: small caps
-    // TODO: language
 }
 
 /**
@@ -126,6 +131,7 @@ const Props = {
     color: FlowColorType,
     spellcheck: booleanType,
     translate: booleanType,
+    lang: stringType,
 };
 
 const PropsType = recordType(Props).asPartial();

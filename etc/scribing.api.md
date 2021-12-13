@@ -2376,6 +2376,7 @@ export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps>
     color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
     spellcheck: boolean;
     translate: boolean;
+    lang: string;
     }>, Partial<{
     bold: boolean;
     italic: boolean;
@@ -2388,6 +2389,7 @@ export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps>
     color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
     spellcheck: boolean;
     translate: boolean;
+    lang: string;
     }>> & Equatable & Readonly<Partial<{
     bold: boolean;
     italic: boolean;
@@ -2400,6 +2402,7 @@ export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps>
     color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
     spellcheck: boolean;
     translate: boolean;
+    lang: string;
     }>> & TextStyle>;
     static get empty(): TextStyle;
     get isEmpty(): boolean;
@@ -2418,6 +2421,7 @@ link: Interaction | null;
 color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
 spellcheck: boolean;
 translate: boolean;
+lang: string;
 }>, Object, Partial<{
 bold: boolean;
 italic: boolean;
@@ -2430,6 +2434,7 @@ link: Interaction | null;
 color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
 spellcheck: boolean;
 translate: boolean;
+lang: string;
 }>>;
 
 // @public
@@ -2440,6 +2445,7 @@ export interface TextStyleProps {
     fontFamily?: FontFamily;
     fontSize?: number;
     italic?: boolean;
+    lang?: string;
     link?: Interaction | null;
     spellcheck?: boolean;
     strike?: boolean;
