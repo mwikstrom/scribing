@@ -8,6 +8,8 @@ import { ParagraphBreak } from "../nodes/ParagraphBreak";
 import { ParagraphStyle } from "../styles/ParagraphStyle";
 import { TextRun } from "../nodes/TextRun";
 import { TextStyle } from "../styles/TextStyle";
+import { StartMarkup } from "../nodes/StartMarkup";
+import { EndMarkup } from "../nodes/EndMarkup";
 
 /**
  * Represents a position in flow content
@@ -93,18 +95,76 @@ export class FlowCursor {
      */
     findNodeForward(predicate: (node: FlowNode) => boolean): FlowCursor | null {
         const { nodes } = this.#content;
-        let distance = -this.#offset;
+        let distance = 0;
 
         for (let index = this.#index; index < nodes.length; ++index) {
             const node = nodes[index];
             if (predicate(node)) {
                 return new FlowCursor(this.#content, PRIVATE, index, 0, this.#position + distance);
+            } else if (index === this.#index) {
+                distance = node.size - this.#offset;
             } else {
                 distance += node.size;
             }
         }
 
         return null;
+    }
+
+    /**
+     * Finds a node in the backward direction that matches a predicate
+     */
+    findNodeBackward(predicate: (node: FlowNode) => boolean): FlowCursor | null {
+        const { nodes } = this.#content;
+        let distance = 0;
+
+        for (let index = this.#index; index >= 0; --index) {
+            const node = nodes[index];
+            if (index !== this.#index) {
+                distance -= node.size;
+            }
+            if (predicate(node)) {
+                return new FlowCursor(this.#content, PRIVATE, index, 0, this.#position + distance);
+            } else if (index === this.#index) {
+                distance = -this.#offset;
+            }
+        }
+
+        return null;
+    }
+
+    findMarkupEnd(): FlowCursor | null {
+        const { node } = this;
+        if (node instanceof StartMarkup) {
+            const stack = [node.tag];
+            return this.moveToStartOfNextNode()?.findNodeForward(next => {
+                if (next instanceof StartMarkup) {
+                    stack.push(next.tag);
+                } else if (next instanceof EndMarkup && next.tag === stack[stack.length - 1]) {
+                    stack.pop();
+                }
+                return stack.length === 0;
+            }) ?? null;
+        } else {
+            return null;
+        }
+    }
+
+    findMarkupStart(): FlowCursor | null {
+        const { node } = this;
+        if (node instanceof EndMarkup) {
+            const stack = [node.tag];
+            return this.moveToStartOfPreviousNode()?.findNodeBackward(prev => {
+                if (prev instanceof EndMarkup) {
+                    stack.push(prev.tag);
+                } else if (prev instanceof StartMarkup && prev.tag === stack[stack.length - 1]) {
+                    stack.pop();
+                }
+                return stack.length === 0;
+            }) ?? null;
+        } else {
+            return null;
+        }
     }
 
     /**

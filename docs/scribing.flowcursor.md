@@ -33,6 +33,9 @@ The constructor for this class is marked as internal. Third-party code should no
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [findMarkupEnd()](./scribing.flowcursor.findmarkupend.md) |  |  |
+|  [findMarkupStart()](./scribing.flowcursor.findmarkupstart.md) |  |  |
+|  [findNodeBackward(predicate)](./scribing.flowcursor.findnodebackward.md) |  | Finds a node in the backward direction that matches a predicate |
 |  [findNodeForward(predicate)](./scribing.flowcursor.findnodeforward.md) |  | Finds a node in the forward direction that matches a predicate |
 |  [getParagraphStyle()](./scribing.flowcursor.getparagraphstyle.md) |  | Gets the paragraph style at the current position |
 |  [getTextStyle()](./scribing.flowcursor.gettextstyle.md) |  | Gets the text style at the current position |

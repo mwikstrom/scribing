@@ -552,6 +552,11 @@ export class FlowCursor {
     constructor(content: FlowContent, symbol: symbol, index: number, offset: number, position: number);
     get after(): Iterable<FlowNode>;
     get before(): Iterable<FlowNode>;
+    // (undocumented)
+    findMarkupEnd(): FlowCursor | null;
+    // (undocumented)
+    findMarkupStart(): FlowCursor | null;
+    findNodeBackward(predicate: (node: FlowNode) => boolean): FlowCursor | null;
     findNodeForward(predicate: (node: FlowNode) => boolean): FlowCursor | null;
     getParagraphStyle(): ParagraphStyle | null;
     getTextStyle(): TextStyle | null;
