@@ -113,7 +113,9 @@ export type FontFamily = (typeof FONT_FAMILIES)[number];
 export const FONT_FAMILIES = Object.freeze([
     "body",
     "heading",
-    "monospace"
+    "monospace",
+    "cursive",
+    "decorative",
 ] as const);
 
 const Props = {

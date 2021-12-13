@@ -1122,7 +1122,7 @@ export abstract class FlowTheme {
 }
 
 // @public
-export const FONT_FAMILIES: readonly ["body", "heading", "monospace"];
+export const FONT_FAMILIES: readonly ["body", "heading", "monospace", "cursive", "decorative"];
 
 // @public
 export type FontFamily = (typeof FONT_FAMILIES)[number];
@@ -2384,7 +2384,7 @@ export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps>
     underline: boolean;
     strike: boolean;
     baseline: "normal" | "sub" | "super";
-    fontFamily: "body" | "heading" | "monospace";
+    fontFamily: "body" | "heading" | "monospace" | "cursive" | "decorative";
     fontSize: number;
     link: Interaction | null;
     color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
@@ -2397,7 +2397,7 @@ export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps>
     underline: boolean;
     strike: boolean;
     baseline: "normal" | "sub" | "super";
-    fontFamily: "body" | "heading" | "monospace";
+    fontFamily: "body" | "heading" | "monospace" | "cursive" | "decorative";
     fontSize: number;
     link: Interaction | null;
     color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
@@ -2410,7 +2410,7 @@ export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps>
     underline: boolean;
     strike: boolean;
     baseline: "normal" | "sub" | "super";
-    fontFamily: "body" | "heading" | "monospace";
+    fontFamily: "body" | "heading" | "monospace" | "cursive" | "decorative";
     fontSize: number;
     link: Interaction | null;
     color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
@@ -2429,7 +2429,7 @@ italic: boolean;
 underline: boolean;
 strike: boolean;
 baseline: "normal" | "sub" | "super";
-fontFamily: "body" | "heading" | "monospace";
+fontFamily: "body" | "heading" | "monospace" | "cursive" | "decorative";
 fontSize: number;
 link: Interaction | null;
 color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
@@ -2442,7 +2442,7 @@ italic: boolean;
 underline: boolean;
 strike: boolean;
 baseline: "normal" | "sub" | "super";
-fontFamily: "body" | "heading" | "monospace";
+fontFamily: "body" | "heading" | "monospace" | "cursive" | "decorative";
 fontSize: number;
 link: Interaction | null;
 color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";

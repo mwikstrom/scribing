@@ -15,7 +15,7 @@ static readonly classType: import("paratype").Type<import("paratype").RecordObje
         underline: boolean;
         strike: boolean;
         baseline: "normal" | "sub" | "super";
-        fontFamily: "body" | "heading" | "monospace";
+        fontFamily: "body" | "heading" | "monospace" | "cursive" | "decorative";
         fontSize: number;
         link: Interaction | null;
         color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
@@ -28,7 +28,7 @@ static readonly classType: import("paratype").Type<import("paratype").RecordObje
         underline: boolean;
         strike: boolean;
         baseline: "normal" | "sub" | "super";
-        fontFamily: "body" | "heading" | "monospace";
+        fontFamily: "body" | "heading" | "monospace" | "cursive" | "decorative";
         fontSize: number;
         link: Interaction | null;
         color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
@@ -41,7 +41,7 @@ static readonly classType: import("paratype").Type<import("paratype").RecordObje
         underline: boolean;
         strike: boolean;
         baseline: "normal" | "sub" | "super";
-        fontFamily: "body" | "heading" | "monospace";
+        fontFamily: "body" | "heading" | "monospace" | "cursive" | "decorative";
         fontSize: number;
         link: Interaction | null;
         color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
