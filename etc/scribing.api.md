@@ -2181,6 +2181,39 @@ export interface SetImageSourceProps {
 }
 
 // @public @sealed
+export class SetMarkupTag extends SetMarkupTagBase implements SetMarkupTagProps {
+    afterInsertFlow(range: FlowRange): FlowOperation | null;
+    afterRemoveFlow(range: FlowRange): FlowOperation | null;
+    // @override
+    applyToContent(content: FlowContent): FlowContent;
+    // @override
+    applyToSelection(selection: FlowSelection): FlowSelection;
+    static readonly classType: Type<SetMarkupTag>;
+    static fromData(data: SetMarkupTagData): SetMarkupTag;
+    // @override
+    invert(content: FlowContent): FlowOperation | null;
+    mergeNext(next: FlowOperation): FlowOperation | null;
+    // @override
+    transform(other: FlowOperation): FlowOperation | null;
+}
+
+// @public
+export const SetMarkupTagBase: RecordConstructor<SetMarkupTagProps, FlowOperation, SetMarkupTagData>;
+
+// @public
+export interface SetMarkupTagData {
+    at: number;
+    set: "markup_tag";
+    value: string;
+}
+
+// @public
+export interface SetMarkupTagProps {
+    position: number;
+    tag: string;
+}
+
+// @public @sealed
 export class SplitTableCell extends SplitTableCellBase implements SplitTableCellProps {
     // (undocumented)
     afterInsertAxis(axis: "row" | "column", index: number, count: number): TableOperation | null;

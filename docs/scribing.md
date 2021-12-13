@@ -65,6 +65,7 @@ Model for collaborative rich text editing
 |  [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) | Represents an operation that sets the expression of dynamic text |
 |  [SetIcon](./scribing.seticon.md) | Represents an operation that sets the path data of an icon |
 |  [SetImageSource](./scribing.setimagesource.md) | Represents an operation that sets the source of an image |
+|  [SetMarkupTag](./scribing.setmarkuptag.md) | Represents an operation that sets a markup tag |
 |  [SplitTableCell](./scribing.splittablecell.md) | Represents an operation that splits a merged table cell |
 |  [StartMarkup](./scribing.startmarkup.md) | Represents a line break. |
 |  [TableColumnStyle](./scribing.tablecolumnstyle.md) | Represents the styling that is applied to a flow table column |
@@ -162,6 +163,8 @@ Model for collaborative rich text editing
 |  [SetIconProps](./scribing.seticonprops.md) | Properties of [SetIcon](./scribing.seticon.md) |
 |  [SetImageSourceData](./scribing.setimagesourcedata.md) | Data of [SetImageSource](./scribing.setimagesource.md) |
 |  [SetImageSourceProps](./scribing.setimagesourceprops.md) | Properties of [SetImageSource](./scribing.setimagesource.md) |
+|  [SetMarkupTagData](./scribing.setmarkuptagdata.md) | Data of [SetMarkupTag](./scribing.setmarkuptag.md) |
+|  [SetMarkupTagProps](./scribing.setmarkuptagprops.md) | Properties of [SetMarkupTag](./scribing.setmarkuptag.md) |
 |  [SplitTableCellData](./scribing.splittablecelldata.md) | Data of [SplitTableCell](./scribing.splittablecell.md) |
 |  [SplitTableCellProps](./scribing.splittablecellprops.md) | Properties of [SplitTableCell](./scribing.splittablecell.md) |
 |  [StartMarkupData](./scribing.startmarkupdata.md) | Data of [StartMarkup](./scribing.startmarkup.md) |
@@ -253,6 +256,7 @@ Model for collaborative rich text editing
 |  [SetDynamicTextExpressionBase](./scribing.setdynamictextexpressionbase.md) | The base record class for [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [SetIconBase](./scribing.seticonbase.md) | The base record class for [SetIcon](./scribing.seticon.md) |
 |  [SetImageSourceBase](./scribing.setimagesourcebase.md) | The base record class for [SetImageSource](./scribing.setimagesource.md) |
+|  [SetMarkupTagBase](./scribing.setmarkuptagbase.md) | The base record class for [SetMarkupTag](./scribing.setmarkuptag.md) |
 |  [SplitTableCellBase](./scribing.splittablecellbase.md) | The base record class for [SplitTableCell](./scribing.splittablecell.md) |
 |  [StartMarkupBase](./scribing.startmarkupbase.md) | The base record class for [StartMarkup](./scribing.startmarkup.md) |
 |  [TableColumnStyleBase](./scribing.tablecolumnstylebase.md) | The base record class for [TableColumnStyle](./scribing.tablecolumnstyle.md) |
