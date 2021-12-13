@@ -66,6 +66,7 @@ Model for collaborative rich text editing
 |  [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) | Represents an operation that sets the expression of dynamic text |
 |  [SetIcon](./scribing.seticon.md) | Represents an operation that sets the path data of an icon |
 |  [SetImageSource](./scribing.setimagesource.md) | Represents an operation that sets the source of an image |
+|  [SetMarkupAttr](./scribing.setmarkupattr.md) | Represents an operation that sets a markup tag |
 |  [SetMarkupTag](./scribing.setmarkuptag.md) | Represents an operation that sets a markup tag |
 |  [SplitTableCell](./scribing.splittablecell.md) | Represents an operation that splits a merged table cell |
 |  [StartMarkup](./scribing.startmarkup.md) | Represents a line break. |
@@ -79,6 +80,7 @@ Model for collaborative rich text editing
 |  [UnformatTable](./scribing.unformattable.md) | Represents an operation that unapplies a table style |
 |  [UnformatTableColumn](./scribing.unformattablecolumn.md) | Represents an operation that unapplies a table column style |
 |  [UnformatText](./scribing.unformattext.md) | Represents an operation that unapplies a text style to a range of flow content. |
+|  [UnsetMarkupAttr](./scribing.unsetmarkupattr.md) | Represents an operation that sets a markup tag |
 
 ## Interfaces
 
@@ -166,6 +168,8 @@ Model for collaborative rich text editing
 |  [SetIconProps](./scribing.seticonprops.md) | Properties of [SetIcon](./scribing.seticon.md) |
 |  [SetImageSourceData](./scribing.setimagesourcedata.md) | Data of [SetImageSource](./scribing.setimagesource.md) |
 |  [SetImageSourceProps](./scribing.setimagesourceprops.md) | Properties of [SetImageSource](./scribing.setimagesource.md) |
+|  [SetMarkupAttrData](./scribing.setmarkupattrdata.md) | Data of [SetMarkupAttr](./scribing.setmarkupattr.md) |
+|  [SetMarkupAttrProps](./scribing.setmarkupattrprops.md) | Properties of [SetMarkupAttr](./scribing.setmarkupattr.md) |
 |  [SetMarkupTagData](./scribing.setmarkuptagdata.md) | Data of [SetMarkupTag](./scribing.setmarkuptag.md) |
 |  [SetMarkupTagProps](./scribing.setmarkuptagprops.md) | Properties of [SetMarkupTag](./scribing.setmarkuptag.md) |
 |  [SplitTableCellData](./scribing.splittablecelldata.md) | Data of [SplitTableCell](./scribing.splittablecell.md) |
@@ -187,6 +191,8 @@ Model for collaborative rich text editing
 |  [UnformatTableProps](./scribing.unformattableprops.md) | Properties of [UnformatTable](./scribing.unformattable.md) |
 |  [UnformatTextData](./scribing.unformattextdata.md) | Data of unformat text operations |
 |  [UnformatTextProps](./scribing.unformattextprops.md) | Properties of unformat text operations |
+|  [UnsetMarkupAttrData](./scribing.unsetmarkupattrdata.md) | Data of [UnsetMarkupAttr](./scribing.unsetmarkupattr.md) |
+|  [UnsetMarkupAttrProps](./scribing.unsetmarkupattrprops.md) | Properties of [UnsetMarkupAttr](./scribing.unsetmarkupattr.md) |
 |  [VisitRangeOptions](./scribing.visitrangeoptions.md) | Options for [FlowSelection.visitRanges()](./scribing.flowselection.visitranges.md) |
 
 ## Variables
@@ -260,6 +266,7 @@ Model for collaborative rich text editing
 |  [SetDynamicTextExpressionBase](./scribing.setdynamictextexpressionbase.md) | The base record class for [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [SetIconBase](./scribing.seticonbase.md) | The base record class for [SetIcon](./scribing.seticon.md) |
 |  [SetImageSourceBase](./scribing.setimagesourcebase.md) | The base record class for [SetImageSource](./scribing.setimagesource.md) |
+|  [SetMarkupAttrBase](./scribing.setmarkupattrbase.md) | The base record class for [SetMarkupAttr](./scribing.setmarkupattr.md) |
 |  [SetMarkupTagBase](./scribing.setmarkuptagbase.md) | The base record class for [SetMarkupTag](./scribing.setmarkuptag.md) |
 |  [SplitTableCellBase](./scribing.splittablecellbase.md) | The base record class for [SplitTableCell](./scribing.splittablecell.md) |
 |  [StartMarkupBase](./scribing.startmarkupbase.md) | The base record class for [StartMarkup](./scribing.startmarkup.md) |
@@ -274,6 +281,7 @@ Model for collaborative rich text editing
 |  [UnformatTextBase](./scribing.unformattextbase.md) | The base record class for [UnformatText](./scribing.unformattext.md) |
 |  [UNORDERED\_LIST\_MARKER\_KINDS](./scribing.unordered_list_marker_kinds.md) | Read-only array that contains unordered list marker styles |
 |  [UnorderedListMarkerKindType](./scribing.unorderedlistmarkerkindtype.md) | The run-time type that matches unordered list marker style values |
+|  [UnsetMarkupAttrBase](./scribing.unsetmarkupattrbase.md) | The base record class for [UnsetMarkupAttr](./scribing.unsetmarkupattr.md) |
 
 ## Type Aliases
 

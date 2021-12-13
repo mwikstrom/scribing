@@ -2212,6 +2212,45 @@ export interface SetImageSourceProps {
 }
 
 // @public @sealed
+export class SetMarkupAttr extends SetMarkupAttrBase implements SetMarkupAttrProps {
+    afterInsertFlow(range: FlowRange): FlowOperation | null;
+    afterRemoveFlow(range: FlowRange): FlowOperation | null;
+    // @override
+    applyToContent(content: FlowContent): FlowContent;
+    // @override
+    applyToSelection(selection: FlowSelection): FlowSelection;
+    static readonly classType: Type<SetMarkupAttr>;
+    static fromData(data: SetMarkupAttrData): SetMarkupAttr;
+    // @override
+    invert(content: FlowContent): FlowOperation | null;
+    mergeNext(next: FlowOperation): FlowOperation | null;
+    // @override
+    transform(other: FlowOperation): FlowOperation | null;
+}
+
+// @public
+export const SetMarkupAttrBase: RecordConstructor<SetMarkupAttrProps, FlowOperation, SetMarkupAttrData>;
+
+// @public
+export interface SetMarkupAttrData {
+    at: number;
+    // (undocumented)
+    key: string;
+    set: "markup_attr";
+    // (undocumented)
+    value: string;
+}
+
+// @public
+export interface SetMarkupAttrProps {
+    // (undocumented)
+    key: string;
+    position: number;
+    // (undocumented)
+    value: string;
+}
+
+// @public @sealed
 export class SetMarkupTag extends SetMarkupTagBase implements SetMarkupTagProps {
     afterInsertFlow(range: FlowRange): FlowOperation | null;
     afterRemoveFlow(range: FlowRange): FlowOperation | null;
@@ -2718,6 +2757,41 @@ export type UnorderedListMarkerKind = (typeof UNORDERED_LIST_MARKER_KINDS)[numbe
 
 // @public
 export const UnorderedListMarkerKindType: Type<ListMarkerKind>;
+
+// @public @sealed
+export class UnsetMarkupAttr extends UnsetMarkupAttrBase implements UnsetMarkupAttrProps {
+    afterInsertFlow(range: FlowRange): FlowOperation | null;
+    afterRemoveFlow(range: FlowRange): FlowOperation | null;
+    // @override
+    applyToContent(content: FlowContent): FlowContent;
+    // @override
+    applyToSelection(selection: FlowSelection): FlowSelection;
+    static readonly classType: Type<UnsetMarkupAttr>;
+    static fromData(data: UnsetMarkupAttrData): UnsetMarkupAttr;
+    // @override
+    invert(content: FlowContent): FlowOperation | null;
+    mergeNext(next: FlowOperation): FlowOperation | null;
+    // @override
+    transform(other: FlowOperation): FlowOperation | null;
+}
+
+// @public
+export const UnsetMarkupAttrBase: RecordConstructor<UnsetMarkupAttrProps, FlowOperation, UnsetMarkupAttrData>;
+
+// @public
+export interface UnsetMarkupAttrData {
+    at: number;
+    // (undocumented)
+    key: string;
+    unset: "markup_attr";
+}
+
+// @public
+export interface UnsetMarkupAttrProps {
+    // (undocumented)
+    key: string;
+    position: number;
+}
 
 // @public
 export interface VisitRangeOptions extends TargetOptions {

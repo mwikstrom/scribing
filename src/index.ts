@@ -86,6 +86,8 @@ export * from "./operations/RemoveTableRow";
 export * from "./operations/MergeTableCell";
 export * from "./operations/SplitTableCell";
 export * from "./operations/SetMarkupTag";
+export * from "./operations/SetMarkupAttr";
+export * from "./operations/UnsetMarkupAttr";
 
 // Selection
 export * from "./selection/FlowSelection";
