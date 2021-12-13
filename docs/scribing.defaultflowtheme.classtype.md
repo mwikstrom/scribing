@@ -9,5 +9,5 @@ The run-time type that represents this class
 <b>Signature:</b>
 
 ```typescript
-static readonly classType: Type<import("paratype").RecordObject<{}, "default"> & import("paratype").Equatable & Readonly<{}> & DefaultFlowTheme>;
+static readonly classType: Type<DefaultFlowTheme>;
 ```

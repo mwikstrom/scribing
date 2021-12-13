@@ -1,11 +1,14 @@
 import { 
+    booleanType,
     constType, 
     frozen, 
     RecordClass, 
     recordClassType, 
     recordType, 
     RecordType, 
+    stringType, 
     Type, 
+    unionType, 
     validating 
 } from "paratype";
 import { BoxStyle } from "./BoxStyle";
@@ -15,10 +18,45 @@ import { ParagraphStyle, ParagraphVariant } from "./ParagraphStyle";
 import { ParagraphTheme } from "./ParagraphTheme";
 import { TextStyle, TextStyleProps } from "./TextStyle";
 
-const Data = "default" as const;
-const PropsType: RecordType<{/*empty*/}> = recordType({});
-const DataType: Type<typeof Data> = constType(Data);
-const propsToData = () => Data;
+const Props = {
+    lang: stringType,
+    rtl: booleanType,
+};
+const DEFAULT_CONST = "default" as const;
+const PropsType: RecordType<DefaultFlowThemeProps> = recordType(Props);
+const DataType: Type<DefaultFlowThemeData> = unionType(
+    constType(DEFAULT_CONST),
+    PropsType.asPartial()
+);
+const propsToData = (props: DefaultFlowThemeProps): DefaultFlowThemeData => {
+    const { lang, rtl } = props;
+    if (!lang && !rtl) {
+        return DEFAULT_CONST;
+    }
+    const data: Partial<DefaultFlowThemeProps> = {};
+    if (lang) {
+        data.lang = lang;
+    }
+    if (rtl) {
+        data.rtl = rtl;
+    }
+    return data;
+};
+
+/**
+ * Properties for {@link DefaultFlowTheme}
+ * @public
+ */
+export interface DefaultFlowThemeProps {
+    lang: string;
+    rtl: boolean;
+}
+
+/**
+ * Data for {@link DefaultFlowTheme}
+ * @public
+ */
+export type DefaultFlowThemeData = "default" | Partial<DefaultFlowThemeProps>;
 
 /**
  * The base record class for {@link DefaultFlowTheme}
@@ -38,15 +76,29 @@ export class DefaultFlowTheme extends DefaultFlowThemeBase {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => DefaultFlowTheme);
 
-    /** Gets a cached instance of the default flow theme */
-    public static get instance(): DefaultFlowTheme {
-        if (!CACHED_INSTANCE) {
-            CACHED_INSTANCE = new DefaultFlowTheme();
+    public static fromData(data: DefaultFlowThemeData): DefaultFlowTheme {
+        if (data === "default") {
+            data = {};
         }
-        return CACHED_INSTANCE;
+        const { lang, rtl } = data;
+        return DefaultFlowTheme.get(lang, rtl);
     }
 
-    constructor() { super({}); }
+    /** Gets a cached instance of the default flow theme */
+    public static get instance(): DefaultFlowTheme { return DefaultFlowTheme.get(); }
+
+    public static get(lang = "", rtl = false): DefaultFlowTheme {
+        let entry = BY_LANG_CACHE.get(lang);
+        if (!entry) {
+            BY_LANG_CACHE.set(lang, entry = {});
+        }
+        const prop: "rtl" | "ltr" = rtl ? "rtl" : "ltr";
+        let found = entry[prop];
+        if (!found) {
+            entry[prop] = found = new DefaultFlowTheme({lang, rtl});
+        }
+        return found;
+    }
 
     /** {@inheritdoc FlowTheme.getBoxTheme} */
     getBoxTheme(style: BoxStyle): FlowTheme {
@@ -59,7 +111,7 @@ export class DefaultFlowTheme extends DefaultFlowThemeBase {
     }
 }
 
-let CACHED_INSTANCE: DefaultFlowTheme | undefined;
+const BY_LANG_CACHE = new Map<string, {rtl?: DefaultFlowTheme, ltr?: DefaultFlowTheme}>();
 const STRONG_BOX_CACHE = new Map<BoxStyle, DefaultBoxTheme>();
 const WEAK_BOX_CACHE = new WeakMap<BoxStyle, DefaultBoxTheme>();
 

@@ -9,5 +9,5 @@ The base record class for [DefaultFlowTheme](./scribing.defaultflowtheme.md)
 <b>Signature:</b>
 
 ```typescript
-DefaultFlowThemeBase: import("paratype").RecordConstructor<{}, FlowTheme, "default">
+DefaultFlowThemeBase: import("paratype").RecordConstructor<DefaultFlowThemeProps, FlowTheme, DefaultFlowThemeData>
 ```

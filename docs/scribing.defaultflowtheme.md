@@ -14,23 +14,19 @@ export declare class DefaultFlowTheme extends DefaultFlowThemeBase
 ```
 <b>Extends:</b> DefaultFlowThemeBase
 
-## Constructors
-
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)()](./scribing.defaultflowtheme._constructor_.md) |  | Constructs a new instance of the <code>DefaultFlowTheme</code> class |
-
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.defaultflowtheme.classtype.md) | <code>static</code> | Type&lt;import("paratype").RecordObject&lt;{}, "default"&gt; &amp; import("paratype").Equatable &amp; Readonly&lt;{}&gt; &amp; [DefaultFlowTheme](./scribing.defaultflowtheme.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.defaultflowtheme.classtype.md) | <code>static</code> | Type&lt;[DefaultFlowTheme](./scribing.defaultflowtheme.md)<!-- -->&gt; | The run-time type that represents this class |
 |  [instance](./scribing.defaultflowtheme.instance.md) | <code>static</code> | [DefaultFlowTheme](./scribing.defaultflowtheme.md) | Gets a cached instance of the default flow theme |
 
 ## Methods
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [fromData(data)](./scribing.defaultflowtheme.fromdata.md) | <code>static</code> |  |
+|  [get(lang, rtl)](./scribing.defaultflowtheme.get.md) | <code>static</code> |  |
 |  [getBoxTheme(style)](./scribing.defaultflowtheme.getboxtheme.md) |  | Gets a theme for the specified box style |
 |  [getParagraphTheme(variant)](./scribing.defaultflowtheme.getparagraphtheme.md) |  | Gets a theme for the specified paragraph variant |
 

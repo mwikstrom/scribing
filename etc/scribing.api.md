@@ -226,15 +226,29 @@ export interface CompleteUploadProps {
 
 // @public @sealed
 export class DefaultFlowTheme extends DefaultFlowThemeBase {
-    constructor();
-    static readonly classType: Type<RecordObject<    {}, "default"> & Equatable & Readonly<{}> & DefaultFlowTheme>;
+    static readonly classType: Type<DefaultFlowTheme>;
+    // (undocumented)
+    static fromData(data: DefaultFlowThemeData): DefaultFlowTheme;
+    // (undocumented)
+    static get(lang?: string, rtl?: boolean): DefaultFlowTheme;
     getBoxTheme(style: BoxStyle): FlowTheme;
     getParagraphTheme(variant: ParagraphVariant): ParagraphTheme;
     static get instance(): DefaultFlowTheme;
 }
 
 // @public
-export const DefaultFlowThemeBase: RecordConstructor<    {}, FlowTheme, "default">;
+export const DefaultFlowThemeBase: RecordConstructor<DefaultFlowThemeProps, FlowTheme, DefaultFlowThemeData>;
+
+// @public
+export type DefaultFlowThemeData = "default" | Partial<DefaultFlowThemeProps>;
+
+// @public
+export interface DefaultFlowThemeProps {
+    // (undocumented)
+    lang: string;
+    // (undocumented)
+    rtl: boolean;
+}
 
 // @public @sealed
 export class DynamicText extends DynamicTextBase implements DynamicTextProps {

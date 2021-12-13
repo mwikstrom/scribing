@@ -88,6 +88,7 @@ Model for collaborative rich text editing
 |  [CellRangeProps](./scribing.cellrangeprops.md) | Non-computed properties of a [CellRange](./scribing.cellrange.md) |
 |  [CompleteUploadData](./scribing.completeuploaddata.md) | Data of [CompleteUpload](./scribing.completeupload.md) |
 |  [CompleteUploadProps](./scribing.completeuploadprops.md) | Properties of [CompleteUpload](./scribing.completeupload.md) |
+|  [DefaultFlowThemeProps](./scribing.defaultflowthemeprops.md) | Properties for [DefaultFlowTheme](./scribing.defaultflowtheme.md) |
 |  [DynamicTextData](./scribing.dynamictextdata.md) | Data of line break nodes |
 |  [DynamicTextProps](./scribing.dynamictextprops.md) | Properties of [DynamicText](./scribing.dynamictext.md) |
 |  [EditBoxData](./scribing.editboxdata.md) | Data of [EditBox](./scribing.editbox.md) |
@@ -275,6 +276,7 @@ Model for collaborative rich text editing
 |  [BoxVariant](./scribing.boxvariant.md) | Box style variant |
 |  [CellPositionData](./scribing.cellpositiondata.md) | Data for a [CellPosition](./scribing.cellposition.md) represented by a string with leading upper case ascii letters that represents the column index, followed by ascii digits that represetnts the row index (one-based).<!-- -->For example; <code>A1</code> represents row 0 and column 0, and <code>DF45</code> represents row 44 and column 109. |
 |  [CellRangeData](./scribing.cellrangedata.md) | Data for a [CellRange](./scribing.cellrange.md) |
+|  [DefaultFlowThemeData](./scribing.defaultflowthemedata.md) | Data for [DefaultFlowTheme](./scribing.defaultflowtheme.md) |
 |  [FlowBatchData](./scribing.flowbatchdata.md) | Data of [FlowBatch](./scribing.flowbatch.md) |
 |  [FlowColor](./scribing.flowcolor.md) | Flow content color |
 |  [FlowContentData](./scribing.flowcontentdata.md) | Flow content data is an array of [nodes](./scribing.flownode.md) |
