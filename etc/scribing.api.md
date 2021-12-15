@@ -864,6 +864,8 @@ export const FlowSyncOutputType: RecordType<FlowSyncOutput>;
 // @public (undocumented)
 export interface FlowSyncProtocol {
     // (undocumented)
+    init(content?: FlowContent, language?: string): Promise<FlowSyncSnapshot | null>;
+    // (undocumented)
     read(): Promise<FlowSyncSnapshot | null>;
     // (undocumented)
     sync(input: FlowSyncInput): Promise<FlowSyncOutput | null>;
@@ -1347,6 +1349,8 @@ export type HorizontalAlignment = (typeof HORIZONTAL_ALIGNMENTS)[number];
 // @public (undocumented)
 export class HttpFlowSyncProtocol implements FlowSyncProtocol {
     constructor(url: string, fetcher?: BasicFetch);
+    // (undocumented)
+    init(content?: FlowContent, language?: string): Promise<FlowSyncSnapshot | null>;
     // (undocumented)
     read(): Promise<FlowSyncSnapshot | null>;
     // (undocumented)

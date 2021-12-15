@@ -28,6 +28,7 @@ export declare class HttpFlowSyncProtocol implements FlowSyncProtocol
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [init(content, language)](./scribing.httpflowsyncprotocol.init.md) |  |  |
 |  [read()](./scribing.httpflowsyncprotocol.read.md) |  |  |
 |  [sync(input)](./scribing.httpflowsyncprotocol.sync.md) |  |  |
 

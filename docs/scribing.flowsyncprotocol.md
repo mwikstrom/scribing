@@ -15,6 +15,7 @@ export interface FlowSyncProtocol
 
 |  Method | Description |
 |  --- | --- |
+|  [init(content, language)](./scribing.flowsyncprotocol.init.md) |  |
 |  [read()](./scribing.flowsyncprotocol.read.md) |  |
 |  [sync(input)](./scribing.flowsyncprotocol.sync.md) |  |
 

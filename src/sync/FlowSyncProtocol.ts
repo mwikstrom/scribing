@@ -2,9 +2,11 @@ import { FlowSyncSnapshot, FlowSyncSnapshotType } from "./FlowSyncSnapshot";
 import { FlowSyncInput, FlowSyncInputType } from "./FlowSyncInput";
 import { FlowSyncOutput, FlowSyncOutputType } from "./FlowSyncOutput";
 import { JsonValue } from "paratype";
+import { FlowContent } from "../structure/FlowContent";
 
 /** @public */
 export interface FlowSyncProtocol {
+    init(content?: FlowContent, language?: string): Promise<FlowSyncSnapshot | null>;
     read(): Promise<FlowSyncSnapshot | null>;
     sync(input: FlowSyncInput): Promise<FlowSyncOutput | null>;
 }
@@ -31,6 +33,32 @@ export class HttpFlowSyncProtocol implements FlowSyncProtocol {
 
     get url(): string {
         return this.#url;
+    }
+
+    async init(
+        content = FlowContent.emptyParagraph,
+        language?: string,
+    ): Promise<FlowSyncSnapshot | null> {
+        const headers: Record<string, string> = { "Content-Type": "application/json" };
+        
+        if (language) {
+            headers["Content-Language"] = language;
+        }
+
+        const response = await this.#fetch(this.#url, {
+            method: "POST",
+            headers,
+            body: JSON.stringify(content.toJsonValue()),
+        });
+
+        if (response.ok) {
+            const json = await response.json() as JsonValue;
+            return FlowSyncSnapshotType.fromJsonValue(json);
+        } else if (response.status === 409) {
+            return null;
+        } else {
+            throw makeServerError(response);
+        }
     }
 
     async read(): Promise<FlowSyncSnapshot | null> {
