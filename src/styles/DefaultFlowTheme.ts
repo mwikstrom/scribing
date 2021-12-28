@@ -100,66 +100,65 @@ export class DefaultFlowTheme extends DefaultFlowThemeBase {
         return found;
     }
 
+    readonly #strongBoxCache = new Map<BoxStyle, DefaultBoxTheme>();
+    readonly #weakBoxCache = new WeakMap<BoxStyle, DefaultBoxTheme>();
+    
     /** {@inheritdoc FlowTheme.getBoxTheme} */
     getBoxTheme(style: BoxStyle): FlowTheme {
-        return getDefaultBoxTheme(style);
+        let result = this.#weakBoxCache.get(style);
+
+        if (!result) {
+            const strong = style.unmerge(BoxStyle.ambient);
+            result = this.#strongBoxCache.get(strong);
+    
+            if (!result) {
+                for (const [key, value] of this.#strongBoxCache.entries()) {
+                    if (strong.equals(key)) {
+                        result = value;
+                        break;
+                    }
+                }
+    
+                if (!result) {
+                    this.#strongBoxCache.set(strong, result = new DefaultBoxTheme(this, strong));
+                }
+            }
+        
+            this.#weakBoxCache.set(style, result);
+        }
+    
+        return result;
     }
 
     /** {@inheritdoc FlowTheme.getParagraphTheme} */
     getParagraphTheme(variant: ParagraphVariant): ParagraphTheme {
-        return getDefaultBoxTheme(BoxStyle.empty).getParagraphTheme(variant);
+        return this.getBoxTheme(BoxStyle.empty).getParagraphTheme(variant);
     }
 }
 
 const BY_LANG_CACHE = new Map<string, {rtl?: DefaultFlowTheme, ltr?: DefaultFlowTheme}>();
-const STRONG_BOX_CACHE = new Map<BoxStyle, DefaultBoxTheme>();
-const WEAK_BOX_CACHE = new WeakMap<BoxStyle, DefaultBoxTheme>();
-
-function getDefaultBoxTheme(style: BoxStyle): DefaultBoxTheme {
-    let result = WEAK_BOX_CACHE.get(style);
-
-    if (!result) {
-        const strong = style.unmerge(BoxStyle.ambient);
-        result = STRONG_BOX_CACHE.get(strong);
-
-        if (!result) {
-            for (const [key, value] of STRONG_BOX_CACHE.entries()) {
-                if (strong.equals(key)) {
-                    result = value;
-                    break;
-                }
-            }
-
-            if (!result) {
-                STRONG_BOX_CACHE.set(strong, result = new DefaultBoxTheme(strong));
-            }
-        }
-    
-        WEAK_BOX_CACHE.set(style, result);
-    }
-
-    return result;
-}
 
 class DefaultBoxTheme extends FlowTheme {
+    readonly #root: DefaultFlowTheme;
     readonly #boxStyle: BoxStyle;
     readonly #paragraphThemeCache = new Map<ParagraphVariant, DefaultParagraphTheme>();
 
-    constructor(boxStyle: BoxStyle) {
+    constructor(root: DefaultFlowTheme, boxStyle: BoxStyle) {
         super();
+        this.#root = root;
         this.#boxStyle = boxStyle;
     }
 
     /** {@inheritdoc FlowTheme.getBoxTheme} */
     getBoxTheme(style: BoxStyle): FlowTheme {
-        return getDefaultBoxTheme(style);
+        return this.#root.getBoxTheme(style);
     }
 
     /** {@inheritdoc FlowTheme.getParagraphTheme} */
     getParagraphTheme(variant: ParagraphVariant): ParagraphTheme {
         let result = this.#paragraphThemeCache.get(variant);
         if (!result) {
-            result = new DefaultParagraphTheme(this.#boxStyle, variant);
+            result = new DefaultParagraphTheme(this.#root, this.#boxStyle, variant);
             this.#paragraphThemeCache.set(variant, result);
         }
         return result;
@@ -169,15 +168,17 @@ class DefaultBoxTheme extends FlowTheme {
 @frozen
 @validating
 class DefaultParagraphTheme extends ParagraphTheme {
+    readonly #root: DefaultFlowTheme;
     readonly #box: BoxStyle;
     readonly #text: TextStyle;
     readonly #para: ParagraphStyle;
     readonly #link: TextStyle;
     readonly #next: ParagraphVariant;
 
-    constructor(box: BoxStyle, paraVariant: ParagraphVariant) {
+    constructor(root: DefaultFlowTheme, box: BoxStyle, paraVariant: ParagraphVariant) {
         super();
 
+        this.#root = root;
         this.#box = box;
 
         this.#text = new TextStyle({
@@ -190,6 +191,7 @@ class DefaultParagraphTheme extends ParagraphTheme {
             baseline: "normal",
             link: null,
             color: box.color ?? (paraVariant === "subtitle" ? "subtle" : "default"),
+            lang: root.lang,
             spellcheck: paraVariant !== "code",
             translate: paraVariant !== "code",
         });
@@ -197,7 +199,7 @@ class DefaultParagraphTheme extends ParagraphTheme {
         this.#para = new ParagraphStyle({
             variant: paraVariant,
             alignment: "start",
-            direction: "ltr",
+            direction: root.rtl ? "rtl" : "ltr",
             lineSpacing: paraVariant === "preamble" ? 110 : 100,
             spaceBefore: getSpaceAbove(paraVariant),
             spaceAfter: getSpaceBelow(paraVariant),
@@ -239,7 +241,7 @@ class DefaultParagraphTheme extends ParagraphTheme {
 
     /** {@inheritdoc ParagraphTheme.getFlowTheme} */
     getFlowTheme(): FlowTheme {
-        return getDefaultBoxTheme(this.#box);
+        return this.#root.getBoxTheme(this.#box);
     }
 }
 
