@@ -471,6 +471,39 @@ export abstract class NestedFlowSelection extends FlowSelection {
     }
 
     /**
+     * {@inheritDoc FlowSelection.setMarkupTag}
+     * @override
+     */
+    setMarkupTag(content: FlowContent, tag: string): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerContent = this.getInnerContent(content);
+        const innerOperation = innerSelection.setMarkupTag(innerContent, tag);
+        return this.#wrapOperation(innerOperation);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.setMarkupAttr}
+     * @override
+     */
+    setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerContent = this.getInnerContent(content);
+        const innerOperation = innerSelection.setMarkupAttr(innerContent, key, value);
+        return this.#wrapOperation(innerOperation);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.unsetMarkupAttr}
+     * @override
+     */
+    unsetMarkupAttr(content: FlowContent, key: string): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerContent = this.getInnerContent(content);
+        const innerOperation = innerSelection.unsetMarkupAttr(innerContent, key);
+        return this.#wrapOperation(innerOperation);
+    }
+
+    /**
      * Updates the inner selected by invoking the specified callback
      * @internal
      */

@@ -50,6 +50,8 @@ export declare class FlowTableSelection extends FlowTableSelectionBase
 |  [setDynamicTextExpression(content, expression)](./scribing.flowtableselection.setdynamictextexpression.md) |  | Creates an operation that sets the specified dynamic text expression in the current selection |
 |  [setIcon(content, data)](./scribing.flowtableselection.seticon.md) |  | Creates an operation that sets the specified icon data in the current selection |
 |  [setImageSource(content, source)](./scribing.flowtableselection.setimagesource.md) |  | Creates an operation that sets the specified icon data in the current selection |
+|  [setMarkupAttr(content, key, value)](./scribing.flowtableselection.setmarkupattr.md) |  | Creates an operation that sets the specified markup attribute in the current selection |
+|  [setMarkupTag(content, tag)](./scribing.flowtableselection.setmarkuptag.md) |  | Creates an operation that sets the specified markup tag in the current selection |
 |  [splitTableCell()](./scribing.flowtableselection.splittablecell.md) |  | Creates an operation that splits the selected table cells (given that it is a merged cell) |
 |  [transformRanges(transform, options)](./scribing.flowtableselection.transformranges.md) |  | Transforms all ranges in the current selection |
 |  [unformatBox(style, options)](./scribing.flowtableselection.unformatbox.md) |  | Creates an operation that unapplies the specified box style on the current selection |
@@ -57,5 +59,6 @@ export declare class FlowTableSelection extends FlowTableSelectionBase
 |  [unformatTable(style)](./scribing.flowtableselection.unformattable.md) |  | Creates an operation that unapplies the specified table style on the current selection |
 |  [unformatTableColumn(style)](./scribing.flowtableselection.unformattablecolumn.md) |  | Creates an operation that unapplies the specified table column style on the current selection |
 |  [unformatText(style, options)](./scribing.flowtableselection.unformattext.md) |  | Creates an operation that unapplies the specified paragraph style on the current selection |
+|  [unsetMarkupAttr(content, key)](./scribing.flowtableselection.unsetmarkupattr.md) |  | Creates an operation that unsets the specified markup attribute in the current selection |
 |  [visitRanges(callback, options)](./scribing.flowtableselection.visitranges.md) |  | Transforms all ranges in the current selection |
 

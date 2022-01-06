@@ -39,6 +39,12 @@ import { UnformatBox } from "../operations/UnformatBox";
 import { UnformatParagraph } from "../operations/UnformatParagraph";
 import { UnformatText } from "../operations/UnformatText";
 import { CellRange } from "./CellRange";
+import { UnsetMarkupAttr } from "../operations/UnsetMarkupAttr";
+import { StartMarkup } from "../nodes/StartMarkup";
+import { EmptyMarkup } from "../nodes/EmptyMarkup";
+import { SetMarkupAttr } from "../operations/SetMarkupAttr";
+import { EndMarkup } from "../nodes/EndMarkup";
+import { SetMarkupTag } from "../operations/SetMarkupTag";
 
 const Props = {
     range: lazyType(() => FlowRange.classType),
@@ -630,6 +636,93 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      */
     public splitTableCell(): FlowOperation | null {
         return null;
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.setMarkupTag}
+     * @override
+     */
+    setMarkupTag(content: FlowContent, tag: string): FlowOperation | null {
+        const { range } = this;
+        const operations: SetMarkupTag[] = [];
+
+        for (
+            let cursor: FlowCursor | null = content.peek(range.first);
+            cursor?.node && cursor.position < range.last;
+            cursor = cursor.moveToStartOfNextNode()
+        ) {
+            const { node, position, offset } = cursor;
+            if (node instanceof StartMarkup || node instanceof EmptyMarkup || node instanceof EndMarkup) {
+                const opposite = 
+                    node instanceof StartMarkup ? cursor.findMarkupEnd() :
+                        node instanceof EndMarkup ? cursor.findMarkupStart() : null;
+
+                if (opposite && !range.contains(opposite.position)) {
+                    operations.push(new SetMarkupTag({
+                        position: opposite.position,
+                        tag,
+                    }));    
+                }
+
+                operations.push(new SetMarkupTag({
+                    position: position - offset,
+                    tag,
+                }));
+            }
+        }
+
+        return FlowBatch.fromArray(operations);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.setMarkupAttr}
+     * @override
+     */
+    setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation | null {
+        const { range } = this;
+        const operations: SetMarkupAttr[] = [];
+
+        for (
+            let cursor: FlowCursor | null = content.peek(range.first);
+            cursor?.node && cursor.position < range.last;
+            cursor = cursor.moveToStartOfNextNode()
+        ) {
+            const { node, position, offset } = cursor;
+            if (node instanceof StartMarkup || node instanceof EmptyMarkup) {
+                operations.push(new SetMarkupAttr({
+                    position: position - offset,
+                    key,
+                    value,
+                }));
+            }
+        }
+
+        return FlowBatch.fromArray(operations);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.unsetMarkupAttr}
+     * @override
+     */
+    unsetMarkupAttr(content: FlowContent, key: string): FlowOperation | null {
+        const { range } = this;
+        const operations: UnsetMarkupAttr[] = [];
+
+        for (
+            let cursor: FlowCursor | null = content.peek(range.first);
+            cursor?.node && cursor.position < range.last;
+            cursor = cursor.moveToStartOfNextNode()
+        ) {
+            const { node, position, offset } = cursor;
+            if (node instanceof StartMarkup || node instanceof EmptyMarkup) {
+                operations.push(new UnsetMarkupAttr({
+                    position: position - offset,
+                    key,
+                }));
+            }
+        }
+
+        return FlowBatch.fromArray(operations);
     }
 
     /**

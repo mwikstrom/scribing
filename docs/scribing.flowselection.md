@@ -47,6 +47,8 @@ export declare abstract class FlowSelection
 |  [setDynamicTextExpression(content, expression)](./scribing.flowselection.setdynamictextexpression.md) |  | Creates an operation that sets the specified dynamic text expression in the current selection |
 |  [setIcon(content, data)](./scribing.flowselection.seticon.md) |  | Creates an operation that sets the specified icon data in the current selection |
 |  [setImageSource(content, source)](./scribing.flowselection.setimagesource.md) |  | Creates an operation that sets the specified image source in the current selection |
+|  [setMarkupAttr(content, key, value)](./scribing.flowselection.setmarkupattr.md) |  | Creates an operation that sets the specified markup attribute in the current selection |
+|  [setMarkupTag(content, tag)](./scribing.flowselection.setmarkuptag.md) |  | Creates an operation that sets the specified markup tag in the current selection |
 |  [splitTableCell(content)](./scribing.flowselection.splittablecell.md) |  | Creates an operation that splits the selected table cells (given that it is a merged cell) |
 |  [toJsonValue()](./scribing.flowselection.tojsonvalue.md) |  | Converts the current selection to a JSON value |
 |  [transformRanges(transform, options)](./scribing.flowselection.transformranges.md) |  | Transforms all ranges in the current selection |
@@ -55,5 +57,6 @@ export declare abstract class FlowSelection
 |  [unformatTable(style, options)](./scribing.flowselection.unformattable.md) |  | Creates an operation that unapplies the specified table style on the current selection |
 |  [unformatTableColumn(style, options)](./scribing.flowselection.unformattablecolumn.md) |  | Creates an operation that unapplies the specified table column style on the current selection |
 |  [unformatText(style, options)](./scribing.flowselection.unformattext.md) |  | Creates an operation that unapplies the specified text style on the current selection |
+|  [unsetMarkupAttr(content, key)](./scribing.flowselection.unsetmarkupattr.md) |  | Creates an operation that unsets the specified markup attribute in the current selection |
 |  [visitRanges(callback, options)](./scribing.flowselection.visitranges.md) |  | Visit all ranges in the current selection |
 

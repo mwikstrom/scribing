@@ -190,6 +190,34 @@ export abstract class FlowSelection {
     public abstract setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
 
     /**
+     * Creates an operation that sets the specified markup tag in the current selection
+     * @param content - The selected content
+     * @param tag - The markup tag to set
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract setMarkupTag(content: FlowContent, tag: string): FlowOperation | null;
+
+    /**
+     * Creates an operation that sets the specified markup attribute in the current selection
+     * @param content - The selected content
+     * @param key - The markup attribute to set
+     * @param value - The attribute value to set
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation | null;
+
+    /**
+     * Creates an operation that unsets the specified markup attribute in the current selection
+     * @param content - The selected content
+     * @param key - The markup attribute to unset
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract unsetMarkupAttr(content: FlowContent, key: string): FlowOperation | null;
+    
+    /**
      * Transforms all ranges in the current selection
      * @param transform - The transform to apply
      * @param options - Options that provide tranformation behavior

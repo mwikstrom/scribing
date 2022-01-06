@@ -560,6 +560,36 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     }
 
     /**
+     * {@inheritDoc FlowSelection.setMarkupTag}
+     * @override
+     */
+    setMarkupTag(content: FlowContent, tag: string): FlowOperation | null {
+        return this.#updateAllCellContent(content, undefined, cellContent => (
+            selectAll(cellContent).setMarkupTag(cellContent, tag)
+        ));
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.setMarkupAttr}
+     * @override
+     */
+    setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation | null {
+        return this.#updateAllCellContent(content, undefined, cellContent => (
+            selectAll(cellContent).setMarkupAttr(cellContent, key, value)
+        ));
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.unsetMarkupAttr}
+     * @override
+     */
+    unsetMarkupAttr(content: FlowContent, key: string): FlowOperation | null {
+        return this.#updateAllCellContent(content, undefined, cellContent => (
+            selectAll(cellContent).unsetMarkupAttr(cellContent, key)
+        ));
+    }
+
+    /**
      * {@inheritDoc FlowSelection.afterInsertFlow}
      * @override
      */

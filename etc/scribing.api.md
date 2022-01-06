@@ -752,6 +752,10 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     // @override
     setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
     // @override
+    setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation | null;
+    // @override
+    setMarkupTag(content: FlowContent, tag: string): FlowOperation | null;
+    // @override
     splitTableCell(): FlowOperation | null;
     // @override
     transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;
@@ -765,6 +769,8 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     unformatTableColumn(): FlowOperation | null;
     // @override
     unformatText(style: TextStyle): FlowOperation | null;
+    // @override
+    unsetMarkupAttr(content: FlowContent, key: string): FlowOperation | null;
     // @override
     visitRanges(callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void, options?: Partial<VisitRangeOptions>): void;
 }
@@ -816,6 +822,8 @@ export abstract class FlowSelection {
     abstract setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null;
     abstract setIcon(content: FlowContent, data: string): FlowOperation | null;
     abstract setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
+    abstract setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation | null;
+    abstract setMarkupTag(content: FlowContent, tag: string): FlowOperation | null;
     abstract splitTableCell(content: FlowContent): FlowOperation | null;
     toJsonValue(): JsonValue;
     abstract transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;
@@ -824,6 +832,7 @@ export abstract class FlowSelection {
     abstract unformatTable(style: TableStyle, options?: TargetOptions): FlowOperation | null;
     abstract unformatTableColumn(style: TableColumnStyle, options?: TargetOptions): FlowOperation | null;
     abstract unformatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
+    abstract unsetMarkupAttr(content: FlowContent, key: string): FlowOperation | null;
     abstract visitRanges(callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void, options?: Partial<VisitRangeOptions>): void;
 }
 
@@ -1114,6 +1123,10 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     // @override
     setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
     // @override
+    setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation | null;
+    // @override
+    setMarkupTag(content: FlowContent, tag: string): FlowOperation | null;
+    // @override
     splitTableCell(): FlowOperation | null;
     // @override
     transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;
@@ -1127,6 +1140,8 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     unformatTableColumn(style: TableColumnStyle): FlowOperation | null;
     // @override
     unformatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
+    // @override
+    unsetMarkupAttr(content: FlowContent, key: string): FlowOperation | null;
     // @override
     visitRanges(callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void, options?: Partial<VisitRangeOptions>): void;
 }
@@ -1754,6 +1769,10 @@ export abstract class NestedFlowSelection extends FlowSelection {
     setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
     protected abstract setInnerSelection(value: FlowSelection): NestedFlowSelection;
     // @override
+    setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation | null;
+    // @override
+    setMarkupTag(content: FlowContent, tag: string): FlowOperation | null;
+    // @override
     splitTableCell(content: FlowContent): FlowOperation | null;
     // @override
     transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;
@@ -1767,6 +1786,8 @@ export abstract class NestedFlowSelection extends FlowSelection {
     unformatTableColumn(style: TableColumnStyle, options?: TargetOptions): FlowOperation | null;
     // @override
     unformatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
+    // @override
+    unsetMarkupAttr(content: FlowContent, key: string): FlowOperation | null;
     // @internal
     updateInner(callback: (inner: FlowSelection) => FlowSelection | null): FlowSelection | null;
     // @override

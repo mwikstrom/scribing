@@ -57,6 +57,8 @@ export declare abstract class NestedFlowSelection extends FlowSelection
 |  [setIcon(content, data)](./scribing.nestedflowselection.seticon.md) |  | Creates an operation that sets the specified icon data in the current selection |
 |  [setImageSource(content, source)](./scribing.nestedflowselection.setimagesource.md) |  | Creates an operation that sets the specified icon data in the current selection |
 |  [setInnerSelection(value)](./scribing.nestedflowselection.setinnerselection.md) |  | Returns a copy of this selection with the specified inner selection merged in |
+|  [setMarkupAttr(content, key, value)](./scribing.nestedflowselection.setmarkupattr.md) |  | Creates an operation that sets the specified markup attribute in the current selection |
+|  [setMarkupTag(content, tag)](./scribing.nestedflowselection.setmarkuptag.md) |  | Creates an operation that sets the specified markup tag in the current selection |
 |  [splitTableCell(content)](./scribing.nestedflowselection.splittablecell.md) |  | Creates an operation that splits the selected table cells (given that it is a merged cell) |
 |  [transformRanges(transform, options)](./scribing.nestedflowselection.transformranges.md) |  | Transforms all ranges in the current selection |
 |  [unformatBox(style, options)](./scribing.nestedflowselection.unformatbox.md) |  | Creates an operation that unapplies the specified box style on the current selection |
@@ -64,5 +66,6 @@ export declare abstract class NestedFlowSelection extends FlowSelection
 |  [unformatTable(style, options)](./scribing.nestedflowselection.unformattable.md) |  | Creates an operation that unapplies the specified table style on the current selection |
 |  [unformatTableColumn(style, options)](./scribing.nestedflowselection.unformattablecolumn.md) |  | Creates an operation that unapplies the specified table column style on the current selection |
 |  [unformatText(style, options)](./scribing.nestedflowselection.unformattext.md) |  | Creates an operation that unapplies the specified paragraph style on the current selection |
+|  [unsetMarkupAttr(content, key)](./scribing.nestedflowselection.unsetmarkupattr.md) |  | Creates an operation that unsets the specified markup attribute in the current selection |
 |  [visitRanges(callback, options)](./scribing.nestedflowselection.visitranges.md) |  | Transforms all ranges in the current selection |
 
