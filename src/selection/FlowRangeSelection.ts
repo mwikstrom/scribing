@@ -388,11 +388,11 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
         const { range } = this;
 
         if (!range.isCollapsed) {
-            return new RemoveRange({ range });
+            return this.#removeRange(range, target);
         } else if (whenCollapsed === "removeBackward" && range.first > 0) {
-            return this.#removeBackward(range.first, target);
+            return this.#removeCaretBackward(range.first, target);
         } else if (whenCollapsed === "removeForward" && target && range.last < target.size - 1) {
-            return new RemoveRange({ range: FlowRange.at(range.last, 1) });
+            return this.#removeCaretForward(range.first, target);
         } else {
             return null;
         }
@@ -752,24 +752,94 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
         }
     }
 
-    #removeBackward(
-        position: number,
+    #removeRange(
+        range: FlowRange,
         target?: FlowContent,
-    ): FlowOperation | null{
-        const defaultOp = new RemoveRange({ range: FlowRange.at(position, -1) });
+    ): FlowOperation | null {
+        const defaultOp = new RemoveRange({ range });
 
+        // If we don't know what we're deleting from then we cannot apply special handling
         if (!target) {
             return defaultOp;
         }
 
+        // Check if we're deleting at least one para break (look for the first break in the deleted range)
+        const deletedParaCursor = target.peek(range.first).findNodeForward(n => n instanceof ParagraphBreak);
+        const deletedParaBreak = (deletedParaCursor?.node ?? null) as (ParagraphBreak | null);
+
+        // Special handling only applies when deleting a para break
+        if (!deletedParaCursor || !deletedParaBreak || deletedParaCursor.position > range.last) {
+            return defaultOp;
+        }
+
+        // Find the resulting/remaining paragraph break
+        const remainingParaCursor = target.peek(range.last).findNodeForward(n => n instanceof ParagraphBreak);
+        const remainingParaBreak = (remainingParaCursor?.node ?? null) as (ParagraphBreak | null);
+        const remainingParaStyle = remainingParaBreak?.style ?? ParagraphStyle.empty;
+
+        // When deleting a paragraph break the intention is to keep
+        // the styling of the paragraph that we're deleting into. Therefore we
+        // must copy the paragraph style of the node we're deleting and assign
+        // it to the remaining paragraph.
+        const batch: FlowOperation[] = [defaultOp];
+        
+        if (remainingParaCursor && remainingParaBreak) {
+            // Apply style from prev break
+            batch.unshift(new FormatParagraph({
+                range: FlowRange.at(remainingParaCursor.position, remainingParaBreak.size),
+                style: deletedParaBreak.style,
+            }));
+
+            // Unformat any existing style
+            if (!remainingParaStyle.isEmpty) {
+                batch.unshift(new UnformatParagraph({
+                    range: FlowRange.at(remainingParaCursor.position, remainingParaBreak.size),
+                    style: remainingParaStyle
+                }));
+            }
+        } else {
+            // There is no para break so we're merging in a trailing para.
+            // We must therefore insert at copy of the prev break at the end.
+            batch.unshift(new InsertContent({
+                position: target.size,
+                content: new FlowContent({ nodes: Object.freeze([deletedParaBreak]) }),
+            }));
+        }
+
+        return FlowBatch.fromArray(batch);
+    }
+
+    #removeCaretForward(
+        position: number,
+        target?: FlowContent,
+    ): FlowOperation | null {
+        // Removing forward from caret is just like removing a range (no additional handling)
+        const range = FlowRange.at(position, 1);
+        return this.#removeRange(range, target);
+    }
+
+    #removeCaretBackward(
+        position: number,
+        target?: FlowContent,
+    ): FlowOperation | null {
+        const range = FlowRange.at(position, -1);
+        const defaultOp = new RemoveRange({ range });
+
+        // If we don't know what we're deleting from then we cannot apply special handling
+        if (!target) {
+            return defaultOp;
+        }
+
+        // Special handling only applies when deleting a paragraph break
+        const { node: deletedNode } = target.peek(position - 1);
+        if (!(deletedNode instanceof ParagraphBreak)) {
+            return defaultOp;
+        }
+
+        // Find the resulting/remaining paragraph break
         const paraCursor = target.peek(position).findNodeForward(n => n instanceof ParagraphBreak);
         const paraBreak = (paraCursor?.node ?? null) as (ParagraphBreak | null);
         const paraStyle = paraBreak?.style ?? ParagraphStyle.empty;
-        const { node: prev } = target.peek(position - 1);
-
-        if (!(prev instanceof ParagraphBreak)) {
-            return defaultOp;
-        }
 
         // Are we at the start of a list item?
         if ((paraStyle?.listLevel ?? 0) > 0) {
@@ -784,35 +854,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
             }
         }
 
-        // When deleting a paragraph break backward, the intention is to keep
-        // the styling of the paragraph that we're deleting into. Therefore we
-        // must copy the paragraph style of the node we're deleting and assign
-        // it to the current paragraph.
-        const batch: FlowOperation[] = [new RemoveRange({ range: FlowRange.at(position, -1) })];
-        
-        if (paraCursor && paraBreak) {
-            // Apply style from prev break
-            batch.unshift(new FormatParagraph({
-                range: FlowRange.at(paraCursor.position, paraBreak.size),
-                style: prev.style,
-            }));
-
-            // Unformat any existing style
-            if (!paraStyle.isEmpty) {
-                batch.unshift(new UnformatParagraph({
-                    range: FlowRange.at(paraCursor.position, paraBreak.size),
-                    style: paraStyle
-                }));
-            }
-        } else {
-            // There is no para break so we're merging in a trailing para.
-            // We must therefore insert at copy of the prev break at the end.
-            batch.unshift(new InsertContent({
-                position: target.size,
-                content: new FlowContent({ nodes: Object.freeze([prev]) }),
-            }));
-        }
-
-        return FlowBatch.fromArray(batch);
+        // Apply default handling for removing a range
+        return this.#removeRange(range, target);
     }
 }
