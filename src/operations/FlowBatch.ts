@@ -68,7 +68,7 @@ export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps>
      * Gets a single operation that represents the specified array of operations,
      * or `null` when the specified array is empty.
      */
-    public static fromArray(operations: FlowOperation[]): FlowOperation | null {
+    public static fromArray(operations: (FlowOperation | null)[]): FlowOperation | null {
         const queue = [...operations];
         const flattened: FlowOperation[] = [];
 

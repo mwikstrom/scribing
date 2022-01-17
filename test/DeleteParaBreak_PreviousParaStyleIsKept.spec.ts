@@ -21,6 +21,26 @@ describe("When a para break is deleted", () => {
         describe("forward", () => _runTest(false));
     });
 
+    describe("by insertion", () => {
+        const _runTest = (backward: boolean) => it("the style in the target paragraph is kept", () => {
+            const before = FlowContent.fromJsonValue([
+                "foo delete",
+                { break: "para", style: { variant: "title" } },
+                "this bar",
+                { break: "para", style: { variant: "subtitle" } },
+            ]);
+            const selection = new FlowRangeSelection({ range: backward ? FlowRange.at(16, -13) : FlowRange.at(3, 13) });
+            const op = selection.insert(FlowContent.fromJsonValue([" "]), { target: before });
+            const after = op?.applyToContent(before);
+            expect(after?.toJsonValue()).toMatchObject([
+                "foo bar",
+                { break: "para", style: { variant: "title" } },
+            ]);
+        });
+        describe("backward", () => _runTest(true));
+        describe("forward", () => _runTest(false));
+    });
+
     describe("by caret", () => {
         const _runTest = (backward: boolean) => it("the style in the target paragraph is kept", () => {
             const before = FlowContent.fromJsonValue([

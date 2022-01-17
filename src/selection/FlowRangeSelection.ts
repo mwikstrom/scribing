@@ -364,9 +364,9 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
         const { first: position } = range;
         const insertOp = new InsertContent({ position, content });
         
-        if (!this.range.isCollapsed) {
+        if (!range.isCollapsed) {
             return FlowBatch.fromArray([
-                new RemoveRange({ range }),
+                this.#removeRange(range, target),
                 insertOp,
             ]);
         }
