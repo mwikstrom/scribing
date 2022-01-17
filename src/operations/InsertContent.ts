@@ -139,10 +139,10 @@ export class InsertContent extends InsertContentBase implements InsertContentPro
      */
     mergeNext(next: FlowOperation): FlowOperation | null {
         if (next instanceof InsertContent && next.position === this.position + this.content.size) {
-            return this.set("content", FlowContent.fromData([...this.content.nodes, ...next.content.nodes]));
-        } else {
-            return null;
+            const mergedContent = next.translate(-this.position).applyToContent(this.content);
+            return this.set("content", mergedContent);
         }
+        return null;
     }
 
     /**
