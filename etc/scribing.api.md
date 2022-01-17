@@ -399,7 +399,7 @@ export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps>
     // @override
     applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null;
     static readonly classType: Type<FlowBatch>;
-    static fromArray(operations: FlowOperation[]): FlowOperation | null;
+    static fromArray(operations: (FlowOperation | null)[]): FlowOperation | null;
     static fromData(data: FlowBatchData): FlowBatch;
     invert(content: FlowContent): FlowOperation | null;
     mergeNext(next: FlowOperation): FlowOperation | null;

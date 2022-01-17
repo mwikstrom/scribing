@@ -9,14 +9,14 @@ Gets a single operation that represents the specified array of operations, or `n
 <b>Signature:</b>
 
 ```typescript
-static fromArray(operations: FlowOperation[]): FlowOperation | null;
+static fromArray(operations: (FlowOperation | null)[]): FlowOperation | null;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  operations | [FlowOperation](./scribing.flowoperation.md)<!-- -->\[\] |  |
+|  operations | ([FlowOperation](./scribing.flowoperation.md) \| null)\[\] |  |
 
 <b>Returns:</b>
 
