@@ -16,9 +16,6 @@ export declare class FlowNodeVisitor
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [visit(node)](./scribing.flownodevisitor.visit.md) |  |  |
-|  [visit(content)](./scribing.flownodevisitor.visit_1.md) |  |  |
-|  [visit(content)](./scribing.flownodevisitor.visit_2.md) |  |  |
 |  [visitBox(node)](./scribing.flownodevisitor.visitbox.md) |  |  |
 |  [visitDynamicText(node)](./scribing.flownodevisitor.visitdynamictext.md) |  |  |
 |  [visitEmptyMarkup(node)](./scribing.flownodevisitor.visitemptymarkup.md) |  |  |
@@ -27,6 +24,7 @@ export declare class FlowNodeVisitor
 |  [visitIcon(node)](./scribing.flownodevisitor.visiticon.md) |  |  |
 |  [visitImage(node)](./scribing.flownodevisitor.visitimage.md) |  |  |
 |  [visitLineBreak(node)](./scribing.flownodevisitor.visitlinebreak.md) |  |  |
+|  [visitNode(node)](./scribing.flownodevisitor.visitnode.md) |  |  |
 |  [visitParagraphBreak(node)](./scribing.flownodevisitor.visitparagraphbreak.md) |  |  |
 |  [visitStartMarkup(node)](./scribing.flownodevisitor.visitstartmarkup.md) |  |  |
 |  [visitTable(node)](./scribing.flownodevisitor.visittable.md) |  |  |

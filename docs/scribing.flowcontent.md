@@ -37,7 +37,6 @@ export declare class FlowContent extends FlowContentBase implements Readonly<Flo
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [accept(visitor)](./scribing.flowcontent.accept.md) |  | Accepts the specified visitor |
 |  [append(nodes)](./scribing.flowcontent.append.md) |  | Appends the specified nodes |
 |  [append(theme, nodes)](./scribing.flowcontent.append_1.md) |  | Appends the specified nodes |
 |  [completeUpload(id, url)](./scribing.flowcontent.completeupload.md) |  | Marks the specified upload as completed |

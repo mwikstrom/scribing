@@ -503,7 +503,6 @@ export const FlowColorType: Type<FlowColor>;
 // @public @sealed
 export class FlowContent extends FlowContentBase implements Readonly<FlowContentProps> {
     constructor(props?: FlowContentProps);
-    accept(visitor: FlowNodeVisitor): FlowContent;
     append(...nodes: readonly FlowNode[]): FlowContent;
     append(theme: FlowTheme | undefined, ...nodes: readonly FlowNode[]): FlowContent;
     static readonly classType: Type<FlowContent>;
@@ -647,12 +646,6 @@ export abstract class FlowNode {
 // @public
 export class FlowNodeVisitor {
     // (undocumented)
-    visit(node: FlowNode): FlowNode;
-    // (undocumented)
-    visit(content: FlowContent): FlowContent;
-    // (undocumented)
-    visit(content: FlowTableContent): FlowTableContent;
-    // (undocumented)
     visitBox(node: FlowBox): FlowNode;
     // (undocumented)
     visitDynamicText(node: DynamicText): FlowNode;
@@ -668,6 +661,8 @@ export class FlowNodeVisitor {
     visitImage(node: FlowImage): FlowNode;
     // (undocumented)
     visitLineBreak(node: LineBreak): FlowNode;
+    // (undocumented)
+    visitNode(node: FlowNode): FlowNode;
     // (undocumented)
     visitParagraphBreak(node: ParagraphBreak): FlowNode;
     // (undocumented)
@@ -1053,8 +1048,6 @@ export interface FlowTableCellSelectionProps {
 export class FlowTableContent {
     // Warning: (ae-forgotten-export) The symbol "FlowTableContentOptions" needs to be exported by the entry point index.d.ts
     constructor(cells?: Iterable<[string, FlowTableCell]>, options?: FlowTableContentOptions);
-    // (undocumented)
-    accept(visitor: FlowNodeVisitor): FlowTableContent;
     // (undocumented)
     static readonly classType: Type<FlowTableContent>;
     // (undocumented)

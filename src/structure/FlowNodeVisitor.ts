@@ -18,17 +18,14 @@ import { FlowTableContent } from "./FlowTableContent";
  * @public
  */
 export class FlowNodeVisitor {
-    visit(node: FlowNode): FlowNode;
-    visit(content: FlowContent): FlowContent;
-    visit(content: FlowTableContent): FlowTableContent;
-    visit(target: FlowNode | FlowContent | FlowTableContent): FlowNode | FlowContent | FlowTableContent {
-        return target.accept(this);
+    visitNode(node: FlowNode): FlowNode {
+        return node.accept(this);
     }
 
     visitFlowContent(content: FlowContent): FlowContent {
         let changed = false;
         const nodes = content.nodes.map(before => {
-            const after = this.visit(before);
+            const after = this.visitNode(before);
             if (after !== before) {
                 changed = true;
             }
@@ -55,7 +52,7 @@ export class FlowNodeVisitor {
 
     visitBox(node: FlowBox): FlowNode {
         const { content: before } = node;
-        const after = this.visit(before);
+        const after = this.visitFlowContent(before);
         if (after === before) {
             return node;
         } else {
@@ -73,7 +70,7 @@ export class FlowNodeVisitor {
 
     visitTable(node: FlowTable): FlowNode {
         const { content: before } = node;
-        const after = this.visit(before);
+        const after = this.visitTableContent(before);
         if (after === before) {
             return node;
         } else {
@@ -82,7 +79,7 @@ export class FlowNodeVisitor {
     }
 
     visitTableContent(content: FlowTableContent): FlowTableContent {
-        return content.updateAllContent(cellContent => this.visit(cellContent));
+        return content.updateAllContent(cellContent => this.visitFlowContent(cellContent));
     }
 
     visitLineBreak(node: LineBreak): FlowNode {
