@@ -33,5 +33,6 @@ export declare class StartMarkup extends StartMarkupBase implements StartMarkupP
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [accept(visitor)](./scribing.startmarkup.accept.md) |  | Accepts the specified visitor |
 |  [fromData(data)](./scribing.startmarkup.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
 

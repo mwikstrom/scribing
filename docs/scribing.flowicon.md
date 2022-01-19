@@ -27,5 +27,6 @@ export declare class FlowIcon extends FlowIconBase implements FlowIconProps
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [accept(visitor)](./scribing.flowicon.accept.md) |  | Accepts the specified visitor |
 |  [fromData(data)](./scribing.flowicon.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
 

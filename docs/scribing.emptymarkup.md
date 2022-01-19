@@ -33,5 +33,6 @@ export declare class EmptyMarkup extends EmptyMarkupBase implements EmptyMarkupP
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [accept(visitor)](./scribing.emptymarkup.accept.md) |  | Accepts the specified visitor |
 |  [fromData(data)](./scribing.emptymarkup.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
 

@@ -28,6 +28,7 @@ Model for collaborative rich text editing
 |  [FlowIcon](./scribing.flowicon.md) | Represents a dynamic text. |
 |  [FlowImage](./scribing.flowimage.md) | Represents a dynamic text. |
 |  [FlowNode](./scribing.flownode.md) | A piece of flow content. |
+|  [FlowNodeVisitor](./scribing.flownodevisitor.md) | A visitor for flow content |
 |  [FlowOperation](./scribing.flowoperation.md) | An abstraction of an operation that updates flow content. |
 |  [FlowRange](./scribing.flowrange.md) | Represents a range of flow content |
 |  [FlowRangeSelection](./scribing.flowrangeselection.md) | Represents a range of selected flow content |

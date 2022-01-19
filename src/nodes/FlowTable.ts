@@ -19,6 +19,7 @@ import { ParagraphStyle } from "../styles/ParagraphStyle";
 import { TableColumnStyle } from "../styles/TableColumnStyle";
 import { TableStyle } from "../styles/TableStyle";
 import { TextStyle } from "../styles/TextStyle";
+import type { FlowNodeVisitor } from "../structure/FlowNodeVisitor";
 
 const Props = {
     content: FlowTableContent.classType,
@@ -95,6 +96,11 @@ export class FlowTable extends FlowTableBase {
     public static fromData(@type(DataType) data: FlowTableData): FlowTable {
         const { table: content, columns = new Map(), style = TableStyle.empty } = data;
         return new FlowTable({ content, columns: Object.freeze(columns), style });
+    }
+
+    /** {@inheritdoc FlowNode.accept} */
+    public accept(visitor: FlowNodeVisitor): FlowNode {
+        return visitor.visitTable(this);
     }
 
     /** {@inheritdoc FlowNode.completeUpload} */

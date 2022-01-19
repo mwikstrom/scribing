@@ -24,6 +24,7 @@ import { ParagraphStyle } from "../styles/ParagraphStyle";
 import { ParagraphTheme } from "../styles/ParagraphTheme";
 import { TextRun } from "../nodes/TextRun";
 import { TextStyle } from "../styles/TextStyle";
+import type { FlowNodeVisitor } from "./FlowNodeVisitor";
 
 const NodeArrayType = arrayType(lazyType(FlowNodeRegistry.close));
 const RestrictedNodeArrayType = NodeArrayType
@@ -142,6 +143,11 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
             this.#size = this.nodes.reduce((accum, curr) => accum + curr.size, 0);
         }
         return this.#size;
+    }
+
+    /** Accepts the specified visitor */
+    accept(visitor: FlowNodeVisitor): FlowContent {
+        return visitor.visitFlowContent(this);
     }
 
     /**

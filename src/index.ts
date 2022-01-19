@@ -55,6 +55,9 @@ export * from "./nodes/StartMarkup";
 export * from "./nodes/EmptyMarkup";
 export * from "./nodes/EndMarkup";
 
+// Visitor
+export * from "./structure/FlowNodeVisitor";
+
 // Operations
 export * from "./operations/FlowOperation";
 export * from "./operations/TableOperation";

@@ -13,6 +13,8 @@ import {
 import { InlineNode } from "./InlineNode";
 import { FlowNodeRegistry } from "../internal/class-registry";
 import { TextStyle } from "../styles/TextStyle";
+import type { FlowNodeVisitor } from "../structure/FlowNodeVisitor";
+import type { FlowNode } from "./FlowNode";
 
 const Props = {
     data: stringType,
@@ -78,6 +80,11 @@ export class FlowIcon extends FlowIconBase implements FlowIconProps {
         const { icon, style = TextStyle.empty} = data;
         const props: FlowIconProps = { data: icon, style };
         return new FlowIcon(props);
+    }
+
+    /** {@inheritdoc FlowNode.accept} */
+    public accept(visitor: FlowNodeVisitor): FlowNode {
+        return visitor.visitIcon(this);
     }
 }
 

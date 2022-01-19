@@ -33,6 +33,7 @@ export declare class TextRun extends TextRunBase implements Readonly<TextRunProp
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [accept(visitor)](./scribing.textrun.accept.md) |  | Accepts the specified visitor |
 |  [after(position)](./scribing.textrun.after.md) |  | Splits the current text run a the specified position and returns the resulting text run after the split position. |
 |  [append(value)](./scribing.textrun.append.md) |  | Appends the specified text to the current text run |
 |  [before(position)](./scribing.textrun.before.md) |  | Splits the current text run a the specified position and returns the resulting text run before the split position. |

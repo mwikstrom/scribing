@@ -11,6 +11,8 @@ import {
 import { InlineNode } from "./InlineNode";
 import { FlowNodeRegistry } from "../internal/class-registry";
 import { TextStyle } from "../styles/TextStyle";
+import type { FlowNodeVisitor } from "../structure/FlowNodeVisitor";
+import type { FlowNode } from "./FlowNode";
 
 const Props = {
     expression: stringType,
@@ -76,5 +78,10 @@ export class DynamicText extends DynamicTextBase implements DynamicTextProps {
         const { dynamic: expression, style = TextStyle.empty} = data;
         const props: DynamicTextProps = { expression, style };
         return new DynamicText(props);
+    }
+
+    /** {@inheritdoc FlowNode.accept} */
+    public accept(visitor: FlowNodeVisitor): FlowNode {
+        return visitor.visitDynamicText(this);
     }
 }

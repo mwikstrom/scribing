@@ -12,6 +12,8 @@ import {
 import { InlineNode } from "./InlineNode";
 import { FlowNodeRegistry } from "../internal/class-registry";
 import { TextStyle } from "../styles/TextStyle";
+import type { FlowNodeVisitor } from "../structure/FlowNodeVisitor";
+import type { FlowNode } from "./FlowNode";
 
 const Props = {
     tag: stringType,
@@ -86,5 +88,10 @@ export class EmptyMarkup extends EmptyMarkupBase implements EmptyMarkupProps {
 
     constructor(props: EmptyMarkupProps) {
         super(props);
+    }
+
+    /** {@inheritdoc FlowNode.accept} */
+    public accept(visitor: FlowNodeVisitor): FlowNode {
+        return visitor.visitEmptyMarkup(this);
     }
 }

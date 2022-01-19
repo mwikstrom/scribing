@@ -33,5 +33,6 @@ export declare class LineBreak extends LineBreakBase implements LineBreakProps
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [accept(visitor)](./scribing.linebreak.accept.md) |  | Accepts the specified visitor |
 |  [fromData(data)](./scribing.linebreak.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
 

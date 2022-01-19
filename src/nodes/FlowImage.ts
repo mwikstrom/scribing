@@ -12,6 +12,7 @@ import { ImageSource } from "../structure/ImageSource";
 import { InlineNode } from "./InlineNode";
 import { FlowNodeRegistry } from "../internal/class-registry";
 import { TextStyle } from "../styles/TextStyle";
+import type { FlowNodeVisitor } from "../structure/FlowNodeVisitor";
 
 const Props = {
     source: ImageSource.classType,
@@ -77,6 +78,11 @@ export class FlowImage extends FlowImageBase implements FlowImageProps {
         const { image: source, style = TextStyle.empty} = data;
         const props: FlowImageProps = { source, style };
         return new FlowImage(props);
+    }
+
+    /** {@inheritdoc FlowNode.accept} */
+    public accept(visitor: FlowNodeVisitor): FlowNode {
+        return visitor.visitImage(this);
     }
 
     /**

@@ -33,5 +33,6 @@ export declare class EndMarkup extends EndMarkupBase implements EndMarkupProps
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [accept(visitor)](./scribing.endmarkup.accept.md) |  | Accepts the specified visitor |
 |  [fromData(data)](./scribing.endmarkup.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
 

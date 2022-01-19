@@ -5,6 +5,7 @@ import { FlowNodeRegistry } from "../internal/class-registry";
 import { ParagraphStyle, ParagraphStyleProps } from "../styles/ParagraphStyle";
 import { ParagraphTheme } from "../styles/ParagraphTheme";
 import { TextStyle, TextStyleProps } from "../styles/TextStyle";
+import type { FlowNodeVisitor } from "../structure/FlowNodeVisitor";
 
 /**
  * A piece of flow content.
@@ -27,6 +28,9 @@ export abstract class FlowNode {
      * except {@link TextRun|text runs}, are defined to have size 1.
      */
     abstract readonly size: number;
+
+    /** Accepts the specified visitor */
+    abstract accept(visitor: FlowNodeVisitor): FlowNode;
 
     /**
      * Marks the specified upload as completed

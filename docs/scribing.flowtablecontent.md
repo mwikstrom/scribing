@@ -32,6 +32,7 @@ export declare class FlowTableContent
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [accept(visitor)](./scribing.flowtablecontent.accept.md) |  |  |
 |  [fromJsonValue(value, error, path)](./scribing.flowtablecontent.fromjsonvalue.md) | <code>static</code> |  |
 |  [getCell(position, throwOnError)](./scribing.flowtablecontent.getcell.md) |  |  |
 |  [getCell(position, throwOnError)](./scribing.flowtablecontent.getcell_1.md) |  |  |

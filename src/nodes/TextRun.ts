@@ -14,6 +14,8 @@ import {
 import { InlineNode } from "./InlineNode";
 import { FlowNodeRegistry } from "../internal/class-registry";
 import { TextStyle } from "../styles/TextStyle";
+import type { FlowNodeVisitor } from "../structure/FlowNodeVisitor";
+import type { FlowNode } from "./FlowNode";
 
 const MAX_CHARS = 10000;
 const RESERVED = /(?:\p{Control}|\p{Private_Use}|[\u200B-\u200D\u0085\u2028\u2029])/gu;
@@ -113,6 +115,11 @@ export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
     constructor(props: TextRunProps = EMPTY_PROPS()) {
         super(props);
         this.size = props.text.length;
+    }
+
+    /** {@inheritdoc FlowNode.accept} */
+    public accept(visitor: FlowNodeVisitor): FlowNode {
+        return visitor.visitTextRun(this);
     }
 
     /** Appends the specified text to the current text run */

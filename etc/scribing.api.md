@@ -252,6 +252,7 @@ export interface DefaultFlowThemeProps {
 
 // @public @sealed
 export class DynamicText extends DynamicTextBase implements DynamicTextProps {
+    accept(visitor: FlowNodeVisitor): FlowNode;
     static readonly classType: Type<DynamicText>;
     static fromData(data: DynamicTextData): DynamicText;
     readonly size = 1;
@@ -329,6 +330,7 @@ export interface EditTableCellProps {
 // @public @sealed
 export class EmptyMarkup extends EmptyMarkupBase implements EmptyMarkupProps {
     constructor(props: EmptyMarkupProps);
+    accept(visitor: FlowNodeVisitor): FlowNode;
     static readonly classType: Type<EmptyMarkup>;
     static fromData(data: EmptyMarkupData): EmptyMarkup;
     readonly size = 1;
@@ -360,6 +362,7 @@ export interface EmptyMarkupProps {
 // @public @sealed
 export class EndMarkup extends EndMarkupBase implements EndMarkupProps {
     constructor(props: EndMarkupProps);
+    accept(visitor: FlowNodeVisitor): FlowNode;
     static readonly classType: Type<EndMarkup>;
     static fromData(data: EndMarkupData): EndMarkup;
     readonly size = 1;
@@ -419,6 +422,7 @@ export interface FlowBatchProps {
 
 // @public @sealed
 export class FlowBox extends FlowBoxBase {
+    accept(visitor: FlowNodeVisitor): FlowNode;
     static readonly classType: Type<FlowBox>;
     completeUpload(id: string, url: string): FlowNode;
     formatBox(style: BoxStyle): this;
@@ -499,6 +503,7 @@ export const FlowColorType: Type<FlowColor>;
 // @public @sealed
 export class FlowContent extends FlowContentBase implements Readonly<FlowContentProps> {
     constructor(props?: FlowContentProps);
+    accept(visitor: FlowNodeVisitor): FlowContent;
     append(...nodes: readonly FlowNode[]): FlowContent;
     append(theme: FlowTheme | undefined, ...nodes: readonly FlowNode[]): FlowContent;
     static readonly classType: Type<FlowContent>;
@@ -573,6 +578,7 @@ export class FlowCursor {
 
 // @public @sealed
 export class FlowIcon extends FlowIconBase implements FlowIconProps {
+    accept(visitor: FlowNodeVisitor): FlowNode;
     static readonly classType: Type<FlowIcon>;
     static fromData(data: FlowIconData): FlowIcon;
     readonly size = 1;
@@ -595,6 +601,7 @@ export interface FlowIconProps {
 
 // @public @sealed
 export class FlowImage extends FlowImageBase implements FlowImageProps {
+    accept(visitor: FlowNodeVisitor): FlowNode;
     static readonly classType: Type<FlowImage>;
     // @override
     completeUpload(id: string, url: string): FlowNode;
@@ -619,6 +626,7 @@ export interface FlowImageProps {
 
 // @public
 export abstract class FlowNode {
+    abstract accept(visitor: FlowNodeVisitor): FlowNode;
     static readonly baseType: Type<FlowNode>;
     abstract completeUpload(id: string, url: string): FlowNode;
     abstract formatBox(style: BoxStyle, theme?: FlowTheme): FlowNode;
@@ -634,6 +642,42 @@ export abstract class FlowNode {
     abstract unformatBox(style: BoxStyle): FlowNode;
     abstract unformatParagraph(style: ParagraphStyle): FlowNode;
     abstract unformatText(style: TextStyle): FlowNode;
+}
+
+// @public
+export class FlowNodeVisitor {
+    // (undocumented)
+    visit(node: FlowNode): FlowNode;
+    // (undocumented)
+    visit(content: FlowContent): FlowContent;
+    // (undocumented)
+    visit(content: FlowTableContent): FlowTableContent;
+    // (undocumented)
+    visitBox(node: FlowBox): FlowNode;
+    // (undocumented)
+    visitDynamicText(node: DynamicText): FlowNode;
+    // (undocumented)
+    visitEmptyMarkup(node: EmptyMarkup): FlowNode;
+    // (undocumented)
+    visitEndMarkup(node: EndMarkup): FlowNode;
+    // (undocumented)
+    visitFlowContent(content: FlowContent): FlowContent;
+    // (undocumented)
+    visitIcon(node: FlowIcon): FlowNode;
+    // (undocumented)
+    visitImage(node: FlowImage): FlowNode;
+    // (undocumented)
+    visitLineBreak(node: LineBreak): FlowNode;
+    // (undocumented)
+    visitParagraphBreak(node: ParagraphBreak): FlowNode;
+    // (undocumented)
+    visitStartMarkup(node: StartMarkup): FlowNode;
+    // (undocumented)
+    visitTable(node: FlowTable): FlowNode;
+    // (undocumented)
+    visitTableContent(content: FlowTableContent): FlowTableContent;
+    // (undocumented)
+    visitTextRun(node: TextRun): FlowNode;
 }
 
 // @public
@@ -901,6 +945,7 @@ export const FlowSyncSnapshotType: RecordType<FlowSyncSnapshot>;
 
 // @public @sealed
 export class FlowTable extends FlowTableBase {
+    accept(visitor: FlowNodeVisitor): FlowNode;
     static readonly classType: Type<FlowTable>;
     completeUpload(id: string, url: string): FlowNode;
     formatBox(): this;
@@ -1008,6 +1053,8 @@ export interface FlowTableCellSelectionProps {
 export class FlowTableContent {
     // Warning: (ae-forgotten-export) The symbol "FlowTableContentOptions" needs to be exported by the entry point index.d.ts
     constructor(cells?: Iterable<[string, FlowTableCell]>, options?: FlowTableContentOptions);
+    // (undocumented)
+    accept(visitor: FlowNodeVisitor): FlowTableContent;
     // (undocumented)
     static readonly classType: Type<FlowTableContent>;
     // (undocumented)
@@ -1595,6 +1642,7 @@ export abstract class Interaction {
 // @public @sealed
 export class LineBreak extends LineBreakBase implements LineBreakProps {
     constructor(props?: LineBreakProps);
+    accept(visitor: FlowNodeVisitor): FlowNode;
     static readonly classType: Type<LineBreak>;
     static fromData(data: LineBreakData): LineBreak;
     readonly size = 1;
@@ -1826,6 +1874,7 @@ export const PARAGRAPH_VARIANTS: readonly ["normal", "h1", "h2", "h3", "h4", "h5
 // @public @sealed
 export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreakProps {
     constructor(props?: ParagraphBreakProps);
+    accept(visitor: FlowNodeVisitor): FlowNode;
     static readonly classType: Type<ParagraphBreak>;
     completeUpload(): this;
     formatBox(): this;
@@ -2360,6 +2409,7 @@ export interface SplitTableCellProps {
 // @public @sealed
 export class StartMarkup extends StartMarkupBase implements StartMarkupProps {
     constructor(props: StartMarkupProps);
+    accept(visitor: FlowNodeVisitor): FlowNode;
     static readonly classType: Type<StartMarkup>;
     static fromData(data: StartMarkupData): StartMarkup;
     readonly size = 1;
@@ -2486,6 +2536,7 @@ export interface TargetOptions {
 // @public @sealed
 export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
     constructor(props?: TextRunProps);
+    accept(visitor: FlowNodeVisitor): FlowNode;
     after(position: number): TextRun;
     append(value: string): TextRun;
     before(position: number): TextRun;

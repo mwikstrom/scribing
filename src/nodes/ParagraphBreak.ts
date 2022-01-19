@@ -14,6 +14,7 @@ import { FlowNodeRegistry } from "../internal/class-registry";
 import { ParagraphStyle } from "../styles/ParagraphStyle";
 import { ParagraphTheme } from "../styles/ParagraphTheme";
 import { TextStyle } from "../styles/TextStyle";
+import type { FlowNodeVisitor } from "../structure/FlowNodeVisitor";
 
 const Props = {
     style: lazyType(() => ParagraphStyle.classType),
@@ -82,6 +83,11 @@ export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreak
 
     constructor(props: ParagraphBreakProps = EMPTY_PROPS()) {
         super(props);
+    }
+
+    /** {@inheritdoc FlowNode.accept} */
+    public accept(visitor: FlowNodeVisitor): FlowNode {
+        return visitor.visitParagraphBreak(this);
     }
 
     /** {@inheritdoc FlowNode.completeUpload} */

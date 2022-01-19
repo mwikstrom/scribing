@@ -13,6 +13,7 @@ import { FlowNode } from "./FlowNode";
 import { FlowNodeRegistry } from "../internal/class-registry";
 import { ParagraphStyle } from "../styles/ParagraphStyle";
 import { TextStyle } from "../styles/TextStyle";
+import type { FlowNodeVisitor } from "../structure/FlowNodeVisitor";
 
 const Props = {
     content: FlowContent.classType,
@@ -75,6 +76,11 @@ export class FlowBox extends FlowBoxBase {
     public static fromData(@type(DataType) data: FlowBoxData): FlowBox {
         const { box: content, style = BoxStyle.empty } = data;
         return new FlowBox({ content, style });
+    }
+
+    /** {@inheritdoc FlowNode.accept} */
+    public accept(visitor: FlowNodeVisitor): FlowNode {
+        return visitor.visitBox(this);
     }
 
     /** {@inheritdoc FlowNode.completeUpload} */

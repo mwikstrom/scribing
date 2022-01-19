@@ -2,6 +2,7 @@ import { classType, JsonValue, mapType, PathArray, ErrorCallback, lazyType } fro
 import { CellPosition } from "../selection/CellPosition";
 import { FlowContent } from "./FlowContent";
 import { FlowTableCell } from "./FlowTableCell";
+import type { FlowNodeVisitor } from "./FlowNodeVisitor";
 
 /**
  * @public
@@ -127,6 +128,10 @@ export class FlowTableContent {
 
     public get defaultCellContent(): FlowContent {
         return this.#defaultContent;
+    }
+
+    public accept(visitor: FlowNodeVisitor): FlowTableContent {
+        return visitor.visitTableContent(this);
     }
 
     public toJsonValue(error?: ErrorCallback, path?: PathArray): JsonValue {

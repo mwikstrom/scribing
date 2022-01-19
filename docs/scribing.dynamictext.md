@@ -27,5 +27,6 @@ export declare class DynamicText extends DynamicTextBase implements DynamicTextP
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [accept(visitor)](./scribing.dynamictext.accept.md) |  | Accepts the specified visitor |
 |  [fromData(data)](./scribing.dynamictext.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
 

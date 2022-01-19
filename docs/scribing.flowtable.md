@@ -25,6 +25,7 @@ export declare class FlowTable extends FlowTableBase
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [accept(visitor)](./scribing.flowtable.accept.md) |  | Accepts the specified visitor |
 |  [completeUpload(id, url)](./scribing.flowtable.completeupload.md) |  | Marks the specified upload as completed |
 |  [formatBox()](./scribing.flowtable.formatbox.md) |  | Applies the specified box style on the current node and returns the updated node. |
 |  [formatColumn(index, style)](./scribing.flowtable.formatcolumn.md) |  |  |
