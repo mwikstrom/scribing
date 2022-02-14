@@ -18,5 +18,5 @@ export interface SetDynamicTextExpressionData
 |  --- | --- | --- |
 |  [at](./scribing.setdynamictextexpressiondata.at.md) | number | The dynamic text position |
 |  [set](./scribing.setdynamictextexpressiondata.set.md) | "dynamic\_text\_expression" | Data discriminator |
-|  [value](./scribing.setdynamictextexpressiondata.value.md) | string | The expression to assign |
+|  [value](./scribing.setdynamictextexpressiondata.value.md) | [Script](./scribing.script.md) | The expression to assign |
 

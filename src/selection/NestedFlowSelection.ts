@@ -12,6 +12,7 @@ import { TextStyle, TextStyleProps } from "../styles/TextStyle";
 import { TableStyle } from "../styles/TableStyle";
 import { TableColumnStyle } from "../styles/TableColumnStyle";
 import { CellRange } from "./CellRange";
+import { Script } from "../script";
 
 /**
  * A nested selection at a specific flow position
@@ -239,7 +240,7 @@ export abstract class NestedFlowSelection extends FlowSelection {
      * {@inheritDoc FlowSelection.setDynamicTextExpression}
      * @override
      */
-    public setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null {
+    public setDynamicTextExpression(content: FlowContent, expression: Script): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
         const innerOperation = innerSelection.setDynamicTextExpression(innerContent, expression);

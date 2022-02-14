@@ -9,5 +9,5 @@ The script code that shall be executed
 <b>Signature:</b>
 
 ```typescript
-script: string;
+script: Script;
 ```

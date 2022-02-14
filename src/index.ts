@@ -11,6 +11,9 @@ export * from "./selection/FlowRange";
 export * from "./selection/CellPosition";
 export * from "./selection/CellRange";
 
+// Script
+export * from "./script";
+
 // Interactions
 export * from "./interaction/Interaction";
 export * from "./interaction/OpenUrl";

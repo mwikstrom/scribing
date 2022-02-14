@@ -9,5 +9,5 @@ The expression to assign
 <b>Signature:</b>
 
 ```typescript
-value: string;
+value: Script;
 ```

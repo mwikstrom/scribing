@@ -45,19 +45,19 @@ export class BoxStyle extends BoxStyleBase implements Readonly<BoxStyleProps> {
     variant: "basic" | "contained" | "outlined" | "alert" | "quote";
     color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
     inline: boolean;
-    source: string | null;
+    source: Script | null;
     interaction: Interaction | null;
     }>, Partial<{
     variant: "basic" | "contained" | "outlined" | "alert" | "quote";
     color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
     inline: boolean;
-    source: string | null;
+    source: Script | null;
     interaction: Interaction | null;
     }>> & Equatable & Readonly<Partial<{
         variant: "basic" | "contained" | "outlined" | "alert" | "quote";
         color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
         inline: boolean;
-        source: string | null;
+        source: Script | null;
         interaction: Interaction | null;
     }>> & BoxStyle>;
     static get empty(): BoxStyle;
@@ -69,13 +69,13 @@ export const BoxStyleBase: RecordConstructor<Partial<{
 variant: "basic" | "contained" | "outlined" | "alert" | "quote";
 color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
 inline: boolean;
-source: string | null;
+source: Script | null;
 interaction: Interaction | null;
 }>, Object, Partial<{
 variant: "basic" | "contained" | "outlined" | "alert" | "quote";
 color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
 inline: boolean;
-source: string | null;
+source: Script | null;
 interaction: Interaction | null;
 }>>;
 
@@ -84,7 +84,7 @@ export interface BoxStyleProps {
     color?: FlowColor;
     inline?: boolean;
     interaction?: Interaction | null;
-    source?: string | null;
+    source?: Script | null;
     variant?: BoxVariant;
 }
 
@@ -263,13 +263,13 @@ export const DynamicTextBase: RecordConstructor<DynamicTextProps, InlineNode, Dy
 
 // @public
 export interface DynamicTextData {
-    dynamic: string;
+    dynamic: Script;
     style?: TextStyle;
 }
 
 // @public
 export interface DynamicTextProps {
-    expression: string;
+    expression: Script;
     style: TextStyle;
 }
 
@@ -785,7 +785,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     // @override
     removeTableRow(): FlowOperation | null;
     // @override
-    setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null;
+    setDynamicTextExpression(content: FlowContent, expression: Script): FlowOperation | null;
     // @override
     setIcon(content: FlowContent, data: string): FlowOperation | null;
     // @override
@@ -858,7 +858,7 @@ export abstract class FlowSelection {
     static readonly rootReplace: VisitRangeOptions["replace"];
     // @internal (undocumented)
     static readonly rootWrap: VisitRangeOptions["wrap"];
-    abstract setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null;
+    abstract setDynamicTextExpression(content: FlowContent, expression: Script): FlowOperation | null;
     abstract setIcon(content: FlowContent, data: string): FlowOperation | null;
     abstract setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
     abstract setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation | null;
@@ -1157,7 +1157,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     // @override
     removeTableRow(): FlowOperation | null;
     // @override
-    setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null;
+    setDynamicTextExpression(content: FlowContent, expression: Script): FlowOperation | null;
     // @override
     setIcon(content: FlowContent, data: string): FlowOperation | null;
     // @override
@@ -1803,7 +1803,7 @@ export abstract class NestedFlowSelection extends FlowSelection {
     removeTableRow(content: FlowContent): FlowOperation | null;
     abstract set(key: "position", value: number): this;
     // @override
-    setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null;
+    setDynamicTextExpression(content: FlowContent, expression: Script): FlowOperation | null;
     // @override
     setIcon(content: FlowContent, data: string): FlowOperation | null;
     // @override
@@ -1905,7 +1905,7 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
     static readonly classType: Type<RecordObject<Partial<{
     alignment: "start" | "center" | "end" | "justify";
     direction: "ltr" | "rtl";
-    variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
+    variant: "code" | "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble";
     lineSpacing: number;
     spaceBefore: number;
     spaceAfter: number;
@@ -1918,7 +1918,7 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
     }>, Partial<{
     alignment: "start" | "center" | "end" | "justify";
     direction: "ltr" | "rtl";
-    variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
+    variant: "code" | "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble";
     lineSpacing: number;
     spaceBefore: number;
     spaceAfter: number;
@@ -1931,7 +1931,7 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
     }>> & Equatable & Readonly<Partial<{
         alignment: "start" | "center" | "end" | "justify";
         direction: "ltr" | "rtl";
-        variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
+        variant: "code" | "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble";
         lineSpacing: number;
         spaceBefore: number;
         spaceAfter: number;
@@ -1950,7 +1950,7 @@ export class ParagraphStyle extends ParagraphStyleBase implements Readonly<Parag
 export const ParagraphStyleBase: RecordConstructor<Partial<{
 alignment: "start" | "center" | "end" | "justify";
 direction: "ltr" | "rtl";
-variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
+variant: "code" | "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble";
 lineSpacing: number;
 spaceBefore: number;
 spaceAfter: number;
@@ -1963,7 +1963,7 @@ listCounterSuffix: string;
 }>, Object, Partial<{
 alignment: "start" | "center" | "end" | "justify";
 direction: "ltr" | "rtl";
-variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
+variant: "code" | "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble";
 lineSpacing: number;
 spaceBefore: number;
 spaceAfter: number;
@@ -2181,7 +2181,25 @@ export const RunScriptBase: RecordConstructor<RunScriptProps, Interaction, RunSc
 
 // @public
 export interface RunScriptProps {
-    script: string;
+    script: Script;
+}
+
+// @public
+export class Script extends ScriptBase implements Readonly<ScriptProps> {
+    static readonly classType: Type<Script>;
+    static fromData(data: ScriptData): Script;
+}
+
+// @public
+export const ScriptBase: RecordConstructor<ScriptProps, Object, ScriptData>;
+
+// @public
+export type ScriptData = string | ScriptProps;
+
+// @public
+export interface ScriptProps {
+    code: string;
+    messages: Map<string, string>;
 }
 
 // @public @sealed
@@ -2208,12 +2226,12 @@ export const SetDynamicTextExpressionBase: RecordConstructor<SetDynamicTextExpre
 export interface SetDynamicTextExpressionData {
     at: number;
     set: "dynamic_text_expression";
-    value: string;
+    value: Script;
 }
 
 // @public
 export interface SetDynamicTextExpressionProps {
-    expression: string;
+    expression: Script;
     position: number;
 }
 

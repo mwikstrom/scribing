@@ -6,7 +6,6 @@ import {
     recordClassType, 
     recordType, 
     RecordType, 
-    stringType, 
     type, 
     validating 
 } from "paratype";
@@ -17,16 +16,17 @@ import { FlowRange } from "../selection/FlowRange";
 import { FlowSelection } from "../selection/FlowSelection";
 import { FlowOperationRegistry } from "../internal/class-registry";
 import { getRangeAfterInsertion, getRangeAfterRemoval } from "../internal/transform-helpers";
+import { Script } from "../script";
 
 const Props = {
     position: nonNegativeIntegerType,
-    expression: stringType,
+    expression: Script.classType,
 };
 
 const Data = {
     set: constType("dynamic_text_expression"),
     at: Props.position,
-    value: stringType,
+    value: Script.classType,
 };
 
 const PropsType: RecordType<SetDynamicTextExpressionProps> = recordType(Props);
@@ -52,7 +52,7 @@ export interface SetDynamicTextExpressionProps {
     position: number;
 
     /** The expression to assign */
-    expression: string;
+    expression: Script;
 }
 
 /**
@@ -67,7 +67,7 @@ export interface SetDynamicTextExpressionData {
     at: number;
 
     /** {@inheritdoc SetDynamicTextExpressionProps.expression} */
-    value: string;
+    value: Script;
 }
 
 /**

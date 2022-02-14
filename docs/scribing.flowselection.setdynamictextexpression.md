@@ -9,7 +9,7 @@ Creates an operation that sets the specified dynamic text expression in the curr
 <b>Signature:</b>
 
 ```typescript
-abstract setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null;
+abstract setDynamicTextExpression(content: FlowContent, expression: Script): FlowOperation | null;
 ```
 
 ## Parameters
@@ -17,7 +17,7 @@ abstract setDynamicTextExpression(content: FlowContent, expression: string): Flo
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The selected content |
-|  expression | string | The expression to set |
+|  expression | [Script](./scribing.script.md) | The expression to set |
 
 <b>Returns:</b>
 

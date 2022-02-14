@@ -12,7 +12,7 @@ The run-time type that represents this class
 static readonly classType: Type<import("paratype").RecordObject<Partial<{
         alignment: "start" | "center" | "end" | "justify";
         direction: "ltr" | "rtl";
-        variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
+        variant: "code" | "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble";
         lineSpacing: number;
         spaceBefore: number;
         spaceAfter: number;
@@ -25,7 +25,7 @@ static readonly classType: Type<import("paratype").RecordObject<Partial<{
     }>, Partial<{
         alignment: "start" | "center" | "end" | "justify";
         direction: "ltr" | "rtl";
-        variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
+        variant: "code" | "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble";
         lineSpacing: number;
         spaceBefore: number;
         spaceAfter: number;
@@ -38,7 +38,7 @@ static readonly classType: Type<import("paratype").RecordObject<Partial<{
     }>> & import("paratype").Equatable & Readonly<Partial<{
         alignment: "start" | "center" | "end" | "justify";
         direction: "ltr" | "rtl";
-        variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
+        variant: "code" | "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble";
         lineSpacing: number;
         spaceBefore: number;
         spaceAfter: number;

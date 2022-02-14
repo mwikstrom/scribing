@@ -4,7 +4,6 @@ import {
     recordClassType,
     recordType,
     RecordType,
-    stringType,
     type,
     validating
 } from "paratype";
@@ -13,13 +12,14 @@ import { FlowNodeRegistry } from "../internal/class-registry";
 import { TextStyle } from "../styles/TextStyle";
 import type { FlowNodeVisitor } from "../structure/FlowNodeVisitor";
 import type { FlowNode } from "./FlowNode";
+import { Script } from "../script";
 
 const Props = {
-    expression: stringType,
+    expression: Script.classType,
     style: TextStyle.classType,
 };
 const Data = {
-    dynamic: stringType,
+    dynamic: Script.classType,
     style: Props.style,
 };
 const PropsType: RecordType<DynamicTextProps> = recordType(Props);
@@ -40,7 +40,7 @@ export const DynamicTextBase = RecordClass(PropsType, InlineNode, DataType, prop
  */
 export interface DynamicTextProps {
     /** The dynamic expression */
-    expression: string;
+    expression: Script;
 
     /** Text style */
     style: TextStyle;
@@ -52,7 +52,7 @@ export interface DynamicTextProps {
  */
 export interface DynamicTextData {
     /** The dynamic expression */
-    dynamic: string;
+    dynamic: Script;
 
     /** {@inheritdoc DynamicTextProps.style} */
     style?: TextStyle;

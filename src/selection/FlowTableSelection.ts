@@ -41,6 +41,7 @@ import { FlowRangeSelection } from "./FlowRangeSelection";
 import { FlowTableCellSelection } from "./FlowTableCellSelection";
 import { RemoveRange } from "../operations/RemoveRange";
 import { InsertContent } from "../operations/InsertContent";
+import { Script } from "../script";
 
 const Props = {
     position: nonNegativeIntegerType,
@@ -255,7 +256,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      * {@inheritDoc FlowSelection.setDynamicTextExpression}
      * @override
      */
-    public setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null {
+    public setDynamicTextExpression(content: FlowContent, expression: Script): FlowOperation | null {
         return this.#updateAllCellContent(content, undefined, cellContent => (
             selectAll(cellContent).setDynamicTextExpression(cellContent, expression)
         ));

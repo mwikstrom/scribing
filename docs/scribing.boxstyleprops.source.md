@@ -9,5 +9,5 @@ The script that act as a data source for the box
 <b>Signature:</b>
 
 ```typescript
-source?: string | null;
+source?: Script | null;
 ```

@@ -64,6 +64,7 @@ Model for collaborative rich text editing
 |  [RemoveTableRow](./scribing.removetablerow.md) | Represents an operation that removes a table row |
 |  [ResetContent](./scribing.resetcontent.md) | Represents an operation that sets the path data of an icon |
 |  [RunScript](./scribing.runscript.md) | An interaction that runs a script |
+|  [Script](./scribing.script.md) | A script |
 |  [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) | Represents an operation that sets the expression of dynamic text |
 |  [SetIcon](./scribing.seticon.md) | Represents an operation that sets the path data of an icon |
 |  [SetImageSource](./scribing.setimagesource.md) | Represents an operation that sets the source of an image |
@@ -163,6 +164,7 @@ Model for collaborative rich text editing
 |  [ResetContentData](./scribing.resetcontentdata.md) | Data of [ResetContent](./scribing.resetcontent.md) |
 |  [ResetContentProps](./scribing.resetcontentprops.md) | Properties of [ResetContent](./scribing.resetcontent.md) |
 |  [RunScriptProps](./scribing.runscriptprops.md) | Properties for [RunScript](./scribing.runscript.md) |
+|  [ScriptProps](./scribing.scriptprops.md) | Properties of a script |
 |  [SetDynamicTextExpressionData](./scribing.setdynamictextexpressiondata.md) | Data of [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [SetDynamicTextExpressionProps](./scribing.setdynamictextexpressionprops.md) | Properties of [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [SetIconData](./scribing.seticondata.md) | Data of [SetIcon](./scribing.seticon.md) |
@@ -264,6 +266,7 @@ Model for collaborative rich text editing
 |  [RemoveTableRowBase](./scribing.removetablerowbase.md) | The base record class for [RemoveTableRow](./scribing.removetablerow.md) |
 |  [ResetContentBase](./scribing.resetcontentbase.md) | The base record class for [ResetContent](./scribing.resetcontent.md) |
 |  [RunScriptBase](./scribing.runscriptbase.md) | The base record class for [RunScript](./scribing.runscript.md) |
+|  [ScriptBase](./scribing.scriptbase.md) | The base record class for [Script](./scribing.script.md) |
 |  [SetDynamicTextExpressionBase](./scribing.setdynamictextexpressionbase.md) | The base record class for [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [SetIconBase](./scribing.seticonbase.md) | The base record class for [SetIcon](./scribing.seticon.md) |
 |  [SetImageSourceBase](./scribing.setimagesourcebase.md) | The base record class for [SetImageSource](./scribing.setimagesource.md) |
@@ -309,6 +312,7 @@ Model for collaborative rich text editing
 |  [ParagraphVariant](./scribing.paragraphvariant.md) | Paragraph style variant |
 |  [PredefinedIcon](./scribing.predefinedicon.md) | Predefined icon |
 |  [ReadingDirection](./scribing.readingdirection.md) | Reading direction |
+|  [ScriptData](./scribing.scriptdata.md) | Data contract for a script |
 |  [TextRunData](./scribing.textrundata.md) | Data contract for a text run |
 |  [UnorderedListMarkerKind](./scribing.unorderedlistmarkerkind.md) | Unordered list marker styles |
 

@@ -9,5 +9,5 @@ The dynamic expression
 <b>Signature:</b>
 
 ```typescript
-dynamic: string;
+dynamic: Script;
 ```

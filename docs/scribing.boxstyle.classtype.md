@@ -13,19 +13,19 @@ static readonly classType: Type<import("paratype").RecordObject<Partial<{
         variant: "basic" | "contained" | "outlined" | "alert" | "quote";
         color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
         inline: boolean;
-        source: string | null;
+        source: Script | null;
         interaction: Interaction | null;
     }>, Partial<{
         variant: "basic" | "contained" | "outlined" | "alert" | "quote";
         color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
         inline: boolean;
-        source: string | null;
+        source: Script | null;
         interaction: Interaction | null;
     }>> & import("paratype").Equatable & Readonly<Partial<{
         variant: "basic" | "contained" | "outlined" | "alert" | "quote";
         color: "default" | "subtle" | "primary" | "secondary" | "information" | "success" | "warning" | "error";
         inline: boolean;
-        source: string | null;
+        source: Script | null;
         interaction: Interaction | null;
     }>> & BoxStyle>;
 ```

@@ -45,6 +45,7 @@ import { EmptyMarkup } from "../nodes/EmptyMarkup";
 import { SetMarkupAttr } from "../operations/SetMarkupAttr";
 import { EndMarkup } from "../nodes/EndMarkup";
 import { SetMarkupTag } from "../operations/SetMarkupTag";
+import { Script } from "../script";
 
 const Props = {
     range: lazyType(() => FlowRange.classType),
@@ -402,7 +403,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      * {@inheritDoc FlowSelection.setDynamicTextExpression}
      * @override
      */
-    public setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null {
+    public setDynamicTextExpression(content: FlowContent, expression: Script): FlowOperation | null {
         const { range } = this;
         const operations: SetDynamicTextExpression[] = [];
 

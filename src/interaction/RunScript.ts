@@ -4,13 +4,13 @@ import {
     recordClassType, 
     recordType, 
     RecordType, 
-    stringType, 
     validating 
 } from "paratype";
 import { Interaction } from "./Interaction";
 import { InteractionRegistry } from "../internal/class-registry";
+import { Script } from "../script";
 
-const Props = { script: stringType };
+const Props = { script: Script.classType };
 const PropsType: RecordType<RunScriptProps> = recordType(Props);
 
 /**
@@ -25,7 +25,7 @@ export const RunScriptBase = RecordClass(PropsType, Interaction);
  */
 export interface RunScriptProps {
     /** The script code that shall be executed */
-    script: string;
+    script: Script;
 }
 
 /**

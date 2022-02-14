@@ -16,6 +16,6 @@ export interface DynamicTextData
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [dynamic](./scribing.dynamictextdata.dynamic.md) | string | The dynamic expression |
+|  [dynamic](./scribing.dynamictextdata.dynamic.md) | [Script](./scribing.script.md) | The dynamic expression |
 |  [style?](./scribing.dynamictextdata.style.md) | [TextStyle](./scribing.textstyle.md) | <i>(Optional)</i> Text style |
 

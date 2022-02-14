@@ -16,6 +16,6 @@ export interface DynamicTextProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [expression](./scribing.dynamictextprops.expression.md) | string | The dynamic expression |
+|  [expression](./scribing.dynamictextprops.expression.md) | [Script](./scribing.script.md) | The dynamic expression |
 |  [style](./scribing.dynamictextprops.style.md) | [TextStyle](./scribing.textstyle.md) | Text style |
 

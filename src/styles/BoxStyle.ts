@@ -6,13 +6,13 @@ import {
     RecordClass, 
     recordClassType, 
     recordType, 
-    stringType, 
     Type, 
     unionType, 
     validating
 } from "paratype";
 import { FlowColor, FlowColorType } from "./FlowColor";
 import { Interaction } from "../interaction/Interaction";
+import { Script } from "../script";
 
 /**
  * Style properties for box content
@@ -37,7 +37,7 @@ export interface BoxStyleProps {
     /**
      * The script that act as a data source for the box
      */
-    source?: string | null;
+    source?: Script | null;
 
     /**
      * The interaction that shall be invoked when the box is clicked
@@ -73,7 +73,7 @@ const Props = {
     variant: BoxVariantType,
     color: FlowColorType,
     inline: booleanType,
-    source: unionType(nullType, stringType),
+    source: unionType(nullType, Script.classType),
     interaction: unionType(nullType, Interaction.baseType),
 };
 

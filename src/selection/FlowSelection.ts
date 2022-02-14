@@ -12,6 +12,7 @@ import { TableStyle } from "../styles/TableStyle";
 import { TableColumnStyle } from "../styles/TableColumnStyle";
 import { CellRange } from "./CellRange";
 import type { NestedFlowSelection } from "./NestedFlowSelection";
+import { Script } from "../script";
 
 /**
  * Represents a selection of flow content
@@ -169,7 +170,7 @@ export abstract class FlowSelection {
      * @remarks
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
-    public abstract setDynamicTextExpression(content: FlowContent, expression: string): FlowOperation | null;
+    public abstract setDynamicTextExpression(content: FlowContent, expression: Script): FlowOperation | null;
 
     /**
      * Creates an operation that sets the specified icon data in the current selection

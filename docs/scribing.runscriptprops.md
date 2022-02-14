@@ -16,5 +16,5 @@ export interface RunScriptProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [script](./scribing.runscriptprops.script.md) | string | The script code that shall be executed |
+|  [script](./scribing.runscriptprops.script.md) | [Script](./scribing.script.md) | The script code that shall be executed |
 

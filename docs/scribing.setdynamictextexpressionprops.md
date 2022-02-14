@@ -16,6 +16,6 @@ export interface SetDynamicTextExpressionProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [expression](./scribing.setdynamictextexpressionprops.expression.md) | string | The expression to assign |
+|  [expression](./scribing.setdynamictextexpressionprops.expression.md) | [Script](./scribing.script.md) | The expression to assign |
 |  [position](./scribing.setdynamictextexpressionprops.position.md) | number | The dynamic text position |
 

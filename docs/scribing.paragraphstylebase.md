@@ -12,7 +12,7 @@ The base record class for [ParagraphStyle](./scribing.paragraphstyle.md)
 ParagraphStyleBase: import("paratype").RecordConstructor<Partial<{
     alignment: "start" | "center" | "end" | "justify";
     direction: "ltr" | "rtl";
-    variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
+    variant: "code" | "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble";
     lineSpacing: number;
     spaceBefore: number;
     spaceAfter: number;
@@ -25,7 +25,7 @@ ParagraphStyleBase: import("paratype").RecordConstructor<Partial<{
 }>, Object, Partial<{
     alignment: "start" | "center" | "end" | "justify";
     direction: "ltr" | "rtl";
-    variant: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble" | "code";
+    variant: "code" | "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "title" | "subtitle" | "preamble";
     lineSpacing: number;
     spaceBefore: number;
     spaceAfter: number;
