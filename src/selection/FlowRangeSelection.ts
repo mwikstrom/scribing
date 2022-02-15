@@ -45,7 +45,7 @@ import { EmptyMarkup } from "../nodes/EmptyMarkup";
 import { SetMarkupAttr } from "../operations/SetMarkupAttr";
 import { EndMarkup } from "../nodes/EndMarkup";
 import { SetMarkupTag } from "../operations/SetMarkupTag";
-import { Script } from "../script";
+import { Script } from "../structure/Script";
 
 const Props = {
     range: lazyType(() => FlowRange.classType),

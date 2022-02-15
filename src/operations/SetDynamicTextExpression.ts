@@ -16,7 +16,7 @@ import { FlowRange } from "../selection/FlowRange";
 import { FlowSelection } from "../selection/FlowSelection";
 import { FlowOperationRegistry } from "../internal/class-registry";
 import { getRangeAfterInsertion, getRangeAfterRemoval } from "../internal/transform-helpers";
-import { Script } from "../script";
+import { Script } from "../structure/Script";
 
 const Props = {
     position: nonNegativeIntegerType,

@@ -12,7 +12,7 @@ import { TextStyle, TextStyleProps } from "../styles/TextStyle";
 import { TableStyle } from "../styles/TableStyle";
 import { TableColumnStyle } from "../styles/TableColumnStyle";
 import { CellRange } from "./CellRange";
-import { Script } from "../script";
+import { Script } from "../structure/Script";
 
 /**
  * A nested selection at a specific flow position

@@ -8,7 +8,7 @@ import {
 } from "paratype";
 import { Interaction } from "./Interaction";
 import { InteractionRegistry } from "../internal/class-registry";
-import { Script } from "../script";
+import { Script } from "../structure/Script";
 
 const Props = { script: Script.classType };
 const PropsType: RecordType<RunScriptProps> = recordType(Props);

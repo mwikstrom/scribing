@@ -12,7 +12,7 @@ import { FlowNodeRegistry } from "../internal/class-registry";
 import { TextStyle } from "../styles/TextStyle";
 import type { FlowNodeVisitor } from "../structure/FlowNodeVisitor";
 import type { FlowNode } from "./FlowNode";
-import { Script } from "../script";
+import { Script } from "../structure/Script";
 
 const Props = {
     expression: Script.classType,

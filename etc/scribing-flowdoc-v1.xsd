@@ -4,7 +4,7 @@
     xmlns="https://cdn.dforigo.com/schemas/scribing-flowdoc-v1.xsd"
     elementFormDefault="qualified"
 >
-    <xs:element name="document" type="document">
+    <xs:element name="flowdoc" type="document">
         <xs:key name="script-id">
             <xs:selector xpath="script"/>
             <xs:field xpath="@id"/>
@@ -61,14 +61,6 @@
             <xs:selector xpath="table"/>
             <xs:field xpath="@style"/>
         </xs:keyref>
-        <xs:key name="table-column-style-id">
-            <xs:selector xpath="table-column-style"/>
-            <xs:field xpath="@id"/>
-        </xs:key>
-        <xs:keyref name="table-column-style-ref" refer="table-column-style-id">
-            <xs:selector xpath="table/col"/>
-            <xs:field xpath="@style"/>
-        </xs:keyref>
     </xs:element>
 
     <xs:complexType name="document">
@@ -86,7 +78,6 @@
                 <xs:element name="box-style" type="box-style"/>
                 <xs:element name="para-style" type="para-style"/>
                 <xs:element name="table-style" type="table-style"/>
-                <xs:element name="table-column-style" type="table-column-style"/>
             </xs:choice>
         </xs:sequence>
     </xs:complexType>
@@ -115,13 +106,13 @@
             <xs:element name="icon" type="icon"/>
             <xs:element name="image" type="image"/>
             <xs:element name="table" type="table">
-                <xs:unique name="column-pos">
+                <xs:unique name="column-key">
                     <xs:selector xpath="col"/>
-                    <xs:field xpath="@pos"/>
+                    <xs:field xpath="@key"/>
                 </xs:unique>
-                <xs:unique name="cell-pos">
+                <xs:unique name="cell-key">
                     <xs:selector xpath="cell"/>
-                    <xs:field xpath="@pos"/>
+                    <xs:field xpath="@key"/>
                 </xs:unique>
             </xs:element>
             <xs:element name="br" type="br"/>
@@ -188,12 +179,12 @@
     </xs:complexType>
 
     <xs:complexType name="table-col">
-        <xs:attribute name="pos" use="required" type="table-col-pos"/>
-        <xs:attribute name="style" use="optional" type="xs:IDREF"/>
+        <xs:attribute name="key" use="required" type="table-col-key"/>
+        <xs:attribute name="width" use="optional" type="relative-size"/>
     </xs:complexType>
 
     <xs:complexType name="table-cell">
-        <xs:attribute name="pos" use="required" type="table-cell-pos"/>
+        <xs:attribute name="key" use="required" type="table-cell-key"/>
         <xs:attribute name="colspan" use="optional" type="xs:positiveInteger"/>
         <xs:attribute name="rowspan" use="optional" type="xs:positiveInteger"/>
     </xs:complexType>
@@ -264,11 +255,6 @@
         <xs:attribute name="list-counter-suffix" use="optional" type="list-counter-text"/>
     </xs:complexType>
 
-    <xs:complexType name="table-column-style">
-        <xs:attribute name="id" use="required" type="xs:ID"/>
-        <xs:attribute name="width" use="optional" type="relative-size"/>
-    </xs:complexType>    
-
     <xs:complexType name="table-style">
         <xs:attribute name="id" use="required" type="xs:ID"/>
         <xs:attribute name="inline" use="optional" type="xs:boolean"/>
@@ -306,6 +292,7 @@
     <xs:group name="message-body">
         <xs:choice>
             <xs:element name="t" type="preserve-ws"/>
+            <xs:element name="c" type="preserve-ws"/>
             <xs:element name="value" type="message-value"/>
             <xs:element name="choose" type="message-choose"/>
             <xs:element name="plural" type="message-plural"/>
@@ -314,26 +301,7 @@
 
     <xs:complexType name="message-value">
         <xs:attribute name="var" use="required" type="xs:string"/>
-        <xs:attribute name="format" use="optional" type="message-value-format"/>
     </xs:complexType>
-
-    <xs:simpleType name="message-value-format">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="default"/>
-            <xs:enumeration value="date"/>
-            <xs:enumeration value="date-short"/>
-            <xs:enumeration value="date-long"/>
-            <xs:enumeration value="date-full"/>
-            <xs:enumeration value="time"/>
-            <xs:enumeration value="time-short"/>
-            <xs:enumeration value="time-long"/>
-            <xs:enumeration value="time-full"/>
-            <xs:enumeration value="duration"/>
-            <xs:enumeration value="integer"/>
-            <xs:enumeration value="percent"/>
-            <xs:enumeration value="currency"/>
-        </xs:restriction>
-    </xs:simpleType>
 
     <xs:complexType name="message-choose">
         <xs:choice>
@@ -510,16 +478,25 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:simpleType name="table-col-pos">
+    <xs:simpleType name="table-col-key">
         <xs:restriction base="xs:string">
             <xs:pattern value="[A-Z]+"/>
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:simpleType name="table-cell-pos">
-        <xs:restriction base="xs:string">
-            <xs:pattern value="[A-Z]+[1-9][0-9]*"/>
-        </xs:restriction>
+    <xs:simpleType name="table-cell-key">
+        <xs:union>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="[A-Z]+[1-9][0-9]*"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="default"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
     </xs:simpleType>
 
     <xs:simpleType name="preserve-ws">

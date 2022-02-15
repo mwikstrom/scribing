@@ -12,7 +12,7 @@ export * from "./selection/CellPosition";
 export * from "./selection/CellRange";
 
 // Script
-export * from "./script";
+export * from "./structure/Script";
 
 // Interactions
 export * from "./interaction/Interaction";
@@ -109,3 +109,6 @@ export * from "./sync/FlowSyncInput";
 export * from "./sync/FlowSyncOutput";
 export * from "./sync/FlowSyncSnapshot";
 export * from "./sync/FlowSyncProtocol";
+
+// XML serialization
+export * from "./xml/serialize-flowdoc";

@@ -41,7 +41,7 @@ import { FlowRangeSelection } from "./FlowRangeSelection";
 import { FlowTableCellSelection } from "./FlowTableCellSelection";
 import { RemoveRange } from "../operations/RemoveRange";
 import { InsertContent } from "../operations/InsertContent";
-import { Script } from "../script";
+import { Script } from "../structure/Script";
 
 const Props = {
     position: nonNegativeIntegerType,

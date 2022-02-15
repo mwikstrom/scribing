@@ -129,7 +129,7 @@ export class FlowTableContent {
         return this.#defaultContent;
     }
 
-    public toJsonValue(error?: ErrorCallback, path?: PathArray): JsonValue {
+    public toData(): Map<string, FlowTableCell> {
         const sorted = Array.from(this.#cells.entries())
             .sort((a, b) => CellPosition.parse(a[0], true).compare(CellPosition.parse(b[0], true)));
         const data = new Map(sorted);
@@ -141,6 +141,11 @@ export class FlowTableContent {
             data.set(lastKey, FlowTableCell.fromData(this.#defaultContent));
         }
 
+        return data;
+    }
+
+    public toJsonValue(error?: ErrorCallback, path?: PathArray): JsonValue {
+        const data = this.toData();
         return DataType.toJsonValue(data, error, path);
     }
 

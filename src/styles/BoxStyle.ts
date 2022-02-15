@@ -12,7 +12,7 @@ import {
 } from "paratype";
 import { FlowColor, FlowColorType } from "./FlowColor";
 import { Interaction } from "../interaction/Interaction";
-import { Script } from "../script";
+import { Script } from "../structure/Script";
 
 /**
  * Style properties for box content
