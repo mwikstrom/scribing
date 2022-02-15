@@ -37,12 +37,12 @@ export function serializeFlowContentToXml(
     const serializer = new Serializer(theme);
     serializer.visitFlowContent(content);
     const root = serializer.getResult();
-    return js2xml(root);
+    return js2xml(root, { spaces: 4 });
 }
 
 class Serializer extends FlowNodeVisitor {
     readonly #themeStack: FlowTheme[] = [];
-    readonly #bodyStack: XmlElem[] = [{name: "body"}];
+    readonly #bodyStack: XmlElem[] = [{type: "element", name: "body"}];
     readonly #scripts = new Map<Script, XmlElem>();
     readonly #imageSources = new Map<ImageSource, XmlElem>();
     readonly #textStyles = new Map<TextStyle, XmlElem>();
@@ -59,9 +59,10 @@ class Serializer extends FlowNodeVisitor {
     
     getResult(): XmlElem {
         const root: XmlElem = {
+            type: "element",
             name: "flowdoc",
             attributes: {
-                xmlns: "https://cdn.dforigo.com/schemas/scribing-flowdoc-v1.xsd"
+                xmlns: "https://cdn.dforigo.com/schemas/scribing-flowdoc-v1"
             },
             elements: [
                 this.#bodyStack[0],
@@ -73,7 +74,7 @@ class Serializer extends FlowNodeVisitor {
                 ...this.#tableStyles.values(),
             ],
         };
-        return root;
+        return {elements: [root]};
     }
 
     visitFlowContent(content: FlowContent): FlowContent {
@@ -99,7 +100,7 @@ class Serializer extends FlowNodeVisitor {
             if (ParagraphBreak.classType.test(node)) {
                 resetPara = true;
                 this.#appendElemEnd();
-            } else if(node) {
+            } else if (node) {
                 this.visitNode(node);
             }
         }
@@ -121,10 +122,7 @@ class Serializer extends FlowNodeVisitor {
         this.#appendElem("markup", {
             tag,
             style: this.#getTextStyleId(style),
-        }, Array.from(attr).map(([key, value]) => ({
-            name: key,
-            text: value,
-        })));
+        }, serializeMarkupAttr(attr));
         return node;
     }
 
@@ -211,10 +209,7 @@ class Serializer extends FlowNodeVisitor {
         this.#appendElem("start-markup", {
             tag,
             style: this.#getTextStyleId(style),
-        }, Array.from(attr).map(([key, value]) => ({
-            name: key,
-            text: value,
-        })));
+        }, serializeMarkupAttr(attr));
         return node;
     }
 
@@ -235,7 +230,7 @@ class Serializer extends FlowNodeVisitor {
     #appendElem(name: string, attr: XmlAttr, children?: string | XmlElem[]): void {
         this.#appendElemStart(name, attr);
         if (typeof children === "string") {
-            this.#appendLeaf({ text: children });
+            this.#appendLeaf({ type: "text", text: children });
         } else if (children) {
             children.forEach(child => this.#appendLeaf(child));
         }
@@ -243,11 +238,19 @@ class Serializer extends FlowNodeVisitor {
     }
 
     #appendElemStart(name: string, attributes: XmlAttr): void {
-        this.#bodyStack.push({name, attributes});
+        this.#bodyStack.push({type: "element", name, attributes});
     }
 
     #appendElemEnd(): void {
-        this.#bodyStack.pop();
+        const child = this.#bodyStack.pop();
+        if (child && this.#bodyStack.length > 0) {
+            const parent = this.#bodyStack[this.#bodyStack.length - 1];
+            if (!parent.elements) {
+                parent.elements = [child];
+            } else {
+                parent.elements.push(child);
+            }
+        }
     }
 
     #appendLeaf(elem: XmlElem): void {
@@ -312,6 +315,7 @@ class Serializer extends FlowNodeVisitor {
         if (link) {
             elements = [
                 {
+                    type: "element",
                     name: "link",
                     elements: [
                         this.#serializeInteraction(link),
@@ -320,6 +324,7 @@ class Serializer extends FlowNodeVisitor {
             ];
         }
         return {
+            type: "element",
             name: "text-style",
             attributes: {
                 id,
@@ -342,6 +347,7 @@ class Serializer extends FlowNodeVisitor {
     #serializeBoxStyle(id: string, style: BoxStyle): XmlElem {
         const { variant, color, inline, source } = style;
         return {
+            type: "element",
             name: "box-style",
             attributes: {
                 id,
@@ -356,6 +362,7 @@ class Serializer extends FlowNodeVisitor {
     #serializeInteraction(interaction: Interaction): XmlElem {
         if (interaction instanceof OpenUrl) {
             return {
+                type: "element",
                 name: "open-url",
                 attributes: {
                     href: interaction.url,
@@ -363,6 +370,7 @@ class Serializer extends FlowNodeVisitor {
             };
         } else if (interaction instanceof RunScript) {
             return {
+                type: "element",
                 name: "run-script",
                 attributes: {
                     ref: this.#getScriptId(interaction.script),
@@ -398,15 +406,23 @@ const getAllocatedId = <T extends Equatable>(
     return id;
 };
 
+const serializeMarkupAttr = (attr: ReadonlyMap<string, string>): XmlElem[] => Array.from(attr).map(([key, value]) => ({
+    type: "element",
+    name: "attr",
+    attributes: { key, value },
+}));
+
 const serializeScript = (id: string, script: Script): XmlElem => {
     const { code, messages } = script;
     return {
+        type: "element",
         name: "script",
         attributes: { id },
         elements: [
             {
+                type: "element",
                 name: "code",
-                elements: [{ text: code }],
+                elements: [{ type: "text", text: code }],
             },
             ...Array.from(messages).map(([key, value]) => serializeMessage(key, value)),
         ],
@@ -422,6 +438,7 @@ const serializeImageSource = (id: string, source: ImageSource): XmlElem => {
         upload,
     } = source;
     return {
+        type: "element",
         name: "image-source",
         attributes: {
             id,
@@ -450,6 +467,7 @@ const serializeParaStyle = (id: string, style: ParagraphStyle): XmlElem => {
         listCounterSuffix,
     } = style;
     return {
+        type: "element",
         name: "para-style",
         attributes: {
             id,
@@ -472,6 +490,7 @@ const serializeParaStyle = (id: string, style: ParagraphStyle): XmlElem => {
 const serializeTableStyle = (id: string, style: TableStyle): XmlElem => {
     const { inline } = style;
     return {
+        type: "element",
         name: "table-style",
         attributes: {
             id,
