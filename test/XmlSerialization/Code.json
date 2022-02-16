@@ -1,0 +1,5 @@
+[
+    "code is not translated by default ",
+    { "text": "but it can be enabled", "style": { "translate": true } },    
+    { "break": "para", "style": { "variant": "code" } }
+]

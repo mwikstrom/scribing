@@ -1,0 +1,6 @@
+[
+    "it's possible to ",
+    { "text": "skip translation", "style": { "translate": false } },    
+    " explicitly",
+    { "break": "para" }
+]
