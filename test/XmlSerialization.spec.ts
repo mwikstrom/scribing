@@ -17,8 +17,6 @@ describe("XmlSerialization", () => {
                     .trim();
                 const parsed = FlowContent.fromJsonValue(JSON.parse(json));
                 const actual = serializeFlowContentToXml(parsed);
-                console.log(actual.replace(/ /g, "_"));
-                console.log(expected.replace(/ /g, "_"));
                 expect(actual).toBe(expected);
             });
         }

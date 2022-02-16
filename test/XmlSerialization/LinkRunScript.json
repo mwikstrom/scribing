@@ -1,0 +1,6 @@
+[
+    "Here's a ", 
+    { "text": "link", "style": { "link": { "script": "success = true" } } },
+    ".",
+    { "break": "para" }
+]
