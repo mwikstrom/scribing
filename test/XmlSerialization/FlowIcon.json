@@ -1,0 +1,9 @@
+[
+    { 
+        "icon": "warning",
+        "style": {
+            "color": "warning",
+            "fontSize": 200
+        }
+    }
+]
