@@ -1,0 +1,7 @@
+<?xml-model href="..\..\etc\scribing-flowdoc-v1.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<flowdoc xmlns="https://cdn.dforigo.com/schemas/scribing-flowdoc-v1">
+    <body>
+        <p style="para-1"/>
+    </body>
+    <para-style id="para-1" alignment="justify" direction="ltr" variant="preamble" line-spacing="150" space-before="50" space-after="200" list-level="3" list-marker="ordered" hide-list-marker="true" list-counter="25" list-counter-prefix="(" list-counter-suffix=")"/>
+</flowdoc>

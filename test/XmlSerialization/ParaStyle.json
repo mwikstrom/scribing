@@ -1,0 +1,19 @@
+[
+    {
+        "break": "para",
+        "style": {
+            "alignment": "justify",
+            "direction": "ltr",
+            "variant": "preamble",
+            "lineSpacing": 150,
+            "spaceBefore": 50,
+            "spaceAfter": 200,
+            "listLevel": 3,
+            "listMarker": "ordered",
+            "hideListMarker": true,
+            "listCounter": 25,
+            "listCounterPrefix": "(",
+            "listCounterSuffix": ")"
+        }
+    }
+]
