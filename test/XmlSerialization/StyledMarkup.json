@@ -1,0 +1,16 @@
+[
+    { 
+        "start_markup": "outer",
+        "style": { "color": "success" },
+        "attr": { "foo": "bar" }
+    },
+    { 
+        "empty_markup": "inner",
+        "style": { "color": "information" },
+        "attr": { "a": "1" }
+    },
+    {
+        "end_markup": "outer", 
+        "style": { "color": "success" }
+    }
+]

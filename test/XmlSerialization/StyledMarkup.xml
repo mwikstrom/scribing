@@ -1,0 +1,14 @@
+<?xml-model href="..\..\etc\scribing-flowdoc-v1.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<flowdoc xmlns="https://cdn.dforigo.com/schemas/scribing-flowdoc-v1">
+    <body>
+        <start-markup tag="outer" style="text-1">
+            <attr key="foo" value="bar"/>
+        </start-markup>
+        <markup tag="inner" style="text-2">
+            <attr key="a" value="1"/>
+        </markup>
+        <end-markup tag="outer" style="text-1"/>
+    </body>
+    <text-style id="text-1" color="success"/>
+    <text-style id="text-2" color="information"/>
+</flowdoc>
