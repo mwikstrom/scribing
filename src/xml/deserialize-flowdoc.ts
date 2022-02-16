@@ -435,7 +435,7 @@ const deserializeScript = (elem: XmlElem): Script => {
             code = getTextFromElem(child);
         } else if (hasFlowDocName(child, "message")) {
             const key = getRequiredXmlAttr(child, "key");
-            const value = deserializeMessageBody(child);
+            const value = deserializeMessageBody(child).join("");
             messages.set(key, value);
         }
     }
@@ -444,10 +444,114 @@ const deserializeScript = (elem: XmlElem): Script => {
     return new Script({ code, messages });
 };
 
-const deserializeMessageBody = (elem: XmlElem): string => {
+const deserializeMessageBody = (elem: XmlElem): string[] => {
     const parts: string[] = [];
-    // TODO: IMPLEMENT!
-    return parts.join("");
+    for (const child of (elem.elements || [])) {
+        if (hasFlowDocName(child, "c")) {
+            parts.push(getTextFromElem(child));
+        } else if (hasFlowDocName(child, "t")) {
+            parts.push(Script.escapeMessage(getTextFromElem(child)));
+        } else if (hasFlowDocName(child, "plural")) {
+            parts.push(...deserializeMessagePlural(child));
+        } else if (hasFlowDocName(child, "choose")) {
+            parts.push(...deserializeMessageSelect(child));
+        } else if (hasFlowDocName(child, "count")) {
+            parts.push("#");
+        } else if (hasFlowDocName(child, "value")) {
+            parts.push(...deserializeMessageValue(child));
+        }
+    }
+    return parts;
+};
+
+const deserializeMessageValue = (elem: XmlElem): string[] => {
+    const arg = getXmlAttr(elem, "var");
+    if (!arg) {
+        return [];
+    }
+    return ["{", Script.escapeMessage(arg), "}"];
+};
+
+const deserializeMessagePlural = (elem: XmlElem): string[] => {
+    const arg = getXmlAttr(elem, "var"); 
+    if (!arg) {
+        return [];
+    }
+
+    const parts = ["{", Script.escapeMessage(arg), ","];
+
+    const mode = getXmlAttr(elem, "mode");
+    if (mode === "ordinal") {
+        parts.push("selectordinal");
+    } else {
+        parts.push("plural");
+    }
+
+    parts.push(",");
+
+    const offset = getIntegerXmlAttr(elem, "offset");
+    if (typeof offset === "number") {
+        parts.push(`offset:${offset} `);
+    }
+
+    for (const option of (elem.elements || [])) {
+        let optionName = getElemInfo(option).flowDocName;
+        
+        if (optionName === "exact") {
+            const eq = getXmlAttr(option, "eq");
+            if (eq) {
+                optionName = `=${Script.escapeMessage(eq)}`;
+            } else {
+                optionName = undefined;
+            }
+        }
+
+        if (!optionName) {
+            continue;
+        }
+
+        parts.push(optionName, "{");
+        parts.push(...deserializeMessageBody(option));
+        parts.push("}");
+    }                
+
+    parts.push("}");
+    return parts;
+};
+
+const deserializeMessageSelect = (elem: XmlElem): string[] => {
+    const arg = getXmlAttr(elem, "var"); 
+    if (!arg) {
+        return [];
+    }
+
+    const parts = ["{", Script.escapeMessage(arg), ",select,"];
+
+    for (const option of (elem.elements || [])) {
+        let optionName = getElemInfo(option).flowDocName;
+        
+        if (optionName === "when") {
+            const eq = getXmlAttr(option, "eq");
+            if (eq) {
+                optionName = Script.escapeMessage(eq);
+            } else {
+                optionName = undefined;
+            }
+        } else if (optionName !== "other") {
+            optionName = undefined;
+        }
+
+        if (!optionName) {
+            continue;
+        }
+
+        parts.push(optionName, "{");
+        parts.push(...deserializeMessageBody(option));
+        parts.push("}");
+    }                
+
+    parts.push("}");
+    return parts;
 };
 
 const getStyle = <T>(

@@ -67,6 +67,11 @@ export class Script extends ScriptBase implements Readonly<ScriptProps> {
     public static isSupportedMessageFormat(message: string): boolean {
         return isSupportedMessageFormat(message);
     }
+
+    /** Escapes the specified message format */
+    public static escapeMessage(message: string): string {
+        return message.replace(/[#{}]|(?:'[#{}]')/g, "'$&'");
+    }
 }
 
 const EMPTY_MESSAGES: Map<string, string> = Object.freeze(new Map());

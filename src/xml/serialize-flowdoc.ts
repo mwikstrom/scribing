@@ -37,7 +37,13 @@ export function serializeFlowContentToXml(
     const serializer = new Serializer(theme);
     serializer.visitFlowContent(content);
     const root = serializer.getResult();
-    return js2xml(root, { spaces: 4 });
+    return js2xml(root, {
+        spaces: 4,
+        attributeValueFn: val => val.replace(
+            /\s/g, 
+            ws => ws === " " ? ws : `&#x${ws.charCodeAt(0).toString(16).padStart(4, "0")};`
+        ),
+    });
 }
 
 class Serializer extends FlowNodeVisitor {

@@ -7,6 +7,7 @@
         "attr": {
             "foo": "bar",
             "": "empty",
+            "quote inside": "hello \"world\"!",
             "\nmulti\nline": " is odd\nbut\nsupported\n"
         }
     }

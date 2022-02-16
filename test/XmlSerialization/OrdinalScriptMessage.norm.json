@@ -1,0 +1,10 @@
+[
+    {
+        "dynamic": {
+            "code": "",
+            "messages": {
+                "TXT1": "before {foo,selectordinal,zero{Zero}one{One}two{Two}few{Few {bar}}many{Many}=123{123}other{foo # bar}} after"
+            }
+        }
+    }
+]

@@ -4,12 +4,8 @@
         <markup tag="test" style="text-1">
             <attr key="foo" value="bar"/>
             <attr key="" value="empty"/>
-            <attr key="
-multi
-line" value=" is odd
-but
-supported
-"/>
+            <attr key="quote inside" value="hello &quot;world&quot;!"/>
+            <attr key="&#x000a;multi&#x000a;line" value=" is odd&#x000a;but&#x000a;supported&#x000a;"/>
         </markup>
     </body>
     <text-style id="text-1" color="primary"/>
