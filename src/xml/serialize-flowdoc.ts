@@ -30,6 +30,13 @@ import { OpenUrl } from "../interaction/OpenUrl";
 import { RunScript } from "../interaction/RunScript";
 import { serializeMessage } from "../internal/serialize-message-format";
 
+/**
+ * Serializes the specified flow content to an XML string
+ * @param content - The flow content that shall be serialized
+ * @param theme - Optional. Theme of the content that shall be serialized
+ * @returns The serialized XML string
+ * @public
+ */
 export function serializeFlowContentToXml(
     content: FlowContent,
     theme: FlowTheme = DefaultFlowTheme.instance

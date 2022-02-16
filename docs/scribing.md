@@ -84,6 +84,13 @@ Model for collaborative rich text editing
 |  [UnformatText](./scribing.unformattext.md) | Represents an operation that unapplies a text style to a range of flow content. |
 |  [UnsetMarkupAttr](./scribing.unsetmarkupattr.md) | Represents an operation that sets a markup tag |
 
+## Functions
+
+|  Function | Description |
+|  --- | --- |
+|  [deserializeFlowContentFromXml(xml)](./scribing.deserializeflowcontentfromxml.md) | Deserializes flow content from the specified XML string |
+|  [serializeFlowContentToXml(content, theme)](./scribing.serializeflowcontenttoxml.md) | Serializes the specified flow content to an XML string |
+
 ## Interfaces
 
 |  Interface | Description |

@@ -250,6 +250,9 @@ export interface DefaultFlowThemeProps {
     rtl: boolean;
 }
 
+// @public
+export function deserializeFlowContentFromXml(xml: string): FlowContent;
+
 // @public @sealed
 export class DynamicText extends DynamicTextBase implements DynamicTextProps {
     accept(visitor: FlowNodeVisitor): FlowNode;
@@ -1080,6 +1083,8 @@ export class FlowTableContent {
     setContent(position: CellPosition, content: FlowContent): FlowTableContent;
     // (undocumented)
     split(position: CellPosition): FlowTableContent;
+    // (undocumented)
+    toData(): Map<string, FlowTableCell>;
     // (undocumented)
     toJsonValue(error?: ErrorCallback, path?: PathArray): JsonValue;
     // (undocumented)
@@ -2187,7 +2192,9 @@ export interface RunScriptProps {
 // @public
 export class Script extends ScriptBase implements Readonly<ScriptProps> {
     static readonly classType: Type<Script>;
+    static escapeMessage(message: string): string;
     static fromData(data: ScriptData): Script;
+    static isSupportedMessageFormat(message: string): boolean;
 }
 
 // @public
@@ -2201,6 +2208,9 @@ export interface ScriptProps {
     code: string;
     messages: Map<string, string>;
 }
+
+// @public
+export function serializeFlowContentToXml(content: FlowContent, theme?: FlowTheme): string;
 
 // @public @sealed
 export class SetDynamicTextExpression extends SetDynamicTextExpressionBase implements SetDynamicTextExpressionProps {

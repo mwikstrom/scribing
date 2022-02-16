@@ -37,6 +37,12 @@ interface XmlElemWithParent extends XmlElem {
     parent: XmlElem;
 }
 
+/**
+ * Deserializes flow content from the specified XML string
+ * @param xml - The XML string that shall be deserialized
+ * @returns Flow content
+ * @public
+ */
 export function deserializeFlowContentFromXml(
     xml: string
 ): FlowContent {

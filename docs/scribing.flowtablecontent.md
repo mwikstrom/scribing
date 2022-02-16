@@ -43,6 +43,7 @@ export declare class FlowTableContent
 |  [removeRow(index, count)](./scribing.flowtablecontent.removerow.md) |  |  |
 |  [setContent(position, content)](./scribing.flowtablecontent.setcontent.md) |  |  |
 |  [split(position)](./scribing.flowtablecontent.split.md) |  |  |
+|  [toData()](./scribing.flowtablecontent.todata.md) |  |  |
 |  [toJsonValue(error, path)](./scribing.flowtablecontent.tojsonvalue.md) |  |  |
 |  [updateAllContent(callback)](./scribing.flowtablecontent.updateallcontent.md) |  |  |
 

@@ -25,5 +25,7 @@ export declare class Script extends ScriptBase implements Readonly<ScriptProps>
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [escapeMessage(message)](./scribing.script.escapemessage.md) | <code>static</code> | Escapes the specified message format |
 |  [fromData(data)](./scribing.script.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
+|  [isSupportedMessageFormat(message)](./scribing.script.issupportedmessageformat.md) | <code>static</code> | Determines whether the specified message format is supported |
 
