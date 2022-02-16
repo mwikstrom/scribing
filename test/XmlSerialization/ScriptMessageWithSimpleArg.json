@@ -1,0 +1,10 @@
+[
+    {
+        "dynamic": {
+            "code": "",
+            "messages": {
+                "TXT1": "before{arg}after"
+            }
+        }
+    }
+]
