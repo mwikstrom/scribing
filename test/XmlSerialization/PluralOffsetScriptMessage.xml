@@ -1,0 +1,27 @@
+<?xml-model href="..\..\etc\scribing-flowdoc-v1.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<flowdoc xmlns="https://cdn.dforigo.com/schemas/scribing-flowdoc-v1">
+    <body>
+        <dynamic expression="script-1"/>
+    </body>
+    <script id="script-1">
+        <code></code>
+        <message key="TXT1">
+            <plural var="ADDS" mode="cardinal" offset="1">
+                <exact eq="0">
+                    <t>No-one has added this</t>
+                </exact>
+                <exact eq="1">
+                    <t>You added this</t>
+                </exact>
+                <one>
+                    <t>You and one other person added this</t>
+                </one>
+                <other>
+                    <t>You and </t>
+                    <count/>
+                    <t> others added this</t>
+                </other>
+            </plural>
+        </message>
+    </script>
+</flowdoc>

@@ -316,7 +316,7 @@
     </xs:complexType>
 
     <xs:complexType name="message-plural">
-        <xs:sequence>
+        <xs:choice minOccurs="1" maxOccurs="unbounded">
             <xs:element name="zero" type="message-plural-body" minOccurs="0" maxOccurs="1"/>
             <xs:element name="one" type="message-plural-body" minOccurs="0" maxOccurs="1"/>
             <xs:element name="two" type="message-plural-body" minOccurs="0" maxOccurs="1"/>
@@ -324,7 +324,7 @@
             <xs:element name="many" type="message-plural-body" minOccurs="0" maxOccurs="1"/>
             <xs:element name="exact" type="message-plural-when" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="other" type="message-plural-body" minOccurs="1" maxOccurs="1"/>
-        </xs:sequence>
+        </xs:choice>
         <xs:attribute name="var" use="required" type="xs:string"/>
         <xs:attribute name="offset" use="optional" type="xs:integer"/>
         <xs:attribute name="mode" use="optional" type="message-plural-mode"/>
