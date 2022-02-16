@@ -1,0 +1,18 @@
+<?xml-model href="..\..\etc\scribing-flowdoc-v1.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<flowdoc xmlns="https://cdn.dforigo.com/schemas/scribing-flowdoc-v1">
+    <body>
+        <table style="table-1">
+            <col key="B" width="0.5"/>
+            <cell key="A1" colspan="2" rowspan="2">
+                <t>Hello</t>
+            </cell>
+            <cell key="C3">
+                <t>World</t>
+            </cell>
+            <cell key="default">
+                <p/>
+            </cell>
+        </table>
+    </body>
+    <table-style id="table-1" inline="true"/>
+</flowdoc>

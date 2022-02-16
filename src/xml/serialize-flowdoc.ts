@@ -184,11 +184,11 @@ class Serializer extends FlowNodeVisitor {
 
     visitTableContent(content: FlowTableContent): FlowTableContent {
         const data = content.toData();
-        for (const [key, { colSpan: colspan, rowSpan: rowspan, content: nested}] of data) {
+        for (const [key, { colSpan, rowSpan, content: nested}] of data) {
             this.#appendElemStart("cell", {
                 key,
-                colspan,
-                rowspan,
+                colspan: colSpan === 1 ? undefined : colSpan,
+                rowspan: rowSpan === 1 ? undefined : rowSpan,
             });
             this.visitFlowContent(nested);
             this.#appendElemEnd();

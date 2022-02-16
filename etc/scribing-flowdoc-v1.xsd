@@ -184,9 +184,13 @@
     </xs:complexType>
 
     <xs:complexType name="table-cell">
-        <xs:attribute name="key" use="required" type="table-cell-key"/>
-        <xs:attribute name="colspan" use="optional" type="xs:positiveInteger"/>
-        <xs:attribute name="rowspan" use="optional" type="xs:positiveInteger"/>
+        <xs:complexContent>
+            <xs:extension base="flow">
+                <xs:attribute name="key" use="required" type="table-cell-key"/>
+                <xs:attribute name="colspan" use="optional" type="xs:positiveInteger"/>
+                <xs:attribute name="rowspan" use="optional" type="xs:positiveInteger"/>
+            </xs:extension>
+        </xs:complexContent>
     </xs:complexType>
 
     <xs:complexType name="br">
