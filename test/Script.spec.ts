@@ -9,6 +9,7 @@ describe("Script", () => {
             ${"{arg, plural, zero {Zero} =10 {Ten} other {#}}"}
             ${"{arg, selectordinal, offset:1 zero {Zero} =10 {Ten} other {#}}"}
             ${"{arg, select, x {X} y {Y} other {{arg}}}"}
+            ${"'{' {S, plural, other{# is a '#'}} '}'"}
         `("returns true for $message", ({message}) => {
             expect(Script.isFormattableMessage(message)).toBe(true);
         });

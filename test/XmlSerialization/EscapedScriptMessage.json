@@ -1,0 +1,14 @@
+[
+    {
+        "dynamic": {
+            "code": "",
+            "messages": {
+                "TXT0a": "'{arg}'",
+                "TXT0b": "'{'arg'}'",
+                "TXT1": "'{' {S, plural, other{# is a Z}} '}'",
+                "TXT2": "escape 'something' else",
+                "TXT3": "double-escaping ''something'' works"
+            }
+        }
+    }
+]

@@ -26,7 +26,7 @@ export const serializeMessage = (key: string, message: string): XmlElem => {
 
 const serializeMessageBody = (message: string): XmlElem[] => {
     try {
-        const tokens = parseMessage(message, { strict: true });
+        const tokens = parseMessage(message);
         return tokens.map(serializeMessageToken);    
     } catch {
         return [{

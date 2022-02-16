@@ -12,7 +12,7 @@ export type MessageToken = MsgFormatContent | MsgFormatPlainArg | MsgFormatFunct
 
 export function isSupportedMessageFormat(message: string): boolean {
     try {
-        const tokens = parseMessage(message, { strict: true });
+        const tokens = parseMessage(message);
         return tokens.every(isSupportedMessageToken);    
     } catch {
         return false;
