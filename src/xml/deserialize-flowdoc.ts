@@ -71,7 +71,7 @@ const deserializeBody = (container: XmlElem): FlowContent => {
     if (elements) {
         for (const child of elements) {
             if (hasFlowDocName(child, "p")) {
-                nodes.push(...deserializePara(container));
+                nodes.push(...deserializePara(child));
             } else {            
                 const node = deserializeNode(child);
                 if (node) {
@@ -157,6 +157,7 @@ const getMarkupAttr = (elem: XmlElem): Map<string, string> => {
             }
         }
     }
+    Object.freeze(result);
     return result;
 };
 
@@ -305,7 +306,7 @@ const deserializeParaStyle = (elem: XmlElem): ParagraphStyle => {
     const spaceAfter = getIntegerXmlAttr(elem, "space-after");
     const listLevel = getIntegerXmlAttr(elem, "list-level");
     const listMarker = getXmlEnumAttr(elem, "list-marker", LIST_MARKER_KINDS);
-    const hideListMarker = getBooleanXmlAttr(elem, "hist-list-marker");
+    const hideListMarker = getBooleanXmlAttr(elem, "hide-list-marker");
     const rawListCounter = getXmlAttr(elem, "list-counter");
     const listCounterPrefix = getXmlAttr(elem, "list-counter-prefix");
     const listCounterSuffix = getXmlAttr(elem, "list-counter-suffix");
