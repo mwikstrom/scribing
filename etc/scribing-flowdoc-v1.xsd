@@ -322,7 +322,7 @@
             <xs:element name="two" type="message-plural-body" minOccurs="0" maxOccurs="1"/>
             <xs:element name="few" type="message-plural-body" minOccurs="0" maxOccurs="1"/>
             <xs:element name="many" type="message-plural-body" minOccurs="0" maxOccurs="1"/>
-            <xs:element name="exact" type="message-when" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="exact" type="message-plural-when" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="other" type="message-plural-body" minOccurs="1" maxOccurs="1"/>
         </xs:sequence>
         <xs:attribute name="var" use="required" type="xs:string"/>
@@ -349,6 +349,14 @@
     <xs:complexType name="message-when">
         <xs:complexContent>
             <xs:extension base="message-body">
+                <xs:attribute name="eq" use="required" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>        
+    </xs:complexType>
+
+    <xs:complexType name="message-plural-when">
+        <xs:complexContent>
+            <xs:extension base="message-plural-body">
                 <xs:attribute name="eq" use="required" type="xs:string"/>
             </xs:extension>
         </xs:complexContent>        

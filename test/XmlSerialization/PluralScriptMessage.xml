@@ -1,0 +1,39 @@
+<?xml-model href="..\..\etc\scribing-flowdoc-v1.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<flowdoc xmlns="https://cdn.dforigo.com/schemas/scribing-flowdoc-v1">
+    <body>
+        <dynamic expression="script-1"/>
+    </body>
+    <script id="script-1">
+        <code></code>
+        <message key="TXT1">
+            <t>before </t>
+            <plural var="foo" mode="cardinal">
+                <zero>
+                    <t>Zero</t>
+                </zero>
+                <one>
+                    <t>One</t>
+                </one>
+                <two>
+                    <t>Two</t>
+                </two>
+                <few>
+                    <t>Few </t>
+                    <value var="bar"/>
+                </few>
+                <many>
+                    <t>Many</t>
+                </many>
+                <exact eq="123">
+                    <t>123</t>
+                </exact>
+                <other>
+                    <t>foo </t>
+                    <count/>
+                    <t> bar</t>
+                </other>
+            </plural>
+            <t> after</t>
+        </message>
+    </script>
+</flowdoc>
