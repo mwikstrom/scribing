@@ -1,0 +1,15 @@
+[
+    "before ",
+    { 
+        "box": [
+            "disabled button",
+            { "break": "para" }
+        ],
+        "style": {
+            "source": "false",
+            "interaction": { "script": "onClick()" }
+        }
+    },
+    " after",
+    { "break": "para" }
+]

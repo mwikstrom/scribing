@@ -345,7 +345,19 @@ class Serializer extends FlowNodeVisitor {
     }
 
     #serializeBoxStyle(id: string, style: BoxStyle): XmlElem {
-        const { variant, color, inline, source } = style;
+        const { variant, color, inline, source, interaction } = style;
+        let elements: XmlElem[] | undefined;
+        if (interaction) {
+            elements = [
+                {
+                    type: "element",
+                    name: "interaction",
+                    elements: [
+                        this.#serializeInteraction(interaction),
+                    ],
+                },
+            ];
+        }
         return {
             type: "element",
             name: "box-style",
@@ -356,6 +368,7 @@ class Serializer extends FlowNodeVisitor {
                 inline: serializeBooleanAttr(inline),
                 source: this.#getScriptId(source),
             },
+            elements,
         };
     }
 
