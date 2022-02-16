@@ -1,0 +1,9 @@
+<?xml-model href="..\..\etc\scribing-flowdoc-v1.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<flowdoc xmlns="https://cdn.dforigo.com/schemas/scribing-flowdoc-v1">
+    <body>
+        <t>before</t>
+        <br style="text-1"/>
+        <t>after</t>
+    </body>
+    <text-style id="text-1" spellcheck="false"/>
+</flowdoc>
