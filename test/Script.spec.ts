@@ -11,7 +11,7 @@ describe("Script", () => {
             ${"{arg, select, x {X} y {Y} other {{arg}}}"}
             ${"'{' {S, plural, other{# is a '#'}} '}'"}
         `("returns true for $message", ({message}) => {
-            expect(Script.isFormattableMessage(message)).toBe(true);
+            expect(Script.isSupportedMessageFormat(message)).toBe(true);
         });
 
         test.each`
@@ -30,7 +30,7 @@ describe("Script", () => {
             ${"{arg, duration}"}
             ${"{arg, number, integer}"}
         `("returns false for $message", message => {
-            expect(Script.isFormattableMessage(message)).toBe(false);
+            expect(Script.isSupportedMessageFormat(message)).toBe(false);
         });
     });
 });
