@@ -159,7 +159,7 @@ class Serializer extends FlowNodeVisitor {
 
     visitImage(node: FlowImage): FlowNode {
         const { source, style } = node;
-        this.#appendElem("icon", {
+        this.#appendElem("image", {
             source: this.#getImageSourceId(source),
             style: this.#getTextStyleId(style),
         });
