@@ -1,0 +1,11 @@
+[
+    {
+        "dynamic": {
+            "code": "",
+            "messages": {
+                "TXT1": "first",
+                "TXT2": "second"
+            }
+        }
+    }
+]
