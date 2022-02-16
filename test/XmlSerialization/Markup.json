@@ -1,0 +1,7 @@
+[
+    "before",
+    { "start_markup": "test" },
+    "inside",
+    { "end_markup": "test" },
+    "after"
+]

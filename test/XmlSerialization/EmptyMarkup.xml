@@ -1,0 +1,16 @@
+<?xml-model href="..\..\etc\scribing-flowdoc-v1.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<flowdoc xmlns="https://cdn.dforigo.com/schemas/scribing-flowdoc-v1">
+    <body>
+        <markup tag="test" style="text-1">
+            <attr key="foo" value="bar"/>
+            <attr key="" value="empty"/>
+            <attr key="
+multi
+line" value=" is odd
+but
+supported
+"/>
+        </markup>
+    </body>
+    <text-style id="text-1" color="primary"/>
+</flowdoc>
