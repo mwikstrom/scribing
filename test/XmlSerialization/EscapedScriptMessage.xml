@@ -5,13 +5,13 @@
     </body>
     <script id="script-1">
         <code></code>
-        <message key="TXT0a">
-            <t>{arg}</t>
-        </message>
-        <message key="TXT0b">
-            <t>{arg}</t>
-        </message>
         <message key="TXT1">
+            <t>{arg}</t>
+        </message>
+        <message key="TXT2">
+            <t>{arg}</t>
+        </message>
+        <message key="TXT3">
             <t>{ </t>
             <plural var="S" mode="cardinal">
                 <other>
@@ -21,10 +21,10 @@
             </plural>
             <t> }</t>
         </message>
-        <message key="TXT2">
+        <message key="TXT4">
             <t>escape 'something' else</t>
         </message>
-        <message key="TXT3">
+        <message key="TXT5">
             <t>double-escaping 'something' works</t>
         </message>
     </script>

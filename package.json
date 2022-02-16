@@ -31,7 +31,7 @@
   "devDependencies": {
     "@babel/core": "^7.14.8",
     "@babel/preset-env": "^7.14.9",
-    "@messageformat/parser": "^5.0.0",
+    "@formatjs/icu-messageformat-parser": "^2.0.18",
     "@microsoft/api-documenter": "^7.13.33",
     "@microsoft/api-extractor": "^7.18.4",
     "@rollup/plugin-babel": "^5.3.0",
@@ -55,7 +55,7 @@
     "xml-js": "^1.6.11"
   },
   "peerDependencies": {
-    "@messageformat/parser": "5.x",
+    "@formatjs/icu-messageformat-parser": "2.x",
     "xml-js": "1.x",
     "paratype": "0.x"
   }

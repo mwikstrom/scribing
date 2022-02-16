@@ -1,19 +1,14 @@
-import type { Element as XmlElem } from "xml-js";
-import { parse as parseMessage } from "@messageformat/parser";
-import type {
-    Select as MsgFormatSelect,
-    SelectCase,
-} from "@messageformat/parser";
 import { 
-    isArgumentToken, 
-    isContentToken, 
-    isOctothorpe, 
-    isPluralToken, 
-    isSelectOrdinalToken, 
-    isSelectToken, 
-    isSupportedPluralCaseKey, 
-    MessageToken
-} from "../internal/message-format";
+    isArgumentElement, 
+    isLiteralElement, 
+    isPluralElement, 
+    isPoundElement, 
+    isSelectElement, 
+    MessageFormatElement, 
+    PluralOrSelectOption, 
+} from "@formatjs/icu-messageformat-parser";
+import type { Element as XmlElem } from "xml-js";
+import { isSupportedPluralCaseKey, parseMessageFormat } from "../internal/message-format";
 
 export const serializeMessage = (key: string, message: string): XmlElem => {
     return {
@@ -26,8 +21,8 @@ export const serializeMessage = (key: string, message: string): XmlElem => {
 
 const serializeMessageBody = (message: string): XmlElem[] => {
     try {
-        const tokens = parseMessage(message);
-        return tokens.map(serializeMessageToken);    
+        const elems = parseMessageFormat(message);
+        return elems.map(serializeMessageFormatElement);    
     } catch {
         return [{
             type: "element",
@@ -37,92 +32,88 @@ const serializeMessageBody = (message: string): XmlElem[] => {
     }
 };
 
-const serializeMessageToken = (token: MessageToken): XmlElem => {
-    if (isContentToken(token)) {
-        const { value } = token;
+const serializeMessageFormatElement = (elem: MessageFormatElement): XmlElem => {
+    if (isLiteralElement(elem)) {
+        const { value } = elem;
         return {
             type: "element",
             name: "t",
             elements: [{ type: "text", text: value }],
-        };
-    } else if (isOctothorpe(token)) {
+        };        
+    } else if (isPoundElement(elem)) {
         return { type: "element", name: "count" };
-    } else if (isArgumentToken(token)) {
-        const { arg } = token;
+    } else if (isArgumentElement(elem)) {
+        const { value } = elem;
         return {
             type: "element",
             name: "value",
             attributes: {
-                var: arg,
+                var: value,
             },
         };
-    } else if (isPluralToken(token)) {
-        return serializePlural(token, "cardinal");
-    } else if (isSelectOrdinalToken(token)) {
-        return serializePlural(token, "ordinal");
-    } else if (isSelectToken(token)) {
-        const { arg, cases } = token;
+    } else if (isPluralElement(elem)) {
+        const { value, options, offset, pluralType } = elem;
+        return {
+            type: "element",
+            name: "plural",
+            attributes: {
+                var: value,
+                mode: pluralType,
+                offset: offset !== 0 ? offset : undefined,
+            },
+            elements: Object.entries(options).map(([key, value]) => serializePluralOption(key, value)),
+        };
+    } else if (isSelectElement(elem)) {
+        const { value, options } = elem;
         return {
             type: "element",
             name: "choose",
-            attributes: { var: arg },
-            elements: cases.map(serializeSelectCase),
+            attributes: { var: value },
+            elements: Object.entries(options).map(([key, value]) => serializeSelectOption(key, value)),
         };
     } else {
         // Note: Formatting functions are currently not supported
-        throw new TypeError(`Unsupported message format token: ${JSON.stringify(token)}`);
+        throw new TypeError(`Unsupported message format element: ${JSON.stringify(elem)}`);
     }
 };
 
-const serializePlural = (token: MsgFormatSelect, mode: "ordinal" | "cardinal"): XmlElem => {
-    const { arg, cases, pluralOffset: offset } = token;
-    return {
-        type: "element",
-        name: "plural",
-        attributes: {
-            var: arg,
-            mode,
-            offset,
-        },
-        elements: cases.map(serializePluralCase),
-    };        
-};
-
-const serializePluralCase = (input: SelectCase): XmlElem => {
-    const { key, tokens } = input;
+const serializePluralOption = (key: string, option: PluralOrSelectOption): XmlElem => {
+    const { value } = option;
+    
     if (!isSupportedPluralCaseKey(key)) {
-        throw new TypeError(`Unsupported plural case: ${JSON.stringify(input)}`);
+        throw new TypeError(`Unsupported plural case: ${key}`);
     }
+
     if (/^=\d+/.test(key)) {
         return {
             type: "element",
             name: "exact",
             attributes: { eq: key.substring(1) },
-            elements: tokens.map(serializeMessageToken),
+            elements: value.map(serializeMessageFormatElement),
         };
     } else {
         return {
             type: "element",
             name: key,
-            elements: tokens.map(serializeMessageToken),
+            elements: value.map(serializeMessageFormatElement),
         };
     }
 };
 
-const serializeSelectCase = (input: SelectCase): XmlElem => {
-    const { key, tokens } = input;
+const serializeSelectOption = (key: string, option: PluralOrSelectOption): XmlElem => {
+    const { value } = option;
     if (key === "other") {
         return {
             type: "element",
             name: "other",
-            elements: tokens.map(serializeMessageToken),
+            elements: value.map(serializeMessageFormatElement),
         };
     } else {
         return {
             type: "element",
             name: "when",
             attributes: { eq: key },
-            elements: tokens.map(serializeMessageToken),
+            elements: value.map(serializeMessageFormatElement),
         };
     }
 };
