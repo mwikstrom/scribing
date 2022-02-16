@@ -1,0 +1,19 @@
+[
+    {
+        "text": "x",
+        "style": {
+            "bold": true,
+            "italic": false,
+            "underline": true,
+            "strike": false,
+            "baseline": "super",
+            "fontFamily": "cursive",
+            "fontSize": 250,
+            "link": { "script": "dummy()" },
+            "color": "secondary",
+            "spellcheck": false,
+            "translate": true,
+            "lang": "en-US"
+        }
+    }
+]

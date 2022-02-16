@@ -1,0 +1,14 @@
+<?xml-model href="..\..\etc\scribing-flowdoc-v1.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<flowdoc xmlns="https://cdn.dforigo.com/schemas/scribing-flowdoc-v1">
+    <body>
+        <t style="text-1">x</t>
+    </body>
+    <script id="script-1">
+        <code>dummy()</code>
+    </script>
+    <text-style id="text-1" bold="true" italic="false" underline="true" strike="false" baseline="super" font-family="cursive" font-size="250" color="secondary" spellcheck="false" translate="true" lang="en-US">
+        <link>
+            <run-script ref="script-1"/>
+        </link>
+    </text-style>
+</flowdoc>
