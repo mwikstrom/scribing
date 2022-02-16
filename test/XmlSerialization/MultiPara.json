@@ -1,0 +1,13 @@
+[
+    "This is the ",
+    { "text": "first", "style": { "italic": true } },
+    " paragraph.",
+    { "break": "para" },
+    "This is the ",
+    { "text": "second", "style": { "italic": true } },
+    " paragraph.",
+    { "break": "para" },
+    "This is a ",
+    { "text": "trailing", "style": { "italic": true } },
+    " paragraph."
+]

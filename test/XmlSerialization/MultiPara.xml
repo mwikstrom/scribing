@@ -1,0 +1,19 @@
+<?xml-model href="..\..\etc\scribing-flowdoc-v1.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<flowdoc xmlns="https://cdn.dforigo.com/schemas/scribing-flowdoc-v1">
+    <body>
+        <p>
+            <t>This is the </t>
+            <t style="text-1">first</t>
+            <t> paragraph.</t>
+        </p>
+        <p>
+            <t>This is the </t>
+            <t style="text-1">second</t>
+            <t> paragraph.</t>
+        </p>
+        <t>This is a </t>
+        <t style="text-1">trailing</t>
+        <t> paragraph.</t>
+    </body>
+    <text-style id="text-1" italic="true"/>
+</flowdoc>
