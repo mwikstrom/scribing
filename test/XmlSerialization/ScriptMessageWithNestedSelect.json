@@ -1,0 +1,10 @@
+[
+    {
+        "dynamic": {
+            "code": "",
+            "messages": {
+                "TXT1": "{ SEL1, select, other {{ PLUR1, plural,one {1} other {{ SEL2, select, other {Deep in the heart.} }}}}}"
+            }
+        }
+    }
+]
