@@ -3,7 +3,7 @@
     <body>
         <table style="table-1">
             <col key="B" width="0.5"/>
-            <cell key="A1" colspan="2" rowspan="2">
+            <cell key="A1" colspan="2" rowspan="3">
                 <t>Hello</t>
             </cell>
             <cell key="C3">

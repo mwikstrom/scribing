@@ -28,7 +28,7 @@ import { FlowCursor } from "../selection/FlowCursor";
 import { Interaction } from "../interaction/Interaction";
 import { OpenUrl } from "../interaction/OpenUrl";
 import { RunScript } from "../interaction/RunScript";
-import { serializeMessage } from "./serialize-message";
+import { serializeMessage } from "../internal/serialize-message-format";
 
 export function serializeFlowContentToXml(
     content: FlowContent,

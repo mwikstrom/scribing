@@ -8,7 +8,7 @@ import {
     PluralOrSelectOption, 
 } from "@formatjs/icu-messageformat-parser";
 import type { Element as XmlElem } from "xml-js";
-import { isSupportedPluralCaseKey, parseMessageFormat } from "../internal/message-format";
+import { isSupportedPluralCaseKey, parseMessageFormat } from "./message-format";
 
 export const serializeMessage = (key: string, message: string): XmlElem => {
     return {

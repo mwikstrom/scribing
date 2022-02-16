@@ -2,7 +2,7 @@
     { 
         "table": {
             "default": [ { "break": "para" }],
-            "A1": { "colSpan": 2, "rowSpan": 2, "content": [ "Hello" ] },
+            "A1": { "colSpan": 2, "rowSpan": 3, "content": [ "Hello" ] },
             "C3": [ "World" ]
         },
         "columns": {

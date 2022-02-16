@@ -112,3 +112,4 @@ export * from "./sync/FlowSyncProtocol";
 
 // XML serialization
 export * from "./xml/serialize-flowdoc";
+export * from "./xml/deserialize-flowdoc";
