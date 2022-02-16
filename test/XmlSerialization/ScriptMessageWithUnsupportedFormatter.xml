@@ -1,0 +1,21 @@
+<?xml-model href="..\..\etc\scribing-flowdoc-v1.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<flowdoc xmlns="https://cdn.dforigo.com/schemas/scribing-flowdoc-v1">
+    <body>
+        <dynamic expression="script-1"/>
+    </body>
+    <script id="script-1">
+        <code></code>
+        <message key="TXT1">
+            <c>It is now {T, time} on {T, date}</c>
+        </message>
+        <message key="TXT2">
+            <c>{sys} became operational on {d0, date, short}</c>
+        </message>
+        <message key="TXT3">
+            <c>It has been {D, duration}</c>
+        </message>
+        <message key="TXT4">
+            <c>{N} is almost {N, number, integer}</c>
+        </message>
+    </script>
+</flowdoc>

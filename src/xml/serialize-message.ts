@@ -53,9 +53,9 @@ const serializeMessageToken = (token: MessageToken): XmlElem => {
         };
     } else if (isPluralToken(token)) {
         return serializePlural(token, "cardinal");
-    } else if (isSelectOrdinal(token)) {
+    } else if (isSelectOrdinalToken(token)) {
         return serializePlural(token, "ordinal");
-    } else if (isSelect(token)) {
+    } else if (isSelectToken(token)) {
         const { arg, cases } = token;
         return {
             type: "element",
@@ -64,13 +64,8 @@ const serializeMessageToken = (token: MessageToken): XmlElem => {
             elements: cases.map(serializeSelectCase),
         };
     } else {
-        const { ctx: { text }, ...other } = token;
-        console.error(`Unsupported message format token: ${JSON.stringify(other)}`);
-        return {
-            type: "element",
-            name: "c",
-            elements: [{ text }],
-        };
+        // Note: Formatting functions are currently not supported
+        throw new TypeError(`Unsupported message format token: ${JSON.stringify(token)}`);
     }
 };
 
@@ -90,11 +85,11 @@ function isPluralToken(token: MessageToken): token is MsgFormatSelect & { type: 
     return token.type === "plural";
 }
 
-function isSelectOrdinal(token: MessageToken): token is MsgFormatSelect & { type: "selectordinal" } {
+function isSelectOrdinalToken(token: MessageToken): token is MsgFormatSelect & { type: "selectordinal" } {
     return token.type === "selectordinal";
 }
 
-function isSelect(token: MessageToken): token is MsgFormatSelect & { type: "select" } {
+function isSelectToken(token: MessageToken): token is MsgFormatSelect & { type: "select" } {
     return token.type === "select";
 }
 

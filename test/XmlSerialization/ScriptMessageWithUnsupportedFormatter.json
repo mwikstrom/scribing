@@ -1,0 +1,13 @@
+[
+    {
+        "dynamic": {
+            "code": "",
+            "messages": {
+                "TXT1": "It is now {T, time} on {T, date}",
+                "TXT2": "{sys} became operational on {d0, date, short}",
+                "TXT3": "It has been {D, duration}",
+                "TXT4": "{N} is almost {N, number, integer}"
+            }
+        }
+    }
+]
