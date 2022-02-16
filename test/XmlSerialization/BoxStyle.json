@@ -1,0 +1,12 @@
+[
+    {
+        "box": [],
+        "style": {
+            "variant": "outlined",
+            "color": "primary",
+            "inline": false,
+            "source": "code",
+            "interaction": "target"
+        }
+    }
+]
