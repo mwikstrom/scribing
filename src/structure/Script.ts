@@ -1,4 +1,5 @@
 import { mapType, RecordClass, recordClassType, recordType, RecordType, stringType, Type, unionType } from "paratype";
+import { isSupportedMessageFormat } from "../internal/message-format";
 
 const Props = {
     code: stringType,
@@ -60,6 +61,11 @@ export class Script extends ScriptBase implements Readonly<ScriptProps> {
             }
         }
         return new Script({code, messages});
+    }
+
+    /** Determines whether the specified message can be formatted using {@link Script.formatMessage} */
+    public static isFormattableMessage(message: string): boolean {
+        return isSupportedMessageFormat(message);
     }
 }
 

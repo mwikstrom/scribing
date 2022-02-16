@@ -1,0 +1,20 @@
+<?xml-model href="..\..\etc\scribing-flowdoc-v1.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<flowdoc xmlns="https://cdn.dforigo.com/schemas/scribing-flowdoc-v1">
+    <body>
+        <dynamic expression="script-1"/>
+    </body>
+    <script id="script-1">
+        <code></code>
+        <message key="NOT_SUPPORTED">
+            <c>{arg, plural, 123 {123} other {}}</c>
+        </message>
+        <message key="SUPPORTED">
+            <plural var="arg" mode="cardinal">
+                <exact eq="123">
+                    <t>123</t>
+                </exact>
+                <other/>
+            </plural>
+        </message>
+    </script>
+</flowdoc>

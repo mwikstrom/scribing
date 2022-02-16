@@ -1,13 +1,19 @@
 import type { Element as XmlElem } from "xml-js";
 import { parse as parseMessage } from "@messageformat/parser";
 import type {
-    Content as MsgFormatContent,
-    PlainArg as MsgFormatPlainArg,
-    FunctionArg as MsgFormatFunctionArg,
     Select as MsgFormatSelect,
-    Octothorpe,
     SelectCase,
 } from "@messageformat/parser";
+import { 
+    isArgumentToken, 
+    isContentToken, 
+    isOctothorpe, 
+    isPluralToken, 
+    isSelectOrdinalToken, 
+    isSelectToken, 
+    isSupportedPluralCaseKey, 
+    MessageToken
+} from "../internal/message-format";
 
 export const serializeMessage = (key: string, message: string): XmlElem => {
     return {
@@ -31,7 +37,6 @@ const serializeMessageBody = (message: string): XmlElem[] => {
     }
 };
 
-type MessageToken = MsgFormatContent | MsgFormatPlainArg | MsgFormatFunctionArg | MsgFormatSelect | Octothorpe;
 const serializeMessageToken = (token: MessageToken): XmlElem => {
     if (isContentToken(token)) {
         const { value } = token;
@@ -69,30 +74,6 @@ const serializeMessageToken = (token: MessageToken): XmlElem => {
     }
 };
 
-function isContentToken(token: MessageToken): token is MsgFormatContent {
-    return token.type === "content";
-}
-
-function isOctothorpe(token: MessageToken): token is Octothorpe {
-    return token.type === "octothorpe";
-}
-
-function isArgumentToken(token: MessageToken): token is MsgFormatPlainArg {
-    return token.type === "argument";
-}
-
-function isPluralToken(token: MessageToken): token is MsgFormatSelect & { type: "plural" } {
-    return token.type === "plural";
-}
-
-function isSelectOrdinalToken(token: MessageToken): token is MsgFormatSelect & { type: "selectordinal" } {
-    return token.type === "selectordinal";
-}
-
-function isSelectToken(token: MessageToken): token is MsgFormatSelect & { type: "select" } {
-    return token.type === "select";
-}
-
 const serializePlural = (token: MsgFormatSelect, mode: "ordinal" | "cardinal"): XmlElem => {
     const { arg, cases, pluralOffset: offset } = token;
     return {
@@ -109,17 +90,20 @@ const serializePlural = (token: MsgFormatSelect, mode: "ordinal" | "cardinal"): 
 
 const serializePluralCase = (input: SelectCase): XmlElem => {
     const { key, tokens } = input;
-    if (["zero", "one", "two", "few", "many", "other"].includes(key)) {
+    if (!isSupportedPluralCaseKey(key)) {
+        throw new TypeError(`Unsupported plural case: ${JSON.stringify(input)}`);
+    }
+    if (/^=\d+/.test(key)) {
         return {
             type: "element",
-            name: key,
+            name: "exact",
+            attributes: { eq: key.substring(1) },
             elements: tokens.map(serializeMessageToken),
         };
     } else {
         return {
             type: "element",
-            name: "exact",
-            attributes: { eq: key.replace(/^=/, "") },
+            name: key,
             elements: tokens.map(serializeMessageToken),
         };
     }

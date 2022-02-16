@@ -288,7 +288,7 @@
     </xs:complexType>
 
     <xs:complexType name="message-body">
-        <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:group ref="message-body"/>
         </xs:choice>
     </xs:complexType>
@@ -338,7 +338,7 @@
     </xs:simpleType>
 
     <xs:complexType name="message-plural-body">
-        <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:group ref="message-body"/>
             <xs:element name="count" type="empty"/>
         </xs:choice>

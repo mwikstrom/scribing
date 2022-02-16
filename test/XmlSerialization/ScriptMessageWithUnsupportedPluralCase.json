@@ -1,0 +1,11 @@
+[
+    {
+        "dynamic": {
+            "code": "",
+            "messages": {
+                "NOT_SUPPORTED": "{arg, plural, 123 {123} other {}}",
+                "SUPPORTED": "{arg, plural, =123 {123} other {}}"
+            }
+        }
+    }
+]
