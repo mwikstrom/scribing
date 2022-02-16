@@ -1,0 +1,12 @@
+<?xml-model href="..\..\etc\scribing-flowdoc-v1.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<flowdoc xmlns="https://cdn.dforigo.com/schemas/scribing-flowdoc-v1">
+    <body>
+        <dynamic expression="script-1"/>
+    </body>
+    <script id="script-1">
+        <code></code>
+        <message key="TXT1">
+            <c>mal{formed</c>
+        </message>
+    </script>
+</flowdoc>

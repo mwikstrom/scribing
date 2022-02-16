@@ -22,8 +22,7 @@ const serializeMessageBody = (message: string): XmlElem[] => {
     try {
         const tokens = parseMessage(message, { strict: true });
         return tokens.map(serializeMessageToken);    
-    } catch (error) {
-        console.error(`Invalid message format: ${message}`);
+    } catch {
         return [{
             type: "element",
             name: "c",
