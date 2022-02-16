@@ -1,0 +1,10 @@
+[
+    {
+        "dynamic": {
+            "code": "",
+            "messages": {
+                "TXT1": "{ GENDER, select, male {He} female {She} other {They} } liked this."
+            }
+        }
+    }
+]

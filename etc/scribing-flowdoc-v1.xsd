@@ -308,7 +308,7 @@
     </xs:complexType>
 
     <xs:complexType name="message-choose">
-        <xs:choice>
+        <xs:choice minOccurs="1" maxOccurs="unbounded">
             <xs:element name="when" type="message-when" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="other" type="message-body" minOccurs="1" maxOccurs="1"/>
         </xs:choice>
