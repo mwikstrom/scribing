@@ -16,6 +16,7 @@ export interface FlowImageProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
+|  [scale](./scribing.flowimageprops.scale.md) | number | Image rendering scale |
 |  [source](./scribing.flowimageprops.source.md) | [ImageSource](./scribing.imagesource.md) | The image source |
 |  [style](./scribing.flowimageprops.style.md) | [TextStyle](./scribing.textstyle.md) | Text style |
 

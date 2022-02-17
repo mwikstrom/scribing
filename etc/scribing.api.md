@@ -617,11 +617,13 @@ export const FlowImageBase: RecordConstructor<FlowImageProps, InlineNode, FlowIm
 // @public
 export interface FlowImageData {
     image: ImageSource;
+    scale?: number;
     style?: TextStyle;
 }
 
 // @public
 export interface FlowImageProps {
+    scale: number;
     source: ImageSource;
     style: TextStyle;
 }

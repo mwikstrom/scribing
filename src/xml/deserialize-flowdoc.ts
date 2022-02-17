@@ -195,7 +195,8 @@ const deserializeIcon = (elem: XmlElem): FlowIcon => {
 const deserializeImage = (elem: XmlElem): FlowImage => {
     const source = getImageSource(elem, getRequiredXmlAttr(elem, "source"));
     const style = getTextStyle(elem);
-    return new FlowImage({ source, style });
+    const scale = getFloatXmlAttr(elem, "scale") || 1;
+    return new FlowImage({ source, style, scale });
 };
 
 const deserializeTable = (elem: XmlElem): FlowTable => {

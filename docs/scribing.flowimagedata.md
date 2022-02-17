@@ -17,5 +17,6 @@ export interface FlowImageData
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [image](./scribing.flowimagedata.image.md) | [ImageSource](./scribing.imagesource.md) | The image source |
+|  [scale?](./scribing.flowimagedata.scale.md) | number | <i>(Optional)</i> Image rendering scale |
 |  [style?](./scribing.flowimagedata.style.md) | [TextStyle](./scribing.textstyle.md) | <i>(Optional)</i> Text style |
 

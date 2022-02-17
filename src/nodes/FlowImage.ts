@@ -1,5 +1,6 @@
 import {
     frozen,
+    numberType,
     RecordClass,
     recordClassType,
     recordType,
@@ -17,16 +18,28 @@ import type { FlowNodeVisitor } from "../structure/FlowNodeVisitor";
 const Props = {
     source: ImageSource.classType,
     style: TextStyle.classType,
+    scale: numberType.restrict(
+        "Must be greater than 0 and less than or equal to 100", 
+        value => value > 0 && value <= 100
+    ),
 };
 const Data = {
     image: Props.source,
     style: Props.style,
+    scale: Props.scale,
 };
 const PropsType: RecordType<FlowImageProps> = recordType(Props);
-const DataType: RecordType<FlowImageData> = recordType(Data).withOptional("style");
-const propsToData = ({source: image, style}: FlowImageProps): FlowImageData => (
-    style.isEmpty ? { image } : { image, style }
-);
+const DataType: RecordType<FlowImageData> = recordType(Data).withOptional("style", "scale");
+const propsToData = ({source: image, style, scale}: FlowImageProps): FlowImageData => {
+    const data: FlowImageData = { image };
+    if (!style.isEmpty) {
+        data.style = style;
+    }
+    if (scale !== 1) {
+        data.scale = scale;
+    }
+    return data;
+};
 
 /**
  * The base record class for {@link FlowImage}
@@ -44,6 +57,9 @@ export interface FlowImageProps {
 
     /** Text style */
     style: TextStyle;
+
+    /** Image rendering scale */
+    scale: number;
 }
 
 /**
@@ -56,6 +72,9 @@ export interface FlowImageData {
 
     /** {@inheritdoc FlowImageProps.style} */
     style?: TextStyle;
+
+    /** {@inheritdoc FlowImageProps.scale} */
+    scale?: number;
 }
 
 /**
@@ -75,8 +94,8 @@ export class FlowImage extends FlowImageBase implements FlowImageProps {
 
     /** Gets an instance of the current class from the specified data */
     public static fromData(@type(DataType) data: FlowImageData): FlowImage {
-        const { image: source, style = TextStyle.empty} = data;
-        const props: FlowImageProps = { source, style };
+        const { image: source, style = TextStyle.empty, scale = 1 } = data;
+        const props: FlowImageProps = { source, style, scale };
         return new FlowImage(props);
     }
 

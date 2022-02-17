@@ -168,6 +168,7 @@
     <xs:complexType name="image">
         <xs:attribute name="source" use="required" type="xs:IDREF"/>
         <xs:attribute name="style" use="optional" type="xs:IDREF"/>
+        <xs:attribute name="scale" use="optional" type="image-scale"/>
     </xs:complexType>
 
     <xs:complexType name="table">
@@ -461,6 +462,13 @@
             <xs:enumeration value="monospace"/>
             <xs:enumeration value="cursive"/>
             <xs:enumeration value="decorative"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="image-scale">        
+        <xs:restriction base="xs:float">
+            <xs:minExclusive value="0"/>
+            <xs:maxInclusive value="100"/>
         </xs:restriction>
     </xs:simpleType>
 
