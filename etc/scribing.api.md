@@ -629,6 +629,9 @@ export interface FlowImageProps {
 }
 
 // @public
+export const FlowImageScaleType: Type<number>;
+
+// @public
 export abstract class FlowNode {
     abstract accept(visitor: FlowNodeVisitor): FlowNode;
     static readonly baseType: Type<FlowNode>;
@@ -794,6 +797,8 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     // @override
     setIcon(content: FlowContent, data: string): FlowOperation | null;
     // @override
+    setImageScale(content: FlowContent, scale: number): FlowOperation | null;
+    // @override
     setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
     // @override
     setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation | null;
@@ -865,6 +870,7 @@ export abstract class FlowSelection {
     static readonly rootWrap: VisitRangeOptions["wrap"];
     abstract setDynamicTextExpression(content: FlowContent, expression: Script): FlowOperation | null;
     abstract setIcon(content: FlowContent, data: string): FlowOperation | null;
+    abstract setImageScale(content: FlowContent, scale: number): FlowOperation | null;
     abstract setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
     abstract setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation | null;
     abstract setMarkupTag(content: FlowContent, tag: string): FlowOperation | null;
@@ -1167,6 +1173,8 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     setDynamicTextExpression(content: FlowContent, expression: Script): FlowOperation | null;
     // @override
     setIcon(content: FlowContent, data: string): FlowOperation | null;
+    // @override
+    setImageScale(content: FlowContent, scale: number): FlowOperation | null;
     // @override
     setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
     // @override
@@ -1814,6 +1822,8 @@ export abstract class NestedFlowSelection extends FlowSelection {
     // @override
     setIcon(content: FlowContent, data: string): FlowOperation | null;
     // @override
+    setImageScale(content: FlowContent, scale: number): FlowOperation | null;
+    // @override
     setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
     protected abstract setInnerSelection(value: FlowSelection): NestedFlowSelection;
     // @override
@@ -2278,6 +2288,39 @@ export interface SetIconData {
 export interface SetIconProps {
     data: string;
     position: number;
+}
+
+// @public @sealed
+export class SetImageScale extends SetImageScaleBase implements SetImageScaleProps {
+    afterInsertFlow(range: FlowRange): FlowOperation | null;
+    afterRemoveFlow(range: FlowRange): FlowOperation | null;
+    // @override
+    applyToContent(content: FlowContent): FlowContent;
+    // @override
+    applyToSelection(selection: FlowSelection): FlowSelection;
+    static readonly classType: Type<SetImageScale>;
+    static fromData(data: SetImageScaleData): SetImageScale;
+    // @override
+    invert(content: FlowContent): FlowOperation | null;
+    mergeNext(next: FlowOperation): FlowOperation | null;
+    // @override
+    transform(other: FlowOperation): FlowOperation | null;
+}
+
+// @public
+export const SetImageScaleBase: RecordConstructor<SetImageScaleProps, FlowOperation, SetImageScaleData>;
+
+// @public
+export interface SetImageScaleData {
+    at: number;
+    set: "image_scale";
+    value: number;
+}
+
+// @public
+export interface SetImageScaleProps {
+    position: number;
+    value: number;
 }
 
 // @public @sealed

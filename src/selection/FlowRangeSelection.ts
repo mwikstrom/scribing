@@ -46,6 +46,7 @@ import { SetMarkupAttr } from "../operations/SetMarkupAttr";
 import { EndMarkup } from "../nodes/EndMarkup";
 import { SetMarkupTag } from "../operations/SetMarkupTag";
 import { Script } from "../structure/Script";
+import { SetImageScale } from "../operations/SetImageScale";
 
 const Props = {
     range: lazyType(() => FlowRange.classType),
@@ -467,6 +468,31 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
                 operations.push(new SetImageSource({
                     position: position - offset,
                     value: source,
+                }));
+            }
+        }
+
+        return FlowBatch.fromArray(operations);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.setImageScale}
+     * @override
+     */
+    public setImageScale(content: FlowContent, scale: number): FlowOperation | null {
+        const { range } = this;
+        const operations: SetImageScale[] = [];
+
+        for (
+            let cursor: FlowCursor | null = content.peek(range.first);
+            cursor?.node && cursor.position < range.last;
+            cursor = cursor.moveToStartOfNextNode()
+        ) {
+            const { node, position, offset } = cursor;
+            if (node instanceof FlowImage) {
+                operations.push(new SetImageScale({
+                    position: position - offset,
+                    value: scale,
                 }));
             }
         }

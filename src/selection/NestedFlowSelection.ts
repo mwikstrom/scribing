@@ -259,13 +259,24 @@ export abstract class NestedFlowSelection extends FlowSelection {
     }
 
     /**
-     * {@inheritDoc FlowSelection.setIcon}
+     * {@inheritDoc FlowSelection.setImageSource}
      * @override
      */
     public setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
         const innerOperation = innerSelection.setImageSource(innerContent, source);
+        return this.#wrapOperation(innerOperation);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.setImageScale}
+     * @override
+     */
+    public setImageScale(content: FlowContent, scale: number): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerContent = this.getInnerContent(content);
+        const innerOperation = innerSelection.setImageScale(innerContent, scale);
         return this.#wrapOperation(innerOperation);
     }
 

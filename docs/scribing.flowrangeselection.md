@@ -50,6 +50,7 @@ export declare class FlowRangeSelection extends FlowRangeSelectionBase implement
 |  [removeTableRow()](./scribing.flowrangeselection.removetablerow.md) |  | Creates an operation that removes the selected table row |
 |  [setDynamicTextExpression(content, expression)](./scribing.flowrangeselection.setdynamictextexpression.md) |  | Creates an operation that sets the specified dynamic text expression in the current selection |
 |  [setIcon(content, data)](./scribing.flowrangeselection.seticon.md) |  | Creates an operation that sets the specified icon data in the current selection |
+|  [setImageScale(content, scale)](./scribing.flowrangeselection.setimagescale.md) |  | Creates an operation that sets the specified image scale factor in the current selection |
 |  [setImageSource(content, source)](./scribing.flowrangeselection.setimagesource.md) |  | Creates an operation that sets the specified image source in the current selection |
 |  [setMarkupAttr(content, key, value)](./scribing.flowrangeselection.setmarkupattr.md) |  | Creates an operation that sets the specified markup attribute in the current selection |
 |  [setMarkupTag(content, tag)](./scribing.flowrangeselection.setmarkuptag.md) |  | Creates an operation that sets the specified markup tag in the current selection |

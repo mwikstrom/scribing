@@ -55,7 +55,8 @@ export declare abstract class NestedFlowSelection extends FlowSelection
 |  [set(key, value)](./scribing.nestedflowselection.set.md) |  | Returns a copy of the current object with the specified property merged in |
 |  [setDynamicTextExpression(content, expression)](./scribing.nestedflowselection.setdynamictextexpression.md) |  | Creates an operation that sets the specified dynamic text expression in the current selection |
 |  [setIcon(content, data)](./scribing.nestedflowselection.seticon.md) |  | Creates an operation that sets the specified icon data in the current selection |
-|  [setImageSource(content, source)](./scribing.nestedflowselection.setimagesource.md) |  | Creates an operation that sets the specified icon data in the current selection |
+|  [setImageScale(content, scale)](./scribing.nestedflowselection.setimagescale.md) |  | Creates an operation that sets the specified image scale factor in the current selection |
+|  [setImageSource(content, source)](./scribing.nestedflowselection.setimagesource.md) |  | Creates an operation that sets the specified image source in the current selection |
 |  [setInnerSelection(value)](./scribing.nestedflowselection.setinnerselection.md) |  | Returns a copy of this selection with the specified inner selection merged in |
 |  [setMarkupAttr(content, key, value)](./scribing.nestedflowselection.setmarkupattr.md) |  | Creates an operation that sets the specified markup attribute in the current selection |
 |  [setMarkupTag(content, tag)](./scribing.nestedflowselection.setmarkuptag.md) |  | Creates an operation that sets the specified markup tag in the current selection |

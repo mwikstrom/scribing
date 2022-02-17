@@ -4,7 +4,7 @@
 
 ## NestedFlowSelection.setImageSource() method
 
-Creates an operation that sets the specified icon data in the current selection
+Creates an operation that sets the specified image source in the current selection
 
 <b>Signature:</b>
 
@@ -18,7 +18,7 @@ setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The selected content |
-|  source | [ImageSource](./scribing.imagesource.md) |  |
+|  source | [ImageSource](./scribing.imagesource.md) | The image source to set |
 
 <b>Returns:</b>
 

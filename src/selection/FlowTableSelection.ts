@@ -273,12 +273,22 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     }
 
     /**
-     * {@inheritDoc FlowSelection.setIcon}
+     * {@inheritDoc FlowSelection.setImageSource}
      * @override
      */
     public setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null {
         return this.#updateAllCellContent(content, undefined, cellContent => (
             selectAll(cellContent).setImageSource(cellContent, source)
+        ));
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.setImageScale}
+     * @override
+     */
+    public setImageScale(content: FlowContent, scale: number): FlowOperation | null {
+        return this.#updateAllCellContent(content, undefined, cellContent => (
+            selectAll(cellContent).setImageScale(cellContent, scale)
         ));
     }
 

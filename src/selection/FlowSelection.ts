@@ -191,6 +191,15 @@ export abstract class FlowSelection {
     public abstract setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
 
     /**
+     * Creates an operation that sets the specified image scale factor in the current selection
+     * @param content - The selected content
+     * @param scale - The image scale factor to set
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract setImageScale(content: FlowContent, scale: number): FlowOperation | null;
+
+    /**
      * Creates an operation that sets the specified markup tag in the current selection
      * @param content - The selected content
      * @param tag - The markup tag to set

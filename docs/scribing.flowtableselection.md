@@ -49,7 +49,8 @@ export declare class FlowTableSelection extends FlowTableSelectionBase
 |  [removeTableRow()](./scribing.flowtableselection.removetablerow.md) |  | Creates an operation that removes the selected table row |
 |  [setDynamicTextExpression(content, expression)](./scribing.flowtableselection.setdynamictextexpression.md) |  | Creates an operation that sets the specified dynamic text expression in the current selection |
 |  [setIcon(content, data)](./scribing.flowtableselection.seticon.md) |  | Creates an operation that sets the specified icon data in the current selection |
-|  [setImageSource(content, source)](./scribing.flowtableselection.setimagesource.md) |  | Creates an operation that sets the specified icon data in the current selection |
+|  [setImageScale(content, scale)](./scribing.flowtableselection.setimagescale.md) |  | Creates an operation that sets the specified image scale factor in the current selection |
+|  [setImageSource(content, source)](./scribing.flowtableselection.setimagesource.md) |  | Creates an operation that sets the specified image source in the current selection |
 |  [setMarkupAttr(content, key, value)](./scribing.flowtableselection.setmarkupattr.md) |  | Creates an operation that sets the specified markup attribute in the current selection |
 |  [setMarkupTag(content, tag)](./scribing.flowtableselection.setmarkuptag.md) |  | Creates an operation that sets the specified markup tag in the current selection |
 |  [splitTableCell()](./scribing.flowtableselection.splittablecell.md) |  | Creates an operation that splits the selected table cells (given that it is a merged cell) |

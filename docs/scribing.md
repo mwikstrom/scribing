@@ -67,6 +67,7 @@ Model for collaborative rich text editing
 |  [Script](./scribing.script.md) | A script |
 |  [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) | Represents an operation that sets the expression of dynamic text |
 |  [SetIcon](./scribing.seticon.md) | Represents an operation that sets the path data of an icon |
+|  [SetImageScale](./scribing.setimagescale.md) | Represents an operation that sets the source of an image |
 |  [SetImageSource](./scribing.setimagesource.md) | Represents an operation that sets the source of an image |
 |  [SetMarkupAttr](./scribing.setmarkupattr.md) | Represents an operation that sets a markup tag |
 |  [SetMarkupTag](./scribing.setmarkuptag.md) | Represents an operation that sets a markup tag |
@@ -176,6 +177,8 @@ Model for collaborative rich text editing
 |  [SetDynamicTextExpressionProps](./scribing.setdynamictextexpressionprops.md) | Properties of [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [SetIconData](./scribing.seticondata.md) | Data of [SetIcon](./scribing.seticon.md) |
 |  [SetIconProps](./scribing.seticonprops.md) | Properties of [SetIcon](./scribing.seticon.md) |
+|  [SetImageScaleData](./scribing.setimagescaledata.md) | Data of [SetImageScale](./scribing.setimagescale.md) |
+|  [SetImageScaleProps](./scribing.setimagescaleprops.md) | Properties of [SetImageScale](./scribing.setimagescale.md) |
 |  [SetImageSourceData](./scribing.setimagesourcedata.md) | Data of [SetImageSource](./scribing.setimagesource.md) |
 |  [SetImageSourceProps](./scribing.setimagesourceprops.md) | Properties of [SetImageSource](./scribing.setimagesource.md) |
 |  [SetMarkupAttrData](./scribing.setmarkupattrdata.md) | Data of [SetMarkupAttr](./scribing.setmarkupattr.md) |
@@ -231,6 +234,7 @@ Model for collaborative rich text editing
 |  [FlowContentBase](./scribing.flowcontentbase.md) | The base record class for [FlowContent](./scribing.flowcontent.md) |
 |  [FlowIconBase](./scribing.flowiconbase.md) | The base record class for [FlowIcon](./scribing.flowicon.md) |
 |  [FlowImageBase](./scribing.flowimagebase.md) | The base record class for [FlowImage](./scribing.flowimage.md) |
+|  [FlowImageScaleType](./scribing.flowimagescaletype.md) | A run-time type that validates the scale factor of an image |
 |  [FlowPresenceType](./scribing.flowpresencetype.md) |  |
 |  [FlowRangeBase](./scribing.flowrangebase.md) | The base record class for [FlowRange](./scribing.flowrange.md) |
 |  [FlowRangeSelectionBase](./scribing.flowrangeselectionbase.md) | The base record class for [FlowRangeSelection](./scribing.flowrangeselection.md) |
@@ -276,6 +280,7 @@ Model for collaborative rich text editing
 |  [ScriptBase](./scribing.scriptbase.md) | The base record class for [Script](./scribing.script.md) |
 |  [SetDynamicTextExpressionBase](./scribing.setdynamictextexpressionbase.md) | The base record class for [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) |
 |  [SetIconBase](./scribing.seticonbase.md) | The base record class for [SetIcon](./scribing.seticon.md) |
+|  [SetImageScaleBase](./scribing.setimagescalebase.md) | The base record class for [SetImageScale](./scribing.setimagescale.md) |
 |  [SetImageSourceBase](./scribing.setimagesourcebase.md) | The base record class for [SetImageSource](./scribing.setimagesource.md) |
 |  [SetMarkupAttrBase](./scribing.setmarkupattrbase.md) | The base record class for [SetMarkupAttr](./scribing.setmarkupattr.md) |
 |  [SetMarkupTagBase](./scribing.setmarkuptagbase.md) | The base record class for [SetMarkupTag](./scribing.setmarkuptag.md) |

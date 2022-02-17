@@ -46,6 +46,7 @@ export declare abstract class FlowSelection
 |  [removeTableRow(content)](./scribing.flowselection.removetablerow.md) |  | Creates an operation that removes the selected table row |
 |  [setDynamicTextExpression(content, expression)](./scribing.flowselection.setdynamictextexpression.md) |  | Creates an operation that sets the specified dynamic text expression in the current selection |
 |  [setIcon(content, data)](./scribing.flowselection.seticon.md) |  | Creates an operation that sets the specified icon data in the current selection |
+|  [setImageScale(content, scale)](./scribing.flowselection.setimagescale.md) |  | Creates an operation that sets the specified image scale factor in the current selection |
 |  [setImageSource(content, source)](./scribing.flowselection.setimagesource.md) |  | Creates an operation that sets the specified image source in the current selection |
 |  [setMarkupAttr(content, key, value)](./scribing.flowselection.setmarkupattr.md) |  | Creates an operation that sets the specified markup attribute in the current selection |
 |  [setMarkupTag(content, tag)](./scribing.flowselection.setmarkuptag.md) |  | Creates an operation that sets the specified markup tag in the current selection |

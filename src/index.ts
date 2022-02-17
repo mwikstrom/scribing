@@ -77,6 +77,7 @@ export * from "./operations/NestedFlowOperation";
 export * from "./operations/EditBox";
 export * from "./operations/SetDynamicTextExpression";
 export * from "./operations/SetImageSource";
+export * from "./operations/SetImageScale";
 export * from "./operations/SetIcon";
 export * from "./operations/CompleteUpload";
 export * from "./operations/EditTableCell";

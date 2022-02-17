@@ -15,13 +15,19 @@ import { FlowNodeRegistry } from "../internal/class-registry";
 import { TextStyle } from "../styles/TextStyle";
 import type { FlowNodeVisitor } from "../structure/FlowNodeVisitor";
 
+/**
+ * A run-time type that validates the scale factor of an image
+ * @public
+ */
+export const FlowImageScaleType = numberType.restrict(
+    "Must be greater than 0 and less than or equal to 100", 
+    value => value > 0 && value <= 100
+);
+
 const Props = {
     source: ImageSource.classType,
     style: TextStyle.classType,
-    scale: numberType.restrict(
-        "Must be greater than 0 and less than or equal to 100", 
-        value => value > 0 && value <= 100
-    ),
+    scale: FlowImageScaleType,
 };
 const Data = {
     image: Props.source,
