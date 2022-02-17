@@ -16,5 +16,6 @@ export interface TableStyleProps
 
 |  Property | Type | Description |
 |  --- | --- | --- |
+|  [head?](./scribing.tablestyleprops.head.md) | number | <i>(Optional)</i> Specifies the number of head rows |
 |  [inline?](./scribing.tablestyleprops.inline.md) | boolean | <i>(Optional)</i> Determines whether the table shall be rendered inline |
 

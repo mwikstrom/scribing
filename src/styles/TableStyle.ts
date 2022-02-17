@@ -1,6 +1,7 @@
 import { 
     booleanType,
     frozen, 
+    nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
     recordType, 
@@ -16,11 +17,18 @@ export interface TableStyleProps {
      * Determines whether the table shall be rendered inline
      */
     inline?: boolean;
+
+    /**
+     * Specifies the number of head rows
+     */
+    head?: number;
+
     // TODO: Add table data source
 }
 
 const Props = {
     inline: booleanType,
+    head: nonNegativeIntegerType,
 };
 
 const PropsType = recordType(Props).asPartial();
@@ -48,6 +56,7 @@ export class TableStyle extends TableStyleBase implements Readonly<TableStylePro
         if (!AMBIENT_CACHE) {
             AMBIENT_CACHE = new TableStyle({
                 inline: false,
+                head: 0,
             });
         }
         return AMBIENT_CACHE;

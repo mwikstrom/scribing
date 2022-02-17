@@ -2527,10 +2527,13 @@ export class TableStyle extends TableStyleBase implements Readonly<TableStylePro
     static get ambient(): TableStyle;
     static readonly classType: Type<RecordObject<Partial<{
     inline: boolean;
+    head: number;
     }>, Partial<{
     inline: boolean;
+    head: number;
     }>> & Equatable & Readonly<Partial<{
     inline: boolean;
+    head: number;
     }>> & TableStyle>;
     static get empty(): TableStyle;
     get isEmpty(): boolean;
@@ -2539,12 +2542,15 @@ export class TableStyle extends TableStyleBase implements Readonly<TableStylePro
 // @public
 export const TableStyleBase: RecordConstructor<Partial<{
 inline: boolean;
+head: number;
 }>, Object, Partial<{
 inline: boolean;
+head: number;
 }>>;
 
 // @public
 export interface TableStyleProps {
+    head?: number;
     inline?: boolean;
 }
 

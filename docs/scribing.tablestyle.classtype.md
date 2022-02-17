@@ -11,9 +11,12 @@ The run-time type that represents this class
 ```typescript
 static readonly classType: import("paratype").Type<import("paratype").RecordObject<Partial<{
         inline: boolean;
+        head: number;
     }>, Partial<{
         inline: boolean;
+        head: number;
     }>> & import("paratype").Equatable & Readonly<Partial<{
         inline: boolean;
+        head: number;
     }>> & TableStyle>;
 ```
