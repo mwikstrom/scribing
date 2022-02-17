@@ -414,7 +414,8 @@ const deserializeTextStyle = (elem: XmlElem): TextStyle => {
 
 const deserializeTableStyle = (elem: XmlElem): TableStyle => {
     const inline = getBooleanXmlAttr(elem, "inline");
-    return new TableStyle({ inline });
+    const head = getIntegerXmlAttr(elem, "head");
+    return new TableStyle({ inline, head });
 };
 
 const deserializeImageSource = (elem: XmlElem): ImageSource => {

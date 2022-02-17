@@ -262,6 +262,7 @@
     <xs:complexType name="table-style">
         <xs:attribute name="id" use="required" type="xs:ID"/>
         <xs:attribute name="inline" use="optional" type="xs:boolean"/>
+        <xs:attribute name="head" use="optional" type="xs:nonNegativeInteger"/>
     </xs:complexType>
 
     <xs:complexType name="interaction">

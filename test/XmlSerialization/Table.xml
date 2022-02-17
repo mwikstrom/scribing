@@ -3,7 +3,7 @@
     <body>
         <table style="table-1">
             <col key="B" width="0.5"/>
-            <cell key="A1" colspan="2" rowspan="3">
+            <cell key="A1" colspan="3" rowspan="2">
                 <t>Hello</t>
             </cell>
             <cell key="C3">
@@ -14,5 +14,5 @@
             </cell>
         </table>
     </body>
-    <table-style id="table-1" inline="true"/>
+    <table-style id="table-1" inline="true" head="2"/>
 </flowdoc>

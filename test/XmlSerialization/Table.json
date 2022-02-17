@@ -2,14 +2,15 @@
     { 
         "table": {
             "default": [ { "break": "para" }],
-            "A1": { "colSpan": 2, "rowSpan": 3, "content": [ "Hello" ] },
+            "A1": { "colSpan": 3, "rowSpan": 2, "content": [ "Hello" ] },
             "C3": [ "World" ]
         },
         "columns": {
             "B": { "width": 0.5 }
         },
         "style": {
-            "inline": true
+            "inline": true,
+            "head": 2
         }
     }
 ]

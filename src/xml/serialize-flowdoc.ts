@@ -514,13 +514,14 @@ const serializeParaStyle = (id: string, style: ParagraphStyle): XmlElem => {
 };
 
 const serializeTableStyle = (id: string, style: TableStyle): XmlElem => {
-    const { inline } = style;
+    const { inline, head } = style;
     return {
         type: "element",
         name: "table-style",
         attributes: {
             id,
             inline: serializeBooleanAttr(inline),
+            head,
         },
     };
 };
