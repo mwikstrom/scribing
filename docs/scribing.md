@@ -158,6 +158,7 @@ Model for collaborative rich text editing
 |  [LineBreakProps](./scribing.linebreakprops.md) | Properties of line break nodes |
 |  [MergeTableCellData](./scribing.mergetablecelldata.md) | Data of [MergeTableCell](./scribing.mergetablecell.md) |
 |  [MergeTableCellProps](./scribing.mergetablecellprops.md) | Properties of [MergeTableCell](./scribing.mergetablecell.md) |
+|  [MessageFormatArgumentInfo](./scribing.messageformatargumentinfo.md) |  |
 |  [OpenUrlProps](./scribing.openurlprops.md) | Properties for [OpenUrl](./scribing.openurl.md) |
 |  [ParagraphBreakData](./scribing.paragraphbreakdata.md) | Data of paragraph break nodes |
 |  [ParagraphBreakProps](./scribing.paragraphbreakprops.md) | Properties of paragraph break nodes |

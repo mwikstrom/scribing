@@ -1,5 +1,6 @@
 import { mapType, RecordClass, recordClassType, recordType, RecordType, stringType, Type, unionType } from "paratype";
-import { isSupportedMessageFormat } from "../internal/message-format";
+import { extractMessageArguments, isSupportedMessageFormat } from "../internal/message-format";
+import { MessageFormatArgumentInfo } from "./MessageFormatArgumentInfo";
 
 const Props = {
     code: stringType,
@@ -66,6 +67,11 @@ export class Script extends ScriptBase implements Readonly<ScriptProps> {
     /** Determines whether the specified message format is supported */
     public static isSupportedMessageFormat(message: string): boolean {
         return isSupportedMessageFormat(message);
+    }
+
+    /** Gets arguments from the specified message format */
+    public static getMessageArguments(message: string): MessageFormatArgumentInfo[] {
+        return extractMessageArguments(message);
     }
 
     /** Escapes the specified message format */

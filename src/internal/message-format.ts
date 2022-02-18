@@ -8,6 +8,7 @@ import {
     isSelectElement,
     PluralOrSelectOption,
 } from "@formatjs/icu-messageformat-parser";
+import { MessageFormatArgumentInfo } from "../structure/MessageFormatArgumentInfo";
 
 
 export function parseMessageFormat(message: string): MessageFormatElement[] {
@@ -23,7 +24,53 @@ export function isSupportedMessageFormat(message: string): boolean {
     }
 }
 
-export function isSupportedMessageFormatElement(element: MessageFormatElement): boolean {
+export function extractMessageArguments(message: string): MessageFormatArgumentInfo[] {
+    try {
+        const map = new Map<string, MessageFormatArgumentInfo>();
+        const elements = parseMessageFormat(message);
+        processMessageArguments(elements, info => {
+            const { key } = info;
+            if (key) {
+                let { free = false, numeric = false, choice = false, options = [] } = info;
+                const prev = map.get(key);
+                if (prev) {
+                    free = prev.free || free;
+                    numeric = prev.numeric || numeric;
+                    choice = prev.choice || choice;
+                    options = Array.from(new Set([...prev.options, ...options]));
+                }
+                map.set(key, { key, free, numeric, choice, options });
+            }
+        });
+        return Array.from(map.values());
+    } catch {
+        return [];
+    }
+}
+
+function processMessageArguments(
+    array: MessageFormatElement[],
+    callback: (info: Partial<MessageFormatArgumentInfo>) => void,
+): void {
+    for (const element of array) {
+        if (isArgumentElement(element)) {
+            const { value: key } = element;
+            callback({key, free: true});
+        } else if (isPluralElement(element)) {
+            const { value: key, options: optionRecord } = element;
+            const options = Object.keys(optionRecord).filter(k => k.startsWith("=")).map(k => k.substring(1));
+            callback({key, numeric: true, options});
+            Object.values(optionRecord).forEach(opt => processMessageArguments(opt.value, callback));
+        } else if (isSelectElement(element)) {
+            const { value: key, options: optionRecord } = element;
+            const options = Object.keys(optionRecord);
+            callback({key, choice: true, options});
+            Object.values(optionRecord).forEach(opt => processMessageArguments(opt.value, callback));
+        }
+    }
+}
+
+function isSupportedMessageFormatElement(element: MessageFormatElement): boolean {
     return (
         isLiteralElement(element) ||
         isPoundElement(element) ||

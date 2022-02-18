@@ -12,6 +12,7 @@ export * from "./selection/CellPosition";
 export * from "./selection/CellRange";
 
 // Script
+export * from "./structure/MessageFormatArgumentInfo";
 export * from "./structure/Script";
 
 // Interactions
