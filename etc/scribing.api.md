@@ -2220,7 +2220,6 @@ export class Script extends ScriptBase implements Readonly<ScriptProps> {
     static readonly classType: Type<Script>;
     static escapeMessage(message: string): string;
     static fromData(data: ScriptData): Script;
-    // (undocumented)
     static getMessageArguments(message: string): MessageFormatArgumentInfo[];
     static isSupportedMessageFormat(message: string): boolean;
 }

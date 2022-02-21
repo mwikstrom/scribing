@@ -4,6 +4,8 @@
 
 ## Script.getMessageArguments() method
 
+Gets arguments from the specified message format
+
 <b>Signature:</b>
 
 ```typescript
