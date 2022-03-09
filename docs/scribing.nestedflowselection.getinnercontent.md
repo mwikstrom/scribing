@@ -9,7 +9,7 @@ Gets the inner content
 <b>Signature:</b>
 
 ```typescript
-protected getInnerContent(outer: FlowContent): FlowContent;
+protected getInnerContent(outer: FlowContent): FlowContent | null;
 ```
 
 ## Parameters
@@ -20,5 +20,5 @@ protected getInnerContent(outer: FlowContent): FlowContent;
 
 <b>Returns:</b>
 
-[FlowContent](./scribing.flowcontent.md)
+[FlowContent](./scribing.flowcontent.md) \| null
 

@@ -1794,13 +1794,13 @@ export abstract class NestedFlowSelection extends FlowSelection {
     formatTableColumn(style: TableColumnStyle, options?: TargetOptions): FlowOperation | null;
     // @override
     formatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
-    protected getInnerContent(outer: FlowContent): FlowContent;
+    protected getInnerContent(outer: FlowContent): FlowContent | null;
     protected abstract getInnerContentFromNode(node: FlowNode): FlowContent;
     protected abstract getInnerSelection(): FlowSelection;
-    protected getInnerTheme(outerContent: FlowContent, outerTheme?: FlowTheme): FlowTheme;
+    protected getInnerTheme(outerContent: FlowContent, outerTheme?: FlowTheme): FlowTheme | null;
     protected abstract getInnerThemeFromNode(node: FlowNode, outer?: FlowTheme): FlowTheme;
     protected abstract getOuterOperation(inner: FlowOperation): FlowOperation;
-    protected getSelectedNode(outer: FlowContent): FlowNode;
+    protected getSelectedNode(outer: FlowContent): FlowNode | null;
     // @override
     getUniformBoxStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof BoxStyleProps>): BoxStyle;
     // @override

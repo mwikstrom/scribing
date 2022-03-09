@@ -9,7 +9,7 @@ Gets the selected (outer) node
 <b>Signature:</b>
 
 ```typescript
-protected getSelectedNode(outer: FlowContent): FlowNode;
+protected getSelectedNode(outer: FlowContent): FlowNode | null;
 ```
 
 ## Parameters
@@ -20,5 +20,5 @@ protected getSelectedNode(outer: FlowContent): FlowNode;
 
 <b>Returns:</b>
 
-[FlowNode](./scribing.flownode.md)
+[FlowNode](./scribing.flownode.md) \| null
 
