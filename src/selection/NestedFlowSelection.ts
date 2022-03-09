@@ -38,12 +38,13 @@ export abstract class NestedFlowSelection extends FlowSelection {
      * Gets the selected (outer) node
      * @param outer - The outer content
      */
-    protected getSelectedNode(outer: FlowContent): FlowNode {
+    protected getSelectedNode(outer: FlowContent): FlowNode | null {
         const { node, offset } = outer.peek(this.position);
         if (offset === 0 && node && node.size === 1) {
             return node;
         } else {
-            throw new Error("Invalid content for nested selection");
+            // Invalid content for nested selection
+            return null;
         }
     }
 
@@ -51,9 +52,9 @@ export abstract class NestedFlowSelection extends FlowSelection {
      * Gets the inner content
      * @param outer - The outer content
      */
-    protected getInnerContent(outer: FlowContent): FlowContent {
+    protected getInnerContent(outer: FlowContent): FlowContent | null {
         const node = this.getSelectedNode(outer);
-        return this.getInnerContentFromNode(node);
+        return node && this.getInnerContentFromNode(node);
     }
 
     /**
@@ -61,9 +62,9 @@ export abstract class NestedFlowSelection extends FlowSelection {
      * @param outerContent - The outer content
      * @param outerTheme - The outer theme
      */
-    protected getInnerTheme(outerContent: FlowContent, outerTheme?: FlowTheme): FlowTheme {
+    protected getInnerTheme(outerContent: FlowContent, outerTheme?: FlowTheme): FlowTheme | null {
         const node = this.getSelectedNode(outerContent);
-        return this.getInnerThemeFromNode(node, outerTheme);
+        return node && this.getInnerThemeFromNode(node, outerTheme);
     }
 
     /**
@@ -117,7 +118,11 @@ export abstract class NestedFlowSelection extends FlowSelection {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
         const innerTheme = this.getInnerTheme(content, theme);
-        return innerSelection.getUniformBoxStyle(innerContent, innerTheme, diff);
+        if (innerContent && innerTheme) {
+            return innerSelection.getUniformBoxStyle(innerContent, innerTheme, diff);
+        } else {
+            return BoxStyle.empty;
+        }
     }
 
     /**
@@ -132,7 +137,11 @@ export abstract class NestedFlowSelection extends FlowSelection {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
         const innerTheme = this.getInnerTheme(content, theme);
-        return innerSelection.getUniformParagraphStyle(innerContent, innerTheme, diff);
+        if (innerContent && innerTheme) {
+            return innerSelection.getUniformParagraphStyle(innerContent, innerTheme, diff);
+        } else {
+            return ParagraphStyle.empty;
+        }
     }
 
     /**
@@ -147,7 +156,11 @@ export abstract class NestedFlowSelection extends FlowSelection {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
         const innerTheme = this.getInnerTheme(content, theme);
-        return innerSelection.getUniformTextStyle(innerContent, innerTheme, diff);
+        if (innerContent && innerTheme) {
+            return innerSelection.getUniformTextStyle(innerContent, innerTheme, diff);
+        } else {
+            return TextStyle.empty;
+        }
     }
 
     /**
@@ -171,6 +184,9 @@ export abstract class NestedFlowSelection extends FlowSelection {
     public formatList(content: FlowContent, kind: "ordered" | "unordered" | null): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
+        if (!innerContent) {
+            return null;
+        }
         const innerOperation = innerSelection.formatList(innerContent, kind);
         return this.#wrapOperation(innerOperation);
     }
@@ -210,6 +226,9 @@ export abstract class NestedFlowSelection extends FlowSelection {
     public incrementListLevel(content: FlowContent, delta?: number): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
+        if (!innerContent) {
+            return null;
+        }
         const innerOperation = innerSelection.incrementListLevel(innerContent, delta);
         return this.#wrapOperation(innerOperation);
     }
@@ -243,6 +262,9 @@ export abstract class NestedFlowSelection extends FlowSelection {
     public setDynamicTextExpression(content: FlowContent, expression: Script): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
+        if (!innerContent) {
+            return null;
+        }
         const innerOperation = innerSelection.setDynamicTextExpression(innerContent, expression);
         return this.#wrapOperation(innerOperation);
     }
@@ -254,6 +276,9 @@ export abstract class NestedFlowSelection extends FlowSelection {
     public setIcon(content: FlowContent, data: string): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
+        if (!innerContent) {
+            return null;
+        }
         const innerOperation = innerSelection.setIcon(innerContent, data);
         return this.#wrapOperation(innerOperation);
     }
@@ -265,6 +290,9 @@ export abstract class NestedFlowSelection extends FlowSelection {
     public setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
+        if (!innerContent) {
+            return null;
+        }
         const innerOperation = innerSelection.setImageSource(innerContent, source);
         return this.#wrapOperation(innerOperation);
     }
@@ -276,6 +304,9 @@ export abstract class NestedFlowSelection extends FlowSelection {
     public setImageScale(content: FlowContent, scale: number): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
+        if (!innerContent) {
+            return null;
+        }
         const innerOperation = innerSelection.setImageScale(innerContent, scale);
         return this.#wrapOperation(innerOperation);
     }
@@ -401,6 +432,9 @@ export abstract class NestedFlowSelection extends FlowSelection {
     public insertTableColumnBefore(content: FlowContent, count?: number): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
+        if (!innerContent) {
+            return null;
+        }
         const innerOperation = innerSelection.insertTableColumnBefore(innerContent, count);
         return this.#wrapOperation(innerOperation);
     }
@@ -412,6 +446,9 @@ export abstract class NestedFlowSelection extends FlowSelection {
     public insertTableColumnAfter(content: FlowContent, count?: number): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
+        if (!innerContent) {
+            return null;
+        }
         const innerOperation = innerSelection.insertTableColumnAfter(innerContent, count);
         return this.#wrapOperation(innerOperation);
     }
@@ -423,6 +460,9 @@ export abstract class NestedFlowSelection extends FlowSelection {
     public insertTableRowBefore(content: FlowContent, count?: number): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
+        if (!innerContent) {
+            return null;
+        }
         const innerOperation = innerSelection.insertTableRowBefore(innerContent, count);
         return this.#wrapOperation(innerOperation);
     }
@@ -434,6 +474,9 @@ export abstract class NestedFlowSelection extends FlowSelection {
     public insertTableRowAfter(content: FlowContent, count?: number): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
+        if (!innerContent) {
+            return null;
+        }
         const innerOperation = innerSelection.insertTableRowAfter(innerContent, count);
         return this.#wrapOperation(innerOperation);
     }
@@ -445,6 +488,9 @@ export abstract class NestedFlowSelection extends FlowSelection {
     public removeTableColumn(content: FlowContent): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
+        if (!innerContent) {
+            return null;
+        }
         const innerOperation = innerSelection.removeTableColumn(innerContent);
         return this.#wrapOperation(innerOperation);
     }
@@ -456,6 +502,9 @@ export abstract class NestedFlowSelection extends FlowSelection {
     public removeTableRow(content: FlowContent): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
+        if (!innerContent) {
+            return null;
+        }
         const innerOperation = innerSelection.removeTableRow(innerContent);
         return this.#wrapOperation(innerOperation);
     }
@@ -467,6 +516,9 @@ export abstract class NestedFlowSelection extends FlowSelection {
     public mergeTableCell(content: FlowContent): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
+        if (!innerContent) {
+            return null;
+        }
         const innerOperation = innerSelection.mergeTableCell(innerContent);
         return this.#wrapOperation(innerOperation);
     }
@@ -478,6 +530,9 @@ export abstract class NestedFlowSelection extends FlowSelection {
     public splitTableCell(content: FlowContent): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
+        if (!innerContent) {
+            return null;
+        }
         const innerOperation = innerSelection.splitTableCell(innerContent);
         return this.#wrapOperation(innerOperation);
     }
@@ -489,6 +544,9 @@ export abstract class NestedFlowSelection extends FlowSelection {
     setMarkupTag(content: FlowContent, tag: string): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
+        if (!innerContent) {
+            return null;
+        }
         const innerOperation = innerSelection.setMarkupTag(innerContent, tag);
         return this.#wrapOperation(innerOperation);
     }
@@ -500,6 +558,9 @@ export abstract class NestedFlowSelection extends FlowSelection {
     setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
+        if (!innerContent) {
+            return null;
+        }
         const innerOperation = innerSelection.setMarkupAttr(innerContent, key, value);
         return this.#wrapOperation(innerOperation);
     }
@@ -511,6 +572,9 @@ export abstract class NestedFlowSelection extends FlowSelection {
     unsetMarkupAttr(content: FlowContent, key: string): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
+        if (!innerContent) {
+            return null;
+        }
         const innerOperation = innerSelection.unsetMarkupAttr(innerContent, key);
         return this.#wrapOperation(innerOperation);
     }
