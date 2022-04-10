@@ -16,5 +16,5 @@ constructor(props?: FlowContentProps);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  props | [FlowContentProps](./scribing.flowcontentprops.md) |  |
+|  props | [FlowContentProps](./scribing.flowcontentprops.md) | <i>(Optional)</i> |
 

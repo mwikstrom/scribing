@@ -16,7 +16,7 @@ digest(hashFunc?: FlowContentHashFunc): Promise<string>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  hashFunc | [FlowContentHashFunc](./scribing.flowcontenthashfunc.md) |  |
+|  hashFunc | [FlowContentHashFunc](./scribing.flowcontenthashfunc.md) | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

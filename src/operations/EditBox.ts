@@ -1,13 +1,10 @@
 import { 
     constType,
-    frozen, 
     nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
     recordType, 
     RecordType, 
-    type, 
-    validating 
 } from "paratype";
 import { DefaultFlowTheme } from "../styles/DefaultFlowTheme";
 import { FlowBox } from "../nodes/FlowBox";
@@ -75,15 +72,13 @@ export interface EditBoxData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowOperationRegistry.register
 export class EditBox extends EditBoxBase implements EditBoxProps {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => EditBox);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: EditBoxData): EditBox {
+    public static fromData(data: EditBoxData): EditBox {
         const { op: inner, at: position } = data;
         const props: EditBoxProps = { inner, position };
         return new EditBox(props);

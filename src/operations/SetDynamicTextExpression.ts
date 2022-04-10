@@ -1,13 +1,10 @@
 import { 
     constType,
-    frozen, 
     nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
     recordType, 
     RecordType, 
-    type, 
-    validating 
 } from "paratype";
 import { DynamicText } from "../nodes/DynamicText";
 import { FlowContent } from "../structure/FlowContent";
@@ -75,15 +72,13 @@ export interface SetDynamicTextExpressionData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowOperationRegistry.register
 export class SetDynamicTextExpression extends SetDynamicTextExpressionBase implements SetDynamicTextExpressionProps {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => SetDynamicTextExpression);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: SetDynamicTextExpressionData): SetDynamicTextExpression {
+    public static fromData(data: SetDynamicTextExpressionData): SetDynamicTextExpression {
         const { value: expression, at: position } = data;
         const props: SetDynamicTextExpressionProps = { expression, position };
         return new SetDynamicTextExpression(props);

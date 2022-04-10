@@ -1,12 +1,10 @@
 import { 
-    frozen, 
     RecordClass, 
     recordClassType, 
     recordType, 
     RecordType, 
     stringType, 
     Type, 
-    validating 
 } from "paratype";
 import { Interaction } from "./Interaction";
 import { InteractionRegistry } from "../internal/class-registry";
@@ -36,8 +34,6 @@ export interface OpenUrlProps {
  * @sealed
  * @public
  */
-@frozen
-@validating
 @InteractionRegistry.register
 export class OpenUrl extends OpenUrlBase {
     /** The run-time type that represents this class */

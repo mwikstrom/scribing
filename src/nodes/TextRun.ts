@@ -1,15 +1,11 @@
 import { 
-    frozen, 
-    integerType, 
     RecordClass, 
     recordClassType, 
     RecordType, 
     recordType, 
     stringType, 
-    type, 
     Type, 
     unionType, 
-    validating
 } from "paratype";
 import { InlineNode } from "./InlineNode";
 import { FlowNodeRegistry } from "../internal/class-registry";
@@ -82,8 +78,6 @@ export type TextRunData = string | (
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowNodeRegistry.register
 export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
     /** The run-time type that represents this class */
@@ -102,7 +96,7 @@ export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
     }
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: TextRunData): TextRun {
+    public static fromData(data: TextRunData): TextRun {
         if (typeof data === "string") {
             data = { text: data };
         }
@@ -123,7 +117,7 @@ export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
     }
 
     /** Appends the specified text to the current text run */
-    public append(@type(stringType) value: string): TextRun {
+    public append(value: string): TextRun {
         return this.set("text", this.text + value);
     }
 
@@ -132,7 +126,7 @@ export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
      * text run before the split position.
      * @param position - The position at which the text run shall be split
      */
-    public before(@type(integerType) position: number): TextRun {
+    public before(position: number): TextRun {
         this.#assertSplitPosition(position);
         return this.set("text", this.text.substr(0, position));
     }
@@ -142,7 +136,7 @@ export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
      * text run after the split position.
      * @param position - The position at which the text run shall be split
      */
-    public after(@type(integerType) position: number): TextRun {
+    public after(position: number): TextRun {
         this.#assertSplitPosition(position);
         return this.set("text", this.text.substr(position));
     }
@@ -152,7 +146,7 @@ export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
      * resulting text runs.
      * @param position - The position at which the text run shall be split
      */
-    public split(@type(integerType) position: number): [TextRun, TextRun] {
+    public split(position: number): [TextRun, TextRun] {
         this.#assertSplitPosition(position);
         return [
             this.set("text", this.text.substr(0, position)),

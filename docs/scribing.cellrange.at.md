@@ -17,7 +17,7 @@ static at(anchor: CellPosition, focus?: CellPosition): CellRange;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  anchor | [CellPosition](./scribing.cellposition.md) |  |
-|  focus | [CellPosition](./scribing.cellposition.md) |  |
+|  focus | [CellPosition](./scribing.cellposition.md) | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

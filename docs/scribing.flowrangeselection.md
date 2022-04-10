@@ -14,7 +14,7 @@ export declare class FlowRangeSelection extends FlowRangeSelectionBase implement
 ```
 <b>Extends:</b> FlowRangeSelectionBase
 
-<b>Implements:</b> Readonly&lt;[FlowRangeSelectionProps](./scribing.flowrangeselectionprops.md)<!-- -->&gt;
+<b>Implements:</b> Readonly&lt;[FlowRangeSelectionProps](./scribing.flowrangeselectionprops.md)
 
 ## Properties
 

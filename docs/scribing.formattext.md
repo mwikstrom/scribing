@@ -14,7 +14,7 @@ export declare class FormatText extends FormatTextBase implements Readonly<Forma
 ```
 <b>Extends:</b> FormatTextBase
 
-<b>Implements:</b> Readonly&lt;[FormatTextProps](./scribing.formattextprops.md)<!-- -->&gt;
+<b>Implements:</b> Readonly&lt;[FormatTextProps](./scribing.formattextprops.md)
 
 ## Properties
 

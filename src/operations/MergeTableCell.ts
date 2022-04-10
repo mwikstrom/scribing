@@ -1,13 +1,10 @@
 import { 
     constType,
-    frozen, 
     nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
     recordType, 
     RecordType, 
-    type, 
-    validating 
 } from "paratype";
 import { FlowOperation } from "./FlowOperation";
 import { FlowOperationRegistry } from "../internal/class-registry";
@@ -92,15 +89,13 @@ export interface MergeTableCellData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowOperationRegistry.register
 export class MergeTableCell extends MergeTableCellBase implements MergeTableCellProps {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => MergeTableCell);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) input: MergeTableCellData): MergeTableCell {
+    public static fromData(input: MergeTableCellData): MergeTableCell {
         const { table: position, ...rest } = input;
         const props: MergeTableCellProps = { position, ...rest };
         return new MergeTableCell(props);

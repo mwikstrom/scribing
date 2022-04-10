@@ -14,7 +14,7 @@ export declare class FormatParagraph extends FormatParagraphBase implements Read
 ```
 <b>Extends:</b> FormatParagraphBase
 
-<b>Implements:</b> Readonly&lt;[FormatParagraphProps](./scribing.formatparagraphprops.md)<!-- -->&gt;
+<b>Implements:</b> Readonly&lt;[FormatParagraphProps](./scribing.formatparagraphprops.md)
 
 ## Properties
 

@@ -14,7 +14,7 @@ export declare class UnformatText extends UnformatTextBase implements Readonly<U
 ```
 <b>Extends:</b> UnformatTextBase
 
-<b>Implements:</b> Readonly&lt;[UnformatTextProps](./scribing.unformattextprops.md)<!-- -->&gt;
+<b>Implements:</b> Readonly&lt;[UnformatTextProps](./scribing.unformattextprops.md)
 
 ## Properties
 

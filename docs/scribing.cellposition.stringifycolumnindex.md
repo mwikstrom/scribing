@@ -15,7 +15,7 @@ static stringifyColumnIndex(input: number, throwOnError?: boolean): string | nul
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  input | number |  |
-|  throwOnError | boolean |  |
+|  throwOnError | boolean | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

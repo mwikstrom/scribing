@@ -18,7 +18,7 @@ visitRanges(callback: (range: FlowRange | CellRange, options: VisitRangeOptions)
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  callback | (range: [FlowRange](./scribing.flowrange.md) \| [CellRange](./scribing.cellrange.md)<!-- -->, options: [VisitRangeOptions](./scribing.visitrangeoptions.md)<!-- -->) =&gt; void |  |
-|  options | Partial&lt;[VisitRangeOptions](./scribing.visitrangeoptions.md)<!-- -->&gt; | Options that provide tranformation behavior |
+|  options | Partial&lt;[VisitRangeOptions](./scribing.visitrangeoptions.md)<!-- -->&gt; | <i>(Optional)</i> Options that provide tranformation behavior |
 
 <b>Returns:</b>
 

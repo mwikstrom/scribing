@@ -14,7 +14,7 @@ export declare class TableColumnStyle extends TableColumnStyleBase implements Re
 ```
 <b>Extends:</b> TableColumnStyleBase
 
-<b>Implements:</b> Readonly&lt;[TableColumnStyleProps](./scribing.tablecolumnstyleprops.md)<!-- -->&gt;
+<b>Implements:</b> Readonly&lt;[TableColumnStyleProps](./scribing.tablecolumnstyleprops.md)
 
 ## Constructors
 

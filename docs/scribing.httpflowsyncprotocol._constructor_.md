@@ -17,5 +17,5 @@ constructor(url: string, fetcher?: BasicFetch);
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  url | string |  |
-|  fetcher | [BasicFetch](./scribing.basicfetch.md) |  |
+|  fetcher | [BasicFetch](./scribing.basicfetch.md) | <i>(Optional)</i> |
 

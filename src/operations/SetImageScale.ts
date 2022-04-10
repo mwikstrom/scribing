@@ -1,13 +1,10 @@
 import { 
     constType,
-    frozen, 
     nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
     recordType, 
     RecordType, 
-    type, 
-    validating 
 } from "paratype";
 import { FlowImage, FlowImageScaleType } from "../nodes/FlowImage";
 import { FlowContent } from "../structure/FlowContent";
@@ -74,15 +71,13 @@ export interface SetImageScaleData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowOperationRegistry.register
 export class SetImageScale extends SetImageScaleBase implements SetImageScaleProps {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => SetImageScale);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: SetImageScaleData): SetImageScale {
+    public static fromData(data: SetImageScaleData): SetImageScale {
         const { value, at: position } = data;
         const props: SetImageScaleProps = { value, position };
         return new SetImageScale(props);

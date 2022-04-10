@@ -1,14 +1,12 @@
 import { 
     booleanType,
     enumType, 
-    frozen, 
     nullType, 
     RecordClass, 
     recordClassType, 
     recordType, 
     Type, 
     unionType, 
-    validating
 } from "paratype";
 import { FlowColor, FlowColorType } from "./FlowColor";
 import { Interaction } from "../interaction/Interaction";
@@ -91,8 +89,6 @@ export const BoxStyleBase = RecordClass(PropsType);
  * @public
  * @sealed
  */
-@frozen
-@validating
 export class BoxStyle extends BoxStyleBase implements Readonly<BoxStyleProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => BoxStyle);

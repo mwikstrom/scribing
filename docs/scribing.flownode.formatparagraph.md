@@ -17,7 +17,7 @@ abstract formatParagraph(style: ParagraphStyle, theme?: FlowTheme): FlowNode;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  style | [ParagraphStyle](./scribing.paragraphstyle.md) | The paragraph style to apply |
-|  theme | [FlowTheme](./scribing.flowtheme.md) | Theme of the current content |
+|  theme | [FlowTheme](./scribing.flowtheme.md) | <i>(Optional)</i> Theme of the current content |
 
 <b>Returns:</b>
 

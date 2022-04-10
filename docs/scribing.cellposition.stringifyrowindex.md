@@ -15,7 +15,7 @@ static stringifyRowIndex(input: number, throwOnError?: boolean): string | null;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  input | number |  |
-|  throwOnError | boolean |  |
+|  throwOnError | boolean | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

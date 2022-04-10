@@ -1,11 +1,8 @@
 import { 
-    frozen, 
     RecordClass, 
     recordClassType, 
     RecordType, 
     recordType, 
-    type, 
-    validating
 } from "paratype";
 import { BoxStyle } from "../styles/BoxStyle";
 import { FlowContent } from "../structure/FlowContent";
@@ -62,8 +59,6 @@ export interface FlowBoxData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowNodeRegistry.register
 export class FlowBox extends FlowBoxBase {
     /** The run-time type that represents this class */
@@ -73,7 +68,7 @@ export class FlowBox extends FlowBoxBase {
     public readonly size = 1;
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: FlowBoxData): FlowBox {
+    public static fromData(data: FlowBoxData): FlowBox {
         const { box: content, style = BoxStyle.empty } = data;
         return new FlowBox({ content, style });
     }
@@ -89,7 +84,7 @@ export class FlowBox extends FlowBoxBase {
     }
 
     /** {@inheritdoc FlowNode.formatBox} */
-    public formatBox(@type(Props.style) style: BoxStyle): this {
+    public formatBox(style: BoxStyle): this {
         return this.set("style", this.style.merge(style));
     }
 
@@ -150,7 +145,7 @@ export class FlowBox extends FlowBoxBase {
     }
 
     /** {@inheritdoc FlowNode.unformatBox} */
-    public unformatBox(@type(Props.style) style: BoxStyle): this {
+    public unformatBox(style: BoxStyle): this {
         return this.set("style", this.style.unmerge(style));
     }
 

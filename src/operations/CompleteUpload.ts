@@ -1,12 +1,9 @@
 import { 
-    frozen, 
     RecordClass, 
     recordClassType, 
     recordType, 
     RecordType, 
     stringType, 
-    type, 
-    validating 
 } from "paratype";
 import { FlowContent } from "../structure/FlowContent";
 import { FlowOperation } from "./FlowOperation";
@@ -65,15 +62,13 @@ export interface CompleteUploadData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowOperationRegistry.register
 export class CompleteUpload extends CompleteUploadBase implements CompleteUploadProps {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => CompleteUpload);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: CompleteUploadData): CompleteUpload {
+    public static fromData(data: CompleteUploadData): CompleteUpload {
         const { complete_upload: id, url } = data;
         const props: CompleteUploadProps = { id, url };
         return new CompleteUpload(props);

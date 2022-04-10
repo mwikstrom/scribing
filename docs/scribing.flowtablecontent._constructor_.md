@@ -16,6 +16,6 @@ constructor(cells?: Iterable<[string, FlowTableCell]>, options?: FlowTableConten
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  cells | Iterable&lt;\[string, [FlowTableCell](./scribing.flowtablecell.md)<!-- -->\]&gt; |  |
-|  options | FlowTableContentOptions |  |
+|  cells | Iterable&lt;\[string, [FlowTableCell](./scribing.flowtablecell.md)<!-- -->\]&gt; | <i>(Optional)</i> |
+|  options | FlowTableContentOptions | <i>(Optional)</i> |
 

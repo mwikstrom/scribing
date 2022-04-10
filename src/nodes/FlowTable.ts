@@ -1,12 +1,9 @@
 import { 
-    frozen, 
     mapType, 
     RecordClass, 
     recordClassType, 
     RecordType, 
     recordType, 
-    type, 
-    validating
 } from "paratype";
 import { CellPosition } from "../selection/CellPosition";
 import { DefaultFlowTheme } from "../styles/DefaultFlowTheme";
@@ -82,8 +79,6 @@ export interface FlowTableData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowNodeRegistry.register
 export class FlowTable extends FlowTableBase {
     /** The run-time type that represents this class */
@@ -93,7 +88,7 @@ export class FlowTable extends FlowTableBase {
     public readonly size = 1;
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: FlowTableData): FlowTable {
+    public static fromData(data: FlowTableData): FlowTable {
         const { table: content, columns = new Map(), style = TableStyle.empty } = data;
         return new FlowTable({ content, columns: Object.freeze(columns), style });
     }

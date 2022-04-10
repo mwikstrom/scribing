@@ -1,13 +1,11 @@
 import { 
     arrayType, 
-    frozen, 
     lazyType, 
     RecordClass, 
     recordClassType, 
     RecordType, 
-    recordType, 
-    type, 
-    validating, 
+    recordType,
+    Type, 
 } from "paratype";
 import { FlowSelection } from "../selection/FlowSelection";
 import { FlowContent } from "../structure/FlowContent";
@@ -16,8 +14,8 @@ import { FlowRange } from "../selection/FlowRange";
 import { FlowTheme } from "../styles/FlowTheme";
 import { FlowOperationRegistry } from "../internal/class-registry";
 
-const DataType = arrayType(lazyType(FlowOperationRegistry.close));
-const Props = { operations: DataType.frozen() };
+const DataType: Type<readonly FlowOperation[]> = arrayType(lazyType(FlowOperationRegistry.close));
+const Props = { operations: DataType };
 const PropsType: RecordType<FlowBatchProps> = recordType(Props);
 const propsToData = (props: FlowBatchProps): FlowBatchData => props.operations;
 const EMPTY_PROPS: FlowBatchProps = Object.freeze({ operations: Object.freeze([]) });
@@ -48,8 +46,6 @@ export type FlowBatchData = readonly FlowOperation[];
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowOperationRegistry.register
 export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps> {
     /** The run-time type that represents this class */
@@ -59,7 +55,7 @@ export class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps>
      * Gets a {@link FlowBatch} from the specified data
      * @param data - The data
      */
-    public static fromData(@type(DataType) data: FlowBatchData): FlowBatch {
+    public static fromData(data: FlowBatchData): FlowBatch {
         const props: FlowBatchProps = { operations: Object.freeze(data) };
         return new FlowBatch(props);
     }

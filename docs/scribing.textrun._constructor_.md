@@ -16,5 +16,5 @@ constructor(props?: TextRunProps);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  props | [TextRunProps](./scribing.textrunprops.md) |  |
+|  props | [TextRunProps](./scribing.textrunprops.md) | <i>(Optional)</i> |
 

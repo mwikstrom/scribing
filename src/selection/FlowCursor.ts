@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { frozen, integerType, type, validating } from "paratype";
 import { FlowContent } from "../structure/FlowContent";
 import { FlowNode } from "../nodes/FlowNode";
 import { InlineNode } from "../nodes/InlineNode";
@@ -15,8 +14,6 @@ import { EndMarkup } from "../nodes/EndMarkup";
  * Represents a position in flow content
  * @public
  */
-@frozen
-@validating
 export class FlowCursor {
     readonly #content: FlowContent;
     readonly #index: number;
@@ -214,7 +211,7 @@ export class FlowCursor {
      * the current position
      * @param distance - The distance to move
      */
-    move(@type(integerType) distance: number): FlowCursor {
+    move(distance: number): FlowCursor {
         if (distance === 0) {
             return this;
         }
@@ -309,7 +306,7 @@ export class FlowCursor {
      * current position
      * @param distance - The distance of the range to get
      */
-    range(@type(integerType) distance: number): Iterable<FlowNode> {
+    range(distance: number): Iterable<FlowNode> {
         const end = this.move(distance);
         const firstIndex = distance >= 0 ? this.#index : end.#index;
         const lastIndex = distance >= 0 ? end.#index : this.#index;

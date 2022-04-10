@@ -17,7 +17,7 @@ abstract formatBox(style: BoxStyle, theme?: FlowTheme): FlowNode;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  style | [BoxStyle](./scribing.boxstyle.md) | The box style to apply |
-|  theme | [FlowTheme](./scribing.flowtheme.md) | Theme of the current content |
+|  theme | [FlowTheme](./scribing.flowtheme.md) | <i>(Optional)</i> Theme of the current content |
 
 <b>Returns:</b>
 

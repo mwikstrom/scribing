@@ -1,13 +1,10 @@
 import { 
     constType,
-    frozen, 
     nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
     recordType, 
     RecordType, 
-    type, 
-    validating 
 } from "paratype";
 import { FlowOperation } from "./FlowOperation";
 import { FlowOperationRegistry } from "../internal/class-registry";
@@ -74,15 +71,13 @@ export interface SplitTableCellData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowOperationRegistry.register
 export class SplitTableCell extends SplitTableCellBase implements SplitTableCellProps {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => SplitTableCell);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) input: SplitTableCellData): SplitTableCell {
+    public static fromData(input: SplitTableCellData): SplitTableCell {
         const { table: position, ...rest } = input;
         const props: SplitTableCellProps = { position, ...rest };
         return new SplitTableCell(props);

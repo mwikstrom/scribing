@@ -14,7 +14,7 @@ export declare class FormatBox extends FormatBoxBase implements Readonly<FormatB
 ```
 <b>Extends:</b> FormatBoxBase
 
-<b>Implements:</b> Readonly&lt;[FormatBoxProps](./scribing.formatboxprops.md)<!-- -->&gt;
+<b>Implements:</b> Readonly&lt;[FormatBoxProps](./scribing.formatboxprops.md)
 
 ## Properties
 

@@ -1,13 +1,10 @@
 import {
-    frozen,
     mapType,
     RecordClass,
     recordClassType,
     recordType,
     RecordType,
     stringType,
-    type,
-    validating
 } from "paratype";
 import { InlineNode } from "./InlineNode";
 import { FlowNodeRegistry } from "../internal/class-registry";
@@ -18,7 +15,7 @@ import type { FlowNode } from "./FlowNode";
 const Props = {
     tag: stringType,
     style: TextStyle.classType,
-    attr: mapType(stringType).frozen(),
+    attr: mapType(stringType),
 };
 const Data = {
     empty_markup: stringType,
@@ -69,8 +66,6 @@ export interface EmptyMarkupData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowNodeRegistry.register
 export class EmptyMarkup extends EmptyMarkupBase implements EmptyMarkupProps {
     /** The run-time type that represents this class */
@@ -80,7 +75,7 @@ export class EmptyMarkup extends EmptyMarkupBase implements EmptyMarkupProps {
     public readonly size = 1;
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: EmptyMarkupData): EmptyMarkup {
+    public static fromData(data: EmptyMarkupData): EmptyMarkup {
         const { empty_markup: tag, style = TextStyle.empty, attr = new Map()} = data;
         const props: EmptyMarkupProps = { tag, style, attr: Object.freeze(attr) };
         return new EmptyMarkup(props);

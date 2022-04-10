@@ -1,4 +1,4 @@
-import { frozen, lazyType, RecordClass, recordClassType, recordType, RecordType, type, validating } from "paratype";
+import { lazyType, RecordClass, recordClassType, recordType, RecordType } from "paratype";
 import { BoxStyle, BoxStyleProps } from "../styles/BoxStyle";
 import { DynamicText } from "../nodes/DynamicText";
 import { FlowBatch } from "../operations/FlowBatch";
@@ -74,8 +74,6 @@ export interface FlowRangeSelectionProps {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowSelectionRegistry.register
 export class FlowRangeSelection extends FlowRangeSelectionBase implements Readonly<FlowRangeSelectionProps> {
     /** The run-time type that represents this class */
@@ -253,7 +251,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      * {@inheritDoc FlowSelection.formatBox}
      * @override
      */
-    public formatBox(@type(BoxStyle.classType) style: BoxStyle): FlowOperation | null {
+    public formatBox(style: BoxStyle): FlowOperation | null {
         const { range } = this;
         if (range.isCollapsed) {
             return null;
@@ -266,10 +264,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      * {@inheritDoc FlowSelection.formatParagraph}
      * @override
      */
-    public formatParagraph(
-        @type(ParagraphStyle.classType) style: ParagraphStyle,
-            options: TargetOptions = {},
-    ): FlowOperation | null {
+    public formatParagraph(style: ParagraphStyle, options: TargetOptions = {}): FlowOperation | null {
         const { target: content } = options;
         const { range } = this;
 
@@ -311,7 +306,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      * {@inheritDoc FlowSelection.formatText}
      * @override
      */
-    public formatText(@type(TextStyle.classType) style: TextStyle): FlowOperation | null {
+    public formatText(style: TextStyle): FlowOperation | null {
         const { range } = this;
         if (range.isCollapsed) {
             return null;
@@ -357,10 +352,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      * {@inheritDoc FlowSelection.insert}
      * @override
      */
-    public insert(
-        @type(FlowContent.classType) content: FlowContent,
-            options: TargetOptions = {}
-    ): FlowOperation | null {
+    public insert(content: FlowContent, options: TargetOptions = {}): FlowOperation | null {
         const { target, theme } = options;
         const { range } = this;
         const { first: position } = range;
@@ -534,7 +526,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      * {@inheritDoc FlowSelection.unformatParagraph}
      * @override
      */
-    public unformatParagraph(@type(ParagraphStyle.classType) style: ParagraphStyle): FlowOperation | null {
+    public unformatParagraph(style: ParagraphStyle): FlowOperation | null {
         const { range } = this;
         if (range.isCollapsed) {
             return null;
@@ -547,7 +539,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      * {@inheritDoc FlowSelection.unformatBox}
      * @override
      */
-    public unformatBox(@type(BoxStyle.classType) style: BoxStyle): FlowOperation | null {
+    public unformatBox(style: BoxStyle): FlowOperation | null {
         const { range } = this;
         if (range.isCollapsed) {
             return null;
@@ -560,7 +552,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      * {@inheritDoc FlowSelection.unformatText}
      * @override
      */
-    public unformatText(@type(TextStyle.classType) style: TextStyle): FlowOperation | null {
+    public unformatText(style: TextStyle): FlowOperation | null {
         const { range } = this;
         if (range.isCollapsed) {
             return null;

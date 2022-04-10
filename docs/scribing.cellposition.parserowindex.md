@@ -15,7 +15,7 @@ static parseRowIndex(input: string, throwOnError?: boolean): number | null;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  input | string |  |
-|  throwOnError | boolean |  |
+|  throwOnError | boolean | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

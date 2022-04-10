@@ -16,5 +16,5 @@ constructor(props?: ParagraphStyleProps);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  props | [ParagraphStyleProps](./scribing.paragraphstyleprops.md) |  |
+|  props | [ParagraphStyleProps](./scribing.paragraphstyleprops.md) | <i>(Optional)</i> |
 

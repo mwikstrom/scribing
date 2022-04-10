@@ -14,8 +14,8 @@ static get(lang?: string, rtl?: boolean): DefaultFlowTheme;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  lang | string |  |
-|  rtl | boolean |  |
+|  lang | string | <i>(Optional)</i> |
+|  rtl | boolean | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

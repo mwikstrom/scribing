@@ -16,5 +16,5 @@ constructor(props?: FlowBatchProps);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  props | [FlowBatchProps](./scribing.flowbatchprops.md) | The properties to assign |
+|  props | [FlowBatchProps](./scribing.flowbatchprops.md) | <i>(Optional)</i> The properties to assign |
 

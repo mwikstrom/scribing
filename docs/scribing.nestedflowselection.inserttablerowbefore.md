@@ -18,7 +18,7 @@ insertTableRowBefore(content: FlowContent, count?: number): FlowOperation | null
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The selected content |
-|  count | number | Optional. The number of rows to insert. Default is the number of selected rows. |
+|  count | number | <i>(Optional)</i> Optional. The number of rows to insert. Default is the number of selected rows. |
 
 <b>Returns:</b>
 

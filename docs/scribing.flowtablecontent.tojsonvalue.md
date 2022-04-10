@@ -14,8 +14,8 @@ toJsonValue(error?: ErrorCallback, path?: PathArray): JsonValue;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  error | ErrorCallback |  |
-|  path | PathArray |  |
+|  error | ErrorCallback | <i>(Optional)</i> |
+|  path | PathArray | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

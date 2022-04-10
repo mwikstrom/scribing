@@ -14,7 +14,7 @@ export declare class FlowBatch extends FlowBatchBase implements Readonly<FlowBat
 ```
 <b>Extends:</b> FlowBatchBase
 
-<b>Implements:</b> Readonly&lt;[FlowBatchProps](./scribing.flowbatchprops.md)<!-- -->&gt;
+<b>Implements:</b> Readonly&lt;[FlowBatchProps](./scribing.flowbatchprops.md)
 
 ## Constructors
 
@@ -26,7 +26,7 @@ export declare class FlowBatch extends FlowBatchBase implements Readonly<FlowBat
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.flowbatch.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FlowBatch](./scribing.flowbatch.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.flowbatch.classtype.md) | <code>static</code> | Type&lt;[FlowBatch](./scribing.flowbatch.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

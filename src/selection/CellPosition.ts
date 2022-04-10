@@ -1,5 +1,4 @@
 import { 
-    frozen, 
     nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
@@ -7,7 +6,6 @@ import {
     recordType, 
     stringType, 
     Type, 
-    validating, 
 } from "paratype";
 
 const Props = {
@@ -62,8 +60,6 @@ export type CellPositionData = string;
  * @public
  * @sealed
  */
-@frozen
-@validating
 export class CellPosition extends CellPositionBase implements Readonly<CellPositionProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => CellPosition);

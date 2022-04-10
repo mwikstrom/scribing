@@ -18,7 +18,7 @@ insertTableColumnBefore(_: FlowContent, count?: number): FlowOperation | null;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  \_ | [FlowContent](./scribing.flowcontent.md) |  |
-|  count | number | Optional. The number of columns to insert. Default is the number of selected columns. |
+|  count | number | <i>(Optional)</i> Optional. The number of columns to insert. Default is the number of selected columns. |
 
 <b>Returns:</b>
 

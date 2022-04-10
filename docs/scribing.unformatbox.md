@@ -14,7 +14,7 @@ export declare class UnformatBox extends UnformatBoxBase implements Readonly<Unf
 ```
 <b>Extends:</b> UnformatBoxBase
 
-<b>Implements:</b> Readonly&lt;[UnformatBoxProps](./scribing.unformatboxprops.md)<!-- -->&gt;
+<b>Implements:</b> Readonly&lt;[UnformatBoxProps](./scribing.unformatboxprops.md)
 
 ## Properties
 

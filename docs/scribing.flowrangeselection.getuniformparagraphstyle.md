@@ -18,8 +18,8 @@ getUniformParagraphStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<key
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The selected content |
-|  theme | [FlowTheme](./scribing.flowtheme.md) | Theme of the selected content |
-|  diff | Set&lt;keyof [ParagraphStyleProps](./scribing.paragraphstyleprops.md)<!-- -->&gt; | An optional set that is populated with style keys with non-uniform values |
+|  theme | [FlowTheme](./scribing.flowtheme.md) | <i>(Optional)</i> Theme of the selected content |
+|  diff | Set&lt;keyof [ParagraphStyleProps](./scribing.paragraphstyleprops.md)<!-- -->&gt; | <i>(Optional)</i> An optional set that is populated with style keys with non-uniform values |
 
 <b>Returns:</b>
 

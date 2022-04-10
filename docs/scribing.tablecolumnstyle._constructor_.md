@@ -16,5 +16,5 @@ constructor(props?: TableColumnStyleProps);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  props | [TableColumnStyleProps](./scribing.tablecolumnstyleprops.md) |  |
+|  props | [TableColumnStyleProps](./scribing.tablecolumnstyleprops.md) | <i>(Optional)</i> |
 

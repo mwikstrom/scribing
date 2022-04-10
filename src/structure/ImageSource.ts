@@ -1,11 +1,9 @@
 import { 
-    frozen,
     positiveIntegerType,
     RecordClass,
     recordClassType,
     recordType,
     stringType,
-    validating
 } from "paratype";
 
 /**
@@ -51,8 +49,6 @@ export const ImageSourceBase = RecordClass(PropsType);
  * @public
  * @sealed
  */
-@frozen
-@validating
 export class ImageSource extends ImageSourceBase implements Readonly<ImageSourceProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => ImageSource);

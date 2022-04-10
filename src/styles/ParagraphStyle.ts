@@ -1,7 +1,6 @@
 import { 
     booleanType,
     enumType, 
-    frozen, 
     integerType, 
     RecordClass, 
     recordClassType, 
@@ -9,7 +8,6 @@ import {
     stringType, 
     Type, 
     unionType, 
-    validating
 } from "paratype";
 
 /**
@@ -299,8 +297,6 @@ export const ParagraphStyleBase = RecordClass(PropsType);
  * @public
  * @sealed
  */
-@frozen
-@validating
 export class ParagraphStyle extends ParagraphStyleBase implements Readonly<ParagraphStyleProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => ParagraphStyle);

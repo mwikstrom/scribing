@@ -13,7 +13,7 @@ export declare class Script extends ScriptBase implements Readonly<ScriptProps>
 ```
 <b>Extends:</b> ScriptBase
 
-<b>Implements:</b> Readonly&lt;[ScriptProps](./scribing.scriptprops.md)<!-- -->&gt;
+<b>Implements:</b> Readonly&lt;[ScriptProps](./scribing.scriptprops.md)
 
 ## Properties
 

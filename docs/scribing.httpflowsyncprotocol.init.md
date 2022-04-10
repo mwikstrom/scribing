@@ -14,8 +14,8 @@ init(content?: FlowContent, language?: string): Promise<FlowSyncSnapshot | null>
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  content | [FlowContent](./scribing.flowcontent.md) |  |
-|  language | string |  |
+|  content | [FlowContent](./scribing.flowcontent.md) | <i>(Optional)</i> |
+|  language | string | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

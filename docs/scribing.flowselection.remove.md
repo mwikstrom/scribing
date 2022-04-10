@@ -16,7 +16,7 @@ abstract remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  options | [RemoveFlowSelectionOptions](./scribing.removeflowselectionoptions.md) | Options that provide operation behavior |
+|  options | [RemoveFlowSelectionOptions](./scribing.removeflowselectionoptions.md) | <i>(Optional)</i> Options that provide operation behavior |
 
 <b>Returns:</b>
 

@@ -14,7 +14,7 @@ export declare class ParagraphStyle extends ParagraphStyleBase implements Readon
 ```
 <b>Extends:</b> ParagraphStyleBase
 
-<b>Implements:</b> Readonly&lt;[ParagraphStyleProps](./scribing.paragraphstyleprops.md)<!-- -->&gt;
+<b>Implements:</b> Readonly&lt;[ParagraphStyleProps](./scribing.paragraphstyleprops.md)
 
 ## Constructors
 

@@ -14,7 +14,7 @@ export declare class RemoveRange extends RemoveRangeBase implements Readonly<Rem
 ```
 <b>Extends:</b> RemoveRangeBase
 
-<b>Implements:</b> Readonly&lt;[RemoveRangeProps](./scribing.removerangeprops.md)<!-- -->&gt;
+<b>Implements:</b> Readonly&lt;[RemoveRangeProps](./scribing.removerangeprops.md)
 
 ## Properties
 

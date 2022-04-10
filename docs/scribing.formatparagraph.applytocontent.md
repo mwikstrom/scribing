@@ -18,7 +18,7 @@ applyToContent(content: FlowContent, theme?: FlowTheme): FlowContent;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The flow content that shall be updated. |
-|  theme | [FlowTheme](./scribing.flowtheme.md) | Optional theme of the content that shall be updated. |
+|  theme | [FlowTheme](./scribing.flowtheme.md) | <i>(Optional)</i> Optional theme of the content that shall be updated. |
 
 <b>Returns:</b>
 

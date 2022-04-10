@@ -14,7 +14,7 @@ export declare class ImageSource extends ImageSourceBase implements Readonly<Ima
 ```
 <b>Extends:</b> ImageSourceBase
 
-<b>Implements:</b> Readonly&lt;[ImageSourceProps](./scribing.imagesourceprops.md)<!-- -->&gt;
+<b>Implements:</b> Readonly&lt;[ImageSourceProps](./scribing.imagesourceprops.md)
 
 ## Properties
 

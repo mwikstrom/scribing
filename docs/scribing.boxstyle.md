@@ -14,7 +14,7 @@ export declare class BoxStyle extends BoxStyleBase implements Readonly<BoxStyleP
 ```
 <b>Extends:</b> BoxStyleBase
 
-<b>Implements:</b> Readonly&lt;[BoxStyleProps](./scribing.boxstyleprops.md)<!-- -->&gt;
+<b>Implements:</b> Readonly&lt;[BoxStyleProps](./scribing.boxstyleprops.md)
 
 ## Constructors
 

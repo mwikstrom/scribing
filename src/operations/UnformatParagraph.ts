@@ -1,12 +1,9 @@
 import { 
     constType,
-    frozen, 
     RecordClass, 
     recordClassType, 
     RecordType, 
     recordType, 
-    type, 
-    validating
 } from "paratype";
 
 import { FlowContent } from "../structure/FlowContent";
@@ -74,15 +71,13 @@ export interface UnformatParagraphData extends UnformatParagraphProps {
  * @sealed
  * @public
  */
-@frozen
-@validating
 @FlowOperationRegistry.register
 export class UnformatParagraph extends UnformatParagraphBase implements Readonly<UnformatParagraphProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => UnformatParagraph);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: UnformatParagraphData): UnformatParagraph {
+    public static fromData(data: UnformatParagraphData): UnformatParagraph {
         const { range, style } = data;
         const props: UnformatParagraphProps = { range, style };
         return new UnformatParagraph(props);

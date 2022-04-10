@@ -1,14 +1,11 @@
 import {
     enumType,
-    frozen,
     RecordClass,
     recordClassType,
     recordType,
     RecordType,
     stringType,
     Type,
-    type,
-    validating
 } from "paratype";
 import { InlineNode } from "./InlineNode";
 import { FlowNodeRegistry } from "../internal/class-registry";
@@ -65,8 +62,6 @@ export interface FlowIconData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowNodeRegistry.register
 export class FlowIcon extends FlowIconBase implements FlowIconProps {
     /** The run-time type that represents this class */
@@ -76,7 +71,7 @@ export class FlowIcon extends FlowIconBase implements FlowIconProps {
     public readonly size = 1;
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: FlowIconData): FlowIcon {
+    public static fromData(data: FlowIconData): FlowIcon {
         const { icon, style = TextStyle.empty} = data;
         const props: FlowIconProps = { data: icon, style };
         return new FlowIcon(props);

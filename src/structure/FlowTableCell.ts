@@ -1,14 +1,11 @@
 import { 
-    frozen, 
     positiveIntegerType, 
     RecordClass, 
     recordClassType, 
     RecordType, 
     recordType, 
     Type, 
-    type, 
     unionType, 
-    validating
 } from "paratype";
 import { CellPosition } from "../selection/CellPosition";
 import { FlowContent } from "./FlowContent";
@@ -71,8 +68,6 @@ export type FlowTableCellData = FlowContent | {
  * @public
  * @sealed
  */
-@frozen
-@validating
 export class FlowTableCell extends FlowTableCellBase {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => FlowTableCell);
@@ -94,7 +89,7 @@ export class FlowTableCell extends FlowTableCellBase {
     }
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: FlowTableCellData): FlowTableCell {
+    public static fromData(data: FlowTableCellData): FlowTableCell {
         const record = FlowContent.classType.test(data) ? { content: data } : data;
         const { content, colSpan = 1, rowSpan = 1 } = record;
         return new FlowTableCell({ content, colSpan, rowSpan });

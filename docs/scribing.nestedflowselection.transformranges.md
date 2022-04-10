@@ -18,7 +18,7 @@ transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRa
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  transform | (range: [FlowRange](./scribing.flowrange.md)<!-- -->, options?: [TargetOptions](./scribing.targetoptions.md)<!-- -->) =&gt; [FlowRange](./scribing.flowrange.md) \| null | The transform to apply |
-|  options | [TargetOptions](./scribing.targetoptions.md) | Options that provide tranformation behavior |
+|  options | [TargetOptions](./scribing.targetoptions.md) | <i>(Optional)</i> Options that provide tranformation behavior |
 
 <b>Returns:</b>
 

@@ -14,7 +14,7 @@ static readonly classType: import("paratype").Type<import("paratype").RecordObje
         italic: boolean;
         underline: boolean;
         strike: boolean;
-        baseline: "normal" | "sub" | "super";
+        baseline: "sub" | "normal" | "super";
         fontFamily: "body" | "heading" | "monospace" | "cursive" | "decorative";
         fontSize: number;
         link: Interaction | null;
@@ -27,7 +27,7 @@ static readonly classType: import("paratype").Type<import("paratype").RecordObje
         italic: boolean;
         underline: boolean;
         strike: boolean;
-        baseline: "normal" | "sub" | "super";
+        baseline: "sub" | "normal" | "super";
         fontFamily: "body" | "heading" | "monospace" | "cursive" | "decorative";
         fontSize: number;
         link: Interaction | null;
@@ -40,7 +40,7 @@ static readonly classType: import("paratype").Type<import("paratype").RecordObje
         italic: boolean;
         underline: boolean;
         strike: boolean;
-        baseline: "normal" | "sub" | "super";
+        baseline: "sub" | "normal" | "super";
         fontFamily: "body" | "heading" | "monospace" | "cursive" | "decorative";
         fontSize: number;
         link: Interaction | null;

@@ -1,12 +1,9 @@
 import { 
-    frozen, 
     nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
     RecordType, 
     recordType, 
-    type, 
-    validating 
 } from "paratype";
 import { FlowContent } from "../structure/FlowContent";
 import { FlowOperation } from "../operations/FlowOperation";
@@ -89,15 +86,13 @@ export interface FlowTableSelectionData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowSelectionRegistry.register
 export class FlowTableSelection extends FlowTableSelectionBase {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => FlowTableSelection);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: FlowTableSelectionData): FlowTableSelection {
+    public static fromData(data: FlowTableSelectionData): FlowTableSelection {
         const { table: position, range } = data;
         return new FlowTableSelection({ position, range });
     }

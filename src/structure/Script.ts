@@ -4,7 +4,7 @@ import { MessageFormatArgumentInfo } from "./MessageFormatArgumentInfo";
 
 const Props = {
     code: stringType,
-    messages: mapType(stringType).frozen(),
+    messages: mapType(stringType),
 };
 
 const PropsType: RecordType<ScriptProps> = recordType(Props);

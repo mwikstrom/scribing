@@ -1,14 +1,11 @@
 import { 
     constType,
-    frozen, 
     nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
     recordType, 
     RecordType, 
     stringType, 
-    type, 
-    validating 
 } from "paratype";
 import { FlowContent } from "../structure/FlowContent";
 import { FlowOperation } from "./FlowOperation";
@@ -77,15 +74,13 @@ export interface SetMarkupTagData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowOperationRegistry.register
 export class SetMarkupTag extends SetMarkupTagBase implements SetMarkupTagProps {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => SetMarkupTag);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: SetMarkupTagData): SetMarkupTag {
+    public static fromData(data: SetMarkupTagData): SetMarkupTag {
         const { value: tag, at: position } = data;
         const props: SetMarkupTagProps = { tag, position };
         return new SetMarkupTag(props);

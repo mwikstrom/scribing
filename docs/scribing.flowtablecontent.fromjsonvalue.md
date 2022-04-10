@@ -15,8 +15,8 @@ static fromJsonValue(value: JsonValue, error?: ErrorCallback, path?: PathArray):
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  value | JsonValue |  |
-|  error | ErrorCallback |  |
-|  path | PathArray |  |
+|  error | ErrorCallback | <i>(Optional)</i> |
+|  path | PathArray | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

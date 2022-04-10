@@ -1,12 +1,9 @@
 import {
-    frozen,
     numberType,
     RecordClass,
     recordClassType,
     recordType,
     RecordType,
-    type,
-    validating
 } from "paratype";
 import { FlowNode } from "./FlowNode";
 import { ImageSource } from "../structure/ImageSource";
@@ -88,8 +85,6 @@ export interface FlowImageData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowNodeRegistry.register
 export class FlowImage extends FlowImageBase implements FlowImageProps {
     /** The run-time type that represents this class */
@@ -99,7 +94,7 @@ export class FlowImage extends FlowImageBase implements FlowImageProps {
     public readonly size = 1;
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: FlowImageData): FlowImage {
+    public static fromData(data: FlowImageData): FlowImage {
         const { image: source, style = TextStyle.empty, scale = 1 } = data;
         const props: FlowImageProps = { source, style, scale };
         return new FlowImage(props);

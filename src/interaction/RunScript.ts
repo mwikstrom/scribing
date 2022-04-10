@@ -1,10 +1,8 @@
 import { 
-    frozen, 
     RecordClass, 
     recordClassType, 
     recordType, 
     RecordType, 
-    validating 
 } from "paratype";
 import { Interaction } from "./Interaction";
 import { InteractionRegistry } from "../internal/class-registry";
@@ -33,8 +31,6 @@ export interface RunScriptProps {
  * @sealed
  * @public
  */
-@frozen
-@validating
 @InteractionRegistry.register
 export class RunScript extends RunScriptBase {
     /** The run-time type that represents this class */

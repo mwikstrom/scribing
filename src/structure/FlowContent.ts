@@ -1,17 +1,12 @@
 import { 
     arrayType, 
-    frozen, 
-    integerType, 
     JsonValue, 
-    jsonValueType, 
     lazyType, 
-    nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
     RecordType, 
-    recordType, 
-    type, 
-    validating, 
+    recordType,
+    Type, 
 } from "paratype";
 import { BoxStyle } from "../styles/BoxStyle";
 import { FlowCursor } from "../selection/FlowCursor";
@@ -26,8 +21,7 @@ import { TextRun } from "../nodes/TextRun";
 import { TextStyle } from "../styles/TextStyle";
 
 const NodeArrayType = arrayType(lazyType(FlowNodeRegistry.close));
-const RestrictedNodeArrayType = NodeArrayType
-    .frozen()
+const RestrictedNodeArrayType: Type<readonly FlowNode[]> = NodeArrayType
     .restrict(
         "Flow content cannot contain empty text runs or adjacent text runs that should be merged",
         value => !value.some((node, index) => (
@@ -83,8 +77,6 @@ let DEFAULT_HASH_FUNC: FlowContentHashFunc = async data => {
  * @public
  * @sealed
  */
-@frozen
-@validating
 export class FlowContent extends FlowContentBase implements Readonly<FlowContentProps> {
     #cachedDigest: string | undefined;
     #cachedDigestFunc: FlowContentHashFunc | undefined;
@@ -115,13 +107,13 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     }
 
     /** Gets flow content from the specified data */
-    public static fromData(@type(NodeArrayType) data: FlowContentData): FlowContent {
+    public static fromData(data: FlowContentData): FlowContent {
         const props: FlowContentProps = { nodes: Object.freeze(Array.from(FlowContent.merge(data))) };
         return new FlowContent(props);
     }
 
     /** Gets flow content from the specified JSON value */
-    public static fromJsonValue(@type(jsonValueType) value: JsonValue): FlowContent {
+    public static fromJsonValue(value: JsonValue): FlowContent {
         return FlowContent.classType.fromJsonValue(value);
     }
 
@@ -177,7 +169,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
      * Extracts a range of flow content
      * @param range - The range to be extracted
      */
-    copy(@type(FlowRange.classType) range: FlowRange): FlowContent {
+    copy(range: FlowRange): FlowContent {
         const cursor = this.peek(range.first);
         return this.set("nodes", Object.freeze(Array.from(cursor.range(range.size))));
     }
@@ -204,11 +196,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
      * @param style - The style to apply
      * @returns The updated flow content
      */
-    formatBox(
-        @type(FlowRange.classType) range: FlowRange, 
-        @type(BoxStyle.classType) style: BoxStyle,
-            theme?: FlowTheme,
-    ): FlowContent {
+    formatBox(range: FlowRange, style: BoxStyle, theme?: FlowTheme): FlowContent {
         // TODO: Verify theme arg
         return this.set("nodes", this.#replace(range, node => node.formatBox(style, theme), theme));
     }
@@ -220,11 +208,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
      * @param style - The style to apply
      * @returns The updated flow content
      */
-    formatParagraph(
-        @type(FlowRange.classType) range: FlowRange, 
-        @type(ParagraphStyle.classType) style: ParagraphStyle,
-            theme?: FlowTheme,
-    ): FlowContent {
+    formatParagraph(range: FlowRange, style: ParagraphStyle, theme?: FlowTheme): FlowContent {
         // TODO: Verify theme arg
         return this.set("nodes", this.#replace(range, node => node.formatParagraph(style, theme), theme));
     }
@@ -236,11 +220,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
      * @param theme - Theme of the current content
      * @returns The updated flow content
      */
-    formatText(
-        @type(FlowRange.classType) range: FlowRange,
-        @type(TextStyle.classType) style: TextStyle,
-            theme?: FlowTheme,
-    ): FlowContent {
+    formatText(range: FlowRange, style: TextStyle, theme?: FlowTheme): FlowContent {
         // TODO: Verify theme arg
         return this.set("nodes", this.#replace(range, node => node.formatText(style, theme), theme));
     }
@@ -253,11 +233,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
      * @param theme - Theme of the current content
      * @returns The updated flow content
      */
-    incrementListLevel(
-        @type(FlowRange.classType) range: FlowRange, 
-        @type(integerType) delta: number,
-            theme?: FlowTheme,
-    ): FlowContent {
+    incrementListLevel(range: FlowRange, delta: number, theme?: FlowTheme): FlowContent {
         return this.set("nodes", this.#replace(range, node => {
             if (node instanceof ParagraphBreak) {
                 const { listLevel: before = 0 } = node.style;
@@ -295,7 +271,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
      * Gets a cursor
      * @param position - Optionally specifies the cursor's position. Default is zero.
      */
-    peek(@type(nonNegativeIntegerType) position = 0): FlowCursor {
+    peek(position = 0): FlowCursor {
         return new FlowCursor(this).move(position);
     }
 
@@ -304,7 +280,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
      * @param range - The range to be removed
      * @returns The updated flow content
      */
-    remove(@type(FlowRange.classType) range: FlowRange): FlowContent {
+    remove(range: FlowRange): FlowContent {
         const { before } = this.peek(range.first);
         const { after } = this.peek(range.last);
         const merged = Object.freeze(Array.from(FlowContent.merge(before, after)));
@@ -340,10 +316,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
      * @param style - The style to unapply
      * @returns The updated flow content
      */
-    unformatBox(
-        @type(FlowRange.classType) range: FlowRange, 
-        @type(BoxStyle.classType) style: BoxStyle
-    ): FlowContent {
+    unformatBox(range: FlowRange, style: BoxStyle): FlowContent {
         return this.set("nodes", this.#replace(range, node => node.unformatBox(style)));
     }
 
@@ -354,10 +327,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
      * @param style - The style to unapply
      * @returns The updated flow content
      */
-    unformatParagraph(
-        @type(FlowRange.classType) range: FlowRange, 
-        @type(ParagraphStyle.classType) style: ParagraphStyle
-    ): FlowContent {
+    unformatParagraph(range: FlowRange, style: ParagraphStyle): FlowContent {
         return this.set("nodes", this.#replace(range, node => node.unformatParagraph(style)));
     }
 
@@ -367,10 +337,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
      * @param style - The style to unapply
      * @returns The updated flow content
      */
-    unformatText(
-        @type(FlowRange.classType) range: FlowRange,
-        @type(TextStyle.classType) style: TextStyle
-    ): FlowContent {
+    unformatText(range: FlowRange, style: TextStyle): FlowContent {
         return this.set("nodes", this.#replace(range, node => node.unformatText(style)));
     }
     

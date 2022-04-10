@@ -16,8 +16,8 @@ next(columnCount?: number, rowCount?: number): CellPosition | null;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  columnCount | number |  |
-|  rowCount | number |  |
+|  columnCount | number | <i>(Optional)</i> |
+|  rowCount | number | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

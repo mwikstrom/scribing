@@ -1,13 +1,10 @@
 import { 
     constType,
-    frozen, 
     nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
     recordType, 
     RecordType, 
-    type, 
-    validating 
 } from "paratype";
 import { FlowOperation } from "./FlowOperation";
 import { FlowOperationRegistry } from "../internal/class-registry";
@@ -90,15 +87,13 @@ export interface InsertTableRowData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowOperationRegistry.register
 export class InsertTableRow extends InsertTableRowBase implements InsertTableRowProps {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => InsertTableRow);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) input: InsertTableRowData): InsertTableRow {
+    public static fromData(input: InsertTableRowData): InsertTableRow {
         const { table: position, row, count = 1} = input;
         const props: InsertTableRowProps = { position, row, count };
         return new InsertTableRow(props);

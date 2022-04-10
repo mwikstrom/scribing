@@ -1,14 +1,11 @@
 import { 
     constType,
-    frozen, 
     nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
     recordType, 
     RecordType, 
     stringType, 
-    type, 
-    validating 
 } from "paratype";
 import { FlowContent } from "../structure/FlowContent";
 import { FlowOperation } from "./FlowOperation";
@@ -75,15 +72,13 @@ export interface UnsetMarkupAttrData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowOperationRegistry.register
 export class UnsetMarkupAttr extends UnsetMarkupAttrBase implements UnsetMarkupAttrProps {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => UnsetMarkupAttr);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: UnsetMarkupAttrData): UnsetMarkupAttr {
+    public static fromData(data: UnsetMarkupAttrData): UnsetMarkupAttr {
         const { key, at: position } = data;
         const props: UnsetMarkupAttrProps = { key, position };
         return new UnsetMarkupAttr(props);

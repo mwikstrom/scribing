@@ -1,7 +1,6 @@
 import { 
     booleanType,
     constType, 
-    frozen, 
     RecordClass, 
     recordClassType, 
     recordType, 
@@ -9,7 +8,6 @@ import {
     stringType, 
     Type, 
     unionType, 
-    validating 
 } from "paratype";
 import { BoxStyle } from "./BoxStyle";
 import { FlowTheme } from "./FlowTheme";
@@ -69,8 +67,6 @@ export const DefaultFlowThemeBase = RecordClass(PropsType, FlowTheme, DataType, 
  * @sealed
  * @public
  */
-@frozen
-@validating
 @FlowThemeRegistry.register
 export class DefaultFlowTheme extends DefaultFlowThemeBase {
     /** The run-time type that represents this class */
@@ -165,8 +161,6 @@ class DefaultBoxTheme extends FlowTheme {
     }
 }
 
-@frozen
-@validating
 class DefaultParagraphTheme extends ParagraphTheme {
     readonly #root: DefaultFlowTheme;
     readonly #box: BoxStyle;

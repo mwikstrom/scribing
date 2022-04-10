@@ -1,12 +1,9 @@
 import { 
     constType,
-    frozen, 
     RecordClass, 
     recordClassType, 
     RecordType, 
     recordType, 
-    type, 
-    validating
 } from "paratype";
 
 import { FlowContent } from "../structure/FlowContent";
@@ -71,15 +68,13 @@ export interface FormatBoxData extends FormatBoxProps {
  * @sealed
  * @public
  */
-@frozen
-@validating
 @FlowOperationRegistry.register
 export class FormatBox extends FormatBoxBase implements Readonly<FormatBoxProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => FormatBox);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: FormatBoxData): FormatBox {
+    public static fromData(data: FormatBoxData): FormatBox {
         const { range, style } = data;
         const props: FormatBoxProps = { range, style };
         return new FormatBox(props);

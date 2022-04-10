@@ -14,7 +14,7 @@ export declare class UnformatParagraph extends UnformatParagraphBase implements 
 ```
 <b>Extends:</b> UnformatParagraphBase
 
-<b>Implements:</b> Readonly&lt;[UnformatParagraphProps](./scribing.unformatparagraphprops.md)<!-- -->&gt;
+<b>Implements:</b> Readonly&lt;[UnformatParagraphProps](./scribing.unformatparagraphprops.md)
 
 ## Properties
 

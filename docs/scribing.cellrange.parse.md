@@ -15,7 +15,7 @@ static parse(input: string, throwOnError?: boolean): CellRange | null;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  input | string |  |
-|  throwOnError | boolean |  |
+|  throwOnError | boolean | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

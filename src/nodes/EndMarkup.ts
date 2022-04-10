@@ -1,12 +1,9 @@
 import {
-    frozen,
     RecordClass,
     recordClassType,
     recordType,
     RecordType,
     stringType,
-    type,
-    validating
 } from "paratype";
 import { InlineNode } from "./InlineNode";
 import { FlowNodeRegistry } from "../internal/class-registry";
@@ -57,8 +54,6 @@ export interface EndMarkupData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowNodeRegistry.register
 export class EndMarkup extends EndMarkupBase implements EndMarkupProps {
     /** The run-time type that represents this class */
@@ -68,7 +63,7 @@ export class EndMarkup extends EndMarkupBase implements EndMarkupProps {
     public readonly size = 1;
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: EndMarkupData): EndMarkup {
+    public static fromData(data: EndMarkupData): EndMarkup {
         const { end_markup: tag, style = TextStyle.empty} = data;
         const props: EndMarkupProps = { tag, style };
         return new EndMarkup(props);

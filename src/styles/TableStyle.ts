@@ -1,11 +1,9 @@
 import { 
     booleanType,
-    frozen, 
     nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
     recordType, 
-    validating
 } from "paratype";
 
 /**
@@ -45,8 +43,6 @@ export const TableStyleBase = RecordClass(PropsType);
  * @public
  * @sealed
  */
-@frozen
-@validating
 export class TableStyle extends TableStyleBase implements Readonly<TableStyleProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => TableStyle);

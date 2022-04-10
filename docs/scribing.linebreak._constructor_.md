@@ -16,5 +16,5 @@ constructor(props?: LineBreakProps);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  props | [LineBreakProps](./scribing.linebreakprops.md) |  |
+|  props | [LineBreakProps](./scribing.linebreakprops.md) | <i>(Optional)</i> |
 

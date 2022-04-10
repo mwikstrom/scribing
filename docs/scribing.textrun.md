@@ -14,7 +14,7 @@ export declare class TextRun extends TextRunBase implements Readonly<TextRunProp
 ```
 <b>Extends:</b> TextRunBase
 
-<b>Implements:</b> Readonly&lt;[TextRunProps](./scribing.textrunprops.md)<!-- -->&gt;
+<b>Implements:</b> Readonly&lt;[TextRunProps](./scribing.textrunprops.md)
 
 ## Constructors
 

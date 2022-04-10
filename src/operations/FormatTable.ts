@@ -1,13 +1,10 @@
 import { 
     constType,
-    frozen, 
     nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
     recordType, 
     RecordType, 
-    type, 
-    validating 
 } from "paratype";
 import { FlowOperation } from "./FlowOperation";
 import { FlowOperationRegistry } from "../internal/class-registry";
@@ -74,15 +71,13 @@ export interface FormatTableData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowOperationRegistry.register
 export class FormatTable extends FormatTableBase implements FormatTableProps {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => FormatTable);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) input: FormatTableData): FormatTable {
+    public static fromData(input: FormatTableData): FormatTable {
         const { style, at: position } = input;
         const props: FormatTableProps = { style, position };
         return new FormatTable(props);

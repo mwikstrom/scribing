@@ -15,7 +15,7 @@ getSpannedPositions(root: CellPosition, includeSelf?: boolean): CellPosition[];
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  root | [CellPosition](./scribing.cellposition.md) |  |
-|  includeSelf | boolean |  |
+|  includeSelf | boolean | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

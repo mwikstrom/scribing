@@ -1,13 +1,10 @@
 import { 
-    frozen, 
     lazyType, 
     nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
     RecordType, 
     recordType, 
-    type, 
-    validating 
 } from "paratype";
 import { DefaultFlowTheme } from "../styles/DefaultFlowTheme";
 import { EditBox } from "../operations/EditBox";
@@ -66,15 +63,13 @@ export interface FlowBoxSelectionData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowSelectionRegistry.register
 export class FlowBoxSelection extends FlowBoxSelectionBase {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => FlowBoxSelection);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: FlowBoxSelectionData): FlowBoxSelection {
+    public static fromData(data: FlowBoxSelectionData): FlowBoxSelection {
         const { box: position, content } = data;
         return new FlowBoxSelection({ position, content });
     }

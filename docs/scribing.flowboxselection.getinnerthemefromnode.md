@@ -18,7 +18,7 @@ protected getInnerThemeFromNode(node: FlowNode, outer?: FlowTheme): FlowTheme;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  node | [FlowNode](./scribing.flownode.md) | The selected node |
-|  outer | [FlowTheme](./scribing.flowtheme.md) | The outer theme |
+|  outer | [FlowTheme](./scribing.flowtheme.md) | <i>(Optional)</i> The outer theme |
 
 <b>Returns:</b>
 

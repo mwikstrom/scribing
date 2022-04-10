@@ -17,7 +17,7 @@ abstract formatText(style: TextStyle, theme?: FlowTheme): FlowNode;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  style | [TextStyle](./scribing.textstyle.md) | The text style to apply |
-|  theme | [FlowTheme](./scribing.flowtheme.md) | Theme of the current content |
+|  theme | [FlowTheme](./scribing.flowtheme.md) | <i>(Optional)</i> Theme of the current content |
 
 <b>Returns:</b>
 

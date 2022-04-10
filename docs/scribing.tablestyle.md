@@ -14,7 +14,7 @@ export declare class TableStyle extends TableStyleBase implements Readonly<Table
 ```
 <b>Extends:</b> TableStyleBase
 
-<b>Implements:</b> Readonly&lt;[TableStyleProps](./scribing.tablestyleprops.md)<!-- -->&gt;
+<b>Implements:</b> Readonly&lt;[TableStyleProps](./scribing.tablestyleprops.md)
 
 ## Constructors
 

@@ -18,7 +18,7 @@ formatBox(range: FlowRange, style: BoxStyle, theme?: FlowTheme): FlowContent;
 |  --- | --- | --- |
 |  range | [FlowRange](./scribing.flowrange.md) | The range to format |
 |  style | [BoxStyle](./scribing.boxstyle.md) | The style to apply |
-|  theme | [FlowTheme](./scribing.flowtheme.md) |  |
+|  theme | [FlowTheme](./scribing.flowtheme.md) | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

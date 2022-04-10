@@ -17,7 +17,7 @@ abstract unformatParagraph(style: ParagraphStyle, options?: TargetOptions): Flow
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  style | [ParagraphStyle](./scribing.paragraphstyle.md) | The style to unapply |
-|  options | [TargetOptions](./scribing.targetoptions.md) |  |
+|  options | [TargetOptions](./scribing.targetoptions.md) | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

@@ -1,13 +1,10 @@
 import { 
     constType,
-    frozen, 
     nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
     recordType, 
     RecordType, 
-    type, 
-    validating 
 } from "paratype";
 import { FlowOperation } from "./FlowOperation";
 import { FlowOperationRegistry } from "../internal/class-registry";
@@ -74,15 +71,13 @@ export interface UnformatTableData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowOperationRegistry.register
 export class UnformatTable extends UnformatTableBase implements UnformatTableProps {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => UnformatTable);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) input: UnformatTableData): UnformatTable {
+    public static fromData(input: UnformatTableData): UnformatTable {
         const { style, at: position } = input;
         const props: UnformatTableProps = { style, position };
         return new UnformatTable(props);

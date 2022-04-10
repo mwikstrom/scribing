@@ -1,12 +1,9 @@
 import { 
     constType,
-    frozen, 
     RecordClass, 
     recordClassType, 
     RecordType, 
     recordType, 
-    type, 
-    validating
 } from "paratype";
 
 import { FlowContent } from "../structure/FlowContent";
@@ -74,15 +71,13 @@ export interface UnformatBoxData extends UnformatBoxProps {
  * @sealed
  * @public
  */
-@frozen
-@validating
 @FlowOperationRegistry.register
 export class UnformatBox extends UnformatBoxBase implements Readonly<UnformatBoxProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => UnformatBox);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: UnformatBoxData): UnformatBox {
+    public static fromData(data: UnformatBoxData): UnformatBox {
         const { range, style } = data;
         const props: UnformatBoxProps = { range, style };
         return new UnformatBox(props);

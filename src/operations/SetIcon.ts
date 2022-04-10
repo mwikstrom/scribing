@@ -1,14 +1,11 @@
 import { 
     constType,
-    frozen, 
     nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
     recordType, 
     RecordType, 
     stringType, 
-    type, 
-    validating 
 } from "paratype";
 import { FlowIcon } from "../nodes/FlowIcon";
 import { FlowContent } from "../structure/FlowContent";
@@ -75,15 +72,13 @@ export interface SetIconData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowOperationRegistry.register
 export class SetIcon extends SetIconBase implements SetIconProps {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => SetIcon);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) input: SetIconData): SetIcon {
+    public static fromData(input: SetIconData): SetIcon {
         const { data, at: position } = input;
         const props: SetIconProps = { data, position };
         return new SetIcon(props);

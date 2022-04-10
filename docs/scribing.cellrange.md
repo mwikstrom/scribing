@@ -14,7 +14,7 @@ export declare class CellRange extends CellRangeBase implements Readonly<CellRan
 ```
 <b>Extends:</b> CellRangeBase
 
-<b>Implements:</b> Readonly&lt;[CellRangeProps](./scribing.cellrangeprops.md)<!-- -->&gt;
+<b>Implements:</b> Readonly&lt;[CellRangeProps](./scribing.cellrangeprops.md)
 
 ## Properties
 

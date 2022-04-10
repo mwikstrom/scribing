@@ -16,7 +16,7 @@ peek(position?: number): FlowCursor;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  position | number | Optionally specifies the cursor's position. Default is zero. |
+|  position | number | <i>(Optional)</i> Optionally specifies the cursor's position. Default is zero. |
 
 <b>Returns:</b>
 

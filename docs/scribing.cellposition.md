@@ -14,7 +14,7 @@ export declare class CellPosition extends CellPositionBase implements Readonly<C
 ```
 <b>Extends:</b> CellPositionBase
 
-<b>Implements:</b> Readonly&lt;[CellPositionProps](./scribing.cellpositionprops.md)<!-- -->&gt;
+<b>Implements:</b> Readonly&lt;[CellPositionProps](./scribing.cellpositionprops.md)
 
 ## Properties
 

@@ -16,8 +16,8 @@ abstract getUniformParagraphStyle(theme?: ParagraphTheme, diff?: Set<keyof Parag
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  theme | [ParagraphTheme](./scribing.paragraphtheme.md) | Theme of the current node |
-|  diff | Set&lt;keyof [ParagraphStyleProps](./scribing.paragraphstyleprops.md)<!-- -->&gt; | An optional set that is populated with style keys with non-uniform values |
+|  theme | [ParagraphTheme](./scribing.paragraphtheme.md) | <i>(Optional)</i> Theme of the current node |
+|  diff | Set&lt;keyof [ParagraphStyleProps](./scribing.paragraphstyleprops.md)<!-- -->&gt; | <i>(Optional)</i> An optional set that is populated with style keys with non-uniform values |
 
 <b>Returns:</b>
 

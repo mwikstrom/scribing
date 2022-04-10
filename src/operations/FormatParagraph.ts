@@ -1,12 +1,9 @@
 import { 
     constType,
-    frozen, 
     RecordClass, 
     recordClassType, 
     RecordType, 
     recordType, 
-    type, 
-    validating
 } from "paratype";
 
 import { FlowContent } from "../structure/FlowContent";
@@ -71,15 +68,13 @@ export interface FormatParagraphData extends FormatParagraphProps {
  * @sealed
  * @public
  */
-@frozen
-@validating
 @FlowOperationRegistry.register
 export class FormatParagraph extends FormatParagraphBase implements Readonly<FormatParagraphProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => FormatParagraph);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: FormatParagraphData): FormatParagraph {
+    public static fromData(data: FormatParagraphData): FormatParagraph {
         const { range, style } = data;
         const props: FormatParagraphProps = { range, style };
         return new FormatParagraph(props);

@@ -1,13 +1,10 @@
 import {
     constType,
-    frozen,
     lazyType,
     RecordClass,
     recordClassType,
     recordType,
     RecordType,
-    type,
-    validating
 } from "paratype";
 import { FlowNode } from "./FlowNode";
 import { FlowNodeRegistry } from "../internal/class-registry";
@@ -64,8 +61,6 @@ export interface ParagraphBreakData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowNodeRegistry.register
 export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreakProps {
     /** The run-time type that represents this class */
@@ -75,7 +70,7 @@ export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreak
     public readonly size = 1;
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: ParagraphBreakData): ParagraphBreak {
+    public static fromData(data: ParagraphBreakData): ParagraphBreak {
         const { style = ParagraphStyle.empty} = data;
         const props: ParagraphBreakProps = { style };
         return new ParagraphBreak(props);
@@ -101,7 +96,7 @@ export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreak
     }
     
     /** {@inheritdoc FlowNode.formatParagraph} */
-    public formatParagraph(@type(Props.style) style: ParagraphStyle): this {
+    public formatParagraph(style: ParagraphStyle): this {
         return this.set("style", this.style.merge(style));
     }
 
@@ -139,7 +134,7 @@ export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreak
     }
 
     /** {@inheritdoc FlowNode.unformatParagraph} */
-    public unformatParagraph(@type(Props.style) style: ParagraphStyle): this {
+    public unformatParagraph(style: ParagraphStyle): this {
         return this.set("style", this.style.unmerge(style));
     }
 

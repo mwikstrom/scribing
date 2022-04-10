@@ -15,7 +15,7 @@ getCell(position: CellPosition, throwOnError?: boolean): FlowTableCell | null;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  position | [CellPosition](./scribing.cellposition.md) |  |
-|  throwOnError | boolean |  |
+|  throwOnError | boolean | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

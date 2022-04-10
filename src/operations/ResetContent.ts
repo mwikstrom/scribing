@@ -1,12 +1,9 @@
 import { 
     constType,
-    frozen, 
     RecordClass, 
     recordClassType, 
     recordType, 
     RecordType, 
-    type, 
-    validating 
 } from "paratype";
 import { FlowContent } from "../structure/FlowContent";
 import { FlowOperation } from "./FlowOperation";
@@ -63,15 +60,13 @@ export interface ResetContentData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowOperationRegistry.register
 export class ResetContent extends ResetContentBase implements ResetContentProps {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => ResetContent);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) input: ResetContentData): ResetContent {
+    public static fromData(input: ResetContentData): ResetContent {
         const { content } = input;
         const props: ResetContentProps = { content };
         return new ResetContent(props);

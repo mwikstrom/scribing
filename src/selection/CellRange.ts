@@ -1,12 +1,10 @@
 import { 
-    frozen, 
     RecordClass, 
     recordClassType, 
     RecordType, 
     recordType, 
     stringType, 
     Type, 
-    validating, 
 } from "paratype";
 import { getRangeAfterInsertion, getRangeAfterRemoval } from "../internal/transform-helpers";
 import { CellPosition } from "./CellPosition";
@@ -59,8 +57,6 @@ export type CellRangeData = string;
  * @public
  * @sealed
  */
-@frozen
-@validating
 export class CellRange extends CellRangeBase implements Readonly<CellRangeProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => CellRange);

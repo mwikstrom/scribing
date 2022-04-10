@@ -17,7 +17,7 @@ abstract insert(content: FlowContent, options?: TargetOptions): FlowOperation | 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The content to be inserted |
-|  options | [TargetOptions](./scribing.targetoptions.md) | Options that provide operation behavior |
+|  options | [TargetOptions](./scribing.targetoptions.md) | <i>(Optional)</i> Options that provide operation behavior |
 
 <b>Returns:</b>
 

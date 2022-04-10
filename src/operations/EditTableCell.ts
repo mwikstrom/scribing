@@ -1,13 +1,10 @@
 import { 
     constType,
-    frozen, 
     nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
     recordType, 
     RecordType, 
-    type, 
-    validating 
 } from "paratype";
 import { DefaultFlowTheme } from "../styles/DefaultFlowTheme";
 import { FlowTable } from "../nodes/FlowTable";
@@ -85,15 +82,13 @@ export interface EditTableCellData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowOperationRegistry.register
 export class EditTableCell extends EditTableCellBase implements EditTableCellProps {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => EditTableCell);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: EditTableCellData): EditTableCell {
+    public static fromData(data: EditTableCellData): EditTableCell {
         const { op: inner, table: position, cell } = data;
         const props: EditTableCellProps = { inner, position, cell };
         return new EditTableCell(props);

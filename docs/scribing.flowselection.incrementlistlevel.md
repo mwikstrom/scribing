@@ -17,7 +17,7 @@ abstract incrementListLevel(content: FlowContent, delta?: number): FlowOperation
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The selected content |
-|  delta | number | Optional list level increment. Default is <code>1</code>. |
+|  delta | number | <i>(Optional)</i> Optional list level increment. Default is <code>1</code>. |
 
 <b>Returns:</b>
 

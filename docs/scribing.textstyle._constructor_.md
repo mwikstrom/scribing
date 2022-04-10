@@ -16,5 +16,5 @@ constructor(props?: TextStyleProps);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  props | [TextStyleProps](./scribing.textstyleprops.md) |  |
+|  props | [TextStyleProps](./scribing.textstyleprops.md) | <i>(Optional)</i> |
 

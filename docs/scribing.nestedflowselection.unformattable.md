@@ -18,7 +18,7 @@ unformatTable(style: TableStyle, options?: TargetOptions): FlowOperation | null;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  style | [TableStyle](./scribing.tablestyle.md) | The style to unapply |
-|  options | [TargetOptions](./scribing.targetoptions.md) |  |
+|  options | [TargetOptions](./scribing.targetoptions.md) | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

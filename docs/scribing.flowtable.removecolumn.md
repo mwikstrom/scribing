@@ -15,7 +15,7 @@ removeColumn(index: number, count?: number): FlowTable;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  index | number |  |
-|  count | number |  |
+|  count | number | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

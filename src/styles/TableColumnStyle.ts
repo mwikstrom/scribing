@@ -1,10 +1,8 @@
 import { 
-    frozen, 
     numberType, 
     RecordClass, 
     recordClassType, 
     recordType, 
-    validating
 } from "paratype";
 
 /**
@@ -33,8 +31,6 @@ export const TableColumnStyleBase = RecordClass(PropsType);
  * @public
  * @sealed
  */
-@frozen
-@validating
 export class TableColumnStyle extends TableColumnStyleBase implements Readonly<TableColumnStyleProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => TableColumnStyle);

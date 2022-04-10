@@ -16,5 +16,5 @@ constructor(props?: ParagraphBreakProps);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  props | [ParagraphBreakProps](./scribing.paragraphbreakprops.md) |  |
+|  props | [ParagraphBreakProps](./scribing.paragraphbreakprops.md) | <i>(Optional)</i> |
 

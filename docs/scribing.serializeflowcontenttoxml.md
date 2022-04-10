@@ -17,7 +17,7 @@ export declare function serializeFlowContentToXml(content: FlowContent, theme?: 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The flow content that shall be serialized |
-|  theme | [FlowTheme](./scribing.flowtheme.md) | Optional. Theme of the content that shall be serialized |
+|  theme | [FlowTheme](./scribing.flowtheme.md) | <i>(Optional)</i> Optional. Theme of the content that shall be serialized |
 
 <b>Returns:</b>
 

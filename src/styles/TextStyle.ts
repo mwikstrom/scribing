@@ -1,7 +1,6 @@
 import { 
     booleanType,
     enumType,
-    frozen,
     integerType,
     nullType,
     RecordClass,
@@ -9,7 +8,6 @@ import {
     recordType,
     stringType,
     unionType,
-    validating
 } from "paratype";
 import { FlowColor, FlowColorType } from "./FlowColor";
 import { Interaction } from "../interaction/Interaction";
@@ -150,8 +148,6 @@ export const TextStyleBase = RecordClass(PropsType);
  * @public
  * @sealed
  */
-@frozen
-@validating
 export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => TextStyle);

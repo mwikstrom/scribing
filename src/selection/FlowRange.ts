@@ -1,14 +1,11 @@
 import { 
-    frozen, 
     nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
     RecordType, 
     recordType, 
     tupleType, 
-    type, 
     Type, 
-    validating, 
 } from "paratype";
 
 const Props = {
@@ -53,8 +50,6 @@ export type FlowRangeTuple = [number, number];
  * @public
  * @sealed
  */
-@frozen
-@validating
 export class FlowRange extends FlowRangeBase implements Readonly<FlowRangeProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => FlowRange);
@@ -64,7 +59,7 @@ export class FlowRange extends FlowRangeBase implements Readonly<FlowRangeProps>
      * @param data - A tuple with two values, the first is the anchor position and the second is the
      *               focus position
      */
-    public static fromData(@type(DataType) data: FlowRangeTuple): FlowRange {
+    public static fromData(data: FlowRangeTuple): FlowRange {
         const [anchor, focus] = data;
         const props: FlowRangeProps = { anchor, focus };
         return new FlowRange(props);
@@ -76,7 +71,7 @@ export class FlowRange extends FlowRangeBase implements Readonly<FlowRangeProps>
      * @param distance - Optional. Range distance. Can be negative. Default is zero.
      * @returns 
      */
-    public static at(@type(nonNegativeIntegerType) position: number, distance = 0): FlowRange {
+    public static at(position: number, distance = 0): FlowRange {
         return FlowRange.fromData([position, position + distance]);
     }
 

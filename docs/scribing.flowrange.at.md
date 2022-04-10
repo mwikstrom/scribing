@@ -17,7 +17,7 @@ static at(position: number, distance?: number): FlowRange;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  position | number | Anchor position |
-|  distance | number | Optional. Range distance. Can be negative. Default is zero. |
+|  distance | number | <i>(Optional)</i> Optional. Range distance. Can be negative. Default is zero. |
 
 <b>Returns:</b>
 

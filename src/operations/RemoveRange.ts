@@ -1,12 +1,9 @@
 import { 
-    frozen, 
     lazyType, 
     RecordClass, 
     recordClassType, 
     RecordType, 
     recordType, 
-    type, 
-    validating
 } from "paratype";
 
 import { FlowContent } from "../structure/FlowContent";
@@ -58,15 +55,13 @@ export interface RemoveRangeData {
  * @sealed
  * @public
  */
-@frozen
-@validating
 @FlowOperationRegistry.register
 export class RemoveRange extends RemoveRangeBase implements Readonly<RemoveRangeProps> {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => RemoveRange);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: RemoveRangeData): RemoveRange {
+    public static fromData(data: RemoveRangeData): RemoveRange {
         const { remove: range } = data;
         const props: RemoveRangeProps = { range };
         return new RemoveRange(props);

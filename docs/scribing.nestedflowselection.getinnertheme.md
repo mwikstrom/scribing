@@ -17,7 +17,7 @@ protected getInnerTheme(outerContent: FlowContent, outerTheme?: FlowTheme): Flow
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  outerContent | [FlowContent](./scribing.flowcontent.md) | The outer content |
-|  outerTheme | [FlowTheme](./scribing.flowtheme.md) | The outer theme |
+|  outerTheme | [FlowTheme](./scribing.flowtheme.md) | <i>(Optional)</i> The outer theme |
 
 <b>Returns:</b>
 

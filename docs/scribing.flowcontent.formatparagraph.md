@@ -18,7 +18,7 @@ formatParagraph(range: FlowRange, style: ParagraphStyle, theme?: FlowTheme): Flo
 |  --- | --- | --- |
 |  range | [FlowRange](./scribing.flowrange.md) | The range to format |
 |  style | [ParagraphStyle](./scribing.paragraphstyle.md) | The style to apply |
-|  theme | [FlowTheme](./scribing.flowtheme.md) |  |
+|  theme | [FlowTheme](./scribing.flowtheme.md) | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

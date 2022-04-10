@@ -1,13 +1,10 @@
 import { 
-    frozen, 
     lazyType, 
     nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
     RecordType, 
     recordType, 
-    type, 
-    validating 
 } from "paratype";
 import { DefaultFlowTheme } from "../styles/DefaultFlowTheme";
 import { FlowTable } from "../nodes/FlowTable";
@@ -71,15 +68,13 @@ export interface FlowTableCellSelectionData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowSelectionRegistry.register
 export class FlowTableCellSelection extends FlowTableCellSelectionBase {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => FlowTableCellSelection);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: FlowTableCellSelectionData): FlowTableCellSelection {
+    public static fromData(data: FlowTableCellSelectionData): FlowTableCellSelection {
         const { table: position, cell, content } = data;
         return new FlowTableCellSelection({ position, cell, content });
     }

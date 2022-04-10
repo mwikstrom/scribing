@@ -1,12 +1,9 @@
 import {
     constType,
-    frozen,
     RecordClass,
     recordClassType,
     recordType,
     RecordType,
-    type,
-    validating
 } from "paratype";
 import { InlineNode } from "./InlineNode";
 import { FlowNodeRegistry } from "../internal/class-registry";
@@ -62,8 +59,6 @@ export interface LineBreakData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowNodeRegistry.register
 export class LineBreak extends LineBreakBase implements LineBreakProps {
     /** The run-time type that represents this class */
@@ -73,7 +68,7 @@ export class LineBreak extends LineBreakBase implements LineBreakProps {
     public readonly size = 1;
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: LineBreakData): LineBreak {
+    public static fromData(data: LineBreakData): LineBreak {
         const { style = TextStyle.empty} = data;
         const props: LineBreakProps = { style };
         return new LineBreak(props);

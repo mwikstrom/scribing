@@ -16,5 +16,5 @@ constructor(props?: BoxStyleProps);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  props | [BoxStyleProps](./scribing.boxstyleprops.md) |  |
+|  props | [BoxStyleProps](./scribing.boxstyleprops.md) | <i>(Optional)</i> |
 

@@ -1,13 +1,10 @@
 import { 
     constType,
-    frozen, 
     nonNegativeIntegerType, 
     RecordClass, 
     recordClassType, 
     recordType, 
     RecordType, 
-    type, 
-    validating 
 } from "paratype";
 import { FlowOperation } from "./FlowOperation";
 import { FlowOperationRegistry } from "../internal/class-registry";
@@ -90,15 +87,13 @@ export interface RemoveTableColumnData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowOperationRegistry.register
 export class RemoveTableColumn extends RemoveTableColumnBase implements RemoveTableColumnProps {
     /** The run-time type that represents this class */
     public static readonly classType = recordClassType(() => RemoveTableColumn);
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) input: RemoveTableColumnData): RemoveTableColumn {
+    public static fromData(input: RemoveTableColumnData): RemoveTableColumn {
         const { table: position, column, count = 1} = input;
         const props: RemoveTableColumnProps = { position, column, count };
         return new RemoveTableColumn(props);

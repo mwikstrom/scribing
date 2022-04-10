@@ -1,11 +1,8 @@
 import {
-    frozen,
     RecordClass,
     recordClassType,
     recordType,
     RecordType,
-    type,
-    validating
 } from "paratype";
 import { InlineNode } from "./InlineNode";
 import { FlowNodeRegistry } from "../internal/class-registry";
@@ -63,8 +60,6 @@ export interface DynamicTextData {
  * @public
  * @sealed
  */
-@frozen
-@validating
 @FlowNodeRegistry.register
 export class DynamicText extends DynamicTextBase implements DynamicTextProps {
     /** The run-time type that represents this class */
@@ -74,7 +69,7 @@ export class DynamicText extends DynamicTextBase implements DynamicTextProps {
     public readonly size = 1;
 
     /** Gets an instance of the current class from the specified data */
-    public static fromData(@type(DataType) data: DynamicTextData): DynamicText {
+    public static fromData(data: DynamicTextData): DynamicText {
         const { dynamic: expression, style = TextStyle.empty} = data;
         const props: DynamicTextProps = { expression, style };
         return new DynamicText(props);

@@ -14,7 +14,7 @@ TextStyleBase: import("paratype").RecordConstructor<Partial<{
     italic: boolean;
     underline: boolean;
     strike: boolean;
-    baseline: "normal" | "sub" | "super";
+    baseline: "sub" | "normal" | "super";
     fontFamily: "body" | "heading" | "monospace" | "cursive" | "decorative";
     fontSize: number;
     link: Interaction | null;
@@ -27,7 +27,7 @@ TextStyleBase: import("paratype").RecordConstructor<Partial<{
     italic: boolean;
     underline: boolean;
     strike: boolean;
-    baseline: "normal" | "sub" | "super";
+    baseline: "sub" | "normal" | "super";
     fontFamily: "body" | "heading" | "monospace" | "cursive" | "decorative";
     fontSize: number;
     link: Interaction | null;

@@ -7,7 +7,7 @@
 /// <reference types="node" />
 
 import { Equatable } from 'paratype';
-import { ErrorCallback } from 'paratype';
+import { ErrorCallback as ErrorCallback_2 } from 'paratype';
 import { JsonValue } from 'paratype';
 import { PathArray } from 'paratype';
 import { RecordConstructor } from 'paratype';
@@ -1066,7 +1066,7 @@ export class FlowTableContent {
     // (undocumented)
     get defaultCellContent(): FlowContent;
     // (undocumented)
-    static fromJsonValue(value: JsonValue, error?: ErrorCallback, path?: PathArray): FlowTableContent;
+    static fromJsonValue(value: JsonValue, error?: ErrorCallback_2, path?: PathArray): FlowTableContent;
     // (undocumented)
     getCell(position: CellPosition, throwOnError?: boolean): FlowTableCell | null;
     // (undocumented)
@@ -1094,7 +1094,7 @@ export class FlowTableContent {
     // (undocumented)
     toData(): Map<string, FlowTableCell>;
     // (undocumented)
-    toJsonValue(error?: ErrorCallback, path?: PathArray): JsonValue;
+    toJsonValue(error?: ErrorCallback_2, path?: PathArray): JsonValue;
     // (undocumented)
     updateAllContent(callback: (content: FlowContent, position: CellPosition) => FlowContent): FlowTableContent;
 }
@@ -2658,7 +2658,7 @@ export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps>
     italic: boolean;
     underline: boolean;
     strike: boolean;
-    baseline: "normal" | "sub" | "super";
+    baseline: "sub" | "normal" | "super";
     fontFamily: "body" | "heading" | "monospace" | "cursive" | "decorative";
     fontSize: number;
     link: Interaction | null;
@@ -2671,7 +2671,7 @@ export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps>
     italic: boolean;
     underline: boolean;
     strike: boolean;
-    baseline: "normal" | "sub" | "super";
+    baseline: "sub" | "normal" | "super";
     fontFamily: "body" | "heading" | "monospace" | "cursive" | "decorative";
     fontSize: number;
     link: Interaction | null;
@@ -2684,7 +2684,7 @@ export class TextStyle extends TextStyleBase implements Readonly<TextStyleProps>
     italic: boolean;
     underline: boolean;
     strike: boolean;
-    baseline: "normal" | "sub" | "super";
+    baseline: "sub" | "normal" | "super";
     fontFamily: "body" | "heading" | "monospace" | "cursive" | "decorative";
     fontSize: number;
     link: Interaction | null;
@@ -2703,7 +2703,7 @@ bold: boolean;
 italic: boolean;
 underline: boolean;
 strike: boolean;
-baseline: "normal" | "sub" | "super";
+baseline: "sub" | "normal" | "super";
 fontFamily: "body" | "heading" | "monospace" | "cursive" | "decorative";
 fontSize: number;
 link: Interaction | null;
@@ -2716,7 +2716,7 @@ bold: boolean;
 italic: boolean;
 underline: boolean;
 strike: boolean;
-baseline: "normal" | "sub" | "super";
+baseline: "sub" | "normal" | "super";
 fontFamily: "body" | "heading" | "monospace" | "cursive" | "decorative";
 fontSize: number;
 link: Interaction | null;

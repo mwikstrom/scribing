@@ -17,7 +17,7 @@ getUniformTextStyle(theme?: ParagraphTheme): TextStyle;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  theme | [ParagraphTheme](./scribing.paragraphtheme.md) | Theme of the current node |
+|  theme | [ParagraphTheme](./scribing.paragraphtheme.md) | <i>(Optional)</i> Theme of the current node |
 
 <b>Returns:</b>
 

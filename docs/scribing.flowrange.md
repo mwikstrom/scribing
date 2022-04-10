@@ -14,7 +14,7 @@ export declare class FlowRange extends FlowRangeBase implements Readonly<FlowRan
 ```
 <b>Extends:</b> FlowRangeBase
 
-<b>Implements:</b> Readonly&lt;[FlowRangeProps](./scribing.flowrangeprops.md)<!-- -->&gt;
+<b>Implements:</b> Readonly&lt;[FlowRangeProps](./scribing.flowrangeprops.md)
 
 ## Properties
 

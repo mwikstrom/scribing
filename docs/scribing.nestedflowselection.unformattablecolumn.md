@@ -18,7 +18,7 @@ unformatTableColumn(style: TableColumnStyle, options?: TargetOptions): FlowOpera
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  style | [TableColumnStyle](./scribing.tablecolumnstyle.md) | The style to unapply |
-|  options | [TargetOptions](./scribing.targetoptions.md) |  |
+|  options | [TargetOptions](./scribing.targetoptions.md) | <i>(Optional)</i> |
 
 <b>Returns:</b>
 
