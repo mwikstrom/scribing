@@ -197,7 +197,6 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
      * @returns The updated flow content
      */
     formatBox(range: FlowRange, style: BoxStyle, theme?: FlowTheme): FlowContent {
-        // TODO: Verify theme arg
         return this.set("nodes", this.#replace(range, node => node.formatBox(style, theme), theme));
     }
 
@@ -209,7 +208,6 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
      * @returns The updated flow content
      */
     formatParagraph(range: FlowRange, style: ParagraphStyle, theme?: FlowTheme): FlowContent {
-        // TODO: Verify theme arg
         return this.set("nodes", this.#replace(range, node => node.formatParagraph(style, theme), theme));
     }
 
@@ -221,7 +219,6 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
      * @returns The updated flow content
      */
     formatText(range: FlowRange, style: TextStyle, theme?: FlowTheme): FlowContent {
-        // TODO: Verify theme arg
         return this.set("nodes", this.#replace(range, node => node.formatText(style, theme), theme));
     }
 
