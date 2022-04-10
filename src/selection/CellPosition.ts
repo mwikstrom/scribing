@@ -66,7 +66,6 @@ export class CellPosition extends CellPositionBase implements Readonly<CellPosit
 
     /** Gets a cell position at the specified row and column */
     public static at(row: number, column: number): CellPosition {
-        // TODO: Use cache (to reuse cell position instances)
         return new CellPosition({ column, row });
     }
 
@@ -80,14 +79,13 @@ export class CellPosition extends CellPositionBase implements Readonly<CellPosit
     public static parse(input: string, throwOnError?: boolean): CellPosition | null;
     public static parse(input: string, throwOnError: true): CellPosition;
     public static parse(input: string, throwOnError?: boolean): CellPosition | null {
-        // TODO: Use cache (to reuse cell position instances)
         if (typeof input === "string") {
             const match = PATTERN.exec(input);
             if (match) {
                 const column = CellPosition.parseColumnIndex(match[1]);
                 const row = CellPosition.parseRowIndex(match[2]);
                 if (typeof column === "number" && typeof row === "number") {
-                    return new CellPosition({ column, row });
+                    return CellPosition.at(row, column);
                 }
             }
         }
