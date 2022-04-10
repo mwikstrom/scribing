@@ -149,7 +149,8 @@
 
     <xs:complexType name="attr">
         <xs:attribute name="key" use="required" type="xs:string"/>
-        <xs:attribute name="value" use="required" type="xs:string"/>
+        <xs:attribute name="value" use="optional" type="xs:string"/>
+        <xs:attribute name="script" use="optional" type="xs:IDREF"/>
     </xs:complexType>
 
     <xs:complexType name="box">

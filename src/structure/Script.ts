@@ -8,7 +8,7 @@ const Props = {
 };
 
 const PropsType: RecordType<ScriptProps> = recordType(Props);
-const DataType: Type<ScriptData> = unionType(Props.code, PropsType);
+const DataType: Type<ScriptData> = unionType(Props.code, PropsType.withOptional("messages"));
 const propsToData = (props: ScriptProps): ScriptData => (
     props.messages.size === 0 ? props.code : props
 );
@@ -29,7 +29,10 @@ export interface ScriptProps {
  * Data contract for a script
  * @public
  */
-export type ScriptData = string | ScriptProps;
+export type ScriptData = string | (
+    Pick<ScriptProps, "code"> &
+    Partial<Omit<ScriptProps, "code">>
+);
 
 /**
  * The base record class for {@link Script}
@@ -54,7 +57,9 @@ export class Script extends ScriptBase implements Readonly<ScriptProps> {
             messages = EMPTY_MESSAGES;
         } else {
             code = data.code;
-            if (Object.isFrozen(data.messages)) {
+            if (!data.messages) {
+                messages = EMPTY_MESSAGES;
+            } else if (Object.isFrozen(data.messages)) {
                 messages = data.messages;
             } else {
                 messages = new Map(data.messages);

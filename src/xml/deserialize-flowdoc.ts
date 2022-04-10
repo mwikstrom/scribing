@@ -1,6 +1,7 @@
 import { xml2js, Element as XmlElem } from "xml-js";
 import { OpenUrl, RunScript } from "..";
 import { Interaction } from "../interaction/Interaction";
+import { AttrValue } from "../nodes/AttrValue";
 import { DynamicText } from "../nodes/DynamicText";
 import { EmptyMarkup } from "../nodes/EmptyMarkup";
 import { EndMarkup } from "../nodes/EndMarkup";
@@ -151,15 +152,21 @@ const deserializeMarkup = (elem: XmlElem): EmptyMarkup => {
     return new EmptyMarkup({ tag, style, attr });
 };
 
-const getMarkupAttr = (elem: XmlElem): Map<string, string> => {
+const getMarkupAttr = (elem: XmlElem): Map<string, AttrValue> => {
     const { elements } = elem;
-    const result = new Map<string, string>();
+    const result = new Map<string, AttrValue>();
     if (elements) {
         for (const child of elements) {
             if (hasFlowDocName(child, "attr")) {
                 const key = getRequiredXmlAttr(child, "key");
-                const value = getRequiredXmlAttr(child, "value");
-                result.set(key, value);
+                const scriptRef = getXmlAttr(child, "script");
+                if (typeof scriptRef === "string") {
+                    const script = getScript(elem, scriptRef);
+                    result.set(key, script);
+                } else {                                
+                    const value = getXmlAttr(child, "value");
+                    result.set(key, value || "");
+                }
             }
         }
     }

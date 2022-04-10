@@ -19,5 +19,5 @@ export interface SetMarkupAttrData
 |  [at](./scribing.setmarkupattrdata.at.md) | number | The markup position |
 |  [key](./scribing.setmarkupattrdata.key.md) | string |  |
 |  [set](./scribing.setmarkupattrdata.set.md) | "markup\_attr" | Data discriminator |
-|  [value](./scribing.setmarkupattrdata.value.md) | string |  |
+|  [value](./scribing.setmarkupattrdata.value.md) | AttrValue |  |
 

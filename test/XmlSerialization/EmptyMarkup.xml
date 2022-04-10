@@ -6,7 +6,11 @@
             <attr key="" value="empty"/>
             <attr key="quote inside" value="hello &quot;world&quot;!"/>
             <attr key="&#x000a;multi&#x000a;line" value=" is odd&#x000a;but&#x000a;supported&#x000a;"/>
+            <attr key="script" script="script-1"/>
         </markup>
     </body>
+    <script id="script-1">
+        <code>123</code>
+    </script>
     <text-style id="text-1" color="primary"/>
 </flowdoc>

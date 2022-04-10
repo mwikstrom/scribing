@@ -8,7 +8,8 @@
             "foo": "bar",
             "": "empty",
             "quote inside": "hello \"world\"!",
-            "\nmulti\nline": " is odd\nbut\nsupported\n"
+            "\nmulti\nline": " is odd\nbut\nsupported\n",
+            "script": { "code": "123" }
         }
     }
 ]

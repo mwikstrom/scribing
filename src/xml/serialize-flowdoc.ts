@@ -29,6 +29,7 @@ import { Interaction } from "../interaction/Interaction";
 import { OpenUrl } from "../interaction/OpenUrl";
 import { RunScript } from "../interaction/RunScript";
 import { serializeMessage } from "../internal/serialize-message-format";
+import { AttrValue } from "../nodes/AttrValue";
 
 /**
  * Serializes the specified flow content to an XML string
@@ -135,7 +136,7 @@ class Serializer extends FlowNodeVisitor {
         this.#appendElem("markup", {
             tag,
             style: this.#getTextStyleId(style),
-        }, serializeMarkupAttr(attr));
+        }, this.#serializeMarkupAttr(attr));
         return node;
     }
 
@@ -223,7 +224,7 @@ class Serializer extends FlowNodeVisitor {
         this.#appendElem("start-markup", {
             tag,
             style: this.#getTextStyleId(style),
-        }, serializeMarkupAttr(attr));
+        }, this.#serializeMarkupAttr(attr));
         return node;
     }
 
@@ -407,6 +408,27 @@ class Serializer extends FlowNodeVisitor {
             throw new Error(`Don't know how to serialize interaction: ${JSON.stringify(interaction.toJsonValue())}`);
         }
     }
+
+    #serializeMarkupAttr = (
+        attr: ReadonlyMap<string, AttrValue>
+    ): XmlElem[] => Array.from(attr).map(([key, value]) => {
+        if (typeof value === "string") {
+            return {
+                type: "element",
+                name: "attr",
+                attributes: { key, value },
+            };
+        } else if (value instanceof Script) {
+            const script = this.#getScriptId(value);
+            return {
+                type: "element",
+                name: "attr",
+                attributes: { key, script },
+            };
+        } else {
+            throw new Error(`Don't know how to serialize attribute value: ${value}`);
+        }
+    });
 }
 
 const getAllocatedId = <T extends Equatable>(
@@ -432,12 +454,6 @@ const getAllocatedId = <T extends Equatable>(
     }
     return id;
 };
-
-const serializeMarkupAttr = (attr: ReadonlyMap<string, string>): XmlElem[] => Array.from(attr).map(([key, value]) => ({
-    type: "element",
-    name: "attr",
-    attributes: { key, value },
-}));
 
 const serializeScript = (id: string, script: Script): XmlElem => {
     const { code, messages } = script;

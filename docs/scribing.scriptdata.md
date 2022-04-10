@@ -9,7 +9,7 @@ Data contract for a script
 <b>Signature:</b>
 
 ```typescript
-export declare type ScriptData = string | ScriptProps;
+export declare type ScriptData = string | (Pick<ScriptProps, "code"> & Partial<Omit<ScriptProps, "code">>);
 ```
 <b>References:</b> [ScriptProps](./scribing.scriptprops.md)
 

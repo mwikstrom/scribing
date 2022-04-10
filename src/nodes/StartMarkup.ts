@@ -11,11 +11,12 @@ import { FlowNodeRegistry } from "../internal/class-registry";
 import { TextStyle } from "../styles/TextStyle";
 import type { FlowNodeVisitor } from "../structure/FlowNodeVisitor";
 import type { FlowNode } from "./FlowNode";
+import { AttrValue, attrValueType } from "./AttrValue";
 
 const Props = {
     tag: stringType,
     style: TextStyle.classType,
-    attr: mapType(stringType),
+    attr: mapType(attrValueType),
 };
 const Data = {
     start_markup: stringType,
@@ -48,7 +49,7 @@ export const StartMarkupBase = RecordClass(PropsType, InlineNode, DataType, prop
 export interface StartMarkupProps {
     tag: string;
     style: TextStyle;
-    attr: Readonly<Map<string, string>>;
+    attr: Readonly<Map<string, AttrValue>>;
 }
 
 /**
@@ -58,7 +59,7 @@ export interface StartMarkupProps {
 export interface StartMarkupData {
     start_markup: string;
     style?: TextStyle;
-    attr?: Readonly<Map<string, string>>;
+    attr?: Readonly<Map<string, AttrValue>>;
 }
 
 /**

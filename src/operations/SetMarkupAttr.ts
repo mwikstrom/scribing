@@ -16,18 +16,19 @@ import { getRangeAfterInsertion, getRangeAfterRemoval } from "../internal/transf
 import { StartMarkup } from "../nodes/StartMarkup";
 import { EmptyMarkup } from "../nodes/EmptyMarkup";
 import { UnsetMarkupAttr } from "./UnsetMarkupAttr";
+import { AttrValue, attrValueType } from "../nodes/AttrValue";
 
 const Props = {
     position: nonNegativeIntegerType,
     key: stringType,
-    value: stringType,
+    value: attrValueType,
 };
 
 const Data = {
     set: constType("markup_attr"),
     at: Props.position,
     key: stringType,
-    value: stringType,
+    value: attrValueType,
 };
 
 const PropsType: RecordType<SetMarkupAttrProps> = recordType(Props);
@@ -55,7 +56,7 @@ export interface SetMarkupAttrProps {
 
     key: string;
 
-    value: string;
+    value: AttrValue;
 }
 
 /**
@@ -71,7 +72,7 @@ export interface SetMarkupAttrData {
 
     key: string;
 
-    value: string;
+    value: AttrValue;
 }
 
 /**

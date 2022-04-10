@@ -344,8 +344,10 @@ export const EmptyMarkupBase: RecordConstructor<EmptyMarkupProps, InlineNode, Em
 
 // @public
 export interface EmptyMarkupData {
+    // Warning: (ae-forgotten-export) The symbol "AttrValue" needs to be exported by the entry point index.d.ts
+    //
     // (undocumented)
-    attr?: Readonly<Map<string, string>>;
+    attr?: Readonly<Map<string, AttrValue>>;
     // (undocumented)
     empty_markup: string;
     // (undocumented)
@@ -355,7 +357,7 @@ export interface EmptyMarkupData {
 // @public
 export interface EmptyMarkupProps {
     // (undocumented)
-    attr: Readonly<Map<string, string>>;
+    attr: Readonly<Map<string, AttrValue>>;
     // (undocumented)
     style: TextStyle;
     // (undocumented)
@@ -2228,7 +2230,7 @@ export class Script extends ScriptBase implements Readonly<ScriptProps> {
 export const ScriptBase: RecordConstructor<ScriptProps, Object, ScriptData>;
 
 // @public
-export type ScriptData = string | ScriptProps;
+export type ScriptData = string | (Pick<ScriptProps, "code"> & Partial<Omit<ScriptProps, "code">>);
 
 // @public
 export interface ScriptProps {
@@ -2398,7 +2400,7 @@ export interface SetMarkupAttrData {
     key: string;
     set: "markup_attr";
     // (undocumented)
-    value: string;
+    value: AttrValue;
 }
 
 // @public
@@ -2407,7 +2409,7 @@ export interface SetMarkupAttrProps {
     key: string;
     position: number;
     // (undocumented)
-    value: string;
+    value: AttrValue;
 }
 
 // @public @sealed
@@ -2502,7 +2504,7 @@ export const StartMarkupBase: RecordConstructor<StartMarkupProps, InlineNode, St
 // @public
 export interface StartMarkupData {
     // (undocumented)
-    attr?: Readonly<Map<string, string>>;
+    attr?: Readonly<Map<string, AttrValue>>;
     // (undocumented)
     start_markup: string;
     // (undocumented)
@@ -2512,7 +2514,7 @@ export interface StartMarkupData {
 // @public
 export interface StartMarkupProps {
     // (undocumented)
-    attr: Readonly<Map<string, string>>;
+    attr: Readonly<Map<string, AttrValue>>;
     // (undocumented)
     style: TextStyle;
     // (undocumented)
