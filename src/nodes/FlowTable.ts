@@ -104,53 +104,26 @@ export class FlowTable extends FlowTableBase {
     }
 
     /** {@inheritdoc FlowNode.formatBox} */
-    public formatBox(/*style: BoxStyle, theme?: FlowTheme*/): this {
+    public formatBox(): this {
         return this;
-        // 2021-11-16: Do not cascade styling to nested content
-        // TODO: Either re-enable that behavior or cleanup these comments
-        /*return this.#updateAllContent((content, position) => 
-            content.formatBox(FlowRange.at(0, content.size), style, this.getCellTheme(position, theme))
-        );*/
     }
 
     /** {@inheritdoc FlowNode.formatText} */
-    public formatText(/*style: TextStyle, theme?: FlowTheme*/): this {
+    public formatText(): this {
         return this;
-        // 2021-11-16: Do not cascade styling to nested content
-        // TODO: Either re-enable that behavior or cleanup these comments
-        /*return this.#updateAllContent((content, position) => 
-            content.formatText(FlowRange.at(0, content.size), style, this.getCellTheme(position, theme))
-        );*/
     }
 
     /** {@inheritdoc FlowNode.formatParagraph} */
-    public formatParagraph(/*style: ParagraphStyle, theme?: FlowTheme*/): this {
+    public formatParagraph(): this {
         return this;
-        // 2021-11-16: Do not cascade styling to nested content
-        // TODO: Either re-enable that behavior or cleanup these comments
-        /*return this.#updateAllContent((content, position) => 
-            content.formatParagraph(FlowRange.at(0, content.size), style, this.getCellTheme(position, theme))
-        );*/
     }
 
     /**
      * {@inheritDoc FlowNode.getUniformParagraphStyle}
      * @override
      */
-    public getUniformParagraphStyle(/*theme?: ParagraphTheme, diff: Set<keyof ParagraphStyleProps> = new Set(),*/
-    ): ParagraphStyle | null {
+    public getUniformParagraphStyle(): ParagraphStyle | null {
         return null;
-        // 2021-11-16: Do not cascade styling to nested content
-        // TODO: Either re-enable that behavior or cleanup these comments
-        /*let result = ParagraphStyle.empty;
-        this.#visitAllContent((content, position) => {
-            const range = FlowRange.at(0, content.size);
-            const selection = new FlowRangeSelection({ range });
-            const innerTheme =  this.getCellTheme(position, theme?.getFlowTheme());
-            const uniform = selection.getUniformParagraphStyle(content, innerTheme, diff);
-            result = result.merge(uniform, diff);
-        });
-        return result;*/
     }
 
     /** @internal */
@@ -163,54 +136,28 @@ export class FlowTable extends FlowTableBase {
      * {@inheritDoc FlowNode.getUniformTextStyle}
      * @override
      */
-    public getUniformTextStyle(/*theme?: ParagraphTheme, diff: Set<keyof TextStyleProps> = new Set(),*/
-    ): TextStyle | null {
+    public getUniformTextStyle(): TextStyle | null {
         return null;
-        // 2021-11-16: Do not cascade styling to nested content
-        // TODO: Either re-enable that behavior or cleanup these comments
-        /*let result = TextStyle.empty;
-        this.#visitAllContent((content,position) => {
-            const range = FlowRange.at(0, content.size);
-            const selection = new FlowRangeSelection({ range });
-            const innerTheme =  this.getCellTheme(position, theme?.getFlowTheme());
-            const uniform = selection.getUniformTextStyle(content, innerTheme, diff);
-            result = result.merge(uniform, diff);
-        });
-        return result;*/
     }
 
     /** {@inheritdoc FlowNode.unformatAmbient} */
-    public unformatAmbient(/*theme: ParagraphTheme*/): this {
+    public unformatAmbient(): this {
         return this;
-        // 2021-11-16: Do not cascade styling to nested content
-        // TODO: Either re-enable that behavior or cleanup these comments
-        /*return this.#updateAllContent((content, position) => 
-            content.unformatAmbient(this.getCellTheme(position, theme?.getFlowTheme()))
-        );*/
     }
 
     /** {@inheritdoc FlowNode.unformatBox} */
-    public unformatBox(/*style: BoxStyle*/): this {
+    public unformatBox(): this {
         return this;
-        // 2021-11-16: Do not cascade styling to nested content
-        // TODO: Either re-enable that behavior or cleanup these comments
-        // return this.#updateAllContent(content => content.unformatBox(FlowRange.at(0, content.size), style));
     }
 
     /** {@inheritdoc FlowNode.unformatText} */
-    public unformatText(/*style: TextStyle*/): this {
+    public unformatText(): this {
         return this;
-        // 2021-11-16: Do not cascade styling to nested content
-        // TODO: Either re-enable that behavior or cleanup these comments
-        // return this.#updateAllContent(content => content.unformatText(FlowRange.at(0, content.size), style));
     }
 
     /** {@inheritdoc FlowNode.unformatParagraph} */
-    public unformatParagraph(/*style: ParagraphStyle*/): this {
+    public unformatParagraph(): this {
         return this;
-        // 2021-11-16: Do not cascade styling to nested content
-        // TODO: Either re-enable that behavior or cleanup these comments
-        // return this.#updateAllContent(content => content.unformatParagraph(FlowRange.at(0, content.size), style));
     }
 
     formatColumn(index: number, style: TableColumnStyle): FlowTable {
@@ -275,12 +222,4 @@ export class FlowTable extends FlowTableBase {
     #updateAllContent(callback: (content: FlowContent, position: CellPosition) => FlowContent): this {
         return this.set("content", this.content.updateAllContent(callback));
     }
-
-    // 2021-11-16: Do not cascade styling to nested content
-    // TODO: Either re-enable that behavior or cleanup these comments
-    /*#visitAllContent(callback: (content: FlowContent, position: CellPosition) => void): void {
-        for (const position of this.content.positions) {
-            callback(this.content.getCell(position, true).content, position);
-        }
-    }*/
 }
