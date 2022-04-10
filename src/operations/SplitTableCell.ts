@@ -97,7 +97,6 @@ export class SplitTableCell extends SplitTableCellBase implements SplitTableCell
 
     /** {@inheritdoc TableOperation.transformInSameTable} */
     protected transformInSameTable(other: TableOperation): FlowOperation | null {
-        // TODO: Maybe we should transform other merge/split?!
         return other;
     }
 
