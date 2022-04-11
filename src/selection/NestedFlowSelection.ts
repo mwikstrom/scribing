@@ -555,7 +555,7 @@ export abstract class NestedFlowSelection extends FlowSelection {
      * {@inheritDoc FlowSelection.setMarkupAttr}
      * @override
      */
-    setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation | null {
+    setMarkupAttr(content: FlowContent, key: string, value: string | Script): FlowOperation | null {
         const innerSelection = this.getInnerSelection();
         const innerContent = this.getInnerContent(content);
         if (!innerContent) {

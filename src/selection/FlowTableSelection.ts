@@ -579,7 +579,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
      * {@inheritDoc FlowSelection.setMarkupAttr}
      * @override
      */
-    setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation | null {
+    setMarkupAttr(content: FlowContent, key: string, value: string | Script): FlowOperation | null {
         return this.#updateAllCellContent(content, undefined, cellContent => (
             selectAll(cellContent).setMarkupAttr(cellContent, key, value)
         ));

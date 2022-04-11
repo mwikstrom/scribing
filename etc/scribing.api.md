@@ -803,7 +803,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     // @override
     setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
     // @override
-    setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation | null;
+    setMarkupAttr(content: FlowContent, key: string, value: string | Script): FlowOperation | null;
     // @override
     setMarkupTag(content: FlowContent, tag: string): FlowOperation | null;
     // @override
@@ -874,7 +874,7 @@ export abstract class FlowSelection {
     abstract setIcon(content: FlowContent, data: string): FlowOperation | null;
     abstract setImageScale(content: FlowContent, scale: number): FlowOperation | null;
     abstract setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
-    abstract setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation | null;
+    abstract setMarkupAttr(content: FlowContent, key: string, value: string | Script): FlowOperation | null;
     abstract setMarkupTag(content: FlowContent, tag: string): FlowOperation | null;
     abstract splitTableCell(content: FlowContent): FlowOperation | null;
     toJsonValue(): JsonValue;
@@ -1180,7 +1180,7 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     // @override
     setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
     // @override
-    setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation | null;
+    setMarkupAttr(content: FlowContent, key: string, value: string | Script): FlowOperation | null;
     // @override
     setMarkupTag(content: FlowContent, tag: string): FlowOperation | null;
     // @override
@@ -1843,7 +1843,7 @@ export abstract class NestedFlowSelection extends FlowSelection {
     setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
     protected abstract setInnerSelection(value: FlowSelection): NestedFlowSelection;
     // @override
-    setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation | null;
+    setMarkupAttr(content: FlowContent, key: string, value: string | Script): FlowOperation | null;
     // @override
     setMarkupTag(content: FlowContent, tag: string): FlowOperation | null;
     // @override

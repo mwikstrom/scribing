@@ -10,7 +10,7 @@ Creates an operation that sets the specified markup attribute in the current sel
 
 ```typescript
 /** @override */
-setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation | null;
+setMarkupAttr(content: FlowContent, key: string, value: string | Script): FlowOperation | null;
 ```
 
 ## Parameters
@@ -19,7 +19,7 @@ setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation |
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The selected content |
 |  key | string | The markup attribute to set |
-|  value | string | The attribute value to set |
+|  value | string \| [Script](./scribing.script.md) | The attribute value to set |
 
 <b>Returns:</b>
 

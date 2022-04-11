@@ -216,7 +216,7 @@ export abstract class FlowSelection {
      * @remarks
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
-    public abstract setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation | null;
+    public abstract setMarkupAttr(content: FlowContent, key: string, value: string | Script): FlowOperation | null;
 
     /**
      * Creates an operation that unsets the specified markup attribute in the current selection

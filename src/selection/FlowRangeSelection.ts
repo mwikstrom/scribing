@@ -697,7 +697,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
      * {@inheritDoc FlowSelection.setMarkupAttr}
      * @override
      */
-    setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation | null {
+    setMarkupAttr(content: FlowContent, key: string, value: string | Script): FlowOperation | null {
         const { range } = this;
         const operations: SetMarkupAttr[] = [];
 

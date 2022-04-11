@@ -9,7 +9,7 @@ Creates an operation that sets the specified markup attribute in the current sel
 <b>Signature:</b>
 
 ```typescript
-abstract setMarkupAttr(content: FlowContent, key: string, value: string): FlowOperation | null;
+abstract setMarkupAttr(content: FlowContent, key: string, value: string | Script): FlowOperation | null;
 ```
 
 ## Parameters
@@ -18,7 +18,7 @@ abstract setMarkupAttr(content: FlowContent, key: string, value: string): FlowOp
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The selected content |
 |  key | string | The markup attribute to set |
-|  value | string | The attribute value to set |
+|  value | string \| [Script](./scribing.script.md) | The attribute value to set |
 
 <b>Returns:</b>
 
