@@ -46,4 +46,5 @@ export declare class FlowTableContent
 |  [toData()](./scribing.flowtablecontent.todata.md) |  |  |
 |  [toJsonValue(error, path)](./scribing.flowtablecontent.tojsonvalue.md) |  |  |
 |  [updateAllContent(callback)](./scribing.flowtablecontent.updateallcontent.md) |  |  |
+|  [updateAllContentAsync(callback)](./scribing.flowtablecontent.updateallcontentasync.md) |  |  |
 

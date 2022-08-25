@@ -8,8 +8,7 @@ import {
 import { InlineNode } from "./InlineNode";
 import { FlowNodeRegistry } from "../internal/class-registry";
 import { TextStyle } from "../styles/TextStyle";
-import type { FlowNodeVisitor } from "../structure/FlowNodeVisitor";
-import type { FlowNode } from "./FlowNode";
+import type { GenericFlowNodeVisitor } from "../structure/GenericFlowNodeVisitor";
 
 const Props = {
     style: TextStyle.classType,
@@ -79,7 +78,7 @@ export class LineBreak extends LineBreakBase implements LineBreakProps {
     }
 
     /** {@inheritdoc FlowNode.accept} */
-    public accept(visitor: FlowNodeVisitor): FlowNode {
+    public accept<T>(visitor: GenericFlowNodeVisitor<T>): T {
         return visitor.visitLineBreak(this);
     }
 }

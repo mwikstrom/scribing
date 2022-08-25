@@ -12,12 +12,13 @@ import { StartMarkup } from "../nodes/StartMarkup";
 import { TextRun } from "../nodes/TextRun";
 import { FlowContent } from "./FlowContent";
 import { FlowTableContent } from "./FlowTableContent";
+import { GenericFlowNodeVisitor } from "./GenericFlowNodeVisitor";
 
 /**
  * A visitor for flow content
  * @public
  */
-export class FlowNodeVisitor {
+export class FlowNodeVisitor implements GenericFlowNodeVisitor<FlowNode> {
     visitNode(node: FlowNode): FlowNode {
         return node.accept(this);
     }

@@ -9,8 +9,7 @@ import {
 import { InlineNode } from "./InlineNode";
 import { FlowNodeRegistry } from "../internal/class-registry";
 import { TextStyle } from "../styles/TextStyle";
-import type { FlowNodeVisitor } from "../structure/FlowNodeVisitor";
-import type { FlowNode } from "./FlowNode";
+import type { GenericFlowNodeVisitor } from "../structure/GenericFlowNodeVisitor";
 import { AttrValue, attrValueType } from "./AttrValue";
 
 const Props = {
@@ -87,7 +86,7 @@ export class StartMarkup extends StartMarkupBase implements StartMarkupProps {
     }
 
     /** {@inheritdoc FlowNode.accept} */
-    public accept(visitor: FlowNodeVisitor): FlowNode {
+    public accept<T>(visitor: GenericFlowNodeVisitor<T>): T {
         return visitor.visitStartMarkup(this);
     }
 }

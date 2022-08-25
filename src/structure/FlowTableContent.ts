@@ -207,6 +207,24 @@ export class FlowTableContent {
         return this.#update((key, cell) => [key, changed.get(key) ?? cell]);
     }
 
+    public async updateAllContentAsync(
+        callback: (content: FlowContent, position: CellPosition) => Promise<FlowContent>
+    ): Promise<FlowTableContent> {
+        const changed = new Map<string, FlowTableCell>();
+        for (const position of this.positions) {
+            const cell = this.getCell(position, true);
+            const oldContent = cell.content;
+            const newContent = await callback(oldContent, position);
+            if (!oldContent.equals(newContent)) {
+                changed.set(position.toString(), cell.set("content", newContent));
+            }
+        }
+        if (changed.size === 0) {
+            return this;
+        }
+        return this.#update((key, cell) => [key, changed.get(key) ?? cell]);
+    }
+
     public insertColumn(index: number, count = 1): FlowTableContent {
         if (count < 0) {
             throw new RangeError("Cannot insert a negative number of columns");

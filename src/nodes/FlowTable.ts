@@ -16,7 +16,7 @@ import { ParagraphStyle } from "../styles/ParagraphStyle";
 import { TableColumnStyle } from "../styles/TableColumnStyle";
 import { TableStyle } from "../styles/TableStyle";
 import { TextStyle } from "../styles/TextStyle";
-import type { FlowNodeVisitor } from "../structure/FlowNodeVisitor";
+import type { GenericFlowNodeVisitor } from "../structure/GenericFlowNodeVisitor";
 
 const Props = {
     content: FlowTableContent.classType,
@@ -94,7 +94,7 @@ export class FlowTable extends FlowTableBase {
     }
 
     /** {@inheritdoc FlowNode.accept} */
-    public accept(visitor: FlowNodeVisitor): FlowNode {
+    public accept<T>(visitor: GenericFlowNodeVisitor<T>): T {
         return visitor.visitTable(this);
     }
 

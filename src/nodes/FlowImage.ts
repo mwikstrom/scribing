@@ -10,7 +10,7 @@ import { ImageSource } from "../structure/ImageSource";
 import { InlineNode } from "./InlineNode";
 import { FlowNodeRegistry } from "../internal/class-registry";
 import { TextStyle } from "../styles/TextStyle";
-import type { FlowNodeVisitor } from "../structure/FlowNodeVisitor";
+import type { GenericFlowNodeVisitor } from "../structure/GenericFlowNodeVisitor";
 
 /**
  * A run-time type that validates the scale factor of an image
@@ -101,7 +101,7 @@ export class FlowImage extends FlowImageBase implements FlowImageProps {
     }
 
     /** {@inheritdoc FlowNode.accept} */
-    public accept(visitor: FlowNodeVisitor): FlowNode {
+    public accept<T>(visitor: GenericFlowNodeVisitor<T>): T {
         return visitor.visitImage(this);
     }
 

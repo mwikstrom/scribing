@@ -9,8 +9,9 @@ A visitor for flow content
 <b>Signature:</b>
 
 ```typescript
-export declare class FlowNodeVisitor 
+export declare class FlowNodeVisitor implements GenericFlowNodeVisitor<FlowNode> 
 ```
+<b>Implements:</b> [GenericFlowNodeVisitor](./scribing.genericflownodevisitor.md)<!-- -->&lt;[FlowNode](./scribing.flownode.md)
 
 ## Methods
 

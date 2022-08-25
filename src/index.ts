@@ -60,6 +60,8 @@ export * from "./nodes/EmptyMarkup";
 export * from "./nodes/EndMarkup";
 
 // Visitor
+export * from "./structure/GenericFlowNodeVisitor";
+export * from "./structure/AsyncFlowNodeVisitor";
 export * from "./structure/FlowNodeVisitor";
 
 // Operations

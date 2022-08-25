@@ -10,7 +10,7 @@ import { FlowNode } from "./FlowNode";
 import { FlowNodeRegistry } from "../internal/class-registry";
 import { ParagraphStyle } from "../styles/ParagraphStyle";
 import { TextStyle } from "../styles/TextStyle";
-import type { FlowNodeVisitor } from "../structure/FlowNodeVisitor";
+import type { GenericFlowNodeVisitor } from "../structure/GenericFlowNodeVisitor";
 
 const Props = {
     content: FlowContent.classType,
@@ -74,7 +74,7 @@ export class FlowBox extends FlowBoxBase {
     }
 
     /** {@inheritdoc FlowNode.accept} */
-    public accept(visitor: FlowNodeVisitor): FlowNode {
+    public accept<T>(visitor: GenericFlowNodeVisitor<T>): T {
         return visitor.visitBox(this);
     }
 

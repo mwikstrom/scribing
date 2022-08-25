@@ -10,6 +10,7 @@ Model for collaborative rich text editing
 
 |  Class | Description |
 |  --- | --- |
+|  [AsyncFlowNodeVisitor](./scribing.asyncflownodevisitor.md) | An asynchronous visitor for flow content |
 |  [BoxStyle](./scribing.boxstyle.md) | Represents the styling that is applied to box content. |
 |  [CellPosition](./scribing.cellposition.md) | Represents the position of a cell in a table |
 |  [CellRange](./scribing.cellrange.md) | Represents a range of a cells in a table |
@@ -147,6 +148,7 @@ Model for collaborative rich text editing
 |  [FormatTableProps](./scribing.formattableprops.md) | Properties of [FormatTable](./scribing.formattable.md) |
 |  [FormatTextData](./scribing.formattextdata.md) | Data of format text operations |
 |  [FormatTextProps](./scribing.formattextprops.md) | Properties of format text operations |
+|  [GenericFlowNodeVisitor](./scribing.genericflownodevisitor.md) | A generic visitor for flow content |
 |  [ImageSourceProps](./scribing.imagesourceprops.md) | Properties of [ImageSource](./scribing.imagesource.md) |
 |  [InsertContentData](./scribing.insertcontentdata.md) | Data of insert content operations |
 |  [InsertContentProps](./scribing.insertcontentprops.md) | Properties of insert content operations |

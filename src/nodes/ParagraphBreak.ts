@@ -11,7 +11,7 @@ import { FlowNodeRegistry } from "../internal/class-registry";
 import { ParagraphStyle } from "../styles/ParagraphStyle";
 import { ParagraphTheme } from "../styles/ParagraphTheme";
 import { TextStyle } from "../styles/TextStyle";
-import type { FlowNodeVisitor } from "../structure/FlowNodeVisitor";
+import type { GenericFlowNodeVisitor } from "../structure/GenericFlowNodeVisitor";
 
 const Props = {
     style: lazyType(() => ParagraphStyle.classType),
@@ -81,7 +81,7 @@ export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreak
     }
 
     /** {@inheritdoc FlowNode.accept} */
-    public accept(visitor: FlowNodeVisitor): FlowNode {
+    public accept<T>(visitor: GenericFlowNodeVisitor<T>): T {
         return visitor.visitParagraphBreak(this);
     }
 

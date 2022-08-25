@@ -5,7 +5,7 @@ import { FlowNodeRegistry } from "../internal/class-registry";
 import { ParagraphStyle, ParagraphStyleProps } from "../styles/ParagraphStyle";
 import { ParagraphTheme } from "../styles/ParagraphTheme";
 import { TextStyle, TextStyleProps } from "../styles/TextStyle";
-import type { FlowNodeVisitor } from "../structure/FlowNodeVisitor";
+import type { GenericFlowNodeVisitor } from "../structure/GenericFlowNodeVisitor";
 
 /**
  * A piece of flow content.
@@ -30,7 +30,7 @@ export abstract class FlowNode {
     abstract readonly size: number;
 
     /** Accepts the specified visitor */
-    abstract accept(visitor: FlowNodeVisitor): FlowNode;
+    abstract accept<T>(visitor: GenericFlowNodeVisitor<T>): T;
 
     /**
      * Marks the specified upload as completed

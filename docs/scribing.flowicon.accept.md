@@ -9,16 +9,16 @@ Accepts the specified visitor
 <b>Signature:</b>
 
 ```typescript
-accept(visitor: FlowNodeVisitor): FlowNode;
+accept<T>(visitor: GenericFlowNodeVisitor<T>): T;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  visitor | [FlowNodeVisitor](./scribing.flownodevisitor.md) |  |
+|  visitor | [GenericFlowNodeVisitor](./scribing.genericflownodevisitor.md)<!-- -->&lt;T&gt; |  |
 
 <b>Returns:</b>
 
-[FlowNode](./scribing.flownode.md)
+T
 

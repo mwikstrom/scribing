@@ -8,8 +8,7 @@ import {
 import { InlineNode } from "./InlineNode";
 import { FlowNodeRegistry } from "../internal/class-registry";
 import { TextStyle } from "../styles/TextStyle";
-import type { FlowNodeVisitor } from "../structure/FlowNodeVisitor";
-import type { FlowNode } from "./FlowNode";
+import type { GenericFlowNodeVisitor } from "../structure/GenericFlowNodeVisitor";
 
 const Props = {
     tag: stringType,
@@ -74,7 +73,7 @@ export class EndMarkup extends EndMarkupBase implements EndMarkupProps {
     }
 
     /** {@inheritdoc FlowNode.accept} */
-    public accept(visitor: FlowNodeVisitor): FlowNode {
+    public accept<T>(visitor: GenericFlowNodeVisitor<T>): T {
         return visitor.visitEndMarkup(this);
     }
 }

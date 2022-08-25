@@ -16,6 +16,38 @@ import { RecordType } from 'paratype';
 import { Type } from 'paratype';
 
 // @public
+export class AsyncFlowNodeVisitor implements GenericFlowNodeVisitor<Promise<FlowNode>> {
+    // (undocumented)
+    visitBox(node: FlowBox): Promise<FlowNode>;
+    // (undocumented)
+    visitDynamicText(node: DynamicText): Promise<FlowNode>;
+    // (undocumented)
+    visitEmptyMarkup(node: EmptyMarkup): Promise<FlowNode>;
+    // (undocumented)
+    visitEndMarkup(node: EndMarkup): Promise<FlowNode>;
+    // (undocumented)
+    visitFlowContent(content: FlowContent): Promise<FlowContent>;
+    // (undocumented)
+    visitIcon(node: FlowIcon): Promise<FlowNode>;
+    // (undocumented)
+    visitImage(node: FlowImage): Promise<FlowNode>;
+    // (undocumented)
+    visitLineBreak(node: LineBreak): Promise<FlowNode>;
+    // (undocumented)
+    visitNode(node: FlowNode): Promise<FlowNode>;
+    // (undocumented)
+    visitParagraphBreak(node: ParagraphBreak): Promise<FlowNode>;
+    // (undocumented)
+    visitStartMarkup(node: StartMarkup): Promise<FlowNode>;
+    // (undocumented)
+    visitTable(node: FlowTable): Promise<FlowNode>;
+    // (undocumented)
+    visitTableContent(content: FlowTableContent): Promise<FlowTableContent>;
+    // (undocumented)
+    visitTextRun(node: TextRun): Promise<FlowNode>;
+}
+
+// @public
 export const BASELINE_OFFSETS: readonly ["normal", "sub", "super"];
 
 // @public
@@ -255,7 +287,7 @@ export function deserializeFlowContentFromXml(xml: string): FlowContent;
 
 // @public @sealed
 export class DynamicText extends DynamicTextBase implements DynamicTextProps {
-    accept(visitor: FlowNodeVisitor): FlowNode;
+    accept<T>(visitor: GenericFlowNodeVisitor<T>): T;
     static readonly classType: Type<DynamicText>;
     static fromData(data: DynamicTextData): DynamicText;
     readonly size = 1;
@@ -333,7 +365,7 @@ export interface EditTableCellProps {
 // @public @sealed
 export class EmptyMarkup extends EmptyMarkupBase implements EmptyMarkupProps {
     constructor(props: EmptyMarkupProps);
-    accept(visitor: FlowNodeVisitor): FlowNode;
+    accept<T>(visitor: GenericFlowNodeVisitor<T>): T;
     static readonly classType: Type<EmptyMarkup>;
     static fromData(data: EmptyMarkupData): EmptyMarkup;
     readonly size = 1;
@@ -367,7 +399,7 @@ export interface EmptyMarkupProps {
 // @public @sealed
 export class EndMarkup extends EndMarkupBase implements EndMarkupProps {
     constructor(props: EndMarkupProps);
-    accept(visitor: FlowNodeVisitor): FlowNode;
+    accept<T>(visitor: GenericFlowNodeVisitor<T>): T;
     static readonly classType: Type<EndMarkup>;
     static fromData(data: EndMarkupData): EndMarkup;
     readonly size = 1;
@@ -427,7 +459,7 @@ export interface FlowBatchProps {
 
 // @public @sealed
 export class FlowBox extends FlowBoxBase {
-    accept(visitor: FlowNodeVisitor): FlowNode;
+    accept<T>(visitor: GenericFlowNodeVisitor<T>): T;
     static readonly classType: Type<FlowBox>;
     completeUpload(id: string, url: string): FlowNode;
     formatBox(style: BoxStyle): this;
@@ -582,7 +614,7 @@ export class FlowCursor {
 
 // @public @sealed
 export class FlowIcon extends FlowIconBase implements FlowIconProps {
-    accept(visitor: FlowNodeVisitor): FlowNode;
+    accept<T>(visitor: GenericFlowNodeVisitor<T>): T;
     static readonly classType: Type<FlowIcon>;
     static fromData(data: FlowIconData): FlowIcon;
     readonly size = 1;
@@ -605,7 +637,7 @@ export interface FlowIconProps {
 
 // @public @sealed
 export class FlowImage extends FlowImageBase implements FlowImageProps {
-    accept(visitor: FlowNodeVisitor): FlowNode;
+    accept<T>(visitor: GenericFlowNodeVisitor<T>): T;
     static readonly classType: Type<FlowImage>;
     // @override
     completeUpload(id: string, url: string): FlowNode;
@@ -635,7 +667,7 @@ export const FlowImageScaleType: Type<number>;
 
 // @public
 export abstract class FlowNode {
-    abstract accept(visitor: FlowNodeVisitor): FlowNode;
+    abstract accept<T>(visitor: GenericFlowNodeVisitor<T>): T;
     static readonly baseType: Type<FlowNode>;
     abstract completeUpload(id: string, url: string): FlowNode;
     abstract formatBox(style: BoxStyle, theme?: FlowTheme): FlowNode;
@@ -654,7 +686,7 @@ export abstract class FlowNode {
 }
 
 // @public
-export class FlowNodeVisitor {
+export class FlowNodeVisitor implements GenericFlowNodeVisitor<FlowNode> {
     // (undocumented)
     visitBox(node: FlowBox): FlowNode;
     // (undocumented)
@@ -953,7 +985,7 @@ export const FlowSyncSnapshotType: RecordType<FlowSyncSnapshot>;
 
 // @public @sealed
 export class FlowTable extends FlowTableBase {
-    accept(visitor: FlowNodeVisitor): FlowNode;
+    accept<T>(visitor: GenericFlowNodeVisitor<T>): T;
     static readonly classType: Type<FlowTable>;
     completeUpload(id: string, url: string): FlowNode;
     formatBox(): this;
@@ -1099,6 +1131,8 @@ export class FlowTableContent {
     toJsonValue(error?: ErrorCallback_2, path?: PathArray): JsonValue;
     // (undocumented)
     updateAllContent(callback: (content: FlowContent, position: CellPosition) => FlowContent): FlowTableContent;
+    // (undocumented)
+    updateAllContentAsync(callback: (content: FlowContent, position: CellPosition) => Promise<FlowContent>): Promise<FlowTableContent>;
 }
 
 // @public
@@ -1413,6 +1447,34 @@ export interface FormatTextProps {
 }
 
 // @public
+export interface GenericFlowNodeVisitor<T> {
+    // (undocumented)
+    visitBox(node: FlowBox): T;
+    // (undocumented)
+    visitDynamicText(node: DynamicText): T;
+    // (undocumented)
+    visitEmptyMarkup(node: EmptyMarkup): T;
+    // (undocumented)
+    visitEndMarkup(node: EndMarkup): T;
+    // (undocumented)
+    visitIcon(node: FlowIcon): T;
+    // (undocumented)
+    visitImage(node: FlowImage): T;
+    // (undocumented)
+    visitLineBreak(node: LineBreak): T;
+    // (undocumented)
+    visitNode(node: FlowNode): T;
+    // (undocumented)
+    visitParagraphBreak(node: ParagraphBreak): T;
+    // (undocumented)
+    visitStartMarkup(node: StartMarkup): T;
+    // (undocumented)
+    visitTable(node: FlowTable): T;
+    // (undocumented)
+    visitTextRun(node: TextRun): T;
+}
+
+// @public
 export const HORIZONTAL_ALIGNMENTS: readonly ["start", "center", "end", "justify"];
 
 // @public
@@ -1652,7 +1714,7 @@ export abstract class Interaction {
 // @public @sealed
 export class LineBreak extends LineBreakBase implements LineBreakProps {
     constructor(props?: LineBreakProps);
-    accept(visitor: FlowNodeVisitor): FlowNode;
+    accept<T>(visitor: GenericFlowNodeVisitor<T>): T;
     static readonly classType: Type<LineBreak>;
     static fromData(data: LineBreakData): LineBreak;
     readonly size = 1;
@@ -1900,7 +1962,7 @@ export const PARAGRAPH_VARIANTS: readonly ["normal", "h1", "h2", "h3", "h4", "h5
 // @public @sealed
 export class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreakProps {
     constructor(props?: ParagraphBreakProps);
-    accept(visitor: FlowNodeVisitor): FlowNode;
+    accept<T>(visitor: GenericFlowNodeVisitor<T>): T;
     static readonly classType: Type<ParagraphBreak>;
     completeUpload(): this;
     formatBox(): this;
@@ -2492,7 +2554,7 @@ export interface SplitTableCellProps {
 // @public @sealed
 export class StartMarkup extends StartMarkupBase implements StartMarkupProps {
     constructor(props: StartMarkupProps);
-    accept(visitor: FlowNodeVisitor): FlowNode;
+    accept<T>(visitor: GenericFlowNodeVisitor<T>): T;
     static readonly classType: Type<StartMarkup>;
     static fromData(data: StartMarkupData): StartMarkup;
     readonly size = 1;
@@ -2625,7 +2687,7 @@ export interface TargetOptions {
 // @public @sealed
 export class TextRun extends TextRunBase implements Readonly<TextRunProps> {
     constructor(props?: TextRunProps);
-    accept(visitor: FlowNodeVisitor): FlowNode;
+    accept<T>(visitor: GenericFlowNodeVisitor<T>): T;
     after(position: number): TextRun;
     append(value: string): TextRun;
     before(position: number): TextRun;
