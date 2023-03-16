@@ -27,4 +27,14 @@ export abstract class FlowTheme {
 
     /** Gets a theme for the specified box style */
     abstract getBoxTheme(style: BoxStyle): FlowTheme;
+
+    /** Gets a theme that shall be used in table body cells */
+    getTableBodyTheme(): FlowTheme {
+        return this;
+    }
+
+    /** Gets a theme that shall be used in table heading cells */
+    getTableHeadingTheme(): FlowTheme {
+        return this;
+    }
 }

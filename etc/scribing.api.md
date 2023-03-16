@@ -265,6 +265,7 @@ export class DefaultFlowTheme extends DefaultFlowThemeBase {
     static get(lang?: string, rtl?: boolean): DefaultFlowTheme;
     getBoxTheme(style: BoxStyle): FlowTheme;
     getParagraphTheme(variant: ParagraphVariant): ParagraphTheme;
+    getTableHeadingTheme(): FlowTheme;
     static get instance(): DefaultFlowTheme;
 }
 
@@ -1262,6 +1263,8 @@ export abstract class FlowTheme {
     static fromJsonValue(value: JsonValue): FlowTheme;
     abstract getBoxTheme(style: BoxStyle): FlowTheme;
     abstract getParagraphTheme(variant: ParagraphVariant): ParagraphTheme;
+    getTableBodyTheme(): FlowTheme;
+    getTableHeadingTheme(): FlowTheme;
     toJsonValue(): JsonValue;
 }
 

@@ -29,4 +29,5 @@ export declare class DefaultFlowTheme extends DefaultFlowThemeBase
 |  [get(lang, rtl)](./scribing.defaultflowtheme.get.md) | <code>static</code> |  |
 |  [getBoxTheme(style)](./scribing.defaultflowtheme.getboxtheme.md) |  | Gets a theme for the specified box style |
 |  [getParagraphTheme(variant)](./scribing.defaultflowtheme.getparagraphtheme.md) |  | Gets a theme for the specified paragraph variant |
+|  [getTableHeadingTheme()](./scribing.defaultflowtheme.gettableheadingtheme.md) |  | Gets a theme that shall be used in table heading cells |
 

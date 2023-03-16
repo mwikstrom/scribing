@@ -1,3 +1,7 @@
+## 1.2.0 - 2023-03-16
+
+- New feature: `FlowTheme.getTableBodyTheme()` and `FlowTheme.getTableHeadingTheme()`
+
 ## 1.1.0 - 2022-08-25
 
 - New feature: `AsyncFlowNodeVisitor`
