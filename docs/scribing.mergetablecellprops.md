@@ -6,7 +6,7 @@
 
 Properties of [MergeTableCell](./scribing.mergetablecell.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface MergeTableCellProps 
@@ -14,10 +14,10 @@ export interface MergeTableCellProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [cell](./scribing.mergetablecellprops.cell.md) | [CellPosition](./scribing.cellposition.md) | The affected cell |
-|  [colSpan](./scribing.mergetablecellprops.colspan.md) | number | The number of columns to span |
-|  [position](./scribing.mergetablecellprops.position.md) | number | The affected table's flow position |
-|  [rowSpan](./scribing.mergetablecellprops.rowspan.md) | number | The number of rows to span |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [cell](./scribing.mergetablecellprops.cell.md) |  | [CellPosition](./scribing.cellposition.md) | The affected cell |
+|  [colSpan](./scribing.mergetablecellprops.colspan.md) |  | number | The number of columns to span |
+|  [position](./scribing.mergetablecellprops.position.md) |  | number | The affected table's flow position |
+|  [rowSpan](./scribing.mergetablecellprops.rowspan.md) |  | number | The number of rows to span |
 

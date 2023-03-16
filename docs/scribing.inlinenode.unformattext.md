@@ -6,7 +6,7 @@
 
 Unapplies the specified text style from the current node and returns the updated node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 unformatText(style: TextStyle): this;
@@ -18,7 +18,7 @@ unformatText(style: TextStyle): this;
 |  --- | --- | --- |
 |  style | [TextStyle](./scribing.textstyle.md) | The text style to unapply |
 
-<b>Returns:</b>
+**Returns:**
 
 this
 

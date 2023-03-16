@@ -6,10 +6,10 @@
 
 Ordered list marker styles
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type OrderedListMarkerKind = (typeof ORDERED_LIST_MARKER_KINDS)[number];
+export type OrderedListMarkerKind = (typeof ORDERED_LIST_MARKER_KINDS)[number];
 ```
-<b>References:</b> [ORDERED\_LIST\_MARKER\_KINDS](./scribing.ordered_list_marker_kinds.md)
+**References:** [ORDERED\_LIST\_MARKER\_KINDS](./scribing.ordered_list_marker_kinds.md)
 

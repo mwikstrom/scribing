@@ -6,7 +6,7 @@
 
 The run-time type that represents this class
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static readonly classType: import("paratype").Type<import("paratype").RecordObject<RunScriptProps, RunScriptProps> & import("paratype").Equatable & Readonly<RunScriptProps> & RunScript>;

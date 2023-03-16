@@ -6,7 +6,7 @@
 
 The reading direction of paragraph content.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 direction?: ReadingDirection;

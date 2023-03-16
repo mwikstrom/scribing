@@ -6,7 +6,7 @@
 
 Preferred image width (in pixels)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 width: number;

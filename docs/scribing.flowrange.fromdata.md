@@ -6,7 +6,7 @@
 
 Gets a flow range from the specified data
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static fromData(data: FlowRangeTuple): FlowRange;
@@ -18,7 +18,7 @@ static fromData(data: FlowRangeTuple): FlowRange;
 |  --- | --- | --- |
 |  data | [FlowRangeTuple](./scribing.flowrangetuple.md) | A tuple with two values, the first is the anchor position and the second is the focus position |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowRange](./scribing.flowrange.md)
 

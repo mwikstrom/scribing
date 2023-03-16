@@ -4,7 +4,7 @@
 
 ## CellPosition.parseColumnIndex() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static parseColumnIndex(input: string, throwOnError: true): number;
@@ -17,7 +17,7 @@ static parseColumnIndex(input: string, throwOnError: true): number;
 |  input | string |  |
 |  throwOnError | true |  |
 
-<b>Returns:</b>
+**Returns:**
 
 number
 

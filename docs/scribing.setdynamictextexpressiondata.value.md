@@ -6,7 +6,7 @@
 
 The expression to assign
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 value: Script;

@@ -6,7 +6,7 @@
 
 The style variant of the paragraph.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 variant?: ParagraphVariant;

@@ -6,7 +6,7 @@
 
 The URL that shall be opened
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 url: string;

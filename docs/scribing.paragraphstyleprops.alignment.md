@@ -6,7 +6,7 @@
 
 The alignment for paragraph content.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 alignment?: HorizontalAlignment;

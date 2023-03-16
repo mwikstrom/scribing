@@ -6,15 +6,15 @@
 
 Represents a line break.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class LineBreak extends LineBreakBase implements LineBreakProps 
 ```
-<b>Extends:</b> LineBreakBase
+**Extends:** LineBreakBase
 
-<b>Implements:</b> [LineBreakProps](./scribing.linebreakprops.md)
+**Implements:** [LineBreakProps](./scribing.linebreakprops.md)
 
 ## Constructors
 
@@ -26,8 +26,8 @@ export declare class LineBreak extends LineBreakBase implements LineBreakProps
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.linebreak.classtype.md) | <code>static</code> | import("paratype").Type&lt;[LineBreak](./scribing.linebreak.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [size](./scribing.linebreak.size.md) |  | (not declared) | Size of the current node. |
+|  [classType](./scribing.linebreak.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[LineBreak](./scribing.linebreak.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [size](./scribing.linebreak.size.md) | <code>readonly</code> | (not declared) | Size of the current node. |
 
 ## Methods
 

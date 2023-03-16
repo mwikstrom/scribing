@@ -6,12 +6,12 @@
 
 Gets a string representation of the current range
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 toString(): string;
 ```
-<b>Returns:</b>
+**Returns:**
 
 string
 

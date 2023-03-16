@@ -6,7 +6,7 @@
 
 Creates an operation that sets the specified dynamic text expression in the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
@@ -20,7 +20,7 @@ setDynamicTextExpression(content: FlowContent, expression: Script): FlowOperatio
 |  content | [FlowContent](./scribing.flowcontent.md) | The selected content |
 |  expression | [Script](./scribing.script.md) | The expression to set |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

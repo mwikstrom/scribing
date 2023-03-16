@@ -6,7 +6,7 @@
 
 Visit all ranges in the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract visitRanges(callback: (range: FlowRange | CellRange, options: VisitRangeOptions) => void, options?: Partial<VisitRangeOptions>): void;
@@ -17,9 +17,9 @@ abstract visitRanges(callback: (range: FlowRange | CellRange, options: VisitRang
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  callback | (range: [FlowRange](./scribing.flowrange.md) \| [CellRange](./scribing.cellrange.md)<!-- -->, options: [VisitRangeOptions](./scribing.visitrangeoptions.md)<!-- -->) =&gt; void | The callback to invoke for each range |
-|  options | Partial&lt;[VisitRangeOptions](./scribing.visitrangeoptions.md)<!-- -->&gt; | <i>(Optional)</i> Options that provide visitor behavior |
+|  options | Partial&lt;[VisitRangeOptions](./scribing.visitrangeoptions.md)<!-- -->&gt; | _(Optional)_ Options that provide visitor behavior |
 
-<b>Returns:</b>
+**Returns:**
 
 void
 

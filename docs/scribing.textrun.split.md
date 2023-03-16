@@ -6,7 +6,7 @@
 
 Splits the current text run a the specified position and returns a tuple with the resulting text runs.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 split(position: number): [TextRun, TextRun];
@@ -18,7 +18,7 @@ split(position: number): [TextRun, TextRun];
 |  --- | --- | --- |
 |  position | number | The position at which the text run shall be split |
 
-<b>Returns:</b>
+**Returns:**
 
 \[[TextRun](./scribing.textrun.md)<!-- -->, [TextRun](./scribing.textrun.md)<!-- -->\]
 

@@ -6,7 +6,7 @@
 
 The base record class for [SetDynamicTextExpression](./scribing.setdynamictextexpression.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 SetDynamicTextExpressionBase: import("paratype").RecordConstructor<SetDynamicTextExpressionProps, FlowOperation, SetDynamicTextExpressionData>

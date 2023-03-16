@@ -6,7 +6,7 @@
 
 Read-only array that contains all predefined icons
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 PREDEFINED_ICONS: readonly ["information", "success", "warning", "error"]

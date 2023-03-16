@@ -6,7 +6,7 @@
 
 Constructs a new instance of the `FlowTableContent` class
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 constructor(cells?: Iterable<[string, FlowTableCell]>, options?: FlowTableContentOptions);
@@ -16,6 +16,6 @@ constructor(cells?: Iterable<[string, FlowTableCell]>, options?: FlowTableConten
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  cells | Iterable&lt;\[string, [FlowTableCell](./scribing.flowtablecell.md)<!-- -->\]&gt; | <i>(Optional)</i> |
-|  options | FlowTableContentOptions | <i>(Optional)</i> |
+|  cells | Iterable&lt;\[string, [FlowTableCell](./scribing.flowtablecell.md)<!-- -->\]&gt; | _(Optional)_ |
+|  options | FlowTableContentOptions | _(Optional)_ |
 

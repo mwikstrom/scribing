@@ -6,7 +6,7 @@
 
 Data of line break nodes
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FlowIconData 
@@ -14,8 +14,8 @@ export interface FlowIconData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [icon](./scribing.flowicondata.icon.md) | string | The icon path data |
-|  [style?](./scribing.flowicondata.style.md) | [TextStyle](./scribing.textstyle.md) | <i>(Optional)</i> Text style |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [icon](./scribing.flowicondata.icon.md) |  | string | The icon path data |
+|  [style?](./scribing.flowicondata.style.md) |  | [TextStyle](./scribing.textstyle.md) | _(Optional)_ Text style |
 

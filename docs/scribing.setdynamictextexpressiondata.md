@@ -6,7 +6,7 @@
 
 Data of [SetDynamicTextExpression](./scribing.setdynamictextexpression.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface SetDynamicTextExpressionData 
@@ -14,9 +14,9 @@ export interface SetDynamicTextExpressionData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [at](./scribing.setdynamictextexpressiondata.at.md) | number | The dynamic text position |
-|  [set](./scribing.setdynamictextexpressiondata.set.md) | "dynamic\_text\_expression" | Data discriminator |
-|  [value](./scribing.setdynamictextexpressiondata.value.md) | [Script](./scribing.script.md) | The expression to assign |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [at](./scribing.setdynamictextexpressiondata.at.md) |  | number | The dynamic text position |
+|  [set](./scribing.setdynamictextexpressiondata.set.md) |  | "dynamic\_text\_expression" | Data discriminator |
+|  [value](./scribing.setdynamictextexpressiondata.value.md) |  | [Script](./scribing.script.md) | The expression to assign |
 

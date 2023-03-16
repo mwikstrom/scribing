@@ -6,7 +6,7 @@
 
 Image rendering scale
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 scale?: number;

@@ -6,7 +6,7 @@
 
 The base record class for [EmptyMarkup](./scribing.emptymarkup.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 EmptyMarkupBase: import("paratype").RecordConstructor<EmptyMarkupProps, InlineNode, EmptyMarkupData>

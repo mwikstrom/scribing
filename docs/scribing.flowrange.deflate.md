@@ -6,7 +6,7 @@
 
 Reduces the distance of the current range by the specified delta
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 deflate(delta: number): FlowRange;
@@ -18,7 +18,7 @@ deflate(delta: number): FlowRange;
 |  --- | --- | --- |
 |  delta | number | The delta distance |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowRange](./scribing.flowrange.md)
 

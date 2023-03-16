@@ -6,7 +6,7 @@
 
 Removes a range of flow content
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 remove(range: FlowRange): FlowContent;
@@ -18,7 +18,7 @@ remove(range: FlowRange): FlowContent;
 |  --- | --- | --- |
 |  range | [FlowRange](./scribing.flowrange.md) | The range to be removed |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

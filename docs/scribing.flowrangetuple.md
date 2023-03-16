@@ -6,8 +6,8 @@
 
 Data for a [FlowRange](./scribing.flowrange.md) represented by a tuple where the first value is the anchor position and the second value is the focus position.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type FlowRangeTuple = [number, number];
+export type FlowRangeTuple = [number, number];
 ```

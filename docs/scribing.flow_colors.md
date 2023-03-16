@@ -6,7 +6,7 @@
 
 Read-only array that contains all flow content colors
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FLOW_COLORS: readonly ["default", "subtle", "primary", "secondary", "information", "success", "warning", "error"]

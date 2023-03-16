@@ -6,12 +6,12 @@
 
 Gets the default variant of the next paragraph
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract getNextVariant(): ParagraphVariant;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [ParagraphVariant](./scribing.paragraphvariant.md)
 

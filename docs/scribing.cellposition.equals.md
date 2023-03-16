@@ -6,7 +6,7 @@
 
 Determines whether the current position is equal to the other position
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 equals(other: CellPositionProps): boolean;
@@ -18,7 +18,7 @@ equals(other: CellPositionProps): boolean;
 |  --- | --- | --- |
 |  other | [CellPositionProps](./scribing.cellpositionprops.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 boolean
 

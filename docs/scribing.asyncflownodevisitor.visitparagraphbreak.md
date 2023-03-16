@@ -4,7 +4,7 @@
 
 ## AsyncFlowNodeVisitor.visitParagraphBreak() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitParagraphBreak(node: ParagraphBreak): Promise<FlowNode>;
@@ -16,7 +16,7 @@ visitParagraphBreak(node: ParagraphBreak): Promise<FlowNode>;
 |  --- | --- | --- |
 |  node | [ParagraphBreak](./scribing.paragraphbreak.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;[FlowNode](./scribing.flownode.md)<!-- -->&gt;
 

@@ -6,7 +6,7 @@
 
 Gets the ambient box style
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static get ambient(): BoxStyle;

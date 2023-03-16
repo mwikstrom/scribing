@@ -6,7 +6,7 @@
 
 Data of [EmptyMarkup](./scribing.emptymarkup.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface EmptyMarkupData 
@@ -14,9 +14,9 @@ export interface EmptyMarkupData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [attr?](./scribing.emptymarkupdata.attr.md) | Readonly&lt;Map&lt;string, AttrValue&gt;&gt; | <i>(Optional)</i> |
-|  [empty\_markup](./scribing.emptymarkupdata.empty_markup.md) | string |  |
-|  [style?](./scribing.emptymarkupdata.style.md) | [TextStyle](./scribing.textstyle.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [attr?](./scribing.emptymarkupdata.attr.md) |  | Readonly&lt;Map&lt;string, AttrValue&gt;&gt; | _(Optional)_ |
+|  [empty\_markup](./scribing.emptymarkupdata.empty_markup.md) |  | string |  |
+|  [style?](./scribing.emptymarkupdata.style.md) |  | [TextStyle](./scribing.textstyle.md) | _(Optional)_ |
 

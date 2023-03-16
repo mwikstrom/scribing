@@ -6,7 +6,7 @@
 
 Creates an operation that sets the specified image source in the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
@@ -19,7 +19,7 @@ abstract setImageSource(content: FlowContent, source: ImageSource): FlowOperatio
 |  content | [FlowContent](./scribing.flowcontent.md) | The selected content |
 |  source | [ImageSource](./scribing.imagesource.md) | The image source to set |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

@@ -6,20 +6,20 @@
 
 A script
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare class Script extends ScriptBase implements Readonly<ScriptProps> 
 ```
-<b>Extends:</b> ScriptBase
+**Extends:** ScriptBase
 
-<b>Implements:</b> Readonly&lt;[ScriptProps](./scribing.scriptprops.md)
+**Implements:** Readonly&lt;[ScriptProps](./scribing.scriptprops.md)<!-- -->&gt;
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.script.classtype.md) | <code>static</code> | Type&lt;[Script](./scribing.script.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.script.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | Type&lt;[Script](./scribing.script.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

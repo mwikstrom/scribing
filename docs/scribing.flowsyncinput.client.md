@@ -4,7 +4,7 @@
 
 ## FlowSyncInput.client property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 client: string;

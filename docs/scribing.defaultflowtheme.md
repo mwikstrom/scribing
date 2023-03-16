@@ -6,20 +6,20 @@
 
 Provides a theme for flow content
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class DefaultFlowTheme extends DefaultFlowThemeBase 
 ```
-<b>Extends:</b> DefaultFlowThemeBase
+**Extends:** DefaultFlowThemeBase
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.defaultflowtheme.classtype.md) | <code>static</code> | Type&lt;[DefaultFlowTheme](./scribing.defaultflowtheme.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [instance](./scribing.defaultflowtheme.instance.md) | <code>static</code> | [DefaultFlowTheme](./scribing.defaultflowtheme.md) | Gets a cached instance of the default flow theme |
+|  [classType](./scribing.defaultflowtheme.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | Type&lt;[DefaultFlowTheme](./scribing.defaultflowtheme.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [instance](./scribing.defaultflowtheme.instance.md) | <p><code>static</code></p><p><code>readonly</code></p> | [DefaultFlowTheme](./scribing.defaultflowtheme.md) | Gets a cached instance of the default flow theme |
 
 ## Methods
 

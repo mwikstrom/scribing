@@ -4,7 +4,7 @@
 
 ## FlowTableCell.getSpannedPositions() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getSpannedPositions(root: CellPosition, includeSelf?: boolean): CellPosition[];
@@ -15,9 +15,9 @@ getSpannedPositions(root: CellPosition, includeSelf?: boolean): CellPosition[];
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  root | [CellPosition](./scribing.cellposition.md) |  |
-|  includeSelf | boolean | <i>(Optional)</i> |
+|  includeSelf | boolean | _(Optional)_ |
 
-<b>Returns:</b>
+**Returns:**
 
 [CellPosition](./scribing.cellposition.md)<!-- -->\[\]
 

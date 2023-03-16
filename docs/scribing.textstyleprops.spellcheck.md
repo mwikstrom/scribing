@@ -6,7 +6,7 @@
 
 Determines whether text shall be checked for spelling errors
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 spellcheck?: boolean;

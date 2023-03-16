@@ -6,7 +6,7 @@
 
 Returns elements from the specified array that are not `null` nor `undefined`
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 filterNotNull: <T>(array: readonly T[]) => Exclude<T, null | undefined>[]

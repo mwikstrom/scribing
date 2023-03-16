@@ -6,22 +6,22 @@
 
 Represents a dynamic text.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class FlowIcon extends FlowIconBase implements FlowIconProps 
 ```
-<b>Extends:</b> FlowIconBase
+**Extends:** FlowIconBase
 
-<b>Implements:</b> [FlowIconProps](./scribing.flowiconprops.md)
+**Implements:** [FlowIconProps](./scribing.flowiconprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.flowicon.classtype.md) | <code>static</code> | Type&lt;[FlowIcon](./scribing.flowicon.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [size](./scribing.flowicon.size.md) |  | (not declared) | Size of the current node. |
+|  [classType](./scribing.flowicon.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | Type&lt;[FlowIcon](./scribing.flowicon.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [size](./scribing.flowicon.size.md) | <code>readonly</code> | (not declared) | Size of the current node. |
 
 ## Methods
 

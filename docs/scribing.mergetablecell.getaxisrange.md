@@ -4,7 +4,7 @@
 
 ## MergeTableCell.getAxisRange() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getAxisRange(axis: "row" | "column"): FlowRange;
@@ -16,7 +16,7 @@ getAxisRange(axis: "row" | "column"): FlowRange;
 |  --- | --- | --- |
 |  axis | "row" \| "column" |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowRange](./scribing.flowrange.md)
 

@@ -6,7 +6,7 @@
 
 The base record class for [FlowBatch](./scribing.flowbatch.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FlowBatchBase: import("paratype").RecordConstructor<FlowBatchProps, FlowOperation, FlowBatchData>

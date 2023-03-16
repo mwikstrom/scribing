@@ -6,7 +6,7 @@
 
 Data of [SplitTableCell](./scribing.splittablecell.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface SplitTableCellData 
@@ -14,9 +14,9 @@ export interface SplitTableCellData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [cell](./scribing.splittablecelldata.cell.md) | [CellPosition](./scribing.cellposition.md) | The affected cell |
-|  [split](./scribing.splittablecelldata.split.md) | "table\_cell" | Data discriminator |
-|  [table](./scribing.splittablecelldata.table.md) | number | The affected table's flow position |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [cell](./scribing.splittablecelldata.cell.md) |  | [CellPosition](./scribing.cellposition.md) | The affected cell |
+|  [split](./scribing.splittablecelldata.split.md) |  | "table\_cell" | Data discriminator |
+|  [table](./scribing.splittablecelldata.table.md) |  | number | The affected table's flow position |
 

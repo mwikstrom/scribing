@@ -6,10 +6,10 @@
 
 Paragraph style variant
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type ParagraphVariant = (typeof PARAGRAPH_VARIANTS)[number];
+export type ParagraphVariant = (typeof PARAGRAPH_VARIANTS)[number];
 ```
-<b>References:</b> [PARAGRAPH\_VARIANTS](./scribing.paragraph_variants.md)
+**References:** [PARAGRAPH\_VARIANTS](./scribing.paragraph_variants.md)
 

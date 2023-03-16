@@ -6,7 +6,7 @@
 
 The base record class for [FlowRange](./scribing.flowrange.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FlowRangeBase: import("paratype").RecordConstructor<FlowRangeProps, Object, FlowRangeTuple>

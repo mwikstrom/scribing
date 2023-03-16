@@ -6,7 +6,7 @@
 
 The base record class for [UnformatBox](./scribing.unformatbox.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 UnformatBoxBase: import("paratype").RecordConstructor<UnformatBoxProps, FlowOperation, UnformatBoxData>

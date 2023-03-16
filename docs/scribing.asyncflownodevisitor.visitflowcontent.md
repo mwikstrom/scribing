@@ -4,7 +4,7 @@
 
 ## AsyncFlowNodeVisitor.visitFlowContent() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitFlowContent(content: FlowContent): Promise<FlowContent>;
@@ -16,7 +16,7 @@ visitFlowContent(content: FlowContent): Promise<FlowContent>;
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;[FlowContent](./scribing.flowcontent.md)<!-- -->&gt;
 

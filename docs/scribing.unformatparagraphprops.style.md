@@ -6,7 +6,7 @@
 
 The style to unformat
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 style: ParagraphStyle;

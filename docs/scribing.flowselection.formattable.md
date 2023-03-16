@@ -6,7 +6,7 @@
 
 Creates an operation that applies the specified table style on the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract formatTable(style: TableStyle, options?: TargetOptions): FlowOperation | null;
@@ -17,9 +17,9 @@ abstract formatTable(style: TableStyle, options?: TargetOptions): FlowOperation 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  style | [TableStyle](./scribing.tablestyle.md) | The style to unapply |
-|  options | [TargetOptions](./scribing.targetoptions.md) | <i>(Optional)</i> |
+|  options | [TargetOptions](./scribing.targetoptions.md) | _(Optional)_ |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

@@ -4,7 +4,7 @@
 
 ## SetMarkupAttrProps.value property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 value: AttrValue;

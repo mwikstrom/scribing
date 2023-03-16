@@ -4,12 +4,12 @@
 
 ## FlowSyncProtocol.read() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 read(): Promise<FlowSyncSnapshot | null>;
 ```
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;[FlowSyncSnapshot](./scribing.flowsyncsnapshot.md) \| null&gt;
 

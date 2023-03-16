@@ -6,7 +6,7 @@
 
 Gets flow content from the specified JSON value
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static fromJsonValue(value: JsonValue): FlowContent;
@@ -18,7 +18,7 @@ static fromJsonValue(value: JsonValue): FlowContent;
 |  --- | --- | --- |
 |  value | JsonValue |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

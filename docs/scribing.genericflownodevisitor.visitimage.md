@@ -4,7 +4,7 @@
 
 ## GenericFlowNodeVisitor.visitImage() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitImage(node: FlowImage): T;
@@ -16,7 +16,7 @@ visitImage(node: FlowImage): T;
 |  --- | --- | --- |
 |  node | [FlowImage](./scribing.flowimage.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 T
 

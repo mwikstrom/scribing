@@ -6,15 +6,15 @@
 
 Represents a line break.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class StartMarkup extends StartMarkupBase implements StartMarkupProps 
 ```
-<b>Extends:</b> StartMarkupBase
+**Extends:** StartMarkupBase
 
-<b>Implements:</b> [StartMarkupProps](./scribing.startmarkupprops.md)
+**Implements:** [StartMarkupProps](./scribing.startmarkupprops.md)
 
 ## Constructors
 
@@ -26,8 +26,8 @@ export declare class StartMarkup extends StartMarkupBase implements StartMarkupP
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.startmarkup.classtype.md) | <code>static</code> | import("paratype").Type&lt;[StartMarkup](./scribing.startmarkup.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [size](./scribing.startmarkup.size.md) |  | (not declared) | Size of the current node. |
+|  [classType](./scribing.startmarkup.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[StartMarkup](./scribing.startmarkup.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [size](./scribing.startmarkup.size.md) | <code>readonly</code> | (not declared) | Size of the current node. |
 
 ## Methods
 

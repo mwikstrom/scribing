@@ -6,7 +6,7 @@
 
 Gets an iterable sequence of nodes after the current position
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get after(): Iterable<FlowNode>;

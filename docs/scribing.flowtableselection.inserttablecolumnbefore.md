@@ -6,7 +6,7 @@
 
 Creates an operation that inserts a table column before the current selection.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
@@ -18,9 +18,9 @@ insertTableColumnBefore(_: FlowContent, count?: number): FlowOperation | null;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  \_ | [FlowContent](./scribing.flowcontent.md) |  |
-|  count | number | <i>(Optional)</i> Optional. The number of columns to insert. Default is the number of selected columns. |
+|  count | number | _(Optional)_ Optional. The number of columns to insert. Default is the number of selected columns. |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

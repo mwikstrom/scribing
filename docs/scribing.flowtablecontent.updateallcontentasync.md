@@ -4,7 +4,7 @@
 
 ## FlowTableContent.updateAllContentAsync() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 updateAllContentAsync(callback: (content: FlowContent, position: CellPosition) => Promise<FlowContent>): Promise<FlowTableContent>;
@@ -16,7 +16,7 @@ updateAllContentAsync(callback: (content: FlowContent, position: CellPosition) =
 |  --- | --- | --- |
 |  callback | (content: [FlowContent](./scribing.flowcontent.md)<!-- -->, position: [CellPosition](./scribing.cellposition.md)<!-- -->) =&gt; Promise&lt;[FlowContent](./scribing.flowcontent.md)<!-- -->&gt; |  |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;[FlowTableContent](./scribing.flowtablecontent.md)<!-- -->&gt;
 

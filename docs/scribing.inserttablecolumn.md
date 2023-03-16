@@ -6,21 +6,21 @@
 
 Represents an operation that inserts a table column
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class InsertTableColumn extends InsertTableColumnBase implements InsertTableColumnProps 
 ```
-<b>Extends:</b> InsertTableColumnBase
+**Extends:** InsertTableColumnBase
 
-<b>Implements:</b> [InsertTableColumnProps](./scribing.inserttablecolumnprops.md)
+**Implements:** [InsertTableColumnProps](./scribing.inserttablecolumnprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.inserttablecolumn.classtype.md) | <code>static</code> | import("paratype").Type&lt;[InsertTableColumn](./scribing.inserttablecolumn.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.inserttablecolumn.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[InsertTableColumn](./scribing.inserttablecolumn.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 
@@ -30,10 +30,10 @@ export declare class InsertTableColumn extends InsertTableColumnBase implements 
 |  [afterInsertRow()](./scribing.inserttablecolumn.afterinsertrow.md) |  |  |
 |  [afterRemoveColumn(index, count)](./scribing.inserttablecolumn.afterremovecolumn.md) |  |  |
 |  [afterRemoveRow()](./scribing.inserttablecolumn.afterremoverow.md) |  |  |
-|  [applyToCellRange(range)](./scribing.inserttablecolumn.applytocellrange.md) |  |  |
-|  [applyToTable(table)](./scribing.inserttablecolumn.applytotable.md) |  |  |
+|  [applyToCellRange(range)](./scribing.inserttablecolumn.applytocellrange.md) | <code>protected</code> |  |
+|  [applyToTable(table)](./scribing.inserttablecolumn.applytotable.md) | <code>protected</code> |  |
 |  [fromData(input)](./scribing.inserttablecolumn.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
-|  [invertForTable()](./scribing.inserttablecolumn.invertfortable.md) |  |  |
-|  [mergeNextInSameTable()](./scribing.inserttablecolumn.mergenextinsametable.md) |  |  |
-|  [transformInSameTable(other)](./scribing.inserttablecolumn.transforminsametable.md) |  |  |
+|  [invertForTable()](./scribing.inserttablecolumn.invertfortable.md) | <code>protected</code> |  |
+|  [mergeNextInSameTable()](./scribing.inserttablecolumn.mergenextinsametable.md) | <code>protected</code> |  |
+|  [transformInSameTable(other)](./scribing.inserttablecolumn.transforminsametable.md) | <code>protected</code> |  |
 

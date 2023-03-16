@@ -6,7 +6,7 @@
 
 Properties of [SetDynamicTextExpression](./scribing.setdynamictextexpression.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface SetDynamicTextExpressionProps 
@@ -14,8 +14,8 @@ export interface SetDynamicTextExpressionProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [expression](./scribing.setdynamictextexpressionprops.expression.md) | [Script](./scribing.script.md) | The expression to assign |
-|  [position](./scribing.setdynamictextexpressionprops.position.md) | number | The dynamic text position |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [expression](./scribing.setdynamictextexpressionprops.expression.md) |  | [Script](./scribing.script.md) | The expression to assign |
+|  [position](./scribing.setdynamictextexpressionprops.position.md) |  | number | The dynamic text position |
 

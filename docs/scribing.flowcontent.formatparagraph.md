@@ -6,7 +6,7 @@
 
 Applies paragraph style to a range
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 formatParagraph(range: FlowRange, style: ParagraphStyle, theme?: FlowTheme): FlowContent;
@@ -18,9 +18,9 @@ formatParagraph(range: FlowRange, style: ParagraphStyle, theme?: FlowTheme): Flo
 |  --- | --- | --- |
 |  range | [FlowRange](./scribing.flowrange.md) | The range to format |
 |  style | [ParagraphStyle](./scribing.paragraphstyle.md) | The style to apply |
-|  theme | [FlowTheme](./scribing.flowtheme.md) | <i>(Optional)</i> |
+|  theme | [FlowTheme](./scribing.flowtheme.md) | _(Optional)_ |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

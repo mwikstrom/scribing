@@ -6,7 +6,7 @@
 
 The base record class for [BoxStyle](./scribing.boxstyle.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 BoxStyleBase: import("paratype").RecordConstructor<Partial<{

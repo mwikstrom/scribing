@@ -6,10 +6,10 @@
 
 Box style variant
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type BoxVariant = (typeof BOX_VARIANTS)[number];
+export type BoxVariant = (typeof BOX_VARIANTS)[number];
 ```
-<b>References:</b> [BOX\_VARIANTS](./scribing.box_variants.md)
+**References:** [BOX\_VARIANTS](./scribing.box_variants.md)
 

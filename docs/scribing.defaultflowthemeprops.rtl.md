@@ -4,7 +4,7 @@
 
 ## DefaultFlowThemeProps.rtl property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 rtl: boolean;

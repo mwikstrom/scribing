@@ -4,7 +4,7 @@
 
 ## GenericFlowNodeVisitor.visitNode() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitNode(node: FlowNode): T;
@@ -16,7 +16,7 @@ visitNode(node: FlowNode): T;
 |  --- | --- | --- |
 |  node | [FlowNode](./scribing.flownode.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 T
 

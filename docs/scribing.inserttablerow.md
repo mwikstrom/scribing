@@ -6,21 +6,21 @@
 
 Represents an operation that inserts a table row
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class InsertTableRow extends InsertTableRowBase implements InsertTableRowProps 
 ```
-<b>Extends:</b> InsertTableRowBase
+**Extends:** InsertTableRowBase
 
-<b>Implements:</b> [InsertTableRowProps](./scribing.inserttablerowprops.md)
+**Implements:** [InsertTableRowProps](./scribing.inserttablerowprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.inserttablerow.classtype.md) | <code>static</code> | import("paratype").Type&lt;[InsertTableRow](./scribing.inserttablerow.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.inserttablerow.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[InsertTableRow](./scribing.inserttablerow.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 
@@ -30,10 +30,10 @@ export declare class InsertTableRow extends InsertTableRowBase implements Insert
 |  [afterInsertRow(index, count)](./scribing.inserttablerow.afterinsertrow.md) |  |  |
 |  [afterRemoveColumn()](./scribing.inserttablerow.afterremovecolumn.md) |  |  |
 |  [afterRemoveRow(index, count)](./scribing.inserttablerow.afterremoverow.md) |  |  |
-|  [applyToCellRange(range)](./scribing.inserttablerow.applytocellrange.md) |  |  |
-|  [applyToTable(table)](./scribing.inserttablerow.applytotable.md) |  |  |
+|  [applyToCellRange(range)](./scribing.inserttablerow.applytocellrange.md) | <code>protected</code> |  |
+|  [applyToTable(table)](./scribing.inserttablerow.applytotable.md) | <code>protected</code> |  |
 |  [fromData(input)](./scribing.inserttablerow.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
-|  [invertForTable()](./scribing.inserttablerow.invertfortable.md) |  |  |
-|  [mergeNextInSameTable()](./scribing.inserttablerow.mergenextinsametable.md) |  |  |
-|  [transformInSameTable(other)](./scribing.inserttablerow.transforminsametable.md) |  |  |
+|  [invertForTable()](./scribing.inserttablerow.invertfortable.md) | <code>protected</code> |  |
+|  [mergeNextInSameTable()](./scribing.inserttablerow.mergenextinsametable.md) | <code>protected</code> |  |
+|  [transformInSameTable(other)](./scribing.inserttablerow.transforminsametable.md) | <code>protected</code> |  |
 

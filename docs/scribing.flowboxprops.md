@@ -6,7 +6,7 @@
 
 Properties of [FlowBox](./scribing.flowbox.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FlowBoxProps 
@@ -14,8 +14,8 @@ export interface FlowBoxProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [content](./scribing.flowboxprops.content.md) | [FlowContent](./scribing.flowcontent.md) |  |
-|  [style](./scribing.flowboxprops.style.md) | [BoxStyle](./scribing.boxstyle.md) |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [content](./scribing.flowboxprops.content.md) |  | [FlowContent](./scribing.flowcontent.md) |  |
+|  [style](./scribing.flowboxprops.style.md) |  | [BoxStyle](./scribing.boxstyle.md) |  |
 

@@ -4,7 +4,7 @@
 
 ## FlowTableContent.updateAllContent() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 updateAllContent(callback: (content: FlowContent, position: CellPosition) => FlowContent): FlowTableContent;
@@ -16,7 +16,7 @@ updateAllContent(callback: (content: FlowContent, position: CellPosition) => Flo
 |  --- | --- | --- |
 |  callback | (content: [FlowContent](./scribing.flowcontent.md)<!-- -->, position: [CellPosition](./scribing.cellposition.md)<!-- -->) =&gt; [FlowContent](./scribing.flowcontent.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowTableContent](./scribing.flowtablecontent.md)
 

@@ -6,15 +6,15 @@
 
 Represents the styling that is applied to flow table content
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class TableStyle extends TableStyleBase implements Readonly<TableStyleProps> 
 ```
-<b>Extends:</b> TableStyleBase
+**Extends:** TableStyleBase
 
-<b>Implements:</b> Readonly&lt;[TableStyleProps](./scribing.tablestyleprops.md)
+**Implements:** Readonly&lt;[TableStyleProps](./scribing.tablestyleprops.md)<!-- -->&gt;
 
 ## Constructors
 
@@ -26,8 +26,8 @@ export declare class TableStyle extends TableStyleBase implements Readonly<Table
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [ambient](./scribing.tablestyle.ambient.md) | <code>static</code> | [TableStyle](./scribing.tablestyle.md) | Gets the ambient table style |
-|  [classType](./scribing.tablestyle.classtype.md) | <code>static</code> | import("paratype").Type&lt;import("paratype").RecordObject&lt;Partial&lt;{ inline: boolean; head: number; }&gt;, Partial&lt;{ inline: boolean; head: number; }&gt;&gt; &amp; import("paratype").Equatable &amp; Readonly&lt;Partial&lt;{ inline: boolean; head: number; }&gt;&gt; &amp; [TableStyle](./scribing.tablestyle.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [empty](./scribing.tablestyle.empty.md) | <code>static</code> | [TableStyle](./scribing.tablestyle.md) | Gets an empty table style |
-|  [isEmpty](./scribing.tablestyle.isempty.md) |  | boolean | Determines whether the current style is empty |
+|  [ambient](./scribing.tablestyle.ambient.md) | <p><code>static</code></p><p><code>readonly</code></p> | [TableStyle](./scribing.tablestyle.md) | Gets the ambient table style |
+|  [classType](./scribing.tablestyle.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;import("paratype").RecordObject&lt;Partial&lt;{ inline: boolean; head: number; }&gt;, Partial&lt;{ inline: boolean; head: number; }&gt;&gt; &amp; import("paratype").Equatable &amp; Readonly&lt;Partial&lt;{ inline: boolean; head: number; }&gt;&gt; &amp; [TableStyle](./scribing.tablestyle.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [empty](./scribing.tablestyle.empty.md) | <p><code>static</code></p><p><code>readonly</code></p> | [TableStyle](./scribing.tablestyle.md) | Gets an empty table style |
+|  [isEmpty](./scribing.tablestyle.isempty.md) | <code>readonly</code> | boolean | Determines whether the current style is empty |
 

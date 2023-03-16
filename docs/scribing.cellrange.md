@@ -6,28 +6,28 @@
 
 Represents a range of a cells in a table
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class CellRange extends CellRangeBase implements Readonly<CellRangeProps> 
 ```
-<b>Extends:</b> CellRangeBase
+**Extends:** CellRangeBase
 
-<b>Implements:</b> Readonly&lt;[CellRangeProps](./scribing.cellrangeprops.md)
+**Implements:** Readonly&lt;[CellRangeProps](./scribing.cellrangeprops.md)<!-- -->&gt;
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.cellrange.classtype.md) | <code>static</code> | Type&lt;[CellRange](./scribing.cellrange.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [columnRange](./scribing.cellrange.columnrange.md) |  | [FlowRange](./scribing.flowrange.md) |  |
-|  [firstColumnIndex](./scribing.cellrange.firstcolumnindex.md) |  | number |  |
-|  [firstRowIndex](./scribing.cellrange.firstrowindex.md) |  | number |  |
-|  [isSingleCell](./scribing.cellrange.issinglecell.md) |  | boolean |  |
-|  [lastColumnIndex](./scribing.cellrange.lastcolumnindex.md) |  | number |  |
-|  [lastRowIndex](./scribing.cellrange.lastrowindex.md) |  | number |  |
-|  [rowRange](./scribing.cellrange.rowrange.md) |  | [FlowRange](./scribing.flowrange.md) |  |
+|  [classType](./scribing.cellrange.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | Type&lt;[CellRange](./scribing.cellrange.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [columnRange](./scribing.cellrange.columnrange.md) | <code>readonly</code> | [FlowRange](./scribing.flowrange.md) |  |
+|  [firstColumnIndex](./scribing.cellrange.firstcolumnindex.md) | <code>readonly</code> | number |  |
+|  [firstRowIndex](./scribing.cellrange.firstrowindex.md) | <code>readonly</code> | number |  |
+|  [isSingleCell](./scribing.cellrange.issinglecell.md) | <code>readonly</code> | boolean |  |
+|  [lastColumnIndex](./scribing.cellrange.lastcolumnindex.md) | <code>readonly</code> | number |  |
+|  [lastRowIndex](./scribing.cellrange.lastrowindex.md) | <code>readonly</code> | number |  |
+|  [rowRange](./scribing.cellrange.rowrange.md) | <code>readonly</code> | [FlowRange](./scribing.flowrange.md) |  |
 
 ## Methods
 

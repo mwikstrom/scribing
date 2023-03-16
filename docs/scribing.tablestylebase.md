@@ -6,7 +6,7 @@
 
 The base record class for [TableStyle](./scribing.tablestyle.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 TableStyleBase: import("paratype").RecordConstructor<Partial<{

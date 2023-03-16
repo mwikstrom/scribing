@@ -6,10 +6,10 @@
 
 Data for [DefaultFlowTheme](./scribing.defaultflowtheme.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type DefaultFlowThemeData = "default" | Partial<DefaultFlowThemeProps>;
+export type DefaultFlowThemeData = "default" | Partial<DefaultFlowThemeProps>;
 ```
-<b>References:</b> [DefaultFlowThemeProps](./scribing.defaultflowthemeprops.md)
+**References:** [DefaultFlowThemeProps](./scribing.defaultflowthemeprops.md)
 

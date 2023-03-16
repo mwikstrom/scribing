@@ -6,7 +6,7 @@
 
 Read-only array that contains all font families
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FONT_FAMILIES: readonly ["body", "heading", "monospace", "cursive", "decorative"]

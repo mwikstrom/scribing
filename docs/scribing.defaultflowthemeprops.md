@@ -6,7 +6,7 @@
 
 Properties for [DefaultFlowTheme](./scribing.defaultflowtheme.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface DefaultFlowThemeProps 
@@ -14,8 +14,8 @@ export interface DefaultFlowThemeProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [lang](./scribing.defaultflowthemeprops.lang.md) | string |  |
-|  [rtl](./scribing.defaultflowthemeprops.rtl.md) | boolean |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [lang](./scribing.defaultflowthemeprops.lang.md) |  | string |  |
+|  [rtl](./scribing.defaultflowthemeprops.rtl.md) |  | boolean |  |
 

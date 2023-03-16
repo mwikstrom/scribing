@@ -4,7 +4,7 @@
 
 ## FlowTableCellProps.rowSpan property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 rowSpan: number;

@@ -6,7 +6,7 @@
 
 Appends the specified text to the current text run
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 append(value: string): TextRun;
@@ -18,7 +18,7 @@ append(value: string): TextRun;
 |  --- | --- | --- |
 |  value | string |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [TextRun](./scribing.textrun.md)
 

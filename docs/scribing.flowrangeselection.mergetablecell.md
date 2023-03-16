@@ -6,13 +6,13 @@
 
 Creates an operation that merges the selected table cells.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
 mergeTableCell(): FlowOperation | null;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

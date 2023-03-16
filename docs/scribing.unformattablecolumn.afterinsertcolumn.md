@@ -4,7 +4,7 @@
 
 ## UnformatTableColumn.afterInsertColumn() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 afterInsertColumn(index: number, count: number): TableOperation | null;
@@ -17,7 +17,7 @@ afterInsertColumn(index: number, count: number): TableOperation | null;
 |  index | number |  |
 |  count | number |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [TableOperation](./scribing.tableoperation.md) \| null
 

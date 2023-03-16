@@ -5,7 +5,7 @@
 ## FlowSyncSnapshotType variable
 
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FlowSyncSnapshotType: RecordType<FlowSyncSnapshot>

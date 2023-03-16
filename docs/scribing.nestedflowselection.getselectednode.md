@@ -6,7 +6,7 @@
 
 Gets the selected (outer) node
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 protected getSelectedNode(outer: FlowContent): FlowNode | null;
@@ -18,7 +18,7 @@ protected getSelectedNode(outer: FlowContent): FlowNode | null;
 |  --- | --- | --- |
 |  outer | [FlowContent](./scribing.flowcontent.md) | The outer content |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowNode](./scribing.flownode.md) \| null
 

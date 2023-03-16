@@ -6,7 +6,7 @@
 
 Properties of [DynamicText](./scribing.dynamictext.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface DynamicTextProps 
@@ -14,8 +14,8 @@ export interface DynamicTextProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [expression](./scribing.dynamictextprops.expression.md) | [Script](./scribing.script.md) | The dynamic expression |
-|  [style](./scribing.dynamictextprops.style.md) | [TextStyle](./scribing.textstyle.md) | Text style |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [expression](./scribing.dynamictextprops.expression.md) |  | [Script](./scribing.script.md) | The dynamic expression |
+|  [style](./scribing.dynamictextprops.style.md) |  | [TextStyle](./scribing.textstyle.md) | Text style |
 

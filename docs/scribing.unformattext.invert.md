@@ -6,7 +6,7 @@
 
 Returns an operation that negates the effect of the current operation.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
@@ -19,7 +19,7 @@ invert(content: FlowContent): FlowOperation | null;
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The state, before the current operation is applied, that shall be used to compute an inverse. |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

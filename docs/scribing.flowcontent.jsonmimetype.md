@@ -6,7 +6,7 @@
 
 The MIME type that should be used for flow content JSON data
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static readonly jsonMimeType = "application/vnd.scribing-flow+json";

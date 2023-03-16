@@ -6,7 +6,7 @@
 
 Size of the current node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly size = 1;

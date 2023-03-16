@@ -6,7 +6,7 @@
 
 Gets an iterable sequence of nodes before the current position
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get before(): Iterable<FlowNode>;

@@ -6,7 +6,7 @@
 
 Represents a position in flow content
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare class FlowCursor 
@@ -22,12 +22,12 @@ The constructor for this class is marked as internal. Third-party code should no
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [after](./scribing.flowcursor.after.md) |  | Iterable&lt;[FlowNode](./scribing.flownode.md)<!-- -->&gt; | Gets an iterable sequence of nodes after the current position |
-|  [before](./scribing.flowcursor.before.md) |  | Iterable&lt;[FlowNode](./scribing.flownode.md)<!-- -->&gt; | Gets an iterable sequence of nodes before the current position |
-|  [index](./scribing.flowcursor.index.md) |  | number | Gets the current node index |
-|  [node](./scribing.flowcursor.node.md) |  | [FlowNode](./scribing.flownode.md) \| null | Gets the current node when the cursor is positioned before the first, or after the last node. |
-|  [offset](./scribing.flowcursor.offset.md) |  | number | Gets the current offset within the current node |
-|  [position](./scribing.flowcursor.position.md) |  | number | Gets the current position |
+|  [after](./scribing.flowcursor.after.md) | <code>readonly</code> | Iterable&lt;[FlowNode](./scribing.flownode.md)<!-- -->&gt; | Gets an iterable sequence of nodes after the current position |
+|  [before](./scribing.flowcursor.before.md) | <code>readonly</code> | Iterable&lt;[FlowNode](./scribing.flownode.md)<!-- -->&gt; | Gets an iterable sequence of nodes before the current position |
+|  [index](./scribing.flowcursor.index.md) | <code>readonly</code> | number | Gets the current node index |
+|  [node](./scribing.flowcursor.node.md) | <code>readonly</code> | [FlowNode](./scribing.flownode.md) \| null | Gets the current node when the cursor is positioned before the first, or after the last node. |
+|  [offset](./scribing.flowcursor.offset.md) | <code>readonly</code> | number | Gets the current offset within the current node |
+|  [position](./scribing.flowcursor.position.md) | <code>readonly</code> | number | Gets the current position |
 
 ## Methods
 

@@ -6,7 +6,7 @@
 
 The base record class for [MergeTableCell](./scribing.mergetablecell.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 MergeTableCellBase: import("paratype").RecordConstructor<MergeTableCellProps, TableOperation, MergeTableCellData>

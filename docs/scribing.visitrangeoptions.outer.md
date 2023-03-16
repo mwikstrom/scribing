@@ -4,7 +4,7 @@
 
 ## VisitRangeOptions.outer property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 outer?: NestedFlowSelection;

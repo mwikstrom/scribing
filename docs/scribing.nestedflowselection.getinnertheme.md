@@ -6,7 +6,7 @@
 
 Gets the inner theme
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 protected getInnerTheme(outerContent: FlowContent, outerTheme?: FlowTheme): FlowTheme | null;
@@ -17,9 +17,9 @@ protected getInnerTheme(outerContent: FlowContent, outerTheme?: FlowTheme): Flow
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  outerContent | [FlowContent](./scribing.flowcontent.md) | The outer content |
-|  outerTheme | [FlowTheme](./scribing.flowtheme.md) | <i>(Optional)</i> The outer theme |
+|  outerTheme | [FlowTheme](./scribing.flowtheme.md) | _(Optional)_ The outer theme |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowTheme](./scribing.flowtheme.md) \| null
 

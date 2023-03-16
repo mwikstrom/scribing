@@ -6,12 +6,12 @@
 
 Gets the flow theme
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract getFlowTheme(): FlowTheme;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [FlowTheme](./scribing.flowtheme.md)
 

@@ -6,7 +6,7 @@
 
 Gets a uniform text style from the current node
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract getUniformTextStyle(theme?: ParagraphTheme, diff?: Set<keyof TextStyleProps>): TextStyle | null;
@@ -16,10 +16,10 @@ abstract getUniformTextStyle(theme?: ParagraphTheme, diff?: Set<keyof TextStyleP
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  theme | [ParagraphTheme](./scribing.paragraphtheme.md) | <i>(Optional)</i> Theme of the current node |
-|  diff | Set&lt;keyof [TextStyleProps](./scribing.textstyleprops.md)<!-- -->&gt; | <i>(Optional)</i> An optional set that is populated with style keys with non-uniform values |
+|  theme | [ParagraphTheme](./scribing.paragraphtheme.md) | _(Optional)_ Theme of the current node |
+|  diff | Set&lt;keyof [TextStyleProps](./scribing.textstyleprops.md)<!-- -->&gt; | _(Optional)_ An optional set that is populated with style keys with non-uniform values |
 
-<b>Returns:</b>
+**Returns:**
 
 [TextStyle](./scribing.textstyle.md) \| null
 

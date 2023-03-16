@@ -5,10 +5,10 @@
 ## BasicFetch type
 
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type BasicFetch = (url: string, init?: BasicRequestInit) => Promise<Response>;
+export type BasicFetch = (url: string, init?: BasicRequestInit) => Promise<Response>;
 ```
-<b>References:</b> [BasicRequestInit](./scribing.basicrequestinit.md)
+**References:** [BasicRequestInit](./scribing.basicrequestinit.md)
 

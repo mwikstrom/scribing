@@ -4,7 +4,7 @@
 
 ## FlowTableSelectionProps.range property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 range: CellRange;

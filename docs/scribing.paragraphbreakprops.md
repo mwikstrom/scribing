@@ -6,7 +6,7 @@
 
 Properties of paragraph break nodes
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface ParagraphBreakProps 
@@ -14,7 +14,7 @@ export interface ParagraphBreakProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [style](./scribing.paragraphbreakprops.style.md) | [ParagraphStyle](./scribing.paragraphstyle.md) | Style for the preceding paragraph |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [style](./scribing.paragraphbreakprops.style.md) |  | [ParagraphStyle](./scribing.paragraphstyle.md) | Style for the preceding paragraph |
 

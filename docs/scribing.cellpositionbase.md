@@ -6,7 +6,7 @@
 
 The base record class for [CellPosition](./scribing.cellposition.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 CellPositionBase: import("paratype").RecordConstructor<CellPositionProps, Object, string>

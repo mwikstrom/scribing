@@ -4,7 +4,7 @@
 
 ## FlowTableContent.map() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 map<T>(callback: (cell: FlowTableCell, position: CellPosition) => T): T[];
@@ -16,7 +16,7 @@ map<T>(callback: (cell: FlowTableCell, position: CellPosition) => T): T[];
 |  --- | --- | --- |
 |  callback | (cell: [FlowTableCell](./scribing.flowtablecell.md)<!-- -->, position: [CellPosition](./scribing.cellposition.md)<!-- -->) =&gt; T |  |
 
-<b>Returns:</b>
+**Returns:**
 
 T\[\]
 

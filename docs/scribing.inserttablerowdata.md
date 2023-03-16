@@ -6,7 +6,7 @@
 
 Data of [InsertTableRow](./scribing.inserttablerow.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface InsertTableRowData 
@@ -14,10 +14,10 @@ export interface InsertTableRowData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [count?](./scribing.inserttablerowdata.count.md) | number | <i>(Optional)</i> The number of rows to insert |
-|  [insert](./scribing.inserttablerowdata.insert.md) | "table\_row" | Data discriminator |
-|  [row](./scribing.inserttablerowdata.row.md) | number | The row index |
-|  [table](./scribing.inserttablerowdata.table.md) | number | The affected flow position |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [count?](./scribing.inserttablerowdata.count.md) |  | number | _(Optional)_ The number of rows to insert |
+|  [insert](./scribing.inserttablerowdata.insert.md) |  | "table\_row" | Data discriminator |
+|  [row](./scribing.inserttablerowdata.row.md) |  | number | The row index |
+|  [table](./scribing.inserttablerowdata.table.md) |  | number | The affected flow position |
 

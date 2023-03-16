@@ -6,7 +6,7 @@
 
 Data of [ResetContent](./scribing.resetcontent.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface ResetContentData 
@@ -14,8 +14,8 @@ export interface ResetContentData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [content](./scribing.resetcontentdata.content.md) | [FlowContent](./scribing.flowcontent.md) | The new content |
-|  [reset](./scribing.resetcontentdata.reset.md) | "content" | Data discriminator |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [content](./scribing.resetcontentdata.content.md) |  | [FlowContent](./scribing.flowcontent.md) | The new content |
+|  [reset](./scribing.resetcontentdata.reset.md) |  | "content" | Data discriminator |
 

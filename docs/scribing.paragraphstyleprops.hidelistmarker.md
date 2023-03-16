@@ -6,7 +6,7 @@
 
 Specifies whether the list marker is hidden
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 hideListMarker?: boolean;

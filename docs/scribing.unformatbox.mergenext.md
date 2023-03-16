@@ -6,7 +6,7 @@
 
 Returns an operation that keeps the intention of the current operation and the specified subsequent operation as they were performed as an atomic operation.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 mergeNext(next: FlowOperation): FlowOperation | null;
@@ -18,7 +18,7 @@ mergeNext(next: FlowOperation): FlowOperation | null;
 |  --- | --- | --- |
 |  next | [FlowOperation](./scribing.flowoperation.md) | The next operation to be merged |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

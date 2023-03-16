@@ -6,7 +6,7 @@
 
 The base record class for [SetMarkupAttr](./scribing.setmarkupattr.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 SetMarkupAttrBase: import("paratype").RecordConstructor<SetMarkupAttrProps, FlowOperation, SetMarkupAttrData>

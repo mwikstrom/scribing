@@ -6,7 +6,7 @@
 
 Properties of line break nodes
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface LineBreakProps 
@@ -14,7 +14,7 @@ export interface LineBreakProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [style](./scribing.linebreakprops.style.md) | [TextStyle](./scribing.textstyle.md) | Text style for the line break |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [style](./scribing.linebreakprops.style.md) |  | [TextStyle](./scribing.textstyle.md) | Text style for the line break |
 

@@ -6,7 +6,7 @@
 
 Properties of [SetMarkupTag](./scribing.setmarkuptag.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface SetMarkupTagProps 
@@ -14,8 +14,8 @@ export interface SetMarkupTagProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [position](./scribing.setmarkuptagprops.position.md) | number | The markup position |
-|  [tag](./scribing.setmarkuptagprops.tag.md) | string | The tag to assign |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [position](./scribing.setmarkuptagprops.position.md) |  | number | The markup position |
+|  [tag](./scribing.setmarkuptagprops.tag.md) |  | string | The tag to assign |
 

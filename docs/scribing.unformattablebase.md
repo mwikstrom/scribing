@@ -6,7 +6,7 @@
 
 The base record class for [UnformatTable](./scribing.unformattable.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 UnformatTableBase: import("paratype").RecordConstructor<UnformatTableProps, TableOperation, UnformatTableData>

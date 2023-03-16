@@ -6,7 +6,7 @@
 
 Unapplies paragraph style to a range
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 unformatParagraph(range: FlowRange, style: ParagraphStyle): FlowContent;
@@ -19,7 +19,7 @@ unformatParagraph(range: FlowRange, style: ParagraphStyle): FlowContent;
 |  range | [FlowRange](./scribing.flowrange.md) | The range to format |
 |  style | [ParagraphStyle](./scribing.paragraphstyle.md) | The style to unapply |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

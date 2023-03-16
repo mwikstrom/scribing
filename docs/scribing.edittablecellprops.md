@@ -6,7 +6,7 @@
 
 Properties of [EditTableCell](./scribing.edittablecell.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface EditTableCellProps 
@@ -14,9 +14,9 @@ export interface EditTableCellProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [cell](./scribing.edittablecellprops.cell.md) | [CellPosition](./scribing.cellposition.md) | The table cell to edit |
-|  [inner](./scribing.edittablecellprops.inner.md) | [FlowOperation](./scribing.flowoperation.md) | The inner operation that shall be applied to the table cell |
-|  [position](./scribing.edittablecellprops.position.md) | number | The table position |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [cell](./scribing.edittablecellprops.cell.md) |  | [CellPosition](./scribing.cellposition.md) | The table cell to edit |
+|  [inner](./scribing.edittablecellprops.inner.md) |  | [FlowOperation](./scribing.flowoperation.md) | The inner operation that shall be applied to the table cell |
+|  [position](./scribing.edittablecellprops.position.md) |  | number | The table position |
 

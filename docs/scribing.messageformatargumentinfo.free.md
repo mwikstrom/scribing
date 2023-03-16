@@ -4,7 +4,7 @@
 
 ## MessageFormatArgumentInfo.free property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 free: boolean;

@@ -6,7 +6,7 @@
 
 Determines whether the focus position is after the anchor position
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get isBackward(): boolean;

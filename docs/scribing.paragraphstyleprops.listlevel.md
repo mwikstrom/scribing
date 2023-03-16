@@ -6,7 +6,7 @@
 
 Specifies the list level. Zero means not a list.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 listLevel?: number;

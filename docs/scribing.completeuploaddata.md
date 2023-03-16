@@ -6,7 +6,7 @@
 
 Data of [CompleteUpload](./scribing.completeupload.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface CompleteUploadData 
@@ -14,8 +14,8 @@ export interface CompleteUploadData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [complete\_upload](./scribing.completeuploaddata.complete_upload.md) | string | Identifies the completed upload operation |
-|  [url](./scribing.completeuploaddata.url.md) | string | URL for the uploaded content |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [complete\_upload](./scribing.completeuploaddata.complete_upload.md) |  | string | Identifies the completed upload operation |
+|  [url](./scribing.completeuploaddata.url.md) |  | string | URL for the uploaded content |
 

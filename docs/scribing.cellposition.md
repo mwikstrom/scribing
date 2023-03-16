@@ -6,21 +6,21 @@
 
 Represents the position of a cell in a table
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class CellPosition extends CellPositionBase implements Readonly<CellPositionProps> 
 ```
-<b>Extends:</b> CellPositionBase
+**Extends:** CellPositionBase
 
-<b>Implements:</b> Readonly&lt;[CellPositionProps](./scribing.cellpositionprops.md)
+**Implements:** Readonly&lt;[CellPositionProps](./scribing.cellpositionprops.md)<!-- -->&gt;
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.cellposition.classtype.md) | <code>static</code> | Type&lt;[CellPosition](./scribing.cellposition.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.cellposition.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | Type&lt;[CellPosition](./scribing.cellposition.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

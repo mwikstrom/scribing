@@ -6,21 +6,21 @@
 
 Represents an operation that applies a text style to a range of flow content.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class FormatText extends FormatTextBase implements Readonly<FormatTextProps> 
 ```
-<b>Extends:</b> FormatTextBase
+**Extends:** FormatTextBase
 
-<b>Implements:</b> Readonly&lt;[FormatTextProps](./scribing.formattextprops.md)
+**Implements:** Readonly&lt;[FormatTextProps](./scribing.formattextprops.md)<!-- -->&gt;
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.formattext.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FormatText](./scribing.formattext.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.formattext.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[FormatText](./scribing.formattext.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

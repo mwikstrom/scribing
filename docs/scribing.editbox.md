@@ -6,21 +6,21 @@
 
 Represents an operation that edit the contents of a box
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class EditBox extends EditBoxBase implements EditBoxProps 
 ```
-<b>Extends:</b> EditBoxBase
+**Extends:** EditBoxBase
 
-<b>Implements:</b> [EditBoxProps](./scribing.editboxprops.md)
+**Implements:** [EditBoxProps](./scribing.editboxprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.editbox.classtype.md) | <code>static</code> | import("paratype").Type&lt;[EditBox](./scribing.editbox.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.editbox.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[EditBox](./scribing.editbox.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

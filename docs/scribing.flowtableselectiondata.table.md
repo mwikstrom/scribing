@@ -4,7 +4,7 @@
 
 ## FlowTableSelectionData.table property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 table: number;

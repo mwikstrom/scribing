@@ -6,7 +6,7 @@
 
 Constructs a new instance of the `TableColumnStyle` class
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 constructor(props?: TableColumnStyleProps);
@@ -16,5 +16,5 @@ constructor(props?: TableColumnStyleProps);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  props | [TableColumnStyleProps](./scribing.tablecolumnstyleprops.md) | <i>(Optional)</i> |
+|  props | [TableColumnStyleProps](./scribing.tablecolumnstyleprops.md) | _(Optional)_ |
 

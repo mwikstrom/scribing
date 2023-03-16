@@ -6,7 +6,7 @@
 
 Properties of unformat paragraph operations
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface UnformatParagraphProps 
@@ -14,8 +14,8 @@ export interface UnformatParagraphProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [range](./scribing.unformatparagraphprops.range.md) | [FlowRange](./scribing.flowrange.md) | The range that shall be unformatted |
-|  [style](./scribing.unformatparagraphprops.style.md) | [ParagraphStyle](./scribing.paragraphstyle.md) | The style to unformat |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [range](./scribing.unformatparagraphprops.range.md) |  | [FlowRange](./scribing.flowrange.md) | The range that shall be unformatted |
+|  [style](./scribing.unformatparagraphprops.style.md) |  | [ParagraphStyle](./scribing.paragraphstyle.md) | The style to unformat |
 

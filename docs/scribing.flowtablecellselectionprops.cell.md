@@ -4,7 +4,7 @@
 
 ## FlowTableCellSelectionProps.cell property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 cell: CellPosition;

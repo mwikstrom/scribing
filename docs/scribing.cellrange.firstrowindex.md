@@ -4,7 +4,7 @@
 
 ## CellRange.firstRowIndex property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get firstRowIndex(): number;

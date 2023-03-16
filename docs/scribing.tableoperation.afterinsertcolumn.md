@@ -4,7 +4,7 @@
 
 ## TableOperation.afterInsertColumn() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract afterInsertColumn(index: number, count: number): TableOperation | null;
@@ -17,7 +17,7 @@ abstract afterInsertColumn(index: number, count: number): TableOperation | null;
 |  index | number |  |
 |  count | number |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [TableOperation](./scribing.tableoperation.md) \| null
 

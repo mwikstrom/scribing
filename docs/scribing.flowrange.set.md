@@ -6,7 +6,7 @@
 
 Returns a copy of the current object with the specified property merged in
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 set(key: "first" | "last" | keyof FlowRangeProps, value: number): this;
@@ -19,7 +19,7 @@ set(key: "first" | "last" | keyof FlowRangeProps, value: number): this;
 |  key | "first" \| "last" \| keyof [FlowRangeProps](./scribing.flowrangeprops.md) | Key of the property to merge in |
 |  value | number | Property value to merge in |
 
-<b>Returns:</b>
+**Returns:**
 
 this
 

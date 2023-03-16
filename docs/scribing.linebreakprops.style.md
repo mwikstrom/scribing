@@ -6,7 +6,7 @@
 
 Text style for the line break
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 style: TextStyle;

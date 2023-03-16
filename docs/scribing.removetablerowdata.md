@@ -6,7 +6,7 @@
 
 Data of [RemoveTableRow](./scribing.removetablerow.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface RemoveTableRowData 
@@ -14,10 +14,10 @@ export interface RemoveTableRowData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [count?](./scribing.removetablerowdata.count.md) | number | <i>(Optional)</i> The number of rows to insert |
-|  [remove](./scribing.removetablerowdata.remove.md) | "table\_row" | Data discriminator |
-|  [row](./scribing.removetablerowdata.row.md) | number | The row index |
-|  [table](./scribing.removetablerowdata.table.md) | number | The affected flow position |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [count?](./scribing.removetablerowdata.count.md) |  | number | _(Optional)_ The number of rows to insert |
+|  [remove](./scribing.removetablerowdata.remove.md) |  | "table\_row" | Data discriminator |
+|  [row](./scribing.removetablerowdata.row.md) |  | number | The row index |
+|  [table](./scribing.removetablerowdata.table.md) |  | number | The affected flow position |
 

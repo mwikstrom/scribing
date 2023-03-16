@@ -6,10 +6,10 @@
 
 Unordered list marker styles
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type UnorderedListMarkerKind = (typeof UNORDERED_LIST_MARKER_KINDS)[number];
+export type UnorderedListMarkerKind = (typeof UNORDERED_LIST_MARKER_KINDS)[number];
 ```
-<b>References:</b> [UNORDERED\_LIST\_MARKER\_KINDS](./scribing.unordered_list_marker_kinds.md)
+**References:** [UNORDERED\_LIST\_MARKER\_KINDS](./scribing.unordered_list_marker_kinds.md)
 

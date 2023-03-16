@@ -6,7 +6,7 @@
 
 The base record class for [ParagraphBreak](./scribing.paragraphbreak.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 ParagraphBreakBase: import("paratype").RecordConstructor<ParagraphBreakProps, FlowNode, ParagraphBreakData>

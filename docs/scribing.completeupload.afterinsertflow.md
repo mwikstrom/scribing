@@ -6,12 +6,12 @@
 
 Transforms the current operation so that its intent is preserved after the specified range was inserted.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 afterInsertFlow(): this;
 ```
-<b>Returns:</b>
+**Returns:**
 
 this
 

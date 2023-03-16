@@ -6,10 +6,10 @@
 
 Font family
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type FontFamily = (typeof FONT_FAMILIES)[number];
+export type FontFamily = (typeof FONT_FAMILIES)[number];
 ```
-<b>References:</b> [FONT\_FAMILIES](./scribing.font_families.md)
+**References:** [FONT\_FAMILIES](./scribing.font_families.md)
 

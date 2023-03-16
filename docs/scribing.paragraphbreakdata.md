@@ -6,7 +6,7 @@
 
 Data of paragraph break nodes
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface ParagraphBreakData 
@@ -14,8 +14,8 @@ export interface ParagraphBreakData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [break](./scribing.paragraphbreakdata.break.md) | "para" | Data classifier |
-|  [style?](./scribing.paragraphbreakdata.style.md) | [ParagraphStyle](./scribing.paragraphstyle.md) | <i>(Optional)</i> Style for the preceding paragraph |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [break](./scribing.paragraphbreakdata.break.md) |  | "para" | Data classifier |
+|  [style?](./scribing.paragraphbreakdata.style.md) |  | [ParagraphStyle](./scribing.paragraphstyle.md) | _(Optional)_ Style for the preceding paragraph |
 

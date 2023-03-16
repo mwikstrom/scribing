@@ -6,10 +6,10 @@
 
 Flow content color
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type FlowColor = (typeof FLOW_COLORS)[number];
+export type FlowColor = (typeof FLOW_COLORS)[number];
 ```
-<b>References:</b> [FLOW\_COLORS](./scribing.flow_colors.md)
+**References:** [FLOW\_COLORS](./scribing.flow_colors.md)
 

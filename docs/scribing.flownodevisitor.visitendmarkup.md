@@ -4,7 +4,7 @@
 
 ## FlowNodeVisitor.visitEndMarkup() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitEndMarkup(node: EndMarkup): FlowNode;
@@ -16,7 +16,7 @@ visitEndMarkup(node: EndMarkup): FlowNode;
 |  --- | --- | --- |
 |  node | [EndMarkup](./scribing.endmarkup.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowNode](./scribing.flownode.md)
 

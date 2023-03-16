@@ -6,7 +6,7 @@
 
 The run-time type that matches paragraph style variant values
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 ParagraphVariantType: Type<ParagraphVariant>

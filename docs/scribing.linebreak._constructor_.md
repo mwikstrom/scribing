@@ -6,7 +6,7 @@
 
 Constructs a new instance of the `LineBreak` class
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 constructor(props?: LineBreakProps);
@@ -16,5 +16,5 @@ constructor(props?: LineBreakProps);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  props | [LineBreakProps](./scribing.linebreakprops.md) | <i>(Optional)</i> |
+|  props | [LineBreakProps](./scribing.linebreakprops.md) | _(Optional)_ |
 

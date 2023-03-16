@@ -6,7 +6,7 @@
 
 Creates an operation that unapplies the specified text style on the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
@@ -19,7 +19,7 @@ unformatText(style: TextStyle): FlowOperation | null;
 |  --- | --- | --- |
 |  style | [TextStyle](./scribing.textstyle.md) | The style to unapply |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

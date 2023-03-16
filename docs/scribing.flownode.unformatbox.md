@@ -6,7 +6,7 @@
 
 Unapplies the specified box style from the current node and returns the updated node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract unformatBox(style: BoxStyle): FlowNode;
@@ -18,7 +18,7 @@ abstract unformatBox(style: BoxStyle): FlowNode;
 |  --- | --- | --- |
 |  style | [BoxStyle](./scribing.boxstyle.md) | The box style to unapply |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowNode](./scribing.flownode.md)
 

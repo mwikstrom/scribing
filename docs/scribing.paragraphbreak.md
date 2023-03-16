@@ -6,15 +6,15 @@
 
 Represents a paragraph break.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class ParagraphBreak extends ParagraphBreakBase implements ParagraphBreakProps 
 ```
-<b>Extends:</b> ParagraphBreakBase
+**Extends:** ParagraphBreakBase
 
-<b>Implements:</b> [ParagraphBreakProps](./scribing.paragraphbreakprops.md)
+**Implements:** [ParagraphBreakProps](./scribing.paragraphbreakprops.md)
 
 ## Constructors
 
@@ -26,8 +26,8 @@ export declare class ParagraphBreak extends ParagraphBreakBase implements Paragr
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.paragraphbreak.classtype.md) | <code>static</code> | import("paratype").Type&lt;[ParagraphBreak](./scribing.paragraphbreak.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [size](./scribing.paragraphbreak.size.md) |  | (not declared) | Size of the current node. |
+|  [classType](./scribing.paragraphbreak.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[ParagraphBreak](./scribing.paragraphbreak.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [size](./scribing.paragraphbreak.size.md) | <code>readonly</code> | (not declared) | Size of the current node. |
 
 ## Methods
 

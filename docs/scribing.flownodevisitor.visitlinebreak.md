@@ -4,7 +4,7 @@
 
 ## FlowNodeVisitor.visitLineBreak() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitLineBreak(node: LineBreak): FlowNode;
@@ -16,7 +16,7 @@ visitLineBreak(node: LineBreak): FlowNode;
 |  --- | --- | --- |
 |  node | [LineBreak](./scribing.linebreak.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowNode](./scribing.flownode.md)
 

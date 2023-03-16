@@ -6,7 +6,7 @@
 
 Determines whether the specified message format is supported
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static isSupportedMessageFormat(message: string): boolean;
@@ -18,7 +18,7 @@ static isSupportedMessageFormat(message: string): boolean;
 |  --- | --- | --- |
 |  message | string |  |
 
-<b>Returns:</b>
+**Returns:**
 
 boolean
 

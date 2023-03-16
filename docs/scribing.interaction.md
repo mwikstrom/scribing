@@ -6,7 +6,7 @@
 
 A base class for interactions
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare abstract class Interaction 
@@ -16,7 +16,7 @@ export declare abstract class Interaction
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [baseType](./scribing.interaction.basetype.md) | <code>static</code> | import("paratype").Type&lt;[Interaction](./scribing.interaction.md)<!-- -->&gt; | The run-time type that represents the base class |
+|  [baseType](./scribing.interaction.basetype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[Interaction](./scribing.interaction.md)<!-- -->&gt; | The run-time type that represents the base class |
 
 ## Methods
 

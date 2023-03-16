@@ -6,21 +6,21 @@
 
 Represents an operation that applies a box style to a range of flow content.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class FormatBox extends FormatBoxBase implements Readonly<FormatBoxProps> 
 ```
-<b>Extends:</b> FormatBoxBase
+**Extends:** FormatBoxBase
 
-<b>Implements:</b> Readonly&lt;[FormatBoxProps](./scribing.formatboxprops.md)
+**Implements:** Readonly&lt;[FormatBoxProps](./scribing.formatboxprops.md)<!-- -->&gt;
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.formatbox.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FormatBox](./scribing.formatbox.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.formatbox.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[FormatBox](./scribing.formatbox.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

@@ -6,16 +6,16 @@
 
 Data of unformat paragraph operations
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface UnformatParagraphData extends UnformatParagraphProps 
 ```
-<b>Extends:</b> [UnformatParagraphProps](./scribing.unformatparagraphprops.md)
+**Extends:** [UnformatParagraphProps](./scribing.unformatparagraphprops.md)
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [unformat](./scribing.unformatparagraphdata.unformat.md) | "para" | Data classifier |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [unformat](./scribing.unformatparagraphdata.unformat.md) |  | "para" | Data classifier |
 

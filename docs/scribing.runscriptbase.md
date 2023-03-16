@@ -6,7 +6,7 @@
 
 The base record class for [RunScript](./scribing.runscript.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 RunScriptBase: import("paratype").RecordConstructor<RunScriptProps, Interaction, RunScriptProps>

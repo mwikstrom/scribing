@@ -6,7 +6,7 @@
 
 Properties of [InsertTableColumn](./scribing.inserttablecolumn.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface InsertTableColumnProps 
@@ -14,9 +14,9 @@ export interface InsertTableColumnProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [column](./scribing.inserttablecolumnprops.column.md) | number | The column index |
-|  [count](./scribing.inserttablecolumnprops.count.md) | number | The number of columns to insert |
-|  [position](./scribing.inserttablecolumnprops.position.md) | number | The affected flow position |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [column](./scribing.inserttablecolumnprops.column.md) |  | number | The column index |
+|  [count](./scribing.inserttablecolumnprops.count.md) |  | number | The number of columns to insert |
+|  [position](./scribing.inserttablecolumnprops.position.md) |  | number | The affected flow position |
 

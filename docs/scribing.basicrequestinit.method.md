@@ -4,7 +4,7 @@
 
 ## BasicRequestInit.method property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 method?: string;

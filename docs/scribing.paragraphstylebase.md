@@ -6,7 +6,7 @@
 
 The base record class for [ParagraphStyle](./scribing.paragraphstyle.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 ParagraphStyleBase: import("paratype").RecordConstructor<Partial<{

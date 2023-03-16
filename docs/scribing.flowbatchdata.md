@@ -6,10 +6,10 @@
 
 Data of [FlowBatch](./scribing.flowbatch.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type FlowBatchData = readonly FlowOperation[];
+export type FlowBatchData = readonly FlowOperation[];
 ```
-<b>References:</b> [FlowOperation](./scribing.flowoperation.md)
+**References:** [FlowOperation](./scribing.flowoperation.md)
 

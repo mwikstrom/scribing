@@ -6,13 +6,13 @@
 
 Gets a uniform paragraph style from the current node
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
 getUniformParagraphStyle(): ParagraphStyle | null;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [ParagraphStyle](./scribing.paragraphstyle.md) \| null
 

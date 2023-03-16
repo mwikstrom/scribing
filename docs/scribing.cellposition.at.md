@@ -6,7 +6,7 @@
 
 Gets a cell position at the specified row and column
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static at(row: number, column: number): CellPosition;
@@ -19,7 +19,7 @@ static at(row: number, column: number): CellPosition;
 |  row | number |  |
 |  column | number |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [CellPosition](./scribing.cellposition.md)
 

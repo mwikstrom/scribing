@@ -6,12 +6,12 @@
 
 A visitor for flow content
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare class FlowNodeVisitor implements GenericFlowNodeVisitor<FlowNode> 
 ```
-<b>Implements:</b> [GenericFlowNodeVisitor](./scribing.genericflownodevisitor.md)<!-- -->&lt;[FlowNode](./scribing.flownode.md)
+**Implements:** [GenericFlowNodeVisitor](./scribing.genericflownodevisitor.md)<!-- -->&lt;[FlowNode](./scribing.flownode.md)<!-- -->&gt;
 
 ## Methods
 

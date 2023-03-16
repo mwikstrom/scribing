@@ -6,7 +6,7 @@
 
 Applies the specified paragraph style on the current node and returns the updated node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract formatParagraph(style: ParagraphStyle, theme?: FlowTheme): FlowNode;
@@ -17,9 +17,9 @@ abstract formatParagraph(style: ParagraphStyle, theme?: FlowTheme): FlowNode;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  style | [ParagraphStyle](./scribing.paragraphstyle.md) | The paragraph style to apply |
-|  theme | [FlowTheme](./scribing.flowtheme.md) | <i>(Optional)</i> Theme of the current content |
+|  theme | [FlowTheme](./scribing.flowtheme.md) | _(Optional)_ Theme of the current content |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowNode](./scribing.flownode.md)
 

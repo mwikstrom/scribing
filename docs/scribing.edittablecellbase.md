@@ -6,7 +6,7 @@
 
 The base record class for [EditTableCell](./scribing.edittablecell.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 EditTableCellBase: import("paratype").RecordConstructor<EditTableCellProps, NestedFlowOperation, EditTableCellData>

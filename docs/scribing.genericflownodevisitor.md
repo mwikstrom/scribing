@@ -6,7 +6,7 @@
 
 A generic visitor for flow content
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface GenericFlowNodeVisitor<T> 

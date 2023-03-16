@@ -6,12 +6,12 @@
 
 Returns an operation that negates the effect of the current operation.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 invert(): FlowOperation | null;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

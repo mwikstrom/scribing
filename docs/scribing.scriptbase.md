@@ -6,7 +6,7 @@
 
 The base record class for [Script](./scribing.script.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 ScriptBase: import("paratype").RecordConstructor<ScriptProps, Object, ScriptData>

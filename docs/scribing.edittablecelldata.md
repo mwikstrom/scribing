@@ -6,7 +6,7 @@
 
 Data of [EditTableCell](./scribing.edittablecell.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface EditTableCellData 
@@ -14,10 +14,10 @@ export interface EditTableCellData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [cell](./scribing.edittablecelldata.cell.md) | [CellPosition](./scribing.cellposition.md) | The table cell to edit |
-|  [edit](./scribing.edittablecelldata.edit.md) | "cell" | Data discriminator |
-|  [op](./scribing.edittablecelldata.op.md) | [FlowOperation](./scribing.flowoperation.md) | The inner operation that shall be applied to the table cell |
-|  [table](./scribing.edittablecelldata.table.md) | number | The table position |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [cell](./scribing.edittablecelldata.cell.md) |  | [CellPosition](./scribing.cellposition.md) | The table cell to edit |
+|  [edit](./scribing.edittablecelldata.edit.md) |  | "cell" | Data discriminator |
+|  [op](./scribing.edittablecelldata.op.md) |  | [FlowOperation](./scribing.flowoperation.md) | The inner operation that shall be applied to the table cell |
+|  [table](./scribing.edittablecelldata.table.md) |  | number | The table position |
 

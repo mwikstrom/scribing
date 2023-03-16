@@ -6,13 +6,13 @@
 
 Returns an operation that negates the effect of the current operation.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
 invert(): null;
 ```
-<b>Returns:</b>
+**Returns:**
 
 null
 

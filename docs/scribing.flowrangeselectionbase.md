@@ -6,7 +6,7 @@
 
 The base record class for [FlowRangeSelection](./scribing.flowrangeselection.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FlowRangeSelectionBase: import("paratype").RecordConstructor<FlowRangeSelectionProps, FlowSelection, FlowRangeSelectionProps>

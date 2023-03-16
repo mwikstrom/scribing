@@ -4,7 +4,7 @@
 
 ## CellRange.contains() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 contains(cell: CellPosition): boolean;
@@ -16,7 +16,7 @@ contains(cell: CellPosition): boolean;
 |  --- | --- | --- |
 |  cell | [CellPosition](./scribing.cellposition.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 boolean
 

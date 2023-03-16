@@ -6,7 +6,7 @@
 
 Marks the specified upload as completed
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract completeUpload(id: string, url: string): FlowNode;
@@ -19,7 +19,7 @@ abstract completeUpload(id: string, url: string): FlowNode;
 |  id | string | Identifies the completed upload |
 |  url | string | URL of the uploaded resource |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowNode](./scribing.flownode.md)
 

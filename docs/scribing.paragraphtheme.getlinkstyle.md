@@ -6,12 +6,12 @@
 
 Gets the text style for links in this paragraph theme.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract getLinkStyle(): TextStyle;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [TextStyle](./scribing.textstyle.md)
 

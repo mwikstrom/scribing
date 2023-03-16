@@ -6,7 +6,7 @@
 
 Controls what to remove when selection is collapsed
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 whenCollapsed?: "removeBackward" | "removeForward" | "noop";

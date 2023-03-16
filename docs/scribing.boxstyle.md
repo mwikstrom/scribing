@@ -6,15 +6,15 @@
 
 Represents the styling that is applied to box content.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class BoxStyle extends BoxStyleBase implements Readonly<BoxStyleProps> 
 ```
-<b>Extends:</b> BoxStyleBase
+**Extends:** BoxStyleBase
 
-<b>Implements:</b> Readonly&lt;[BoxStyleProps](./scribing.boxstyleprops.md)
+**Implements:** Readonly&lt;[BoxStyleProps](./scribing.boxstyleprops.md)<!-- -->&gt;
 
 ## Constructors
 
@@ -26,8 +26,8 @@ export declare class BoxStyle extends BoxStyleBase implements Readonly<BoxStyleP
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [ambient](./scribing.boxstyle.ambient.md) | <code>static</code> | [BoxStyle](./scribing.boxstyle.md) | Gets the ambient box style |
-|  [classType](./scribing.boxstyle.classtype.md) | <code>static</code> | Type&lt;import("paratype").RecordObject&lt;Partial&lt;{ variant: "basic" \| "contained" \| "outlined" \| "alert" \| "quote"; color: "default" \| "subtle" \| "primary" \| "secondary" \| "information" \| "success" \| "warning" \| "error"; inline: boolean; source: [Script](./scribing.script.md) \| null; interaction: [Interaction](./scribing.interaction.md) \| null; }&gt;, Partial&lt;{ variant: "basic" \| "contained" \| "outlined" \| "alert" \| "quote"; color: "default" \| "subtle" \| "primary" \| "secondary" \| "information" \| "success" \| "warning" \| "error"; inline: boolean; source: [Script](./scribing.script.md) \| null; interaction: [Interaction](./scribing.interaction.md) \| null; }&gt;&gt; &amp; import("paratype").Equatable &amp; Readonly&lt;Partial&lt;{ variant: "basic" \| "contained" \| "outlined" \| "alert" \| "quote"; color: "default" \| "subtle" \| "primary" \| "secondary" \| "information" \| "success" \| "warning" \| "error"; inline: boolean; source: [Script](./scribing.script.md) \| null; interaction: [Interaction](./scribing.interaction.md) \| null; }&gt;&gt; &amp; [BoxStyle](./scribing.boxstyle.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [empty](./scribing.boxstyle.empty.md) | <code>static</code> | [BoxStyle](./scribing.boxstyle.md) | Gets an empty box style |
-|  [isEmpty](./scribing.boxstyle.isempty.md) |  | boolean | Determines whether the current style is empty |
+|  [ambient](./scribing.boxstyle.ambient.md) | <p><code>static</code></p><p><code>readonly</code></p> | [BoxStyle](./scribing.boxstyle.md) | Gets the ambient box style |
+|  [classType](./scribing.boxstyle.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | Type&lt;import("paratype").RecordObject&lt;Partial&lt;{ variant: "basic" \| "contained" \| "outlined" \| "alert" \| "quote"; color: "default" \| "subtle" \| "primary" \| "secondary" \| "information" \| "success" \| "warning" \| "error"; inline: boolean; source: [Script](./scribing.script.md) \| null; interaction: [Interaction](./scribing.interaction.md) \| null; }&gt;, Partial&lt;{ variant: "basic" \| "contained" \| "outlined" \| "alert" \| "quote"; color: "default" \| "subtle" \| "primary" \| "secondary" \| "information" \| "success" \| "warning" \| "error"; inline: boolean; source: [Script](./scribing.script.md) \| null; interaction: [Interaction](./scribing.interaction.md) \| null; }&gt;&gt; &amp; import("paratype").Equatable &amp; Readonly&lt;Partial&lt;{ variant: "basic" \| "contained" \| "outlined" \| "alert" \| "quote"; color: "default" \| "subtle" \| "primary" \| "secondary" \| "information" \| "success" \| "warning" \| "error"; inline: boolean; source: [Script](./scribing.script.md) \| null; interaction: [Interaction](./scribing.interaction.md) \| null; }&gt;&gt; &amp; [BoxStyle](./scribing.boxstyle.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [empty](./scribing.boxstyle.empty.md) | <p><code>static</code></p><p><code>readonly</code></p> | [BoxStyle](./scribing.boxstyle.md) | Gets an empty box style |
+|  [isEmpty](./scribing.boxstyle.isempty.md) | <code>readonly</code> | boolean | Determines whether the current style is empty |
 

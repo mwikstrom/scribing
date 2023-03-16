@@ -6,7 +6,7 @@
 
 Unapplies the ambient style of the specified theme from the current node and returns the updated node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 unformatAmbient(theme: ParagraphTheme): this;
@@ -18,7 +18,7 @@ unformatAmbient(theme: ParagraphTheme): this;
 |  --- | --- | --- |
 |  theme | [ParagraphTheme](./scribing.paragraphtheme.md) | The theme that provides ambient styling |
 
-<b>Returns:</b>
+**Returns:**
 
 this
 

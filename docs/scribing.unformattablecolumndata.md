@@ -6,7 +6,7 @@
 
 Data of [UnformatTableColumn](./scribing.unformattablecolumn.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface UnformatTableColumnData 
@@ -14,10 +14,10 @@ export interface UnformatTableColumnData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [column](./scribing.unformattablecolumndata.column.md) | number | The column index |
-|  [style](./scribing.unformattablecolumndata.style.md) | [TableColumnStyle](./scribing.tablecolumnstyle.md) | The style to apply |
-|  [table](./scribing.unformattablecolumndata.table.md) | number | The affected flow position |
-|  [unformat](./scribing.unformattablecolumndata.unformat.md) | "table\_column" | Data discriminator |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [column](./scribing.unformattablecolumndata.column.md) |  | number | The column index |
+|  [style](./scribing.unformattablecolumndata.style.md) |  | [TableColumnStyle](./scribing.tablecolumnstyle.md) | The style to apply |
+|  [table](./scribing.unformattablecolumndata.table.md) |  | number | The affected flow position |
+|  [unformat](./scribing.unformattablecolumndata.unformat.md) |  | "table\_column" | Data discriminator |
 

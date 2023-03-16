@@ -6,7 +6,7 @@
 
 The base record class for [FlowBoxSelection](./scribing.flowboxselection.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FlowBoxSelectionBase: import("paratype").RecordConstructor<FlowBoxSelectionProps, NestedFlowSelection, FlowBoxSelectionData>

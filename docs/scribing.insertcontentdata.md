@@ -6,7 +6,7 @@
 
 Data of insert content operations
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface InsertContentData 
@@ -14,8 +14,8 @@ export interface InsertContentData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [at](./scribing.insertcontentdata.at.md) | number | The insertion position |
-|  [insert](./scribing.insertcontentdata.insert.md) | [FlowContent](./scribing.flowcontent.md) | The content to be inserted |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [at](./scribing.insertcontentdata.at.md) |  | number | The insertion position |
+|  [insert](./scribing.insertcontentdata.insert.md) |  | [FlowContent](./scribing.flowcontent.md) | The content to be inserted |
 

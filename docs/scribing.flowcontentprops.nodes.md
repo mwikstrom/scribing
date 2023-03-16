@@ -6,7 +6,7 @@
 
 Array of nodes
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 nodes: readonly FlowNode[];

@@ -6,7 +6,7 @@
 
 Returns a copy of the current object with the specified property merged in
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract set(key: "style", value: TextStyle): this;
@@ -19,7 +19,7 @@ abstract set(key: "style", value: TextStyle): this;
 |  key | "style" | Key of the property to merge in |
 |  value | [TextStyle](./scribing.textstyle.md) | Property value to merge in |
 
-<b>Returns:</b>
+**Returns:**
 
 this
 

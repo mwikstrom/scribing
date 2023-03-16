@@ -6,17 +6,17 @@
 
 An interaction that runs a script
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class RunScript extends RunScriptBase 
 ```
-<b>Extends:</b> RunScriptBase
+**Extends:** RunScriptBase
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.runscript.classtype.md) | <code>static</code> | import("paratype").Type&lt;import("paratype").RecordObject&lt;[RunScriptProps](./scribing.runscriptprops.md)<!-- -->, [RunScriptProps](./scribing.runscriptprops.md)<!-- -->&gt; &amp; import("paratype").Equatable &amp; Readonly&lt;[RunScriptProps](./scribing.runscriptprops.md)<!-- -->&gt; &amp; [RunScript](./scribing.runscript.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.runscript.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;import("paratype").RecordObject&lt;[RunScriptProps](./scribing.runscriptprops.md)<!-- -->, [RunScriptProps](./scribing.runscriptprops.md)<!-- -->&gt; &amp; import("paratype").Equatable &amp; Readonly&lt;[RunScriptProps](./scribing.runscriptprops.md)<!-- -->&gt; &amp; [RunScript](./scribing.runscript.md)<!-- -->&gt; | The run-time type that represents this class |
 

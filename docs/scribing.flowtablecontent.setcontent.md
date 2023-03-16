@@ -4,7 +4,7 @@
 
 ## FlowTableContent.setContent() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 setContent(position: CellPosition, content: FlowContent): FlowTableContent;
@@ -17,7 +17,7 @@ setContent(position: CellPosition, content: FlowContent): FlowTableContent;
 |  position | [CellPosition](./scribing.cellposition.md) |  |
 |  content | [FlowContent](./scribing.flowcontent.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowTableContent](./scribing.flowtablecontent.md)
 

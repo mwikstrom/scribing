@@ -6,7 +6,7 @@
 
 Constructs a new instance of the `TextRun` class
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 constructor(props?: TextRunProps);
@@ -16,5 +16,5 @@ constructor(props?: TextRunProps);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  props | [TextRunProps](./scribing.textrunprops.md) | <i>(Optional)</i> |
+|  props | [TextRunProps](./scribing.textrunprops.md) | _(Optional)_ |
 

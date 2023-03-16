@@ -6,7 +6,7 @@
 
 Deserializes flow content from the specified XML string
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare function deserializeFlowContentFromXml(xml: string): FlowContent;
@@ -18,7 +18,7 @@ export declare function deserializeFlowContentFromXml(xml: string): FlowContent;
 |  --- | --- | --- |
 |  xml | string | The XML string that shall be deserialized |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

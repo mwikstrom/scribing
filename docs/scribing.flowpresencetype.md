@@ -5,7 +5,7 @@
 ## FlowPresenceType variable
 
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FlowPresenceType: RecordType<FlowPresence>

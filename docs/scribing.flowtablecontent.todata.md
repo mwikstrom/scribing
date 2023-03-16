@@ -4,12 +4,12 @@
 
 ## FlowTableContent.toData() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 toData(): Map<string, FlowTableCell>;
 ```
-<b>Returns:</b>
+**Returns:**
 
 Map&lt;string, [FlowTableCell](./scribing.flowtablecell.md)<!-- -->&gt;
 

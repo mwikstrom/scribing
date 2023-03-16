@@ -6,15 +6,15 @@
 
 Represents a batch of flow operations that are applied sequentially and atomically.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class FlowBatch extends FlowBatchBase implements Readonly<FlowBatchProps> 
 ```
-<b>Extends:</b> FlowBatchBase
+**Extends:** FlowBatchBase
 
-<b>Implements:</b> Readonly&lt;[FlowBatchProps](./scribing.flowbatchprops.md)
+**Implements:** Readonly&lt;[FlowBatchProps](./scribing.flowbatchprops.md)<!-- -->&gt;
 
 ## Constructors
 
@@ -26,7 +26,7 @@ export declare class FlowBatch extends FlowBatchBase implements Readonly<FlowBat
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.flowbatch.classtype.md) | <code>static</code> | Type&lt;[FlowBatch](./scribing.flowbatch.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.flowbatch.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | Type&lt;[FlowBatch](./scribing.flowbatch.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

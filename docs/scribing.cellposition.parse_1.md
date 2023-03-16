@@ -4,7 +4,7 @@
 
 ## CellPosition.parse() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static parse(input: string, throwOnError: true): CellPosition;
@@ -17,7 +17,7 @@ static parse(input: string, throwOnError: true): CellPosition;
 |  input | string |  |
 |  throwOnError | true |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [CellPosition](./scribing.cellposition.md)
 

@@ -6,7 +6,7 @@
 
 Creates an operation that applies the specified text style on the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract formatText(style: TextStyle, options?: TargetOptions): FlowOperation | null;
@@ -17,9 +17,9 @@ abstract formatText(style: TextStyle, options?: TargetOptions): FlowOperation | 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  style | [TextStyle](./scribing.textstyle.md) | The style to apply |
-|  options | [TargetOptions](./scribing.targetoptions.md) | <i>(Optional)</i> Options that provide operation behavior |
+|  options | [TargetOptions](./scribing.targetoptions.md) | _(Optional)_ Options that provide operation behavior |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

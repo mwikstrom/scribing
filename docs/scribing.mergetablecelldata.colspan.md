@@ -6,7 +6,7 @@
 
 The number of columns to span
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 colSpan: number;

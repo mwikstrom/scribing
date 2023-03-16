@@ -4,7 +4,7 @@
 
 ## MergeTableCell.transformInSameTable() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 protected transformInSameTable(other: TableOperation): FlowOperation | null;
@@ -16,7 +16,7 @@ protected transformInSameTable(other: TableOperation): FlowOperation | null;
 |  --- | --- | --- |
 |  other | [TableOperation](./scribing.tableoperation.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

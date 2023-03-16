@@ -6,7 +6,7 @@
 
 Gets a cursor
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 peek(position?: number): FlowCursor;
@@ -16,9 +16,9 @@ peek(position?: number): FlowCursor;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  position | number | <i>(Optional)</i> Optionally specifies the cursor's position. Default is zero. |
+|  position | number | _(Optional)_ Optionally specifies the cursor's position. Default is zero. |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowCursor](./scribing.flowcursor.md)
 

@@ -6,10 +6,10 @@
 
 List marker styles
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type ListMarkerKind = OrderedListMarkerKind | UnorderedListMarkerKind;
+export type ListMarkerKind = OrderedListMarkerKind | UnorderedListMarkerKind;
 ```
-<b>References:</b> [OrderedListMarkerKind](./scribing.orderedlistmarkerkind.md)<!-- -->, [UnorderedListMarkerKind](./scribing.unorderedlistmarkerkind.md)
+**References:** [OrderedListMarkerKind](./scribing.orderedlistmarkerkind.md)<!-- -->, [UnorderedListMarkerKind](./scribing.unorderedlistmarkerkind.md)
 

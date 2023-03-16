@@ -4,7 +4,7 @@
 
 ## AsyncFlowNodeVisitor.visitIcon() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitIcon(node: FlowIcon): Promise<FlowNode>;
@@ -16,7 +16,7 @@ visitIcon(node: FlowIcon): Promise<FlowNode>;
 |  --- | --- | --- |
 |  node | [FlowIcon](./scribing.flowicon.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;[FlowNode](./scribing.flownode.md)<!-- -->&gt;
 

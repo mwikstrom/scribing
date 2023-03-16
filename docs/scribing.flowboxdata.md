@@ -6,7 +6,7 @@
 
 Data of [FlowBox](./scribing.flowbox.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FlowBoxData 
@@ -14,8 +14,8 @@ export interface FlowBoxData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [box](./scribing.flowboxdata.box.md) | [FlowContent](./scribing.flowcontent.md) |  |
-|  [style?](./scribing.flowboxdata.style.md) | [BoxStyle](./scribing.boxstyle.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [box](./scribing.flowboxdata.box.md) |  | [FlowContent](./scribing.flowcontent.md) |  |
+|  [style?](./scribing.flowboxdata.style.md) |  | [BoxStyle](./scribing.boxstyle.md) | _(Optional)_ |
 

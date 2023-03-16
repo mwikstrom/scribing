@@ -6,7 +6,7 @@
 
 Read-only array that contains all list counter actions
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 LIST_COUNTER_ACTIONS: readonly ["auto", "reset", "resume"]

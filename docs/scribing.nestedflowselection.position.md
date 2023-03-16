@@ -6,7 +6,7 @@
 
 Position of the nested selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract position: number;

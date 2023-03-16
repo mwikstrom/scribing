@@ -6,7 +6,7 @@
 
 Applies the current operation on the specified selection and returns the updated result.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
@@ -19,7 +19,7 @@ applyToSelection(selection: FlowSelection): FlowSelection;
 |  --- | --- | --- |
 |  selection | [FlowSelection](./scribing.flowselection.md) | The selection that shall be updated. |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowSelection](./scribing.flowselection.md)
 

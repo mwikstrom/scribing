@@ -6,7 +6,7 @@
 
 Data discriminator
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 set: "image_source";

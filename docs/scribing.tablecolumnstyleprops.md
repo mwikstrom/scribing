@@ -6,7 +6,7 @@
 
 Style properties for a table column
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface TableColumnStyleProps 
@@ -14,7 +14,7 @@ export interface TableColumnStyleProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [width?](./scribing.tablecolumnstyleprops.width.md) | number | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [width?](./scribing.tablecolumnstyleprops.width.md) |  | number | _(Optional)_ |
 

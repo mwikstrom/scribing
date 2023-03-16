@@ -6,7 +6,7 @@
 
 Applies the specified text style on the current node and returns the updated node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract formatText(style: TextStyle, theme?: FlowTheme): FlowNode;
@@ -17,9 +17,9 @@ abstract formatText(style: TextStyle, theme?: FlowTheme): FlowNode;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  style | [TextStyle](./scribing.textstyle.md) | The text style to apply |
-|  theme | [FlowTheme](./scribing.flowtheme.md) | <i>(Optional)</i> Theme of the current content |
+|  theme | [FlowTheme](./scribing.flowtheme.md) | _(Optional)_ Theme of the current content |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowNode](./scribing.flownode.md)
 

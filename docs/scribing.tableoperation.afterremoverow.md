@@ -4,7 +4,7 @@
 
 ## TableOperation.afterRemoveRow() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract afterRemoveRow(index: number, count: number): TableOperation | null;
@@ -17,7 +17,7 @@ abstract afterRemoveRow(index: number, count: number): TableOperation | null;
 |  index | number |  |
 |  count | number |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [TableOperation](./scribing.tableoperation.md) \| null
 

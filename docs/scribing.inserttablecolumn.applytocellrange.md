@@ -4,7 +4,7 @@
 
 ## InsertTableColumn.applyToCellRange() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 protected applyToCellRange(range: CellRange): CellRange | null;
@@ -16,7 +16,7 @@ protected applyToCellRange(range: CellRange): CellRange | null;
 |  --- | --- | --- |
 |  range | [CellRange](./scribing.cellrange.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [CellRange](./scribing.cellrange.md) \| null
 

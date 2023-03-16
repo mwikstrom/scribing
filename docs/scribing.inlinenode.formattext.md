@@ -6,7 +6,7 @@
 
 Applies the specified text style on the current node and returns the updated node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 formatText(style: TextStyle): this;
@@ -18,7 +18,7 @@ formatText(style: TextStyle): this;
 |  --- | --- | --- |
 |  style | [TextStyle](./scribing.textstyle.md) | The text style to apply |
 
-<b>Returns:</b>
+**Returns:**
 
 this
 

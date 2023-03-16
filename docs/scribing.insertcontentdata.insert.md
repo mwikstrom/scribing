@@ -6,7 +6,7 @@
 
 The content to be inserted
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 insert: FlowContent;

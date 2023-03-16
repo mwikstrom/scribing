@@ -6,7 +6,7 @@
 
 Creates an operation that applies the specified table style on the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
@@ -19,7 +19,7 @@ formatTable(style: TableStyle): FlowOperation | null;
 |  --- | --- | --- |
 |  style | [TableStyle](./scribing.tablestyle.md) | The style to unapply |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

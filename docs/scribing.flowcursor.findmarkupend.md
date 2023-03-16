@@ -4,12 +4,12 @@
 
 ## FlowCursor.findMarkupEnd() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 findMarkupEnd(): FlowCursor | null;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [FlowCursor](./scribing.flowcursor.md) \| null
 

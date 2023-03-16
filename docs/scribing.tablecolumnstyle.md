@@ -6,15 +6,15 @@
 
 Represents the styling that is applied to a flow table column
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class TableColumnStyle extends TableColumnStyleBase implements Readonly<TableColumnStyleProps> 
 ```
-<b>Extends:</b> TableColumnStyleBase
+**Extends:** TableColumnStyleBase
 
-<b>Implements:</b> Readonly&lt;[TableColumnStyleProps](./scribing.tablecolumnstyleprops.md)
+**Implements:** Readonly&lt;[TableColumnStyleProps](./scribing.tablecolumnstyleprops.md)<!-- -->&gt;
 
 ## Constructors
 
@@ -26,7 +26,7 @@ export declare class TableColumnStyle extends TableColumnStyleBase implements Re
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.tablecolumnstyle.classtype.md) | <code>static</code> | import("paratype").Type&lt;import("paratype").RecordObject&lt;Partial&lt;{ width: number; }&gt;, Partial&lt;{ width: number; }&gt;&gt; &amp; import("paratype").Equatable &amp; Readonly&lt;Partial&lt;{ width: number; }&gt;&gt; &amp; [TableColumnStyle](./scribing.tablecolumnstyle.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [empty](./scribing.tablecolumnstyle.empty.md) | <code>static</code> | [TableColumnStyle](./scribing.tablecolumnstyle.md) | Gets an empty table column style |
-|  [isEmpty](./scribing.tablecolumnstyle.isempty.md) |  | boolean | Determines whether the current style is empty |
+|  [classType](./scribing.tablecolumnstyle.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;import("paratype").RecordObject&lt;Partial&lt;{ width: number; }&gt;, Partial&lt;{ width: number; }&gt;&gt; &amp; import("paratype").Equatable &amp; Readonly&lt;Partial&lt;{ width: number; }&gt;&gt; &amp; [TableColumnStyle](./scribing.tablecolumnstyle.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [empty](./scribing.tablecolumnstyle.empty.md) | <p><code>static</code></p><p><code>readonly</code></p> | [TableColumnStyle](./scribing.tablecolumnstyle.md) | Gets an empty table column style |
+|  [isEmpty](./scribing.tablecolumnstyle.isempty.md) | <code>readonly</code> | boolean | Determines whether the current style is empty |
 

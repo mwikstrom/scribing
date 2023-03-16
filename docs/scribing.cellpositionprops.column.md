@@ -6,7 +6,7 @@
 
 The zero-based column index
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 column: number;

@@ -6,13 +6,13 @@
 
 Applies the current operation on the specified selection and returns the updated result.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
 applyToSelection(): FlowSelection;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [FlowSelection](./scribing.flowselection.md)
 

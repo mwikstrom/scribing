@@ -6,7 +6,7 @@
 
 Properties of [FlowTableSelection](./scribing.flowtableselection.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FlowTableSelectionProps 
@@ -14,8 +14,8 @@ export interface FlowTableSelectionProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [position](./scribing.flowtableselectionprops.position.md) | number |  |
-|  [range](./scribing.flowtableselectionprops.range.md) | [CellRange](./scribing.cellrange.md) |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [position](./scribing.flowtableselectionprops.position.md) |  | number |  |
+|  [range](./scribing.flowtableselectionprops.range.md) |  | [CellRange](./scribing.cellrange.md) |  |
 

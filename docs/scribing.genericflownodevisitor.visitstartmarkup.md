@@ -4,7 +4,7 @@
 
 ## GenericFlowNodeVisitor.visitStartMarkup() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitStartMarkup(node: StartMarkup): T;
@@ -16,7 +16,7 @@ visitStartMarkup(node: StartMarkup): T;
 |  --- | --- | --- |
 |  node | [StartMarkup](./scribing.startmarkup.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 T
 

@@ -6,7 +6,7 @@
 
 Applies the current operation on the specified content and returns the updated result.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
@@ -19,7 +19,7 @@ applyToContent(content: FlowContent): FlowContent;
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The flow content that shall be updated. |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

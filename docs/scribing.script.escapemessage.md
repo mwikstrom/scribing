@@ -6,7 +6,7 @@
 
 Escapes the specified message format
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static escapeMessage(message: string): string;
@@ -18,7 +18,7 @@ static escapeMessage(message: string): string;
 |  --- | --- | --- |
 |  message | string |  |
 
-<b>Returns:</b>
+**Returns:**
 
 string
 

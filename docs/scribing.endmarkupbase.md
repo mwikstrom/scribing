@@ -6,7 +6,7 @@
 
 The base record class for [EndMarkup](./scribing.endmarkup.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 EndMarkupBase: import("paratype").RecordConstructor<EndMarkupProps, InlineNode, EndMarkupData>

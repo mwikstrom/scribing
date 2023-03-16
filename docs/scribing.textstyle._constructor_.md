@@ -6,7 +6,7 @@
 
 Constructs a new instance of the `TextStyle` class
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 constructor(props?: TextStyleProps);
@@ -16,5 +16,5 @@ constructor(props?: TextStyleProps);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  props | [TextStyleProps](./scribing.textstyleprops.md) | <i>(Optional)</i> |
+|  props | [TextStyleProps](./scribing.textstyleprops.md) | _(Optional)_ |
 

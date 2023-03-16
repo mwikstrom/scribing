@@ -6,7 +6,7 @@
 
 Wraps the specified operation so that it applies the outer selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
@@ -19,7 +19,7 @@ protected getOuterOperation(inner: FlowOperation): FlowOperation;
 |  --- | --- | --- |
 |  inner | [FlowOperation](./scribing.flowoperation.md) | The inner operation |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md)
 

@@ -6,21 +6,21 @@
 
 Represents an operation that sets a markup tag
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class UnsetMarkupAttr extends UnsetMarkupAttrBase implements UnsetMarkupAttrProps 
 ```
-<b>Extends:</b> UnsetMarkupAttrBase
+**Extends:** UnsetMarkupAttrBase
 
-<b>Implements:</b> [UnsetMarkupAttrProps](./scribing.unsetmarkupattrprops.md)
+**Implements:** [UnsetMarkupAttrProps](./scribing.unsetmarkupattrprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.unsetmarkupattr.classtype.md) | <code>static</code> | import("paratype").Type&lt;[UnsetMarkupAttr](./scribing.unsetmarkupattr.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.unsetmarkupattr.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[UnsetMarkupAttr](./scribing.unsetmarkupattr.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

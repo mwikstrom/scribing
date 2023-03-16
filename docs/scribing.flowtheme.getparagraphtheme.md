@@ -6,7 +6,7 @@
 
 Gets a theme for the specified paragraph variant
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract getParagraphTheme(variant: ParagraphVariant): ParagraphTheme;
@@ -18,7 +18,7 @@ abstract getParagraphTheme(variant: ParagraphVariant): ParagraphTheme;
 |  --- | --- | --- |
 |  variant | [ParagraphVariant](./scribing.paragraphvariant.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [ParagraphTheme](./scribing.paragraphtheme.md)
 

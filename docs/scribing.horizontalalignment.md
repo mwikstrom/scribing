@@ -6,10 +6,10 @@
 
 Horizontal alignment
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type HorizontalAlignment = (typeof HORIZONTAL_ALIGNMENTS)[number];
+export type HorizontalAlignment = (typeof HORIZONTAL_ALIGNMENTS)[number];
 ```
-<b>References:</b> [HORIZONTAL\_ALIGNMENTS](./scribing.horizontal_alignments.md)
+**References:** [HORIZONTAL\_ALIGNMENTS](./scribing.horizontal_alignments.md)
 

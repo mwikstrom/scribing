@@ -4,7 +4,7 @@
 
 ## MessageFormatArgumentInfo.numeric property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 numeric: boolean;

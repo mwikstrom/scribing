@@ -6,7 +6,7 @@
 
 Data discriminator
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 remove: "table_column";

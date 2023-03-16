@@ -6,10 +6,10 @@
 
 Baseline offset
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type BaselineOffset = (typeof BASELINE_OFFSETS)[number];
+export type BaselineOffset = (typeof BASELINE_OFFSETS)[number];
 ```
-<b>References:</b> [BASELINE\_OFFSETS](./scribing.baseline_offsets.md)
+**References:** [BASELINE\_OFFSETS](./scribing.baseline_offsets.md)
 

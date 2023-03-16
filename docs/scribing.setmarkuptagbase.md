@@ -6,7 +6,7 @@
 
 The base record class for [SetMarkupTag](./scribing.setmarkuptag.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 SetMarkupTagBase: import("paratype").RecordConstructor<SetMarkupTagProps, FlowOperation, SetMarkupTagData>

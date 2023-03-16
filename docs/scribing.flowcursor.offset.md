@@ -6,7 +6,7 @@
 
 Gets the current offset within the current node
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get offset(): number;

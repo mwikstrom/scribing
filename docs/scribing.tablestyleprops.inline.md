@@ -6,7 +6,7 @@
 
 Determines whether the table shall be rendered inline
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 inline?: boolean;

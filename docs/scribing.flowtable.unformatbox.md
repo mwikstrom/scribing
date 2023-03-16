@@ -6,12 +6,12 @@
 
 Unapplies the specified box style from the current node and returns the updated node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 unformatBox(): this;
 ```
-<b>Returns:</b>
+**Returns:**
 
 this
 

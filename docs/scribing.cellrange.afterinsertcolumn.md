@@ -4,7 +4,7 @@
 
 ## CellRange.afterInsertColumn() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 afterInsertColumn(index: number, count: number): CellRange;
@@ -17,7 +17,7 @@ afterInsertColumn(index: number, count: number): CellRange;
 |  index | number |  |
 |  count | number |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [CellRange](./scribing.cellrange.md)
 

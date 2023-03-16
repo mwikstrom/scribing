@@ -6,12 +6,12 @@
 
 Converts the current operation to data
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract toData(): unknown;
 ```
-<b>Returns:</b>
+**Returns:**
 
 unknown
 

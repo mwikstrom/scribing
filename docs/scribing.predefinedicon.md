@@ -6,10 +6,10 @@
 
 Predefined icon
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type PredefinedIcon = (typeof PREDEFINED_ICONS)[number];
+export type PredefinedIcon = (typeof PREDEFINED_ICONS)[number];
 ```
-<b>References:</b> [PREDEFINED\_ICONS](./scribing.predefined_icons.md)
+**References:** [PREDEFINED\_ICONS](./scribing.predefined_icons.md)
 

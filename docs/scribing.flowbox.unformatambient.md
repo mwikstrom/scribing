@@ -6,12 +6,12 @@
 
 Unapplies the ambient style of the specified theme from the current node and returns the updated node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 unformatAmbient(): this;
 ```
-<b>Returns:</b>
+**Returns:**
 
 this
 

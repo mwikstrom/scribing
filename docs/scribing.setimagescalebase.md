@@ -6,7 +6,7 @@
 
 The base record class for [SetImageScale](./scribing.setimagescale.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 SetImageScaleBase: import("paratype").RecordConstructor<SetImageScaleProps, FlowOperation, SetImageScaleData>

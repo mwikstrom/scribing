@@ -6,7 +6,7 @@
 
 The amount of space before the paragraph, as a percentage of the user agent's default font size, where normal is represented as `100`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 spaceBefore?: number;

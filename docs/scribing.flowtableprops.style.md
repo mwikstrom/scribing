@@ -4,7 +4,7 @@
 
 ## FlowTableProps.style property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 style: TableStyle;

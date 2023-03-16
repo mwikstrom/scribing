@@ -4,7 +4,7 @@
 
 ## FlowBoxSelectionData.box property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 box: number;

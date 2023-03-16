@@ -4,7 +4,7 @@
 
 ## FlowTableContent.split() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 split(position: CellPosition): FlowTableContent;
@@ -16,7 +16,7 @@ split(position: CellPosition): FlowTableContent;
 |  --- | --- | --- |
 |  position | [CellPosition](./scribing.cellposition.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowTableContent](./scribing.flowtablecontent.md)
 

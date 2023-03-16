@@ -6,7 +6,7 @@
 
 Properties of [SetIcon](./scribing.seticon.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface SetIconProps 
@@ -14,8 +14,8 @@ export interface SetIconProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [data](./scribing.seticonprops.data.md) | string | The data to assign |
-|  [position](./scribing.seticonprops.position.md) | number | The affected position |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [data](./scribing.seticonprops.data.md) |  | string | The data to assign |
+|  [position](./scribing.seticonprops.position.md) |  | number | The affected position |
 

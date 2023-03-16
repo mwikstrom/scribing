@@ -6,7 +6,7 @@
 
 The base record class for [LineBreak](./scribing.linebreak.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 LineBreakBase: import("paratype").RecordConstructor<LineBreakProps, InlineNode, LineBreakData>

@@ -6,7 +6,7 @@
 
 Data of [UnformatTable](./scribing.unformattable.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface UnformatTableData 
@@ -14,9 +14,9 @@ export interface UnformatTableData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [at](./scribing.unformattabledata.at.md) | number | The affected position |
-|  [style](./scribing.unformattabledata.style.md) | [TableStyle](./scribing.tablestyle.md) | The style to unapply |
-|  [unformat](./scribing.unformattabledata.unformat.md) | "table" | Data discriminator |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [at](./scribing.unformattabledata.at.md) |  | number | The affected position |
+|  [style](./scribing.unformattabledata.style.md) |  | [TableStyle](./scribing.tablestyle.md) | The style to unapply |
+|  [unformat](./scribing.unformattabledata.unformat.md) |  | "table" | Data discriminator |
 

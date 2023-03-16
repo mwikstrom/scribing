@@ -4,7 +4,7 @@
 
 ## CellRange.isSingleCell property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get isSingleCell(): boolean;

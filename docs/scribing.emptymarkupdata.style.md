@@ -4,7 +4,7 @@
 
 ## EmptyMarkupData.style property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 style?: TextStyle;

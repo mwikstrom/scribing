@@ -6,7 +6,7 @@
 
 Gets the ambient table style
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static get ambient(): TableStyle;

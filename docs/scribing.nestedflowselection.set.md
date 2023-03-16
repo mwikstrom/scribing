@@ -6,7 +6,7 @@
 
 Returns a copy of the current object with the specified property merged in
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract set(key: "position", value: number): this;
@@ -19,7 +19,7 @@ abstract set(key: "position", value: number): this;
 |  key | "position" | Key of the property to merge in |
 |  value | number | Property value to merge in |
 
-<b>Returns:</b>
+**Returns:**
 
 this
 

@@ -4,7 +4,7 @@
 
 ## FlowTableData.columns property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 columns?: Map<string, TableColumnStyle>;

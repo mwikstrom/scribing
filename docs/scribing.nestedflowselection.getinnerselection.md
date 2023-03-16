@@ -6,12 +6,12 @@
 
 Gets the inner selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 protected abstract getInnerSelection(): FlowSelection;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [FlowSelection](./scribing.flowselection.md)
 

@@ -6,12 +6,12 @@
 
 Applies the specified paragraph style on the current node and returns the updated node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 formatParagraph(): this;
 ```
-<b>Returns:</b>
+**Returns:**
 
 this
 

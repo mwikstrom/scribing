@@ -6,7 +6,7 @@
 
 The run-time type that matches all list marker style values
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 ListMarkerKindType: Type<ListMarkerKind>

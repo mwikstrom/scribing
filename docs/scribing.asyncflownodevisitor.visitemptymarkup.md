@@ -4,7 +4,7 @@
 
 ## AsyncFlowNodeVisitor.visitEmptyMarkup() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitEmptyMarkup(node: EmptyMarkup): Promise<FlowNode>;
@@ -16,7 +16,7 @@ visitEmptyMarkup(node: EmptyMarkup): Promise<FlowNode>;
 |  --- | --- | --- |
 |  node | [EmptyMarkup](./scribing.emptymarkup.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;[FlowNode](./scribing.flownode.md)<!-- -->&gt;
 

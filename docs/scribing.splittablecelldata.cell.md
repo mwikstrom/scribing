@@ -6,7 +6,7 @@
 
 The affected cell
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 cell: CellPosition;

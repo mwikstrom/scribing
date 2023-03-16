@@ -6,12 +6,12 @@
 
 Gets a new cursor that is positioned at the start of the next node, or `null` when the current cursor is positioned at the last node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 moveToStartOfNextNode(): FlowCursor | null;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [FlowCursor](./scribing.flowcursor.md) \| null
 

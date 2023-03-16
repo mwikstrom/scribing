@@ -6,7 +6,7 @@
 
 The row index
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 row: number;

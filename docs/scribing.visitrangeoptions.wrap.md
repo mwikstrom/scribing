@@ -4,7 +4,7 @@
 
 ## VisitRangeOptions.wrap() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 wrap(inner: FlowSelection | CellRange | FlowRange): FlowSelection | null;
@@ -16,7 +16,7 @@ wrap(inner: FlowSelection | CellRange | FlowRange): FlowSelection | null;
 |  --- | --- | --- |
 |  inner | [FlowSelection](./scribing.flowselection.md) \| [CellRange](./scribing.cellrange.md) \| [FlowRange](./scribing.flowrange.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowSelection](./scribing.flowselection.md) \| null
 

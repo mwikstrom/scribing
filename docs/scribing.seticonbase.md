@@ -6,7 +6,7 @@
 
 The base record class for [SetIcon](./scribing.seticon.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 SetIconBase: import("paratype").RecordConstructor<SetIconProps, FlowOperation, SetIconData>

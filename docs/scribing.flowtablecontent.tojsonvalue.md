@@ -4,7 +4,7 @@
 
 ## FlowTableContent.toJsonValue() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 toJsonValue(error?: ErrorCallback, path?: PathArray): JsonValue;
@@ -14,10 +14,10 @@ toJsonValue(error?: ErrorCallback, path?: PathArray): JsonValue;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  error | ErrorCallback | <i>(Optional)</i> |
-|  path | PathArray | <i>(Optional)</i> |
+|  error | ErrorCallback | _(Optional)_ |
+|  path | PathArray | _(Optional)_ |
 
-<b>Returns:</b>
+**Returns:**
 
 JsonValue
 

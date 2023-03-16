@@ -5,7 +5,7 @@
 ## FlowSyncSnapshot interface
 
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FlowSyncSnapshot 
@@ -13,12 +13,12 @@ export interface FlowSyncSnapshot
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [content](./scribing.flowsyncsnapshot.content.md) | [FlowContent](./scribing.flowcontent.md) |  |
-|  [digest](./scribing.flowsyncsnapshot.digest.md) | string |  |
-|  [frozen](./scribing.flowsyncsnapshot.frozen.md) | boolean |  |
-|  [presence](./scribing.flowsyncsnapshot.presence.md) | [FlowPresence](./scribing.flowpresence.md)<!-- -->\[\] |  |
-|  [theme](./scribing.flowsyncsnapshot.theme.md) | [FlowTheme](./scribing.flowtheme.md) |  |
-|  [version](./scribing.flowsyncsnapshot.version.md) | number |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [content](./scribing.flowsyncsnapshot.content.md) |  | [FlowContent](./scribing.flowcontent.md) |  |
+|  [digest](./scribing.flowsyncsnapshot.digest.md) |  | string |  |
+|  [frozen](./scribing.flowsyncsnapshot.frozen.md) |  | boolean |  |
+|  [presence](./scribing.flowsyncsnapshot.presence.md) |  | [FlowPresence](./scribing.flowpresence.md)<!-- -->\[\] |  |
+|  [theme](./scribing.flowsyncsnapshot.theme.md) |  | [FlowTheme](./scribing.flowtheme.md) |  |
+|  [version](./scribing.flowsyncsnapshot.version.md) |  | number |  |
 

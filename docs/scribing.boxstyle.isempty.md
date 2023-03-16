@@ -6,7 +6,7 @@
 
 Determines whether the current style is empty
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get isEmpty(): boolean;

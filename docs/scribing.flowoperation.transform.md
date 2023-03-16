@@ -6,7 +6,7 @@
 
 Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract transform(other: FlowOperation): FlowOperation | null;
@@ -18,7 +18,7 @@ abstract transform(other: FlowOperation): FlowOperation | null;
 |  --- | --- | --- |
 |  other | [FlowOperation](./scribing.flowoperation.md) | The operation for which to get a transform |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

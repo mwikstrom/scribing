@@ -6,12 +6,12 @@
 
 Converts the current operation to data
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 toData(): InsertContentData;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [InsertContentData](./scribing.insertcontentdata.md)
 

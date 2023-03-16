@@ -4,7 +4,7 @@
 
 ## FlowTableData.table property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 table: FlowTableContent;

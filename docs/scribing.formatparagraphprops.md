@@ -6,7 +6,7 @@
 
 Properties of format paragraph operations
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FormatParagraphProps 
@@ -14,8 +14,8 @@ export interface FormatParagraphProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [range](./scribing.formatparagraphprops.range.md) | [FlowRange](./scribing.flowrange.md) | The range that shall be formatted |
-|  [style](./scribing.formatparagraphprops.style.md) | [ParagraphStyle](./scribing.paragraphstyle.md) | The style to apply |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [range](./scribing.formatparagraphprops.range.md) |  | [FlowRange](./scribing.flowrange.md) | The range that shall be formatted |
+|  [style](./scribing.formatparagraphprops.style.md) |  | [ParagraphStyle](./scribing.paragraphstyle.md) | The style to apply |
 

@@ -6,16 +6,16 @@
 
 Data of format text operations
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FormatTextData extends FormatTextProps 
 ```
-<b>Extends:</b> [FormatTextProps](./scribing.formattextprops.md)
+**Extends:** [FormatTextProps](./scribing.formattextprops.md)
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [format](./scribing.formattextdata.format.md) | "text" | Data classifier |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [format](./scribing.formattextdata.format.md) |  | "text" | Data classifier |
 

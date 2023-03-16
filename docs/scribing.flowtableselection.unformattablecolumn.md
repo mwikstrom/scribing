@@ -6,7 +6,7 @@
 
 Creates an operation that unapplies the specified table column style on the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
@@ -19,7 +19,7 @@ unformatTableColumn(style: TableColumnStyle): FlowOperation | null;
 |  --- | --- | --- |
 |  style | [TableColumnStyle](./scribing.tablecolumnstyle.md) | The style to unapply |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

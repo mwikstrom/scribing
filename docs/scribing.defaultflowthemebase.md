@@ -6,7 +6,7 @@
 
 The base record class for [DefaultFlowTheme](./scribing.defaultflowtheme.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 DefaultFlowThemeBase: import("paratype").RecordConstructor<DefaultFlowThemeProps, FlowTheme, DefaultFlowThemeData>

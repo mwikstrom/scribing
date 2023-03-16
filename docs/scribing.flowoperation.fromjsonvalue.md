@@ -6,7 +6,7 @@
 
 Converts the specified JSON value to a flow operation
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static fromJsonValue(value: JsonValue): FlowOperation;
@@ -18,7 +18,7 @@ static fromJsonValue(value: JsonValue): FlowOperation;
 |  --- | --- | --- |
 |  value | JsonValue |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md)
 

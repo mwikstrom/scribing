@@ -4,7 +4,7 @@
 
 ## FlowTableContent.positions property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get positions(): readonly CellPosition[];

@@ -6,7 +6,7 @@
 
 The number of rows to insert
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 count?: number;

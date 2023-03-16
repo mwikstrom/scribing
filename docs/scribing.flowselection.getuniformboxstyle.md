@@ -6,7 +6,7 @@
 
 Gets the uniform box style of the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract getUniformBoxStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<keyof BoxStyleProps>): BoxStyle;
@@ -17,10 +17,10 @@ abstract getUniformBoxStyle(content: FlowContent, theme?: FlowTheme, diff?: Set<
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The selected content |
-|  theme | [FlowTheme](./scribing.flowtheme.md) | <i>(Optional)</i> Theme of the selected content |
-|  diff | Set&lt;keyof [BoxStyleProps](./scribing.boxstyleprops.md)<!-- -->&gt; | <i>(Optional)</i> An optional set that is populated with style keys with non-uniform values |
+|  theme | [FlowTheme](./scribing.flowtheme.md) | _(Optional)_ Theme of the selected content |
+|  diff | Set&lt;keyof [BoxStyleProps](./scribing.boxstyleprops.md)<!-- -->&gt; | _(Optional)_ An optional set that is populated with style keys with non-uniform values |
 
-<b>Returns:</b>
+**Returns:**
 
 [BoxStyle](./scribing.boxstyle.md)
 

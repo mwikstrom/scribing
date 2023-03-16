@@ -6,7 +6,7 @@
 
 Determines whether the current range is equal to the other range
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 equals(other: CellRangeProps): boolean;
@@ -18,7 +18,7 @@ equals(other: CellRangeProps): boolean;
 |  --- | --- | --- |
 |  other | [CellRangeProps](./scribing.cellrangeprops.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 boolean
 

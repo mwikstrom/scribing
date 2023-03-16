@@ -6,7 +6,7 @@
 
 Properties of unformat box operations
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface UnformatBoxProps 
@@ -14,8 +14,8 @@ export interface UnformatBoxProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [range](./scribing.unformatboxprops.range.md) | [FlowRange](./scribing.flowrange.md) | The range that shall be unformatted |
-|  [style](./scribing.unformatboxprops.style.md) | [BoxStyle](./scribing.boxstyle.md) | The style to unformat |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [range](./scribing.unformatboxprops.range.md) |  | [FlowRange](./scribing.flowrange.md) | The range that shall be unformatted |
+|  [style](./scribing.unformatboxprops.style.md) |  | [BoxStyle](./scribing.boxstyle.md) | The style to unformat |
 

@@ -6,7 +6,7 @@
 
 Gets a uniform text style from the current node
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
@@ -17,9 +17,9 @@ getUniformTextStyle(theme?: ParagraphTheme): TextStyle;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  theme | [ParagraphTheme](./scribing.paragraphtheme.md) | <i>(Optional)</i> Theme of the current node |
+|  theme | [ParagraphTheme](./scribing.paragraphtheme.md) | _(Optional)_ Theme of the current node |
 
-<b>Returns:</b>
+**Returns:**
 
 [TextStyle](./scribing.textstyle.md)
 

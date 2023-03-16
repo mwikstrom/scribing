@@ -6,7 +6,7 @@
 
 The base record class for [InsertContent](./scribing.insertcontent.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 InsertContentBase: import("paratype").RecordConstructor<InsertContentProps, FlowOperation, InsertContentData>

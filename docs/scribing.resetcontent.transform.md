@@ -6,13 +6,13 @@
 
 Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
 transform(): FlowOperation | null;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

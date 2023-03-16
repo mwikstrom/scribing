@@ -4,7 +4,7 @@
 
 ## FlowSyncInput.frozen property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 frozen?: boolean;

@@ -6,7 +6,7 @@
 
 Returns a copy of this selection with the specified inner selection merged in
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 protected abstract setInnerSelection(value: FlowSelection): NestedFlowSelection;
@@ -18,7 +18,7 @@ protected abstract setInnerSelection(value: FlowSelection): NestedFlowSelection;
 |  --- | --- | --- |
 |  value | [FlowSelection](./scribing.flowselection.md) | The inner selection to be merged in |
 
-<b>Returns:</b>
+**Returns:**
 
 [NestedFlowSelection](./scribing.nestedflowselection.md)
 

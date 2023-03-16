@@ -6,7 +6,7 @@
 
 The run-time type that represents the base class
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static readonly baseType: import("paratype").Type<FlowOperation>;

@@ -6,7 +6,7 @@
 
 Properties of [FlowBoxSelection](./scribing.flowboxselection.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FlowBoxSelectionProps 
@@ -14,8 +14,8 @@ export interface FlowBoxSelectionProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [content](./scribing.flowboxselectionprops.content.md) | [FlowSelection](./scribing.flowselection.md) |  |
-|  [position](./scribing.flowboxselectionprops.position.md) | number |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [content](./scribing.flowboxselectionprops.content.md) |  | [FlowSelection](./scribing.flowselection.md) |  |
+|  [position](./scribing.flowboxselectionprops.position.md) |  | number |  |
 

@@ -6,7 +6,7 @@
 
 Unapplies the specified text style from the current node and returns the updated node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract unformatText(style: TextStyle): FlowNode;
@@ -18,7 +18,7 @@ abstract unformatText(style: TextStyle): FlowNode;
 |  --- | --- | --- |
 |  style | [TextStyle](./scribing.textstyle.md) | The text style to unapply |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowNode](./scribing.flownode.md)
 

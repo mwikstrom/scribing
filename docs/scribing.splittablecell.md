@@ -6,21 +6,21 @@
 
 Represents an operation that splits a merged table cell
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class SplitTableCell extends SplitTableCellBase implements SplitTableCellProps 
 ```
-<b>Extends:</b> SplitTableCellBase
+**Extends:** SplitTableCellBase
 
-<b>Implements:</b> [SplitTableCellProps](./scribing.splittablecellprops.md)
+**Implements:** [SplitTableCellProps](./scribing.splittablecellprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.splittablecell.classtype.md) | <code>static</code> | import("paratype").Type&lt;[SplitTableCell](./scribing.splittablecell.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.splittablecell.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[SplitTableCell](./scribing.splittablecell.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 
@@ -32,10 +32,10 @@ export declare class SplitTableCell extends SplitTableCellBase implements SplitT
 |  [afterRemoveAxis(axis, index, count)](./scribing.splittablecell.afterremoveaxis.md) |  |  |
 |  [afterRemoveColumn(index, count)](./scribing.splittablecell.afterremovecolumn.md) |  |  |
 |  [afterRemoveRow(index, count)](./scribing.splittablecell.afterremoverow.md) |  |  |
-|  [applyToCellRange(range)](./scribing.splittablecell.applytocellrange.md) |  |  |
-|  [applyToTable(table)](./scribing.splittablecell.applytotable.md) |  |  |
+|  [applyToCellRange(range)](./scribing.splittablecell.applytocellrange.md) | <code>protected</code> |  |
+|  [applyToTable(table)](./scribing.splittablecell.applytotable.md) | <code>protected</code> |  |
 |  [fromData(input)](./scribing.splittablecell.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
-|  [invertForTable(table)](./scribing.splittablecell.invertfortable.md) |  |  |
-|  [mergeNextInSameTable()](./scribing.splittablecell.mergenextinsametable.md) |  |  |
-|  [transformInSameTable(other)](./scribing.splittablecell.transforminsametable.md) |  |  |
+|  [invertForTable(table)](./scribing.splittablecell.invertfortable.md) | <code>protected</code> |  |
+|  [mergeNextInSameTable()](./scribing.splittablecell.mergenextinsametable.md) | <code>protected</code> |  |
+|  [transformInSameTable(other)](./scribing.splittablecell.transforminsametable.md) | <code>protected</code> |  |
 

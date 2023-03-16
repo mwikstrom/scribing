@@ -6,7 +6,7 @@
 
 Constructs a new instance of the `ParagraphBreak` class
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 constructor(props?: ParagraphBreakProps);
@@ -16,5 +16,5 @@ constructor(props?: ParagraphBreakProps);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  props | [ParagraphBreakProps](./scribing.paragraphbreakprops.md) | <i>(Optional)</i> |
+|  props | [ParagraphBreakProps](./scribing.paragraphbreakprops.md) | _(Optional)_ |
 

@@ -6,7 +6,7 @@
 
 Gets empty flow content
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static get empty(): FlowContent;

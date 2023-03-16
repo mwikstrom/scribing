@@ -6,13 +6,13 @@
 
 Applies the current operation on the specified content and returns the updated result.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
 applyToContent(): FlowContent;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

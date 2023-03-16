@@ -6,21 +6,21 @@
 
 Represents an operation that insert flow content.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class InsertContent extends InsertContentBase implements InsertContentProps 
 ```
-<b>Extends:</b> InsertContentBase
+**Extends:** InsertContentBase
 
-<b>Implements:</b> [InsertContentProps](./scribing.insertcontentprops.md)
+**Implements:** [InsertContentProps](./scribing.insertcontentprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.insertcontent.classtype.md) | <code>static</code> | import("paratype").Type&lt;[InsertContent](./scribing.insertcontent.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.insertcontent.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[InsertContent](./scribing.insertcontent.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

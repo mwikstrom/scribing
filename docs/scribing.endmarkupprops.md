@@ -6,7 +6,7 @@
 
 Properties of [EndMarkup](./scribing.endmarkup.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface EndMarkupProps 
@@ -14,8 +14,8 @@ export interface EndMarkupProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [style](./scribing.endmarkupprops.style.md) | [TextStyle](./scribing.textstyle.md) |  |
-|  [tag](./scribing.endmarkupprops.tag.md) | string |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [style](./scribing.endmarkupprops.style.md) |  | [TextStyle](./scribing.textstyle.md) |  |
+|  [tag](./scribing.endmarkupprops.tag.md) |  | string |  |
 

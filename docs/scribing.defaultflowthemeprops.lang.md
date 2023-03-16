@@ -4,7 +4,7 @@
 
 ## DefaultFlowThemeProps.lang property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 lang: string;

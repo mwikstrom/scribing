@@ -6,7 +6,7 @@
 
 Non-computed properties of a [FlowRange](./scribing.flowrange.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FlowRangeProps 
@@ -14,8 +14,8 @@ export interface FlowRangeProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [anchor](./scribing.flowrangeprops.anchor.md) | number | The anchor point marks the beginning of a selection range. |
-|  [focus](./scribing.flowrangeprops.focus.md) | number | The focus point marks the ending of a selection range. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [anchor](./scribing.flowrangeprops.anchor.md) |  | number | The anchor point marks the beginning of a selection range. |
+|  [focus](./scribing.flowrangeprops.focus.md) |  | number | The focus point marks the ending of a selection range. |
 

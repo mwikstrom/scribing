@@ -6,7 +6,7 @@
 
 The run-time type that matches text color values
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FlowColorType: Type<FlowColor>

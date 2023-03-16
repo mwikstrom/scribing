@@ -6,7 +6,7 @@
 
 The base record class for [SplitTableCell](./scribing.splittablecell.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 SplitTableCellBase: import("paratype").RecordConstructor<SplitTableCellProps, TableOperation, SplitTableCellData>

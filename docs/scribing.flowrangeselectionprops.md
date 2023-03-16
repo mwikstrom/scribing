@@ -6,7 +6,7 @@
 
 Properties of flow range selections
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FlowRangeSelectionProps 
@@ -14,7 +14,7 @@ export interface FlowRangeSelectionProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [range](./scribing.flowrangeselectionprops.range.md) | [FlowRange](./scribing.flowrange.md) | The selected range |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [range](./scribing.flowrangeselectionprops.range.md) |  | [FlowRange](./scribing.flowrange.md) | The selected range |
 

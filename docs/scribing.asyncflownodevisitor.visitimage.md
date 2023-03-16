@@ -4,7 +4,7 @@
 
 ## AsyncFlowNodeVisitor.visitImage() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitImage(node: FlowImage): Promise<FlowNode>;
@@ -16,7 +16,7 @@ visitImage(node: FlowImage): Promise<FlowNode>;
 |  --- | --- | --- |
 |  node | [FlowImage](./scribing.flowimage.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;[FlowNode](./scribing.flownode.md)<!-- -->&gt;
 

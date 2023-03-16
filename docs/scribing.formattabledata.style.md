@@ -6,7 +6,7 @@
 
 The style to apply
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 style: TableStyle;

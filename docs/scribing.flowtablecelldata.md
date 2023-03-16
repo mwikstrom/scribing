@@ -6,14 +6,14 @@
 
 Data of [FlowTableCell](./scribing.flowtablecell.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type FlowTableCellData = FlowContent | {
+export type FlowTableCellData = FlowContent | {
     content: FlowContent;
     colSpan?: number;
     rowSpan?: number;
 };
 ```
-<b>References:</b> [FlowContent](./scribing.flowcontent.md)
+**References:** [FlowContent](./scribing.flowcontent.md)
 

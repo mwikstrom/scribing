@@ -6,7 +6,7 @@
 
 Unapplies the specified paragraph style from the current node and returns the updated node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract unformatParagraph(style: ParagraphStyle): FlowNode;
@@ -18,7 +18,7 @@ abstract unformatParagraph(style: ParagraphStyle): FlowNode;
 |  --- | --- | --- |
 |  style | [ParagraphStyle](./scribing.paragraphstyle.md) | The paragraph style to unapply |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowNode](./scribing.flownode.md)
 

@@ -5,7 +5,7 @@
 ## FlowPresence interface
 
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FlowPresence 
@@ -13,10 +13,10 @@ export interface FlowPresence
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [client](./scribing.flowpresence.client.md) | string |  |
-|  [seen](./scribing.flowpresence.seen.md) | Date |  |
-|  [selection](./scribing.flowpresence.selection.md) | [FlowSelection](./scribing.flowselection.md) \| null |  |
-|  [user](./scribing.flowpresence.user.md) | string |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [client](./scribing.flowpresence.client.md) |  | string |  |
+|  [seen](./scribing.flowpresence.seen.md) |  | Date |  |
+|  [selection](./scribing.flowpresence.selection.md) |  | [FlowSelection](./scribing.flowselection.md) \| null |  |
+|  [user](./scribing.flowpresence.user.md) |  | string |  |
 

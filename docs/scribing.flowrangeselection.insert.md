@@ -6,7 +6,7 @@
 
 Creates an operation that inserts the specified content into the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
@@ -18,9 +18,9 @@ insert(content: FlowContent, options?: TargetOptions): FlowOperation | null;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The content to be inserted |
-|  options | [TargetOptions](./scribing.targetoptions.md) | <i>(Optional)</i> Options that provide operation behavior |
+|  options | [TargetOptions](./scribing.targetoptions.md) | _(Optional)_ Options that provide operation behavior |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

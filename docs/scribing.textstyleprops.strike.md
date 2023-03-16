@@ -6,7 +6,7 @@
 
 Whether or not the text is struck through.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 strike?: boolean;

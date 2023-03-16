@@ -6,7 +6,7 @@
 
 The text style of the current node
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract readonly style: TextStyle;

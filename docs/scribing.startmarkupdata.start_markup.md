@@ -4,7 +4,7 @@
 
 ## StartMarkupData.start\_markup property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 start_markup: string;

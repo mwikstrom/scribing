@@ -6,7 +6,7 @@
 
 Constructs a new instance of the `HttpFlowSyncProtocol` class
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 constructor(url: string, fetcher?: BasicFetch);
@@ -17,5 +17,5 @@ constructor(url: string, fetcher?: BasicFetch);
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  url | string |  |
-|  fetcher | [BasicFetch](./scribing.basicfetch.md) | <i>(Optional)</i> |
+|  fetcher | [BasicFetch](./scribing.basicfetch.md) | _(Optional)_ |
 

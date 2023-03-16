@@ -6,7 +6,7 @@
 
 Properties of a script
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface ScriptProps 
@@ -14,8 +14,8 @@ export interface ScriptProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [code](./scribing.scriptprops.code.md) | string | Script code |
-|  [messages](./scribing.scriptprops.messages.md) | Map&lt;string, string&gt; | Localization messages |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [code](./scribing.scriptprops.code.md) |  | string | Script code |
+|  [messages](./scribing.scriptprops.messages.md) |  | Map&lt;string, string&gt; | Localization messages |
 

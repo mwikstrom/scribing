@@ -4,7 +4,7 @@
 
 ## FlowNodeVisitor.visitIcon() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitIcon(node: FlowIcon): FlowNode;
@@ -16,7 +16,7 @@ visitIcon(node: FlowIcon): FlowNode;
 |  --- | --- | --- |
 |  node | [FlowIcon](./scribing.flowicon.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowNode](./scribing.flownode.md)
 

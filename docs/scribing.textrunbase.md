@@ -6,7 +6,7 @@
 
 The base record class for [TextRun](./scribing.textrun.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 TextRunBase: import("paratype").RecordConstructor<TextRunProps, InlineNode, TextRunData>

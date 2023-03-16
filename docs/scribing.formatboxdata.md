@@ -6,16 +6,16 @@
 
 Data of format box operations
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FormatBoxData extends FormatBoxProps 
 ```
-<b>Extends:</b> [FormatBoxProps](./scribing.formatboxprops.md)
+**Extends:** [FormatBoxProps](./scribing.formatboxprops.md)
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [format](./scribing.formatboxdata.format.md) | "box" | Data classifier |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [format](./scribing.formatboxdata.format.md) |  | "box" | Data classifier |
 

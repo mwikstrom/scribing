@@ -6,7 +6,7 @@
 
 Gets the inner content
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 protected getInnerContent(outer: FlowContent): FlowContent;
@@ -18,7 +18,7 @@ protected getInnerContent(outer: FlowContent): FlowContent;
 |  --- | --- | --- |
 |  outer | [FlowContent](./scribing.flowcontent.md) | The outer content |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

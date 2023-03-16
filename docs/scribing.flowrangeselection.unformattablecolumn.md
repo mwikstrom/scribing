@@ -6,13 +6,13 @@
 
 Creates an operation that unapplies the specified table column style on the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
 unformatTableColumn(): FlowOperation | null;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

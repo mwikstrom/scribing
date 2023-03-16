@@ -6,7 +6,7 @@
 
 Gets the current position
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get position(): number;

@@ -4,12 +4,12 @@
 
 ## UnformatTable.afterInsertColumn() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 afterInsertColumn(): TableOperation | null;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [TableOperation](./scribing.tableoperation.md) \| null
 

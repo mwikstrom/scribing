@@ -6,7 +6,7 @@
 
 Applies box style to a range
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 formatBox(range: FlowRange, style: BoxStyle, theme?: FlowTheme): FlowContent;
@@ -18,9 +18,9 @@ formatBox(range: FlowRange, style: BoxStyle, theme?: FlowTheme): FlowContent;
 |  --- | --- | --- |
 |  range | [FlowRange](./scribing.flowrange.md) | The range to format |
 |  style | [BoxStyle](./scribing.boxstyle.md) | The style to apply |
-|  theme | [FlowTheme](./scribing.flowtheme.md) | <i>(Optional)</i> |
+|  theme | [FlowTheme](./scribing.flowtheme.md) | _(Optional)_ |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

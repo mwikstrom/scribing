@@ -6,7 +6,7 @@
 
 Read-only array that contains all horizontal alignment values
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 HORIZONTAL_ALIGNMENTS: readonly ["start", "center", "end", "justify"]

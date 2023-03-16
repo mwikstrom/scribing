@@ -6,7 +6,7 @@
 
 The selected range
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 range: FlowRange;

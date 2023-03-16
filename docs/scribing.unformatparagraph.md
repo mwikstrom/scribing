@@ -6,21 +6,21 @@
 
 Represents an operation that unapplies a paragraph style to a range of flow content.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class UnformatParagraph extends UnformatParagraphBase implements Readonly<UnformatParagraphProps> 
 ```
-<b>Extends:</b> UnformatParagraphBase
+**Extends:** UnformatParagraphBase
 
-<b>Implements:</b> Readonly&lt;[UnformatParagraphProps](./scribing.unformatparagraphprops.md)
+**Implements:** Readonly&lt;[UnformatParagraphProps](./scribing.unformatparagraphprops.md)<!-- -->&gt;
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.unformatparagraph.classtype.md) | <code>static</code> | import("paratype").Type&lt;[UnformatParagraph](./scribing.unformatparagraph.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.unformatparagraph.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[UnformatParagraph](./scribing.unformatparagraph.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

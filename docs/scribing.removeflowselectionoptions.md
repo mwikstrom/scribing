@@ -6,16 +6,16 @@
 
 Options for [FlowSelection.remove()](./scribing.flowselection.remove.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface RemoveFlowSelectionOptions extends TargetOptions 
 ```
-<b>Extends:</b> [TargetOptions](./scribing.targetoptions.md)
+**Extends:** [TargetOptions](./scribing.targetoptions.md)
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [whenCollapsed?](./scribing.removeflowselectionoptions.whencollapsed.md) | "removeBackward" \| "removeForward" \| "noop" | <i>(Optional)</i> Controls what to remove when selection is collapsed |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [whenCollapsed?](./scribing.removeflowselectionoptions.whencollapsed.md) |  | "removeBackward" \| "removeForward" \| "noop" | _(Optional)_ Controls what to remove when selection is collapsed |
 

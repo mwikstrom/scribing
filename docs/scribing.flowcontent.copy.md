@@ -6,7 +6,7 @@
 
 Extracts a range of flow content
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 copy(range: FlowRange): FlowContent;
@@ -18,7 +18,7 @@ copy(range: FlowRange): FlowContent;
 |  --- | --- | --- |
 |  range | [FlowRange](./scribing.flowrange.md) | The range to be extracted |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

@@ -6,7 +6,7 @@
 
 Specifies the written language
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 lang?: string;

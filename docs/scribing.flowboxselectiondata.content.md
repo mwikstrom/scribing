@@ -4,7 +4,7 @@
 
 ## FlowBoxSelectionData.content property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 content: FlowSelection;

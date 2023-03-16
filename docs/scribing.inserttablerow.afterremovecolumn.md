@@ -4,12 +4,12 @@
 
 ## InsertTableRow.afterRemoveColumn() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 afterRemoveColumn(): TableOperation | null;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [TableOperation](./scribing.tableoperation.md) \| null
 

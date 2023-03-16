@@ -6,7 +6,7 @@
 
 Specifies the list marker kind
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 listMarker?: ListMarkerKind;

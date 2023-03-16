@@ -6,7 +6,7 @@
 
 The base record class for [EditBox](./scribing.editbox.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 EditBoxBase: import("paratype").RecordConstructor<EditBoxProps, NestedFlowOperation, EditBoxData>

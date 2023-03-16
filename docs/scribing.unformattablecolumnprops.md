@@ -6,7 +6,7 @@
 
 Properties of [UnformatTableColumn](./scribing.unformattablecolumn.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface UnformatTableColumnProps 
@@ -14,9 +14,9 @@ export interface UnformatTableColumnProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [column](./scribing.unformattablecolumnprops.column.md) | number | The column index |
-|  [position](./scribing.unformattablecolumnprops.position.md) | number | The affected flow position |
-|  [style](./scribing.unformattablecolumnprops.style.md) | [TableColumnStyle](./scribing.tablecolumnstyle.md) | The style to apply |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [column](./scribing.unformattablecolumnprops.column.md) |  | number | The column index |
+|  [position](./scribing.unformattablecolumnprops.position.md) |  | number | The affected flow position |
+|  [style](./scribing.unformattablecolumnprops.style.md) |  | [TableColumnStyle](./scribing.tablecolumnstyle.md) | The style to apply |
 

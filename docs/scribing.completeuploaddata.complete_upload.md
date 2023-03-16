@@ -6,7 +6,7 @@
 
 Identifies the completed upload operation
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 complete_upload: string;

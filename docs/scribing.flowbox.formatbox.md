@@ -6,7 +6,7 @@
 
 Applies the specified box style on the current node and returns the updated node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 formatBox(style: BoxStyle): this;
@@ -18,7 +18,7 @@ formatBox(style: BoxStyle): this;
 |  --- | --- | --- |
 |  style | [BoxStyle](./scribing.boxstyle.md) | The box style to apply |
 
-<b>Returns:</b>
+**Returns:**
 
 this
 

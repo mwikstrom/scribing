@@ -6,7 +6,7 @@
 
 Properties of [FormatTable](./scribing.formattable.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FormatTableProps 
@@ -14,8 +14,8 @@ export interface FormatTableProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [position](./scribing.formattableprops.position.md) | number | The affected position |
-|  [style](./scribing.formattableprops.style.md) | [TableStyle](./scribing.tablestyle.md) | The style to apply |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [position](./scribing.formattableprops.position.md) |  | number | The affected position |
+|  [style](./scribing.formattableprops.style.md) |  | [TableStyle](./scribing.tablestyle.md) | The style to apply |
 

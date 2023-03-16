@@ -4,7 +4,7 @@
 
 ## FlowNodeVisitor.visitFlowContent() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitFlowContent(content: FlowContent): FlowContent;
@@ -16,7 +16,7 @@ visitFlowContent(content: FlowContent): FlowContent;
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

@@ -6,7 +6,7 @@
 
 Color of the box
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 color?: FlowColor;

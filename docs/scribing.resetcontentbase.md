@@ -6,7 +6,7 @@
 
 The base record class for [ResetContent](./scribing.resetcontent.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 ResetContentBase: import("paratype").RecordConstructor<ResetContentProps, FlowOperation, ResetContentData>

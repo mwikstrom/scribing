@@ -6,12 +6,12 @@
 
 An asynchronous visitor for flow content
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare class AsyncFlowNodeVisitor implements GenericFlowNodeVisitor<Promise<FlowNode>> 
 ```
-<b>Implements:</b> [GenericFlowNodeVisitor](./scribing.genericflownodevisitor.md)<!-- -->&lt;Promise&lt;[FlowNode](./scribing.flownode.md)
+**Implements:** [GenericFlowNodeVisitor](./scribing.genericflownodevisitor.md)<!-- -->&lt;Promise&lt;[FlowNode](./scribing.flownode.md)<!-- -->&gt;&gt;
 
 ## Methods
 

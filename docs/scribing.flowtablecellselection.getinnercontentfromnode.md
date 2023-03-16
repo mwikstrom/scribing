@@ -6,7 +6,7 @@
 
 Gets the inner content
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
@@ -19,7 +19,7 @@ protected getInnerContentFromNode(node: FlowNode): FlowContent;
 |  --- | --- | --- |
 |  node | [FlowNode](./scribing.flownode.md) | The selected node |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

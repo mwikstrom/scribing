@@ -6,7 +6,7 @@
 
 Gets flow content from the specified data
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static fromData(data: FlowContentData): FlowContent;
@@ -18,7 +18,7 @@ static fromData(data: FlowContentData): FlowContent;
 |  --- | --- | --- |
 |  data | [FlowContentData](./scribing.flowcontentdata.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

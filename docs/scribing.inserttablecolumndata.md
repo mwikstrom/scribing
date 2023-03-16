@@ -6,7 +6,7 @@
 
 Data of [InsertTableColumn](./scribing.inserttablecolumn.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface InsertTableColumnData 
@@ -14,10 +14,10 @@ export interface InsertTableColumnData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [column](./scribing.inserttablecolumndata.column.md) | number | The column index |
-|  [count?](./scribing.inserttablecolumndata.count.md) | number | <i>(Optional)</i> The number of columns to insert |
-|  [insert](./scribing.inserttablecolumndata.insert.md) | "table\_column" | Data discriminator |
-|  [table](./scribing.inserttablecolumndata.table.md) | number | The affected flow position |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [column](./scribing.inserttablecolumndata.column.md) |  | number | The column index |
+|  [count?](./scribing.inserttablecolumndata.count.md) |  | number | _(Optional)_ The number of columns to insert |
+|  [insert](./scribing.inserttablecolumndata.insert.md) |  | "table\_column" | Data discriminator |
+|  [table](./scribing.inserttablecolumndata.table.md) |  | number | The affected flow position |
 

@@ -6,7 +6,7 @@
 
 Gets a cell range from the specified string
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static fromData(data: CellRangeData): CellRange;
@@ -18,7 +18,7 @@ static fromData(data: CellRangeData): CellRange;
 |  --- | --- | --- |
 |  data | [CellRangeData](./scribing.cellrangedata.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [CellRange](./scribing.cellrange.md)
 

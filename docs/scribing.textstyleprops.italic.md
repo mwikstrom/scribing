@@ -6,7 +6,7 @@
 
 Whether or not the text is italicized.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 italic?: boolean;

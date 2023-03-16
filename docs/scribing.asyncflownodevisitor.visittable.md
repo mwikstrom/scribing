@@ -4,7 +4,7 @@
 
 ## AsyncFlowNodeVisitor.visitTable() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitTable(node: FlowTable): Promise<FlowNode>;
@@ -16,7 +16,7 @@ visitTable(node: FlowTable): Promise<FlowNode>;
 |  --- | --- | --- |
 |  node | [FlowTable](./scribing.flowtable.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;[FlowNode](./scribing.flownode.md)<!-- -->&gt;
 

@@ -4,7 +4,7 @@
 
 ## AsyncFlowNodeVisitor.visitLineBreak() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitLineBreak(node: LineBreak): Promise<FlowNode>;
@@ -16,7 +16,7 @@ visitLineBreak(node: LineBreak): Promise<FlowNode>;
 |  --- | --- | --- |
 |  node | [LineBreak](./scribing.linebreak.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;[FlowNode](./scribing.flownode.md)<!-- -->&gt;
 

@@ -6,7 +6,7 @@
 
 The base record class for [FlowTableCellSelection](./scribing.flowtablecellselection.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FlowTableCellSelectionBase: import("paratype").RecordConstructor<FlowTableCellSelectionProps, NestedFlowSelection, FlowTableCellSelectionData>

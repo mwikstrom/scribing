@@ -6,7 +6,7 @@
 
 Creates an operation that decrements the list level of the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 decrementListLevel(content: FlowContent, delta?: number): FlowOperation | null;
@@ -17,9 +17,9 @@ decrementListLevel(content: FlowContent, delta?: number): FlowOperation | null;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The selected content |
-|  delta | number | <i>(Optional)</i> Optional list level decrement. Default is <code>1</code>. |
+|  delta | number | _(Optional)_ Optional list level decrement. Default is <code>1</code>. |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

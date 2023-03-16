@@ -6,21 +6,21 @@
 
 Represents an operation that removes a table column
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class RemoveTableColumn extends RemoveTableColumnBase implements RemoveTableColumnProps 
 ```
-<b>Extends:</b> RemoveTableColumnBase
+**Extends:** RemoveTableColumnBase
 
-<b>Implements:</b> [RemoveTableColumnProps](./scribing.removetablecolumnprops.md)
+**Implements:** [RemoveTableColumnProps](./scribing.removetablecolumnprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.removetablecolumn.classtype.md) | <code>static</code> | import("paratype").Type&lt;[RemoveTableColumn](./scribing.removetablecolumn.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.removetablecolumn.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[RemoveTableColumn](./scribing.removetablecolumn.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 
@@ -30,10 +30,10 @@ export declare class RemoveTableColumn extends RemoveTableColumnBase implements 
 |  [afterInsertRow()](./scribing.removetablecolumn.afterinsertrow.md) |  |  |
 |  [afterRemoveColumn(index, count)](./scribing.removetablecolumn.afterremovecolumn.md) |  |  |
 |  [afterRemoveRow()](./scribing.removetablecolumn.afterremoverow.md) |  |  |
-|  [applyToCellRange(range)](./scribing.removetablecolumn.applytocellrange.md) |  |  |
-|  [applyToTable(table)](./scribing.removetablecolumn.applytotable.md) |  |  |
+|  [applyToCellRange(range)](./scribing.removetablecolumn.applytocellrange.md) | <code>protected</code> |  |
+|  [applyToTable(table)](./scribing.removetablecolumn.applytotable.md) | <code>protected</code> |  |
 |  [fromData(input)](./scribing.removetablecolumn.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
-|  [invertForTable()](./scribing.removetablecolumn.invertfortable.md) |  |  |
-|  [mergeNextInSameTable()](./scribing.removetablecolumn.mergenextinsametable.md) |  |  |
-|  [transformInSameTable(other)](./scribing.removetablecolumn.transforminsametable.md) |  |  |
+|  [invertForTable()](./scribing.removetablecolumn.invertfortable.md) | <code>protected</code> |  |
+|  [mergeNextInSameTable()](./scribing.removetablecolumn.mergenextinsametable.md) | <code>protected</code> |  |
+|  [transformInSameTable(other)](./scribing.removetablecolumn.transforminsametable.md) | <code>protected</code> |  |
 

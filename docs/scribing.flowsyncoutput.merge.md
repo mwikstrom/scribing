@@ -4,7 +4,7 @@
 
 ## FlowSyncOutput.merge property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 merge: FlowOperation | null;

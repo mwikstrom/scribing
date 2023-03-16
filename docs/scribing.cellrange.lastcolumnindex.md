@@ -4,7 +4,7 @@
 
 ## CellRange.lastColumnIndex property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get lastColumnIndex(): number;

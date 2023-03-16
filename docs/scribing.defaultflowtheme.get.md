@@ -4,7 +4,7 @@
 
 ## DefaultFlowTheme.get() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static get(lang?: string, rtl?: boolean): DefaultFlowTheme;
@@ -14,10 +14,10 @@ static get(lang?: string, rtl?: boolean): DefaultFlowTheme;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  lang | string | <i>(Optional)</i> |
-|  rtl | boolean | <i>(Optional)</i> |
+|  lang | string | _(Optional)_ |
+|  rtl | boolean | _(Optional)_ |
 
-<b>Returns:</b>
+**Returns:**
 
 [DefaultFlowTheme](./scribing.defaultflowtheme.md)
 

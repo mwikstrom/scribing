@@ -6,7 +6,7 @@
 
 Accepts the specified visitor
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 accept<T>(visitor: GenericFlowNodeVisitor<T>): T;
@@ -18,7 +18,7 @@ accept<T>(visitor: GenericFlowNodeVisitor<T>): T;
 |  --- | --- | --- |
 |  visitor | [GenericFlowNodeVisitor](./scribing.genericflownodevisitor.md)<!-- -->&lt;T&gt; |  |
 
-<b>Returns:</b>
+**Returns:**
 
 T
 

@@ -6,22 +6,22 @@
 
 Represents a dynamic text.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class DynamicText extends DynamicTextBase implements DynamicTextProps 
 ```
-<b>Extends:</b> DynamicTextBase
+**Extends:** DynamicTextBase
 
-<b>Implements:</b> [DynamicTextProps](./scribing.dynamictextprops.md)
+**Implements:** [DynamicTextProps](./scribing.dynamictextprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.dynamictext.classtype.md) | <code>static</code> | import("paratype").Type&lt;[DynamicText](./scribing.dynamictext.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [size](./scribing.dynamictext.size.md) |  | (not declared) | Size of the current node. |
+|  [classType](./scribing.dynamictext.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[DynamicText](./scribing.dynamictext.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [size](./scribing.dynamictext.size.md) | <code>readonly</code> | (not declared) | Size of the current node. |
 
 ## Methods
 

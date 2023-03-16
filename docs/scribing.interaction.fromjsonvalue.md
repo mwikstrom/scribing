@@ -6,7 +6,7 @@
 
 Converts the specified JSON value to an interaction
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static fromJsonValue(value: JsonValue): Interaction;
@@ -18,7 +18,7 @@ static fromJsonValue(value: JsonValue): Interaction;
 |  --- | --- | --- |
 |  value | JsonValue |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [Interaction](./scribing.interaction.md)
 

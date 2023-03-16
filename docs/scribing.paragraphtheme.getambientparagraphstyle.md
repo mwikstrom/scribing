@@ -6,12 +6,12 @@
 
 Gets the ambient paragraph style
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract getAmbientParagraphStyle(): ParagraphStyle;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [ParagraphStyle](./scribing.paragraphstyle.md)
 

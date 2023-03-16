@@ -6,7 +6,7 @@
 
 Creates an operation that sets the specified icon data in the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
@@ -20,7 +20,7 @@ setIcon(content: FlowContent, data: string): FlowOperation | null;
 |  content | [FlowContent](./scribing.flowcontent.md) | The selected content |
 |  data | string | The icon data to set |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

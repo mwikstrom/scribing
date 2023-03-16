@@ -6,7 +6,7 @@
 
 Whether or not the text is underlined.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 underline?: boolean;

@@ -4,7 +4,7 @@
 
 ## MergeTableCell.afterInsertAxis() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 afterInsertAxis(axis: "row" | "column", index: number, count: number): TableOperation | null;
@@ -18,7 +18,7 @@ afterInsertAxis(axis: "row" | "column", index: number, count: number): TableOper
 |  index | number |  |
 |  count | number |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [TableOperation](./scribing.tableoperation.md) \| null
 

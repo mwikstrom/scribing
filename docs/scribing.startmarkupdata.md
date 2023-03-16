@@ -6,7 +6,7 @@
 
 Data of [StartMarkup](./scribing.startmarkup.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface StartMarkupData 
@@ -14,9 +14,9 @@ export interface StartMarkupData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [attr?](./scribing.startmarkupdata.attr.md) | Readonly&lt;Map&lt;string, AttrValue&gt;&gt; | <i>(Optional)</i> |
-|  [start\_markup](./scribing.startmarkupdata.start_markup.md) | string |  |
-|  [style?](./scribing.startmarkupdata.style.md) | [TextStyle](./scribing.textstyle.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [attr?](./scribing.startmarkupdata.attr.md) |  | Readonly&lt;Map&lt;string, AttrValue&gt;&gt; | _(Optional)_ |
+|  [start\_markup](./scribing.startmarkupdata.start_markup.md) |  | string |  |
+|  [style?](./scribing.startmarkupdata.style.md) |  | [TextStyle](./scribing.textstyle.md) | _(Optional)_ |
 

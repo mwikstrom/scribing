@@ -6,7 +6,7 @@
 
 Properties of [SplitTableCell](./scribing.splittablecell.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface SplitTableCellProps 
@@ -14,8 +14,8 @@ export interface SplitTableCellProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [cell](./scribing.splittablecellprops.cell.md) | [CellPosition](./scribing.cellposition.md) | The affected cell |
-|  [position](./scribing.splittablecellprops.position.md) | number | The affected table's flow position |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [cell](./scribing.splittablecellprops.cell.md) |  | [CellPosition](./scribing.cellposition.md) | The affected cell |
+|  [position](./scribing.splittablecellprops.position.md) |  | number | The affected table's flow position |
 

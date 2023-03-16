@@ -4,7 +4,7 @@
 
 ## RemoveTableColumn.afterRemoveColumn() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 afterRemoveColumn(index: number, count: number): TableOperation | null;
@@ -17,7 +17,7 @@ afterRemoveColumn(index: number, count: number): TableOperation | null;
 |  index | number |  |
 |  count | number |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [TableOperation](./scribing.tableoperation.md) \| null
 

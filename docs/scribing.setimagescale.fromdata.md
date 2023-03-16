@@ -6,7 +6,7 @@
 
 Gets an instance of the current class from the specified data
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static fromData(data: SetImageScaleData): SetImageScale;
@@ -18,7 +18,7 @@ static fromData(data: SetImageScaleData): SetImageScale;
 |  --- | --- | --- |
 |  data | [SetImageScaleData](./scribing.setimagescaledata.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [SetImageScale](./scribing.setimagescale.md)
 

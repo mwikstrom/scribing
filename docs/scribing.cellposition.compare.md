@@ -6,7 +6,7 @@
 
 Compares the current position with the specified position
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 compare(other: CellPositionProps): -1 | 0 | 1;
@@ -18,7 +18,7 @@ compare(other: CellPositionProps): -1 | 0 | 1;
 |  --- | --- | --- |
 |  other | [CellPositionProps](./scribing.cellpositionprops.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 -1 \| 0 \| 1
 

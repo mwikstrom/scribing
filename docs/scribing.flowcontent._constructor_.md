@@ -6,7 +6,7 @@
 
 Constructs a new instance of the `FlowContent` class
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 constructor(props?: FlowContentProps);
@@ -16,5 +16,5 @@ constructor(props?: FlowContentProps);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  props | [FlowContentProps](./scribing.flowcontentprops.md) | <i>(Optional)</i> |
+|  props | [FlowContentProps](./scribing.flowcontentprops.md) | _(Optional)_ |
 

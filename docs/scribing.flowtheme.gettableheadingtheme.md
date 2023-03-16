@@ -6,12 +6,12 @@
 
 Gets a theme that shall be used in table heading cells
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getTableHeadingTheme(): FlowTheme;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [FlowTheme](./scribing.flowtheme.md)
 

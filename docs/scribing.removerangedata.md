@@ -6,7 +6,7 @@
 
 Data of remove range operations
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface RemoveRangeData 
@@ -14,7 +14,7 @@ export interface RemoveRangeData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [remove](./scribing.removerangedata.remove.md) | [FlowRange](./scribing.flowrange.md) | The range that shall be removed |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [remove](./scribing.removerangedata.remove.md) |  | [FlowRange](./scribing.flowrange.md) | The range that shall be removed |
 

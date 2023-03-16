@@ -4,7 +4,7 @@
 
 ## MergeTableCell.afterInsertRow() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 afterInsertRow(index: number, count: number): TableOperation | null;
@@ -17,7 +17,7 @@ afterInsertRow(index: number, count: number): TableOperation | null;
 |  index | number |  |
 |  count | number |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [TableOperation](./scribing.tableoperation.md) \| null
 

@@ -6,7 +6,7 @@
 
 Properties of [SetMarkupAttr](./scribing.setmarkupattr.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface SetMarkupAttrProps 
@@ -14,9 +14,9 @@ export interface SetMarkupAttrProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [key](./scribing.setmarkupattrprops.key.md) | string |  |
-|  [position](./scribing.setmarkupattrprops.position.md) | number | The markup position |
-|  [value](./scribing.setmarkupattrprops.value.md) | AttrValue |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [key](./scribing.setmarkupattrprops.key.md) |  | string |  |
+|  [position](./scribing.setmarkupattrprops.position.md) |  | number | The markup position |
+|  [value](./scribing.setmarkupattrprops.value.md) |  | AttrValue |  |
 

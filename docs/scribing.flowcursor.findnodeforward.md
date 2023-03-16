@@ -6,7 +6,7 @@
 
 Finds a node in the forward direction that matches a predicate
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 findNodeForward(predicate: (node: FlowNode) => boolean): FlowCursor | null;
@@ -18,7 +18,7 @@ findNodeForward(predicate: (node: FlowNode) => boolean): FlowCursor | null;
 |  --- | --- | --- |
 |  predicate | (node: [FlowNode](./scribing.flownode.md)<!-- -->) =&gt; boolean |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowCursor](./scribing.flowcursor.md) \| null
 

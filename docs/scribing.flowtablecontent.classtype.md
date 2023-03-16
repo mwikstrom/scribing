@@ -4,7 +4,7 @@
 
 ## FlowTableContent.classType property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static readonly classType: import("paratype").Type<FlowTableContent>;

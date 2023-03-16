@@ -4,7 +4,7 @@
 
 ## FlowNodeVisitor.visitStartMarkup() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitStartMarkup(node: StartMarkup): FlowNode;
@@ -16,7 +16,7 @@ visitStartMarkup(node: StartMarkup): FlowNode;
 |  --- | --- | --- |
 |  node | [StartMarkup](./scribing.startmarkup.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowNode](./scribing.flownode.md)
 

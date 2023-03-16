@@ -6,7 +6,7 @@
 
 The base record class for [FormatBox](./scribing.formatbox.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FormatBoxBase: import("paratype").RecordConstructor<FormatBoxProps, FlowOperation, FormatBoxData>

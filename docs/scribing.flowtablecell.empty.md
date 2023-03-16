@@ -6,7 +6,7 @@
 
 Gets an empty table cell
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static get empty(): FlowTableCell;

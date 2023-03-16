@@ -6,7 +6,7 @@
 
 The value to assign
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 value: number;

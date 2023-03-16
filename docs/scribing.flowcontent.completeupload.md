@@ -6,7 +6,7 @@
 
 Marks the specified upload as completed
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 completeUpload(id: string, url: string): FlowContent;
@@ -19,7 +19,7 @@ completeUpload(id: string, url: string): FlowContent;
 |  id | string | Identifies the completed upload |
 |  url | string | URL of the uploaded resource |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

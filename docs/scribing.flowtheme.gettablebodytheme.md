@@ -6,12 +6,12 @@
 
 Gets a theme that shall be used in table body cells
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getTableBodyTheme(): FlowTheme;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [FlowTheme](./scribing.flowtheme.md)
 

@@ -6,7 +6,7 @@
 
 Gets a cryptographic digest of the current content
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 digest(hashFunc?: FlowContentHashFunc): Promise<string>;
@@ -16,9 +16,9 @@ digest(hashFunc?: FlowContentHashFunc): Promise<string>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  hashFunc | [FlowContentHashFunc](./scribing.flowcontenthashfunc.md) | <i>(Optional)</i> |
+|  hashFunc | [FlowContentHashFunc](./scribing.flowcontenthashfunc.md) | _(Optional)_ |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;string&gt;
 

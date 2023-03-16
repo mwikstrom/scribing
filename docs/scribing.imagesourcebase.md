@@ -6,7 +6,7 @@
 
 The base record class for [ImageSource](./scribing.imagesource.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 ImageSourceBase: import("paratype").RecordConstructor<Omit<{

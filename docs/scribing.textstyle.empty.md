@@ -6,7 +6,7 @@
 
 Gets an empty text style
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static get empty(): TextStyle;

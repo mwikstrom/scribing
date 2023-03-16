@@ -6,7 +6,7 @@
 
 Properties of [FormatTableColumn](./scribing.formattablecolumn.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FormatTableColumnProps 
@@ -14,9 +14,9 @@ export interface FormatTableColumnProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [column](./scribing.formattablecolumnprops.column.md) | number | The column index |
-|  [position](./scribing.formattablecolumnprops.position.md) | number | The affected flow position |
-|  [style](./scribing.formattablecolumnprops.style.md) | [TableColumnStyle](./scribing.tablecolumnstyle.md) | The style to apply |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [column](./scribing.formattablecolumnprops.column.md) |  | number | The column index |
+|  [position](./scribing.formattablecolumnprops.position.md) |  | number | The affected flow position |
+|  [style](./scribing.formattablecolumnprops.style.md) |  | [TableColumnStyle](./scribing.tablecolumnstyle.md) | The style to apply |
 

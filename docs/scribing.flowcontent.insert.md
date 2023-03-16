@@ -6,7 +6,7 @@
 
 Inserts the specified nodes at the specified position
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 insert(position: number, ...nodes: readonly FlowNode[]): FlowContent;
@@ -19,7 +19,7 @@ insert(position: number, ...nodes: readonly FlowNode[]): FlowContent;
 |  position | number | The position at which nodes shall be inserted |
 |  nodes | readonly [FlowNode](./scribing.flownode.md)<!-- -->\[\] | The nodes to be inserted |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

@@ -6,7 +6,7 @@
 
 Gets a range that represents the intersection between the current range and the specified other range.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 intersect(other: FlowRange): FlowRange;
@@ -18,7 +18,7 @@ intersect(other: FlowRange): FlowRange;
 |  --- | --- | --- |
 |  other | [FlowRange](./scribing.flowrange.md) | The other range |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowRange](./scribing.flowrange.md)
 

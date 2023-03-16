@@ -6,8 +6,8 @@
 
 Excludes `null` and `undefined` from the specified type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type NotNull<T> = Exclude<T, null | undefined>;
+export type NotNull<T> = Exclude<T, null | undefined>;
 ```

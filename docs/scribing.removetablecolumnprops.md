@@ -6,7 +6,7 @@
 
 Properties of [RemoveTableColumn](./scribing.removetablecolumn.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface RemoveTableColumnProps 
@@ -14,9 +14,9 @@ export interface RemoveTableColumnProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [column](./scribing.removetablecolumnprops.column.md) | number | The column index |
-|  [count](./scribing.removetablecolumnprops.count.md) | number | The number of columns to insert |
-|  [position](./scribing.removetablecolumnprops.position.md) | number | The affected flow position |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [column](./scribing.removetablecolumnprops.column.md) |  | number | The column index |
+|  [count](./scribing.removetablecolumnprops.count.md) |  | number | The number of columns to insert |
+|  [position](./scribing.removetablecolumnprops.position.md) |  | number | The affected flow position |
 

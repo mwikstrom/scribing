@@ -6,7 +6,7 @@
 
 Non-computed properties of a [CellRange](./scribing.cellrange.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface CellRangeProps 
@@ -14,8 +14,8 @@ export interface CellRangeProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [anchor](./scribing.cellrangeprops.anchor.md) | [CellPosition](./scribing.cellposition.md) | The anchor cell |
-|  [focus](./scribing.cellrangeprops.focus.md) | [CellPosition](./scribing.cellposition.md) | The focus cell |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [anchor](./scribing.cellrangeprops.anchor.md) |  | [CellPosition](./scribing.cellposition.md) | The anchor cell |
+|  [focus](./scribing.cellrangeprops.focus.md) |  | [CellPosition](./scribing.cellposition.md) | The focus cell |
 

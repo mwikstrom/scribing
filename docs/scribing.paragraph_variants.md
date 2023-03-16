@@ -6,7 +6,7 @@
 
 Read-only array that contains all paragraph style variants
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 PARAGRAPH_VARIANTS: readonly ["normal", "h1", "h2", "h3", "h4", "h5", "h6", "title", "subtitle", "preamble", "code"]

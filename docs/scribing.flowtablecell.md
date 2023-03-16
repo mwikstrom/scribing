@@ -6,21 +6,21 @@
 
 Represents a flow table cell
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class FlowTableCell extends FlowTableCellBase 
 ```
-<b>Extends:</b> FlowTableCellBase
+**Extends:** FlowTableCellBase
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.flowtablecell.classtype.md) | <code>static</code> | Type&lt;[FlowTableCell](./scribing.flowtablecell.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [empty](./scribing.flowtablecell.empty.md) | <code>static</code> | [FlowTableCell](./scribing.flowtablecell.md) | Gets an empty table cell |
-|  [emptyParagraph](./scribing.flowtablecell.emptyparagraph.md) | <code>static</code> | [FlowTableCell](./scribing.flowtablecell.md) | Gets a table cell that contains an empty paragraph |
+|  [classType](./scribing.flowtablecell.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | Type&lt;[FlowTableCell](./scribing.flowtablecell.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [empty](./scribing.flowtablecell.empty.md) | <p><code>static</code></p><p><code>readonly</code></p> | [FlowTableCell](./scribing.flowtablecell.md) | Gets an empty table cell |
+|  [emptyParagraph](./scribing.flowtablecell.emptyparagraph.md) | <p><code>static</code></p><p><code>readonly</code></p> | [FlowTableCell](./scribing.flowtablecell.md) | Gets a table cell that contains an empty paragraph |
 
 ## Methods
 

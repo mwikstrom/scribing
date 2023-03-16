@@ -6,7 +6,7 @@
 
 Data discriminator
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 set: "dynamic_text_expression";

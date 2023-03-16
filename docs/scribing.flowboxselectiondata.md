@@ -6,7 +6,7 @@
 
 Data of [FlowBoxSelection](./scribing.flowboxselection.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FlowBoxSelectionData 
@@ -14,8 +14,8 @@ export interface FlowBoxSelectionData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [box](./scribing.flowboxselectiondata.box.md) | number |  |
-|  [content](./scribing.flowboxselectiondata.content.md) | [FlowSelection](./scribing.flowselection.md) |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [box](./scribing.flowboxselectiondata.box.md) |  | number |  |
+|  [content](./scribing.flowboxselectiondata.content.md) |  | [FlowSelection](./scribing.flowselection.md) |  |
 

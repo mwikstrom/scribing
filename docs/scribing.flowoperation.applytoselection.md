@@ -6,7 +6,7 @@
 
 Applies the current operation on the specified selection and returns the updated result.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract applyToSelection(selection: FlowSelection, mine: boolean): FlowSelection | null;
@@ -19,7 +19,7 @@ abstract applyToSelection(selection: FlowSelection, mine: boolean): FlowSelectio
 |  selection | [FlowSelection](./scribing.flowselection.md) | The selection that shall be updated. |
 |  mine | boolean | Specifies whether the current operation is executed by the same user that owns the selection. |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowSelection](./scribing.flowselection.md) \| null
 

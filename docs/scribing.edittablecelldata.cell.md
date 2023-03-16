@@ -6,7 +6,7 @@
 
 The table cell to edit
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 cell: CellPosition;

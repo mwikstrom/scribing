@@ -6,7 +6,7 @@
 
 Gets an empty table column style
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static get empty(): TableColumnStyle;

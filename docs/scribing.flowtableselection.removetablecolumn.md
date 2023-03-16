@@ -6,13 +6,13 @@
 
 Creates an operation that removes the selected table column
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
 removeTableColumn(): FlowOperation | null;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

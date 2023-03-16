@@ -4,7 +4,7 @@
 
 ## GenericFlowNodeVisitor.visitBox() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitBox(node: FlowBox): T;
@@ -16,7 +16,7 @@ visitBox(node: FlowBox): T;
 |  --- | --- | --- |
 |  node | [FlowBox](./scribing.flowbox.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 T
 

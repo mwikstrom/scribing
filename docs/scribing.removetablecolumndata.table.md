@@ -6,7 +6,7 @@
 
 The affected flow position
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 table: number;

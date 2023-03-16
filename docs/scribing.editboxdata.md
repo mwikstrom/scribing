@@ -6,7 +6,7 @@
 
 Data of [EditBox](./scribing.editbox.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface EditBoxData 
@@ -14,9 +14,9 @@ export interface EditBoxData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [at](./scribing.editboxdata.at.md) | number | The box position |
-|  [edit](./scribing.editboxdata.edit.md) | "box" | Data discriminator |
-|  [op](./scribing.editboxdata.op.md) | [FlowOperation](./scribing.flowoperation.md) | The inner operation |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [at](./scribing.editboxdata.at.md) |  | number | The box position |
+|  [edit](./scribing.editboxdata.edit.md) |  | "box" | Data discriminator |
+|  [op](./scribing.editboxdata.op.md) |  | [FlowOperation](./scribing.flowoperation.md) | The inner operation |
 

@@ -6,7 +6,7 @@
 
 The run-time type that matches box style variant values
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 BoxVariantType: Type<BoxVariant>

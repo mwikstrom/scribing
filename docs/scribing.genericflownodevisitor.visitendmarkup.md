@@ -4,7 +4,7 @@
 
 ## GenericFlowNodeVisitor.visitEndMarkup() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitEndMarkup(node: EndMarkup): T;
@@ -16,7 +16,7 @@ visitEndMarkup(node: EndMarkup): T;
 |  --- | --- | --- |
 |  node | [EndMarkup](./scribing.endmarkup.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 T
 

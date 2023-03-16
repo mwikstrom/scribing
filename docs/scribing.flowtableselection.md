@@ -6,20 +6,20 @@
 
 Represents a selection of cells in a flow table cell
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class FlowTableSelection extends FlowTableSelectionBase 
 ```
-<b>Extends:</b> FlowTableSelectionBase
+**Extends:** FlowTableSelectionBase
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.flowtableselection.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FlowTableSelection](./scribing.flowtableselection.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [isCollapsed](./scribing.flowtableselection.iscollapsed.md) |  | boolean | Determines whether the current selection is collapsed |
+|  [classType](./scribing.flowtableselection.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[FlowTableSelection](./scribing.flowtableselection.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [isCollapsed](./scribing.flowtableselection.iscollapsed.md) | <code>readonly</code> | boolean | Determines whether the current selection is collapsed |
 
 ## Methods
 

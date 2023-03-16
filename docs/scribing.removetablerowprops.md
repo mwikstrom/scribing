@@ -6,7 +6,7 @@
 
 Properties of [RemoveTableRow](./scribing.removetablerow.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface RemoveTableRowProps 
@@ -14,9 +14,9 @@ export interface RemoveTableRowProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [count](./scribing.removetablerowprops.count.md) | number | The number of rows to insert |
-|  [position](./scribing.removetablerowprops.position.md) | number | The affected flow position |
-|  [row](./scribing.removetablerowprops.row.md) | number | The row index |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [count](./scribing.removetablerowprops.count.md) |  | number | The number of rows to insert |
+|  [position](./scribing.removetablerowprops.position.md) |  | number | The affected flow position |
+|  [row](./scribing.removetablerowprops.row.md) |  | number | The row index |
 

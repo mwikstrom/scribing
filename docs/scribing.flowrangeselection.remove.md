@@ -6,7 +6,7 @@
 
 Creates an operation that removes the content of the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
@@ -17,9 +17,9 @@ remove(options?: RemoveFlowSelectionOptions): FlowOperation | null;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  options | [RemoveFlowSelectionOptions](./scribing.removeflowselectionoptions.md) | <i>(Optional)</i> Options that provide operation behavior |
+|  options | [RemoveFlowSelectionOptions](./scribing.removeflowselectionoptions.md) | _(Optional)_ Options that provide operation behavior |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

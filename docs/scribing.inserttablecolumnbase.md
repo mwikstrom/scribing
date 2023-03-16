@@ -6,7 +6,7 @@
 
 The base record class for [InsertTableColumn](./scribing.inserttablecolumn.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 InsertTableColumnBase: import("paratype").RecordConstructor<InsertTableColumnProps, TableOperation, InsertTableColumnData>

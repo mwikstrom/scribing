@@ -6,22 +6,22 @@
 
 Represents a dynamic text.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class FlowImage extends FlowImageBase implements FlowImageProps 
 ```
-<b>Extends:</b> FlowImageBase
+**Extends:** FlowImageBase
 
-<b>Implements:</b> [FlowImageProps](./scribing.flowimageprops.md)
+**Implements:** [FlowImageProps](./scribing.flowimageprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.flowimage.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FlowImage](./scribing.flowimage.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [size](./scribing.flowimage.size.md) |  | (not declared) | Size of the current node. |
+|  [classType](./scribing.flowimage.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[FlowImage](./scribing.flowimage.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [size](./scribing.flowimage.size.md) | <code>readonly</code> | (not declared) | Size of the current node. |
 
 ## Methods
 

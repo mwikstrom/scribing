@@ -6,7 +6,7 @@
 
 Gets arguments from the specified message format
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static getMessageArguments(message: string): MessageFormatArgumentInfo[];
@@ -18,7 +18,7 @@ static getMessageArguments(message: string): MessageFormatArgumentInfo[];
 |  --- | --- | --- |
 |  message | string |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [MessageFormatArgumentInfo](./scribing.messageformatargumentinfo.md)<!-- -->\[\]
 

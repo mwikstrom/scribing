@@ -6,7 +6,7 @@
 
 Specifies the list litem counter value
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 listCounter?: number | ListCounterAction;

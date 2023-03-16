@@ -6,20 +6,20 @@
 
 Options for [FlowSelection.visitRanges()](./scribing.flowselection.visitranges.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface VisitRangeOptions extends TargetOptions 
 ```
-<b>Extends:</b> [TargetOptions](./scribing.targetoptions.md)
+**Extends:** [TargetOptions](./scribing.targetoptions.md)
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [outer?](./scribing.visitrangeoptions.outer.md) | [NestedFlowSelection](./scribing.nestedflowselection.md) | <i>(Optional)</i> |
-|  [parent?](./scribing.visitrangeoptions.parent.md) | [TargetOptions](./scribing.targetoptions.md) | <i>(Optional)</i> |
-|  [position?](./scribing.visitrangeoptions.position.md) | number | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [outer?](./scribing.visitrangeoptions.outer.md) |  | [NestedFlowSelection](./scribing.nestedflowselection.md) | _(Optional)_ |
+|  [parent?](./scribing.visitrangeoptions.parent.md) |  | [TargetOptions](./scribing.targetoptions.md) | _(Optional)_ |
+|  [position?](./scribing.visitrangeoptions.position.md) |  | number | _(Optional)_ |
 
 ## Methods
 

@@ -6,7 +6,7 @@
 
 The style to unapply
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 style: TableStyle;

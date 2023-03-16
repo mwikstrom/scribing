@@ -6,7 +6,7 @@
 
 Creates an operation that sets the specified markup attribute in the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract setMarkupAttr(content: FlowContent, key: string, value: string | Script): FlowOperation | null;
@@ -20,7 +20,7 @@ abstract setMarkupAttr(content: FlowContent, key: string, value: string | Script
 |  key | string | The markup attribute to set |
 |  value | string \| [Script](./scribing.script.md) | The attribute value to set |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

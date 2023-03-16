@@ -6,7 +6,7 @@
 
 Read-only array that contains all baseline offsets
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 BASELINE_OFFSETS: readonly ["normal", "sub", "super"]

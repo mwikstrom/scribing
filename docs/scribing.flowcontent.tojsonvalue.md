@@ -6,12 +6,12 @@
 
 Gets a JSON value representation of the current content
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 toJsonValue(): JsonValue;
 ```
-<b>Returns:</b>
+**Returns:**
 
 JsonValue
 

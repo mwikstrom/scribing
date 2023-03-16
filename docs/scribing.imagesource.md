@@ -6,19 +6,19 @@
 
 Represents the source of a [FlowImage](./scribing.flowimage.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class ImageSource extends ImageSourceBase implements Readonly<ImageSourceProps> 
 ```
-<b>Extends:</b> ImageSourceBase
+**Extends:** ImageSourceBase
 
-<b>Implements:</b> Readonly&lt;[ImageSourceProps](./scribing.imagesourceprops.md)
+**Implements:** Readonly&lt;[ImageSourceProps](./scribing.imagesourceprops.md)<!-- -->&gt;
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.imagesource.classtype.md) | <code>static</code> | import("paratype").Type&lt;import("paratype").RecordObject&lt;Omit&lt;{ url: string; width: number; height: number; placeholder: string; upload: string; }, "placeholder" \| "upload"&gt; &amp; Partial&lt;Pick&lt;{ url: string; width: number; height: number; placeholder: string; upload: string; }, "placeholder" \| "upload"&gt;&gt;, Omit&lt;{ url: string; width: number; height: number; placeholder: string; upload: string; }, "placeholder" \| "upload"&gt; &amp; Partial&lt;Pick&lt;{ url: string; width: number; height: number; placeholder: string; upload: string; }, "placeholder" \| "upload"&gt;&gt;&gt; &amp; import("paratype").Equatable &amp; Readonly&lt;Omit&lt;{ url: string; width: number; height: number; placeholder: string; upload: string; }, "placeholder" \| "upload"&gt; &amp; Partial&lt;Pick&lt;{ url: string; width: number; height: number; placeholder: string; upload: string; }, "placeholder" \| "upload"&gt;&gt;&gt; &amp; [ImageSource](./scribing.imagesource.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.imagesource.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;import("paratype").RecordObject&lt;Omit&lt;{ url: string; width: number; height: number; placeholder: string; upload: string; }, "placeholder" \| "upload"&gt; &amp; Partial&lt;Pick&lt;{ url: string; width: number; height: number; placeholder: string; upload: string; }, "placeholder" \| "upload"&gt;&gt;, Omit&lt;{ url: string; width: number; height: number; placeholder: string; upload: string; }, "placeholder" \| "upload"&gt; &amp; Partial&lt;Pick&lt;{ url: string; width: number; height: number; placeholder: string; upload: string; }, "placeholder" \| "upload"&gt;&gt;&gt; &amp; import("paratype").Equatable &amp; Readonly&lt;Omit&lt;{ url: string; width: number; height: number; placeholder: string; upload: string; }, "placeholder" \| "upload"&gt; &amp; Partial&lt;Pick&lt;{ url: string; width: number; height: number; placeholder: string; upload: string; }, "placeholder" \| "upload"&gt;&gt;&gt; &amp; [ImageSource](./scribing.imagesource.md)<!-- -->&gt; | The run-time type that represents this class |
 

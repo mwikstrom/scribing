@@ -6,7 +6,7 @@
 
 The new content
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 content: FlowContent;

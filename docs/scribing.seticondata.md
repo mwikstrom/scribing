@@ -6,7 +6,7 @@
 
 Data of [SetIcon](./scribing.seticon.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface SetIconData 
@@ -14,9 +14,9 @@ export interface SetIconData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [at](./scribing.seticondata.at.md) | number | The affected position |
-|  [data](./scribing.seticondata.data.md) | string | The data to assign |
-|  [set](./scribing.seticondata.set.md) | "icon" | Data discriminator |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [at](./scribing.seticondata.at.md) |  | number | The affected position |
+|  [data](./scribing.seticondata.data.md) |  | string | The data to assign |
+|  [set](./scribing.seticondata.set.md) |  | "icon" | Data discriminator |
 

@@ -6,22 +6,22 @@
 
 Represents a range of selected flow content
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class FlowRangeSelection extends FlowRangeSelectionBase implements Readonly<FlowRangeSelectionProps> 
 ```
-<b>Extends:</b> FlowRangeSelectionBase
+**Extends:** FlowRangeSelectionBase
 
-<b>Implements:</b> Readonly&lt;[FlowRangeSelectionProps](./scribing.flowrangeselectionprops.md)
+**Implements:** Readonly&lt;[FlowRangeSelectionProps](./scribing.flowrangeselectionprops.md)<!-- -->&gt;
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.flowrangeselection.classtype.md) | <code>static</code> | import("paratype").Type&lt;import("paratype").RecordObject&lt;[FlowRangeSelectionProps](./scribing.flowrangeselectionprops.md)<!-- -->, [FlowRangeSelectionProps](./scribing.flowrangeselectionprops.md)<!-- -->&gt; &amp; import("paratype").Equatable &amp; Readonly&lt;[FlowRangeSelectionProps](./scribing.flowrangeselectionprops.md)<!-- -->&gt; &amp; [FlowRangeSelection](./scribing.flowrangeselection.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [isCollapsed](./scribing.flowrangeselection.iscollapsed.md) |  | boolean | Determines whether the current selection is collapsed |
+|  [classType](./scribing.flowrangeselection.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;import("paratype").RecordObject&lt;[FlowRangeSelectionProps](./scribing.flowrangeselectionprops.md)<!-- -->, [FlowRangeSelectionProps](./scribing.flowrangeselectionprops.md)<!-- -->&gt; &amp; import("paratype").Equatable &amp; Readonly&lt;[FlowRangeSelectionProps](./scribing.flowrangeselectionprops.md)<!-- -->&gt; &amp; [FlowRangeSelection](./scribing.flowrangeselection.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [isCollapsed](./scribing.flowrangeselection.iscollapsed.md) | <code>readonly</code> | boolean | Determines whether the current selection is collapsed |
 
 ## Methods
 

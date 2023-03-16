@@ -4,7 +4,7 @@
 
 ## FlowTableContent.merge() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 merge(position: CellPosition, colSpan: number, rowSpan: number): FlowTableContent;
@@ -18,7 +18,7 @@ merge(position: CellPosition, colSpan: number, rowSpan: number): FlowTableConten
 |  colSpan | number |  |
 |  rowSpan | number |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowTableContent](./scribing.flowtablecontent.md)
 

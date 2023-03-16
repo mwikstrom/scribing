@@ -6,7 +6,7 @@
 
 The table position
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 position: number;

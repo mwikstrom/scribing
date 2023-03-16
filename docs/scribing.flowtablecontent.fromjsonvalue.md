@@ -4,7 +4,7 @@
 
 ## FlowTableContent.fromJsonValue() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static fromJsonValue(value: JsonValue, error?: ErrorCallback, path?: PathArray): FlowTableContent;
@@ -15,10 +15,10 @@ static fromJsonValue(value: JsonValue, error?: ErrorCallback, path?: PathArray):
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  value | JsonValue |  |
-|  error | ErrorCallback | <i>(Optional)</i> |
-|  path | PathArray | <i>(Optional)</i> |
+|  error | ErrorCallback | _(Optional)_ |
+|  path | PathArray | _(Optional)_ |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowTableContent](./scribing.flowtablecontent.md)
 

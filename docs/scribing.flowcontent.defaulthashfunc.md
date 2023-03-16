@@ -4,7 +4,7 @@
 
 ## FlowContent.defaultHashFunc property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static get defaultHashFunc(): FlowContentHashFunc;

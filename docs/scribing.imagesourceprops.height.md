@@ -6,7 +6,7 @@
 
 Preferred image height (in pixels)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 height: number;

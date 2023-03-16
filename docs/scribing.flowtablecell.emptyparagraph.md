@@ -6,7 +6,7 @@
 
 Gets a table cell that contains an empty paragraph
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static get emptyParagraph(): FlowTableCell;

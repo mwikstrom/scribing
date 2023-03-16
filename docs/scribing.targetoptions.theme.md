@@ -6,7 +6,7 @@
 
 Theme of the selected content
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 theme?: FlowTheme;

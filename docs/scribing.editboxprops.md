@@ -6,7 +6,7 @@
 
 Properties of [EditBox](./scribing.editbox.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface EditBoxProps 
@@ -14,8 +14,8 @@ export interface EditBoxProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [inner](./scribing.editboxprops.inner.md) | [FlowOperation](./scribing.flowoperation.md) | The inner operation |
-|  [position](./scribing.editboxprops.position.md) | number | The box position |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [inner](./scribing.editboxprops.inner.md) |  | [FlowOperation](./scribing.flowoperation.md) | The inner operation |
+|  [position](./scribing.editboxprops.position.md) |  | number | The box position |
 

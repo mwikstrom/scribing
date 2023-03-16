@@ -6,7 +6,7 @@
 
 Data of line break nodes
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FlowImageData 
@@ -14,9 +14,9 @@ export interface FlowImageData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [image](./scribing.flowimagedata.image.md) | [ImageSource](./scribing.imagesource.md) | The image source |
-|  [scale?](./scribing.flowimagedata.scale.md) | number | <i>(Optional)</i> Image rendering scale |
-|  [style?](./scribing.flowimagedata.style.md) | [TextStyle](./scribing.textstyle.md) | <i>(Optional)</i> Text style |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [image](./scribing.flowimagedata.image.md) |  | [ImageSource](./scribing.imagesource.md) | The image source |
+|  [scale?](./scribing.flowimagedata.scale.md) |  | number | _(Optional)_ Image rendering scale |
+|  [style?](./scribing.flowimagedata.style.md) |  | [TextStyle](./scribing.textstyle.md) | _(Optional)_ Text style |
 

@@ -6,34 +6,34 @@
 
 Represents an operation that updates a table node
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare abstract class TableOperation extends FlowOperation 
 ```
-<b>Extends:</b> [FlowOperation](./scribing.flowoperation.md)
+**Extends:** [FlowOperation](./scribing.flowoperation.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [position](./scribing.tableoperation.position.md) |  | number | Position of the table node |
+|  [position](./scribing.tableoperation.position.md) | <p><code>abstract</code></p><p><code>readonly</code></p> | number | Position of the table node |
 
 ## Methods
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [afterInsertColumn(index, count)](./scribing.tableoperation.afterinsertcolumn.md) |  |  |
+|  [afterInsertColumn(index, count)](./scribing.tableoperation.afterinsertcolumn.md) | <code>abstract</code> |  |
 |  [afterInsertFlow(range)](./scribing.tableoperation.afterinsertflow.md) |  | Transforms the current operation so that its intent is preserved after the specified range was inserted. |
-|  [afterInsertRow(index, count)](./scribing.tableoperation.afterinsertrow.md) |  |  |
-|  [afterRemoveColumn(index, count)](./scribing.tableoperation.afterremovecolumn.md) |  |  |
+|  [afterInsertRow(index, count)](./scribing.tableoperation.afterinsertrow.md) | <code>abstract</code> |  |
+|  [afterRemoveColumn(index, count)](./scribing.tableoperation.afterremovecolumn.md) | <code>abstract</code> |  |
 |  [afterRemoveFlow(range)](./scribing.tableoperation.afterremoveflow.md) |  | Transforms the current operation so that its intent is preserved after the specified range was removed. |
-|  [afterRemoveRow(index, count)](./scribing.tableoperation.afterremoverow.md) |  |  |
+|  [afterRemoveRow(index, count)](./scribing.tableoperation.afterremoverow.md) | <code>abstract</code> |  |
 |  [applyToContent(content)](./scribing.tableoperation.applytocontent.md) |  | Applies the current operation on the specified content and returns the updated result. |
 |  [applyToSelection(selection, mine)](./scribing.tableoperation.applytoselection.md) |  | Applies the current operation on the specified selection and returns the updated result. |
 |  [invert(content)](./scribing.tableoperation.invert.md) |  | Returns an operation that negates the effect of the current operation. |
 |  [mergeNext(next)](./scribing.tableoperation.mergenext.md) |  | Returns an operation that keeps the intention of the current operation and the specified subsequent operation as they were performed as an atomic operation. |
-|  [set(key, value)](./scribing.tableoperation.set.md) |  | Returns a copy of the current object with the specified property merged in |
+|  [set(key, value)](./scribing.tableoperation.set.md) | <code>abstract</code> | Returns a copy of the current object with the specified property merged in |
 |  [transform(other)](./scribing.tableoperation.transform.md) |  | Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation. |
 

@@ -6,7 +6,7 @@
 
 An abstraction of an operation that updates flow content.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare abstract class FlowOperation 
@@ -16,18 +16,18 @@ export declare abstract class FlowOperation
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [baseType](./scribing.flowoperation.basetype.md) | <code>static</code> | import("paratype").Type&lt;[FlowOperation](./scribing.flowoperation.md)<!-- -->&gt; | The run-time type that represents the base class |
+|  [baseType](./scribing.flowoperation.basetype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[FlowOperation](./scribing.flowoperation.md)<!-- -->&gt; | The run-time type that represents the base class |
 
 ## Methods
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [applyToContent(content, theme)](./scribing.flowoperation.applytocontent.md) |  | Applies the current operation on the specified content and returns the updated result. |
-|  [applyToSelection(selection, mine)](./scribing.flowoperation.applytoselection.md) |  | Applies the current operation on the specified selection and returns the updated result. |
+|  [applyToContent(content, theme)](./scribing.flowoperation.applytocontent.md) | <code>abstract</code> | Applies the current operation on the specified content and returns the updated result. |
+|  [applyToSelection(selection, mine)](./scribing.flowoperation.applytoselection.md) | <code>abstract</code> | Applies the current operation on the specified selection and returns the updated result. |
 |  [fromJsonValue(value)](./scribing.flowoperation.fromjsonvalue.md) | <code>static</code> | Converts the specified JSON value to a flow operation |
-|  [invert(content)](./scribing.flowoperation.invert.md) |  | Returns an operation that negates the effect of the current operation. |
-|  [mergeNext(next)](./scribing.flowoperation.mergenext.md) |  | Returns an operation that keeps the intention of the current operation and the specified subsequent operation as they were performed as an atomic operation. |
-|  [toData()](./scribing.flowoperation.todata.md) |  | Converts the current operation to data |
+|  [invert(content)](./scribing.flowoperation.invert.md) | <code>abstract</code> | Returns an operation that negates the effect of the current operation. |
+|  [mergeNext(next)](./scribing.flowoperation.mergenext.md) | <code>abstract</code> | Returns an operation that keeps the intention of the current operation and the specified subsequent operation as they were performed as an atomic operation. |
+|  [toData()](./scribing.flowoperation.todata.md) | <code>abstract</code> | Converts the current operation to data |
 |  [toJsonValue()](./scribing.flowoperation.tojsonvalue.md) |  | Converts the current operation to a JSON value |
-|  [transform(other)](./scribing.flowoperation.transform.md) |  | Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation. |
+|  [transform(other)](./scribing.flowoperation.transform.md) | <code>abstract</code> | Transforms the specified operation to with respect to change implied by the current operation so that the intent of the operation is retained when it is applied after the current operation. |
 

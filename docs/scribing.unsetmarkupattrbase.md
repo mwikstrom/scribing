@@ -6,7 +6,7 @@
 
 The base record class for [UnsetMarkupAttr](./scribing.unsetmarkupattr.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 UnsetMarkupAttrBase: import("paratype").RecordConstructor<UnsetMarkupAttrProps, FlowOperation, UnsetMarkupAttrData>

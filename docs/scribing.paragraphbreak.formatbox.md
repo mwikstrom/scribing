@@ -6,12 +6,12 @@
 
 Applies the specified box style on the current node and returns the updated node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 formatBox(): this;
 ```
-<b>Returns:</b>
+**Returns:**
 
 this
 

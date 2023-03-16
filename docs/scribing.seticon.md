@@ -6,21 +6,21 @@
 
 Represents an operation that sets the path data of an icon
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class SetIcon extends SetIconBase implements SetIconProps 
 ```
-<b>Extends:</b> SetIconBase
+**Extends:** SetIconBase
 
-<b>Implements:</b> [SetIconProps](./scribing.seticonprops.md)
+**Implements:** [SetIconProps](./scribing.seticonprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.seticon.classtype.md) | <code>static</code> | import("paratype").Type&lt;[SetIcon](./scribing.seticon.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.seticon.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[SetIcon](./scribing.seticon.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

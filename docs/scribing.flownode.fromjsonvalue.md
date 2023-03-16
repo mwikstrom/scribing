@@ -6,7 +6,7 @@
 
 Converts the specified JSON value to a flow node
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static fromJsonValue(value: JsonValue): FlowNode;
@@ -18,7 +18,7 @@ static fromJsonValue(value: JsonValue): FlowNode;
 |  --- | --- | --- |
 |  value | JsonValue |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowNode](./scribing.flownode.md)
 

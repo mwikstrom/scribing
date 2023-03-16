@@ -6,10 +6,10 @@
 
 List counter action
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type ListCounterAction = (typeof LIST_COUNTER_ACTIONS)[number];
+export type ListCounterAction = (typeof LIST_COUNTER_ACTIONS)[number];
 ```
-<b>References:</b> [LIST\_COUNTER\_ACTIONS](./scribing.list_counter_actions.md)
+**References:** [LIST\_COUNTER\_ACTIONS](./scribing.list_counter_actions.md)
 

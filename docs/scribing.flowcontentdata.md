@@ -6,10 +6,10 @@
 
 Flow content data is an array of [nodes](./scribing.flownode.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type FlowContentData = readonly FlowNode[];
+export type FlowContentData = readonly FlowNode[];
 ```
-<b>References:</b> [FlowNode](./scribing.flownode.md)
+**References:** [FlowNode](./scribing.flownode.md)
 

@@ -6,7 +6,7 @@
 
 The base record class for [FlowIcon](./scribing.flowicon.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FlowIconBase: import("paratype").RecordConstructor<FlowIconProps, InlineNode, FlowIconData>

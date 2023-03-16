@@ -6,7 +6,7 @@
 
 Constructs a new instance of the `EmptyMarkup` class
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 constructor(props: EmptyMarkupProps);

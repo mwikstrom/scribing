@@ -6,7 +6,7 @@
 
 Gets an empty paragraph style
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static get empty(): ParagraphStyle;

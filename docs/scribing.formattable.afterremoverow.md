@@ -4,12 +4,12 @@
 
 ## FormatTable.afterRemoveRow() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 afterRemoveRow(): TableOperation | null;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [TableOperation](./scribing.tableoperation.md) \| null
 

@@ -6,12 +6,12 @@
 
 Gets a cursor that is positioned at the start of the current node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 moveToStartOfNode(): FlowCursor;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [FlowCursor](./scribing.flowcursor.md)
 

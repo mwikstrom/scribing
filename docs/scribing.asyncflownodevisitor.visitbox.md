@@ -4,7 +4,7 @@
 
 ## AsyncFlowNodeVisitor.visitBox() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitBox(node: FlowBox): Promise<FlowNode>;
@@ -16,7 +16,7 @@ visitBox(node: FlowBox): Promise<FlowNode>;
 |  --- | --- | --- |
 |  node | [FlowBox](./scribing.flowbox.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;[FlowNode](./scribing.flownode.md)<!-- -->&gt;
 

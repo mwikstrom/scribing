@@ -6,7 +6,7 @@
 
 Transforms the current operation so that its intent is preserved after the specified range was removed.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 afterRemoveFlow(range: FlowRange): FlowOperation | null;
@@ -18,7 +18,7 @@ afterRemoveFlow(range: FlowRange): FlowOperation | null;
 |  --- | --- | --- |
 |  range | [FlowRange](./scribing.flowrange.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

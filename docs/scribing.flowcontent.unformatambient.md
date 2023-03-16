@@ -6,7 +6,7 @@
 
 Unapplies the ambient style of the specified theme from the current content.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 unformatAmbient(theme: FlowTheme): FlowContent;
@@ -18,7 +18,7 @@ unformatAmbient(theme: FlowTheme): FlowContent;
 |  --- | --- | --- |
 |  theme | [FlowTheme](./scribing.flowtheme.md) | The theme that provides ambient styling |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

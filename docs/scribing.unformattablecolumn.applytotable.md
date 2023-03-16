@@ -4,7 +4,7 @@
 
 ## UnformatTableColumn.applyToTable() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 protected applyToTable(table: FlowTable): FlowTable;
@@ -16,7 +16,7 @@ protected applyToTable(table: FlowTable): FlowTable;
 |  --- | --- | --- |
 |  table | [FlowTable](./scribing.flowtable.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowTable](./scribing.flowtable.md)
 

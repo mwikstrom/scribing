@@ -5,8 +5,8 @@
 ## FlowContentHashFunc type
 
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type FlowContentHashFunc = (data: Uint8Array) => Promise<Buffer>;
+export type FlowContentHashFunc = (data: Uint8Array) => Promise<Buffer>;
 ```

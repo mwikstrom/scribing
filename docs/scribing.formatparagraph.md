@@ -6,21 +6,21 @@
 
 Represents an operation that applies a paragraph style to a range of flow content.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class FormatParagraph extends FormatParagraphBase implements Readonly<FormatParagraphProps> 
 ```
-<b>Extends:</b> FormatParagraphBase
+**Extends:** FormatParagraphBase
 
-<b>Implements:</b> Readonly&lt;[FormatParagraphProps](./scribing.formatparagraphprops.md)
+**Implements:** Readonly&lt;[FormatParagraphProps](./scribing.formatparagraphprops.md)<!-- -->&gt;
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.formatparagraph.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FormatParagraph](./scribing.formatparagraph.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.formatparagraph.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[FormatParagraph](./scribing.formatparagraph.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

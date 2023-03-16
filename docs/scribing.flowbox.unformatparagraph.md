@@ -6,12 +6,12 @@
 
 Unapplies the specified paragraph style from the current node and returns the updated node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 unformatParagraph(): this;
 ```
-<b>Returns:</b>
+**Returns:**
 
 this
 

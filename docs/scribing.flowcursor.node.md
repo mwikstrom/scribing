@@ -6,7 +6,7 @@
 
 Gets the current node when the cursor is positioned before the first, or after the last node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get node(): FlowNode | null;

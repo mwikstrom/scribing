@@ -6,7 +6,7 @@
 
 A run-time type that validates the scale factor of an image
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FlowImageScaleType: import("paratype").Type<number>

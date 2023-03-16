@@ -6,21 +6,21 @@
 
 Represents an operation that merges a range of table cells into one
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class MergeTableCell extends MergeTableCellBase implements MergeTableCellProps 
 ```
-<b>Extends:</b> MergeTableCellBase
+**Extends:** MergeTableCellBase
 
-<b>Implements:</b> [MergeTableCellProps](./scribing.mergetablecellprops.md)
+**Implements:** [MergeTableCellProps](./scribing.mergetablecellprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.mergetablecell.classtype.md) | <code>static</code> | import("paratype").Type&lt;[MergeTableCell](./scribing.mergetablecell.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.mergetablecell.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[MergeTableCell](./scribing.mergetablecell.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 
@@ -32,12 +32,12 @@ export declare class MergeTableCell extends MergeTableCellBase implements MergeT
 |  [afterRemoveAxis(axis, index, count)](./scribing.mergetablecell.afterremoveaxis.md) |  |  |
 |  [afterRemoveColumn(index, count)](./scribing.mergetablecell.afterremovecolumn.md) |  |  |
 |  [afterRemoveRow(index, count)](./scribing.mergetablecell.afterremoverow.md) |  |  |
-|  [applyToCellRange(range)](./scribing.mergetablecell.applytocellrange.md) |  |  |
-|  [applyToTable(table)](./scribing.mergetablecell.applytotable.md) |  |  |
+|  [applyToCellRange(range)](./scribing.mergetablecell.applytocellrange.md) | <code>protected</code> |  |
+|  [applyToTable(table)](./scribing.mergetablecell.applytotable.md) | <code>protected</code> |  |
 |  [fromData(input)](./scribing.mergetablecell.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
 |  [getAxisRange(axis)](./scribing.mergetablecell.getaxisrange.md) |  |  |
-|  [invertForTable()](./scribing.mergetablecell.invertfortable.md) |  |  |
-|  [mergeNextInSameTable()](./scribing.mergetablecell.mergenextinsametable.md) |  |  |
+|  [invertForTable()](./scribing.mergetablecell.invertfortable.md) | <code>protected</code> |  |
+|  [mergeNextInSameTable()](./scribing.mergetablecell.mergenextinsametable.md) | <code>protected</code> |  |
 |  [setAxisRange(axis, range)](./scribing.mergetablecell.setaxisrange.md) |  |  |
-|  [transformInSameTable(other)](./scribing.mergetablecell.transforminsametable.md) |  |  |
+|  [transformInSameTable(other)](./scribing.mergetablecell.transforminsametable.md) | <code>protected</code> |  |
 

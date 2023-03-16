@@ -6,7 +6,7 @@
 
 Script code
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 code: string;

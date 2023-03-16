@@ -4,7 +4,7 @@
 
 ## CellPosition.stringifyRowIndex() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static stringifyRowIndex(input: number, throwOnError: true): string;
@@ -17,7 +17,7 @@ static stringifyRowIndex(input: number, throwOnError: true): string;
 |  input | number |  |
 |  throwOnError | true |  |
 
-<b>Returns:</b>
+**Returns:**
 
 string
 

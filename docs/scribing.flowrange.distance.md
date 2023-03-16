@@ -6,7 +6,7 @@
 
 Gets the distance from anchor to focus, which may be a negative value
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get distance(): number;

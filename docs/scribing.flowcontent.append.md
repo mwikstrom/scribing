@@ -6,7 +6,7 @@
 
 Appends the specified nodes
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 append(...nodes: readonly FlowNode[]): FlowContent;
@@ -18,7 +18,7 @@ append(...nodes: readonly FlowNode[]): FlowContent;
 |  --- | --- | --- |
 |  nodes | readonly [FlowNode](./scribing.flownode.md)<!-- -->\[\] | The nodes to be appended |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

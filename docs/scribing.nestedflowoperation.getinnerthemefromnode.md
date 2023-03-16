@@ -6,7 +6,7 @@
 
 Gets the inner theme
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 protected abstract getInnerThemeFromNode(node: FlowNode, outer?: FlowTheme): FlowTheme;
@@ -17,9 +17,9 @@ protected abstract getInnerThemeFromNode(node: FlowNode, outer?: FlowTheme): Flo
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  node | [FlowNode](./scribing.flownode.md) | The selected node |
-|  outer | [FlowTheme](./scribing.flowtheme.md) | <i>(Optional)</i> The outer theme |
+|  outer | [FlowTheme](./scribing.flowtheme.md) | _(Optional)_ The outer theme |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowTheme](./scribing.flowtheme.md)
 

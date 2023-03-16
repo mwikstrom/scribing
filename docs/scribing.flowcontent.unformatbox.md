@@ -6,7 +6,7 @@
 
 Unapplies box style to a range
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 unformatBox(range: FlowRange, style: BoxStyle): FlowContent;
@@ -19,7 +19,7 @@ unformatBox(range: FlowRange, style: BoxStyle): FlowContent;
 |  range | [FlowRange](./scribing.flowrange.md) | The range to format |
 |  style | [BoxStyle](./scribing.boxstyle.md) | The style to unapply |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

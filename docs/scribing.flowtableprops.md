@@ -6,7 +6,7 @@
 
 Properties of [FlowTable](./scribing.flowtable.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FlowTableProps 
@@ -14,9 +14,9 @@ export interface FlowTableProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [columns](./scribing.flowtableprops.columns.md) | Map&lt;string, [TableColumnStyle](./scribing.tablecolumnstyle.md)<!-- -->&gt; |  |
-|  [content](./scribing.flowtableprops.content.md) | [FlowTableContent](./scribing.flowtablecontent.md) |  |
-|  [style](./scribing.flowtableprops.style.md) | [TableStyle](./scribing.tablestyle.md) |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [columns](./scribing.flowtableprops.columns.md) |  | Map&lt;string, [TableColumnStyle](./scribing.tablecolumnstyle.md)<!-- -->&gt; |  |
+|  [content](./scribing.flowtableprops.content.md) |  | [FlowTableContent](./scribing.flowtablecontent.md) |  |
+|  [style](./scribing.flowtableprops.style.md) |  | [TableStyle](./scribing.tablestyle.md) |  |
 

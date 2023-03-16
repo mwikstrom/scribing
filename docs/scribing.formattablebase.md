@@ -6,7 +6,7 @@
 
 The base record class for [FormatTable](./scribing.formattable.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FormatTableBase: import("paratype").RecordConstructor<FormatTableProps, TableOperation, FormatTableData>

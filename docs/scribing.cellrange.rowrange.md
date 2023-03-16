@@ -4,7 +4,7 @@
 
 ## CellRange.rowRange property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get rowRange(): FlowRange;

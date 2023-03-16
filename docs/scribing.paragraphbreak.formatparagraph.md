@@ -6,7 +6,7 @@
 
 Applies the specified paragraph style on the current node and returns the updated node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 formatParagraph(style: ParagraphStyle): this;
@@ -18,7 +18,7 @@ formatParagraph(style: ParagraphStyle): this;
 |  --- | --- | --- |
 |  style | [ParagraphStyle](./scribing.paragraphstyle.md) | The paragraph style to apply |
 
-<b>Returns:</b>
+**Returns:**
 
 this
 

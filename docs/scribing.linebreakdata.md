@@ -6,7 +6,7 @@
 
 Data of line break nodes
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface LineBreakData 
@@ -14,8 +14,8 @@ export interface LineBreakData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [break](./scribing.linebreakdata.break.md) | "line" | Data classifier |
-|  [style?](./scribing.linebreakdata.style.md) | [TextStyle](./scribing.textstyle.md) | <i>(Optional)</i> Text style for the line break |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [break](./scribing.linebreakdata.break.md) |  | "line" | Data classifier |
+|  [style?](./scribing.linebreakdata.style.md) |  | [TextStyle](./scribing.textstyle.md) | _(Optional)_ Text style for the line break |
 

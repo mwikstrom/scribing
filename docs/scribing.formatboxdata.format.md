@@ -6,7 +6,7 @@
 
 Data classifier
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 format: "box";

@@ -6,7 +6,7 @@
 
 The range that shall be removed
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 remove: FlowRange;

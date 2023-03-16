@@ -6,7 +6,7 @@
 
 The box position
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 at: number;

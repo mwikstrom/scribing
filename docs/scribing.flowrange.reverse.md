@@ -6,12 +6,12 @@
 
 Gets a range that represents the reverse of the current range
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 reverse(): FlowRange;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [FlowRange](./scribing.flowrange.md)
 

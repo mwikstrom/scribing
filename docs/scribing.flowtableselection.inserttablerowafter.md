@@ -6,7 +6,7 @@
 
 Creates an operation that inserts a table row after the current selection.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
@@ -18,9 +18,9 @@ insertTableRowAfter(content: FlowContent, count?: number): FlowOperation | null;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The selected content |
-|  count | number | <i>(Optional)</i> Optional. The number of rows to insert. Default is the number of selected rows. |
+|  count | number | _(Optional)_ Optional. The number of rows to insert. Default is the number of selected rows. |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

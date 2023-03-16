@@ -6,7 +6,7 @@
 
 Read-only array that contains all box style variants
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 BOX_VARIANTS: readonly ["basic", "contained", "outlined", "alert", "quote"]

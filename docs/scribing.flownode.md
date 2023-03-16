@@ -6,7 +6,7 @@
 
 A piece of flow content.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare abstract class FlowNode 
@@ -16,25 +16,25 @@ export declare abstract class FlowNode
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [baseType](./scribing.flownode.basetype.md) | <code>static</code> | import("paratype").Type&lt;[FlowNode](./scribing.flownode.md)<!-- -->&gt; | The run-time type that represents the base class |
-|  [size](./scribing.flownode.size.md) |  | number | Size of the current node. |
+|  [baseType](./scribing.flownode.basetype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[FlowNode](./scribing.flownode.md)<!-- -->&gt; | The run-time type that represents the base class |
+|  [size](./scribing.flownode.size.md) | <p><code>abstract</code></p><p><code>readonly</code></p> | number | Size of the current node. |
 
 ## Methods
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [accept(visitor)](./scribing.flownode.accept.md) |  | Accepts the specified visitor |
-|  [completeUpload(id, url)](./scribing.flownode.completeupload.md) |  | Marks the specified upload as completed |
-|  [formatBox(style, theme)](./scribing.flownode.formatbox.md) |  | Applies the specified box style on the current node and returns the updated node. |
-|  [formatParagraph(style, theme)](./scribing.flownode.formatparagraph.md) |  | Applies the specified paragraph style on the current node and returns the updated node. |
-|  [formatText(style, theme)](./scribing.flownode.formattext.md) |  | Applies the specified text style on the current node and returns the updated node. |
+|  [accept(visitor)](./scribing.flownode.accept.md) | <code>abstract</code> | Accepts the specified visitor |
+|  [completeUpload(id, url)](./scribing.flownode.completeupload.md) | <code>abstract</code> | Marks the specified upload as completed |
+|  [formatBox(style, theme)](./scribing.flownode.formatbox.md) | <code>abstract</code> | Applies the specified box style on the current node and returns the updated node. |
+|  [formatParagraph(style, theme)](./scribing.flownode.formatparagraph.md) | <code>abstract</code> | Applies the specified paragraph style on the current node and returns the updated node. |
+|  [formatText(style, theme)](./scribing.flownode.formattext.md) | <code>abstract</code> | Applies the specified text style on the current node and returns the updated node. |
 |  [fromJsonValue(value)](./scribing.flownode.fromjsonvalue.md) | <code>static</code> | Converts the specified JSON value to a flow node |
-|  [getUniformParagraphStyle(theme, diff)](./scribing.flownode.getuniformparagraphstyle.md) |  | Gets a uniform paragraph style from the current node |
-|  [getUniformTextStyle(theme, diff)](./scribing.flownode.getuniformtextstyle.md) |  | Gets a uniform text style from the current node |
-|  [toData()](./scribing.flownode.todata.md) |  | Converts the current flow node to data |
+|  [getUniformParagraphStyle(theme, diff)](./scribing.flownode.getuniformparagraphstyle.md) | <code>abstract</code> | Gets a uniform paragraph style from the current node |
+|  [getUniformTextStyle(theme, diff)](./scribing.flownode.getuniformtextstyle.md) | <code>abstract</code> | Gets a uniform text style from the current node |
+|  [toData()](./scribing.flownode.todata.md) | <code>abstract</code> | Converts the current flow node to data |
 |  [toJsonValue()](./scribing.flownode.tojsonvalue.md) |  | Converts the current flow node to a JSON value |
-|  [unformatAmbient(theme)](./scribing.flownode.unformatambient.md) |  | Unapplies the ambient style of the specified theme from the current node and returns the updated node. |
-|  [unformatBox(style)](./scribing.flownode.unformatbox.md) |  | Unapplies the specified box style from the current node and returns the updated node. |
-|  [unformatParagraph(style)](./scribing.flownode.unformatparagraph.md) |  | Unapplies the specified paragraph style from the current node and returns the updated node. |
-|  [unformatText(style)](./scribing.flownode.unformattext.md) |  | Unapplies the specified text style from the current node and returns the updated node. |
+|  [unformatAmbient(theme)](./scribing.flownode.unformatambient.md) | <code>abstract</code> | Unapplies the ambient style of the specified theme from the current node and returns the updated node. |
+|  [unformatBox(style)](./scribing.flownode.unformatbox.md) | <code>abstract</code> | Unapplies the specified box style from the current node and returns the updated node. |
+|  [unformatParagraph(style)](./scribing.flownode.unformatparagraph.md) | <code>abstract</code> | Unapplies the specified paragraph style from the current node and returns the updated node. |
+|  [unformatText(style)](./scribing.flownode.unformattext.md) | <code>abstract</code> | Unapplies the specified text style from the current node and returns the updated node. |
 

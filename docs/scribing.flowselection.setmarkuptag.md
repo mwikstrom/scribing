@@ -6,7 +6,7 @@
 
 Creates an operation that sets the specified markup tag in the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract setMarkupTag(content: FlowContent, tag: string): FlowOperation | null;
@@ -19,7 +19,7 @@ abstract setMarkupTag(content: FlowContent, tag: string): FlowOperation | null;
 |  content | [FlowContent](./scribing.flowcontent.md) | The selected content |
 |  tag | string | The markup tag to set |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

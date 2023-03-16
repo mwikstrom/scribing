@@ -6,7 +6,7 @@
 
 Properties of [FlowBatch](./scribing.flowbatch.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FlowBatchProps 
@@ -14,7 +14,7 @@ export interface FlowBatchProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [operations](./scribing.flowbatchprops.operations.md) | readonly [FlowOperation](./scribing.flowoperation.md)<!-- -->\[\] | Operations to be applied atomically |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [operations](./scribing.flowbatchprops.operations.md) |  | readonly [FlowOperation](./scribing.flowoperation.md)<!-- -->\[\] | Operations to be applied atomically |
 

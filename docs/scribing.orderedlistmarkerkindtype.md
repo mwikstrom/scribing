@@ -6,7 +6,7 @@
 
 The run-time type that matches ordered list marker style values
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 OrderedListMarkerKindType: Type<ListMarkerKind>

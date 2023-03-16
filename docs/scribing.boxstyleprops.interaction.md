@@ -6,7 +6,7 @@
 
 The interaction that shall be invoked when the box is clicked
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interaction?: Interaction | null;

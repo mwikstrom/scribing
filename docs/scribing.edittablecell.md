@@ -6,21 +6,21 @@
 
 Represents an operation that edit the contents of a box
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class EditTableCell extends EditTableCellBase implements EditTableCellProps 
 ```
-<b>Extends:</b> EditTableCellBase
+**Extends:** EditTableCellBase
 
-<b>Implements:</b> [EditTableCellProps](./scribing.edittablecellprops.md)
+**Implements:** [EditTableCellProps](./scribing.edittablecellprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.edittablecell.classtype.md) | <code>static</code> | import("paratype").Type&lt;[EditTableCell](./scribing.edittablecell.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.edittablecell.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[EditTableCell](./scribing.edittablecell.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

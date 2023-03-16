@@ -6,7 +6,7 @@
 
 Gets an empty paragraph
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static get emptyParagraph(): FlowContent;

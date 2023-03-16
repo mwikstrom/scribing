@@ -4,7 +4,7 @@
 
 ## UnformatTable.mergeNextInSameTable() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 protected mergeNextInSameTable(next: TableOperation): FlowOperation | null;
@@ -16,7 +16,7 @@ protected mergeNextInSameTable(next: TableOperation): FlowOperation | null;
 |  --- | --- | --- |
 |  next | [TableOperation](./scribing.tableoperation.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

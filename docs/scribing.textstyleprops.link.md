@@ -6,7 +6,7 @@
 
 When non-null, indicates that text shall be styled as a link with the specified interaction.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 link?: Interaction | null;

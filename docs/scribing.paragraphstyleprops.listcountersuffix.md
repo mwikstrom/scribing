@@ -6,7 +6,7 @@
 
 Specifies the list item counter suffix
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 listCounterSuffix?: string;

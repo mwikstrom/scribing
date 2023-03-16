@@ -6,7 +6,7 @@
 
 Increments list level of nodes in the specified range
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 incrementListLevel(range: FlowRange, delta: number, theme?: FlowTheme): FlowContent;
@@ -18,9 +18,9 @@ incrementListLevel(range: FlowRange, delta: number, theme?: FlowTheme): FlowCont
 |  --- | --- | --- |
 |  range | [FlowRange](./scribing.flowrange.md) | The range to format |
 |  delta | number | The delta increment |
-|  theme | [FlowTheme](./scribing.flowtheme.md) | <i>(Optional)</i> Theme of the current content |
+|  theme | [FlowTheme](./scribing.flowtheme.md) | _(Optional)_ Theme of the current content |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

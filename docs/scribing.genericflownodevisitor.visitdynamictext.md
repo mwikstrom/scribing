@@ -4,7 +4,7 @@
 
 ## GenericFlowNodeVisitor.visitDynamicText() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitDynamicText(node: DynamicText): T;
@@ -16,7 +16,7 @@ visitDynamicText(node: DynamicText): T;
 |  --- | --- | --- |
 |  node | [DynamicText](./scribing.dynamictext.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 T
 

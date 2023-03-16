@@ -6,7 +6,7 @@
 
 Gets an instance of the current class from the specified data
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static fromData(data: FlowTableData): FlowTable;
@@ -18,7 +18,7 @@ static fromData(data: FlowTableData): FlowTable;
 |  --- | --- | --- |
 |  data | [FlowTableData](./scribing.flowtabledata.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowTable](./scribing.flowtable.md)
 

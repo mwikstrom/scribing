@@ -6,7 +6,7 @@
 
 URL for the uploaded content
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 url: string;

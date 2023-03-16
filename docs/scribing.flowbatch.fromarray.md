@@ -6,7 +6,7 @@
 
 Gets a single operation that represents the specified array of operations, or `null` when the specified array is empty.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static fromArray(operations: (FlowOperation | null)[]): FlowOperation | null;
@@ -18,7 +18,7 @@ static fromArray(operations: (FlowOperation | null)[]): FlowOperation | null;
 |  --- | --- | --- |
 |  operations | ([FlowOperation](./scribing.flowoperation.md) \| null)\[\] |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

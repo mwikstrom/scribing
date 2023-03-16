@@ -6,7 +6,7 @@
 
 Gets the size of the range, which is the absolute value of its distance
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get size(): number;

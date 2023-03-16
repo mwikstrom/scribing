@@ -6,7 +6,7 @@
 
 Unapplies text style to a range
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 unformatText(range: FlowRange, style: TextStyle): FlowContent;
@@ -19,7 +19,7 @@ unformatText(range: FlowRange, style: TextStyle): FlowContent;
 |  range | [FlowRange](./scribing.flowrange.md) | The range to format |
 |  style | [TextStyle](./scribing.textstyle.md) | The style to unapply |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

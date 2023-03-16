@@ -6,7 +6,7 @@
 
 Properties of a text run
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface TextRunProps 
@@ -14,8 +14,8 @@ export interface TextRunProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [style](./scribing.textrunprops.style.md) | [TextStyle](./scribing.textstyle.md) | The text style |
-|  [text](./scribing.textrunprops.text.md) | string | The text characters |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [style](./scribing.textrunprops.style.md) |  | [TextStyle](./scribing.textstyle.md) | The text style |
+|  [text](./scribing.textrunprops.text.md) |  | string | The text characters |
 

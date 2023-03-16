@@ -6,7 +6,7 @@
 
 Gets a new cursor that represents the position at the specified distance from the current position
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 move(distance: number): FlowCursor;
@@ -18,7 +18,7 @@ move(distance: number): FlowCursor;
 |  --- | --- | --- |
 |  distance | number | The distance to move |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowCursor](./scribing.flowcursor.md)
 

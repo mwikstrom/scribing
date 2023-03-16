@@ -6,7 +6,7 @@
 
 Read-only array that contains all reading direction values
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 READING_DIRECTIONS: readonly ["ltr", "rtl"]

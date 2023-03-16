@@ -6,7 +6,7 @@
 
 Data of [EndMarkup](./scribing.endmarkup.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface EndMarkupData 
@@ -14,8 +14,8 @@ export interface EndMarkupData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [end\_markup](./scribing.endmarkupdata.end_markup.md) | string |  |
-|  [style?](./scribing.endmarkupdata.style.md) | [TextStyle](./scribing.textstyle.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [end\_markup](./scribing.endmarkupdata.end_markup.md) |  | string |  |
+|  [style?](./scribing.endmarkupdata.style.md) |  | [TextStyle](./scribing.textstyle.md) | _(Optional)_ |
 

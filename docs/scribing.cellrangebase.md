@@ -6,7 +6,7 @@
 
 The base record class for [CellRange](./scribing.cellrange.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 CellRangeBase: import("paratype").RecordConstructor<CellRangeProps, Object, string>

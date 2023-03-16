@@ -6,7 +6,7 @@
 
 Gets a [FlowBatch](./scribing.flowbatch.md) from the specified data
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static fromData(data: FlowBatchData): FlowBatch;
@@ -18,7 +18,7 @@ static fromData(data: FlowBatchData): FlowBatch;
 |  --- | --- | --- |
 |  data | [FlowBatchData](./scribing.flowbatchdata.md) | The data |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowBatch](./scribing.flowbatch.md)
 

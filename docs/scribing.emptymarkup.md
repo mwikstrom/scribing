@@ -6,15 +6,15 @@
 
 Represents a line break.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class EmptyMarkup extends EmptyMarkupBase implements EmptyMarkupProps 
 ```
-<b>Extends:</b> EmptyMarkupBase
+**Extends:** EmptyMarkupBase
 
-<b>Implements:</b> [EmptyMarkupProps](./scribing.emptymarkupprops.md)
+**Implements:** [EmptyMarkupProps](./scribing.emptymarkupprops.md)
 
 ## Constructors
 
@@ -26,8 +26,8 @@ export declare class EmptyMarkup extends EmptyMarkupBase implements EmptyMarkupP
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.emptymarkup.classtype.md) | <code>static</code> | import("paratype").Type&lt;[EmptyMarkup](./scribing.emptymarkup.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [size](./scribing.emptymarkup.size.md) |  | (not declared) | Size of the current node. |
+|  [classType](./scribing.emptymarkup.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[EmptyMarkup](./scribing.emptymarkup.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [size](./scribing.emptymarkup.size.md) | <code>readonly</code> | (not declared) | Size of the current node. |
 
 ## Methods
 

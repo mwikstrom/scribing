@@ -4,7 +4,7 @@
 
 ## FlowBoxSelectionProps.position property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 position: number;

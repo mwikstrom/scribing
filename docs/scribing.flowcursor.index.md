@@ -6,7 +6,7 @@
 
 Gets the current node index
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get index(): number;

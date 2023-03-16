@@ -6,7 +6,7 @@
 
 The content that is selected
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 target?: FlowContent;

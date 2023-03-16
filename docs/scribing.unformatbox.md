@@ -6,21 +6,21 @@
 
 Represents an operation that unapplies a box style to a range of flow content.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class UnformatBox extends UnformatBoxBase implements Readonly<UnformatBoxProps> 
 ```
-<b>Extends:</b> UnformatBoxBase
+**Extends:** UnformatBoxBase
 
-<b>Implements:</b> Readonly&lt;[UnformatBoxProps](./scribing.unformatboxprops.md)
+**Implements:** Readonly&lt;[UnformatBoxProps](./scribing.unformatboxprops.md)<!-- -->&gt;
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.unformatbox.classtype.md) | <code>static</code> | import("paratype").Type&lt;[UnformatBox](./scribing.unformatbox.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.unformatbox.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[UnformatBox](./scribing.unformatbox.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

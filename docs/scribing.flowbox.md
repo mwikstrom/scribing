@@ -6,20 +6,20 @@
 
 Represents a flow box
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class FlowBox extends FlowBoxBase 
 ```
-<b>Extends:</b> FlowBoxBase
+**Extends:** FlowBoxBase
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.flowbox.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FlowBox](./scribing.flowbox.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [size](./scribing.flowbox.size.md) |  | (not declared) | Size of the current node. |
+|  [classType](./scribing.flowbox.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[FlowBox](./scribing.flowbox.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [size](./scribing.flowbox.size.md) | <code>readonly</code> | (not declared) | Size of the current node. |
 
 ## Methods
 

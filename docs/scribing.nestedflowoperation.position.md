@@ -6,7 +6,7 @@
 
 Position of the nested operation
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract position: number;

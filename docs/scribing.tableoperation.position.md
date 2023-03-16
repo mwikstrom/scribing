@@ -6,7 +6,7 @@
 
 Position of the table node
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract readonly position: number;

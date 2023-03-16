@@ -6,21 +6,21 @@
 
 Represents an operation that sets a markup tag
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class SetMarkupAttr extends SetMarkupAttrBase implements SetMarkupAttrProps 
 ```
-<b>Extends:</b> SetMarkupAttrBase
+**Extends:** SetMarkupAttrBase
 
-<b>Implements:</b> [SetMarkupAttrProps](./scribing.setmarkupattrprops.md)
+**Implements:** [SetMarkupAttrProps](./scribing.setmarkupattrprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.setmarkupattr.classtype.md) | <code>static</code> | import("paratype").Type&lt;[SetMarkupAttr](./scribing.setmarkupattr.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.setmarkupattr.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[SetMarkupAttr](./scribing.setmarkupattr.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

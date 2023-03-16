@@ -6,21 +6,21 @@
 
 Represents an operation that unapplies a table style
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class UnformatTable extends UnformatTableBase implements UnformatTableProps 
 ```
-<b>Extends:</b> UnformatTableBase
+**Extends:** UnformatTableBase
 
-<b>Implements:</b> [UnformatTableProps](./scribing.unformattableprops.md)
+**Implements:** [UnformatTableProps](./scribing.unformattableprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.unformattable.classtype.md) | <code>static</code> | import("paratype").Type&lt;[UnformatTable](./scribing.unformattable.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.unformattable.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[UnformatTable](./scribing.unformattable.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 
@@ -30,10 +30,10 @@ export declare class UnformatTable extends UnformatTableBase implements Unformat
 |  [afterInsertRow()](./scribing.unformattable.afterinsertrow.md) |  |  |
 |  [afterRemoveColumn()](./scribing.unformattable.afterremovecolumn.md) |  |  |
 |  [afterRemoveRow()](./scribing.unformattable.afterremoverow.md) |  |  |
-|  [applyToCellRange(range)](./scribing.unformattable.applytocellrange.md) |  |  |
-|  [applyToTable(table)](./scribing.unformattable.applytotable.md) |  |  |
+|  [applyToCellRange(range)](./scribing.unformattable.applytocellrange.md) | <code>protected</code> |  |
+|  [applyToTable(table)](./scribing.unformattable.applytotable.md) | <code>protected</code> |  |
 |  [fromData(input)](./scribing.unformattable.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
-|  [invertForTable()](./scribing.unformattable.invertfortable.md) |  |  |
-|  [mergeNextInSameTable(next)](./scribing.unformattable.mergenextinsametable.md) |  |  |
-|  [transformInSameTable(other)](./scribing.unformattable.transforminsametable.md) |  |  |
+|  [invertForTable()](./scribing.unformattable.invertfortable.md) | <code>protected</code> |  |
+|  [mergeNextInSameTable(next)](./scribing.unformattable.mergenextinsametable.md) | <code>protected</code> |  |
+|  [transformInSameTable(other)](./scribing.unformattable.transforminsametable.md) | <code>protected</code> |  |
 

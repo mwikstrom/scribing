@@ -6,7 +6,7 @@
 
 Read-only array that contains unordered list marker styles
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 UNORDERED_LIST_MARKER_KINDS: readonly ["unordered", "disc", "circle", "square", "dash"]

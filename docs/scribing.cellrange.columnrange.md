@@ -4,7 +4,7 @@
 
 ## CellRange.columnRange property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get columnRange(): FlowRange;

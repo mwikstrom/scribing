@@ -6,7 +6,7 @@
 
 Gets an instance of the current class from the specified data
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static fromData(data: RemoveRangeData): RemoveRange;
@@ -18,7 +18,7 @@ static fromData(data: RemoveRangeData): RemoveRange;
 |  --- | --- | --- |
 |  data | [RemoveRangeData](./scribing.removerangedata.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [RemoveRange](./scribing.removerange.md)
 

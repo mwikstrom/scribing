@@ -6,7 +6,7 @@
 
 The base record class for [DynamicText](./scribing.dynamictext.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 DynamicTextBase: import("paratype").RecordConstructor<DynamicTextProps, InlineNode, DynamicTextData>

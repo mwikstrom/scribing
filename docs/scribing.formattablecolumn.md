@@ -6,21 +6,21 @@
 
 Represents an operation that applies a table column style
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class FormatTableColumn extends FormatTableColumnBase implements FormatTableColumnProps 
 ```
-<b>Extends:</b> FormatTableColumnBase
+**Extends:** FormatTableColumnBase
 
-<b>Implements:</b> [FormatTableColumnProps](./scribing.formattablecolumnprops.md)
+**Implements:** [FormatTableColumnProps](./scribing.formattablecolumnprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.formattablecolumn.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FormatTableColumn](./scribing.formattablecolumn.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.formattablecolumn.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[FormatTableColumn](./scribing.formattablecolumn.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 
@@ -30,10 +30,10 @@ export declare class FormatTableColumn extends FormatTableColumnBase implements 
 |  [afterInsertRow()](./scribing.formattablecolumn.afterinsertrow.md) |  |  |
 |  [afterRemoveColumn(index, count)](./scribing.formattablecolumn.afterremovecolumn.md) |  |  |
 |  [afterRemoveRow()](./scribing.formattablecolumn.afterremoverow.md) |  |  |
-|  [applyToCellRange(range)](./scribing.formattablecolumn.applytocellrange.md) |  |  |
-|  [applyToTable(table)](./scribing.formattablecolumn.applytotable.md) |  |  |
+|  [applyToCellRange(range)](./scribing.formattablecolumn.applytocellrange.md) | <code>protected</code> |  |
+|  [applyToTable(table)](./scribing.formattablecolumn.applytotable.md) | <code>protected</code> |  |
 |  [fromData(input)](./scribing.formattablecolumn.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
-|  [invertForTable()](./scribing.formattablecolumn.invertfortable.md) |  |  |
-|  [mergeNextInSameTable(next)](./scribing.formattablecolumn.mergenextinsametable.md) |  |  |
-|  [transformInSameTable(other)](./scribing.formattablecolumn.transforminsametable.md) |  |  |
+|  [invertForTable()](./scribing.formattablecolumn.invertfortable.md) | <code>protected</code> |  |
+|  [mergeNextInSameTable(next)](./scribing.formattablecolumn.mergenextinsametable.md) | <code>protected</code> |  |
+|  [transformInSameTable(other)](./scribing.formattablecolumn.transforminsametable.md) | <code>protected</code> |  |
 

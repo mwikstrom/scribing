@@ -6,7 +6,7 @@
 
 Properties of [FlowTableCell](./scribing.flowtablecell.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FlowTableCellProps 
@@ -14,9 +14,9 @@ export interface FlowTableCellProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [colSpan](./scribing.flowtablecellprops.colspan.md) | number |  |
-|  [content](./scribing.flowtablecellprops.content.md) | [FlowContent](./scribing.flowcontent.md) |  |
-|  [rowSpan](./scribing.flowtablecellprops.rowspan.md) | number |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [colSpan](./scribing.flowtablecellprops.colspan.md) |  | number |  |
+|  [content](./scribing.flowtablecellprops.content.md) |  | [FlowContent](./scribing.flowcontent.md) |  |
+|  [rowSpan](./scribing.flowtablecellprops.rowspan.md) |  | number |  |
 

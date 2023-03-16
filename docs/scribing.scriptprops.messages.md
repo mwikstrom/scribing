@@ -6,7 +6,7 @@
 
 Localization messages
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 messages: Map<string, string>;

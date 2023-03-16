@@ -4,7 +4,7 @@
 
 ## FlowNodeVisitor.visitTable() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitTable(node: FlowTable): FlowNode;
@@ -16,7 +16,7 @@ visitTable(node: FlowTable): FlowNode;
 |  --- | --- | --- |
 |  node | [FlowTable](./scribing.flowtable.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowNode](./scribing.flownode.md)
 

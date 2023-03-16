@@ -4,12 +4,12 @@
 
 ## FormatTable.invertForTable() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 protected invertForTable(): FlowOperation | null;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

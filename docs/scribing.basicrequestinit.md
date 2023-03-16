@@ -5,7 +5,7 @@
 ## BasicRequestInit interface
 
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface BasicRequestInit 
@@ -13,9 +13,9 @@ export interface BasicRequestInit
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./scribing.basicrequestinit.body.md) | string |  |
-|  [headers?](./scribing.basicrequestinit.headers.md) | Record&lt;string, string&gt; | <i>(Optional)</i> |
-|  [method?](./scribing.basicrequestinit.method.md) | string | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./scribing.basicrequestinit.body.md) |  | string |  |
+|  [headers?](./scribing.basicrequestinit.headers.md) |  | Record&lt;string, string&gt; | _(Optional)_ |
+|  [method?](./scribing.basicrequestinit.method.md) |  | string | _(Optional)_ |
 

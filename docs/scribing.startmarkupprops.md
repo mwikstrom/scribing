@@ -6,7 +6,7 @@
 
 Properties of [StartMarkup](./scribing.startmarkup.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface StartMarkupProps 
@@ -14,9 +14,9 @@ export interface StartMarkupProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [attr](./scribing.startmarkupprops.attr.md) | Readonly&lt;Map&lt;string, AttrValue&gt;&gt; |  |
-|  [style](./scribing.startmarkupprops.style.md) | [TextStyle](./scribing.textstyle.md) |  |
-|  [tag](./scribing.startmarkupprops.tag.md) | string |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [attr](./scribing.startmarkupprops.attr.md) |  | Readonly&lt;Map&lt;string, AttrValue&gt;&gt; |  |
+|  [style](./scribing.startmarkupprops.style.md) |  | [TextStyle](./scribing.textstyle.md) |  |
+|  [tag](./scribing.startmarkupprops.tag.md) |  | string |  |
 

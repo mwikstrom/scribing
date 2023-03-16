@@ -6,12 +6,12 @@
 
 Applies the specified text style on the current node and returns the updated node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 formatText(): this;
 ```
-<b>Returns:</b>
+**Returns:**
 
 this
 

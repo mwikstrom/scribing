@@ -4,7 +4,7 @@
 
 ## MessageFormatArgumentInfo.choice property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 choice: boolean;

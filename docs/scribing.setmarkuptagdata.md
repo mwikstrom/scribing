@@ -6,7 +6,7 @@
 
 Data of [SetMarkupTag](./scribing.setmarkuptag.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface SetMarkupTagData 
@@ -14,9 +14,9 @@ export interface SetMarkupTagData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [at](./scribing.setmarkuptagdata.at.md) | number | The markup position |
-|  [set](./scribing.setmarkuptagdata.set.md) | "markup\_tag" | Data discriminator |
-|  [value](./scribing.setmarkuptagdata.value.md) | string | The tag to assign |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [at](./scribing.setmarkuptagdata.at.md) |  | number | The markup position |
+|  [set](./scribing.setmarkuptagdata.set.md) |  | "markup\_tag" | Data discriminator |
+|  [value](./scribing.setmarkuptagdata.value.md) |  | string | The tag to assign |
 

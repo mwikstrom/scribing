@@ -6,7 +6,7 @@
 
 The text's foreground color
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 color?: FlowColor;

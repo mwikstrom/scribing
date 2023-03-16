@@ -6,7 +6,7 @@
 
 Properties of [EmptyMarkup](./scribing.emptymarkup.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface EmptyMarkupProps 
@@ -14,9 +14,9 @@ export interface EmptyMarkupProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [attr](./scribing.emptymarkupprops.attr.md) | Readonly&lt;Map&lt;string, AttrValue&gt;&gt; |  |
-|  [style](./scribing.emptymarkupprops.style.md) | [TextStyle](./scribing.textstyle.md) |  |
-|  [tag](./scribing.emptymarkupprops.tag.md) | string |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [attr](./scribing.emptymarkupprops.attr.md) |  | Readonly&lt;Map&lt;string, AttrValue&gt;&gt; |  |
+|  [style](./scribing.emptymarkupprops.style.md) |  | [TextStyle](./scribing.textstyle.md) |  |
+|  [tag](./scribing.emptymarkupprops.tag.md) |  | string |  |
 

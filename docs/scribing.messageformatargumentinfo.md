@@ -5,7 +5,7 @@
 ## MessageFormatArgumentInfo interface
 
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface MessageFormatArgumentInfo 
@@ -13,11 +13,11 @@ export interface MessageFormatArgumentInfo
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [choice](./scribing.messageformatargumentinfo.choice.md) | boolean |  |
-|  [free](./scribing.messageformatargumentinfo.free.md) | boolean |  |
-|  [key](./scribing.messageformatargumentinfo.key.md) | string |  |
-|  [numeric](./scribing.messageformatargumentinfo.numeric.md) | boolean |  |
-|  [options](./scribing.messageformatargumentinfo.options.md) | string\[\] |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [choice](./scribing.messageformatargumentinfo.choice.md) |  | boolean |  |
+|  [free](./scribing.messageformatargumentinfo.free.md) |  | boolean |  |
+|  [key](./scribing.messageformatargumentinfo.key.md) |  | string |  |
+|  [numeric](./scribing.messageformatargumentinfo.numeric.md) |  | boolean |  |
+|  [options](./scribing.messageformatargumentinfo.options.md) |  | string\[\] |  |
 

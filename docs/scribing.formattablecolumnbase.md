@@ -6,7 +6,7 @@
 
 The base record class for [FormatTableColumn](./scribing.formattablecolumn.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FormatTableColumnBase: import("paratype").RecordConstructor<FormatTableColumnProps, TableOperation, FormatTableColumnData>

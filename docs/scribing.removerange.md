@@ -6,21 +6,21 @@
 
 Represents an operation that removes a range of flow.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class RemoveRange extends RemoveRangeBase implements Readonly<RemoveRangeProps> 
 ```
-<b>Extends:</b> RemoveRangeBase
+**Extends:** RemoveRangeBase
 
-<b>Implements:</b> Readonly&lt;[RemoveRangeProps](./scribing.removerangeprops.md)
+**Implements:** Readonly&lt;[RemoveRangeProps](./scribing.removerangeprops.md)<!-- -->&gt;
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.removerange.classtype.md) | <code>static</code> | import("paratype").Type&lt;[RemoveRange](./scribing.removerange.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.removerange.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[RemoveRange](./scribing.removerange.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

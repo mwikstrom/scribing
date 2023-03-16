@@ -6,18 +6,18 @@
 
 Represents an inline node
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare abstract class InlineNode extends FlowNode 
 ```
-<b>Extends:</b> [FlowNode](./scribing.flownode.md)
+**Extends:** [FlowNode](./scribing.flownode.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [style](./scribing.inlinenode.style.md) |  | [TextStyle](./scribing.textstyle.md) | The text style of the current node |
+|  [style](./scribing.inlinenode.style.md) | <p><code>abstract</code></p><p><code>readonly</code></p> | [TextStyle](./scribing.textstyle.md) | The text style of the current node |
 
 ## Methods
 
@@ -29,7 +29,7 @@ export declare abstract class InlineNode extends FlowNode
 |  [formatText(style)](./scribing.inlinenode.formattext.md) |  | Applies the specified text style on the current node and returns the updated node. |
 |  [getUniformParagraphStyle()](./scribing.inlinenode.getuniformparagraphstyle.md) |  | Gets a uniform paragraph style from the current node |
 |  [getUniformTextStyle(theme)](./scribing.inlinenode.getuniformtextstyle.md) |  | Gets a uniform text style from the current node |
-|  [set(key, value)](./scribing.inlinenode.set.md) |  | Returns a copy of the current object with the specified property merged in |
+|  [set(key, value)](./scribing.inlinenode.set.md) | <code>abstract</code> | Returns a copy of the current object with the specified property merged in |
 |  [unformatAmbient(theme)](./scribing.inlinenode.unformatambient.md) |  | Unapplies the ambient style of the specified theme from the current node and returns the updated node. |
 |  [unformatBox()](./scribing.inlinenode.unformatbox.md) |  | Unapplies the specified box style from the current node and returns the updated node. |
 |  [unformatParagraph()](./scribing.inlinenode.unformatparagraph.md) |  | Unapplies the specified paragraph style from the current node and returns the updated node. |

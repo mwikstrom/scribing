@@ -6,7 +6,7 @@
 
 Provides a theme for paragraph content
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare abstract class ParagraphTheme 
@@ -16,9 +16,9 @@ export declare abstract class ParagraphTheme
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [getAmbientParagraphStyle()](./scribing.paragraphtheme.getambientparagraphstyle.md) |  | Gets the ambient paragraph style |
-|  [getAmbientTextStyle()](./scribing.paragraphtheme.getambienttextstyle.md) |  | Gets the ambient text style for this paragraph theme. |
-|  [getFlowTheme()](./scribing.paragraphtheme.getflowtheme.md) |  | Gets the flow theme |
-|  [getLinkStyle()](./scribing.paragraphtheme.getlinkstyle.md) |  | Gets the text style for links in this paragraph theme. |
-|  [getNextVariant()](./scribing.paragraphtheme.getnextvariant.md) |  | Gets the default variant of the next paragraph |
+|  [getAmbientParagraphStyle()](./scribing.paragraphtheme.getambientparagraphstyle.md) | <code>abstract</code> | Gets the ambient paragraph style |
+|  [getAmbientTextStyle()](./scribing.paragraphtheme.getambienttextstyle.md) | <code>abstract</code> | Gets the ambient text style for this paragraph theme. |
+|  [getFlowTheme()](./scribing.paragraphtheme.getflowtheme.md) | <code>abstract</code> | Gets the flow theme |
+|  [getLinkStyle()](./scribing.paragraphtheme.getlinkstyle.md) | <code>abstract</code> | Gets the text style for links in this paragraph theme. |
+|  [getNextVariant()](./scribing.paragraphtheme.getnextvariant.md) | <code>abstract</code> | Gets the default variant of the next paragraph |
 

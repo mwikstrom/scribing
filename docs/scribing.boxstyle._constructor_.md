@@ -6,7 +6,7 @@
 
 Constructs a new instance of the `BoxStyle` class
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 constructor(props?: BoxStyleProps);
@@ -16,5 +16,5 @@ constructor(props?: BoxStyleProps);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  props | [BoxStyleProps](./scribing.boxstyleprops.md) | <i>(Optional)</i> |
+|  props | [BoxStyleProps](./scribing.boxstyleprops.md) | _(Optional)_ |
 

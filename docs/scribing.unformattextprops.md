@@ -6,7 +6,7 @@
 
 Properties of unformat text operations
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface UnformatTextProps 
@@ -14,8 +14,8 @@ export interface UnformatTextProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [range](./scribing.unformattextprops.range.md) | [FlowRange](./scribing.flowrange.md) | The range that shall be unformatted |
-|  [style](./scribing.unformattextprops.style.md) | [TextStyle](./scribing.textstyle.md) | The style to unformat |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [range](./scribing.unformattextprops.range.md) |  | [FlowRange](./scribing.flowrange.md) | The range that shall be unformatted |
+|  [style](./scribing.unformattextprops.style.md) |  | [TextStyle](./scribing.textstyle.md) | The style to unformat |
 

@@ -6,7 +6,7 @@
 
 Gets a theme for the specified box style
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract getBoxTheme(style: BoxStyle): FlowTheme;
@@ -18,7 +18,7 @@ abstract getBoxTheme(style: BoxStyle): FlowTheme;
 |  --- | --- | --- |
 |  style | [BoxStyle](./scribing.boxstyle.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowTheme](./scribing.flowtheme.md)
 

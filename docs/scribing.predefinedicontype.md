@@ -6,7 +6,7 @@
 
 The run-time type that matches predefined icon types
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 PredefinedIconType: Type<PredefinedIcon>

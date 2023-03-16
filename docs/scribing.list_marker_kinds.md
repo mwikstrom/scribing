@@ -6,7 +6,7 @@
 
 Read-only array that contains all list marker styles
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 LIST_MARKER_KINDS: readonly ["ordered", "decimal", "lower-alpha", "upper-alpha", "lower-roman", "upper-roman", "unordered", "disc", "circle", "square", "dash"]

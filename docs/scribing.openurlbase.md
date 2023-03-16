@@ -6,7 +6,7 @@
 
 The base record class for [OpenUrl](./scribing.openurl.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 OpenUrlBase: import("paratype").RecordConstructor<OpenUrlProps, Interaction, string>

@@ -4,7 +4,7 @@
 
 ## CellRange.afterRemoveRow() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 afterRemoveRow(index: number, count: number): CellRange | null;
@@ -17,7 +17,7 @@ afterRemoveRow(index: number, count: number): CellRange | null;
 |  index | number |  |
 |  count | number |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [CellRange](./scribing.cellrange.md) \| null
 

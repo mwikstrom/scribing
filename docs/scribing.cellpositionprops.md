@@ -6,7 +6,7 @@
 
 Non-computed properties of a [CellPosition](./scribing.cellposition.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface CellPositionProps 
@@ -14,8 +14,8 @@ export interface CellPositionProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [column](./scribing.cellpositionprops.column.md) | number | The zero-based column index |
-|  [row](./scribing.cellpositionprops.row.md) | number | The zero-based row index |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [column](./scribing.cellpositionprops.column.md) |  | number | The zero-based column index |
+|  [row](./scribing.cellpositionprops.row.md) |  | number | The zero-based row index |
 

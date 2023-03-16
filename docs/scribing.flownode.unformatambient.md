@@ -6,7 +6,7 @@
 
 Unapplies the ambient style of the specified theme from the current node and returns the updated node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract unformatAmbient(theme: ParagraphTheme): FlowNode;
@@ -18,7 +18,7 @@ abstract unformatAmbient(theme: ParagraphTheme): FlowNode;
 |  --- | --- | --- |
 |  theme | [ParagraphTheme](./scribing.paragraphtheme.md) | The theme that provides ambient styling |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowNode](./scribing.flownode.md)
 

@@ -6,7 +6,7 @@
 
 Creates an operation that applies the specified box style on the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract formatBox(style: BoxStyle, options?: TargetOptions): FlowOperation | null;
@@ -17,9 +17,9 @@ abstract formatBox(style: BoxStyle, options?: TargetOptions): FlowOperation | nu
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  style | [BoxStyle](./scribing.boxstyle.md) | The style to apply |
-|  options | [TargetOptions](./scribing.targetoptions.md) | <i>(Optional)</i> Options that provide operation behavior |
+|  options | [TargetOptions](./scribing.targetoptions.md) | _(Optional)_ Options that provide operation behavior |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

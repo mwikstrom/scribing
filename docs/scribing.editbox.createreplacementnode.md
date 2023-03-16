@@ -6,7 +6,7 @@
 
 Creates a replacement node
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 createReplacementNode(content: FlowContent, before: FlowNode): FlowNode;
@@ -19,7 +19,7 @@ createReplacementNode(content: FlowContent, before: FlowNode): FlowNode;
 |  content | [FlowContent](./scribing.flowcontent.md) | The new content of the node that was produced by this operation |
 |  before | [FlowNode](./scribing.flownode.md) | The node as it were before this operation was applied |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowNode](./scribing.flownode.md)
 

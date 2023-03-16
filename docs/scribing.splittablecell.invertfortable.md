@@ -4,7 +4,7 @@
 
 ## SplitTableCell.invertForTable() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 protected invertForTable(table: FlowTable): FlowOperation | null;
@@ -16,7 +16,7 @@ protected invertForTable(table: FlowTable): FlowOperation | null;
 |  --- | --- | --- |
 |  table | [FlowTable](./scribing.flowtable.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

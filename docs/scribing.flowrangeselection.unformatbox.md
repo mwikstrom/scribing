@@ -6,7 +6,7 @@
 
 Creates an operation that unapplies the specified box style on the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
@@ -19,7 +19,7 @@ unformatBox(style: BoxStyle): FlowOperation | null;
 |  --- | --- | --- |
 |  style | [BoxStyle](./scribing.boxstyle.md) | The style to unapply |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

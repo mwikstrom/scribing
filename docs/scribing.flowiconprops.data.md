@@ -6,7 +6,7 @@
 
 The icon path data
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 data: string;

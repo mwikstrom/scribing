@@ -6,8 +6,8 @@
 
 Data for a [CellRange](./scribing.cellrange.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type CellRangeData = string;
+export type CellRangeData = string;
 ```

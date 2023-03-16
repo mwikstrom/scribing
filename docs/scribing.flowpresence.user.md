@@ -4,7 +4,7 @@
 
 ## FlowPresence.user property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 user: string;

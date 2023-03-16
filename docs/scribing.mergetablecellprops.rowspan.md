@@ -6,7 +6,7 @@
 
 The number of rows to span
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 rowSpan: number;

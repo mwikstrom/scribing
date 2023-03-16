@@ -6,7 +6,7 @@
 
 The base record class for [FlowImage](./scribing.flowimage.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FlowImageBase: import("paratype").RecordConstructor<FlowImageProps, InlineNode, FlowImageData>

@@ -6,7 +6,7 @@
 
 Determines whether the specified position is within the current range
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 contains(position: number): boolean;
@@ -18,7 +18,7 @@ contains(position: number): boolean;
 |  --- | --- | --- |
 |  position | number |  |
 
-<b>Returns:</b>
+**Returns:**
 
 boolean
 

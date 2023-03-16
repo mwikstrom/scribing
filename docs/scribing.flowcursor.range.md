@@ -6,7 +6,7 @@
 
 Gets a iterable sequence of nodes within the specified distance from the current position
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 range(distance: number): Iterable<FlowNode>;
@@ -18,7 +18,7 @@ range(distance: number): Iterable<FlowNode>;
 |  --- | --- | --- |
 |  distance | number | The distance of the range to get |
 
-<b>Returns:</b>
+**Returns:**
 
 Iterable&lt;[FlowNode](./scribing.flownode.md)<!-- -->&gt;
 

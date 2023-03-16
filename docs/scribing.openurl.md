@@ -6,19 +6,19 @@
 
 An interaction that opens a URL
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class OpenUrl extends OpenUrlBase 
 ```
-<b>Extends:</b> OpenUrlBase
+**Extends:** OpenUrlBase
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.openurl.classtype.md) | <code>static</code> | Type&lt;[OpenUrl](./scribing.openurl.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.openurl.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | Type&lt;[OpenUrl](./scribing.openurl.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

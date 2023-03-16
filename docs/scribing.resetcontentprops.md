@@ -6,7 +6,7 @@
 
 Properties of [ResetContent](./scribing.resetcontent.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface ResetContentProps 
@@ -14,7 +14,7 @@ export interface ResetContentProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [content](./scribing.resetcontentprops.content.md) | [FlowContent](./scribing.flowcontent.md) | The new content |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [content](./scribing.resetcontentprops.content.md) |  | [FlowContent](./scribing.flowcontent.md) | The new content |
 

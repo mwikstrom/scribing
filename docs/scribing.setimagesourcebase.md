@@ -6,7 +6,7 @@
 
 The base record class for [SetImageSource](./scribing.setimagesource.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 SetImageSourceBase: import("paratype").RecordConstructor<SetImageSourceProps, FlowOperation, SetImageSourceData>

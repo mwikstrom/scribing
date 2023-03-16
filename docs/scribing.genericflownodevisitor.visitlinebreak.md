@@ -4,7 +4,7 @@
 
 ## GenericFlowNodeVisitor.visitLineBreak() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitLineBreak(node: LineBreak): T;
@@ -16,7 +16,7 @@ visitLineBreak(node: LineBreak): T;
 |  --- | --- | --- |
 |  node | [LineBreak](./scribing.linebreak.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 T
 

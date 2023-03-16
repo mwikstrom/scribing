@@ -6,7 +6,7 @@
 
 The style variant of the box.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 variant?: BoxVariant;

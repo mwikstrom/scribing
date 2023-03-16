@@ -4,7 +4,7 @@
 
 ## DefaultFlowTheme.fromData() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static fromData(data: DefaultFlowThemeData): DefaultFlowTheme;
@@ -16,7 +16,7 @@ static fromData(data: DefaultFlowThemeData): DefaultFlowTheme;
 |  --- | --- | --- |
 |  data | [DefaultFlowThemeData](./scribing.defaultflowthemedata.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [DefaultFlowTheme](./scribing.defaultflowtheme.md)
 

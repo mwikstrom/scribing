@@ -6,7 +6,7 @@
 
 The base record class for [StartMarkup](./scribing.startmarkup.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 StartMarkupBase: import("paratype").RecordConstructor<StartMarkupProps, InlineNode, StartMarkupData>

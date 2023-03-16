@@ -4,7 +4,7 @@
 
 ## AsyncFlowNodeVisitor.visitNode() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitNode(node: FlowNode): Promise<FlowNode>;
@@ -16,7 +16,7 @@ visitNode(node: FlowNode): Promise<FlowNode>;
 |  --- | --- | --- |
 |  node | [FlowNode](./scribing.flownode.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;[FlowNode](./scribing.flownode.md)<!-- -->&gt;
 

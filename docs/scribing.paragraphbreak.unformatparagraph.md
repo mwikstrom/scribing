@@ -6,7 +6,7 @@
 
 Unapplies the specified paragraph style from the current node and returns the updated node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 unformatParagraph(style: ParagraphStyle): this;
@@ -18,7 +18,7 @@ unformatParagraph(style: ParagraphStyle): this;
 |  --- | --- | --- |
 |  style | [ParagraphStyle](./scribing.paragraphstyle.md) | The paragraph style to unapply |
 
-<b>Returns:</b>
+**Returns:**
 
 this
 

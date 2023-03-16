@@ -6,7 +6,7 @@
 
 The text's vertical position.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 baseline?: BaselineOffset;

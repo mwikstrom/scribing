@@ -6,7 +6,7 @@
 
 The base record class for [FlowTable](./scribing.flowtable.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FlowTableBase: import("paratype").RecordConstructor<FlowTableProps, FlowNode, FlowTableData>

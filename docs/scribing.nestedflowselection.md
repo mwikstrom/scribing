@@ -6,19 +6,19 @@
 
 A nested selection at a specific flow position
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare abstract class NestedFlowSelection extends FlowSelection 
 ```
-<b>Extends:</b> [FlowSelection](./scribing.flowselection.md)
+**Extends:** [FlowSelection](./scribing.flowselection.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [isCollapsed](./scribing.nestedflowselection.iscollapsed.md) |  | boolean | Determines whether the current selection is collapsed |
-|  [position](./scribing.nestedflowselection.position.md) |  | number | Position of the nested selection |
+|  [isCollapsed](./scribing.nestedflowselection.iscollapsed.md) | <code>readonly</code> | boolean | Determines whether the current selection is collapsed |
+|  [position](./scribing.nestedflowselection.position.md) | <code>abstract</code> | number | Position of the nested selection |
 
 ## Methods
 
@@ -32,13 +32,13 @@ export declare abstract class NestedFlowSelection extends FlowSelection
 |  [formatTable(style, options)](./scribing.nestedflowselection.formattable.md) |  | Creates an operation that applies the specified table style on the current selection |
 |  [formatTableColumn(style, options)](./scribing.nestedflowselection.formattablecolumn.md) |  | Creates an operation that applies the specified table column style on the current selection |
 |  [formatText(style, options)](./scribing.nestedflowselection.formattext.md) |  | Creates an operation that applies the specified text style on the current selection |
-|  [getInnerContent(outer)](./scribing.nestedflowselection.getinnercontent.md) |  | Gets the inner content |
-|  [getInnerContentFromNode(node)](./scribing.nestedflowselection.getinnercontentfromnode.md) |  | Gets the inner content |
-|  [getInnerSelection()](./scribing.nestedflowselection.getinnerselection.md) |  | Gets the inner selection |
-|  [getInnerTheme(outerContent, outerTheme)](./scribing.nestedflowselection.getinnertheme.md) |  | Gets the inner theme |
-|  [getInnerThemeFromNode(node, outer)](./scribing.nestedflowselection.getinnerthemefromnode.md) |  | Gets the inner theme |
-|  [getOuterOperation(inner)](./scribing.nestedflowselection.getouteroperation.md) |  | Wraps the specified operation so that it applies the outer selection |
-|  [getSelectedNode(outer)](./scribing.nestedflowselection.getselectednode.md) |  | Gets the selected (outer) node |
+|  [getInnerContent(outer)](./scribing.nestedflowselection.getinnercontent.md) | <code>protected</code> | Gets the inner content |
+|  [getInnerContentFromNode(node)](./scribing.nestedflowselection.getinnercontentfromnode.md) | <p><code>protected</code></p><p><code>abstract</code></p> | Gets the inner content |
+|  [getInnerSelection()](./scribing.nestedflowselection.getinnerselection.md) | <p><code>protected</code></p><p><code>abstract</code></p> | Gets the inner selection |
+|  [getInnerTheme(outerContent, outerTheme)](./scribing.nestedflowselection.getinnertheme.md) | <code>protected</code> | Gets the inner theme |
+|  [getInnerThemeFromNode(node, outer)](./scribing.nestedflowselection.getinnerthemefromnode.md) | <p><code>protected</code></p><p><code>abstract</code></p> | Gets the inner theme |
+|  [getOuterOperation(inner)](./scribing.nestedflowselection.getouteroperation.md) | <p><code>protected</code></p><p><code>abstract</code></p> | Wraps the specified operation so that it applies the outer selection |
+|  [getSelectedNode(outer)](./scribing.nestedflowselection.getselectednode.md) | <code>protected</code> | Gets the selected (outer) node |
 |  [getUniformBoxStyle(content, theme, diff)](./scribing.nestedflowselection.getuniformboxstyle.md) |  | Gets the uniform box style of the current selection |
 |  [getUniformParagraphStyle(content, theme, diff)](./scribing.nestedflowselection.getuniformparagraphstyle.md) |  | Gets the uniform paragraph style of the current selection |
 |  [getUniformTextStyle(content, theme, diff)](./scribing.nestedflowselection.getuniformtextstyle.md) |  | Gets the uniform text style of the current selection |
@@ -52,12 +52,12 @@ export declare abstract class NestedFlowSelection extends FlowSelection
 |  [remove(options)](./scribing.nestedflowselection.remove.md) |  | Creates an operation that removes the content of the current selection |
 |  [removeTableColumn(content)](./scribing.nestedflowselection.removetablecolumn.md) |  | Creates an operation that removes the selected table column |
 |  [removeTableRow(content)](./scribing.nestedflowselection.removetablerow.md) |  | Creates an operation that removes the selected table row |
-|  [set(key, value)](./scribing.nestedflowselection.set.md) |  | Returns a copy of the current object with the specified property merged in |
+|  [set(key, value)](./scribing.nestedflowselection.set.md) | <code>abstract</code> | Returns a copy of the current object with the specified property merged in |
 |  [setDynamicTextExpression(content, expression)](./scribing.nestedflowselection.setdynamictextexpression.md) |  | Creates an operation that sets the specified dynamic text expression in the current selection |
 |  [setIcon(content, data)](./scribing.nestedflowselection.seticon.md) |  | Creates an operation that sets the specified icon data in the current selection |
 |  [setImageScale(content, scale)](./scribing.nestedflowselection.setimagescale.md) |  | Creates an operation that sets the specified image scale factor in the current selection |
 |  [setImageSource(content, source)](./scribing.nestedflowselection.setimagesource.md) |  | Creates an operation that sets the specified image source in the current selection |
-|  [setInnerSelection(value)](./scribing.nestedflowselection.setinnerselection.md) |  | Returns a copy of this selection with the specified inner selection merged in |
+|  [setInnerSelection(value)](./scribing.nestedflowselection.setinnerselection.md) | <p><code>protected</code></p><p><code>abstract</code></p> | Returns a copy of this selection with the specified inner selection merged in |
 |  [setMarkupAttr(content, key, value)](./scribing.nestedflowselection.setmarkupattr.md) |  | Creates an operation that sets the specified markup attribute in the current selection |
 |  [setMarkupTag(content, tag)](./scribing.nestedflowselection.setmarkuptag.md) |  | Creates an operation that sets the specified markup tag in the current selection |
 |  [splitTableCell(content)](./scribing.nestedflowselection.splittablecell.md) |  | Creates an operation that splits the selected table cells (given that it is a merged cell) |

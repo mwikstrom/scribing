@@ -4,7 +4,7 @@
 
 ## FlowPresence.seen property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 seen: Date;

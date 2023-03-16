@@ -4,7 +4,7 @@
 
 ## FlowSyncInput.operation property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 operation: FlowOperation | null;

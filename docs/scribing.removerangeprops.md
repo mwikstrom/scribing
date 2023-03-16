@@ -6,7 +6,7 @@
 
 Properties of remove range opertions
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface RemoveRangeProps 
@@ -14,7 +14,7 @@ export interface RemoveRangeProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [range](./scribing.removerangeprops.range.md) | [FlowRange](./scribing.flowrange.md) | The range that shall be removed |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [range](./scribing.removerangeprops.range.md) |  | [FlowRange](./scribing.flowrange.md) | The range that shall be removed |
 

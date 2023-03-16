@@ -6,7 +6,7 @@
 
 Gets a cell range
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static at(anchor: CellPosition, focus?: CellPosition): CellRange;
@@ -17,9 +17,9 @@ static at(anchor: CellPosition, focus?: CellPosition): CellRange;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  anchor | [CellPosition](./scribing.cellposition.md) |  |
-|  focus | [CellPosition](./scribing.cellposition.md) | <i>(Optional)</i> |
+|  focus | [CellPosition](./scribing.cellposition.md) | _(Optional)_ |
 
-<b>Returns:</b>
+**Returns:**
 
 [CellRange](./scribing.cellrange.md)
 

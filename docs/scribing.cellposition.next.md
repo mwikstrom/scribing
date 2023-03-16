@@ -6,7 +6,7 @@
 
 Gets the next cell position
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 next(columnCount?: number, rowCount?: number): CellPosition | null;
@@ -16,10 +16,10 @@ next(columnCount?: number, rowCount?: number): CellPosition | null;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  columnCount | number | <i>(Optional)</i> |
-|  rowCount | number | <i>(Optional)</i> |
+|  columnCount | number | _(Optional)_ |
+|  rowCount | number | _(Optional)_ |
 
-<b>Returns:</b>
+**Returns:**
 
 [CellPosition](./scribing.cellposition.md) \| null
 

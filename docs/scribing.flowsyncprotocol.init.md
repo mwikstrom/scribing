@@ -4,7 +4,7 @@
 
 ## FlowSyncProtocol.init() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 init(content?: FlowContent, language?: string): Promise<FlowSyncSnapshot | null>;
@@ -14,10 +14,10 @@ init(content?: FlowContent, language?: string): Promise<FlowSyncSnapshot | null>
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  content | [FlowContent](./scribing.flowcontent.md) | <i>(Optional)</i> |
-|  language | string | <i>(Optional)</i> |
+|  content | [FlowContent](./scribing.flowcontent.md) | _(Optional)_ |
+|  language | string | _(Optional)_ |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;[FlowSyncSnapshot](./scribing.flowsyncsnapshot.md) \| null&gt;
 

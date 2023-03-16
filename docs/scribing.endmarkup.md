@@ -6,15 +6,15 @@
 
 Represents a line break.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class EndMarkup extends EndMarkupBase implements EndMarkupProps 
 ```
-<b>Extends:</b> EndMarkupBase
+**Extends:** EndMarkupBase
 
-<b>Implements:</b> [EndMarkupProps](./scribing.endmarkupprops.md)
+**Implements:** [EndMarkupProps](./scribing.endmarkupprops.md)
 
 ## Constructors
 
@@ -26,8 +26,8 @@ export declare class EndMarkup extends EndMarkupBase implements EndMarkupProps
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.endmarkup.classtype.md) | <code>static</code> | import("paratype").Type&lt;[EndMarkup](./scribing.endmarkup.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [size](./scribing.endmarkup.size.md) |  | (not declared) | Size of the current node. |
+|  [classType](./scribing.endmarkup.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[EndMarkup](./scribing.endmarkup.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [size](./scribing.endmarkup.size.md) | <code>readonly</code> | (not declared) | Size of the current node. |
 
 ## Methods
 

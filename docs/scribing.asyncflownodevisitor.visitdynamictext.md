@@ -4,7 +4,7 @@
 
 ## AsyncFlowNodeVisitor.visitDynamicText() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitDynamicText(node: DynamicText): Promise<FlowNode>;
@@ -16,7 +16,7 @@ visitDynamicText(node: DynamicText): Promise<FlowNode>;
 |  --- | --- | --- |
 |  node | [DynamicText](./scribing.dynamictext.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;[FlowNode](./scribing.flownode.md)<!-- -->&gt;
 

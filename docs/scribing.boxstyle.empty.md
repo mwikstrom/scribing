@@ -6,7 +6,7 @@
 
 Gets an empty box style
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static get empty(): BoxStyle;

@@ -6,7 +6,7 @@
 
 Normalizes the specified string value
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static normalizeText(value: unknown): string;
@@ -18,7 +18,7 @@ static normalizeText(value: unknown): string;
 |  --- | --- | --- |
 |  value | unknown |  |
 
-<b>Returns:</b>
+**Returns:**
 
 string
 

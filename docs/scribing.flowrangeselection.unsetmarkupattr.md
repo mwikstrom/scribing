@@ -6,7 +6,7 @@
 
 Creates an operation that unsets the specified markup attribute in the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
@@ -20,7 +20,7 @@ unsetMarkupAttr(content: FlowContent, key: string): FlowOperation | null;
 |  content | [FlowContent](./scribing.flowcontent.md) | The selected content |
 |  key | string | The markup attribute to unset |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

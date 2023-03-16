@@ -6,16 +6,16 @@
 
 Data of unformat text operations
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface UnformatTextData extends UnformatTextProps 
 ```
-<b>Extends:</b> [UnformatTextProps](./scribing.unformattextprops.md)
+**Extends:** [UnformatTextProps](./scribing.unformattextprops.md)
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [unformat](./scribing.unformattextdata.unformat.md) | "text" | Data classifier |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [unformat](./scribing.unformattextdata.unformat.md) |  | "text" | Data classifier |
 

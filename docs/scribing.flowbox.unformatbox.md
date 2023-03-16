@@ -6,7 +6,7 @@
 
 Unapplies the specified box style from the current node and returns the updated node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 unformatBox(style: BoxStyle): this;
@@ -18,7 +18,7 @@ unformatBox(style: BoxStyle): this;
 |  --- | --- | --- |
 |  style | [BoxStyle](./scribing.boxstyle.md) | The box style to unapply |
 
-<b>Returns:</b>
+**Returns:**
 
 this
 

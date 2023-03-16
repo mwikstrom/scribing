@@ -6,7 +6,7 @@
 
 Data of [FlowTable](./scribing.flowtable.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FlowTableData 
@@ -14,9 +14,9 @@ export interface FlowTableData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [columns?](./scribing.flowtabledata.columns.md) | Map&lt;string, [TableColumnStyle](./scribing.tablecolumnstyle.md)<!-- -->&gt; | <i>(Optional)</i> |
-|  [style?](./scribing.flowtabledata.style.md) | [TableStyle](./scribing.tablestyle.md) | <i>(Optional)</i> |
-|  [table](./scribing.flowtabledata.table.md) | [FlowTableContent](./scribing.flowtablecontent.md) |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [columns?](./scribing.flowtabledata.columns.md) |  | Map&lt;string, [TableColumnStyle](./scribing.tablecolumnstyle.md)<!-- -->&gt; | _(Optional)_ |
+|  [style?](./scribing.flowtabledata.style.md) |  | [TableStyle](./scribing.tablestyle.md) | _(Optional)_ |
+|  [table](./scribing.flowtabledata.table.md) |  | [FlowTableContent](./scribing.flowtablecontent.md) |  |
 

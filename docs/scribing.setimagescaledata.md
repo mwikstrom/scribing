@@ -6,7 +6,7 @@
 
 Data of [SetImageScale](./scribing.setimagescale.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface SetImageScaleData 
@@ -14,9 +14,9 @@ export interface SetImageScaleData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [at](./scribing.setimagescaledata.at.md) | number | The affected position |
-|  [set](./scribing.setimagescaledata.set.md) | "image\_scale" | Data discriminator |
-|  [value](./scribing.setimagescaledata.value.md) | number | The value to assign |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [at](./scribing.setimagescaledata.at.md) |  | number | The affected position |
+|  [set](./scribing.setimagescaledata.set.md) |  | "image\_scale" | Data discriminator |
+|  [value](./scribing.setimagescaledata.value.md) |  | number | The value to assign |
 

@@ -6,7 +6,7 @@
 
 Moves the position of the current range by the specified delta
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 translate(delta: number): FlowRange;
@@ -18,7 +18,7 @@ translate(delta: number): FlowRange;
 |  --- | --- | --- |
 |  delta | number | The delta distance |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowRange](./scribing.flowrange.md)
 

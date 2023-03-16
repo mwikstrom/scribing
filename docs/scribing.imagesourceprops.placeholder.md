@@ -6,7 +6,7 @@
 
 Placeholder bitmap data (base64 encoded)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 placeholder?: string;

@@ -6,27 +6,27 @@
 
 Represents a range of flow content
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class FlowRange extends FlowRangeBase implements Readonly<FlowRangeProps> 
 ```
-<b>Extends:</b> FlowRangeBase
+**Extends:** FlowRangeBase
 
-<b>Implements:</b> Readonly&lt;[FlowRangeProps](./scribing.flowrangeprops.md)
+**Implements:** Readonly&lt;[FlowRangeProps](./scribing.flowrangeprops.md)<!-- -->&gt;
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.flowrange.classtype.md) | <code>static</code> | Type&lt;[FlowRange](./scribing.flowrange.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [distance](./scribing.flowrange.distance.md) |  | number | Gets the distance from anchor to focus, which may be a negative value |
-|  [first](./scribing.flowrange.first.md) |  | number | Gets the first position |
-|  [isBackward](./scribing.flowrange.isbackward.md) |  | boolean | Determines whether the focus position is after the anchor position |
-|  [isCollapsed](./scribing.flowrange.iscollapsed.md) |  | boolean | Determines whether the range is collapsed. This is true when anchor and focus are equal. |
-|  [last](./scribing.flowrange.last.md) |  | number | Gets the last position |
-|  [size](./scribing.flowrange.size.md) |  | number | Gets the size of the range, which is the absolute value of its distance |
+|  [classType](./scribing.flowrange.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | Type&lt;[FlowRange](./scribing.flowrange.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [distance](./scribing.flowrange.distance.md) | <code>readonly</code> | number | Gets the distance from anchor to focus, which may be a negative value |
+|  [first](./scribing.flowrange.first.md) | <code>readonly</code> | number | Gets the first position |
+|  [isBackward](./scribing.flowrange.isbackward.md) | <code>readonly</code> | boolean | Determines whether the focus position is after the anchor position |
+|  [isCollapsed](./scribing.flowrange.iscollapsed.md) | <code>readonly</code> | boolean | Determines whether the range is collapsed. This is true when anchor and focus are equal. |
+|  [last](./scribing.flowrange.last.md) | <code>readonly</code> | number | Gets the last position |
+|  [size](./scribing.flowrange.size.md) | <code>readonly</code> | number | Gets the size of the range, which is the absolute value of its distance |
 
 ## Methods
 

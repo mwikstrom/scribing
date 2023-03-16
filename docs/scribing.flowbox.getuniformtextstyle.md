@@ -6,13 +6,13 @@
 
 Gets a uniform text style from the current node
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
 getUniformTextStyle(): TextStyle | null;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [TextStyle](./scribing.textstyle.md) \| null
 

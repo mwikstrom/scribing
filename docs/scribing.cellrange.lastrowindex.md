@@ -4,7 +4,7 @@
 
 ## CellRange.lastRowIndex property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get lastRowIndex(): number;

@@ -8,8 +8,8 @@ Data for a [CellPosition](./scribing.cellposition.md) represented by a string wi
 
 For example; `A1` represents row 0 and column 0, and `DF45` represents row 44 and column 109.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type CellPositionData = string;
+export type CellPositionData = string;
 ```

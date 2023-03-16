@@ -6,7 +6,7 @@
 
 Appends the specified nodes
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 append(theme: FlowTheme | undefined, ...nodes: readonly FlowNode[]): FlowContent;
@@ -19,7 +19,7 @@ append(theme: FlowTheme | undefined, ...nodes: readonly FlowNode[]): FlowContent
 |  theme | [FlowTheme](./scribing.flowtheme.md) \| undefined | Theme of the current content |
 |  nodes | readonly [FlowNode](./scribing.flownode.md)<!-- -->\[\] | The nodes to be appended |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

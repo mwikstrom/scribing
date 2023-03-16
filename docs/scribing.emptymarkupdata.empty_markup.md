@@ -4,7 +4,7 @@
 
 ## EmptyMarkupData.empty\_markup property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 empty_markup: string;

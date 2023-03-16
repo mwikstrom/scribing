@@ -6,21 +6,21 @@
 
 Represents an operation that sets the expression of dynamic text
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class SetDynamicTextExpression extends SetDynamicTextExpressionBase implements SetDynamicTextExpressionProps 
 ```
-<b>Extends:</b> SetDynamicTextExpressionBase
+**Extends:** SetDynamicTextExpressionBase
 
-<b>Implements:</b> [SetDynamicTextExpressionProps](./scribing.setdynamictextexpressionprops.md)
+**Implements:** [SetDynamicTextExpressionProps](./scribing.setdynamictextexpressionprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.setdynamictextexpression.classtype.md) | <code>static</code> | import("paratype").Type&lt;[SetDynamicTextExpression](./scribing.setdynamictextexpression.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.setdynamictextexpression.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[SetDynamicTextExpression](./scribing.setdynamictextexpression.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

@@ -6,12 +6,12 @@
 
 Returns an operation that keeps the intention of the current operation and the specified subsequent operation as they were performed as an atomic operation.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 mergeNext(): null;
 ```
-<b>Returns:</b>
+**Returns:**
 
 null
 

@@ -6,7 +6,7 @@
 
 Gets an instance of the current class from the specified data
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static fromData(data: string): OpenUrl;
@@ -18,7 +18,7 @@ static fromData(data: string): OpenUrl;
 |  --- | --- | --- |
 |  data | string |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [OpenUrl](./scribing.openurl.md)
 

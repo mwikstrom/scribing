@@ -6,7 +6,7 @@
 
 Data of [RemoveTableColumn](./scribing.removetablecolumn.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface RemoveTableColumnData 
@@ -14,10 +14,10 @@ export interface RemoveTableColumnData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [column](./scribing.removetablecolumndata.column.md) | number | The column index |
-|  [count?](./scribing.removetablecolumndata.count.md) | number | <i>(Optional)</i> The number of columns to insert |
-|  [remove](./scribing.removetablecolumndata.remove.md) | "table\_column" | Data discriminator |
-|  [table](./scribing.removetablecolumndata.table.md) | number | The affected flow position |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [column](./scribing.removetablecolumndata.column.md) |  | number | The column index |
+|  [count?](./scribing.removetablecolumndata.count.md) |  | number | _(Optional)_ The number of columns to insert |
+|  [remove](./scribing.removetablecolumndata.remove.md) |  | "table\_column" | Data discriminator |
+|  [table](./scribing.removetablecolumndata.table.md) |  | number | The affected flow position |
 

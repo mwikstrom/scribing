@@ -6,7 +6,7 @@
 
 Operations to be applied atomically
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 operations: readonly FlowOperation[];

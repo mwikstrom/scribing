@@ -6,7 +6,7 @@
 
 Transforms all ranges in the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;
@@ -17,9 +17,9 @@ abstract transformRanges(transform: (range: FlowRange, options?: TargetOptions) 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  transform | (range: [FlowRange](./scribing.flowrange.md)<!-- -->, options?: [TargetOptions](./scribing.targetoptions.md)<!-- -->) =&gt; [FlowRange](./scribing.flowrange.md) \| null | The transform to apply |
-|  options | [TargetOptions](./scribing.targetoptions.md) | <i>(Optional)</i> Options that provide tranformation behavior |
+|  options | [TargetOptions](./scribing.targetoptions.md) | _(Optional)_ Options that provide tranformation behavior |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowSelection](./scribing.flowselection.md) \| null
 

@@ -6,7 +6,7 @@
 
 The focus cell
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 focus: CellPosition;

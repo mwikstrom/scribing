@@ -6,16 +6,16 @@
 
 Data of unformat box operations
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface UnformatBoxData extends UnformatBoxProps 
 ```
-<b>Extends:</b> [UnformatBoxProps](./scribing.unformatboxprops.md)
+**Extends:** [UnformatBoxProps](./scribing.unformatboxprops.md)
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [unformat](./scribing.unformatboxdata.unformat.md) | "box" | Data classifier |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [unformat](./scribing.unformatboxdata.unformat.md) |  | "box" | Data classifier |
 

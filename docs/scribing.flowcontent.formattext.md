@@ -6,7 +6,7 @@
 
 Applies text style to a range
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 formatText(range: FlowRange, style: TextStyle, theme?: FlowTheme): FlowContent;
@@ -18,9 +18,9 @@ formatText(range: FlowRange, style: TextStyle, theme?: FlowTheme): FlowContent;
 |  --- | --- | --- |
 |  range | [FlowRange](./scribing.flowrange.md) | The range to format |
 |  style | [TextStyle](./scribing.textstyle.md) | The style to apply |
-|  theme | [FlowTheme](./scribing.flowtheme.md) | <i>(Optional)</i> Theme of the current content |
+|  theme | [FlowTheme](./scribing.flowtheme.md) | _(Optional)_ Theme of the current content |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

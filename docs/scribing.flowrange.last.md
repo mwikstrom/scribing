@@ -6,7 +6,7 @@
 
 Gets the last position
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get last(): number;

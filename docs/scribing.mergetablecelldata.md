@@ -6,7 +6,7 @@
 
 Data of [MergeTableCell](./scribing.mergetablecell.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface MergeTableCellData 
@@ -14,11 +14,11 @@ export interface MergeTableCellData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [cell](./scribing.mergetablecelldata.cell.md) | [CellPosition](./scribing.cellposition.md) | The affected cell |
-|  [colSpan](./scribing.mergetablecelldata.colspan.md) | number | The number of columns to span |
-|  [merge](./scribing.mergetablecelldata.merge.md) | "table\_cell" | Data discriminator |
-|  [rowSpan](./scribing.mergetablecelldata.rowspan.md) | number | The number of rows to span |
-|  [table](./scribing.mergetablecelldata.table.md) | number | The affected table's flow position |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [cell](./scribing.mergetablecelldata.cell.md) |  | [CellPosition](./scribing.cellposition.md) | The affected cell |
+|  [colSpan](./scribing.mergetablecelldata.colspan.md) |  | number | The number of columns to span |
+|  [merge](./scribing.mergetablecelldata.merge.md) |  | "table\_cell" | Data discriminator |
+|  [rowSpan](./scribing.mergetablecelldata.rowspan.md) |  | number | The number of rows to span |
+|  [table](./scribing.mergetablecelldata.table.md) |  | number | The affected table's flow position |
 

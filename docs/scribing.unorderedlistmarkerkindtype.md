@@ -6,7 +6,7 @@
 
 The run-time type that matches unordered list marker style values
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 UnorderedListMarkerKindType: Type<ListMarkerKind>

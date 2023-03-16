@@ -4,7 +4,7 @@
 
 ## EndMarkupData.end\_markup property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 end_markup: string;

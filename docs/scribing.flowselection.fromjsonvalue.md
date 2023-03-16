@@ -6,7 +6,7 @@
 
 Converts the specified JSON value to a flow selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static fromJsonValue(value: JsonValue): FlowSelection;
@@ -18,7 +18,7 @@ static fromJsonValue(value: JsonValue): FlowSelection;
 |  --- | --- | --- |
 |  value | JsonValue |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowSelection](./scribing.flowselection.md)
 

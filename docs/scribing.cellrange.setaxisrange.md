@@ -4,7 +4,7 @@
 
 ## CellRange.setAxisRange() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 setAxisRange(axis: "column" | "row", value: FlowRange): CellRange;
@@ -17,7 +17,7 @@ setAxisRange(axis: "column" | "row", value: FlowRange): CellRange;
 |  axis | "column" \| "row" |  |
 |  value | [FlowRange](./scribing.flowrange.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [CellRange](./scribing.cellrange.md)
 

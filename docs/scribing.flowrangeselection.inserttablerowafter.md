@@ -6,13 +6,13 @@
 
 Creates an operation that inserts a table row after the current selection.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
 insertTableRowAfter(): FlowOperation | null;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

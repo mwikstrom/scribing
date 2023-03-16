@@ -4,7 +4,7 @@
 
 ## AsyncFlowNodeVisitor.visitStartMarkup() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitStartMarkup(node: StartMarkup): Promise<FlowNode>;
@@ -16,7 +16,7 @@ visitStartMarkup(node: StartMarkup): Promise<FlowNode>;
 |  --- | --- | --- |
 |  node | [StartMarkup](./scribing.startmarkup.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;[FlowNode](./scribing.flownode.md)<!-- -->&gt;
 

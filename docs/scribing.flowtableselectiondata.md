@@ -6,7 +6,7 @@
 
 Data of [FlowTableSelection](./scribing.flowtableselection.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FlowTableSelectionData 
@@ -14,8 +14,8 @@ export interface FlowTableSelectionData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [range](./scribing.flowtableselectiondata.range.md) | [CellRange](./scribing.cellrange.md) |  |
-|  [table](./scribing.flowtableselectiondata.table.md) | number |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [range](./scribing.flowtableselectiondata.range.md) |  | [CellRange](./scribing.cellrange.md) |  |
+|  [table](./scribing.flowtableselectiondata.table.md) |  | number |  |
 

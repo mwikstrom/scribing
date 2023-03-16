@@ -6,7 +6,7 @@
 
 Applies the specified callback on every element in the specified array and returns the resulting elements that are not `null` nor `undefined`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 mapNotNull: <A extends readonly unknown[], T>(array: A, callback: (value: A[number], index: number) => T | null | undefined) => Exclude<T, null | undefined>[]

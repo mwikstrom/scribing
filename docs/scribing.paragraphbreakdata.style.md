@@ -6,7 +6,7 @@
 
 Style for the preceding paragraph
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 style?: ParagraphStyle;

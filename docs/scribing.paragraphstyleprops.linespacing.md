@@ -6,7 +6,7 @@
 
 The amount of space between lines, as a percentage of normal, where normal is represented as `100`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 lineSpacing?: number;

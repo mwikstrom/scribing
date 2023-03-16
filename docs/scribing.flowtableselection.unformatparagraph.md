@@ -6,7 +6,7 @@
 
 Creates an operation that unapplies the specified paragraph style on the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
@@ -18,9 +18,9 @@ unformatParagraph(style: ParagraphStyle, options?: TargetOptions): FlowOperation
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  style | [ParagraphStyle](./scribing.paragraphstyle.md) | The style to unapply |
-|  options | [TargetOptions](./scribing.targetoptions.md) | <i>(Optional)</i> |
+|  options | [TargetOptions](./scribing.targetoptions.md) | _(Optional)_ |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

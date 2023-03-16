@@ -6,7 +6,7 @@
 
 The base record class for [UnformatParagraph](./scribing.unformatparagraph.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 UnformatParagraphBase: import("paratype").RecordConstructor<UnformatParagraphProps, FlowOperation, UnformatParagraphData>

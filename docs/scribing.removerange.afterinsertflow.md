@@ -6,7 +6,7 @@
 
 Transforms the current operation so that its intent is preserved after the specified range was inserted.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 afterInsertFlow(other: FlowRange): FlowOperation | null;
@@ -18,7 +18,7 @@ afterInsertFlow(other: FlowRange): FlowOperation | null;
 |  --- | --- | --- |
 |  other | [FlowRange](./scribing.flowrange.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

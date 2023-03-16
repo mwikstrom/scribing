@@ -4,7 +4,7 @@
 
 ## FlowSyncOutput.presence property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 presence: FlowPresence[];

@@ -6,7 +6,7 @@
 
 Gets a cell position from the specified string
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static fromData(data: CellPositionData): CellPosition;
@@ -18,7 +18,7 @@ static fromData(data: CellPositionData): CellPosition;
 |  --- | --- | --- |
 |  data | [CellPositionData](./scribing.cellpositiondata.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [CellPosition](./scribing.cellposition.md)
 

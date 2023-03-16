@@ -6,7 +6,7 @@
 
 Properties of [InsertTableRow](./scribing.inserttablerow.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface InsertTableRowProps 
@@ -14,9 +14,9 @@ export interface InsertTableRowProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [count](./scribing.inserttablerowprops.count.md) | number | The number of rows to insert |
-|  [position](./scribing.inserttablerowprops.position.md) | number | The affected flow position |
-|  [row](./scribing.inserttablerowprops.row.md) | number | The row index |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [count](./scribing.inserttablerowprops.count.md) |  | number | The number of rows to insert |
+|  [position](./scribing.inserttablerowprops.position.md) |  | number | The affected flow position |
+|  [row](./scribing.inserttablerowprops.row.md) |  | number | The row index |
 

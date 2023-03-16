@@ -6,12 +6,12 @@
 
 Gets the paragraph style at the current position
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getParagraphStyle(): ParagraphStyle | null;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [ParagraphStyle](./scribing.paragraphstyle.md) \| null
 

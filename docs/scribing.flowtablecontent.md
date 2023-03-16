@@ -5,7 +5,7 @@
 ## FlowTableContent class
 
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
@@ -22,11 +22,11 @@ export declare class FlowTableContent
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.flowtablecontent.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FlowTableContent](./scribing.flowtablecontent.md)<!-- -->&gt; |  |
-|  [columnCount](./scribing.flowtablecontent.columncount.md) |  | number |  |
-|  [defaultCellContent](./scribing.flowtablecontent.defaultcellcontent.md) |  | [FlowContent](./scribing.flowcontent.md) |  |
-|  [positions](./scribing.flowtablecontent.positions.md) |  | readonly [CellPosition](./scribing.cellposition.md)<!-- -->\[\] |  |
-|  [rowCount](./scribing.flowtablecontent.rowcount.md) |  | number |  |
+|  [classType](./scribing.flowtablecontent.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[FlowTableContent](./scribing.flowtablecontent.md)<!-- -->&gt; |  |
+|  [columnCount](./scribing.flowtablecontent.columncount.md) | <code>readonly</code> | number |  |
+|  [defaultCellContent](./scribing.flowtablecontent.defaultcellcontent.md) | <code>readonly</code> | [FlowContent](./scribing.flowcontent.md) |  |
+|  [positions](./scribing.flowtablecontent.positions.md) | <code>readonly</code> | readonly [CellPosition](./scribing.cellposition.md)<!-- -->\[\] |  |
+|  [rowCount](./scribing.flowtablecontent.rowcount.md) | <code>readonly</code> | number |  |
 
 ## Methods
 

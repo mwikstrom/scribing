@@ -6,13 +6,13 @@
 
 Creates an operation that inserts the specified content into the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
 insert(): FlowOperation | null;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

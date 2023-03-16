@@ -4,7 +4,7 @@
 
 ## BasicRequestInit.headers property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 headers?: Record<string, string>;

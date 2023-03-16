@@ -6,7 +6,7 @@
 
 The range that shall be unformatted
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 range: FlowRange;

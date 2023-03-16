@@ -6,7 +6,7 @@
 
 The dynamic expression
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 dynamic: Script;

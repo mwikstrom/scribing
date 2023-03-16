@@ -6,15 +6,15 @@
 
 A run of text with uniform styling
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class TextRun extends TextRunBase implements Readonly<TextRunProps> 
 ```
-<b>Extends:</b> TextRunBase
+**Extends:** TextRunBase
 
-<b>Implements:</b> Readonly&lt;[TextRunProps](./scribing.textrunprops.md)
+**Implements:** Readonly&lt;[TextRunProps](./scribing.textrunprops.md)<!-- -->&gt;
 
 ## Constructors
 
@@ -26,8 +26,8 @@ export declare class TextRun extends TextRunBase implements Readonly<TextRunProp
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.textrun.classtype.md) | <code>static</code> | Type&lt;[TextRun](./scribing.textrun.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [size](./scribing.textrun.size.md) |  | number | Size of the current node. |
+|  [classType](./scribing.textrun.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | Type&lt;[TextRun](./scribing.textrun.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [size](./scribing.textrun.size.md) | <code>readonly</code> | number | Size of the current node. |
 
 ## Methods
 

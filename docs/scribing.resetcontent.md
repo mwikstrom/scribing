@@ -6,21 +6,21 @@
 
 Represents an operation that sets the path data of an icon
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class ResetContent extends ResetContentBase implements ResetContentProps 
 ```
-<b>Extends:</b> ResetContentBase
+**Extends:** ResetContentBase
 
-<b>Implements:</b> [ResetContentProps](./scribing.resetcontentprops.md)
+**Implements:** [ResetContentProps](./scribing.resetcontentprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.resetcontent.classtype.md) | <code>static</code> | import("paratype").Type&lt;[ResetContent](./scribing.resetcontent.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.resetcontent.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[ResetContent](./scribing.resetcontent.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

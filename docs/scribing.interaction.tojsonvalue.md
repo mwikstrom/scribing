@@ -6,12 +6,12 @@
 
 Converts the current interaction to a JSON value
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 toJsonValue(): JsonValue;
 ```
-<b>Returns:</b>
+**Returns:**
 
 JsonValue
 

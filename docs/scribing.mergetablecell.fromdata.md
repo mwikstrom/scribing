@@ -6,7 +6,7 @@
 
 Gets an instance of the current class from the specified data
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static fromData(input: MergeTableCellData): MergeTableCell;
@@ -18,7 +18,7 @@ static fromData(input: MergeTableCellData): MergeTableCell;
 |  --- | --- | --- |
 |  input | [MergeTableCellData](./scribing.mergetablecelldata.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [MergeTableCell](./scribing.mergetablecell.md)
 

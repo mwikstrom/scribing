@@ -6,7 +6,7 @@
 
 Data of [FormatTableColumn](./scribing.formattablecolumn.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FormatTableColumnData 
@@ -14,10 +14,10 @@ export interface FormatTableColumnData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [column](./scribing.formattablecolumndata.column.md) | number | The column index |
-|  [format](./scribing.formattablecolumndata.format.md) | "table\_column" | Data discriminator |
-|  [style](./scribing.formattablecolumndata.style.md) | [TableColumnStyle](./scribing.tablecolumnstyle.md) | The style to apply |
-|  [table](./scribing.formattablecolumndata.table.md) | number | The affected flow position |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [column](./scribing.formattablecolumndata.column.md) |  | number | The column index |
+|  [format](./scribing.formattablecolumndata.format.md) |  | "table\_column" | Data discriminator |
+|  [style](./scribing.formattablecolumndata.style.md) |  | [TableColumnStyle](./scribing.tablecolumnstyle.md) | The style to apply |
+|  [table](./scribing.formattablecolumndata.table.md) |  | number | The affected flow position |
 

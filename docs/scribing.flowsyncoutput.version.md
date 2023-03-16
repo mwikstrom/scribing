@@ -4,7 +4,7 @@
 
 ## FlowSyncOutput.version property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 version: number;

@@ -6,7 +6,7 @@
 
 The data to assign
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 data: string;

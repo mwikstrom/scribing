@@ -28,18 +28,14 @@ Model for collaborative rich text editing
 |  [FlowCursor](./scribing.flowcursor.md) | Represents a position in flow content |
 |  [FlowIcon](./scribing.flowicon.md) | Represents a dynamic text. |
 |  [FlowImage](./scribing.flowimage.md) | Represents a dynamic text. |
-|  [FlowNode](./scribing.flownode.md) | A piece of flow content. |
 |  [FlowNodeVisitor](./scribing.flownodevisitor.md) | A visitor for flow content |
-|  [FlowOperation](./scribing.flowoperation.md) | An abstraction of an operation that updates flow content. |
 |  [FlowRange](./scribing.flowrange.md) | Represents a range of flow content |
 |  [FlowRangeSelection](./scribing.flowrangeselection.md) | Represents a range of selected flow content |
-|  [FlowSelection](./scribing.flowselection.md) | Represents a selection of flow content |
 |  [FlowTable](./scribing.flowtable.md) | Represents a flow table cell |
 |  [FlowTableCell](./scribing.flowtablecell.md) | Represents a flow table cell |
 |  [FlowTableCellSelection](./scribing.flowtablecellselection.md) | Represents a selection inside a flow table cell |
 |  [FlowTableContent](./scribing.flowtablecontent.md) |  |
 |  [FlowTableSelection](./scribing.flowtableselection.md) | Represents a selection of cells in a flow table cell |
-|  [FlowTheme](./scribing.flowtheme.md) | Provides a theme for flow content |
 |  [FormatBox](./scribing.formatbox.md) | Represents an operation that applies a box style to a range of flow content. |
 |  [FormatParagraph](./scribing.formatparagraph.md) | Represents an operation that applies a paragraph style to a range of flow content. |
 |  [FormatTable](./scribing.formattable.md) | Represents an operation that applies a table style |
@@ -47,19 +43,14 @@ Model for collaborative rich text editing
 |  [FormatText](./scribing.formattext.md) | Represents an operation that applies a text style to a range of flow content. |
 |  [HttpFlowSyncProtocol](./scribing.httpflowsyncprotocol.md) |  |
 |  [ImageSource](./scribing.imagesource.md) | Represents the source of a [FlowImage](./scribing.flowimage.md) |
-|  [InlineNode](./scribing.inlinenode.md) | Represents an inline node |
 |  [InsertContent](./scribing.insertcontent.md) | Represents an operation that insert flow content. |
 |  [InsertTableColumn](./scribing.inserttablecolumn.md) | Represents an operation that inserts a table column |
 |  [InsertTableRow](./scribing.inserttablerow.md) | Represents an operation that inserts a table row |
-|  [Interaction](./scribing.interaction.md) | A base class for interactions |
 |  [LineBreak](./scribing.linebreak.md) | Represents a line break. |
 |  [MergeTableCell](./scribing.mergetablecell.md) | Represents an operation that merges a range of table cells into one |
-|  [NestedFlowOperation](./scribing.nestedflowoperation.md) | A nested operation at a specific flow position |
-|  [NestedFlowSelection](./scribing.nestedflowselection.md) | A nested selection at a specific flow position |
 |  [OpenUrl](./scribing.openurl.md) | An interaction that opens a URL |
 |  [ParagraphBreak](./scribing.paragraphbreak.md) | Represents a paragraph break. |
 |  [ParagraphStyle](./scribing.paragraphstyle.md) | Represents the styling that is applied to paragraph content. |
-|  [ParagraphTheme](./scribing.paragraphtheme.md) | Provides a theme for paragraph content |
 |  [RemoveRange](./scribing.removerange.md) | Represents an operation that removes a range of flow. |
 |  [RemoveTableColumn](./scribing.removetablecolumn.md) | Represents an operation that removes a table column |
 |  [RemoveTableRow](./scribing.removetablerow.md) | Represents an operation that removes a table row |
@@ -75,7 +66,6 @@ Model for collaborative rich text editing
 |  [SplitTableCell](./scribing.splittablecell.md) | Represents an operation that splits a merged table cell |
 |  [StartMarkup](./scribing.startmarkup.md) | Represents a line break. |
 |  [TableColumnStyle](./scribing.tablecolumnstyle.md) | Represents the styling that is applied to a flow table column |
-|  [TableOperation](./scribing.tableoperation.md) | Represents an operation that updates a table node |
 |  [TableStyle](./scribing.tablestyle.md) | Represents the styling that is applied to flow table content |
 |  [TextRun](./scribing.textrun.md) | A run of text with uniform styling |
 |  [TextStyle](./scribing.textstyle.md) | Represents the styling that is applied to text. |
@@ -85,6 +75,21 @@ Model for collaborative rich text editing
 |  [UnformatTableColumn](./scribing.unformattablecolumn.md) | Represents an operation that unapplies a table column style |
 |  [UnformatText](./scribing.unformattext.md) | Represents an operation that unapplies a text style to a range of flow content. |
 |  [UnsetMarkupAttr](./scribing.unsetmarkupattr.md) | Represents an operation that sets a markup tag |
+
+## Abstract Classes
+
+|  Abstract Class | Description |
+|  --- | --- |
+|  [FlowNode](./scribing.flownode.md) | A piece of flow content. |
+|  [FlowOperation](./scribing.flowoperation.md) | An abstraction of an operation that updates flow content. |
+|  [FlowSelection](./scribing.flowselection.md) | Represents a selection of flow content |
+|  [FlowTheme](./scribing.flowtheme.md) | Provides a theme for flow content |
+|  [InlineNode](./scribing.inlinenode.md) | Represents an inline node |
+|  [Interaction](./scribing.interaction.md) | A base class for interactions |
+|  [NestedFlowOperation](./scribing.nestedflowoperation.md) | A nested operation at a specific flow position |
+|  [NestedFlowSelection](./scribing.nestedflowselection.md) | A nested selection at a specific flow position |
+|  [ParagraphTheme](./scribing.paragraphtheme.md) | Provides a theme for paragraph content |
+|  [TableOperation](./scribing.tableoperation.md) | Represents an operation that updates a table node |
 
 ## Functions
 
@@ -309,7 +314,7 @@ Model for collaborative rich text editing
 |  [BaselineOffset](./scribing.baselineoffset.md) | Baseline offset |
 |  [BasicFetch](./scribing.basicfetch.md) |  |
 |  [BoxVariant](./scribing.boxvariant.md) | Box style variant |
-|  [CellPositionData](./scribing.cellpositiondata.md) | Data for a [CellPosition](./scribing.cellposition.md) represented by a string with leading upper case ascii letters that represents the column index, followed by ascii digits that represetnts the row index (one-based).<!-- -->For example; <code>A1</code> represents row 0 and column 0, and <code>DF45</code> represents row 44 and column 109. |
+|  [CellPositionData](./scribing.cellpositiondata.md) | <p>Data for a [CellPosition](./scribing.cellposition.md) represented by a string with leading upper case ascii letters that represents the column index, followed by ascii digits that represetnts the row index (one-based).</p><p>For example; <code>A1</code> represents row 0 and column 0, and <code>DF45</code> represents row 44 and column 109.</p> |
 |  [CellRangeData](./scribing.cellrangedata.md) | Data for a [CellRange](./scribing.cellrange.md) |
 |  [DefaultFlowThemeData](./scribing.defaultflowthemedata.md) | Data for [DefaultFlowTheme](./scribing.defaultflowtheme.md) |
 |  [FlowBatchData](./scribing.flowbatchdata.md) | Data of [FlowBatch](./scribing.flowbatch.md) |

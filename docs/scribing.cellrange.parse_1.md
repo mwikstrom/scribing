@@ -4,7 +4,7 @@
 
 ## CellRange.parse() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static parse(input: string, throwOnError: true): CellRange;
@@ -17,7 +17,7 @@ static parse(input: string, throwOnError: true): CellRange;
 |  input | string |  |
 |  throwOnError | true |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [CellRange](./scribing.cellrange.md)
 

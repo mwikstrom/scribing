@@ -6,7 +6,7 @@
 
 The focus point marks the ending of a selection range.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 focus: number;

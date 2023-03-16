@@ -6,15 +6,15 @@
 
 Flow content
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class FlowContent extends FlowContentBase implements Readonly<FlowContentProps> 
 ```
-<b>Extends:</b> FlowContentBase
+**Extends:** FlowContentBase
 
-<b>Implements:</b> Readonly&lt;[FlowContentProps](./scribing.flowcontentprops.md)
+**Implements:** Readonly&lt;[FlowContentProps](./scribing.flowcontentprops.md)<!-- -->&gt;
 
 ## Constructors
 
@@ -26,12 +26,12 @@ export declare class FlowContent extends FlowContentBase implements Readonly<Flo
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.flowcontent.classtype.md) | <code>static</code> | Type&lt;[FlowContent](./scribing.flowcontent.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.flowcontent.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | Type&lt;[FlowContent](./scribing.flowcontent.md)<!-- -->&gt; | The run-time type that represents this class |
 |  [defaultHashFunc](./scribing.flowcontent.defaulthashfunc.md) | <code>static</code> | [FlowContentHashFunc](./scribing.flowcontenthashfunc.md) |  |
-|  [empty](./scribing.flowcontent.empty.md) | <code>static</code> | [FlowContent](./scribing.flowcontent.md) | Gets empty flow content |
-|  [emptyParagraph](./scribing.flowcontent.emptyparagraph.md) | <code>static</code> | [FlowContent](./scribing.flowcontent.md) | Gets an empty paragraph |
-|  [jsonMimeType](./scribing.flowcontent.jsonmimetype.md) | <code>static</code> | (not declared) | The MIME type that should be used for flow content JSON data |
-|  [size](./scribing.flowcontent.size.md) |  | number | Flow content size |
+|  [empty](./scribing.flowcontent.empty.md) | <p><code>static</code></p><p><code>readonly</code></p> | [FlowContent](./scribing.flowcontent.md) | Gets empty flow content |
+|  [emptyParagraph](./scribing.flowcontent.emptyparagraph.md) | <p><code>static</code></p><p><code>readonly</code></p> | [FlowContent](./scribing.flowcontent.md) | Gets an empty paragraph |
+|  [jsonMimeType](./scribing.flowcontent.jsonmimetype.md) | <p><code>static</code></p><p><code>readonly</code></p> | (not declared) | The MIME type that should be used for flow content JSON data |
+|  [size](./scribing.flowcontent.size.md) | <code>readonly</code> | number | Flow content size |
 
 ## Methods
 

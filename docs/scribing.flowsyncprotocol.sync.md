@@ -4,7 +4,7 @@
 
 ## FlowSyncProtocol.sync() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 sync(input: FlowSyncInput): Promise<FlowSyncOutput | null>;
@@ -16,7 +16,7 @@ sync(input: FlowSyncInput): Promise<FlowSyncOutput | null>;
 |  --- | --- | --- |
 |  input | [FlowSyncInput](./scribing.flowsyncinput.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;[FlowSyncOutput](./scribing.flowsyncoutput.md) \| null&gt;
 

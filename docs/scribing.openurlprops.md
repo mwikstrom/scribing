@@ -6,7 +6,7 @@
 
 Properties for [OpenUrl](./scribing.openurl.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface OpenUrlProps 
@@ -14,7 +14,7 @@ export interface OpenUrlProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [url](./scribing.openurlprops.url.md) | string | The URL that shall be opened |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [url](./scribing.openurlprops.url.md) |  | string | The URL that shall be opened |
 

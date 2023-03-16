@@ -6,7 +6,7 @@
 
 Determines whether text shall be translated
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 translate?: boolean;

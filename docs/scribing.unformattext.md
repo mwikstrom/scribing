@@ -6,21 +6,21 @@
 
 Represents an operation that unapplies a text style to a range of flow content.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class UnformatText extends UnformatTextBase implements Readonly<UnformatTextProps> 
 ```
-<b>Extends:</b> UnformatTextBase
+**Extends:** UnformatTextBase
 
-<b>Implements:</b> Readonly&lt;[UnformatTextProps](./scribing.unformattextprops.md)
+**Implements:** Readonly&lt;[UnformatTextProps](./scribing.unformattextprops.md)<!-- -->&gt;
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.unformattext.classtype.md) | <code>static</code> | import("paratype").Type&lt;[UnformatText](./scribing.unformattext.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.unformattext.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[UnformatText](./scribing.unformattext.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

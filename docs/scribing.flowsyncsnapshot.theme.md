@@ -4,7 +4,7 @@
 
 ## FlowSyncSnapshot.theme property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 theme: FlowTheme;

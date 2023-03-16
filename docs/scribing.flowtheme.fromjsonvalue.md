@@ -6,7 +6,7 @@
 
 Converts the specified JSON value to a flow theme
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static fromJsonValue(value: JsonValue): FlowTheme;
@@ -18,7 +18,7 @@ static fromJsonValue(value: JsonValue): FlowTheme;
 |  --- | --- | --- |
 |  value | JsonValue |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowTheme](./scribing.flowtheme.md)
 

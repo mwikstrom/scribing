@@ -6,7 +6,7 @@
 
 Gets an instance of the current class from the specified data
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static fromData(data: EmptyMarkupData): EmptyMarkup;
@@ -18,7 +18,7 @@ static fromData(data: EmptyMarkupData): EmptyMarkup;
 |  --- | --- | --- |
 |  data | [EmptyMarkupData](./scribing.emptymarkupdata.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [EmptyMarkup](./scribing.emptymarkup.md)
 

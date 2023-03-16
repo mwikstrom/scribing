@@ -6,7 +6,7 @@
 
 Properties of [UnformatTable](./scribing.unformattable.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface UnformatTableProps 
@@ -14,8 +14,8 @@ export interface UnformatTableProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [position](./scribing.unformattableprops.position.md) | number | The affected position |
-|  [style](./scribing.unformattableprops.style.md) | [TableStyle](./scribing.tablestyle.md) | The style to unapply |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [position](./scribing.unformattableprops.position.md) |  | number | The affected position |
+|  [style](./scribing.unformattableprops.style.md) |  | [TableStyle](./scribing.tablestyle.md) | The style to unapply |
 

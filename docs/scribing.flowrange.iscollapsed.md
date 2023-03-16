@@ -6,7 +6,7 @@
 
 Determines whether the range is collapsed. This is true when anchor and focus are equal.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get isCollapsed(): boolean;

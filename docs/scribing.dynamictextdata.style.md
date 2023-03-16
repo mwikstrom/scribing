@@ -6,7 +6,7 @@
 
 Text style
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 style?: TextStyle;

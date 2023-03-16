@@ -6,7 +6,7 @@
 
 Serializes the specified flow content to an XML string
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare function serializeFlowContentToXml(content: FlowContent, theme?: FlowTheme): string;
@@ -17,9 +17,9 @@ export declare function serializeFlowContentToXml(content: FlowContent, theme?: 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The flow content that shall be serialized |
-|  theme | [FlowTheme](./scribing.flowtheme.md) | <i>(Optional)</i> Optional. Theme of the content that shall be serialized |
+|  theme | [FlowTheme](./scribing.flowtheme.md) | _(Optional)_ Optional. Theme of the content that shall be serialized |
 
-<b>Returns:</b>
+**Returns:**
 
 string
 

@@ -6,7 +6,7 @@
 
 Properties of format box operations
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FormatBoxProps 
@@ -14,8 +14,8 @@ export interface FormatBoxProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [range](./scribing.formatboxprops.range.md) | [FlowRange](./scribing.flowrange.md) | The range that shall be formatted |
-|  [style](./scribing.formatboxprops.style.md) | [BoxStyle](./scribing.boxstyle.md) | The style to apply |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [range](./scribing.formatboxprops.range.md) |  | [FlowRange](./scribing.flowrange.md) | The range that shall be formatted |
+|  [style](./scribing.formatboxprops.style.md) |  | [BoxStyle](./scribing.boxstyle.md) | The style to apply |
 

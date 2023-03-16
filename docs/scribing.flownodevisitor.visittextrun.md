@@ -4,7 +4,7 @@
 
 ## FlowNodeVisitor.visitTextRun() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visitTextRun(node: TextRun): FlowNode;
@@ -16,7 +16,7 @@ visitTextRun(node: TextRun): FlowNode;
 |  --- | --- | --- |
 |  node | [TextRun](./scribing.textrun.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowNode](./scribing.flownode.md)
 

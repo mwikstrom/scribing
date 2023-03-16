@@ -5,12 +5,12 @@
 ## HttpFlowSyncProtocol class
 
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare class HttpFlowSyncProtocol implements FlowSyncProtocol 
 ```
-<b>Implements:</b> [FlowSyncProtocol](./scribing.flowsyncprotocol.md)
+**Implements:** [FlowSyncProtocol](./scribing.flowsyncprotocol.md)
 
 ## Constructors
 
@@ -22,7 +22,7 @@ export declare class HttpFlowSyncProtocol implements FlowSyncProtocol
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [url](./scribing.httpflowsyncprotocol.url.md) |  | string |  |
+|  [url](./scribing.httpflowsyncprotocol.url.md) | <code>readonly</code> | string |  |
 
 ## Methods
 

@@ -5,7 +5,7 @@
 ## FlowSyncInputType variable
 
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FlowSyncInputType: RecordType<FlowSyncInput>

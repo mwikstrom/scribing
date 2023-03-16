@@ -6,7 +6,7 @@
 
 Constructs a new instance of the `ParagraphStyle` class
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 constructor(props?: ParagraphStyleProps);
@@ -16,5 +16,5 @@ constructor(props?: ParagraphStyleProps);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  props | [ParagraphStyleProps](./scribing.paragraphstyleprops.md) | <i>(Optional)</i> |
+|  props | [ParagraphStyleProps](./scribing.paragraphstyleprops.md) | _(Optional)_ |
 

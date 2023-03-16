@@ -6,7 +6,7 @@
 
 Gets an instance of the current class from the specified data
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static fromData(data: FlowBoxData): FlowBox;
@@ -18,7 +18,7 @@ static fromData(data: FlowBoxData): FlowBox;
 |  --- | --- | --- |
 |  data | [FlowBoxData](./scribing.flowboxdata.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowBox](./scribing.flowbox.md)
 

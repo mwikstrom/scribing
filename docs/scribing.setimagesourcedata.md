@@ -6,7 +6,7 @@
 
 Data of [SetImageSource](./scribing.setimagesource.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface SetImageSourceData 
@@ -14,9 +14,9 @@ export interface SetImageSourceData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [at](./scribing.setimagesourcedata.at.md) | number | The affected position |
-|  [set](./scribing.setimagesourcedata.set.md) | "image\_source" | Data discriminator |
-|  [value](./scribing.setimagesourcedata.value.md) | [ImageSource](./scribing.imagesource.md) | The value to assign |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [at](./scribing.setimagesourcedata.at.md) |  | number | The affected position |
+|  [set](./scribing.setimagesourcedata.set.md) |  | "image\_source" | Data discriminator |
+|  [value](./scribing.setimagesourcedata.value.md) |  | [ImageSource](./scribing.imagesource.md) | The value to assign |
 

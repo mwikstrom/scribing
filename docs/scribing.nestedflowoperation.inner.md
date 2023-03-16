@@ -6,7 +6,7 @@
 
 The nested operation
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract inner: FlowOperation;

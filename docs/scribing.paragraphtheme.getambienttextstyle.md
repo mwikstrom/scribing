@@ -6,12 +6,12 @@
 
 Gets the ambient text style for this paragraph theme.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract getAmbientTextStyle(): TextStyle;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [TextStyle](./scribing.textstyle.md)
 

@@ -6,7 +6,7 @@
 
 Replaces the specified range with the specified nodes
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 replace(remove: FlowRange, ...insert: FlowNode[]): FlowContent;
@@ -19,7 +19,7 @@ replace(remove: FlowRange, ...insert: FlowNode[]): FlowContent;
 |  remove | [FlowRange](./scribing.flowrange.md) | The range to be removed |
 |  insert | [FlowNode](./scribing.flownode.md)<!-- -->\[\] | The nodes to insert at the start of the removed range |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowContent](./scribing.flowcontent.md)
 

@@ -6,7 +6,7 @@
 
 The base record class for [FormatText](./scribing.formattext.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FormatTextBase: import("paratype").RecordConstructor<FormatTextProps, FlowOperation, FormatTextData>

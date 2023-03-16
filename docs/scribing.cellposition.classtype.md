@@ -6,7 +6,7 @@
 
 The run-time type that represents this class
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static readonly classType: Type<CellPosition>;

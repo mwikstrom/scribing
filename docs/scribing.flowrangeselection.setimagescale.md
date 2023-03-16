@@ -6,7 +6,7 @@
 
 Creates an operation that sets the specified image scale factor in the current selection
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
@@ -20,7 +20,7 @@ setImageScale(content: FlowContent, scale: number): FlowOperation | null;
 |  content | [FlowContent](./scribing.flowcontent.md) | The selected content |
 |  scale | number | The image scale factor to set |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

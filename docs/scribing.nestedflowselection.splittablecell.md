@@ -6,7 +6,7 @@
 
 Creates an operation that splits the selected table cells (given that it is a merged cell)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
@@ -19,7 +19,7 @@ splitTableCell(content: FlowContent): FlowOperation | null;
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The selected content |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

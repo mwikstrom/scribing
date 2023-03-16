@@ -6,7 +6,7 @@
 
 The text's font size, as a percentage of the user agent's default font size, where normal is represented as `100`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 fontSize?: number;

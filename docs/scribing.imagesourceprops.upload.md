@@ -6,7 +6,7 @@
 
 Identifies an upload operation that will replace this image source
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 upload?: string;

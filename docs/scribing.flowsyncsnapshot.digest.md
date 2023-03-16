@@ -4,7 +4,7 @@
 
 ## FlowSyncSnapshot.digest property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 digest: string;

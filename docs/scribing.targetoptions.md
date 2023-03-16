@@ -6,7 +6,7 @@
 
 Provides options for the target flow
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface TargetOptions 
@@ -14,8 +14,8 @@ export interface TargetOptions
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [target?](./scribing.targetoptions.target.md) | [FlowContent](./scribing.flowcontent.md) | <i>(Optional)</i> The content that is selected |
-|  [theme?](./scribing.targetoptions.theme.md) | [FlowTheme](./scribing.flowtheme.md) | <i>(Optional)</i> Theme of the selected content |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [target?](./scribing.targetoptions.target.md) |  | [FlowContent](./scribing.flowcontent.md) | _(Optional)_ The content that is selected |
+|  [theme?](./scribing.targetoptions.theme.md) |  | [FlowTheme](./scribing.flowtheme.md) | _(Optional)_ Theme of the selected content |
 

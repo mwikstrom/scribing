@@ -6,7 +6,7 @@
 
 Creates an operation that removes the selected table column
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract removeTableColumn(content: FlowContent): FlowOperation | null;
@@ -18,7 +18,7 @@ abstract removeTableColumn(content: FlowContent): FlowOperation | null;
 |  --- | --- | --- |
 |  content | [FlowContent](./scribing.flowcontent.md) | The selected content |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

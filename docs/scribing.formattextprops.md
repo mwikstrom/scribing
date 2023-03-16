@@ -6,7 +6,7 @@
 
 Properties of format text operations
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FormatTextProps 
@@ -14,8 +14,8 @@ export interface FormatTextProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [range](./scribing.formattextprops.range.md) | [FlowRange](./scribing.flowrange.md) | The range that shall be formatted |
-|  [style](./scribing.formattextprops.style.md) | [TextStyle](./scribing.textstyle.md) | The style to apply |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [range](./scribing.formattextprops.range.md) |  | [FlowRange](./scribing.flowrange.md) | The range that shall be formatted |
+|  [style](./scribing.formattextprops.style.md) |  | [TextStyle](./scribing.textstyle.md) | The style to apply |
 

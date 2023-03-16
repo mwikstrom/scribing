@@ -4,7 +4,7 @@
 
 ## FlowTableContent.getCell() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getCell(position: CellPosition, throwOnError: true): FlowTableCell;
@@ -17,7 +17,7 @@ getCell(position: CellPosition, throwOnError: true): FlowTableCell;
 |  position | [CellPosition](./scribing.cellposition.md) |  |
 |  throwOnError | true |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowTableCell](./scribing.flowtablecell.md)
 

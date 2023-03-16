@@ -6,10 +6,10 @@
 
 Data contract for a text run
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type TextRunData = string | (Pick<TextRunProps, "text"> & Partial<Omit<TextRunProps, "text">>);
+export type TextRunData = string | (Pick<TextRunProps, "text"> & Partial<Omit<TextRunProps, "text">>);
 ```
-<b>References:</b> [TextRunProps](./scribing.textrunprops.md)
+**References:** [TextRunProps](./scribing.textrunprops.md)
 

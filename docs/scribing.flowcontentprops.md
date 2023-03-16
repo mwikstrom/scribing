@@ -6,7 +6,7 @@
 
 Flow content properties
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FlowContentProps 
@@ -14,7 +14,7 @@ export interface FlowContentProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [nodes](./scribing.flowcontentprops.nodes.md) | readonly [FlowNode](./scribing.flownode.md)<!-- -->\[\] | Array of nodes |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [nodes](./scribing.flowcontentprops.nodes.md) |  | readonly [FlowNode](./scribing.flownode.md)<!-- -->\[\] | Array of nodes |
 

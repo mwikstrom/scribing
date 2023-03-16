@@ -6,7 +6,7 @@
 
 Determines whether the current selection is collapsed
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract get isCollapsed(): boolean;

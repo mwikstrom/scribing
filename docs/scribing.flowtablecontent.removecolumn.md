@@ -4,7 +4,7 @@
 
 ## FlowTableContent.removeColumn() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 removeColumn(index: number, count?: number): FlowTableContent;
@@ -15,9 +15,9 @@ removeColumn(index: number, count?: number): FlowTableContent;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  index | number |  |
-|  count | number | <i>(Optional)</i> |
+|  count | number | _(Optional)_ |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowTableContent](./scribing.flowtablecontent.md)
 

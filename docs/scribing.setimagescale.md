@@ -6,21 +6,21 @@
 
 Represents an operation that sets the source of an image
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class SetImageScale extends SetImageScaleBase implements SetImageScaleProps 
 ```
-<b>Extends:</b> SetImageScaleBase
+**Extends:** SetImageScaleBase
 
-<b>Implements:</b> [SetImageScaleProps](./scribing.setimagescaleprops.md)
+**Implements:** [SetImageScaleProps](./scribing.setimagescaleprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.setimagescale.classtype.md) | <code>static</code> | import("paratype").Type&lt;[SetImageScale](./scribing.setimagescale.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.setimagescale.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[SetImageScale](./scribing.setimagescale.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

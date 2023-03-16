@@ -6,7 +6,7 @@
 
 Style properties for paragraph content
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface ParagraphStyleProps 
@@ -14,18 +14,18 @@ export interface ParagraphStyleProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [alignment?](./scribing.paragraphstyleprops.alignment.md) | [HorizontalAlignment](./scribing.horizontalalignment.md) | <i>(Optional)</i> The alignment for paragraph content. |
-|  [direction?](./scribing.paragraphstyleprops.direction.md) | [ReadingDirection](./scribing.readingdirection.md) | <i>(Optional)</i> The reading direction of paragraph content. |
-|  [hideListMarker?](./scribing.paragraphstyleprops.hidelistmarker.md) | boolean | <i>(Optional)</i> Specifies whether the list marker is hidden |
-|  [lineSpacing?](./scribing.paragraphstyleprops.linespacing.md) | number | <i>(Optional)</i> The amount of space between lines, as a percentage of normal, where normal is represented as <code>100</code>. |
-|  [listCounter?](./scribing.paragraphstyleprops.listcounter.md) | number \| [ListCounterAction](./scribing.listcounteraction.md) | <i>(Optional)</i> Specifies the list litem counter value |
-|  [listCounterPrefix?](./scribing.paragraphstyleprops.listcounterprefix.md) | string | <i>(Optional)</i> Specifies the list item counter prefix |
-|  [listCounterSuffix?](./scribing.paragraphstyleprops.listcountersuffix.md) | string | <i>(Optional)</i> Specifies the list item counter suffix |
-|  [listLevel?](./scribing.paragraphstyleprops.listlevel.md) | number | <i>(Optional)</i> Specifies the list level. Zero means not a list. |
-|  [listMarker?](./scribing.paragraphstyleprops.listmarker.md) | [ListMarkerKind](./scribing.listmarkerkind.md) | <i>(Optional)</i> Specifies the list marker kind |
-|  [spaceAfter?](./scribing.paragraphstyleprops.spaceafter.md) | number | <i>(Optional)</i> The amount of space after the paragraph, as a percentage of the user agent's default font size, where normal is represented as <code>100</code>. |
-|  [spaceBefore?](./scribing.paragraphstyleprops.spacebefore.md) | number | <i>(Optional)</i> The amount of space before the paragraph, as a percentage of the user agent's default font size, where normal is represented as <code>100</code>. |
-|  [variant?](./scribing.paragraphstyleprops.variant.md) | [ParagraphVariant](./scribing.paragraphvariant.md) | <i>(Optional)</i> The style variant of the paragraph. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [alignment?](./scribing.paragraphstyleprops.alignment.md) |  | [HorizontalAlignment](./scribing.horizontalalignment.md) | _(Optional)_ The alignment for paragraph content. |
+|  [direction?](./scribing.paragraphstyleprops.direction.md) |  | [ReadingDirection](./scribing.readingdirection.md) | _(Optional)_ The reading direction of paragraph content. |
+|  [hideListMarker?](./scribing.paragraphstyleprops.hidelistmarker.md) |  | boolean | _(Optional)_ Specifies whether the list marker is hidden |
+|  [lineSpacing?](./scribing.paragraphstyleprops.linespacing.md) |  | number | _(Optional)_ The amount of space between lines, as a percentage of normal, where normal is represented as <code>100</code>. |
+|  [listCounter?](./scribing.paragraphstyleprops.listcounter.md) |  | number \| [ListCounterAction](./scribing.listcounteraction.md) | _(Optional)_ Specifies the list litem counter value |
+|  [listCounterPrefix?](./scribing.paragraphstyleprops.listcounterprefix.md) |  | string | _(Optional)_ Specifies the list item counter prefix |
+|  [listCounterSuffix?](./scribing.paragraphstyleprops.listcountersuffix.md) |  | string | _(Optional)_ Specifies the list item counter suffix |
+|  [listLevel?](./scribing.paragraphstyleprops.listlevel.md) |  | number | _(Optional)_ Specifies the list level. Zero means not a list. |
+|  [listMarker?](./scribing.paragraphstyleprops.listmarker.md) |  | [ListMarkerKind](./scribing.listmarkerkind.md) | _(Optional)_ Specifies the list marker kind |
+|  [spaceAfter?](./scribing.paragraphstyleprops.spaceafter.md) |  | number | _(Optional)_ The amount of space after the paragraph, as a percentage of the user agent's default font size, where normal is represented as <code>100</code>. |
+|  [spaceBefore?](./scribing.paragraphstyleprops.spacebefore.md) |  | number | _(Optional)_ The amount of space before the paragraph, as a percentage of the user agent's default font size, where normal is represented as <code>100</code>. |
+|  [variant?](./scribing.paragraphstyleprops.variant.md) |  | [ParagraphVariant](./scribing.paragraphvariant.md) | _(Optional)_ The style variant of the paragraph. |
 

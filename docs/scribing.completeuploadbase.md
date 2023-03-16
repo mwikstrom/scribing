@@ -6,7 +6,7 @@
 
 The base record class for [CompleteUpload](./scribing.completeupload.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 CompleteUploadBase: import("paratype").RecordConstructor<CompleteUploadProps, FlowOperation, CompleteUploadData>

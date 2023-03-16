@@ -6,21 +6,21 @@
 
 Represents an operation that applies a table style
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class FormatTable extends FormatTableBase implements FormatTableProps 
 ```
-<b>Extends:</b> FormatTableBase
+**Extends:** FormatTableBase
 
-<b>Implements:</b> [FormatTableProps](./scribing.formattableprops.md)
+**Implements:** [FormatTableProps](./scribing.formattableprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.formattable.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FormatTable](./scribing.formattable.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.formattable.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[FormatTable](./scribing.formattable.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 
@@ -30,10 +30,10 @@ export declare class FormatTable extends FormatTableBase implements FormatTableP
 |  [afterInsertRow()](./scribing.formattable.afterinsertrow.md) |  |  |
 |  [afterRemoveColumn()](./scribing.formattable.afterremovecolumn.md) |  |  |
 |  [afterRemoveRow()](./scribing.formattable.afterremoverow.md) |  |  |
-|  [applyToCellRange(range)](./scribing.formattable.applytocellrange.md) |  |  |
-|  [applyToTable(table)](./scribing.formattable.applytotable.md) |  |  |
+|  [applyToCellRange(range)](./scribing.formattable.applytocellrange.md) | <code>protected</code> |  |
+|  [applyToTable(table)](./scribing.formattable.applytotable.md) | <code>protected</code> |  |
 |  [fromData(input)](./scribing.formattable.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
-|  [invertForTable()](./scribing.formattable.invertfortable.md) |  |  |
-|  [mergeNextInSameTable(next)](./scribing.formattable.mergenextinsametable.md) |  |  |
-|  [transformInSameTable(other)](./scribing.formattable.transforminsametable.md) |  |  |
+|  [invertForTable()](./scribing.formattable.invertfortable.md) | <code>protected</code> |  |
+|  [mergeNextInSameTable(next)](./scribing.formattable.mergenextinsametable.md) | <code>protected</code> |  |
+|  [transformInSameTable(other)](./scribing.formattable.transforminsametable.md) | <code>protected</code> |  |
 

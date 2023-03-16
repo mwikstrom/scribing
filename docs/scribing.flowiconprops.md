@@ -6,7 +6,7 @@
 
 Properties of [FlowIcon](./scribing.flowicon.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FlowIconProps 
@@ -14,8 +14,8 @@ export interface FlowIconProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [data](./scribing.flowiconprops.data.md) | string | The icon path data |
-|  [style](./scribing.flowiconprops.style.md) | [TextStyle](./scribing.textstyle.md) | Text style |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [data](./scribing.flowiconprops.data.md) |  | string | The icon path data |
+|  [style](./scribing.flowiconprops.style.md) |  | [TextStyle](./scribing.textstyle.md) | Text style |
 

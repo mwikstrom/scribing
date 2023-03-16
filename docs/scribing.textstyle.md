@@ -6,15 +6,15 @@
 
 Represents the styling that is applied to text.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class TextStyle extends TextStyleBase implements Readonly<TextStyleProps> 
 ```
-<b>Extends:</b> TextStyleBase
+**Extends:** TextStyleBase
 
-<b>Implements:</b> Readonly&lt;[TextStyleProps](./scribing.textstyleprops.md)
+**Implements:** Readonly&lt;[TextStyleProps](./scribing.textstyleprops.md)<!-- -->&gt;
 
 ## Constructors
 
@@ -26,7 +26,7 @@ export declare class TextStyle extends TextStyleBase implements Readonly<TextSty
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.textstyle.classtype.md) | <code>static</code> | import("paratype").Type&lt;import("paratype").RecordObject&lt;Partial&lt;{ bold: boolean; italic: boolean; underline: boolean; strike: boolean; baseline: "sub" \| "normal" \| "super"; fontFamily: "body" \| "heading" \| "monospace" \| "cursive" \| "decorative"; fontSize: number; link: [Interaction](./scribing.interaction.md) \| null; color: "default" \| "subtle" \| "primary" \| "secondary" \| "information" \| "success" \| "warning" \| "error"; spellcheck: boolean; translate: boolean; lang: string; }&gt;, Partial&lt;{ bold: boolean; italic: boolean; underline: boolean; strike: boolean; baseline: "sub" \| "normal" \| "super"; fontFamily: "body" \| "heading" \| "monospace" \| "cursive" \| "decorative"; fontSize: number; link: [Interaction](./scribing.interaction.md) \| null; color: "default" \| "subtle" \| "primary" \| "secondary" \| "information" \| "success" \| "warning" \| "error"; spellcheck: boolean; translate: boolean; lang: string; }&gt;&gt; &amp; import("paratype").Equatable &amp; Readonly&lt;Partial&lt;{ bold: boolean; italic: boolean; underline: boolean; strike: boolean; baseline: "sub" \| "normal" \| "super"; fontFamily: "body" \| "heading" \| "monospace" \| "cursive" \| "decorative"; fontSize: number; link: [Interaction](./scribing.interaction.md) \| null; color: "default" \| "subtle" \| "primary" \| "secondary" \| "information" \| "success" \| "warning" \| "error"; spellcheck: boolean; translate: boolean; lang: string; }&gt;&gt; &amp; [TextStyle](./scribing.textstyle.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [empty](./scribing.textstyle.empty.md) | <code>static</code> | [TextStyle](./scribing.textstyle.md) | Gets an empty text style |
-|  [isEmpty](./scribing.textstyle.isempty.md) |  | boolean | Determines whether the current style is empty |
+|  [classType](./scribing.textstyle.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;import("paratype").RecordObject&lt;Partial&lt;{ bold: boolean; italic: boolean; underline: boolean; strike: boolean; baseline: "sub" \| "normal" \| "super"; fontFamily: "body" \| "heading" \| "monospace" \| "cursive" \| "decorative"; fontSize: number; link: [Interaction](./scribing.interaction.md) \| null; color: "default" \| "subtle" \| "primary" \| "secondary" \| "information" \| "success" \| "warning" \| "error"; spellcheck: boolean; translate: boolean; lang: string; }&gt;, Partial&lt;{ bold: boolean; italic: boolean; underline: boolean; strike: boolean; baseline: "sub" \| "normal" \| "super"; fontFamily: "body" \| "heading" \| "monospace" \| "cursive" \| "decorative"; fontSize: number; link: [Interaction](./scribing.interaction.md) \| null; color: "default" \| "subtle" \| "primary" \| "secondary" \| "information" \| "success" \| "warning" \| "error"; spellcheck: boolean; translate: boolean; lang: string; }&gt;&gt; &amp; import("paratype").Equatable &amp; Readonly&lt;Partial&lt;{ bold: boolean; italic: boolean; underline: boolean; strike: boolean; baseline: "sub" \| "normal" \| "super"; fontFamily: "body" \| "heading" \| "monospace" \| "cursive" \| "decorative"; fontSize: number; link: [Interaction](./scribing.interaction.md) \| null; color: "default" \| "subtle" \| "primary" \| "secondary" \| "information" \| "success" \| "warning" \| "error"; spellcheck: boolean; translate: boolean; lang: string; }&gt;&gt; &amp; [TextStyle](./scribing.textstyle.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [empty](./scribing.textstyle.empty.md) | <p><code>static</code></p><p><code>readonly</code></p> | [TextStyle](./scribing.textstyle.md) | Gets an empty text style |
+|  [isEmpty](./scribing.textstyle.isempty.md) | <code>readonly</code> | boolean | Determines whether the current style is empty |
 

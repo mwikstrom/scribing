@@ -6,21 +6,21 @@
 
 Represents an operation that sets the source of an image
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class SetImageSource extends SetImageSourceBase implements SetImageSourceProps 
 ```
-<b>Extends:</b> SetImageSourceBase
+**Extends:** SetImageSourceBase
 
-<b>Implements:</b> [SetImageSourceProps](./scribing.setimagesourceprops.md)
+**Implements:** [SetImageSourceProps](./scribing.setimagesourceprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.setimagesource.classtype.md) | <code>static</code> | import("paratype").Type&lt;[SetImageSource](./scribing.setimagesource.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.setimagesource.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[SetImageSource](./scribing.setimagesource.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

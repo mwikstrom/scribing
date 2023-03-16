@@ -6,7 +6,7 @@
 
 Transforms the current selection so that its intended boundary is preserved after the specified range was removed.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
@@ -20,7 +20,7 @@ afterRemoveFlow(range: FlowRange, mine: boolean): FlowSelection | null;
 |  range | [FlowRange](./scribing.flowrange.md) |  |
 |  mine | boolean |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowSelection](./scribing.flowselection.md) \| null
 

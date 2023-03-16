@@ -4,7 +4,7 @@
 
 ## FlowTable.unformatColumn() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 unformatColumn(index: number, style: TableColumnStyle): FlowTable;
@@ -17,7 +17,7 @@ unformatColumn(index: number, style: TableColumnStyle): FlowTable;
 |  index | number |  |
 |  style | [TableColumnStyle](./scribing.tablecolumnstyle.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowTable](./scribing.flowtable.md)
 

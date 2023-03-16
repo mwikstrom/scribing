@@ -6,7 +6,7 @@
 
 URL to the image
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 url: string;

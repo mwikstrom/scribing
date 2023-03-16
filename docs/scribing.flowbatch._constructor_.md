@@ -6,7 +6,7 @@
 
 Constructs a new [FlowBatch](./scribing.flowbatch.md) instance with the specified properties.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 constructor(props?: FlowBatchProps);
@@ -16,5 +16,5 @@ constructor(props?: FlowBatchProps);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  props | [FlowBatchProps](./scribing.flowbatchprops.md) | <i>(Optional)</i> The properties to assign |
+|  props | [FlowBatchProps](./scribing.flowbatchprops.md) | _(Optional)_ The properties to assign |
 

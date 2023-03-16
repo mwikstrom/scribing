@@ -4,12 +4,12 @@
 
 ## FormatTableColumn.afterInsertRow() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 afterInsertRow(): TableOperation | null;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [TableOperation](./scribing.tableoperation.md) \| null
 

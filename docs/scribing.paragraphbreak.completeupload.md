@@ -6,12 +6,12 @@
 
 Marks the specified upload as completed
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 completeUpload(): this;
 ```
-<b>Returns:</b>
+**Returns:**
 
 this
 

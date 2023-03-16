@@ -6,7 +6,7 @@
 
 Properties of [UnsetMarkupAttr](./scribing.unsetmarkupattr.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface UnsetMarkupAttrProps 
@@ -14,8 +14,8 @@ export interface UnsetMarkupAttrProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [key](./scribing.unsetmarkupattrprops.key.md) | string |  |
-|  [position](./scribing.unsetmarkupattrprops.position.md) | number | The markup position |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [key](./scribing.unsetmarkupattrprops.key.md) |  | string |  |
+|  [position](./scribing.unsetmarkupattrprops.position.md) |  | number | The markup position |
 

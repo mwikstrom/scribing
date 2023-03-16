@@ -6,7 +6,7 @@
 
 Properties of [CompleteUpload](./scribing.completeupload.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface CompleteUploadProps 
@@ -14,8 +14,8 @@ export interface CompleteUploadProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [id](./scribing.completeuploadprops.id.md) | string | Identifies the completed upload operation |
-|  [url](./scribing.completeuploadprops.url.md) | string | URL for the uploaded content |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [id](./scribing.completeuploadprops.id.md) |  | string | Identifies the completed upload operation |
+|  [url](./scribing.completeuploadprops.url.md) |  | string | URL for the uploaded content |
 

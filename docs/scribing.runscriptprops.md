@@ -6,7 +6,7 @@
 
 Properties for [RunScript](./scribing.runscript.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface RunScriptProps 
@@ -14,7 +14,7 @@ export interface RunScriptProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [script](./scribing.runscriptprops.script.md) | [Script](./scribing.script.md) | The script code that shall be executed |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [script](./scribing.runscriptprops.script.md) |  | [Script](./scribing.script.md) | The script code that shall be executed |
 

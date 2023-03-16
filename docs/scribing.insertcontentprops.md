@@ -6,7 +6,7 @@
 
 Properties of insert content operations
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface InsertContentProps 
@@ -14,8 +14,8 @@ export interface InsertContentProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [content](./scribing.insertcontentprops.content.md) | [FlowContent](./scribing.flowcontent.md) | The content to be inserted |
-|  [position](./scribing.insertcontentprops.position.md) | number | The insertion position |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [content](./scribing.insertcontentprops.content.md) |  | [FlowContent](./scribing.flowcontent.md) | The content to be inserted |
+|  [position](./scribing.insertcontentprops.position.md) |  | number | The insertion position |
 

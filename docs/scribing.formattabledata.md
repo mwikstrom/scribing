@@ -6,7 +6,7 @@
 
 Data of [FormatTable](./scribing.formattable.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FormatTableData 
@@ -14,9 +14,9 @@ export interface FormatTableData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [at](./scribing.formattabledata.at.md) | number | The affected position |
-|  [format](./scribing.formattabledata.format.md) | "table" | Data discriminator |
-|  [style](./scribing.formattabledata.style.md) | [TableStyle](./scribing.tablestyle.md) | The style to apply |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [at](./scribing.formattabledata.at.md) |  | number | The affected position |
+|  [format](./scribing.formattabledata.format.md) |  | "table" | Data discriminator |
+|  [style](./scribing.formattabledata.style.md) |  | [TableStyle](./scribing.tablestyle.md) | The style to apply |
 

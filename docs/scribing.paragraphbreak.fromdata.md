@@ -6,7 +6,7 @@
 
 Gets an instance of the current class from the specified data
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static fromData(data: ParagraphBreakData): ParagraphBreak;
@@ -18,7 +18,7 @@ static fromData(data: ParagraphBreakData): ParagraphBreak;
 |  --- | --- | --- |
 |  data | [ParagraphBreakData](./scribing.paragraphbreakdata.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [ParagraphBreak](./scribing.paragraphbreak.md)
 

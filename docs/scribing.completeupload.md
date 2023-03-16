@@ -6,21 +6,21 @@
 
 Represents an operation that completes an upload
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class CompleteUpload extends CompleteUploadBase implements CompleteUploadProps 
 ```
-<b>Extends:</b> CompleteUploadBase
+**Extends:** CompleteUploadBase
 
-<b>Implements:</b> [CompleteUploadProps](./scribing.completeuploadprops.md)
+**Implements:** [CompleteUploadProps](./scribing.completeuploadprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.completeupload.classtype.md) | <code>static</code> | import("paratype").Type&lt;[CompleteUpload](./scribing.completeupload.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [classType](./scribing.completeupload.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[CompleteUpload](./scribing.completeupload.md)<!-- -->&gt; | The run-time type that represents this class |
 
 ## Methods
 

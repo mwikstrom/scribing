@@ -6,7 +6,7 @@
 
 Properties of [SetImageScale](./scribing.setimagescale.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface SetImageScaleProps 
@@ -14,8 +14,8 @@ export interface SetImageScaleProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [position](./scribing.setimagescaleprops.position.md) | number | The affected position |
-|  [value](./scribing.setimagescaleprops.value.md) | number | The value to assign |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [position](./scribing.setimagescaleprops.position.md) |  | number | The affected position |
+|  [value](./scribing.setimagescaleprops.value.md) |  | number | The value to assign |
 

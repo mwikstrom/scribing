@@ -4,12 +4,12 @@
 
 ## MergeTableCell.mergeNextInSameTable() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 protected mergeNextInSameTable(): FlowOperation | null;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

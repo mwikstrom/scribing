@@ -4,7 +4,7 @@
 
 ## FlowTable.insertRow() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 insertRow(index: number, count?: number): FlowTable;
@@ -15,9 +15,9 @@ insertRow(index: number, count?: number): FlowTable;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  index | number |  |
-|  count | number | <i>(Optional)</i> |
+|  count | number | _(Optional)_ |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowTable](./scribing.flowtable.md)
 

@@ -6,7 +6,7 @@
 
 The tag to assign
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 value: string;

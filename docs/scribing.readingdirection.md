@@ -6,10 +6,10 @@
 
 Reading direction
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type ReadingDirection = (typeof READING_DIRECTIONS)[number];
+export type ReadingDirection = (typeof READING_DIRECTIONS)[number];
 ```
-<b>References:</b> [READING\_DIRECTIONS](./scribing.reading_directions.md)
+**References:** [READING\_DIRECTIONS](./scribing.reading_directions.md)
 

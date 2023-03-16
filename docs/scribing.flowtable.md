@@ -6,20 +6,20 @@
 
 Represents a flow table cell
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @sealed */
 export declare class FlowTable extends FlowTableBase 
 ```
-<b>Extends:</b> FlowTableBase
+**Extends:** FlowTableBase
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [classType](./scribing.flowtable.classtype.md) | <code>static</code> | import("paratype").Type&lt;[FlowTable](./scribing.flowtable.md)<!-- -->&gt; | The run-time type that represents this class |
-|  [size](./scribing.flowtable.size.md) |  | (not declared) | Size of the current node. |
+|  [classType](./scribing.flowtable.classtype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[FlowTable](./scribing.flowtable.md)<!-- -->&gt; | The run-time type that represents this class |
+|  [size](./scribing.flowtable.size.md) | <code>readonly</code> | (not declared) | Size of the current node. |
 
 ## Methods
 

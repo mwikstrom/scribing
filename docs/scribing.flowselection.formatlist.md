@@ -6,7 +6,7 @@
 
 Creates an operation that applies the specified list format to the current selection.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 abstract formatList(content: FlowContent, kind: "ordered" | "unordered" | null): FlowOperation | null;
@@ -19,7 +19,7 @@ abstract formatList(content: FlowContent, kind: "ordered" | "unordered" | null):
 |  content | [FlowContent](./scribing.flowcontent.md) | The selected content |
 |  kind | "ordered" \| "unordered" \| null | The list kind to apply |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowOperation](./scribing.flowoperation.md) \| null
 

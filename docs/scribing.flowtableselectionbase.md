@@ -6,7 +6,7 @@
 
 The base record class for [FlowTableSelection](./scribing.flowtableselection.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FlowTableSelectionBase: import("paratype").RecordConstructor<FlowTableSelectionProps, FlowSelection, FlowTableSelectionData>

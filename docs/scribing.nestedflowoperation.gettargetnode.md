@@ -6,7 +6,7 @@
 
 Gets the target node
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 protected getTargetNode(outer: FlowContent): FlowNode;
@@ -18,7 +18,7 @@ protected getTargetNode(outer: FlowContent): FlowNode;
 |  --- | --- | --- |
 |  outer | [FlowContent](./scribing.flowcontent.md) | The outer content |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowNode](./scribing.flownode.md)
 

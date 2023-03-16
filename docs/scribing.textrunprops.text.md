@@ -6,7 +6,7 @@
 
 The text characters
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 text: string;

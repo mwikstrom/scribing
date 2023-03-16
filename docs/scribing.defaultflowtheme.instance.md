@@ -6,7 +6,7 @@
 
 Gets a cached instance of the default flow theme
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static get instance(): DefaultFlowTheme;

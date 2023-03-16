@@ -6,7 +6,7 @@
 
 Gets the first position
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get first(): number;

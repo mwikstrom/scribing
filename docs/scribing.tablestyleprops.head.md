@@ -6,7 +6,7 @@
 
 Specifies the number of head rows
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 head?: number;

@@ -6,7 +6,7 @@
 
 The base record class for [FlowBox](./scribing.flowbox.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FlowBoxBase: import("paratype").RecordConstructor<FlowBoxProps, FlowNode, FlowBoxData>

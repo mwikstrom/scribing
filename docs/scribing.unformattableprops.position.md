@@ -6,7 +6,7 @@
 
 The affected position
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 position: number;

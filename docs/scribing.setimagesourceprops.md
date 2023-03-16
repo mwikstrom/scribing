@@ -6,7 +6,7 @@
 
 Properties of [SetImageSource](./scribing.setimagesource.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface SetImageSourceProps 
@@ -14,8 +14,8 @@ export interface SetImageSourceProps
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [position](./scribing.setimagesourceprops.position.md) | number | The affected position |
-|  [value](./scribing.setimagesourceprops.value.md) | [ImageSource](./scribing.imagesource.md) | The value to assign |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [position](./scribing.setimagesourceprops.position.md) |  | number | The affected position |
+|  [value](./scribing.setimagesourceprops.value.md) |  | [ImageSource](./scribing.imagesource.md) | The value to assign |
 

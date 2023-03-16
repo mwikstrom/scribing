@@ -6,7 +6,7 @@
 
 The anchor point marks the beginning of a selection range.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 anchor: number;

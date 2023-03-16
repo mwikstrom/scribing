@@ -6,7 +6,7 @@
 
 The base record class for [RemoveRange](./scribing.removerange.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 RemoveRangeBase: import("paratype").RecordConstructor<RemoveRangeProps, FlowOperation, RemoveRangeData>

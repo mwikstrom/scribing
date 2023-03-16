@@ -6,7 +6,7 @@
 
 The image source
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 image: ImageSource;

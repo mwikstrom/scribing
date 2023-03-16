@@ -6,7 +6,7 @@
 
 The base record class for [RemoveTableRow](./scribing.removetablerow.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 RemoveTableRowBase: import("paratype").RecordConstructor<RemoveTableRowProps, TableOperation, RemoveTableRowData>

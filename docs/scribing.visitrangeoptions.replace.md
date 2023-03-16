@@ -4,7 +4,7 @@
 
 ## VisitRangeOptions.replace() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 replace(inner: FlowSelection): FlowSelection | null;
@@ -16,7 +16,7 @@ replace(inner: FlowSelection): FlowSelection | null;
 |  --- | --- | --- |
 |  inner | [FlowSelection](./scribing.flowselection.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowSelection](./scribing.flowselection.md) \| null
 

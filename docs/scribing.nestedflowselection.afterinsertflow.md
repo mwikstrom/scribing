@@ -6,7 +6,7 @@
 
 Transforms the current selection so that its intended boundary is preserved after the specified range was inserted.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 /** @override */
@@ -19,7 +19,7 @@ afterInsertFlow(range: FlowRange): FlowSelection | null;
 |  --- | --- | --- |
 |  range | [FlowRange](./scribing.flowrange.md) |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowSelection](./scribing.flowselection.md) \| null
 

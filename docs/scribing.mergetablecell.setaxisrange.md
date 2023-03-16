@@ -4,7 +4,7 @@
 
 ## MergeTableCell.setAxisRange() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 setAxisRange(axis: "row" | "column", range: FlowRange | null): TableOperation | null;
@@ -17,7 +17,7 @@ setAxisRange(axis: "row" | "column", range: FlowRange | null): TableOperation | 
 |  axis | "row" \| "column" |  |
 |  range | [FlowRange](./scribing.flowrange.md) \| null |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [TableOperation](./scribing.tableoperation.md) \| null
 

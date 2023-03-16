@@ -6,7 +6,7 @@
 
 Data of line break nodes
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface DynamicTextData 
@@ -14,8 +14,8 @@ export interface DynamicTextData
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [dynamic](./scribing.dynamictextdata.dynamic.md) | [Script](./scribing.script.md) | The dynamic expression |
-|  [style?](./scribing.dynamictextdata.style.md) | [TextStyle](./scribing.textstyle.md) | <i>(Optional)</i> Text style |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [dynamic](./scribing.dynamictextdata.dynamic.md) |  | [Script](./scribing.script.md) | The dynamic expression |
+|  [style?](./scribing.dynamictextdata.style.md) |  | [TextStyle](./scribing.textstyle.md) | _(Optional)_ Text style |
 

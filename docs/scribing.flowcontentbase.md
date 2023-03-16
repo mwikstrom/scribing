@@ -6,7 +6,7 @@
 
 The base record class for [FlowContent](./scribing.flowcontent.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FlowContentBase: import("paratype").RecordConstructor<FlowContentProps, Object, FlowContentData>

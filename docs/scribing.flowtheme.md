@@ -6,7 +6,7 @@
 
 Provides a theme for flow content
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare abstract class FlowTheme 
@@ -16,15 +16,15 @@ export declare abstract class FlowTheme
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [baseType](./scribing.flowtheme.basetype.md) | <code>static</code> | import("paratype").Type&lt;[FlowTheme](./scribing.flowtheme.md)<!-- -->&gt; | The run-time type that represents the base class |
+|  [baseType](./scribing.flowtheme.basetype.md) | <p><code>static</code></p><p><code>readonly</code></p> | import("paratype").Type&lt;[FlowTheme](./scribing.flowtheme.md)<!-- -->&gt; | The run-time type that represents the base class |
 
 ## Methods
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
 |  [fromJsonValue(value)](./scribing.flowtheme.fromjsonvalue.md) | <code>static</code> | Converts the specified JSON value to a flow theme |
-|  [getBoxTheme(style)](./scribing.flowtheme.getboxtheme.md) |  | Gets a theme for the specified box style |
-|  [getParagraphTheme(variant)](./scribing.flowtheme.getparagraphtheme.md) |  | Gets a theme for the specified paragraph variant |
+|  [getBoxTheme(style)](./scribing.flowtheme.getboxtheme.md) | <code>abstract</code> | Gets a theme for the specified box style |
+|  [getParagraphTheme(variant)](./scribing.flowtheme.getparagraphtheme.md) | <code>abstract</code> | Gets a theme for the specified paragraph variant |
 |  [getTableBodyTheme()](./scribing.flowtheme.gettablebodytheme.md) |  | Gets a theme that shall be used in table body cells |
 |  [getTableHeadingTheme()](./scribing.flowtheme.gettableheadingtheme.md) |  | Gets a theme that shall be used in table heading cells |
 |  [toJsonValue()](./scribing.flowtheme.tojsonvalue.md) |  | Converts the current theme to a JSON value |

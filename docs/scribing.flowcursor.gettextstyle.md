@@ -6,12 +6,12 @@
 
 Gets the text style at the current position
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getTextStyle(): TextStyle | null;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [TextStyle](./scribing.textstyle.md) \| null
 

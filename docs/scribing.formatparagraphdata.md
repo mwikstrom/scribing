@@ -6,16 +6,16 @@
 
 Data of format paragraph operations
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface FormatParagraphData extends FormatParagraphProps 
 ```
-<b>Extends:</b> [FormatParagraphProps](./scribing.formatparagraphprops.md)
+**Extends:** [FormatParagraphProps](./scribing.formatparagraphprops.md)
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [format](./scribing.formatparagraphdata.format.md) | "para" | Data classifier |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [format](./scribing.formatparagraphdata.format.md) |  | "para" | Data classifier |
 

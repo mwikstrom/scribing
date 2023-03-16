@@ -4,7 +4,7 @@
 
 ## MessageFormatArgumentInfo.key property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 key: string;

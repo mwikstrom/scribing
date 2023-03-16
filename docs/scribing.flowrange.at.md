@@ -6,7 +6,7 @@
 
 Gets a flow range with the specified anchor and optionally with a distance.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 static at(position: number, distance?: number): FlowRange;
@@ -17,9 +17,9 @@ static at(position: number, distance?: number): FlowRange;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  position | number | Anchor position |
-|  distance | number | <i>(Optional)</i> Optional. Range distance. Can be negative. Default is zero. |
+|  distance | number | _(Optional)_ Optional. Range distance. Can be negative. Default is zero. |
 
-<b>Returns:</b>
+**Returns:**
 
 [FlowRange](./scribing.flowrange.md)
 

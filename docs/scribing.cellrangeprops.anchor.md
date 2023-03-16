@@ -6,7 +6,7 @@
 
 The anchor cell
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 anchor: CellPosition;

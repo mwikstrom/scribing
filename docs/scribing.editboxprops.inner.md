@@ -6,7 +6,7 @@
 
 The inner operation
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 inner: FlowOperation;

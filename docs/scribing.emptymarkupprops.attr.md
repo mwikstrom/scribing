@@ -4,7 +4,7 @@
 
 ## EmptyMarkupProps.attr property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 attr: Readonly<Map<string, AttrValue>>;
