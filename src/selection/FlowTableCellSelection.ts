@@ -97,8 +97,15 @@ export class FlowTableCellSelection extends FlowTableCellSelectionBase {
      */
     protected getInnerThemeFromNode(node: FlowNode, outer?: FlowTheme): FlowTheme {
         if (node instanceof FlowTable) {
-            // TODO: Table theme
-            return (outer ?? DefaultFlowTheme.instance);
+            const { head } = node.style;
+            if (!outer) {
+                outer = DefaultFlowTheme.instance;
+            }
+            if (typeof head === "number" && this.cell.row < head) {
+                return outer.getTableHeadingTheme();
+            } else {
+                return outer.getTableBodyTheme();
+            }
         } else {
             throw new Error(`Expected a flow table at position ${this.position}`);
         }
