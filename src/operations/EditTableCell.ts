@@ -126,7 +126,7 @@ export class EditTableCell extends EditTableCellBase implements EditTableCellPro
      * {@inheritDoc NestedFlowOperation.getInnerContentFromNode}
      */
     getInnerContentFromNode(node: FlowNode): FlowContent {
-        if (node instanceof FlowTable) {
+        if (node instanceof FlowTable) {           
             return node.content.getCell(this.cell, true).content;
         } else {
             throw new Error(`Expected a flow table at position ${this.position}`);
@@ -138,8 +138,15 @@ export class EditTableCell extends EditTableCellBase implements EditTableCellPro
      */
     getInnerThemeFromNode(node: FlowNode, outer?: FlowTheme): FlowTheme {
         if (node instanceof FlowTable) {
-            // TODO: Support table theme
-            return (outer ?? DefaultFlowTheme.instance);
+            const { head } = node.style;
+            if (!outer) {
+                outer = DefaultFlowTheme.instance;
+            }
+            if (typeof head === "number" && this.cell.row < head) {
+                return outer.getTableHeadingTheme();
+            } else {
+                return outer.getTableBodyTheme();
+            }
         } else {
             throw new Error(`Expected a flow table at position ${this.position}`);
         }

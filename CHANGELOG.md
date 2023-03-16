@@ -1,5 +1,9 @@
 ## 1.2.2 - 2023-03-16
 
+- Fix: Use table cell theme (in edit table cell operation too)
+
+## 1.2.2 - 2023-03-16
+
 - Fix: Use table cell theme
 
 ## 1.2.1 - 2023-03-16
