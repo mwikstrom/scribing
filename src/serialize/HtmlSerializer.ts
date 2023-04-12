@@ -150,23 +150,25 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
                 width,
             });
         }
-        await this.visitTableContent(content);
+        await this.visitTableContent(content, style.head);
         this.#appendElemEnd();
         */
         return node;
     }
 
-    async visitTableContent(content: FlowTableContent): Promise<FlowTableContent> {
+    async visitTableContent(content: FlowTableContent, headingRowCount?: number): Promise<FlowTableContent> {
         /*
         const data = content.toData();
         for (const [key, { colSpan, rowSpan, content: nested}] of data) {
-            this.#appendElemStart("cell", {
+            this.#writer.start("cell", {
                 key,
                 colspan: colSpan === 1 ? undefined : colSpan,
                 rowspan: rowSpan === 1 ? undefined : rowSpan,
             });
-            await this.visitFlowContent(nested);
-            this.#appendElemEnd();
+            this.#theme.enterTableCell(key, headingRowCount);
+            this.visitFlowContent(nested);
+            this.#theme.leave();
+            this.#writer.end();
         }
         */
         return content;

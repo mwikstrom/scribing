@@ -162,12 +162,12 @@ export class XmlSerializer extends FlowNodeVisitor {
                 width,
             });
         }
-        this.visitTableContent(content);
+        this.visitTableContent(content, style.head);
         this.#writer.end();
         return node;
     }
 
-    visitTableContent(content: FlowTableContent): FlowTableContent {
+    visitTableContent(content: FlowTableContent, headingRowCount?: number): FlowTableContent {
         const data = content.toData();
         for (const [key, { colSpan, rowSpan, content: nested}] of data) {
             this.#writer.start("cell", {
@@ -175,7 +175,9 @@ export class XmlSerializer extends FlowNodeVisitor {
                 colspan: colSpan === 1 ? undefined : colSpan,
                 rowspan: rowSpan === 1 ? undefined : rowSpan,
             });
+            this.#theme.enterTableCell(key, headingRowCount);
             this.visitFlowContent(nested);
+            this.#theme.leave();
             this.#writer.end();
         }
         return content;

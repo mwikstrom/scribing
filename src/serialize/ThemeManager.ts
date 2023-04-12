@@ -1,3 +1,4 @@
+import { CellPosition } from "../selection/CellPosition";
 import { BoxStyle } from "../styles/BoxStyle";
 import { DefaultFlowTheme } from "../styles/DefaultFlowTheme";
 import { FlowTheme } from "../styles/FlowTheme";
@@ -43,6 +44,24 @@ export class ThemeManager {
 
     public enterBox(style: BoxStyle): void {
         this.#stack.push(this.current.getBoxTheme(style));
+        this.resetPara();
+    }
+
+    public enterTableCell(key: string, headingRowCount = 0): void {
+        let cellTheme: FlowTheme | undefined;
+
+        if (headingRowCount > 0) {
+            const rowIndex = CellPosition.parseRowIndex(key, false);
+            if (typeof rowIndex === "number" && rowIndex < headingRowCount) {
+                cellTheme = this.current.getTableHeadingTheme();
+            }
+        }
+
+        if (!cellTheme) {
+            cellTheme = this.current.getTableBodyTheme();
+        }
+
+        this.#stack.push(cellTheme);
         this.resetPara();
     }
 
