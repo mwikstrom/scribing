@@ -1,6 +1,5 @@
 import { FlowContent } from "../structure/FlowContent";
 import { FlowTheme } from "../styles/FlowTheme";
-import { DefaultFlowTheme } from "../styles/DefaultFlowTheme";
 import { XmlSerializer } from "./XmlSerializer";
 
 /**
@@ -12,7 +11,7 @@ import { XmlSerializer } from "./XmlSerializer";
  */
 export function serializeFlowContentToXml(
     content: FlowContent,
-    theme: FlowTheme = DefaultFlowTheme.instance
+    theme?: FlowTheme
 ): string {
     const serializer = new XmlSerializer(theme);
     serializer.visitFlowContent(content);

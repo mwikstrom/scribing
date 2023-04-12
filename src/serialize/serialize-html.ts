@@ -1,7 +1,5 @@
-import { js2xml } from "xml-js";
 import { FlowContent } from "../structure/FlowContent";
 import { FlowTheme } from "../styles/FlowTheme";
-import { DefaultFlowTheme } from "../styles/DefaultFlowTheme";
 import { HtmlSerializer } from "./HtmlSerializer";
 
 /**
@@ -22,15 +20,7 @@ export function serializeFlowContentToHtml(
     content: FlowContent,
     options: FlowContentHtmlOptions = {}
 ): string {
-    const { theme = DefaultFlowTheme.instance } = options;
-    const serializer = new HtmlSerializer(theme);
+    const serializer = new HtmlSerializer(options);
     serializer.visitFlowContent(content);
-    const root = serializer.getResult();
-    return js2xml(root, {
-        spaces: 4,
-        attributeValueFn: val => val.replace(
-            /\s/g, 
-            ws => ws === " " ? ws : `&#x${ws.charCodeAt(0).toString(16).padStart(4, "0")};`
-        ),
-    });
+    return serializer.getResult();
 }

@@ -1,4 +1,3 @@
-import { Element as XmlElem } from "xml-js";
 import { DynamicText } from "../nodes/DynamicText";
 import { EmptyMarkup } from "../nodes/EmptyMarkup";
 import { EndMarkup } from "../nodes/EndMarkup";
@@ -12,24 +11,28 @@ import { StartMarkup } from "../nodes/StartMarkup";
 import { TextRun } from "../nodes/TextRun";
 import { FlowContent } from "../structure/FlowContent";
 import { FlowTableContent } from "../structure/FlowTableContent";
-import { FlowTheme } from "../styles/FlowTheme";
-import { ParagraphTheme } from "../styles/ParagraphTheme";
 import { AsyncFlowNodeVisitor } from "../structure/AsyncFlowNodeVisitor";
+import type { FlowContentHtmlOptions } from "./serialize-html";
+import { XmlWriter } from "./XmlWriter";
+import { ThemeManager } from "./ThemeManager";
 
 /** @internal */
 export class HtmlSerializer extends AsyncFlowNodeVisitor {
-    readonly #themeStack: FlowTheme[] = [];
-    readonly #bodyStack: XmlElem[] = [{type: "element", name: "article"}];
-    #paraTheme: ParagraphTheme;
+    readonly #theme: ThemeManager;
+    readonly #writer = new XmlWriter();
 
-    constructor(theme: FlowTheme) {
+    constructor(options: FlowContentHtmlOptions) {
+        const { theme } = options;
         super();
-        this.#themeStack.push(theme);
-        this.#paraTheme = theme.getParagraphTheme("normal");
+        this.#theme = new ThemeManager(theme);
+        this.#writer.start("article");
     }
     
-    getResult(): XmlElem {
-        return this.#bodyStack[0];
+    getResult(): string {
+        this.#writer.end(); // article;
+        const result = this.#writer.toString();
+        this.#writer.reset();
+        return result;
     }
 
     async visitFlowContent(content: FlowContent): Promise<FlowContent> {

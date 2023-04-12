@@ -22,7 +22,6 @@ import { ParagraphStyle } from "../styles/ParagraphStyle";
 import { TableStyle } from "../styles/TableStyle";
 import { TextStyle } from "../styles/TextStyle";
 import { FlowTheme } from "../styles/FlowTheme";
-import { ParagraphTheme } from "../styles/ParagraphTheme";
 import { FlowCursor } from "../selection/FlowCursor";
 import { Interaction } from "../interaction/Interaction";
 import { OpenUrl } from "../interaction/OpenUrl";
@@ -30,10 +29,11 @@ import { RunScript } from "../interaction/RunScript";
 import { serializeMessage } from "../internal/serialize-message-format";
 import { AttrValue } from "../nodes/AttrValue";
 import { XmlWriter } from "./XmlWriter";
+import { ThemeManager } from "./ThemeManager";
 
 /** @internal */
 export class XmlSerializer extends FlowNodeVisitor {
-    readonly #themeStack: FlowTheme[] = [];
+    readonly #theme: ThemeManager;
     readonly #writer = new XmlWriter();
     readonly #scripts = new Map<Script, XmlElem>();
     readonly #imageSources = new Map<ImageSource, XmlElem>();
@@ -41,12 +41,10 @@ export class XmlSerializer extends FlowNodeVisitor {
     readonly #paraStyles = new Map<ParagraphStyle, XmlElem>();
     readonly #boxStyles = new Map<BoxStyle, XmlElem>();
     readonly #tableStyles = new Map<TableStyle, XmlElem>();
-    #paraTheme: ParagraphTheme;
 
-    constructor(theme: FlowTheme) {
+    constructor(theme?: FlowTheme) {
         super();
-        this.#themeStack.push(theme);
-        this.#paraTheme = theme.getParagraphTheme("normal");
+        this.#theme = new ThemeManager(theme);
         this.#writer.start("flowdoc", { xmlns: "https://cdn.dforigo.com/schemas/scribing-flowdoc-v1" });
         this.#writer.start("body");
     }
@@ -66,7 +64,6 @@ export class XmlSerializer extends FlowNodeVisitor {
     }
 
     visitFlowContent(content: FlowContent): FlowContent {
-        const flowTheme = this.#getCurrentFlowTheme();
         let resetPara = true;
         
         for (let cursor: FlowCursor | null = content.peek(0); cursor; cursor = cursor.moveToStartOfNextNode()) {
@@ -74,12 +71,12 @@ export class XmlSerializer extends FlowNodeVisitor {
                 const endOfPara = cursor.findNodeForward(ParagraphBreak.classType.test);
                 const paraBreak = endOfPara?.node;
                 if (paraBreak instanceof ParagraphBreak) {
-                    this.#paraTheme = flowTheme.getParagraphTheme(paraBreak.style.variant ?? "normal");
+                    this.#theme.resetPara(paraBreak.style.variant);
                     this.#writer.start("p", {
                         style: this.#getParaStyleId(paraBreak.style),
                     });
                 } else {
-                    this.#paraTheme = flowTheme.getParagraphTheme("normal");
+                    this.#theme.resetPara();
                 }
                 resetPara = false;
             }
@@ -128,10 +125,9 @@ export class XmlSerializer extends FlowNodeVisitor {
         this.#writer.start("box", {
             style: this.#getBoxStyleId(style),
         });
-        const boxTheme = this.#getCurrentFlowTheme().getBoxTheme(style);
-        this.#themeStack.push(boxTheme);
+        this.#theme.enterBox(style);
         this.visitFlowContent(content);
-        this.#themeStack.pop();
+        this.#theme.leave();
         this.#writer.end();
         return node;
     }
@@ -204,16 +200,12 @@ export class XmlSerializer extends FlowNodeVisitor {
 
     visitTextRun(node: TextRun): FlowNode {
         const { style, text } = node;
-        const { translate } = this.#paraTheme.getAmbientTextStyle().merge(style);
+        const { translate } = this.#theme.para.getAmbientTextStyle().merge(style);
         const tagName = translate === false ? "c" : "t";
         this.#writer.elem(tagName, {
             style: this.#getTextStyleId(style),
         }, text);
         return node;
-    }
-
-    #getCurrentFlowTheme(): FlowTheme {
-        return this.#themeStack[this.#themeStack.length - 1];
     }
 
     #getScriptId(script: Script | null | undefined): string | undefined {
