@@ -96,6 +96,7 @@ Model for collaborative rich text editing
 |  Function | Description |
 |  --- | --- |
 |  [deserializeFlowContentFromXml(xml)](./scribing.deserializeflowcontentfromxml.md) | Deserializes flow content from the specified XML string |
+|  [serializeFlowContentToHtml(content, options)](./scribing.serializeflowcontenttohtml.md) | Serializes the specified flow content to an HTML string |
 |  [serializeFlowContentToXml(content, theme)](./scribing.serializeflowcontenttoxml.md) | Serializes the specified flow content to an XML string |
 
 ## Interfaces
@@ -124,6 +125,7 @@ Model for collaborative rich text editing
 |  [FlowBoxProps](./scribing.flowboxprops.md) | Properties of [FlowBox](./scribing.flowbox.md) |
 |  [FlowBoxSelectionData](./scribing.flowboxselectiondata.md) | Data of [FlowBoxSelection](./scribing.flowboxselection.md) |
 |  [FlowBoxSelectionProps](./scribing.flowboxselectionprops.md) | Properties of [FlowBoxSelection](./scribing.flowboxselection.md) |
+|  [FlowContentHtmlOptions](./scribing.flowcontenthtmloptions.md) |  |
 |  [FlowContentProps](./scribing.flowcontentprops.md) | Flow content properties |
 |  [FlowIconData](./scribing.flowicondata.md) | Data of line break nodes |
 |  [FlowIconProps](./scribing.flowiconprops.md) | Properties of [FlowIcon](./scribing.flowicon.md) |

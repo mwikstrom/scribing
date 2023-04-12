@@ -581,6 +581,12 @@ export type FlowContentData = readonly FlowNode[];
 // @public (undocumented)
 export type FlowContentHashFunc = (data: Uint8Array) => Promise<Buffer>;
 
+// @public (undocumented)
+export interface FlowContentHtmlOptions {
+    // (undocumented)
+    theme?: FlowTheme;
+}
+
 // @public
 export interface FlowContentProps {
     nodes: readonly FlowNode[];
@@ -2302,6 +2308,9 @@ export interface ScriptProps {
     code: string;
     messages: Map<string, string>;
 }
+
+// @public
+export function serializeFlowContentToHtml(content: FlowContent, options?: FlowContentHtmlOptions): string;
 
 // @public
 export function serializeFlowContentToXml(content: FlowContent, theme?: FlowTheme): string;

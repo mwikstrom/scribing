@@ -114,6 +114,7 @@ export * from "./sync/FlowSyncOutput";
 export * from "./sync/FlowSyncSnapshot";
 export * from "./sync/FlowSyncProtocol";
 
-// XML serialization
+// Serialization
 export * from "./serialize/serialize-xml";
 export * from "./serialize/deserialize-xml";
+export * from "./serialize/serialize-html";
