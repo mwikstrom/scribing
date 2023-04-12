@@ -1,8 +1,8 @@
 import fs from "fs";
 import path from "path";
 import { FlowContent } from "../src/structure/FlowContent";
-import { deserializeFlowContentFromXml } from "../src/xml/deserialize-flowdoc";
-import { serializeFlowContentToXml } from "../src/xml/serialize-flowdoc";
+import { deserializeFlowContentFromXml } from "../src/serialize/deserialize-xml";
+import { serializeFlowContentToXml } from "../src/serialize/serialize-xml";
 
 describe("XmlSerialization", () => {
     const inputDir = path.join(__dirname, "./XmlSerialization");
