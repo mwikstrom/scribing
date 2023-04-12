@@ -1,5 +1,5 @@
 import { Equatable } from "paratype";
-import { Element as XmlElem, Attributes as XmlAttr } from "xml-js";
+import { Element as XmlElem } from "xml-js";
 import { DynamicText } from "../nodes/DynamicText";
 import { EmptyMarkup } from "../nodes/EmptyMarkup";
 import { EndMarkup } from "../nodes/EndMarkup";
@@ -29,11 +29,12 @@ import { OpenUrl } from "../interaction/OpenUrl";
 import { RunScript } from "../interaction/RunScript";
 import { serializeMessage } from "../internal/serialize-message-format";
 import { AttrValue } from "../nodes/AttrValue";
+import { XmlWriter } from "./XmlWriter";
 
 /** @internal */
 export class XmlSerializer extends FlowNodeVisitor {
     readonly #themeStack: FlowTheme[] = [];
-    readonly #bodyStack: XmlElem[] = [{type: "element", name: "body"}];
+    readonly #writer = new XmlWriter();
     readonly #scripts = new Map<Script, XmlElem>();
     readonly #imageSources = new Map<ImageSource, XmlElem>();
     readonly #textStyles = new Map<TextStyle, XmlElem>();
@@ -46,26 +47,22 @@ export class XmlSerializer extends FlowNodeVisitor {
         super();
         this.#themeStack.push(theme);
         this.#paraTheme = theme.getParagraphTheme("normal");
+        this.#writer.start("flowdoc", { xmlns: "https://cdn.dforigo.com/schemas/scribing-flowdoc-v1" });
+        this.#writer.start("body");
     }
-    
-    getResult(): XmlElem {
-        const root: XmlElem = {
-            type: "element",
-            name: "flowdoc",
-            attributes: {
-                xmlns: "https://cdn.dforigo.com/schemas/scribing-flowdoc-v1"
-            },
-            elements: [
-                this.#bodyStack[0],
-                ...this.#scripts.values(),
-                ...this.#imageSources.values(),
-                ...this.#textStyles.values(),
-                ...this.#paraStyles.values(),
-                ...this.#boxStyles.values(),
-                ...this.#tableStyles.values(),
-            ],
-        };
-        return {elements: [root]};
+        
+    getResult(): string {
+        this.#writer.end(); // body
+        this.#writer.append(...this.#scripts.values());
+        this.#writer.append(...this.#imageSources.values());
+        this.#writer.append(...this.#textStyles.values());
+        this.#writer.append(...this.#paraStyles.values());
+        this.#writer.append(...this.#boxStyles.values());
+        this.#writer.append(...this.#tableStyles.values());
+        this.#writer.end(); // flowdoc
+        const result = this.#writer.toString();
+        this.#writer.reset();
+        return result;
     }
 
     visitFlowContent(content: FlowContent): FlowContent {
@@ -78,7 +75,7 @@ export class XmlSerializer extends FlowNodeVisitor {
                 const paraBreak = endOfPara?.node;
                 if (paraBreak instanceof ParagraphBreak) {
                     this.#paraTheme = flowTheme.getParagraphTheme(paraBreak.style.variant ?? "normal");
-                    this.#appendElemStart("p", {
+                    this.#writer.start("p", {
                         style: this.#getParaStyleId(paraBreak.style),
                     });
                 } else {
@@ -90,7 +87,7 @@ export class XmlSerializer extends FlowNodeVisitor {
             const { node } = cursor;
             if (ParagraphBreak.classType.test(node)) {
                 resetPara = true;
-                this.#appendElemEnd();
+                this.#writer.end();
             } else if (node) {
                 this.visitNode(node);
             }
@@ -101,7 +98,7 @@ export class XmlSerializer extends FlowNodeVisitor {
 
     visitDynamicText(node: DynamicText): FlowNode {
         const { expression, style } = node;
-        this.#appendElem("dynamic", {
+        this.#writer.elem("dynamic", {
             expression: this.#getScriptId(expression),
             style: this.#getTextStyleId(style),
         });
@@ -110,7 +107,7 @@ export class XmlSerializer extends FlowNodeVisitor {
 
     visitEmptyMarkup(node: EmptyMarkup): FlowNode {
         const { tag, style, attr } = node;
-        this.#appendElem("markup", {
+        this.#writer.elem("markup", {
             tag,
             style: this.#getTextStyleId(style),
         }, this.#serializeMarkupAttr(attr));
@@ -119,7 +116,7 @@ export class XmlSerializer extends FlowNodeVisitor {
 
     visitEndMarkup(node: EndMarkup): FlowNode {
         const { tag, style } = node;
-        this.#appendElem("end-markup", {
+        this.#writer.elem("end-markup", {
             tag,
             style: this.#getTextStyleId(style),
         });
@@ -128,20 +125,20 @@ export class XmlSerializer extends FlowNodeVisitor {
 
     visitBox(node: FlowBox): FlowNode {
         const { style, content } = node;
-        this.#appendElemStart("box", {
+        this.#writer.start("box", {
             style: this.#getBoxStyleId(style),
         });
         const boxTheme = this.#getCurrentFlowTheme().getBoxTheme(style);
         this.#themeStack.push(boxTheme);
         this.visitFlowContent(content);
         this.#themeStack.pop();
-        this.#appendElemEnd();
+        this.#writer.end();
         return node;
     }
 
     visitIcon(node: FlowIcon): FlowNode {
         const { data, style } = node;
-        this.#appendElem("icon", {
+        this.#writer.elem("icon", {
             data,
             style: this.#getTextStyleId(style),
         });
@@ -150,7 +147,7 @@ export class XmlSerializer extends FlowNodeVisitor {
 
     visitImage(node: FlowImage): FlowNode {
         const { source, style, scale } = node;
-        this.#appendElem("image", {
+        this.#writer.elem("image", {
             source: this.#getImageSourceId(source),
             style: this.#getTextStyleId(style),
             scale: scale !== 1 ? scale : undefined,
@@ -160,37 +157,37 @@ export class XmlSerializer extends FlowNodeVisitor {
 
     visitTable(node: FlowTable): FlowNode {
         const { columns, style, content } = node;
-        this.#appendElemStart("table", {
+        this.#writer.start("table", {
             style: this.#getTableStyleId(style),
         });
         for (const [key, {width}] of columns) {
-            this.#appendElem("col", {
+            this.#writer.elem("col", {
                 key,
                 width,
             });
         }
         this.visitTableContent(content);
-        this.#appendElemEnd();
+        this.#writer.end();
         return node;
     }
 
     visitTableContent(content: FlowTableContent): FlowTableContent {
         const data = content.toData();
         for (const [key, { colSpan, rowSpan, content: nested}] of data) {
-            this.#appendElemStart("cell", {
+            this.#writer.start("cell", {
                 key,
                 colspan: colSpan === 1 ? undefined : colSpan,
                 rowspan: rowSpan === 1 ? undefined : rowSpan,
             });
             this.visitFlowContent(nested);
-            this.#appendElemEnd();
+            this.#writer.end();
         }
         return content;
     }
 
     visitLineBreak(node: LineBreak): FlowNode {
         const { style } = node;
-        this.#appendElem("br", {
+        this.#writer.elem("br", {
             style: this.#getTextStyleId(style),
         });
         return node;
@@ -198,7 +195,7 @@ export class XmlSerializer extends FlowNodeVisitor {
 
     visitStartMarkup(node: StartMarkup): FlowNode {
         const { tag, style, attr } = node;
-        this.#appendElem("start-markup", {
+        this.#writer.elem("start-markup", {
             tag,
             style: this.#getTextStyleId(style),
         }, this.#serializeMarkupAttr(attr));
@@ -209,7 +206,7 @@ export class XmlSerializer extends FlowNodeVisitor {
         const { style, text } = node;
         const { translate } = this.#paraTheme.getAmbientTextStyle().merge(style);
         const tagName = translate === false ? "c" : "t";
-        this.#appendElem(tagName, {
+        this.#writer.elem(tagName, {
             style: this.#getTextStyleId(style),
         }, text);
         return node;
@@ -217,41 +214,6 @@ export class XmlSerializer extends FlowNodeVisitor {
 
     #getCurrentFlowTheme(): FlowTheme {
         return this.#themeStack[this.#themeStack.length - 1];
-    }
-
-    #appendElem(name: string, attr: XmlAttr, children?: string | XmlElem[]): void {
-        this.#appendElemStart(name, attr);
-        if (typeof children === "string") {
-            this.#appendLeaf({ type: "text", text: children });
-        } else if (children) {
-            children.forEach(child => this.#appendLeaf(child));
-        }
-        this.#appendElemEnd();
-    }
-
-    #appendElemStart(name: string, attributes: XmlAttr): void {
-        this.#bodyStack.push({type: "element", name, attributes});
-    }
-
-    #appendElemEnd(): void {
-        const child = this.#bodyStack.pop();
-        if (child && this.#bodyStack.length > 0) {
-            const parent = this.#bodyStack[this.#bodyStack.length - 1];
-            if (!parent.elements) {
-                parent.elements = [child];
-            } else {
-                parent.elements.push(child);
-            }
-        }
-    }
-
-    #appendLeaf(elem: XmlElem): void {
-        const leaf = this.#bodyStack[this.#bodyStack.length - 1];
-        if (!leaf.elements) {
-            leaf.elements = [elem];
-        } else {
-            leaf.elements.push(elem);
-        }
     }
 
     #getScriptId(script: Script | null | undefined): string | undefined {
