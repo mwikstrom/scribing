@@ -96,6 +96,7 @@ Model for collaborative rich text editing
 |  Function | Description |
 |  --- | --- |
 |  [deserializeFlowContentFromXml(xml)](./scribing.deserializeflowcontentfromxml.md) | Deserializes flow content from the specified XML string |
+|  [processMarkup(input, handler, register, parent)](./scribing.processmarkup.md) |  |
 |  [serializeFlowContentToHtml(content, options)](./scribing.serializeflowcontenttohtml.md) | Serializes the specified flow content to an HTML string |
 |  [serializeFlowContentToXml(content, theme)](./scribing.serializeflowcontenttoxml.md) | Serializes the specified flow content to an XML string |
 
@@ -165,6 +166,8 @@ Model for collaborative rich text editing
 |  [InsertTableRowProps](./scribing.inserttablerowprops.md) | Properties of [InsertTableRow](./scribing.inserttablerow.md) |
 |  [LineBreakData](./scribing.linebreakdata.md) | Data of line break nodes |
 |  [LineBreakProps](./scribing.linebreakprops.md) | Properties of line break nodes |
+|  [MarkupHandlerInput](./scribing.markuphandlerinput.md) |  |
+|  [MarkupProcessingScope](./scribing.markupprocessingscope.md) |  |
 |  [MergeTableCellData](./scribing.mergetablecelldata.md) | Data of [MergeTableCell](./scribing.mergetablecell.md) |
 |  [MergeTableCellProps](./scribing.mergetablecellprops.md) | Properties of [MergeTableCell](./scribing.mergetablecell.md) |
 |  [MessageFormatArgumentInfo](./scribing.messageformatargumentinfo.md) |  |
@@ -329,6 +332,8 @@ Model for collaborative rich text editing
 |  [HorizontalAlignment](./scribing.horizontalalignment.md) | Horizontal alignment |
 |  [ListCounterAction](./scribing.listcounteraction.md) | List counter action |
 |  [ListMarkerKind](./scribing.listmarkerkind.md) | List marker styles |
+|  [MarkupHandler](./scribing.markuphandler.md) |  |
+|  [MarkupReplacementRegistration](./scribing.markupreplacementregistration.md) |  |
 |  [NotNull](./scribing.notnull.md) | Excludes <code>null</code> and <code>undefined</code> from the specified type |
 |  [OrderedListMarkerKind](./scribing.orderedlistmarkerkind.md) | Ordered list marker styles |
 |  [ParagraphVariant](./scribing.paragraphvariant.md) | Paragraph style variant |

@@ -118,3 +118,6 @@ export * from "./sync/FlowSyncProtocol";
 export * from "./serialize/serialize-xml";
 export * from "./serialize/deserialize-xml";
 export * from "./serialize/serialize-html";
+
+// Markup processing
+export * from "./markup/process-markup";

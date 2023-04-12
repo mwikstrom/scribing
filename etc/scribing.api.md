@@ -1761,6 +1761,28 @@ export const ListMarkerKindType: Type<ListMarkerKind>;
 // @public
 export const mapNotNull: <A extends readonly unknown[], T>(array: A, callback: (value: A[number], index: number) => T | null | undefined) => Exclude<T, null | undefined>[];
 
+// @public (undocumented)
+export type MarkupHandler<T> = (input: MarkupHandlerInput) => Promise<FlowContent | T | null | undefined>;
+
+// @public (undocumented)
+export interface MarkupHandlerInput extends MarkupProcessingScope {
+    // (undocumented)
+    readonly content: FlowContent | null;
+}
+
+// @public (undocumented)
+export interface MarkupProcessingScope {
+    // (undocumented)
+    readonly node: StartMarkup | EmptyMarkup;
+    // (undocumented)
+    readonly parent: MarkupProcessingScope | null;
+    // (undocumented)
+    readonly siblingsBefore: readonly (StartMarkup | EmptyMarkup)[];
+}
+
+// @public (undocumented)
+export type MarkupReplacementRegistration<T> = (placeholder: EmptyMarkup, replacement: T, input: MarkupHandlerInput) => void;
+
 // @public @sealed
 export class MergeTableCell extends MergeTableCellBase implements MergeTableCellProps {
     // (undocumented)
@@ -2118,6 +2140,9 @@ export type PredefinedIcon = (typeof PREDEFINED_ICONS)[number];
 
 // @public
 export const PredefinedIconType: Type<PredefinedIcon>;
+
+// @public (undocumented)
+export function processMarkup<T>(input: FlowContent, handler: MarkupHandler<T>, register: MarkupReplacementRegistration<T>, parent?: MarkupProcessingScope | null): Promise<FlowContent>;
 
 // @public
 export const READING_DIRECTIONS: readonly ["ltr", "rtl"];
