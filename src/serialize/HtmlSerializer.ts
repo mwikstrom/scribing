@@ -15,6 +15,8 @@ import { AsyncFlowNodeVisitor } from "../structure/AsyncFlowNodeVisitor";
 import type { FlowContentHtmlOptions } from "./serialize-html";
 import { XmlWriter } from "./XmlWriter";
 import { ThemeManager } from "./ThemeManager";
+import { ParagraphBreak } from "../nodes/ParagraphBreak";
+import { FlowCursor } from "../selection/FlowCursor";
 
 /** @internal */
 export class HtmlSerializer extends AsyncFlowNodeVisitor {
@@ -37,33 +39,32 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
 
     async visitFlowContent(content: FlowContent): Promise<FlowContent> {
         /*
-        const flowTheme = this.#getCurrentFlowTheme();
         let resetPara = true;
         
         for (let cursor: FlowCursor | null = content.peek(0); cursor; cursor = cursor.moveToStartOfNextNode()) {
             if (resetPara) {
-                const endOfPara = cursor.findNodeForward(ParagraphBreak.classType.test);
-                const paraBreak = endOfPara?.node;
-                if (paraBreak instanceof ParagraphBreak) {
-                    this.#paraTheme = flowTheme.getParagraphTheme(paraBreak.style.variant ?? "normal");
-                    this.#appendElemStart("p", {
+                const endOfPara = cursor.findNodeForward(ParagraphBreak.classType.test)?.node;
+                if (endOfPara instanceof ParagraphBreak) {
+                    this.#theme.resetPara(endOfPara.style.variant);
+                    this.#writer.start("p", {
                         style: this.#getParaStyleId(paraBreak.style),
                     });
                 } else {
-                    this.#paraTheme = flowTheme.getParagraphTheme("normal");
+                    this.#theme.resetPara();
                 }
                 resetPara = false;
             }
             
             const { node } = cursor;
+
             if (ParagraphBreak.classType.test(node)) {
                 resetPara = true;
-                this.#appendElemEnd();
+                this.#writer.end();
             } else if (node) {
                 await this.visitNode(node);
             }
-        }
-        */       
+        }*/
+
         return content;
     }
 
