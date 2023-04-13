@@ -79,5 +79,5 @@ export function extractMarkup<T>(
         }
     }
 
-    return [content || FlowContent.empty, ...extracted];
+    return [FlowContent.fromData(remainder), ...extracted];
 }
