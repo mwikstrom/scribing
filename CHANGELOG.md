@@ -1,6 +1,7 @@
 ## 1.3.0 - 2023-04-XX
 
 - New feature: `processMarkup`
+- New feature: `extractMarkup`
 
 ## 1.2.2 - 2023-03-16
 

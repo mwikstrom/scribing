@@ -121,3 +121,4 @@ export * from "./serialize/serialize-html";
 
 // Markup processing
 export * from "./markup/process-markup";
+export * from "./markup/extract-markup";
