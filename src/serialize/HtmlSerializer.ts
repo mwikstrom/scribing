@@ -15,7 +15,6 @@ import { ThemeManager } from "./ThemeManager";
 import { FlowTheme } from "../styles/FlowTheme";
 import { ParagraphBreak } from "../nodes/ParagraphBreak";
 import { FlowCursor } from "../selection/FlowCursor";
-import { Element as XmlElem } from "xml-js";
 import { ParagraphStyle } from "../styles/ParagraphStyle";
 import type { HtmlContent, HtmlElem, HtmlNode } from "./serialize-html";
 
@@ -40,25 +39,24 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     }
 
     async visitFlowContent(content: FlowContent): Promise<FlowContent> {
-        let resetPara = true;
+        let enterNextPara = true;
         
         for (let cursor: FlowCursor | null = content.peek(0); cursor; cursor = cursor.moveToStartOfNextNode()) {
-            if (resetPara) {
+            if (enterNextPara) {
                 const endOfPara = cursor.findNodeForward(ParagraphBreak.classType.test)?.node;
                 if (endOfPara instanceof ParagraphBreak) {
-                    this.#theme.resetPara(endOfPara.style.variant);
-                    this.#startPara(endOfPara.style);
-                } else {
-                    this.#theme.resetPara();
+                    this.#theme.enterPara(endOfPara.style.variant);
+                    // this.#startPara(endOfPara.style);
                 }
-                resetPara = false;
+                enterNextPara = false;
             }
             
             const { node } = cursor;
 
             if (node instanceof ParagraphBreak) {
-                resetPara = true;
-                this.#endPara(node.style);
+                enterNextPara = true;
+                this.#theme.leave();
+                // this.#endPara(node.style);
             } else if (node) {
                 await this.visitNode(node);
             }
@@ -180,32 +178,6 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
         }, text);
         */
         return node;
-    }
-
-    #startPara(style: ParagraphStyle): void {
-        const { variant = "normal" } = style;
-
-        if (variant === "code") {
-            this.#writer.start("p");
-            this.#writer.start("pre");
-            this.#writer.start("code");
-        } else if (/^h[1-6]$/.test(variant)) {
-            this.#writer.start(variant);
-        } else {
-            this.#writer.start("p");
-        }
-    }
-
-    #endPara(style: ParagraphStyle): void {
-        const { variant } = style;
-
-        if (variant === "code") {
-            this.#writer.end(); // code
-            this.#writer.end(); // pre
-            this.#writer.end(); // p
-        } else {
-            this.#writer.end(); // p or h1-h6
-        }
     }
 
     #writeHtmlContent(content: HtmlContent): void {

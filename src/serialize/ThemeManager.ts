@@ -9,8 +9,7 @@ import { ParagraphTheme } from "../styles/ParagraphTheme";
  * @internal
  */
 export class ThemeManager {
-    #stack: FlowTheme[] = [];
-    #para: ParagraphTheme | undefined;
+    #stack: (FlowTheme | ParagraphTheme)[] = [];
 
     constructor(root?: FlowTheme) {
         if (root) {
@@ -18,7 +17,7 @@ export class ThemeManager {
         }
     }
 
-    public get current(): FlowTheme {
+    public get current(): FlowTheme | ParagraphTheme {
         const stackLength = this.#stack.length;
         if (stackLength > 0) {
             return this.#stack[stackLength - 1];
@@ -27,24 +26,30 @@ export class ThemeManager {
         }
     }
 
-    public get para(): ParagraphTheme {
-        if (!this.#para) {
-            this.#para = this.current.getParagraphTheme("normal");
+    public get flow(): FlowTheme {
+        const { current } = this;
+        if (current instanceof ParagraphTheme) {
+            return current.getFlowTheme();
+        } else {
+            return current;
         }
-        return this.#para;
     }
 
-    public resetPara(variant?: ParagraphVariant): void {
-        if (variant) {
-            this.#para = this.current.getParagraphTheme(variant);
+    public get para(): ParagraphTheme {
+        const { current } = this;
+        if (current instanceof ParagraphTheme) {
+            return current;
         } else {
-            this.#para = undefined;
+            return current.getParagraphTheme("normal");
         }
+    }
+
+    public enterPara(variant?: ParagraphVariant): void {
+        this.#stack.push(this.flow.getParagraphTheme(variant || "normal"));
     }
 
     public enterBox(style: BoxStyle): void {
-        this.#stack.push(this.current.getBoxTheme(style));
-        this.resetPara();
+        this.#stack.push(this.flow.getBoxTheme(style));
     }
 
     public enterTableCell(key: string, headingRowCount = 0): void {
@@ -53,16 +58,15 @@ export class ThemeManager {
         if (headingRowCount > 0) {
             const rowIndex = CellPosition.parseRowIndex(key, false);
             if (typeof rowIndex === "number" && rowIndex < headingRowCount) {
-                cellTheme = this.current.getTableHeadingTheme();
+                cellTheme = this.flow.getTableHeadingTheme();
             }
         }
 
         if (!cellTheme) {
-            cellTheme = this.current.getTableBodyTheme();
+            cellTheme = this.flow.getTableBodyTheme();
         }
 
         this.#stack.push(cellTheme);
-        this.resetPara();
     }
 
     public leave(): void {

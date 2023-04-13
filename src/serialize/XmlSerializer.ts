@@ -64,26 +64,25 @@ export class XmlSerializer extends FlowNodeVisitor {
     }
 
     visitFlowContent(content: FlowContent): FlowContent {
-        let resetPara = true;
+        let enterNextPara = true;
         
         for (let cursor: FlowCursor | null = content.peek(0); cursor; cursor = cursor.moveToStartOfNextNode()) {
-            if (resetPara) {
+            if (enterNextPara) {
                 const endOfPara = cursor.findNodeForward(ParagraphBreak.classType.test);
                 const paraBreak = endOfPara?.node;
                 if (paraBreak instanceof ParagraphBreak) {
-                    this.#theme.resetPara(paraBreak.style.variant);
+                    this.#theme.enterPara(paraBreak.style.variant);
                     this.#writer.start("p", {
                         style: this.#getParaStyleId(paraBreak.style),
                     });
-                } else {
-                    this.#theme.resetPara();
                 }
-                resetPara = false;
+                enterNextPara = false;
             }
             
             const { node } = cursor;
             if (node instanceof ParagraphBreak) {
-                resetPara = true;
+                enterNextPara = true;
+                this.#theme.leave();
                 this.#writer.end();
             } else if (node) {
                 this.visitNode(node);
