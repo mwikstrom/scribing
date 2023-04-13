@@ -1,12 +1,27 @@
+import { MarkupHandler, processMarkup } from "../markup/process-markup";
+import { EmptyMarkup } from "../nodes/EmptyMarkup";
+import { FlowNode } from "../nodes/FlowNode";
 import { FlowContent } from "../structure/FlowContent";
 import { FlowTheme } from "../styles/FlowTheme";
 import { HtmlSerializer } from "./HtmlSerializer";
 
-/**
- * @public
- */
+/** @public */
 export interface FlowContentHtmlOptions {
     theme?: FlowTheme;
+    rewriteMarkup?: MarkupHandler<HtmlContent>;
+}
+
+/** @public */
+export type HtmlContent = HtmlNode | HtmlNode[];
+
+/** @public */
+export type HtmlNode = string | HtmlElem;
+
+/** @public */
+export interface HtmlElem {
+    name: string;
+    attr?: Record<string, string>;
+    content?: FlowContent | HtmlContent | null;
 }
 
 /**
@@ -16,11 +31,22 @@ export interface FlowContentHtmlOptions {
  * @returns A promise that is resolved with the serialized HTML string
  * @public
  */
-export function serializeFlowContentToHtml(
+export async function serializeFlowContentToHtml(
     content: FlowContent,
     options: FlowContentHtmlOptions = {}
-): string {
-    const serializer = new HtmlSerializer(options);
-    serializer.visitFlowContent(content);
+): Promise<string> {
+    const { theme, rewriteMarkup } = options;
+    const replacements = new WeakMap<EmptyMarkup, HtmlContent>();
+    
+    if (rewriteMarkup) {
+        content = await processMarkup(
+            content,
+            rewriteMarkup,
+            (flow, html) => replacements.set(flow, html)
+        );
+    }
+
+    const serializer = new HtmlSerializer(replacements, theme);
+    await serializer.visitFlowContent(content);
     return serializer.getResult();
 }

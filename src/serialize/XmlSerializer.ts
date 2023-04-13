@@ -82,7 +82,7 @@ export class XmlSerializer extends FlowNodeVisitor {
             }
             
             const { node } = cursor;
-            if (ParagraphBreak.classType.test(node)) {
+            if (node instanceof ParagraphBreak) {
                 resetPara = true;
                 this.#writer.end();
             } else if (node) {

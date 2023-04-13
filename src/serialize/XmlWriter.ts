@@ -36,12 +36,16 @@ export class XmlWriter {
         this.start(name, attributes);
 
         if (typeof children === "string") {
-            this.append({ type: "text", text: children });
+            this.text(children);
         } else if (children) {
             this.append(...children);
         }
 
         this.end();
+    }
+
+    public text(value: string): void {
+        this.append({ type: "text", text: value });
     }
 
     public append(...elements: XmlElem[]): void {

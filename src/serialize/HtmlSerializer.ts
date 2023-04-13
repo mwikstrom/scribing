@@ -1,31 +1,33 @@
 import { DynamicText } from "../nodes/DynamicText";
 import { EmptyMarkup } from "../nodes/EmptyMarkup";
-import { EndMarkup } from "../nodes/EndMarkup";
 import { FlowBox } from "../nodes/FlowBox";
 import { FlowIcon } from "../nodes/FlowIcon";
 import { FlowImage } from "../nodes/FlowImage";
 import { FlowNode } from "../nodes/FlowNode";
 import { FlowTable } from "../nodes/FlowTable";
 import { LineBreak } from "../nodes/LineBreak";
-import { StartMarkup } from "../nodes/StartMarkup";
 import { TextRun } from "../nodes/TextRun";
 import { FlowContent } from "../structure/FlowContent";
 import { FlowTableContent } from "../structure/FlowTableContent";
 import { AsyncFlowNodeVisitor } from "../structure/AsyncFlowNodeVisitor";
-import type { FlowContentHtmlOptions } from "./serialize-html";
 import { XmlWriter } from "./XmlWriter";
 import { ThemeManager } from "./ThemeManager";
+import { FlowTheme } from "../styles/FlowTheme";
 import { ParagraphBreak } from "../nodes/ParagraphBreak";
 import { FlowCursor } from "../selection/FlowCursor";
+import { Element as XmlElem } from "xml-js";
+import { ParagraphStyle } from "../styles/ParagraphStyle";
+import type { HtmlContent, HtmlElem, HtmlNode } from "./serialize-html";
 
 /** @internal */
 export class HtmlSerializer extends AsyncFlowNodeVisitor {
+    readonly #replacements: WeakMap<EmptyMarkup, HtmlContent>;
     readonly #theme: ThemeManager;
     readonly #writer = new XmlWriter();
 
-    constructor(options: FlowContentHtmlOptions) {
-        const { theme } = options;
+    constructor(replacements: WeakMap<EmptyMarkup, HtmlContent>, theme?: FlowTheme) {
         super();
+        this.#replacements = replacements;
         this.#theme = new ThemeManager(theme);
         this.#writer.start("article");
     }
@@ -38,7 +40,6 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     }
 
     async visitFlowContent(content: FlowContent): Promise<FlowContent> {
-        /*
         let resetPara = true;
         
         for (let cursor: FlowCursor | null = content.peek(0); cursor; cursor = cursor.moveToStartOfNextNode()) {
@@ -46,9 +47,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
                 const endOfPara = cursor.findNodeForward(ParagraphBreak.classType.test)?.node;
                 if (endOfPara instanceof ParagraphBreak) {
                     this.#theme.resetPara(endOfPara.style.variant);
-                    this.#writer.start("p", {
-                        style: this.#getParaStyleId(paraBreak.style),
-                    });
+                    this.#startPara(endOfPara.style);
                 } else {
                     this.#theme.resetPara();
                 }
@@ -57,13 +56,13 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
             
             const { node } = cursor;
 
-            if (ParagraphBreak.classType.test(node)) {
+            if (node instanceof ParagraphBreak) {
                 resetPara = true;
-                this.#writer.end();
+                this.#endPara(node.style);
             } else if (node) {
                 await this.visitNode(node);
             }
-        }*/
+        }
 
         return content;
     }
@@ -80,24 +79,10 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     }
 
     async visitEmptyMarkup(node: EmptyMarkup): Promise<FlowNode> {
-        /*
-        const { tag, style, attr } = node;
-        this.#appendElem("markup", {
-            tag,
-            style: this.#getTextStyleId(style),
-        }, this.#serializeMarkupAttr(attr));
-        */
-        return node;
-    }
-
-    async visitEndMarkup(node: EndMarkup): Promise<FlowNode> {
-        /*
-        const { tag, style } = node;
-        this.#appendElem("end-markup", {
-            tag,
-            style: this.#getTextStyleId(style),
-        });
-        */
+        const html = this.#replacements.get(node);
+        if (html) {
+            this.#writeHtmlContent(html);
+        }
         return node;
     }
 
@@ -185,17 +170,6 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
         return node;
     }
 
-    async visitStartMarkup(node: StartMarkup): Promise<FlowNode> {
-        /*
-        const { tag, style, attr } = node;
-        this.#appendElem("start-markup", {
-            tag,
-            style: this.#getTextStyleId(style),
-        }, this.#serializeMarkupAttr(attr));
-        */
-        return node;
-    }
-
     async visitTextRun(node: TextRun): Promise<FlowNode> {
         /*
         const { style, text } = node;
@@ -206,5 +180,58 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
         }, text);
         */
         return node;
+    }
+
+    #startPara(style: ParagraphStyle): void {
+        const { variant = "normal" } = style;
+
+        if (variant === "code") {
+            this.#writer.start("p");
+            this.#writer.start("pre");
+            this.#writer.start("code");
+        } else if (/^h[1-6]$/.test(variant)) {
+            this.#writer.start(variant);
+        } else {
+            this.#writer.start("p");
+        }
+    }
+
+    #endPara(style: ParagraphStyle): void {
+        const { variant } = style;
+
+        if (variant === "code") {
+            this.#writer.end(); // code
+            this.#writer.end(); // pre
+            this.#writer.end(); // p
+        } else {
+            this.#writer.end(); // p or h1-h6
+        }
+    }
+
+    #writeHtmlContent(content: HtmlContent): void {
+        if (Array.isArray(content)) {
+            content.forEach(node => this.#writeHtmlNode(node));
+        } else {
+            this.#writeHtmlNode(content);
+        }
+    }
+
+    #writeHtmlNode(node: HtmlNode): void {
+        if (typeof node === "string") {
+            this.#writer.text(node);
+        } else {
+            this.#writeHtmlElem(node);
+        }
+    }
+
+    #writeHtmlElem(elem: HtmlElem): void {
+        const { name, attr, content } = elem;
+        this.#writer.start(name, attr);
+        if (content instanceof FlowContent) {
+            this.visitFlowContent(content);
+        } else if (content) {
+            this.#writeHtmlContent(content);
+        }
+        this.#writer.end();
     }
 }
