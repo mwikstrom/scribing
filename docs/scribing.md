@@ -96,7 +96,9 @@ Model for collaborative rich text editing
 |  Function | Description |
 |  --- | --- |
 |  [deserializeFlowContentFromXml(xml)](./scribing.deserializeflowcontentfromxml.md) | Deserializes flow content from the specified XML string |
-|  [processMarkup(input, handler, register, parent)](./scribing.processmarkup.md) |  |
+|  [extractMarkup(input, predicate)](./scribing.extractmarkup.md) |  |
+|  [processMarkup(content, handler, register, scope)](./scribing.processmarkup.md) |  |
+|  [processNestedMarkup(input, content)](./scribing.processnestedmarkup.md) |  |
 |  [serializeFlowContentToHtml(content, options)](./scribing.serializeflowcontenttohtml.md) | Serializes the specified flow content to an HTML string |
 |  [serializeFlowContentToXml(content, theme)](./scribing.serializeflowcontenttoxml.md) | Serializes the specified flow content to an XML string |
 
@@ -157,6 +159,7 @@ Model for collaborative rich text editing
 |  [FormatTextData](./scribing.formattextdata.md) | Data of format text operations |
 |  [FormatTextProps](./scribing.formattextprops.md) | Properties of format text operations |
 |  [GenericFlowNodeVisitor](./scribing.genericflownodevisitor.md) | A generic visitor for flow content |
+|  [HtmlElem](./scribing.htmlelem.md) |  |
 |  [ImageSourceProps](./scribing.imagesourceprops.md) | Properties of [ImageSource](./scribing.imagesource.md) |
 |  [InsertContentData](./scribing.insertcontentdata.md) | Data of insert content operations |
 |  [InsertContentProps](./scribing.insertcontentprops.md) | Properties of insert content operations |
@@ -330,6 +333,8 @@ Model for collaborative rich text editing
 |  [FlowTableCellData](./scribing.flowtablecelldata.md) | Data of [FlowTableCell](./scribing.flowtablecell.md) |
 |  [FontFamily](./scribing.fontfamily.md) | Font family |
 |  [HorizontalAlignment](./scribing.horizontalalignment.md) | Horizontal alignment |
+|  [HtmlContent](./scribing.htmlcontent.md) |  |
+|  [HtmlNode](./scribing.htmlnode.md) |  |
 |  [ListCounterAction](./scribing.listcounteraction.md) | List counter action |
 |  [ListMarkerKind](./scribing.listmarkerkind.md) | List marker styles |
 |  [MarkupHandler](./scribing.markuphandler.md) |  |

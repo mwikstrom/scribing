@@ -15,5 +15,6 @@ export interface FlowContentHtmlOptions
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
+|  [rewriteMarkup?](./scribing.flowcontenthtmloptions.rewritemarkup.md) |  | [MarkupHandler](./scribing.markuphandler.md)<!-- -->&lt;[HtmlContent](./scribing.htmlcontent.md)<!-- -->&gt; | _(Optional)_ |
 |  [theme?](./scribing.flowcontenthtmloptions.theme.md) |  | [FlowTheme](./scribing.flowtheme.md) | _(Optional)_ |
 

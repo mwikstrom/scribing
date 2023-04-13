@@ -9,7 +9,7 @@ Serializes the specified flow content to an HTML string
 **Signature:**
 
 ```typescript
-export declare function serializeFlowContentToHtml(content: FlowContent, options?: FlowContentHtmlOptions): string;
+export declare function serializeFlowContentToHtml(content: FlowContent, options?: FlowContentHtmlOptions): Promise<string>;
 ```
 
 ## Parameters
@@ -21,7 +21,7 @@ export declare function serializeFlowContentToHtml(content: FlowContent, options
 
 **Returns:**
 
-string
+Promise&lt;string&gt;
 
 A promise that is resolved with the serialized HTML string
 

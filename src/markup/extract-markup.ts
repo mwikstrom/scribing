@@ -8,10 +8,11 @@ import { FlowContent } from "../structure/FlowContent";
 import { Script } from "../structure/Script";
 import { MarkupHandlerInput } from "./process-markup";
 
-export function extractMarkup(
-    input: MarkupHandlerInput,
+/** @public */
+export function extractMarkup<T>(
+    input: MarkupHandlerInput<T>,
     predicate: string | RegExp | ((tag: string, attr: ReadonlyMap<string, string | Script>) => boolean)
-): [FlowContent, ...MarkupHandlerInput[]] {
+): [FlowContent, ...MarkupHandlerInput<T>[]] {
     if (typeof predicate === "string") {
         const needle = predicate;
         predicate = (tag: string) => tag === needle;
@@ -20,17 +21,19 @@ export function extractMarkup(
         predicate = (tag: string) => pattern.test(tag);
     }
 
-    const { content, ...parent } = input;
+    const { content, handler, register, ...parent } = input;
     const remainder: FlowNode[] = [];
-    const extracted: MarkupHandlerInput[] = [];
+    const extracted: MarkupHandlerInput<T>[] = [];
     const siblingsBefore: (EmptyMarkup | StartMarkup)[] = [];
 
     const pushNext = (node: EmptyMarkup | StartMarkup, content: FlowContent | null) => {
-        const next: MarkupHandlerInput = {
+        const next: MarkupHandlerInput<T> = {
             node,
             content,  
             siblingsBefore: Object.freeze([...siblingsBefore]),
             parent,
+            handler,
+            register
         };
         extracted.push(next);
         siblingsBefore.push(node);

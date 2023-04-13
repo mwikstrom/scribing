@@ -8,17 +8,17 @@
 **Signature:**
 
 ```typescript
-export declare function processMarkup<T>(input: FlowContent, handler: MarkupHandler<T>, register: MarkupReplacementRegistration<T>, parent?: MarkupProcessingScope | null): Promise<FlowContent>;
+export declare function processMarkup<T>(content: FlowContent, handler: MarkupHandler<T>, register: MarkupReplacementRegistration<T>, scope?: MarkupProcessingScope | null): Promise<FlowContent>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  input | [FlowContent](./scribing.flowcontent.md) |  |
+|  content | [FlowContent](./scribing.flowcontent.md) |  |
 |  handler | [MarkupHandler](./scribing.markuphandler.md)<!-- -->&lt;T&gt; |  |
 |  register | [MarkupReplacementRegistration](./scribing.markupreplacementregistration.md)<!-- -->&lt;T&gt; |  |
-|  parent | [MarkupProcessingScope](./scribing.markupprocessingscope.md) \| null | _(Optional)_ |
+|  scope | [MarkupProcessingScope](./scribing.markupprocessingscope.md) \| null | _(Optional)_ |
 
 **Returns:**
 

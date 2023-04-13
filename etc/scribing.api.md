@@ -425,6 +425,9 @@ export interface EndMarkupProps {
     tag: string;
 }
 
+// @public (undocumented)
+export function extractMarkup<T>(input: MarkupHandlerInput<T>, predicate: string | RegExp | ((tag: string, attr: ReadonlyMap<string, string | Script>) => boolean)): [FlowContent, ...MarkupHandlerInput<T>[]];
+
 // @public
 export const filterNotNull: <T>(array: readonly T[]) => Exclude<T, null | undefined>[];
 
@@ -583,6 +586,8 @@ export type FlowContentHashFunc = (data: Uint8Array) => Promise<Buffer>;
 
 // @public (undocumented)
 export interface FlowContentHtmlOptions {
+    // (undocumented)
+    rewriteMarkup?: MarkupHandler<HtmlContent>;
     // (undocumented)
     theme?: FlowTheme;
 }
@@ -1490,6 +1495,22 @@ export const HORIZONTAL_ALIGNMENTS: readonly ["start", "center", "end", "justify
 export type HorizontalAlignment = (typeof HORIZONTAL_ALIGNMENTS)[number];
 
 // @public (undocumented)
+export type HtmlContent = HtmlNode | HtmlNode[];
+
+// @public (undocumented)
+export interface HtmlElem {
+    // (undocumented)
+    attr?: Record<string, string>;
+    // (undocumented)
+    content?: FlowContent | HtmlContent | null;
+    // (undocumented)
+    name: string;
+}
+
+// @public (undocumented)
+export type HtmlNode = string | HtmlElem;
+
+// @public (undocumented)
 export class HttpFlowSyncProtocol implements FlowSyncProtocol {
     constructor(url: string, fetcher?: BasicFetch);
     // (undocumented)
@@ -1762,12 +1783,16 @@ export const ListMarkerKindType: Type<ListMarkerKind>;
 export const mapNotNull: <A extends readonly unknown[], T>(array: A, callback: (value: A[number], index: number) => T | null | undefined) => Exclude<T, null | undefined>[];
 
 // @public (undocumented)
-export type MarkupHandler<T> = (input: MarkupHandlerInput) => Promise<FlowContent | T | null | undefined>;
+export type MarkupHandler<T = never> = (input: MarkupHandlerInput<T>) => Promise<FlowContent | T | null | undefined>;
 
 // @public (undocumented)
-export interface MarkupHandlerInput extends MarkupProcessingScope {
+export interface MarkupHandlerInput<T = unknown> extends MarkupProcessingScope {
     // (undocumented)
     readonly content: FlowContent | null;
+    // (undocumented)
+    readonly handler: MarkupHandler<T>;
+    // (undocumented)
+    readonly register: MarkupReplacementRegistration<T>;
 }
 
 // @public (undocumented)
@@ -1781,7 +1806,7 @@ export interface MarkupProcessingScope {
 }
 
 // @public (undocumented)
-export type MarkupReplacementRegistration<T> = (placeholder: EmptyMarkup, replacement: T, input: MarkupHandlerInput) => void;
+export type MarkupReplacementRegistration<T> = (placeholder: EmptyMarkup, replacement: T, input: MarkupHandlerInput<T>) => void;
 
 // @public @sealed
 export class MergeTableCell extends MergeTableCellBase implements MergeTableCellProps {
@@ -2142,7 +2167,10 @@ export type PredefinedIcon = (typeof PREDEFINED_ICONS)[number];
 export const PredefinedIconType: Type<PredefinedIcon>;
 
 // @public (undocumented)
-export function processMarkup<T>(input: FlowContent, handler: MarkupHandler<T>, register: MarkupReplacementRegistration<T>, parent?: MarkupProcessingScope | null): Promise<FlowContent>;
+export function processMarkup<T>(content: FlowContent, handler: MarkupHandler<T>, register: MarkupReplacementRegistration<T>, scope?: MarkupProcessingScope | null): Promise<FlowContent>;
+
+// @public (undocumented)
+export function processNestedMarkup<T>(input: MarkupHandlerInput<T>, content?: FlowContent): Promise<FlowContent>;
 
 // @public
 export const READING_DIRECTIONS: readonly ["ltr", "rtl"];
@@ -2335,7 +2363,7 @@ export interface ScriptProps {
 }
 
 // @public
-export function serializeFlowContentToHtml(content: FlowContent, options?: FlowContentHtmlOptions): string;
+export function serializeFlowContentToHtml(content: FlowContent, options?: FlowContentHtmlOptions): Promise<string>;
 
 // @public
 export function serializeFlowContentToXml(content: FlowContent, theme?: FlowTheme): string;

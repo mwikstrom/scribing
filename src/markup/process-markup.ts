@@ -10,13 +10,15 @@ import { FlowContent } from "../structure/FlowContent";
 /**
  * @public
  */
-export type MarkupHandler<T = never> = (input: MarkupHandlerInput) => Promise<FlowContent | T | null | undefined>;
+export type MarkupHandler<T = never> = (input: MarkupHandlerInput<T>) => Promise<FlowContent | T | null | undefined>;
 
 /**
  * @public
  */
-export interface MarkupHandlerInput extends MarkupProcessingScope {
+export interface MarkupHandlerInput<T = unknown> extends MarkupProcessingScope {
     readonly content: FlowContent | null;
+    readonly handler: MarkupHandler<T>;
+    readonly register: MarkupReplacementRegistration<T>;
 }
 
 /**
@@ -34,20 +36,31 @@ export interface MarkupProcessingScope {
 export type MarkupReplacementRegistration<T> = (
     placeholder: EmptyMarkup,
     replacement: T,
-    input: MarkupHandlerInput
+    input: MarkupHandlerInput<T>
 ) => void;
 
 /**
  * @public
  */
+export function processNestedMarkup<T>(
+    input: MarkupHandlerInput<T>,
+    content?: FlowContent,
+): Promise<FlowContent> {
+    const { content: defaultContent, handler, register, ...scope } = input;
+    return processMarkup(content || defaultContent || FlowContent.empty, handler, register, scope);
+}
+
+/**
+ * @public
+ */
 export async function processMarkup<T>(
-    input: FlowContent,
+    content: FlowContent,
     handler: MarkupHandler<T>,
     register: MarkupReplacementRegistration<T>,
-    parent: MarkupProcessingScope | null = null,
+    scope: MarkupProcessingScope | null = null,
 ) : Promise<FlowContent> {
     const output: FlowNode[] = [];
-    await renderMarkup(input, handler, register, parent, output, "empty");
+    await renderMarkup(content, handler, register, scope, output, "empty");
     return FlowContent.fromData(output);
 }
 
@@ -127,11 +140,13 @@ const renderMarkupNode = async <T>(
     siblingsBefore: readonly (StartMarkup | EmptyMarkup)[],
     content: FlowContent | null = null,
 ): Promise<ParagraphMode> => {
-    const input: MarkupHandlerInput = Object.freeze({
+    const input: MarkupHandlerInput<T> = Object.freeze({
         parent,
         node,
         siblingsBefore,
         content,
+        handler,
+        register,
     });
 
     let result = await handler(input);

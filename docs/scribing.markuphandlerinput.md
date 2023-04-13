@@ -8,7 +8,7 @@
 **Signature:**
 
 ```typescript
-export interface MarkupHandlerInput extends MarkupProcessingScope 
+export interface MarkupHandlerInput<T = unknown> extends MarkupProcessingScope 
 ```
 **Extends:** [MarkupProcessingScope](./scribing.markupprocessingscope.md)
 
@@ -17,4 +17,6 @@ export interface MarkupHandlerInput extends MarkupProcessingScope
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [content](./scribing.markuphandlerinput.content.md) | <code>readonly</code> | [FlowContent](./scribing.flowcontent.md) \| null |  |
+|  [handler](./scribing.markuphandlerinput.handler.md) | <code>readonly</code> | [MarkupHandler](./scribing.markuphandler.md)<!-- -->&lt;T&gt; |  |
+|  [register](./scribing.markuphandlerinput.register.md) | <code>readonly</code> | [MarkupReplacementRegistration](./scribing.markupreplacementregistration.md)<!-- -->&lt;T&gt; |  |
 

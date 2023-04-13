@@ -8,7 +8,7 @@
 **Signature:**
 
 ```typescript
-export type MarkupReplacementRegistration<T> = (placeholder: EmptyMarkup, replacement: T, input: MarkupHandlerInput) => void;
+export type MarkupReplacementRegistration<T> = (placeholder: EmptyMarkup, replacement: T, input: MarkupHandlerInput<T>) => void;
 ```
 **References:** [EmptyMarkup](./scribing.emptymarkup.md)<!-- -->, [MarkupHandlerInput](./scribing.markuphandlerinput.md)
 
