@@ -10,7 +10,7 @@ import { FlowContent } from "../structure/FlowContent";
 /**
  * @public
  */
-export type MarkupHandler<T> = (input: MarkupHandlerInput) => Promise<FlowContent | T | null | undefined>;
+export type MarkupHandler<T = never> = (input: MarkupHandlerInput) => Promise<FlowContent | T | null | undefined>;
 
 /**
  * @public
