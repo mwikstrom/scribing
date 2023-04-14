@@ -28,7 +28,7 @@ import { OpenUrl } from "../interaction/OpenUrl";
 import { RunScript } from "../interaction/RunScript";
 import { serializeMessage } from "../internal/serialize-message-format";
 import { AttrValue } from "../nodes/AttrValue";
-import { XmlWriter } from "./XmlWriter";
+import { EndScopeFunc, XmlWriter } from "./XmlWriter";
 import { ThemeManager } from "./ThemeManager";
 
 /** @internal */
@@ -41,52 +41,62 @@ export class XmlSerializer extends FlowNodeVisitor {
     readonly #paraStyles = new Map<ParagraphStyle, XmlElem>();
     readonly #boxStyles = new Map<BoxStyle, XmlElem>();
     readonly #tableStyles = new Map<TableStyle, XmlElem>();
+    readonly #endBody: EndScopeFunc;
+    readonly #endDoc: EndScopeFunc;
 
     constructor(theme?: FlowTheme) {
         super();
         this.#theme = new ThemeManager(theme);
-        this.#writer.start("flowdoc", { xmlns: "https://cdn.dforigo.com/schemas/scribing-flowdoc-v1" });
-        this.#writer.start("body");
+        this.#endBody = this.#writer.start("flowdoc", { xmlns: "https://cdn.dforigo.com/schemas/scribing-flowdoc-v1" });
+        this.#endDoc = this.#writer.start("body");
     }
         
     getResult(): string {
-        this.#writer.end(); // body
+        this.#endBody();
         this.#writer.append(...this.#scripts.values());
         this.#writer.append(...this.#imageSources.values());
         this.#writer.append(...this.#textStyles.values());
         this.#writer.append(...this.#paraStyles.values());
         this.#writer.append(...this.#boxStyles.values());
         this.#writer.append(...this.#tableStyles.values());
-        this.#writer.end(); // flowdoc
+        this.#endDoc();
         const result = this.#writer.toString();
         this.#writer.reset();
         return result;
     }
 
     visitFlowContent(content: FlowContent): FlowContent {
-        let enterNextPara = true;
+        let endFunc: EndScopeFunc | undefined;
         
         for (let cursor: FlowCursor | null = content.peek(0); cursor; cursor = cursor.moveToStartOfNextNode()) {
-            if (enterNextPara) {
+            if (!endFunc) {
                 const endOfPara = cursor.findNodeForward(ParagraphBreak.classType.test);
                 const paraBreak = endOfPara?.node;
                 if (paraBreak instanceof ParagraphBreak) {
-                    this.#theme.enterPara(paraBreak.style.variant);
-                    this.#writer.start("p", {
+                    const endElem = this.#writer.start("p", {
                         style: this.#getParaStyleId(paraBreak.style),
                     });
+                    const endTheme = this.#theme.startPara(paraBreak.style.variant);
+                    endFunc = () => {
+                        endTheme();
+                        endElem();
+                    };
+                } else {
+                    endFunc = () => void 0;
                 }
-                enterNextPara = false;
             }
             
             const { node } = cursor;
-            if (node instanceof ParagraphBreak) {
-                enterNextPara = true;
-                this.#theme.leave();
-                this.#writer.end();
+            if (node instanceof ParagraphBreak && endFunc) {
+                endFunc();
+                endFunc = undefined;
             } else if (node) {
                 this.visitNode(node);
             }
+        }
+
+        if (endFunc) {
+            endFunc();
         }
 
         return content;
@@ -121,13 +131,13 @@ export class XmlSerializer extends FlowNodeVisitor {
 
     visitBox(node: FlowBox): FlowNode {
         const { style, content } = node;
-        this.#writer.start("box", {
+        const endElem = this.#writer.start("box", {
             style: this.#getBoxStyleId(style),
         });
-        this.#theme.enterBox(style);
+        const endTheme = this.#theme.startBox(style);
         this.visitFlowContent(content);
-        this.#theme.leave();
-        this.#writer.end();
+        endTheme();
+        endElem();
         return node;
     }
 
@@ -152,7 +162,7 @@ export class XmlSerializer extends FlowNodeVisitor {
 
     visitTable(node: FlowTable): FlowNode {
         const { columns, style, content } = node;
-        this.#writer.start("table", {
+        const endTable = this.#writer.start("table", {
             style: this.#getTableStyleId(style),
         });
         for (const [key, {width}] of columns) {
@@ -162,22 +172,22 @@ export class XmlSerializer extends FlowNodeVisitor {
             });
         }
         this.visitTableContent(content, style.head);
-        this.#writer.end();
+        endTable();
         return node;
     }
 
     visitTableContent(content: FlowTableContent, headingRowCount?: number): FlowTableContent {
         const data = content.toData();
         for (const [key, { colSpan, rowSpan, content: nested}] of data) {
-            this.#writer.start("cell", {
+            const endElem = this.#writer.start("cell", {
                 key,
                 colspan: colSpan === 1 ? undefined : colSpan,
                 rowspan: rowSpan === 1 ? undefined : rowSpan,
             });
-            this.#theme.enterTableCell(key, headingRowCount);
+            const endTheme = this.#theme.startTableCell(key, headingRowCount);
             this.visitFlowContent(nested);
-            this.#theme.leave();
-            this.#writer.end();
+            endTheme();
+            endElem();
         }
         return content;
     }

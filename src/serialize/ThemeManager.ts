@@ -4,6 +4,7 @@ import { DefaultFlowTheme } from "../styles/DefaultFlowTheme";
 import { FlowTheme } from "../styles/FlowTheme";
 import { ParagraphVariant } from "../styles/ParagraphStyle";
 import { ParagraphTheme } from "../styles/ParagraphTheme";
+import type { EndScopeFunc } from "./XmlWriter";
 
 /**
  * @internal
@@ -44,15 +45,15 @@ export class ThemeManager {
         }
     }
 
-    public enterPara(variant?: ParagraphVariant): void {
-        this.#stack.push(this.flow.getParagraphTheme(variant || "normal"));
+    public startPara(variant?: ParagraphVariant): EndScopeFunc {
+        return this.start(this.flow.getParagraphTheme(variant || "normal"));
     }
 
-    public enterBox(style: BoxStyle): void {
-        this.#stack.push(this.flow.getBoxTheme(style));
+    public startBox(style: BoxStyle): EndScopeFunc {
+        return this.start(this.flow.getBoxTheme(style));
     }
 
-    public enterTableCell(key: string, headingRowCount = 0): void {
+    public startTableCell(key: string, headingRowCount = 0): EndScopeFunc {
         let cellTheme: FlowTheme | undefined;
 
         if (headingRowCount > 0) {
@@ -66,10 +67,16 @@ export class ThemeManager {
             cellTheme = this.flow.getTableBodyTheme();
         }
 
-        this.#stack.push(cellTheme);
+        return this.start(cellTheme);
     }
 
-    public leave(): void {
-        this.#stack.pop();
+    public start(theme: FlowTheme | ParagraphTheme): EndScopeFunc {
+        this.#stack.push(theme);
+        return () => {
+            const popped = this.#stack.pop();
+            if (popped !== theme) {
+                throw new Error("Closing unexpected theme");
+            }
+        };
     }
 }

@@ -12,8 +12,14 @@ export class HtmlTextStyleManager {
     }
 
     public apply(style: TextStyle): void {
+        // TODO
     }
 
-    public leave(): void {
+    public dispose(): void {
+        // TODO
     }
 }
+
+
+const makeCssString = (props: Map<string, string>): string =>
+    [...props].map(([key, value]) => `${key}:${value}`).join(";");

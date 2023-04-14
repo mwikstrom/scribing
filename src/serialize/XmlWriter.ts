@@ -3,6 +3,11 @@ import { Element as XmlElem, Attributes as XmlAttr, js2xml } from "xml-js";
 /**
  * @internal
  */
+export type EndScopeFunc = () => void;
+
+/**
+ * @internal
+ */
 export class XmlWriter {
     #root: XmlElem[] = [];
     #stack: XmlElem[] = [];
@@ -22,18 +27,20 @@ export class XmlWriter {
         this.#root = [];
     }
 
-    public start(name: string, attributes?: XmlAttr): void {
+    public start(name: string, attributes?: XmlAttr): EndScopeFunc {
         const elem: XmlElem = { type: "element", name, attributes };
         this.append(elem);
         this.#stack.push(elem);
-    }
-
-    public end(): void {
-        this.#stack.pop();
+        return () => {
+            const popped = this.#stack.pop();
+            if (popped !== elem) {
+                throw new Error("Closing unexpected element");
+            }
+        };
     }
 
     public elem(name: string, attributes?: XmlAttr, children?: string | XmlElem[]): void {
-        this.start(name, attributes);
+        const end = this.start(name, attributes);
 
         if (typeof children === "string") {
             this.text(children);
@@ -41,7 +48,7 @@ export class XmlWriter {
             this.append(...children);
         }
 
-        this.end();
+        end();
     }
 
     public text(value: string): void {
