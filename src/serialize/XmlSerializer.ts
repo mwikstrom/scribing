@@ -47,8 +47,8 @@ export class XmlSerializer extends FlowNodeVisitor {
     constructor(theme?: FlowTheme) {
         super();
         this.#theme = new ThemeManager(theme);
-        this.#endBody = this.#writer.start("flowdoc", { xmlns: "https://cdn.dforigo.com/schemas/scribing-flowdoc-v1" });
-        this.#endDoc = this.#writer.start("body");
+        this.#endDoc = this.#writer.start("flowdoc", { xmlns: "https://cdn.dforigo.com/schemas/scribing-flowdoc-v1" });
+        this.#endBody = this.#writer.start("body");
     }
         
     getResult(): string {
