@@ -17,12 +17,15 @@ import { ParagraphBreak } from "../nodes/ParagraphBreak";
 import { FlowCursor } from "../selection/FlowCursor";
 import { ParagraphStyle } from "../styles/ParagraphStyle";
 import type { HtmlContent, HtmlElem, HtmlNode } from "./serialize-html";
+import { TextStyle } from "../styles/TextStyle";
+import { HtmlTextStyleManager } from "./HtmlTextStyleManager";
 
 /** @internal */
 export class HtmlSerializer extends AsyncFlowNodeVisitor {
     readonly #replacements: WeakMap<EmptyMarkup, HtmlContent>;
     readonly #theme: ThemeManager;
     readonly #writer = new XmlWriter();
+    readonly #phrasingContentStack: HtmlTextStyleManager[] = [];
 
     constructor(replacements: WeakMap<EmptyMarkup, HtmlContent>, theme?: FlowTheme) {
         super();
@@ -39,27 +42,30 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     }
 
     async visitFlowContent(content: FlowContent): Promise<FlowContent> {
-        let enterNextPara = true;
+        let endFunc: (() => void) | undefined;
         
         for (let cursor: FlowCursor | null = content.peek(0); cursor; cursor = cursor.moveToStartOfNextNode()) {
-            if (enterNextPara) {
+            if (!endFunc) {
                 const endOfPara = cursor.findNodeForward(ParagraphBreak.classType.test)?.node;
                 if (endOfPara instanceof ParagraphBreak) {
-                    this.#theme.enterPara(endOfPara.style.variant);
-                    // this.#startPara(endOfPara.style);
+                    endFunc = this.#startPara(endOfPara.style);
+                } else {
+                    endFunc = this.#startPhrasingContent();
                 }
-                enterNextPara = false;
             }
             
             const { node } = cursor;
 
-            if (node instanceof ParagraphBreak) {
-                enterNextPara = true;
-                this.#theme.leave();
-                // this.#endPara(node.style);
+            if (node instanceof ParagraphBreak && endFunc) {
+                endFunc();
+                endFunc = undefined;
             } else if (node) {
                 await this.visitNode(node);
             }
+        }
+
+        if (endFunc) {
+            endFunc();
         }
 
         return content;
@@ -140,7 +146,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
         return node;
     }
 
-    async visitTableContent(content: FlowTableContent, headingRowCount?: number): Promise<FlowTableContent> {
+    async visitTableContent(content: FlowTableContent): Promise<FlowTableContent> {
         /*
         const data = content.toData();
         for (const [key, { colSpan, rowSpan, content: nested}] of data) {
@@ -169,15 +175,37 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     }
 
     async visitTextRun(node: TextRun): Promise<FlowNode> {
-        /*
-        const { style, text } = node;
-        const { translate } = this.#paraTheme.getAmbientTextStyle().merge(style);
-        const tagName = translate === false ? "c" : "t";
-        this.#appendElem(tagName, {
-            style: this.#getTextStyleId(style),
-        }, text);
-        */
+        const { text, style } = node;
+        this.#applyTextStyle(style);
+        this.#writer.text(text);
         return node;
+    }
+
+    #startPara(style: ParagraphStyle): () => void {
+        const { variant } = style;
+        this.#theme.enterPara(variant);
+        const leavePhrasingContent = this.#startPhrasingContent();        
+        return () => {
+            leavePhrasingContent();
+            this.#theme.leave();
+        };
+    }
+
+    #startPhrasingContent(): () => void {
+        this.#phrasingContentStack.push(new HtmlTextStyleManager(this.#writer, this.#theme.para.getAmbientTextStyle()));
+        return () => {
+            const popped = this.#phrasingContentStack.pop();
+            if (popped) {
+                popped.leave();
+            }
+        };
+    }
+
+    #applyTextStyle(style: TextStyle): void {
+        const { length: stackLength } = this.#phrasingContentStack;
+        if (stackLength > 0) {
+            this.#phrasingContentStack[stackLength - 1].apply(style);
+        }
     }
 
     #writeHtmlContent(content: HtmlContent): void {
@@ -207,3 +235,6 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
         this.#writer.end();
     }
 }
+
+const makeCssString = (props: Map<string, string>): string =>
+    [...props].map(([key, value]) => `${key}:${value}`).join(";");

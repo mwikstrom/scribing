@@ -1,0 +1,6 @@
+[
+    "Hello ",
+    {  "text": "world", "style": { "bold": false } },
+    "!",
+    { "break": "para", "style": { "variant": "h1" } }
+]
