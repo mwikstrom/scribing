@@ -1,0 +1,5 @@
+[
+    { "text": "foo", "style": { "link": "url" } },
+    { "text": "bar", "style": { "link": "url", "underline": false } },
+    { "text": "baz", "style": { "link": "url", "underline": true } }
+]

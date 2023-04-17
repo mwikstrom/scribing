@@ -4,6 +4,7 @@ import { DefaultFlowTheme } from "../styles/DefaultFlowTheme";
 import { FlowTheme } from "../styles/FlowTheme";
 import { ParagraphVariant } from "../styles/ParagraphStyle";
 import { ParagraphTheme } from "../styles/ParagraphTheme";
+import { TextStyle } from "../styles/TextStyle";
 import type { EndScopeFunc } from "./XmlWriter";
 
 /**
@@ -11,6 +12,7 @@ import type { EndScopeFunc } from "./XmlWriter";
  */
 export class ThemeManager {
     #stack: (FlowTheme | ParagraphTheme)[] = [];
+    #link = 0;
 
     constructor(root?: FlowTheme) {
         if (root) {
@@ -45,6 +47,14 @@ export class ThemeManager {
         }
     }
 
+    public get text(): TextStyle {
+        if (this.#link) {
+            return this.para.getLinkStyle();
+        } else {
+            return this.para.getAmbientTextStyle();
+        }
+    }
+
     public startPara(variant?: ParagraphVariant): EndScopeFunc {
         return this.start(this.flow.getParagraphTheme(variant || "normal"));
     }
@@ -68,6 +78,11 @@ export class ThemeManager {
         }
 
         return this.start(cellTheme);
+    }
+
+    public startLink(): EndScopeFunc {
+        ++this.#link;
+        return () => void (--this.#link);
     }
 
     public start(theme: FlowTheme | ParagraphTheme): EndScopeFunc {

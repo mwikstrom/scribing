@@ -215,7 +215,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
 
     async visitTextRun(node: TextRun): Promise<FlowNode> {
         const { text, style } = node;
-        const ambient = this.#theme.para.getAmbientTextStyle();
+        const ambient = this.#theme.text;
         const { fontFamily, fontSize, color, underline, strike, bold, italic, baseline } = style.unmerge(ambient);
         const classNames = [this.#getClassName("text")];
         const css = new Map<string, string>();
@@ -291,16 +291,25 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     }
 
     #startLink(interaction: Interaction): EndScopeFunc {
+        let endElem: EndScopeFunc;
+
         if (interaction instanceof OpenUrl) {
             const href = this.#getLinkHref(interaction.url);
-            return this.#writer.start("a", { href });
+            endElem = this.#writer.start("a", { href });
         } else if (interaction instanceof RunScript) {
             const id = this.#getElementId("link");
             this.#registerClickHandler(id, interaction.script);
-            return this.#writer.start("a", { id, href: `#${id}` });
+            endElem = this.#writer.start("a", { id, href: `#${id}` });
         } else {
             throw new Error("Unsupported link interaction");
         }
+
+        const endTheme = this.#theme.startLink();
+
+        return () => {
+            endTheme();
+            endElem();
+        };
     }
 
     #writeHtmlContent(content: HtmlContent): void {
