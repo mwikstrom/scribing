@@ -278,6 +278,10 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
 
         if (/^h[1-6]$/.test(variant)) {
             endElem = this.#writer.start(variant);
+        } else if (variant === "title" || variant === "subtitle" || variant === "preamble") {
+            endElem = this.#writer.start("p", { class: this.#getClassName(variant) });
+        } else if (variant === "code") {
+            endElem = this.#writer.start("p", { class: this.#getClassName("codeBlock") });
         } else {
             endElem = this.#writer.start("p");
         }

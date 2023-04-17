@@ -33,7 +33,11 @@ export type FlowContentHtmlClassKey =
     | "strike"
     | "notStrike"
     | `${FontFamily}Font`
-    | `${FlowColor}Color`;
+    | `${FlowColor}Color`
+    | "title"
+    | "subtitle"
+    | "preamble"
+    | "codeBlock"
 
 /** @public */
 export type HtmlContent = HtmlNode | HtmlNode[];
