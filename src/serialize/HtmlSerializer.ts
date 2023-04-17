@@ -211,12 +211,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     }
 
     async visitLineBreak(node: LineBreak): Promise<FlowNode> {
-        /*
-        const { style } = node;
-        this.#appendElem("br", {
-            style: this.#getTextStyleId(style),
-        });
-        */
+        this.#writer.elem("br");
         return node;
     }
 

@@ -1,0 +1,6 @@
+[
+    { "text": "foo", "style": { "link": "url" } },
+    { "break": "line", "style": { "link": "url" } },
+    { "text": "bar", "style": { "link": "url" } },
+    "baz"
+]
