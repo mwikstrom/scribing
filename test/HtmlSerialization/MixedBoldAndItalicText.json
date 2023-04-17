@@ -1,6 +1,6 @@
 [
     {  "text": "Hello ", "style": { "bold": true } },
     {  "text": "there ", "style": { "bold": true, "italic": true } },
-    {  "text": "world", "style": { "bold": false, "italic": true } },
+    {  "text": "world", "style": { "italic": true } },
     "!"
 ]

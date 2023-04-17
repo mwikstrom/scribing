@@ -1,0 +1,5 @@
+[
+    {  "text": "sub", "style": { "bold": true, "italic": true, "baseline": "sub" } },
+    {  "text": "again", "style": { "bold": true, "baseline": "sub" } },
+    {  "text": "super", "style": { "italic": true, "baseline": "super" } }
+]

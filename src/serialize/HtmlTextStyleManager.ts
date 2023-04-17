@@ -19,34 +19,50 @@ export class HtmlTextStyleManager {
         // TODO: fontFamily
         // TODO: fontSize
         // TODO: color
-        this.#applyBooleanStyle("bold", style, "b", { fontWeight: "normal" });
-        this.#applyBooleanStyle("italic", style, "i", { fontStyle: "normal" });
-        // TODO: baseline
+        this.#applyBoolean("bold", style, "b", { fontWeight: "normal" });
+        
+        this.#applyBoolean("italic", style, "i", { fontStyle: "normal" });
+
+        this.#applyScalar(
+            "baseline",
+            style,
+            value => value === "sub" ? "sub" : value === "super" ? "sup" : { fontSize: "unset", verticalAlign: "unset" }
+        );
     }
 
     public dispose(): void {
         this.#stack.splice(0, this.#stack.length).reverse().forEach(({ end }) => end());
     }
 
-    #applyBooleanStyle(
+    #applyBoolean(
         key: keyof TextStyleProps,
         style: TextStyle,
         set: string | CssProps,
         unset: string | CssProps
     ): void {
+        this.#applyScalar(key, style, value => value ? set : unset);
+    }
+
+    #applyScalar<K extends keyof TextStyleProps>(
+        key: K,
+        style: TextStyle,
+        render: (value: TextStyle[K]) => string | CssProps,
+    ): void {
         const value = style[key];
 
         for (let i = this.#stack.length - 1; i >= 0; --i) {
             const scoped = this.#stack[i].style[key];
-            if (scoped === value) {
-                return;
-            } else if (scoped !== undefined) {
-                this.#stack.splice(i, this.#stack.length - i).reverse().forEach(({ end }) => end());
+            if (scoped !== undefined) {
+                if (scoped === value) {
+                    return;
+                } else {
+                    this.#stack.splice(i, this.#stack.length - i).reverse().forEach(({ end }) => end());
+                }
             }
         }
 
         if (value !== undefined && this.#ambient[key] !== value) {
-            this.#push(value ? set : unset, { [key]: value });
+            this.#push(render(value), { [key]: value });
         }
     }
 
@@ -71,11 +87,15 @@ interface StackEntry {
 interface CssProps {
     fontWeight?: "normal";
     fontStyle?: "normal";
+    fontSize?: string;
+    verticalAlign?: string;
 }
 
 const CssPropNames: Record<keyof CssProps, string> = {
     fontWeight: "font-weight",
     fontStyle: "font-style",
+    fontSize: "font-size",
+    verticalAlign: "vertical-align",
 };
 
 const makeCssString = (props: CssProps): string => {
