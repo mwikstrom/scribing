@@ -1,3 +1,5 @@
 [
-    { "text": "foo", "style": { "link": "bar" } }
+    { "text": "foo", "style": { "link": "url1" } },
+    { "text": "bar", "style": { "link": "url2" } },
+    "baz"
 ]
