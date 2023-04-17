@@ -1,0 +1,8 @@
+[
+    "foo",
+    { "break": "para", "style": { "lineSpacing": 150 } },
+    "bar",
+    { "break": "para", "style": { "spaceBefore": 200 } },
+    "baz",
+    { "break": "para", "style": { "spaceAfter": 250 } }
+]

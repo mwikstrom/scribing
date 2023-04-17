@@ -296,6 +296,18 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
             classNames.push(this.#getClassName(`${direction}Direction`));
         }
 
+        if (lineSpacing) {
+            css.set("line-height", `${lineSpacing}%`);
+        }
+
+        if (spaceBefore) {
+            css.set("padding-block-start", `${spaceBefore / 100}rem`);
+        }
+
+        if (spaceAfter) {
+            css.set("padding-block-end", `${spaceAfter / 100}rem`);
+        }
+
         const attr: Attributes = {};
         
         if (classNames.length > 0) {
