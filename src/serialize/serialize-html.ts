@@ -9,19 +9,26 @@ import { HtmlSerializer } from "./HtmlSerializer";
 /** @public */
 export interface FlowContentHtmlOptions {
     theme?: FlowTheme;
-    rewriteMarkup?: MarkupHandler<HtmlContent>;
     classes?: Partial<Record<FlowContentHtmlClassKey, string>>;
+    rewriteMarkup?: MarkupHandler<HtmlContent>;
 }
 
 /** @public */
 export type FlowContentHtmlClassKey =
+    | "text"
+    | "bold"
     | "notBold"
+    | "italic"
     | "notItalic"
+    | "sub"
+    | "super"
     | "normalBaseline"
+    | "underline"
     | "notUnderline"
+    | "strike"
     | "notStrike"
     | `${FontFamily}Font`
-    | `${FlowColor}TextColor`;
+    | `${FlowColor}Color`;
 
 /** @public */
 export type HtmlContent = HtmlNode | HtmlNode[];
@@ -47,7 +54,7 @@ export async function serializeFlowContentToHtml(
     content: FlowContent,
     options: FlowContentHtmlOptions = {}
 ): Promise<string> {
-    const { theme, rewriteMarkup } = options;
+    const { theme, classes, rewriteMarkup } = options;
     const replacements = new WeakMap<EmptyMarkup, HtmlContent>();
     
     if (rewriteMarkup) {
@@ -58,7 +65,7 @@ export async function serializeFlowContentToHtml(
         );
     }
 
-    const serializer = new HtmlSerializer(replacements, theme);
+    const serializer = new HtmlSerializer(replacements, classes, theme);
     await serializer.visitFlowContent(content);
     return serializer.getResult();
 }

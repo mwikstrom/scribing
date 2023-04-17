@@ -16,21 +16,25 @@ import { FlowTheme } from "../styles/FlowTheme";
 import { ParagraphBreak } from "../nodes/ParagraphBreak";
 import { FlowCursor } from "../selection/FlowCursor";
 import { ParagraphStyle } from "../styles/ParagraphStyle";
-import type { HtmlContent, HtmlElem, HtmlNode } from "./serialize-html";
-import { TextStyle } from "../styles/TextStyle";
-import { HtmlTextStyleManager } from "./HtmlTextStyleManager";
+import type { FlowContentHtmlClassKey, HtmlContent, HtmlElem, HtmlNode } from "./serialize-html";
+import { Attributes } from "xml-js";
 
 /** @internal */
 export class HtmlSerializer extends AsyncFlowNodeVisitor {
     readonly #replacements: WeakMap<EmptyMarkup, HtmlContent>;
+    readonly #classes: Partial<Record<FlowContentHtmlClassKey, string>>;
     readonly #theme: ThemeManager;
     readonly #writer = new XmlWriter();
-    readonly #phrasingContentStack: HtmlTextStyleManager[] = [];
     readonly #endArticle: EndScopeFunc;
 
-    constructor(replacements: WeakMap<EmptyMarkup, HtmlContent>, theme?: FlowTheme) {
+    constructor(
+        replacements: WeakMap<EmptyMarkup, HtmlContent>,
+        classes?: Partial<Record<FlowContentHtmlClassKey, string>>,
+        theme?: FlowTheme
+    ) {
         super();
         this.#replacements = replacements;
+        this.#classes = classes || {};
         this.#theme = new ThemeManager(theme);
         this.#endArticle = this.#writer.start("article");
     }
@@ -177,9 +181,61 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
 
     async visitTextRun(node: TextRun): Promise<FlowNode> {
         const { text, style } = node;
-        this.#applyTextStyle(style);
-        this.#writer.text(text);
+        const ambient = this.#theme.para.getAmbientTextStyle();
+        const { fontFamily, fontSize, color, underline, strike, bold, italic, baseline } = style.unmerge(ambient);
+        const classNames = [this.#getClassName("text")];
+        const css = new Map<string, string>();
+
+        if (fontFamily) {
+            classNames.push(this.#getClassName(`${fontFamily}Font`));
+        }
+
+        if (fontSize) {
+            css.set("font-size", `${fontSize / 100}rem`);
+        }
+
+        if (color) {
+            classNames.push(this.#getClassName(`${color}Color`));
+        }
+
+        if (typeof underline === "boolean") {
+            classNames.push(this.#getClassName(underline ? "underline" : "notUnderline"));
+        }
+
+        if (typeof strike === "boolean") {
+            classNames.push(this.#getClassName(strike ? "strike" : "notStrike"));
+        }
+
+        if (typeof bold === "boolean") {
+            classNames.push(this.#getClassName(bold ? "bold" : "notBold"));
+        }
+
+        if (typeof italic === "boolean") {
+            classNames.push(this.#getClassName(italic ? "italic" : "notItalic"));
+        }
+
+        if (baseline === "sub") {
+            classNames.push(this.#getClassName("sub"));
+        } else if (baseline === "super") {
+            classNames.push(this.#getClassName("super"));
+        } else if (baseline === "normal") {
+            classNames.push(this.#getClassName("normalBaseline"));
+        }
+
+        const attr: Attributes = {
+            class: classNames.join(" "),
+        };
+
+        if (css.size > 0) {
+            attr.style = [...css].map(([key, value]) => `${key}:${value}`).join(";");
+        }
+
+        this.#writer.elem("span", attr, text);
         return node;
+    }
+
+    #getClassName(key: FlowContentHtmlClassKey): string {
+        return this.#classes[key] || key;
     }
 
     #startPara(style: ParagraphStyle): EndScopeFunc {
@@ -203,25 +259,27 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     }
 
     #startPhrasingContent(): EndScopeFunc {
-        const ambient = this.#theme.para.getAmbientTextStyle();
-        const manager = new HtmlTextStyleManager(this.#writer, ambient);
-        this.#phrasingContentStack.push(manager);
+        // const ambient = this.#theme.para.getAmbientTextStyle();
+        // const manager = new HtmlTextStyleManager(this.#writer, ambient);
+        // this.#phrasingContentStack.push(manager);
         return () => {
-            const popped = this.#phrasingContentStack.pop();
-            if (popped === manager) {
-                popped.dispose();
-            } else {
-                throw new Error("Closing unexpected phrasing content");
-            }
+            // const popped = this.#phrasingContentStack.pop();
+            // if (popped === manager) {
+            //     popped.dispose();
+            // } else {
+            //     throw new Error("Closing unexpected phrasing content");
+            // }
         };
     }
 
+    /*
     #applyTextStyle(style: TextStyle): void {
         const { length: stackLength } = this.#phrasingContentStack;
         if (stackLength > 0) {
             this.#phrasingContentStack[stackLength - 1].apply(style);
         }
     }
+    */
 
     #writeHtmlContent(content: HtmlContent): void {
         if (Array.isArray(content)) {
