@@ -1,0 +1,10 @@
+[
+    "start",
+    { "break": "para", "style": { "alignment": "start" } },
+    "center",
+    { "break": "para", "style": { "alignment": "center" } },
+    "end",
+    { "break": "para", "style": { "alignment": "end" } },
+    "justify",
+    { "break": "para", "style": { "alignment": "justify" } }
+]

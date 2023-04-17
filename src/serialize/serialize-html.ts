@@ -4,6 +4,7 @@ import { FlowContent } from "../structure/FlowContent";
 import { Script } from "../structure/Script";
 import { FlowColor } from "../styles/FlowColor";
 import { FlowTheme } from "../styles/FlowTheme";
+import { HorizontalAlignment } from "../styles/ParagraphStyle";
 import { FontFamily, TextStyle } from "../styles/TextStyle";
 import { HtmlSerializer } from "./HtmlSerializer";
 
@@ -38,6 +39,7 @@ export type FlowContentHtmlClassKey =
     | "subtitle"
     | "preamble"
     | "codeBlock"
+    | `${HorizontalAlignment}Align`
 
 /** @public */
 export type HtmlContent = HtmlNode | HtmlNode[];

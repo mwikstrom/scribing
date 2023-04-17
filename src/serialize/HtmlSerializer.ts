@@ -274,18 +274,35 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
 
     #startPara(style: ParagraphStyle): EndScopeFunc {
         const { variant = "normal" } = style;
-        let endElem: EndScopeFunc;
+        const ambient = this.#theme.para.getAmbientParagraphStyle();
+        const { alignment, direction, lineSpacing, spaceBefore, spaceAfter } = style.unmerge(ambient);
+        let tagName = "p";
+        const classNames: string[] = [];
+        const css = new Map<string, string>();
 
         if (/^h[1-6]$/.test(variant)) {
-            endElem = this.#writer.start(variant);
+            tagName = variant;
         } else if (variant === "title" || variant === "subtitle" || variant === "preamble") {
-            endElem = this.#writer.start("p", { class: this.#getClassName(variant) });
+            classNames.push(this.#getClassName(variant));
         } else if (variant === "code") {
-            endElem = this.#writer.start("p", { class: this.#getClassName("codeBlock") });
-        } else {
-            endElem = this.#writer.start("p");
+            classNames.push(this.#getClassName("codeBlock"));
         }
 
+        if (alignment) {
+            classNames.push(this.#getClassName(`${alignment}Align`));
+        }
+
+        const attr: Attributes = {};
+        
+        if (classNames.length > 0) {
+            attr.class = classNames.join(" ");
+        }
+
+        if (css.size > 0) {
+            attr.style = [...css].map(([key, value]) => `${key}:${value}`).join(";");
+        }
+
+        const endElem = this.#writer.start(tagName, attr);
         const endTheme = this.#theme.startPara(variant);
 
         return () => {
