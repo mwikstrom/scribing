@@ -1,6 +1,7 @@
 import { MarkupHandler, processMarkup } from "../markup/process-markup";
 import { EmptyMarkup } from "../nodes/EmptyMarkup";
 import { FlowContent } from "../structure/FlowContent";
+import { Script } from "../structure/Script";
 import { FlowColor } from "../styles/FlowColor";
 import { FlowTheme } from "../styles/FlowTheme";
 import { FontFamily } from "../styles/TextStyle";
@@ -10,6 +11,9 @@ import { HtmlSerializer } from "./HtmlSerializer";
 export interface FlowContentHtmlOptions {
     theme?: FlowTheme;
     classes?: Partial<Record<FlowContentHtmlClassKey, string>>;
+    getElementId?: (this: void, prefix: string) => string;
+    getLinkHref?: (this: void, url: string) => string;
+    registerClickHandler?: (this: void, elementId: string, script: Script) => void;
     rewriteMarkup?: MarkupHandler<HtmlContent>;
 }
 
@@ -54,7 +58,7 @@ export async function serializeFlowContentToHtml(
     content: FlowContent,
     options: FlowContentHtmlOptions = {}
 ): Promise<string> {
-    const { theme, classes, rewriteMarkup } = options;
+    const { rewriteMarkup, ...otherOptions } = options;
     const replacements = new WeakMap<EmptyMarkup, HtmlContent>();
     
     if (rewriteMarkup) {
@@ -65,7 +69,7 @@ export async function serializeFlowContentToHtml(
         );
     }
 
-    const serializer = new HtmlSerializer(replacements, classes, theme);
+    const serializer = new HtmlSerializer(replacements, otherOptions);
     await serializer.visitFlowContent(content);
     return serializer.getResult();
 }

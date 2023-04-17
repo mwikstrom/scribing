@@ -12,30 +12,45 @@ import { FlowTableContent } from "../structure/FlowTableContent";
 import { AsyncFlowNodeVisitor } from "../structure/AsyncFlowNodeVisitor";
 import { EndScopeFunc, XmlWriter } from "./XmlWriter";
 import { ThemeManager } from "./ThemeManager";
-import { FlowTheme } from "../styles/FlowTheme";
 import { ParagraphBreak } from "../nodes/ParagraphBreak";
 import { FlowCursor } from "../selection/FlowCursor";
 import { ParagraphStyle } from "../styles/ParagraphStyle";
-import type { FlowContentHtmlClassKey, HtmlContent, HtmlElem, HtmlNode } from "./serialize-html";
+import type {
+    FlowContentHtmlClassKey,
+    FlowContentHtmlOptions,
+    HtmlContent,
+    HtmlElem,
+    HtmlNode
+} from "./serialize-html";
 import { Attributes } from "xml-js";
+import { InlineNode } from "../nodes/InlineNode";
+import { Interaction } from "../interaction/Interaction";
+import { OpenUrl } from "../interaction/OpenUrl";
+import { RunScript } from "../interaction/RunScript";
 
 /** @internal */
 export class HtmlSerializer extends AsyncFlowNodeVisitor {
     readonly #replacements: WeakMap<EmptyMarkup, HtmlContent>;
     readonly #classes: Partial<Record<FlowContentHtmlClassKey, string>>;
     readonly #theme: ThemeManager;
+    readonly #getElementId: Exclude<FlowContentHtmlOptions["getElementId"], undefined>;
+    readonly #getLinkHref: Exclude<FlowContentHtmlOptions["getLinkHref"], undefined>;
+    readonly #registerClickHandler: Exclude<FlowContentHtmlOptions["registerClickHandler"], undefined>;
     readonly #writer = new XmlWriter();
     readonly #endArticle: EndScopeFunc;
 
     constructor(
         replacements: WeakMap<EmptyMarkup, HtmlContent>,
-        classes?: Partial<Record<FlowContentHtmlClassKey, string>>,
-        theme?: FlowTheme
+        options: Omit<FlowContentHtmlOptions, "rewriteMarkup">
     ) {
         super();
+
         this.#replacements = replacements;
-        this.#classes = classes || {};
-        this.#theme = new ThemeManager(theme);
+        this.#classes = options.classes || {};
+        this.#theme = new ThemeManager(options.theme);
+        this.#getElementId = options.getElementId || makeDefaultElementIdGenerator();
+        this.#getLinkHref = options.getLinkHref || (url => url);
+        this.#registerClickHandler = options.registerClickHandler || (() => void 0);
         this.#endArticle = this.#writer.start("article");
     }
     
@@ -47,30 +62,56 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     }
 
     async visitFlowContent(content: FlowContent): Promise<FlowContent> {
-        let endFunc: EndScopeFunc | undefined;
+        let endPara: EndScopeFunc | undefined;
+        let activeLink: CurrentLink | undefined;
         
         for (let cursor: FlowCursor | null = content.peek(0); cursor; cursor = cursor.moveToStartOfNextNode()) {
-            if (!endFunc) {
-                const endOfPara = cursor.findNodeForward(ParagraphBreak.classType.test)?.node;
-                if (endOfPara instanceof ParagraphBreak) {
-                    endFunc = this.#startPara(endOfPara.style);
+            if (!endPara) {
+                const paraBreak = cursor.findNodeForward(ParagraphBreak.classType.test)?.node;
+                if (paraBreak instanceof ParagraphBreak) {
+                    endPara = this.#startPara(paraBreak.style);
                 } else {
-                    endFunc = this.#startPhrasingContent();
+                    endPara = () => void 0;
                 }
             }
             
             const { node } = cursor;
+            let linkInteraction: Interaction | null | undefined;
 
-            if (node instanceof ParagraphBreak && endFunc) {
-                endFunc();
-                endFunc = undefined;
-            } else if (node) {
+            if (node instanceof InlineNode) {
+                linkInteraction = node.style.link;
+            }
+    
+            if (activeLink) {
+                if (!linkInteraction || !Interaction.baseType.equals(linkInteraction, activeLink.interaction)) {
+                    activeLink.end();
+                    activeLink = undefined;
+                }
+            }
+    
+            if (linkInteraction && !activeLink) {
+                activeLink = {
+                    interaction: linkInteraction,
+                    end: this.#startLink(linkInteraction),
+                };
+            }
+    
+            if (node) {
                 await this.visitNode(node);
             }
+
+            if (node instanceof ParagraphBreak && endPara) {
+                endPara();
+                endPara = undefined;
+            }            
         }
 
-        if (endFunc) {
-            endFunc();
+        if (activeLink) {
+            activeLink.end();
+        }
+
+        if (endPara) {
+            endPara();
         }
 
         return content;
@@ -249,37 +290,25 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
         }
 
         const endTheme = this.#theme.startPara(variant);
-        const leavePhrasingContent = this.#startPhrasingContent();        
 
         return () => {
-            leavePhrasingContent();
             endTheme();
             endElem();
         };
     }
 
-    #startPhrasingContent(): EndScopeFunc {
-        // const ambient = this.#theme.para.getAmbientTextStyle();
-        // const manager = new HtmlTextStyleManager(this.#writer, ambient);
-        // this.#phrasingContentStack.push(manager);
-        return () => {
-            // const popped = this.#phrasingContentStack.pop();
-            // if (popped === manager) {
-            //     popped.dispose();
-            // } else {
-            //     throw new Error("Closing unexpected phrasing content");
-            // }
-        };
-    }
-
-    /*
-    #applyTextStyle(style: TextStyle): void {
-        const { length: stackLength } = this.#phrasingContentStack;
-        if (stackLength > 0) {
-            this.#phrasingContentStack[stackLength - 1].apply(style);
+    #startLink(interaction: Interaction): EndScopeFunc {
+        if (interaction instanceof OpenUrl) {
+            const href = this.#getLinkHref(interaction.url);
+            return this.#writer.start("a", { href });
+        } else if (interaction instanceof RunScript) {
+            const id = this.#getElementId("link");
+            this.#registerClickHandler(id, interaction.script);
+            return this.#writer.start("a", { id, href: `#${id}` });
+        } else {
+            throw new Error("Unsupported link interaction");
         }
     }
-    */
 
     #writeHtmlContent(content: HtmlContent): void {
         if (Array.isArray(content)) {
@@ -308,3 +337,17 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
         end();
     }
 }
+
+interface CurrentLink {
+    interaction: Interaction;
+    end: EndScopeFunc;
+}
+
+const makeDefaultElementIdGenerator = () => {
+    const counterByPrefix = new Map<string, number>();
+    return (prefix: string) => {
+        const next = 1 + (counterByPrefix.get(prefix) || 0);
+        counterByPrefix.set(prefix, next);
+        return `${prefix}-${next}`;
+    };
+};
