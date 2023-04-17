@@ -1,7 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { FlowContent } from "../src/structure/FlowContent";
-import { serializeFlowContentToHtml } from "../src/serialize/serialize-html";
+import { FlowContent, serializeFlowContentToHtml } from "../src";
 
 describe("HtmlSerialization", () => {
     const inputDir = path.join(__dirname, "./HtmlSerialization");

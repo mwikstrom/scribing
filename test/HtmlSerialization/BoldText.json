@@ -1,5 +1,5 @@
 [
     "Hello ",
-    {  "text": "world", "style": { "bold": true } },
+    { "text": "world", "style": { "bold": true } },
     "!"
 ]

@@ -4,7 +4,7 @@ import { FlowContent } from "../structure/FlowContent";
 import { Script } from "../structure/Script";
 import { FlowColor } from "../styles/FlowColor";
 import { FlowTheme } from "../styles/FlowTheme";
-import { FontFamily } from "../styles/TextStyle";
+import { FontFamily, TextStyle } from "../styles/TextStyle";
 import { HtmlSerializer } from "./HtmlSerializer";
 
 /** @public */
@@ -14,6 +14,7 @@ export interface FlowContentHtmlOptions {
     getElementId?: (this: void, prefix: string) => string;
     getLinkHref?: (this: void, url: string) => string;
     registerClickHandler?: (this: void, elementId: string, script: Script) => void;
+    registerDynamicText?: (this: void, elementId: string, expression: Script, style: TextStyle) => void;
     rewriteMarkup?: MarkupHandler<HtmlContent>;
 }
 

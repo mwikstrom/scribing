@@ -36,6 +36,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     readonly #getElementId: Exclude<FlowContentHtmlOptions["getElementId"], undefined>;
     readonly #getLinkHref: Exclude<FlowContentHtmlOptions["getLinkHref"], undefined>;
     readonly #registerClickHandler: Exclude<FlowContentHtmlOptions["registerClickHandler"], undefined>;
+    readonly #registerDynamicText: Exclude<FlowContentHtmlOptions["registerDynamicText"], undefined>;
     readonly #writer = new XmlWriter();
     readonly #endArticle: EndScopeFunc;
 
@@ -51,6 +52,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
         this.#getElementId = options.getElementId || makeDefaultElementIdGenerator();
         this.#getLinkHref = options.getLinkHref || (url => url);
         this.#registerClickHandler = options.registerClickHandler || (() => void 0);
+        this.#registerDynamicText = options.registerDynamicText || (() => void 0);
         this.#endArticle = this.#writer.start("article");
     }
     
@@ -118,13 +120,9 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     }
 
     async visitDynamicText(node: DynamicText): Promise<FlowNode> {
-        /*
-        const { expression, style } = node;
-        this.#appendElem("dynamic", {
-            expression: this.#getScriptId(expression),
-            style: this.#getTextStyleId(style),
-        });
-        */
+        const id = this.#getElementId("dynamic");
+        this.#registerDynamicText(id, node.expression, node.style);
+        this.#writer.elem("span", { id, class: "dynamic" }, HELLIP);
         return node;
     }
 
@@ -346,3 +344,5 @@ const makeDefaultElementIdGenerator = () => {
         return `${prefix}-${next}`;
     };
 };
+
+const HELLIP = "…";
