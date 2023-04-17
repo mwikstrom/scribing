@@ -1,15 +1,27 @@
 import { MarkupHandler, processMarkup } from "../markup/process-markup";
 import { EmptyMarkup } from "../nodes/EmptyMarkup";
-import { FlowNode } from "../nodes/FlowNode";
 import { FlowContent } from "../structure/FlowContent";
+import { FlowColor } from "../styles/FlowColor";
 import { FlowTheme } from "../styles/FlowTheme";
+import { FontFamily } from "../styles/TextStyle";
 import { HtmlSerializer } from "./HtmlSerializer";
 
 /** @public */
 export interface FlowContentHtmlOptions {
     theme?: FlowTheme;
     rewriteMarkup?: MarkupHandler<HtmlContent>;
+    classes?: Partial<Record<FlowContentHtmlClassKey, string>>;
 }
+
+/** @public */
+export type FlowContentHtmlClassKey =
+    | "notBold"
+    | "notItalic"
+    | "normalBaseline"
+    | "notUnderline"
+    | "notStrike"
+    | `${FontFamily}Font`
+    | `${FlowColor}TextColor`;
 
 /** @public */
 export type HtmlContent = HtmlNode | HtmlNode[];

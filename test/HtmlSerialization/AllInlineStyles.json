@@ -1,0 +1,4 @@
+[
+    {  "text": "foo", "style": { "underline": true, "strike": true, "fontSize": 150, "fontFamily": "cursive", "color": "primary", "bold": true, "italic": true, "baseline": "sub" } },
+    {  "text": "bar", "style": { "underline": true, "strike": true, "fontSize": 150, "fontFamily": "heading", "color": "primary", "bold": true, "italic": true, "baseline": "sub" } }
+]
