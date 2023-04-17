@@ -292,6 +292,10 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
             classNames.push(this.#getClassName(`${alignment}Align`));
         }
 
+        if (direction) {
+            classNames.push(this.#getClassName(`${direction}Direction`));
+        }
+
         const attr: Attributes = {};
         
         if (classNames.length > 0) {

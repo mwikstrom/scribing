@@ -1,0 +1,6 @@
+[
+    "ltr",
+    { "break": "para", "style": { "direction": "ltr" } },
+    "rtl",
+    { "break": "para", "style": { "direction": "rtl" } }
+]
