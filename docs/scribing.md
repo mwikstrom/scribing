@@ -97,6 +97,7 @@ Model for collaborative rich text editing
 |  --- | --- |
 |  [deserializeFlowContentFromXml(xml)](./scribing.deserializeflowcontentfromxml.md) | Deserializes flow content from the specified XML string |
 |  [extractMarkup(input, predicate)](./scribing.extractmarkup.md) |  |
+|  [getTableColumnWidths(columnCount, columnStyles)](./scribing.gettablecolumnwidths.md) |  |
 |  [processMarkup(content, handler, register, scope)](./scribing.processmarkup.md) |  |
 |  [processNestedMarkup(input, content)](./scribing.processnestedmarkup.md) |  |
 |  [serializeFlowContentToHtml(content, options)](./scribing.serializeflowcontenttohtml.md) | Serializes the specified flow content to an HTML string |
@@ -329,6 +330,7 @@ Model for collaborative rich text editing
 |  [FlowColor](./scribing.flowcolor.md) | Flow content color |
 |  [FlowContentData](./scribing.flowcontentdata.md) | Flow content data is an array of [nodes](./scribing.flownode.md) |
 |  [FlowContentHashFunc](./scribing.flowcontenthashfunc.md) |  |
+|  [FlowContentHtmlClassKey](./scribing.flowcontenthtmlclasskey.md) |  |
 |  [FlowRangeTuple](./scribing.flowrangetuple.md) | Data for a [FlowRange](./scribing.flowrange.md) represented by a tuple where the first value is the anchor position and the second value is the focus position. |
 |  [FlowTableCellData](./scribing.flowtablecelldata.md) | Data of [FlowTableCell](./scribing.flowtablecell.md) |
 |  [FontFamily](./scribing.fontfamily.md) | Font family |

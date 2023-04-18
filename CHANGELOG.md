@@ -1,5 +1,6 @@
-## 1.3.0 - 2023-04-XX
+## 1.3.0 - 2023-04-18
 
+- New feature: `serializeFlowContentToHtml`
 - New feature: `processMarkup` and `processNestedMarkup`
 - New feature: `extractMarkup`
 - New feature: `getTableColumnWidths`

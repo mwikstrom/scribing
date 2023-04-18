@@ -585,7 +585,24 @@ export type FlowContentData = readonly FlowNode[];
 export type FlowContentHashFunc = (data: Uint8Array) => Promise<Buffer>;
 
 // @public (undocumented)
+export type FlowContentHtmlClassKey = "text" | "bold" | "notBold" | "italic" | "notItalic" | "sub" | "super" | "normalBaseline" | "underline" | "notUnderline" | "strike" | "notStrike" | `${FontFamily}Font` | `${FlowColor}Color` | "title" | "subtitle" | "preamble" | "codeBlock" | `${HorizontalAlignment}Align` | `${ReadingDirection}Direction` | "dashListMarker" | "box" | `${BoxVariant}Box` | "inlineBox" | "icon" | `${PredefinedIcon}Icon` | "inlineTable";
+
+// @public (undocumented)
 export interface FlowContentHtmlOptions {
+    // (undocumented)
+    classes?: Partial<Record<FlowContentHtmlClassKey, string>>;
+    // (undocumented)
+    getElementId?: (this: void, prefix: string) => string;
+    // (undocumented)
+    getImageUrl?: (this: void, source: ImageSource, scale: number) => string;
+    // (undocumented)
+    getLinkHref?: (this: void, url: string) => string;
+    // (undocumented)
+    registerDataSource?: (this: void, elementId: string, script: Script) => void;
+    // (undocumented)
+    registerDynamicText?: (this: void, elementId: string, expression: Script, style: TextStyle) => void;
+    // (undocumented)
+    registerScriptInteraction?: (this: void, elementId: string, script: Script) => void;
     // (undocumented)
     rewriteMarkup?: MarkupHandler<HtmlContent>;
     // (undocumented)
@@ -1488,6 +1505,9 @@ export interface GenericFlowNodeVisitor<T> {
     visitTextRun(node: TextRun): T;
 }
 
+// @public (undocumented)
+export function getTableColumnWidths(columnCount: number, columnStyles: ReadonlyMap<string, TableColumnStyle>): string[];
+
 // @public
 export const HORIZONTAL_ALIGNMENTS: readonly ["start", "center", "end", "justify"];
 
@@ -1783,7 +1803,7 @@ export const ListMarkerKindType: Type<ListMarkerKind>;
 export const mapNotNull: <A extends readonly unknown[], T>(array: A, callback: (value: A[number], index: number) => T | null | undefined) => Exclude<T, null | undefined>[];
 
 // @public (undocumented)
-export type MarkupHandler<T = never> = (input: MarkupHandlerInput<T>) => Promise<FlowContent | T | null | undefined>;
+export type MarkupHandler<T = never> = (this: void, input: MarkupHandlerInput<T>) => Promise<FlowContent | T | null | undefined>;
 
 // @public (undocumented)
 export interface MarkupHandlerInput<T = unknown> extends MarkupProcessingScope {

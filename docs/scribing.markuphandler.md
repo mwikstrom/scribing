@@ -8,7 +8,7 @@
 **Signature:**
 
 ```typescript
-export type MarkupHandler<T = never> = (input: MarkupHandlerInput<T>) => Promise<FlowContent | T | null | undefined>;
+export type MarkupHandler<T = never> = (this: void, input: MarkupHandlerInput<T>) => Promise<FlowContent | T | null | undefined>;
 ```
 **References:** [MarkupHandlerInput](./scribing.markuphandlerinput.md)<!-- -->, [FlowContent](./scribing.flowcontent.md)
 

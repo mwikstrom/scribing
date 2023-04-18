@@ -15,6 +15,13 @@ export interface FlowContentHtmlOptions
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
+|  [classes?](./scribing.flowcontenthtmloptions.classes.md) |  | Partial&lt;Record&lt;[FlowContentHtmlClassKey](./scribing.flowcontenthtmlclasskey.md)<!-- -->, string&gt;&gt; | _(Optional)_ |
+|  [getElementId?](./scribing.flowcontenthtmloptions.getelementid.md) |  | (this: void, prefix: string) =&gt; string | _(Optional)_ |
+|  [getImageUrl?](./scribing.flowcontenthtmloptions.getimageurl.md) |  | (this: void, source: [ImageSource](./scribing.imagesource.md)<!-- -->, scale: number) =&gt; string | _(Optional)_ |
+|  [getLinkHref?](./scribing.flowcontenthtmloptions.getlinkhref.md) |  | (this: void, url: string) =&gt; string | _(Optional)_ |
+|  [registerDataSource?](./scribing.flowcontenthtmloptions.registerdatasource.md) |  | (this: void, elementId: string, script: [Script](./scribing.script.md)<!-- -->) =&gt; void | _(Optional)_ |
+|  [registerDynamicText?](./scribing.flowcontenthtmloptions.registerdynamictext.md) |  | (this: void, elementId: string, expression: [Script](./scribing.script.md)<!-- -->, style: [TextStyle](./scribing.textstyle.md)<!-- -->) =&gt; void | _(Optional)_ |
+|  [registerScriptInteraction?](./scribing.flowcontenthtmloptions.registerscriptinteraction.md) |  | (this: void, elementId: string, script: [Script](./scribing.script.md)<!-- -->) =&gt; void | _(Optional)_ |
 |  [rewriteMarkup?](./scribing.flowcontenthtmloptions.rewritemarkup.md) |  | [MarkupHandler](./scribing.markuphandler.md)<!-- -->&lt;[HtmlContent](./scribing.htmlcontent.md)<!-- -->&gt; | _(Optional)_ |
 |  [theme?](./scribing.flowcontenthtmloptions.theme.md) |  | [FlowTheme](./scribing.flowtheme.md) | _(Optional)_ |
 
