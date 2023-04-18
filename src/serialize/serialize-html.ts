@@ -2,6 +2,7 @@ import { MarkupHandler, processMarkup } from "../markup/process-markup";
 import { EmptyMarkup } from "../nodes/EmptyMarkup";
 import { PredefinedIcon } from "../nodes/FlowIcon";
 import { FlowContent } from "../structure/FlowContent";
+import { ImageSource } from "../structure/ImageSource";
 import { Script } from "../structure/Script";
 import { BoxVariant } from "../styles/BoxStyle";
 import { FlowColor } from "../styles/FlowColor";
@@ -16,6 +17,7 @@ export interface FlowContentHtmlOptions {
     classes?: Partial<Record<FlowContentHtmlClassKey, string>>;
     getElementId?: (this: void, prefix: string) => string;
     getLinkHref?: (this: void, url: string) => string;
+    getImageUrl?: (this: void, source: ImageSource, scale: number) => string;
     registerScriptInteraction?: (this: void, elementId: string, script: Script) => void;
     registerDynamicText?: (this: void, elementId: string, expression: Script, style: TextStyle) => void;
     registerDataSource?: (this: void, elementId: string, script: Script) => void;

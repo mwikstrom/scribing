@@ -36,6 +36,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     readonly #theme: ThemeManager;
     readonly #getElementId: Exclude<FlowContentHtmlOptions["getElementId"], undefined>;
     readonly #getLinkHref: Exclude<FlowContentHtmlOptions["getLinkHref"], undefined>;
+    readonly #getImageUrl: Exclude<FlowContentHtmlOptions["getImageUrl"], undefined>;
     readonly #registerScriptInteraction: Exclude<FlowContentHtmlOptions["registerScriptInteraction"], undefined>;
     readonly #registerDynamicText: Exclude<FlowContentHtmlOptions["registerDynamicText"], undefined>;
     readonly #registerDataSource: Exclude<FlowContentHtmlOptions["registerDataSource"], undefined>;
@@ -54,6 +55,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
         this.#theme = new ThemeManager(options.theme);
         this.#getElementId = options.getElementId || makeDefaultElementIdGenerator();
         this.#getLinkHref = options.getLinkHref || (url => url);
+        this.#getImageUrl = options.getImageUrl || (src => src.url);
         this.#registerScriptInteraction = options.registerScriptInteraction || (() => void 0);
         this.#registerDynamicText = options.registerDynamicText || (() => void 0);
         this.#registerDataSource = options.registerDataSource || (() => void 0);
@@ -244,21 +246,18 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     }
 
     async visitImage(node: FlowImage): Promise<FlowNode> {
-        /*
-        const { source, style, scale } = node;
-        this.#appendElem("image", {
-            source: this.#getImageSourceId(source),
-            style: this.#getTextStyleId(style),
-            scale: scale !== 1 ? scale : undefined,
-        });
-        */
+        const { source, scale } = node;
+        const width = Math.round(source.width * scale);
+        const height = Math.round(source.height * scale);
+        const src = this.#getImageUrl(source, scale);
+        this.#writer.elem("img", { src, width, height });
         return node;
     }
 
     async visitTable(node: FlowTable): Promise<FlowNode> {
         /*
         const { columns, style, content } = node;
-        this.#appendElemStart("table", {
+        this.#appendElemStart("table", { 
             style: this.#getTableStyleId(style),
         });
         for (const [key, {width}] of columns) {
