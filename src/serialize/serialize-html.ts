@@ -2,6 +2,7 @@ import { MarkupHandler, processMarkup } from "../markup/process-markup";
 import { EmptyMarkup } from "../nodes/EmptyMarkup";
 import { FlowContent } from "../structure/FlowContent";
 import { Script } from "../structure/Script";
+import { BoxVariant } from "../styles/BoxStyle";
 import { FlowColor } from "../styles/FlowColor";
 import { FlowTheme } from "../styles/FlowTheme";
 import { HorizontalAlignment, ReadingDirection } from "../styles/ParagraphStyle";
@@ -14,7 +15,7 @@ export interface FlowContentHtmlOptions {
     classes?: Partial<Record<FlowContentHtmlClassKey, string>>;
     getElementId?: (this: void, prefix: string) => string;
     getLinkHref?: (this: void, url: string) => string;
-    registerClickHandler?: (this: void, elementId: string, script: Script) => void;
+    registerScriptInteraction?: (this: void, elementId: string, script: Script) => void;
     registerDynamicText?: (this: void, elementId: string, expression: Script, style: TextStyle) => void;
     rewriteMarkup?: MarkupHandler<HtmlContent>;
 }
@@ -42,6 +43,9 @@ export type FlowContentHtmlClassKey =
     | `${HorizontalAlignment}Align`
     | `${ReadingDirection}Direction`
     | "dashListMarker"
+    | "box"
+    | `${BoxVariant}Box`
+    | "inlineBox"
 
 /** @public */
 export type HtmlContent = HtmlNode | HtmlNode[];

@@ -27,6 +27,7 @@ import { InlineNode } from "../nodes/InlineNode";
 import { Interaction } from "../interaction/Interaction";
 import { OpenUrl } from "../interaction/OpenUrl";
 import { RunScript } from "../interaction/RunScript";
+import { BoxStyle } from "../styles/BoxStyle";
 
 /** @internal */
 export class HtmlSerializer extends AsyncFlowNodeVisitor {
@@ -35,7 +36,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     readonly #theme: ThemeManager;
     readonly #getElementId: Exclude<FlowContentHtmlOptions["getElementId"], undefined>;
     readonly #getLinkHref: Exclude<FlowContentHtmlOptions["getLinkHref"], undefined>;
-    readonly #registerClickHandler: Exclude<FlowContentHtmlOptions["registerClickHandler"], undefined>;
+    readonly #registerScriptInteraction: Exclude<FlowContentHtmlOptions["registerScriptInteraction"], undefined>;
     readonly #registerDynamicText: Exclude<FlowContentHtmlOptions["registerDynamicText"], undefined>;
     readonly #writer = new XmlWriter();
     readonly #endArticle: EndScopeFunc;
@@ -52,7 +53,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
         this.#theme = new ThemeManager(options.theme);
         this.#getElementId = options.getElementId || makeDefaultElementIdGenerator();
         this.#getLinkHref = options.getLinkHref || (url => url);
-        this.#registerClickHandler = options.registerClickHandler || (() => void 0);
+        this.#registerScriptInteraction = options.registerScriptInteraction || (() => void 0);
         this.#registerDynamicText = options.registerDynamicText || (() => void 0);
         this.#endArticle = this.#writer.start("article");
     }
@@ -147,17 +148,44 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     }
 
     async visitBox(node: FlowBox): Promise<FlowNode> {
-        /*
         const { style, content } = node;
-        this.#appendElemStart("box", {
-            style: this.#getBoxStyleId(style),
-        });
-        const boxTheme = this.#getCurrentFlowTheme().getBoxTheme(style);
-        this.#themeStack.push(boxTheme);
+        const ambient = BoxStyle.ambient;
+        const { variant = "basic", inline = true, color = "default", source, interaction } = style.unmerge(ambient);
+        const classNames = [
+            this.#getClassName("box"),
+            this.#getClassName(`${variant}Box`),
+            this.#getClassName(`${color}Color`),
+        ];
+
+        if (inline) {
+            classNames.push(this.#getClassName("inlineBox"));
+        }
+
+        const attr: Attributes = { class: classNames.join(" ") };
+        let tagName = "div";
+        
+        if (interaction) {
+            tagName = "button";
+            if (interaction instanceof OpenUrl) {
+                const href = this.#getLinkHref(interaction.url);
+                attr.onclick = `document.location.href=${JSON.stringify(href)}`;
+            } else if (interaction instanceof RunScript) {
+                const id = this.#getElementId("button");
+                this.#registerScriptInteraction(id, interaction.script);
+                attr.id = id;
+            } else {
+                throw new Error("Unsupported box interaction"); 
+            }
+        }
+
+        const endTheme = this.#theme.startBox(style);
+        const endElem = this.#writer.start(tagName, attr);
+
         await this.visitFlowContent(content);
-        this.#themeStack.pop();
-        this.#appendElemEnd();
-        */
+
+        endElem();
+        endTheme();
+
         return node;
     }
 
@@ -478,7 +506,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
             endElem = this.#writer.start("a", { href });
         } else if (interaction instanceof RunScript) {
             const id = this.#getElementId("link");
-            this.#registerClickHandler(id, interaction.script);
+            this.#registerScriptInteraction(id, interaction.script);
             endElem = this.#writer.start("a", { id, href: `#${id}` });
         } else {
             throw new Error("Unsupported link interaction");

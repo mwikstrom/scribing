@@ -1,0 +1,13 @@
+[
+    { 
+        "box": [
+            "Hello world!",
+            { "break": "para" }
+        ],
+        "style": { 
+            "variant": "alert",
+            "color": "warning"
+        }
+    },
+    { "break": "para" }
+]

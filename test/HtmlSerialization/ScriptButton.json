@@ -1,0 +1,6 @@
+[
+    { 
+        "box": ["Click me"],
+        "style": { "interaction": { "script": "foo()" } }
+    }
+]
