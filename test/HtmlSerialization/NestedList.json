@@ -1,0 +1,15 @@
+[
+    "before",
+    { "break": "para" },
+    "1A",
+    { "break": "para", "style": { "listMarker": "unordered", "listLevel": 1 } },
+    "2A",
+    { "break": "para", "style": { "listMarker": "unordered", "listLevel": 2 } },
+    "4A",
+    { "break": "para", "style": { "listMarker": "unordered", "listLevel": 4 } },
+    "3A",
+    { "break": "para", "style": { "listMarker": "unordered", "listLevel": 3 } },
+    "1B",
+    { "break": "para", "style": { "listMarker": "unordered", "listLevel": 1 } },
+    "trailing"
+]

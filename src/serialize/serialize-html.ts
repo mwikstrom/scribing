@@ -41,6 +41,7 @@ export type FlowContentHtmlClassKey =
     | "codeBlock"
     | `${HorizontalAlignment}Align`
     | `${ReadingDirection}Direction`
+    | "dashListMarker"
 
 /** @public */
 export type HtmlContent = HtmlNode | HtmlNode[];

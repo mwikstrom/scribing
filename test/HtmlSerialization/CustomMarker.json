@@ -1,0 +1,10 @@
+[
+    "first",
+    { "break": "para", "style": { "listMarker": "ordered", "listLevel": 1 } },
+    "second",
+    { "break": "para", "style": { "listMarker": "ordered", "listLevel": 1, "listCounter": 100 } },
+    "third",
+    { "break": "para", "style": { "listMarker": "unordered", "listLevel": 1 } },
+    "fourth",
+    { "break": "para", "style": { "listMarker": "ordered", "listLevel": 1, "listCounterPrefix": "prefix", "listCounterSuffix": "suffix" } }
+]

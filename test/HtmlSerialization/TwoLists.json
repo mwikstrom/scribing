@@ -1,0 +1,8 @@
+[
+    "first",
+    { "break": "para", "style": { "listMarker": "ordered", "listLevel": 1 } },
+    "break",
+    { "break": "para" },
+    "second",
+    { "break": "para", "style": { "listMarker": "ordered", "listLevel": 1 } }
+]

@@ -1,0 +1,13 @@
+[
+    "before",
+    { "break": "para" },
+    "first",
+    { "break": "para", "style": { "listMarker": "unordered", "listLevel": 1 } },
+    "second",
+    { "break": "para", "style": { "listMarker": "unordered", "listLevel": 1 } },
+    "continued",
+    { "break": "para", "style": { "listMarker": "unordered", "listLevel": 1, "hideListMarker": true } },
+    "third",
+    { "break": "para", "style": { "listMarker": "unordered", "listLevel": 1 } },
+    "trailing"
+]

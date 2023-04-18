@@ -14,7 +14,7 @@ import { EndScopeFunc, XmlWriter } from "./XmlWriter";
 import { ThemeManager } from "./ThemeManager";
 import { ParagraphBreak } from "../nodes/ParagraphBreak";
 import { FlowCursor } from "../selection/FlowCursor";
-import { ParagraphStyle } from "../styles/ParagraphStyle";
+import { ListMarkerKind, OrderedListMarkerKindType, ParagraphStyle } from "../styles/ParagraphStyle";
 import type {
     FlowContentHtmlClassKey,
     FlowContentHtmlOptions,
@@ -66,13 +66,22 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     async visitFlowContent(content: FlowContent): Promise<FlowContent> {
         let endPara: EndScopeFunc | undefined;
         let activeLink: CurrentLink | undefined;
+        const listStack: ListStackEntry[] = [];
+        const endList = () => {
+            listStack.splice(0, listStack.length).reverse().forEach(({ endList, endItem }) => {
+                endItem();
+                endList();
+            });
+        };
         
         for (let cursor: FlowCursor | null = content.peek(0); cursor; cursor = cursor.moveToStartOfNextNode()) {
             if (!endPara) {
                 const paraBreak = cursor.findNodeForward(ParagraphBreak.classType.test)?.node;
                 if (paraBreak instanceof ParagraphBreak) {
+                    this.#updateListStack(paraBreak.style, listStack);
                     endPara = this.#startPara(paraBreak.style);
                 } else {
+                    endList();
                     endPara = () => void 0;
                 }
             }
@@ -115,6 +124,8 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
         if (endPara) {
             endPara();
         }
+
+        endList();
 
         return content;
     }
@@ -272,6 +283,82 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
         return this.#classes[key] || key;
     }
 
+    #updateListStack(style: ParagraphStyle, stack: ListStackEntry[]): void {
+        const { listLevel = 0, hideListMarker, listMarker } = style;
+
+        if (!listMarker) {
+            stack.splice(0, stack.length).reverse().forEach(({ endItem, endList }) => {
+                endItem();
+                endList();
+            });
+            return;
+        }
+
+        if (stack.length > listLevel) {
+            stack.splice(listLevel, stack.length - listLevel).reverse().forEach(({ endItem, endList }) => {
+                endItem();
+                endList();
+            });
+        }
+
+        if (listLevel > 0 && stack.length === listLevel) {
+            const entry = stack[listLevel - 1];
+            if (entry.marker !== listMarker) {
+                entry.endItem();
+                entry.endList();
+                stack.pop();
+            } else if (!hideListMarker) {
+                entry.endItem();
+                entry.endItem = this.#startListItem(style);
+            }
+        }
+
+        while (listLevel > stack.length) {
+            const endList = this.#startList(style);
+            let endItem: EndScopeFunc = () => void 0;
+            if (stack.length + 1 === listLevel) {
+                endItem = this.#startListItem(style);
+            }
+            stack.push({ endList, endItem, marker: listMarker });
+        }
+    }
+
+    #startList(style: ParagraphStyle): EndScopeFunc {
+        const { listMarker } = style;
+        const attr: Attributes = {};
+        let tagName: string;
+
+        if (OrderedListMarkerKindType.test(listMarker)) {
+            tagName = "ol";
+        } else {
+            tagName = "ul";
+        }
+
+        if (listMarker === "dash") {
+            attr.class = this.#getClassName("dashListMarker");
+        } else if (listMarker !== "ordered" && listMarker !== "unordered" && listMarker) {
+            attr.style = `list-style-type:${listMarker}`;
+        }
+
+        return this.#writer.start(tagName, attr);
+    }
+
+    #startListItem(style: ParagraphStyle): EndScopeFunc {
+        const { hideListMarker, listCounterPrefix, listCounterSuffix } = style;
+        const attr: Attributes = {};
+        if (hideListMarker) {
+            attr.style = "list-style-type:none";
+        } else {
+            if (listCounterPrefix) {
+                attr["data-list-counter-prefix"] = listCounterPrefix;
+            }
+            if (listCounterSuffix) {
+                attr["data-list-counter-suffix"] = listCounterSuffix;
+            }
+        }
+        return this.#writer.start("li", attr);
+    }
+
     #startPara(style: ParagraphStyle): EndScopeFunc {
         const { variant = "normal" } = style;
         const ambient = this.#theme.para.getAmbientParagraphStyle();
@@ -380,6 +467,12 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
 interface CurrentLink {
     interaction: Interaction;
     end: EndScopeFunc;
+}
+
+interface ListStackEntry {
+    endItem: EndScopeFunc;
+    endList: EndScopeFunc;
+    marker: ListMarkerKind;
 }
 
 const makeDefaultElementIdGenerator = () => {
