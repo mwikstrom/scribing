@@ -1,7 +1,7 @@
 import { DynamicText } from "../nodes/DynamicText";
 import { EmptyMarkup } from "../nodes/EmptyMarkup";
 import { FlowBox } from "../nodes/FlowBox";
-import { FlowIcon } from "../nodes/FlowIcon";
+import { FlowIcon, PredefinedIconType } from "../nodes/FlowIcon";
 import { FlowImage } from "../nodes/FlowImage";
 import { FlowNode } from "../nodes/FlowNode";
 import { FlowTable } from "../nodes/FlowTable";
@@ -22,7 +22,7 @@ import type {
     HtmlElem,
     HtmlNode
 } from "./serialize-html";
-import { Attributes } from "xml-js";
+import { Attributes, Element as XmlElem } from "xml-js";
 import { InlineNode } from "../nodes/InlineNode";
 import { Interaction } from "../interaction/Interaction";
 import { OpenUrl } from "../interaction/OpenUrl";
@@ -203,13 +203,43 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     }
 
     async visitIcon(node: FlowIcon): Promise<FlowNode> {
-        /* 
         const { data, style } = node;
-        this.#appendElem("icon", {
-            data,
-            style: this.#getTextStyleId(style),
-        });
-        */
+        const ambient = this.#theme.text;
+        const { fontSize, color } = style.unmerge(ambient);
+        const classNames = [this.#getClassName("icon")];
+        const css = new Map<string, string>();
+        const content: XmlElem[] = [];
+        let tagName = "span";
+
+        if (fontSize) {
+            css.set("font-size", `${fontSize / 100}rem`);
+        }
+
+        if (color) {
+            classNames.push(this.#getClassName(`${color}Color`));
+        }
+
+        if (PredefinedIconType.test(data)) {
+            classNames.push(this.#getClassName(`${data}Icon`));
+        } else if (/^@mdi\//.test(data)) {
+            classNames.push("mdi", `mdi-${data.substring(5)}`);
+        } else {
+            tagName = "svg";
+            content.push({ type: "element", name: "path", attributes: { d: data } });
+        }
+
+        const attr: Record<string, string> = { class: classNames.join(" ") };
+
+        if (css.size > 0) {
+            attr.style = [...css].map(([key, value]) => `${key}:${value}`).join(";");
+        }
+
+        if (tagName === "svg") {
+            attr.viewBox = "0 0 24 24";
+        }
+
+        this.#writer.elem(tagName, attr, content);
+
         return node;
     }
 

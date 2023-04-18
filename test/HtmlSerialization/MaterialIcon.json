@@ -1,0 +1,6 @@
+[
+    { 
+        "icon": "@mdi/ab-testing",
+        "style": { "color": "success" }
+    }
+]

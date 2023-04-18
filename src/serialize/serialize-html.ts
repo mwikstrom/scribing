@@ -1,5 +1,6 @@
 import { MarkupHandler, processMarkup } from "../markup/process-markup";
 import { EmptyMarkup } from "../nodes/EmptyMarkup";
+import { PredefinedIcon } from "../nodes/FlowIcon";
 import { FlowContent } from "../structure/FlowContent";
 import { Script } from "../structure/Script";
 import { BoxVariant } from "../styles/BoxStyle";
@@ -47,6 +48,9 @@ export type FlowContentHtmlClassKey =
     | "box"
     | `${BoxVariant}Box`
     | "inlineBox"
+    | "icon"
+    | `${PredefinedIcon}Icon`
+    ;
 
 /** @public */
 export type HtmlContent = HtmlNode | HtmlNode[];
