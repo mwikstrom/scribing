@@ -38,6 +38,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     readonly #getLinkHref: Exclude<FlowContentHtmlOptions["getLinkHref"], undefined>;
     readonly #registerScriptInteraction: Exclude<FlowContentHtmlOptions["registerScriptInteraction"], undefined>;
     readonly #registerDynamicText: Exclude<FlowContentHtmlOptions["registerDynamicText"], undefined>;
+    readonly #registerDataSource: Exclude<FlowContentHtmlOptions["registerDataSource"], undefined>;
     readonly #writer = new XmlWriter();
     readonly #endArticle: EndScopeFunc;
     readonly #listCounter = new Map<number, number>();
@@ -55,6 +56,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
         this.#getLinkHref = options.getLinkHref || (url => url);
         this.#registerScriptInteraction = options.registerScriptInteraction || (() => void 0);
         this.#registerDynamicText = options.registerDynamicText || (() => void 0);
+        this.#registerDataSource = options.registerDataSource || (() => void 0);
         this.#endArticle = this.#writer.start("article");
     }
     
@@ -161,6 +163,13 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
             classNames.push(this.#getClassName("inlineBox"));
         }
 
+        let endWrapper: EndScopeFunc | undefined;
+        if (source) {
+            const id = this.#getElementId("template");
+            this.#registerDataSource(id, source);
+            endWrapper = this.#writer.start("template", { id });
+        }
+
         const attr: Attributes = { class: classNames.join(" ") };
         let tagName = "div";
         
@@ -186,11 +195,15 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
         endElem();
         endTheme();
 
+        if (endWrapper) {
+            endWrapper();
+        }
+
         return node;
     }
 
     async visitIcon(node: FlowIcon): Promise<FlowNode> {
-        /*
+        /* 
         const { data, style } = node;
         this.#appendElem("icon", {
             data,

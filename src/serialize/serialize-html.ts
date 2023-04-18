@@ -17,6 +17,7 @@ export interface FlowContentHtmlOptions {
     getLinkHref?: (this: void, url: string) => string;
     registerScriptInteraction?: (this: void, elementId: string, script: Script) => void;
     registerDynamicText?: (this: void, elementId: string, expression: Script, style: TextStyle) => void;
+    registerDataSource?: (this: void, elementId: string, script: Script) => void;
     rewriteMarkup?: MarkupHandler<HtmlContent>;
 }
 

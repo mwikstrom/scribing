@@ -1,0 +1,6 @@
+[
+    { 
+        "box": ["foobar"],
+        "style": { "inline": false, "source": "baz()" }
+    }
+]
