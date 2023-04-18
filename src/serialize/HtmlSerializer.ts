@@ -39,6 +39,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     readonly #registerDynamicText: Exclude<FlowContentHtmlOptions["registerDynamicText"], undefined>;
     readonly #writer = new XmlWriter();
     readonly #endArticle: EndScopeFunc;
+    readonly #listCounter = new Map<number, number>();
 
     constructor(
         replacements: WeakMap<EmptyMarkup, HtmlContent>,
@@ -284,15 +285,17 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     }
 
     #updateListStack(style: ParagraphStyle, stack: ListStackEntry[]): void {
-        const { listLevel = 0, hideListMarker, listMarker } = style;
+        const { listLevel = 0, hideListMarker, listMarker: marker } = style;
 
-        if (!listMarker) {
+        if (!marker) {
             stack.splice(0, stack.length).reverse().forEach(({ endItem, endList }) => {
                 endItem();
                 endList();
             });
             return;
         }
+
+        const insideList = stack.length > 0;
 
         if (stack.length > listLevel) {
             stack.splice(listLevel, stack.length - listLevel).reverse().forEach(({ endItem, endList }) => {
@@ -303,7 +306,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
 
         if (listLevel > 0 && stack.length === listLevel) {
             const entry = stack[listLevel - 1];
-            if (entry.marker !== listMarker) {
+            if (!this.#canContinueList(entry, style)) {
                 entry.endItem();
                 entry.endList();
                 stack.pop();
@@ -313,25 +316,63 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
             }
         }
 
-        while (listLevel > stack.length) {
-            const endList = this.#startList(style);
-            let endItem: EndScopeFunc = () => void 0;
-            if (stack.length + 1 === listLevel) {
-                endItem = this.#startListItem(style);
+        if (listLevel > stack.length) {
+            while (listLevel > stack.length + 1) {
+                stack.push({
+                    endList: this.#startList(style, stack.length + 1, insideList),
+                    endItem: () => void 0,
+                    marker
+                });
             }
-            stack.push({ endList, endItem, marker: listMarker });
+
+            stack.push({
+                endList: this.#startList(style, listLevel, insideList),
+                endItem: this.#startListItem(style),
+                marker
+            });
         }
     }
 
-    #startList(style: ParagraphStyle): EndScopeFunc {
-        const { listMarker } = style;
+    #canContinueList(entry: ListStackEntry, style: ParagraphStyle): boolean {
+        const { marker: entryMarker } = entry;
+        const { listLevel = 0, listMarker, listCounter = "auto" } = style;
+
+        if (entryMarker !== listMarker || listCounter === "reset") {
+            return false;
+        }
+        
+        if (listCounter === "auto" || listCounter === "resume" || !OrderedListMarkerKindType.test(listMarker)) {
+            return true;
+        }
+
+        const nextCounter = 1 + (this.#listCounter.get(listLevel) || 0);
+        return listCounter === nextCounter;
+    }
+
+    #startList(style: ParagraphStyle, level: number, insideList: boolean): EndScopeFunc {
+        const { listMarker, listCounter = "auto" } = style;
         const attr: Attributes = {};
         let tagName: string;
 
         if (OrderedListMarkerKindType.test(listMarker)) {
             tagName = "ol";
         } else {
-            tagName = "ul";
+            tagName = "ul";            
+        }
+
+        if (listCounter === "reset" || (listCounter === "auto" && !insideList)) {
+            this.#listCounter.delete(level);
+        } else {
+            let start: number;
+            if (typeof listCounter === "number") {
+                start = listCounter;
+                this.#listCounter.set(level, start - 1);
+            } else {
+                start = 1 + (this.#listCounter.get(level) || 0);
+            }
+            if (start !== 1 && tagName === "ol") {
+                attr.start = start.toFixed();
+            }
         }
 
         if (listMarker === "dash") {
@@ -344,8 +385,22 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     }
 
     #startListItem(style: ParagraphStyle): EndScopeFunc {
-        const { hideListMarker, listCounterPrefix, listCounterSuffix } = style;
+        const { hideListMarker, listCounterPrefix, listCounterSuffix, listLevel } = style;
         const attr: Attributes = {};
+
+        if (listLevel) {
+            for (const [key, value] of [...this.#listCounter]) {
+                if (key > listLevel) {
+                    this.#listCounter.delete(key);
+                } else if (key === listLevel) {
+                    this.#listCounter.set(key, value + 1);
+                }
+            }
+            if (!this.#listCounter.has(listLevel)) {
+                this.#listCounter.set(listLevel, 1);
+            }
+        }
+
         if (hideListMarker) {
             attr.style = "list-style-type:none";
         } else {
@@ -356,6 +411,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
                 attr["data-list-counter-suffix"] = listCounterSuffix;
             }
         }
+
         return this.#writer.start("li", attr);
     }
 
