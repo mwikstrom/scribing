@@ -28,6 +28,8 @@ import { Interaction } from "../interaction/Interaction";
 import { OpenUrl } from "../interaction/OpenUrl";
 import { RunScript } from "../interaction/RunScript";
 import { BoxStyle } from "../styles/BoxStyle";
+import { getTableColumnWidths } from "../structure/getTableColumnWidths";
+import { CellPosition } from "../selection/CellPosition";
 
 /** @internal */
 export class HtmlSerializer extends AsyncFlowNodeVisitor {
@@ -255,38 +257,68 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     }
 
     async visitTable(node: FlowTable): Promise<FlowNode> {
-        /*
         const { columns, style, content } = node;
-        this.#appendElemStart("table", { 
-            style: this.#getTableStyleId(style),
-        });
-        for (const [key, {width}] of columns) {
-            this.#appendElem("col", {
-                key,
-                width,
-            });
+        const { inline, head } = style;
+        let attr: Attributes | undefined;
+        
+        if (inline) {
+            attr = { class: this.#getClassName("inlineTable") };
         }
-        await this.visitTableContent(content, style.head);
-        this.#appendElemEnd();
-        */
+
+        const endTable = this.#writer.start("table", attr);
+        const endColGroup = this.#writer.start("colgroup");
+        
+        getTableColumnWidths(content.columnCount, columns)
+            .forEach(value => this.#writer.elem("col", { style: `width:${value}`}));
+        endColGroup();
+        await this.visitTableContent(content, head);
+        endTable();
+
         return node;
     }
 
-    async visitTableContent(content: FlowTableContent): Promise<FlowTableContent> {
-        /*
-        const data = content.toData();
-        for (const [key, { colSpan, rowSpan, content: nested}] of data) {
-            this.#writer.start("cell", {
-                key,
-                colspan: colSpan === 1 ? undefined : colSpan,
-                rowspan: rowSpan === 1 ? undefined : rowSpan,
-            });
-            this.#theme.enterTableCell(key, headingRowCount);
-            this.visitFlowContent(nested);
-            this.#theme.leave();
-            this.#writer.end();
+    async visitTableContent(content: FlowTableContent, headingRowCount = 0): Promise<FlowTableContent> {
+        const spanned = new Set<string>();
+        let endGroup: EndScopeFunc | undefined;
+        let head = false;
+
+        for (let r = 0; r < content.rowCount; ++r) {
+            if (headingRowCount > 0) {
+                if (!endGroup) {
+                    endGroup = this.#writer.start("thead");
+                    head = true;
+                } else if (r >= headingRowCount) {
+                    endGroup();
+                    endGroup = this.#writer.start("tbody");
+                    head = false;
+                }
+            } else if (!endGroup) {
+                endGroup = this.#writer.start("tbody");
+            }
+
+            const endRow = this.#writer.start("tr");
+
+            for (let c = 0; c < content.columnCount; ++c) {
+                const pos = CellPosition.at(r, c);
+                const key = pos.toString();
+                if (!spanned.has(key)) {
+                    const cell = content.getCell(pos);
+                    if (cell) {
+                        const { content: cellContent, colSpan, rowSpan } = cell;
+                        await this.#visitTableCell(pos, cellContent, spanned, head, colSpan, rowSpan);
+                    } else {
+                        await this.#visitTableCell(pos, content.defaultCellContent, spanned, head);
+                    }
+                }
+            }
+
+            endRow();
         }
-        */
+
+        if (endGroup) {
+            endGroup();
+        }
+
         return content;
     }
 
@@ -348,6 +380,36 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
 
         this.#writer.elem("span", attr, text);
         return node;
+    }
+
+    async #visitTableCell(
+        pos: CellPosition,
+        content: FlowContent,
+        spanned: Set<string>,
+        head = false,
+        colSpan = 1,
+        rowSpan = 1
+    ): Promise<void> {
+        const tagName = head ? "th" : "td";
+        const attr: Attributes = {};
+
+        if (colSpan > 1) {
+            attr.colspan = colSpan;
+        }
+
+        if (rowSpan > 1) {
+            attr.rowspan = rowSpan;
+        }
+
+        for (let r = 0; r < rowSpan; ++r) {
+            for (let c = 0; c < colSpan; ++c) {
+                spanned.add(CellPosition.at(pos.row + r, pos.column + c).toString());
+            }
+        }
+
+        const endCell = this.#writer.start(tagName, attr);
+        await this.visitFlowContent(content);
+        endCell();
     }
 
     #getClassName(key: FlowContentHtmlClassKey): string {

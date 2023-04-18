@@ -2,6 +2,7 @@
 
 - New feature: `processMarkup` and `processNestedMarkup`
 - New feature: `extractMarkup`
+- New feature: `getTableColumnWidths`
 
 ## 1.2.2 - 2023-03-16
 

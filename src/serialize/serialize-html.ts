@@ -52,6 +52,7 @@ export type FlowContentHtmlClassKey =
     | "inlineBox"
     | "icon"
     | `${PredefinedIcon}Icon`
+    | "inlineTable"
     ;
 
 /** @public */

@@ -44,6 +44,7 @@ export * from "./structure/ImageSource";
 // Table structure
 export * from "./structure/FlowTableCell";
 export * from "./structure/FlowTableContent";
+export * from "./structure/getTableColumnWidths";
 
 // Nodes
 export * from "./nodes/InlineNode";
