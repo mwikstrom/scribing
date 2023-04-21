@@ -1,3 +1,7 @@
+## 1.4.0 - 2023-04-21
+
+- New feature: `isEmptyFlowContent`
+
 ## 1.3.0 - 2023-04-18
 
 - New feature: `serializeFlowContentToHtml`

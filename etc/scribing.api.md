@@ -1761,6 +1761,9 @@ export abstract class Interaction {
     toJsonValue(): JsonValue;
 }
 
+// @public (undocumented)
+export function isEmptyFlowContent(content: FlowContent | null | undefined): boolean;
+
 // @public @sealed
 export class LineBreak extends LineBreakBase implements LineBreakProps {
     constructor(props?: LineBreakProps);

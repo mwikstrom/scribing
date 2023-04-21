@@ -37,6 +37,7 @@ export * from "./styles/DefaultFlowTheme";
 export * from "./nodes/FlowNode";
 export * from "./selection/FlowCursor";
 export * from "./structure/FlowContent";
+export * from "./structure/is-empty-content";
 
 // Media sources
 export * from "./structure/ImageSource";
