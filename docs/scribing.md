@@ -230,6 +230,7 @@ Model for collaborative rich text editing
 
 |  Variable | Description |
 |  --- | --- |
+|  [attrValueType](./scribing.attrvaluetype.md) |  |
 |  [BASELINE\_OFFSETS](./scribing.baseline_offsets.md) | Read-only array that contains all baseline offsets |
 |  [BOX\_VARIANTS](./scribing.box_variants.md) | Read-only array that contains all box style variants |
 |  [BoxStyleBase](./scribing.boxstylebase.md) | The base record class for [BoxStyle](./scribing.boxstyle.md) |
@@ -321,6 +322,7 @@ Model for collaborative rich text editing
 
 |  Type Alias | Description |
 |  --- | --- |
+|  [AttrValue](./scribing.attrvalue.md) |  |
 |  [BaselineOffset](./scribing.baselineoffset.md) | Baseline offset |
 |  [BasicFetch](./scribing.basicfetch.md) |  |
 |  [BoxVariant](./scribing.boxvariant.md) | Box style variant |

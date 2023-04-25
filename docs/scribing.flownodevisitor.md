@@ -17,18 +17,25 @@ export declare class FlowNodeVisitor implements GenericFlowNodeVisitor<FlowNode>
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [visitAttributeMap(attr)](./scribing.flownodevisitor.visitattributemap.md) |  |  |
+|  [visitAttributeValue(value)](./scribing.flownodevisitor.visitattributevalue.md) |  |  |
 |  [visitBox(node)](./scribing.flownodevisitor.visitbox.md) |  |  |
+|  [visitBoxStyle(style)](./scribing.flownodevisitor.visitboxstyle.md) |  |  |
 |  [visitDynamicText(node)](./scribing.flownodevisitor.visitdynamictext.md) |  |  |
 |  [visitEmptyMarkup(node)](./scribing.flownodevisitor.visitemptymarkup.md) |  |  |
 |  [visitEndMarkup(node)](./scribing.flownodevisitor.visitendmarkup.md) |  |  |
 |  [visitFlowContent(content)](./scribing.flownodevisitor.visitflowcontent.md) |  |  |
 |  [visitIcon(node)](./scribing.flownodevisitor.visiticon.md) |  |  |
 |  [visitImage(node)](./scribing.flownodevisitor.visitimage.md) |  |  |
+|  [visitInline(node)](./scribing.flownodevisitor.visitinline.md) |  |  |
+|  [visitInteraction(interaction)](./scribing.flownodevisitor.visitinteraction.md) |  |  |
 |  [visitLineBreak(node)](./scribing.flownodevisitor.visitlinebreak.md) |  |  |
 |  [visitNode(node)](./scribing.flownodevisitor.visitnode.md) |  |  |
 |  [visitParagraphBreak(node)](./scribing.flownodevisitor.visitparagraphbreak.md) |  |  |
+|  [visitScript(script)](./scribing.flownodevisitor.visitscript.md) |  |  |
 |  [visitStartMarkup(node)](./scribing.flownodevisitor.visitstartmarkup.md) |  |  |
 |  [visitTable(node)](./scribing.flownodevisitor.visittable.md) |  |  |
 |  [visitTableContent(content)](./scribing.flownodevisitor.visittablecontent.md) |  |  |
 |  [visitTextRun(node)](./scribing.flownodevisitor.visittextrun.md) |  |  |
+|  [visitTextStyle(style)](./scribing.flownodevisitor.visittextstyle.md) |  |  |
 

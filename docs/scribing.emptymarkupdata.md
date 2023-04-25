@@ -16,7 +16,7 @@ export interface EmptyMarkupData
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [attr?](./scribing.emptymarkupdata.attr.md) |  | Readonly&lt;Map&lt;string, AttrValue&gt;&gt; | _(Optional)_ |
+|  [attr?](./scribing.emptymarkupdata.attr.md) |  | Map&lt;string, [AttrValue](./scribing.attrvalue.md)<!-- -->&gt; | _(Optional)_ |
 |  [empty\_markup](./scribing.emptymarkupdata.empty_markup.md) |  | string |  |
 |  [style?](./scribing.emptymarkupdata.style.md) |  | [TextStyle](./scribing.textstyle.md) | _(Optional)_ |
 

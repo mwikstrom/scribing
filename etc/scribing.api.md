@@ -18,7 +18,13 @@ import { Type } from 'paratype';
 // @public
 export class AsyncFlowNodeVisitor implements GenericFlowNodeVisitor<Promise<FlowNode>> {
     // (undocumented)
+    visitAttributeMap(attr: Map<string, AttrValue>): Promise<Map<string, AttrValue> | Map<string, AttrValue>>;
+    // (undocumented)
+    visitAttributeValue(value: AttrValue): Promise<AttrValue>;
+    // (undocumented)
     visitBox(node: FlowBox): Promise<FlowNode>;
+    // (undocumented)
+    visitBoxStyle(style: BoxStyle): Promise<BoxStyle>;
     // (undocumented)
     visitDynamicText(node: DynamicText): Promise<FlowNode>;
     // (undocumented)
@@ -32,11 +38,17 @@ export class AsyncFlowNodeVisitor implements GenericFlowNodeVisitor<Promise<Flow
     // (undocumented)
     visitImage(node: FlowImage): Promise<FlowNode>;
     // (undocumented)
+    visitInline<T extends InlineNode>(node: T): Promise<T>;
+    // (undocumented)
+    visitInteraction(interaction: Interaction): Promise<Interaction>;
+    // (undocumented)
     visitLineBreak(node: LineBreak): Promise<FlowNode>;
     // (undocumented)
     visitNode(node: FlowNode): Promise<FlowNode>;
     // (undocumented)
     visitParagraphBreak(node: ParagraphBreak): Promise<FlowNode>;
+    // (undocumented)
+    visitScript(script: Script): Promise<Script>;
     // (undocumented)
     visitStartMarkup(node: StartMarkup): Promise<FlowNode>;
     // (undocumented)
@@ -45,7 +57,15 @@ export class AsyncFlowNodeVisitor implements GenericFlowNodeVisitor<Promise<Flow
     visitTableContent(content: FlowTableContent): Promise<FlowTableContent>;
     // (undocumented)
     visitTextRun(node: TextRun): Promise<FlowNode>;
+    // (undocumented)
+    visitTextStyle(style: TextStyle): Promise<TextStyle>;
 }
+
+// @public (undocumented)
+export type AttrValue = (string | Script);
+
+// @public (undocumented)
+export const attrValueType: Type<AttrValue>;
 
 // @public
 export const BASELINE_OFFSETS: readonly ["normal", "sub", "super"];
@@ -377,10 +397,8 @@ export const EmptyMarkupBase: RecordConstructor<EmptyMarkupProps, InlineNode, Em
 
 // @public
 export interface EmptyMarkupData {
-    // Warning: (ae-forgotten-export) The symbol "AttrValue" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
-    attr?: Readonly<Map<string, AttrValue>>;
+    attr?: Map<string, AttrValue>;
     // (undocumented)
     empty_markup: string;
     // (undocumented)
@@ -390,7 +408,7 @@ export interface EmptyMarkupData {
 // @public
 export interface EmptyMarkupProps {
     // (undocumented)
-    attr: Readonly<Map<string, AttrValue>>;
+    attr: Map<string, AttrValue>;
     // (undocumented)
     style: TextStyle;
     // (undocumented)
@@ -717,7 +735,13 @@ export abstract class FlowNode {
 // @public
 export class FlowNodeVisitor implements GenericFlowNodeVisitor<FlowNode> {
     // (undocumented)
+    visitAttributeMap(attr: Map<string, AttrValue>): Map<string, AttrValue>;
+    // (undocumented)
+    visitAttributeValue(value: AttrValue): AttrValue;
+    // (undocumented)
     visitBox(node: FlowBox): FlowNode;
+    // (undocumented)
+    visitBoxStyle(style: BoxStyle): BoxStyle;
     // (undocumented)
     visitDynamicText(node: DynamicText): FlowNode;
     // (undocumented)
@@ -731,11 +755,17 @@ export class FlowNodeVisitor implements GenericFlowNodeVisitor<FlowNode> {
     // (undocumented)
     visitImage(node: FlowImage): FlowNode;
     // (undocumented)
+    visitInline<T extends InlineNode>(node: T): T;
+    // (undocumented)
+    visitInteraction(interaction: Interaction): Interaction;
+    // (undocumented)
     visitLineBreak(node: LineBreak): FlowNode;
     // (undocumented)
     visitNode(node: FlowNode): FlowNode;
     // (undocumented)
     visitParagraphBreak(node: ParagraphBreak): FlowNode;
+    // (undocumented)
+    visitScript(script: Script): Script;
     // (undocumented)
     visitStartMarkup(node: StartMarkup): FlowNode;
     // (undocumented)
@@ -744,6 +774,8 @@ export class FlowNodeVisitor implements GenericFlowNodeVisitor<FlowNode> {
     visitTableContent(content: FlowTableContent): FlowTableContent;
     // (undocumented)
     visitTextRun(node: TextRun): FlowNode;
+    // (undocumented)
+    visitTextStyle(style: TextStyle): TextStyle;
 }
 
 // @public
@@ -2654,7 +2686,7 @@ export const StartMarkupBase: RecordConstructor<StartMarkupProps, InlineNode, St
 // @public
 export interface StartMarkupData {
     // (undocumented)
-    attr?: Readonly<Map<string, AttrValue>>;
+    attr?: Map<string, AttrValue>;
     // (undocumented)
     start_markup: string;
     // (undocumented)
@@ -2664,7 +2696,7 @@ export interface StartMarkupData {
 // @public
 export interface StartMarkupProps {
     // (undocumented)
-    attr: Readonly<Map<string, AttrValue>>;
+    attr: Map<string, AttrValue>;
     // (undocumented)
     style: TextStyle;
     // (undocumented)

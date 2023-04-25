@@ -17,18 +17,25 @@ export declare class AsyncFlowNodeVisitor implements GenericFlowNodeVisitor<Prom
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [visitAttributeMap(attr)](./scribing.asyncflownodevisitor.visitattributemap.md) |  |  |
+|  [visitAttributeValue(value)](./scribing.asyncflownodevisitor.visitattributevalue.md) |  |  |
 |  [visitBox(node)](./scribing.asyncflownodevisitor.visitbox.md) |  |  |
+|  [visitBoxStyle(style)](./scribing.asyncflownodevisitor.visitboxstyle.md) |  |  |
 |  [visitDynamicText(node)](./scribing.asyncflownodevisitor.visitdynamictext.md) |  |  |
 |  [visitEmptyMarkup(node)](./scribing.asyncflownodevisitor.visitemptymarkup.md) |  |  |
 |  [visitEndMarkup(node)](./scribing.asyncflownodevisitor.visitendmarkup.md) |  |  |
 |  [visitFlowContent(content)](./scribing.asyncflownodevisitor.visitflowcontent.md) |  |  |
 |  [visitIcon(node)](./scribing.asyncflownodevisitor.visiticon.md) |  |  |
 |  [visitImage(node)](./scribing.asyncflownodevisitor.visitimage.md) |  |  |
+|  [visitInline(node)](./scribing.asyncflownodevisitor.visitinline.md) |  |  |
+|  [visitInteraction(interaction)](./scribing.asyncflownodevisitor.visitinteraction.md) |  |  |
 |  [visitLineBreak(node)](./scribing.asyncflownodevisitor.visitlinebreak.md) |  |  |
 |  [visitNode(node)](./scribing.asyncflownodevisitor.visitnode.md) |  |  |
 |  [visitParagraphBreak(node)](./scribing.asyncflownodevisitor.visitparagraphbreak.md) |  |  |
+|  [visitScript(script)](./scribing.asyncflownodevisitor.visitscript.md) |  |  |
 |  [visitStartMarkup(node)](./scribing.asyncflownodevisitor.visitstartmarkup.md) |  |  |
 |  [visitTable(node)](./scribing.asyncflownodevisitor.visittable.md) |  |  |
 |  [visitTableContent(content)](./scribing.asyncflownodevisitor.visittablecontent.md) |  |  |
 |  [visitTextRun(node)](./scribing.asyncflownodevisitor.visittextrun.md) |  |  |
+|  [visitTextStyle(style)](./scribing.asyncflownodevisitor.visittextstyle.md) |  |  |
 

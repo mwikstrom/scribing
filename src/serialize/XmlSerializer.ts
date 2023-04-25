@@ -352,7 +352,7 @@ export class XmlSerializer extends FlowNodeVisitor {
     }
 
     #serializeMarkupAttr = (
-        attr: ReadonlyMap<string, AttrValue>
+        attr: Map<string, AttrValue>
     ): XmlElem[] => Array.from(attr).map(([key, value]) => {
         if (typeof value === "string") {
             return {

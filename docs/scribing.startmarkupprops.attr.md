@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-attr: Readonly<Map<string, AttrValue>>;
+attr: Map<string, AttrValue>;
 ```

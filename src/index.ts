@@ -57,6 +57,7 @@ export * from "./nodes/DynamicText";
 export * from "./nodes/FlowIcon";
 export * from "./nodes/FlowImage";
 export * from "./nodes/FlowTable";
+export * from "./nodes/AttrValue";
 export * from "./nodes/StartMarkup";
 export * from "./nodes/EmptyMarkup";
 export * from "./nodes/EndMarkup";

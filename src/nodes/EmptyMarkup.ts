@@ -48,7 +48,7 @@ export const EmptyMarkupBase = RecordClass(PropsType, InlineNode, DataType, prop
 export interface EmptyMarkupProps {
     tag: string;
     style: TextStyle;
-    attr: Readonly<Map<string, AttrValue>>;
+    attr: Map<string, AttrValue>;
 }
 
 /**
@@ -58,7 +58,7 @@ export interface EmptyMarkupProps {
 export interface EmptyMarkupData {
     empty_markup: string;
     style?: TextStyle;
-    attr?: Readonly<Map<string, AttrValue>>;
+    attr?: Map<string, AttrValue>;
 }
 
 /**

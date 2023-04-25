@@ -18,5 +18,5 @@ export interface SetMarkupAttrProps
 |  --- | --- | --- | --- |
 |  [key](./scribing.setmarkupattrprops.key.md) |  | string |  |
 |  [position](./scribing.setmarkupattrprops.position.md) |  | number | The markup position |
-|  [value](./scribing.setmarkupattrprops.value.md) |  | AttrValue |  |
+|  [value](./scribing.setmarkupattrprops.value.md) |  | [AttrValue](./scribing.attrvalue.md) |  |
 

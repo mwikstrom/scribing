@@ -1,3 +1,7 @@
+## 1.5.0 - 2023-04-25
+
+- New feture: Additional visitor methods
+
 ## 1.4.0 - 2023-04-21
 
 - New feature: `isEmptyFlowContent`

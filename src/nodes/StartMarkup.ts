@@ -48,7 +48,7 @@ export const StartMarkupBase = RecordClass(PropsType, InlineNode, DataType, prop
 export interface StartMarkupProps {
     tag: string;
     style: TextStyle;
-    attr: Readonly<Map<string, AttrValue>>;
+    attr: Map<string, AttrValue>;
 }
 
 /**
@@ -58,7 +58,7 @@ export interface StartMarkupProps {
 export interface StartMarkupData {
     start_markup: string;
     style?: TextStyle;
-    attr?: Readonly<Map<string, AttrValue>>;
+    attr?: Map<string, AttrValue>;
 }
 
 /**
