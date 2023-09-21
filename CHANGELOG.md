@@ -1,3 +1,7 @@
+## 1.6.1 - 2023-09-21
+
+- Fix: Alternating list markers in text conversion from ordered and unordered lists
+
 ## 1.6.0 - 2023-09-21
 
 - New feature: `serializeFlowContentToText`

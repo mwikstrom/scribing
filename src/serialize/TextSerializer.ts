@@ -146,7 +146,7 @@ const startParagraph = (style: ParagraphStyle, output: string[], listStack: numb
     const {
         listLevel = 0,
         hideListMarker,
-        listMarker = "unordered",
+        listMarker: givenMarkerKind = "unordered",
         listCounter = "auto",
         listCounterPrefix,
         listCounterSuffix = "."
@@ -159,7 +159,17 @@ const startParagraph = (style: ParagraphStyle, output: string[], listStack: numb
     let marker = "\t".repeat(listLevel - 1);
     
     if (!hideListMarker) {
-        const renderFunc = ListMarker[listMarker] || ListMarker["unordered"];
+        let markerKind: Exclude<ListMarkerKind, "ordered" | "unordered">;
+
+        if (givenMarkerKind === "ordered") {
+            markerKind = (["decimal", "lower-alpha", "lower-roman"] as const)[(listLevel - 1) % 3];
+        } else if (givenMarkerKind === "unordered") {
+            markerKind = (["disc", "circle", "square"] as const)[(listLevel - 1) % 3];
+        } else {
+            markerKind = givenMarkerKind;
+        }
+
+        const renderFunc = ListMarker[markerKind] || ListMarker["disc"];
 
         while (listStack.length > listLevel) {
             listStack.pop();
@@ -177,13 +187,13 @@ const startParagraph = (style: ParagraphStyle, output: string[], listStack: numb
             count = 1;
         }
         
-        if (OrderedListMarkerKindType.test(listMarker) && listCounterPrefix) {
+        if (OrderedListMarkerKindType.test(markerKind) && listCounterPrefix) {
             marker += listCounterPrefix;
         }
 
         marker += renderFunc(count);
 
-        if (OrderedListMarkerKindType.test(listMarker)) {
+        if (OrderedListMarkerKindType.test(markerKind)) {
             marker += listCounterSuffix;
         }
 
@@ -247,16 +257,14 @@ const upperRoman = (value: number): string => {
     return result;
 };
 
-const ListMarker: Record<ListMarkerKind, (position: number) => string> = {
-    ordered: decimal,
+const ListMarker: Record<Exclude<ListMarkerKind, "ordered" | "unordered">, (position: number) => string> = {
     decimal: decimal,
     "lower-alpha": lowerAlpha,
     "upper-alpha": upperAlpha,
     "lower-roman": lowerRoman,
     "upper-roman": upperRoman,
-    unordered: () => "•",
     disc: () => "•",
-    circle: () => "◦",
+    circle: () => "⚬",
     square: () => "▪",
     dash: () => "-"
 };
