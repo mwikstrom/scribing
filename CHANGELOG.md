@@ -1,3 +1,7 @@
+## 1.5.1 - 2023-09-21
+
+- Fix: async writing (html serialization)
+
 ## 1.5.0 - 2023-04-25
 
 - New feture: Additional visitor methods
