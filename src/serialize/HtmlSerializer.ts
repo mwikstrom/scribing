@@ -417,16 +417,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     }
 
     #updateListStack(style: ParagraphStyle, stack: ListStackEntry[]): void {
-        const { listLevel = 0, hideListMarker, listMarker: marker } = style;
-
-        if (!marker) {
-            stack.splice(0, stack.length).reverse().forEach(({ endItem, endList }) => {
-                endItem();
-                endList();
-            });
-            return;
-        }
-
+        const { listLevel = 0, hideListMarker, listMarker: marker = "unordered" } = style;
         const insideList = stack.length > 0;
 
         if (stack.length > listLevel) {
@@ -467,7 +458,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
 
     #canContinueList(entry: ListStackEntry, style: ParagraphStyle): boolean {
         const { marker: entryMarker } = entry;
-        const { listLevel = 0, listMarker, listCounter = "auto" } = style;
+        const { listLevel = 0, listMarker = "unordered", listCounter = "auto" } = style;
 
         if (entryMarker !== listMarker || listCounter === "reset") {
             return false;

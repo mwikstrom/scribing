@@ -1,3 +1,7 @@
+## 1.5.2 - 2023-09-22
+
+- Fix: Default list marker kind (unordered)
+
 ## 1.5.1 - 2023-09-21
 
 - Fix: async writing (html serialization)
