@@ -1,6 +1,7 @@
 ## 1.6.0 - 2023-09-21
 
 - New feature: `serializeFlowContentToText`
+- New feature: `deserializeFlowContentFromText`
 
 ## 1.5.3 - 2023-09-21
 

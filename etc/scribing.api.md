@@ -304,6 +304,9 @@ export interface DefaultFlowThemeProps {
 }
 
 // @public
+export function deserializeFlowContentFromText(text: string): FlowContent;
+
+// @public
 export function deserializeFlowContentFromXml(xml: string): FlowContent;
 
 // @public @sealed

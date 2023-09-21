@@ -95,6 +95,7 @@ Model for collaborative rich text editing
 
 |  Function | Description |
 |  --- | --- |
+|  [deserializeFlowContentFromText(text)](./scribing.deserializeflowcontentfromtext.md) | Deserializes flow content from the specified plain text string |
 |  [deserializeFlowContentFromXml(xml)](./scribing.deserializeflowcontentfromxml.md) | Deserializes flow content from the specified XML string |
 |  [extractMarkup(input, predicate)](./scribing.extractmarkup.md) |  |
 |  [getTableColumnWidths(columnCount, columnStyles)](./scribing.gettablecolumnwidths.md) |  |

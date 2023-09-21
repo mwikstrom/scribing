@@ -122,6 +122,7 @@ export * from "./serialize/serialize-xml";
 export * from "./serialize/deserialize-xml";
 export * from "./serialize/serialize-html";
 export * from "./serialize/serialize-text";
+export * from "./serialize/deserialize-text";
 
 // Markup processing
 export * from "./markup/process-markup";
