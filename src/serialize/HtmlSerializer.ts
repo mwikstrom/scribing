@@ -148,7 +148,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     async visitEmptyMarkup(node: EmptyMarkup): Promise<FlowNode> {
         const html = this.#replacements.get(node);
         if (html) {
-            this.#writeHtmlContent(html);
+            await this.#writeHtmlContent(html);
         }
         return node;
     }
@@ -624,29 +624,31 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
         };
     }
 
-    #writeHtmlContent(content: HtmlContent): void {
+    async #writeHtmlContent(content: HtmlContent): Promise<void> {
         if (Array.isArray(content)) {
-            content.forEach(node => this.#writeHtmlNode(node));
+            for (const node of content) {
+                await this.#writeHtmlNode(node);
+            }
         } else {
-            this.#writeHtmlNode(content);
+            await this.#writeHtmlNode(content);
         }
     }
 
-    #writeHtmlNode(node: HtmlNode): void {
+    async #writeHtmlNode(node: HtmlNode): Promise<void> {
         if (typeof node === "string") {
             this.#writer.text(node);
         } else {
-            this.#writeHtmlElem(node);
+            await this.#writeHtmlElem(node);
         }
     }
 
-    #writeHtmlElem(elem: HtmlElem): void {
+    async #writeHtmlElem(elem: HtmlElem): Promise<void> {
         const { name, attr, content } = elem;
         const end = this.#writer.start(name, attr);
         if (content instanceof FlowContent) {
-            this.visitFlowContent(content);
+            await this.visitFlowContent(content);
         } else if (content) {
-            this.#writeHtmlContent(content);
+            await this.#writeHtmlContent(content);
         }
         end();
     }
