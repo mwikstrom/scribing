@@ -632,6 +632,14 @@ export interface FlowContentProps {
     nodes: readonly FlowNode[];
 }
 
+// @public (undocumented)
+export interface FlowContentTextOptions {
+    // (undocumented)
+    dynamicTextReplacement: string;
+    // (undocumented)
+    endOfLine: string;
+}
+
 // @public
 export class FlowCursor {
     // @internal
@@ -2419,6 +2427,9 @@ export interface ScriptProps {
 
 // @public
 export function serializeFlowContentToHtml(content: FlowContent, options?: FlowContentHtmlOptions): Promise<string>;
+
+// @public
+export function serializeFlowContentToText(content: FlowContent, options?: Partial<FlowContentTextOptions>): string;
 
 // @public
 export function serializeFlowContentToXml(content: FlowContent, theme?: FlowTheme): string;

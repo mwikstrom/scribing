@@ -1,0 +1,16 @@
+[
+    { 
+        "table": {
+            "default": [ { "break": "para" } ],
+            "A1": { "colSpan": 3, "rowSpan": 2, "content": [ "Hello" ] },
+            "C3": [ "World" ]
+        },
+        "columns": {
+            "B": { "width": 0.5 }
+        },
+        "style": {
+            "inline": true,
+            "head": 2
+        }
+    }
+]

@@ -1,8 +1,12 @@
-## 1.5.3 - 2023-09-22
+## 1.6.0 - 2023-09-21
+
+- New feature: `serializeFlowContentToText`
+
+## 1.5.3 - 2023-09-21
 
 - Fix: Process nested markup when serializing html
 
-## 1.5.2 - 2023-09-22
+## 1.5.2 - 2023-09-21
 
 - Fix: Default list marker kind (unordered)
 

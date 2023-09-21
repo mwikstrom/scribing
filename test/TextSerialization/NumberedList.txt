@@ -1,0 +1,18 @@
+before
+
+1.	one
+
+2.	two
+
+	two (contd)
+
+3.	three
+
+	i.	three.one
+
+	ii.	three.two
+
+4.	four
+
+after
+

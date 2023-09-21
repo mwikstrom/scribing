@@ -102,6 +102,7 @@ Model for collaborative rich text editing
 |  [processMarkup(content, handler, register, scope)](./scribing.processmarkup.md) |  |
 |  [processNestedMarkup(input, content)](./scribing.processnestedmarkup.md) |  |
 |  [serializeFlowContentToHtml(content, options)](./scribing.serializeflowcontenttohtml.md) | Serializes the specified flow content to an HTML string |
+|  [serializeFlowContentToText(content, options)](./scribing.serializeflowcontenttotext.md) | Serializes the specified flow content to plain text |
 |  [serializeFlowContentToXml(content, theme)](./scribing.serializeflowcontenttoxml.md) | Serializes the specified flow content to an XML string |
 
 ## Interfaces
@@ -132,6 +133,7 @@ Model for collaborative rich text editing
 |  [FlowBoxSelectionProps](./scribing.flowboxselectionprops.md) | Properties of [FlowBoxSelection](./scribing.flowboxselection.md) |
 |  [FlowContentHtmlOptions](./scribing.flowcontenthtmloptions.md) |  |
 |  [FlowContentProps](./scribing.flowcontentprops.md) | Flow content properties |
+|  [FlowContentTextOptions](./scribing.flowcontenttextoptions.md) |  |
 |  [FlowIconData](./scribing.flowicondata.md) | Data of line break nodes |
 |  [FlowIconProps](./scribing.flowiconprops.md) | Properties of [FlowIcon](./scribing.flowicon.md) |
 |  [FlowImageData](./scribing.flowimagedata.md) | Data of line break nodes |

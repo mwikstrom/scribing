@@ -1,0 +1,20 @@
+[
+    "before",
+    { "break": "para" },
+    "one",
+    { "break": "para", "style": { "listLevel": 1 } },
+    "two",
+    { "break": "para", "style": { "listLevel": 1 } },
+    "two (contd)",
+    { "break": "para", "style": { "listLevel": 1, "hideListMarker": true } },
+    "three",
+    { "break": "para", "style": { "listLevel": 1 } },
+    "three.one",
+    { "break": "para", "style": { "listLevel": 2, "listMarker": "lower-roman" } },
+    "three.two",
+    { "break": "para", "style": { "listLevel": 2, "listMarker": "lower-roman" } },
+    "four",
+    { "break": "para", "style": { "listLevel": 1 } },
+    "after",
+    { "break": "para" }
+]

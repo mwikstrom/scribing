@@ -1,0 +1,6 @@
+[
+    "Here's a ", 
+    { "text": "link", "style": { "link": "https://docfactory.com/" } },
+    ".",
+    { "break": "para" }
+]

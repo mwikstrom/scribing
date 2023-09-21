@@ -1,0 +1,20 @@
+[
+    "before",
+    { "break": "para" },
+    "one",
+    { "break": "para", "style": { "listLevel": 1, "listMarker": "lower-alpha" } },
+    "two",
+    { "break": "para", "style": { "listLevel": 1, "listMarker": "lower-alpha" } },
+    "two (contd)",
+    { "break": "para", "style": { "listLevel": 1, "listMarker": "lower-alpha", "hideListMarker": true } },
+    "three",
+    { "break": "para", "style": { "listLevel": 1, "listMarker": "lower-alpha" } },
+    "three.one",
+    { "break": "para", "style": { "listLevel": 2, "listMarker": "lower-roman" } },
+    "three.two",
+    { "break": "para", "style": { "listLevel": 2, "listMarker": "lower-roman" } },    
+    "four",
+    { "break": "para", "style": { "listLevel": 1, "listMarker": "lower-alpha"  } },
+    "after",
+    { "break": "para" }
+]
