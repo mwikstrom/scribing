@@ -1,3 +1,7 @@
+## 1.5.3 - 2023-09-22
+
+- Fix: Process nested markup when serializing html
+
 ## 1.5.2 - 2023-09-22
 
 - Fix: Default list marker kind (unordered)

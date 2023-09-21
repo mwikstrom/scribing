@@ -43,12 +43,14 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     readonly #registerDynamicText: Exclude<FlowContentHtmlOptions["registerDynamicText"], undefined>;
     readonly #registerDataSource: Exclude<FlowContentHtmlOptions["registerDataSource"], undefined>;
     readonly #writer = new XmlWriter();
-    readonly #endArticle: EndScopeFunc;
+    readonly #endArticle: EndScopeFunc;    
     readonly #listCounter = new Map<number, number>();
+    readonly #processNestedMarkup: (input: FlowContent) => Promise<FlowContent>;
 
     constructor(
         replacements: WeakMap<EmptyMarkup, HtmlContent>,
-        options: Omit<FlowContentHtmlOptions, "rewriteMarkup">
+        options: Omit<FlowContentHtmlOptions, "rewriteMarkup">,
+        processNestedMarkup: (input: FlowContent) => Promise<FlowContent>,
     ) {
         super();
 
@@ -62,6 +64,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
         this.#registerDynamicText = options.registerDynamicText || (() => void 0);
         this.#registerDataSource = options.registerDataSource || (() => void 0);
         this.#endArticle = this.#writer.start("article");
+        this.#processNestedMarkup = processNestedMarkup;
     }
     
     getResult(): string {
@@ -637,7 +640,8 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
         const { name, attr, content } = elem;
         const end = this.#writer.start(name, attr);
         if (content instanceof FlowContent) {
-            await this.visitFlowContent(content);
+            const rewritten = await this.#processNestedMarkup(content);
+            await this.visitFlowContent(rewritten);
         } else if (content) {
             await this.#writeHtmlContent(content);
         }

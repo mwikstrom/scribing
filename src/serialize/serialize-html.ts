@@ -82,15 +82,20 @@ export async function serializeFlowContentToHtml(
     const { rewriteMarkup, ...otherOptions } = options;
     const replacements = new WeakMap<EmptyMarkup, HtmlContent>();
     
-    if (rewriteMarkup) {
-        content = await processMarkup(
-            content,
-            rewriteMarkup,
-            (flow, html) => replacements.set(flow, html)
-        );
-    }
+    const processNestedMarkup = async (nested: FlowContent) => {
+        if (rewriteMarkup) {
+            return await processMarkup(
+                nested,
+                rewriteMarkup,
+                (flow, html) => replacements.set(flow, html)
+            );
+        } else {
+            return nested;
+        }
+    };   
 
-    const serializer = new HtmlSerializer(replacements, otherOptions);
-    await serializer.visitFlowContent(content);
+    const serializer = new HtmlSerializer(replacements, otherOptions, processNestedMarkup);
+    const rewritten = await processNestedMarkup(content);
+    await serializer.visitFlowContent(rewritten);
     return serializer.getResult();
 }
