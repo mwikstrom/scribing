@@ -15,20 +15,24 @@ export function deserializeFlowContentFromText(
 ): FlowContent {
     const nodes: FlowNode[] = [];
     const pattern = /(\r\n|[\n\v\f\r\x85\u2028\u2029])/;
-    let prevEmpty = false;
-    for (const line of text.replace(/\t/g, " ").split(pattern).filter(Boolean)) {
+    const lineArray = text.replace(/\t/g, " ").split(pattern).filter(Boolean);
+    let trailingWs: string | undefined;
+    for (const line of lineArray) {
         if (!/^\s+$/.test(line)) {
-            if (prevEmpty) {
+            if (trailingWs) {
                 nodes.push(LineBreak.fromData({ break: "line" }));
-                prevEmpty = false;
+                trailingWs = undefined;
             }
             nodes.push(TextRun.fromData(TextRun.normalizeText(line)));
-        } else if (prevEmpty) {
+        } else if (trailingWs) {
             nodes.push(ParagraphBreak.fromData({ break: "para" }));
-            prevEmpty = false;
+            trailingWs = undefined;
         } else {
-            prevEmpty = true;
+            trailingWs = line;
         }
+    }
+    if (trailingWs && nodes.length === 0) {
+        nodes.push(TextRun.fromData(TextRun.normalizeText(trailingWs)));
     }
     return FlowContent.fromData(nodes);
 }

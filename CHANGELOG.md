@@ -1,3 +1,7 @@
+## 1.7.1 - 2023-09-25
+
+- Fix: Support white-space-only text to flow conversion
+
 ## 1.7.0 - 2023-09-25
 
 - New feature: `FlowCursor.moveToStart()` + `FlowCursor.moveToEnd()`

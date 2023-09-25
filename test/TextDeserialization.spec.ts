@@ -42,4 +42,11 @@ describe("TextDeserialization", () => {
         const actual = deserializeFlowContentFromText(input).toJsonValue();
         expect(actual).toEqual(expected);
     });
+
+    it("Can convert whitespace only", () => {
+        const input = " ";
+        const expected = [" "];
+        const actual = deserializeFlowContentFromText(input).toJsonValue();
+        expect(actual).toEqual(expected);
+    });
 });
