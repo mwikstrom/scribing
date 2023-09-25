@@ -1,3 +1,8 @@
+## 1.7.0 - 2023-09-25
+
+- New feature: `FlowCursor.moveToStart()` + `FlowCursor.moveToEnd()`
+- Behavior change: `FlowCursor.move()` no longer throws (by default) when resulting position is invalid
+
 ## 1.6.1 - 2023-09-21
 
 - Fix: Alternating list markers in text conversion from ordered and unordered lists

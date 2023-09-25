@@ -210,8 +210,9 @@ export class FlowCursor {
      * Gets a new cursor that represents the position at the specified distance from
      * the current position
      * @param distance - The distance to move
+     * @param throwIfOutOfRange - Optional. `RangeError` is thrown when `true` and the resulting position is not valid.
      */
-    move(distance: number): FlowCursor {
+    move(distance: number, throwIfOutOfRange = false): FlowCursor {
         if (distance === 0) {
             return this;
         }
@@ -244,7 +245,13 @@ export class FlowCursor {
             
             index += sign;
 
-            if (index < 0 || index >= nodes.length) {
+            if (!throwIfOutOfRange) {
+                if (index < 0) {
+                    return this.moveToStart();
+                } else if (index >= nodes.length) {
+                    return this.moveToEnd();
+                }
+            } else if (index < 0 || index >= nodes.length) {
                 throw new RangeError("Invalid flow position");
             }
 
@@ -258,6 +265,31 @@ export class FlowCursor {
                 offset = nodes[index].size;
                 leftInNode = offset;
             }
+        }
+
+        return new FlowCursor(this.#content, PRIVATE, index, offset, position);
+    }
+
+    /**
+     * Gets a new cursor that is positioned at the start of the first node
+     */
+    moveToStart(): FlowCursor {
+        return new FlowCursor(this.#content, PRIVATE, 0, 0, 0);
+    }
+
+    /**
+     * Gets a new curstor that is positioned at the end of the last node
+     */
+    moveToEnd(): FlowCursor {
+        let index = 0;
+        let offset = 0;
+        let position = 0;
+
+        if (this.#content.nodes.length > 0) {
+            index = this.#content.nodes.length - 1;
+            const node = this.#content.nodes[index];
+            offset = node.size;
+            position = this.#content.size;
         }
 
         return new FlowCursor(this.#content, PRIVATE, index, offset, position);

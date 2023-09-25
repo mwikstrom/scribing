@@ -39,7 +39,9 @@ The constructor for this class is marked as internal. Third-party code should no
 |  [findNodeForward(predicate)](./scribing.flowcursor.findnodeforward.md) |  | Finds a node in the forward direction that matches a predicate |
 |  [getParagraphStyle()](./scribing.flowcursor.getparagraphstyle.md) |  | Gets the paragraph style at the current position |
 |  [getTextStyle()](./scribing.flowcursor.gettextstyle.md) |  | Gets the text style at the current position |
-|  [move(distance)](./scribing.flowcursor.move.md) |  | Gets a new cursor that represents the position at the specified distance from the current position |
+|  [move(distance, throwIfOutOfRange)](./scribing.flowcursor.move.md) |  | Gets a new cursor that represents the position at the specified distance from the current position |
+|  [moveToEnd()](./scribing.flowcursor.movetoend.md) |  | Gets a new curstor that is positioned at the end of the last node |
+|  [moveToStart()](./scribing.flowcursor.movetostart.md) |  | Gets a new cursor that is positioned at the start of the first node |
 |  [moveToStartOfNextNode()](./scribing.flowcursor.movetostartofnextnode.md) |  | Gets a new cursor that is positioned at the start of the next node, or <code>null</code> when the current cursor is positioned at the last node. |
 |  [moveToStartOfNode()](./scribing.flowcursor.movetostartofnode.md) |  | Gets a cursor that is positioned at the start of the current node. |
 |  [moveToStartOfPreviousNode()](./scribing.flowcursor.movetostartofpreviousnode.md) |  | Gets a new cursor that is positioned at the start of the previous node, or <code>null</code> when the current cursor is positioned at the first node. |

@@ -9,7 +9,7 @@ Gets a new cursor that represents the position at the specified distance from th
 **Signature:**
 
 ```typescript
-move(distance: number): FlowCursor;
+move(distance: number, throwIfOutOfRange?: boolean): FlowCursor;
 ```
 
 ## Parameters
@@ -17,6 +17,7 @@ move(distance: number): FlowCursor;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  distance | number | The distance to move |
+|  throwIfOutOfRange | boolean | _(Optional)_ Optional. <code>RangeError</code> is thrown when <code>true</code> and the resulting position is not valid. |
 
 **Returns:**
 

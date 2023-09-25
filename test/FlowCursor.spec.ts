@@ -124,8 +124,8 @@ describe("FlowCursor", () => {
         expect(cursor.move(0)).toBe(cursor);
         expect(Array.from(cursor.range(0)).length).toBe(0);
 
-        expect(() => cursor.move(-1)).toThrow("Invalid flow position");
-        expect(() => cursor.move(1)).toThrow("Invalid flow position");
+        expect(() => cursor.move(-1, true)).toThrow("Invalid flow position");
+        expect(() => cursor.move(1, true)).toThrow("Invalid flow position");
     });
 
     it("can interrogate cursor inside content", () => {

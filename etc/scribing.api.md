@@ -660,7 +660,9 @@ export class FlowCursor {
     getParagraphStyle(): ParagraphStyle | null;
     getTextStyle(): TextStyle | null;
     get index(): number;
-    move(distance: number): FlowCursor;
+    move(distance: number, throwIfOutOfRange?: boolean): FlowCursor;
+    moveToEnd(): FlowCursor;
+    moveToStart(): FlowCursor;
     moveToStartOfNextNode(): FlowCursor | null;
     moveToStartOfNode(): FlowCursor;
     moveToStartOfPreviousNode(): FlowCursor | null;
