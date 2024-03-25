@@ -6,6 +6,7 @@ import { FlowCursor } from "../selection/FlowCursor";
 import { FlowRange } from "../selection/FlowRange";
 import { AsyncFlowNodeVisitor } from "../structure/AsyncFlowNodeVisitor";
 import { FlowContent } from "../structure/FlowContent";
+import { ParagraphStyle, ParagraphStyleProps } from "../styles/ParagraphStyle";
 
 /**
  * @public
@@ -77,7 +78,7 @@ const renderMarkup = async <T>(
     output: FlowNode[],
     mode: ParagraphMode,
 ): Promise<ParagraphMode> => {
-    let siblingsBefore: readonly (StartMarkup | EmptyMarkup)[] = Object.freeze([]);
+    let before: readonly (StartMarkup | EmptyMarkup)[] = Object.freeze([]);
     for (
         let cursor: FlowCursor | null = input.peek(0);
         cursor != null;
@@ -92,13 +93,15 @@ const renderMarkup = async <T>(
                 const start = cursor.position + node.size;
                 const distance = end.position - start;
                 const content = input.copy(FlowRange.at(start, distance));
-                mode = await renderMarkupNode(output, mode, handler, register, node, parent, siblingsBefore, content);
-                siblingsBefore = Object.freeze([...siblingsBefore, node]);
+                const para = findParaBreak(end);
+                mode = await renderMarkupNode(output, mode, handler, register, node, para, parent, before, content);
+                before = Object.freeze([...before, node]);
                 cursor = end;
             }
         } else if (node instanceof EmptyMarkup) {
-            mode = await renderMarkupNode(output, mode, handler, register, node, parent, siblingsBefore);
-            siblingsBefore = Object.freeze([...siblingsBefore, node]);
+            const para = findParaBreak(cursor);
+            mode = await renderMarkupNode(output, mode, handler, register, node, para, parent, before);
+            before = Object.freeze([...before, node]);
         } else if (node instanceof ParagraphBreak) {
             if (mode !== "omit") {
                 output.push(node);
@@ -139,6 +142,7 @@ const renderMarkupNode = async <T>(
     handler: MarkupHandler<T>,
     register: MarkupReplacementRegistration<T>,
     node: StartMarkup | EmptyMarkup,
+    para: ParagraphBreak | null,
     parent: MarkupProcessingScope | null,
     siblingsBefore: readonly (StartMarkup | EmptyMarkup)[],
     content: FlowContent | null = null,
@@ -159,6 +163,11 @@ const renderMarkupNode = async <T>(
     }
     
     if (result instanceof FlowContent) {
+        // Merge list when transcluding into the start of a list item paragraph
+        if ((output.length === 0 || output.slice(-1)[0] instanceof ParagraphBreak) && para?.style.listLevel) {
+            result = rewriteListItemTransclusion(result, para.style);
+        }
+
         mode = await renderMarkup(result, handler, register, input, output, mode);
     } else if (result !== null) {
         const placeholder = new EmptyMarkup(node).set("tag", `REPLACEMENT_${node.tag}`);
@@ -168,4 +177,47 @@ const renderMarkupNode = async <T>(
     }
 
     return mode === "empty" ? "omit" : mode;
+};
+
+const findParaBreak = (cursor: FlowCursor): ParagraphBreak | null => {
+    const found = cursor.findNodeForward(node => node instanceof ParagraphBreak);
+    if (found?.node instanceof ParagraphBreak) {
+        return found.node;
+    } else {
+        return null;
+    }
+};
+
+const rewriteListItemTransclusion = (content: FlowContent, outer: ParagraphStyle): FlowContent => {
+    const nodes: FlowNode[] = [];
+    let firstPara = true;
+
+    for (
+        let cursor: FlowCursor | null = content.peek(0);
+        cursor != null;
+        cursor = cursor.moveToStartOfNextNode()
+    ) {
+        let { node } = cursor;
+
+        if (!node) {
+            continue;
+        }
+
+        if (node instanceof ParagraphBreak) {
+            const mergeStyle: Partial<ParagraphStyleProps> = {
+                listLevel: (node.style.listLevel || 0) + (outer.listLevel || 0)
+            };
+
+            if (!node.style.listLevel && !firstPara) {
+                mergeStyle.hideListMarker = true;
+            }
+
+            node = node.set("style", node.style.merge(mergeStyle));
+            firstPara = false;
+        }
+
+        nodes.push(node);
+    }
+    Object.freeze(nodes);
+    return new FlowContent({ nodes });
 };

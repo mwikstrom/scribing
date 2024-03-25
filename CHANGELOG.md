@@ -1,3 +1,7 @@
+## 1.7.2 - 2024-03-26
+
+- Merge list when transcluding into the start of a list item paragraph
+
 ## 1.7.1 - 2023-09-25
 
 - Fix: Support white-space-only text to flow conversion
