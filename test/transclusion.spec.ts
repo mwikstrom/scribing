@@ -167,6 +167,28 @@ describe("transclusion", () => {
         ]);
     });
 
+    test("insert two paragraphs into numbered list", async () => {
+        const input = FlowContent.fromJsonValue([
+            "before",
+            { break: "para", style: { listLevel: 1, listMarker: "ordered" } },
+            { empty_markup: "two-paras" },
+            { break: "para", style: { listLevel: 1, listMarker: "ordered" } },
+            "after",
+            { break: "para", style: { listLevel: 1, listMarker: "ordered" } },
+        ]);
+        const output = await processMarkup(input, handler, noop);
+        expect(output.toJsonValue()).toEqual([
+            "before",
+            { break: "para", style: { listLevel: 1, listMarker: "ordered" } },
+            "foo",
+            { break: "para", style: { listLevel: 1, listMarker: "ordered" } },
+            "bar",
+            { break: "para", style: { listLevel: 1, listMarker: "ordered", hideListMarker: true } },
+            "after",
+            { break: "para", style: { listLevel: 1, listMarker: "ordered" } },
+        ]);
+    });
+
     test("insert ordered list into bullet list", async () => {
         const input = FlowContent.fromJsonValue([
             "before",

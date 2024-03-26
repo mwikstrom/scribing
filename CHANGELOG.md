@@ -1,3 +1,7 @@
+## 1.7.3 - 2024-03-26
+
+- Fix: Keep list marker style when transcluding into start of list item paragraph
+
 ## 1.7.2 - 2024-03-26
 
 - Merge list when transcluding into the start of a list item paragraph

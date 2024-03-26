@@ -205,7 +205,8 @@ const rewriteListItemTransclusion = (content: FlowContent, outer: ParagraphStyle
 
         if (node instanceof ParagraphBreak) {
             const mergeStyle: Partial<ParagraphStyleProps> = {
-                listLevel: (node.style.listLevel || 0) + (outer.listLevel || 0)
+                listLevel: (node.style.listLevel || 0) + (outer.listLevel || 0),
+                listMarker: node.style.listMarker || outer.listMarker,
             };
 
             if (!node.style.listLevel && !firstPara) {
