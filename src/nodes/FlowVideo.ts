@@ -100,12 +100,16 @@ export class FlowVideo extends FlowVideoBase implements FlowVideoProps {
      * {@inheritdoc FlowNode.completeUpload}
      * @override
      */
-    completeUpload(id: string, url: string): FlowNode {
+    completeUpload(id: string, url: string, supplementary?: ReadonlyMap<string, string>): FlowNode {
         const { source } = this;
-        if (source.upload === id) {
-            return this.set("source", source.unset("upload").set("url", url));
-        } else {
+        if (source.upload !== id) {
             return this;
         }
+        let newSource = source.unset("upload").set("url", url);
+        const poster = supplementary?.get("poster");
+        if (poster) {
+            newSource = newSource.set("poster", poster);
+        }
+        return this.set("source", newSource);
     }
 }

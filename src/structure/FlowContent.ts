@@ -159,10 +159,11 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
      * Marks the specified upload as completed
      * @param id - Identifies the completed upload
      * @param url - URL of the uploaded resource
+     * @param supplementary - A map of supplementary resources
      */
-    completeUpload(id: string, url: string): FlowContent {
+    completeUpload(id: string, url: string, supplementary?: ReadonlyMap<string, string>): FlowContent {
         const range = FlowRange.at(0, this.size);
-        return this.set("nodes", this.#replace(range, node => node.completeUpload(id, url)));
+        return this.set("nodes", this.#replace(range, node => node.completeUpload(id, url, supplementary)));
     }
 
     /**

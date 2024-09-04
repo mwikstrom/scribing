@@ -1,4 +1,5 @@
 import { 
+    mapType,
     RecordClass, 
     recordClassType, 
     recordType, 
@@ -13,18 +14,21 @@ import { FlowOperationRegistry } from "../internal/class-registry";
 const Props = {
     id: stringType,
     url: stringType,
+    supplementary: mapType(stringType),
 };
 
 const Data = {
     complete_upload: stringType,
     url: stringType,
+    supplementary: mapType(stringType),
 };
 
-const PropsType: RecordType<CompleteUploadProps> = recordType(Props);
-const DataType: RecordType<CompleteUploadData> = recordType(Data);
-const propsToData = ({id, url }: CompleteUploadProps): CompleteUploadData => ({
+const PropsType: RecordType<CompleteUploadProps> = recordType(Props).withOptional("supplementary");
+const DataType: RecordType<CompleteUploadData> = recordType(Data).withOptional("supplementary");
+const propsToData = ({ id, url, supplementary }: CompleteUploadProps): CompleteUploadData => ({
     complete_upload: id,
     url,
+    supplementary,
 });
 
 /**
@@ -43,6 +47,9 @@ export interface CompleteUploadProps {
 
     /** URL for the uploaded content */
     url: string;
+
+    /** URL for uploaded supplementary resources */
+    supplementary?: Map<string, string>;
 }
 
 /**
@@ -54,7 +61,10 @@ export interface CompleteUploadData {
     complete_upload: string;
 
     /** {@inheritdoc CompleteUploadProps.url} */
-    url: string;
+    url: string;    
+
+    /** {@inheritdoc CompleteUploadProps.url} */
+    supplementary?: Map<string, string>;
 }
 
 /**
@@ -69,8 +79,8 @@ export class CompleteUpload extends CompleteUploadBase implements CompleteUpload
 
     /** Gets an instance of the current class from the specified data */
     public static fromData(data: CompleteUploadData): CompleteUpload {
-        const { complete_upload: id, url } = data;
-        const props: CompleteUploadProps = { id, url };
+        const { complete_upload: id, url, supplementary } = data;
+        const props: CompleteUploadProps = { id, url, supplementary };
         return new CompleteUpload(props);
     }
 
@@ -108,8 +118,8 @@ export class CompleteUpload extends CompleteUploadBase implements CompleteUpload
      * @override
      */
     applyToContent(content: FlowContent): FlowContent {
-        const { id, url } = this;
-        return content.completeUpload(id, url);
+        const { id, url, supplementary } = this;
+        return content.completeUpload(id, url, supplementary);
     }
 
     /**

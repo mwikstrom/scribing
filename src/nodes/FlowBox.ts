@@ -79,8 +79,8 @@ export class FlowBox extends FlowBoxBase {
     }
 
     /** {@inheritdoc FlowNode.completeUpload} */
-    completeUpload(id: string, url: string): FlowNode {
-        return this.set("content", this.content.completeUpload(id, url));
+    completeUpload(id: string, url: string, supplementary?: ReadonlyMap<string, string>): FlowNode {
+        return this.set("content", this.content.completeUpload(id, url, supplementary));
     }
 
     /** {@inheritdoc FlowNode.formatBox} */

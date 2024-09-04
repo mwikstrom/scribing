@@ -3,6 +3,7 @@
 - Add support for video in flow content
 - Let `FlowContentHtmlOptions.getImageUrl` return a promise
 - New XML schema version `https://cdn.dforigo.com/schemas/scribing-flowdoc-v2`
+- Add supplementary resources to *complete upload*
 
 ## 1.7.3 - 2024-03-26
 

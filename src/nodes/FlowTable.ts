@@ -99,8 +99,8 @@ export class FlowTable extends FlowTableBase {
     }
 
     /** {@inheritdoc FlowNode.completeUpload} */
-    completeUpload(id: string, url: string): FlowNode {
-        return this.#updateAllContent(content => content.completeUpload(id, url));
+    completeUpload(id: string, url: string, supplementary?: ReadonlyMap<string, string>): FlowNode {
+        return this.#updateAllContent(content => content.completeUpload(id, url, supplementary));
     }
 
     /** {@inheritdoc FlowNode.formatBox} */

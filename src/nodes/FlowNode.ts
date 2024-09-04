@@ -36,8 +36,9 @@ export abstract class FlowNode {
      * Marks the specified upload as completed
      * @param id - Identifies the completed upload
      * @param url - URL of the uploaded resource
+     * @param supplementary - A map of supplementary resources
      */
-    abstract completeUpload(id: string, url: string): FlowNode;
+    abstract completeUpload(id: string, url: string, supplementary?: ReadonlyMap<string, string>): FlowNode;
 
     /**
      * Applies the specified box style on the current node and returns the updated node.
