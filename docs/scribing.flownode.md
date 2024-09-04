@@ -24,7 +24,7 @@ export declare abstract class FlowNode
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
 |  [accept(visitor)](./scribing.flownode.accept.md) | <code>abstract</code> | Accepts the specified visitor |
-|  [completeUpload(id, url)](./scribing.flownode.completeupload.md) | <code>abstract</code> | Marks the specified upload as completed |
+|  [completeUpload(id, url, supplementary)](./scribing.flownode.completeupload.md) | <code>abstract</code> | Marks the specified upload as completed |
 |  [formatBox(style, theme)](./scribing.flownode.formatbox.md) | <code>abstract</code> | Applies the specified box style on the current node and returns the updated node. |
 |  [formatParagraph(style, theme)](./scribing.flownode.formatparagraph.md) | <code>abstract</code> | Applies the specified paragraph style on the current node and returns the updated node. |
 |  [formatText(style, theme)](./scribing.flownode.formattext.md) | <code>abstract</code> | Applies the specified text style on the current node and returns the updated node. |

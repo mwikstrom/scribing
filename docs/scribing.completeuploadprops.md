@@ -17,5 +17,6 @@ export interface CompleteUploadProps
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [id](./scribing.completeuploadprops.id.md) |  | string | Identifies the completed upload operation |
+|  [supplementary?](./scribing.completeuploadprops.supplementary.md) |  | Map&lt;string, string&gt; | _(Optional)_ URL for uploaded supplementary resources |
 |  [url](./scribing.completeuploadprops.url.md) |  | string | URL for the uploaded content |
 

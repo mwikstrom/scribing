@@ -9,7 +9,7 @@ Marks the specified upload as completed
 **Signature:**
 
 ```typescript
-abstract completeUpload(id: string, url: string): FlowNode;
+abstract completeUpload(id: string, url: string, supplementary?: ReadonlyMap<string, string>): FlowNode;
 ```
 
 ## Parameters
@@ -18,6 +18,7 @@ abstract completeUpload(id: string, url: string): FlowNode;
 |  --- | --- | --- |
 |  id | string | Identifies the completed upload |
 |  url | string | URL of the uploaded resource |
+|  supplementary | ReadonlyMap&lt;string, string&gt; | _(Optional)_ A map of supplementary resources |
 
 **Returns:**
 

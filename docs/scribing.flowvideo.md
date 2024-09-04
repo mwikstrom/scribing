@@ -28,6 +28,6 @@ export declare class FlowVideo extends FlowVideoBase implements FlowVideoProps
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
 |  [accept(visitor)](./scribing.flowvideo.accept.md) |  | Accepts the specified visitor |
-|  [completeUpload(id, url)](./scribing.flowvideo.completeupload.md) |  | Marks the specified upload as completed |
+|  [completeUpload(id, url, supplementary)](./scribing.flowvideo.completeupload.md) |  | Marks the specified upload as completed |
 |  [fromData(data)](./scribing.flowvideo.fromdata.md) | <code>static</code> | Gets an instance of the current class from the specified data |
 

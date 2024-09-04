@@ -269,12 +269,14 @@ export const CompleteUploadBase: RecordConstructor<CompleteUploadProps, FlowOper
 // @public
 export interface CompleteUploadData {
     complete_upload: string;
+    supplementary?: Map<string, string>;
     url: string;
 }
 
 // @public
 export interface CompleteUploadProps {
     id: string;
+    supplementary?: Map<string, string>;
     url: string;
 }
 
@@ -488,7 +490,7 @@ export interface FlowBatchProps {
 export class FlowBox extends FlowBoxBase {
     accept<T>(visitor: GenericFlowNodeVisitor<T>): T;
     static readonly classType: Type<FlowBox>;
-    completeUpload(id: string, url: string): FlowNode;
+    completeUpload(id: string, url: string, supplementary?: ReadonlyMap<string, string>): FlowNode;
     formatBox(style: BoxStyle): this;
     formatParagraph(): this;
     formatText(): this;
@@ -570,7 +572,7 @@ export class FlowContent extends FlowContentBase implements Readonly<FlowContent
     append(...nodes: readonly FlowNode[]): FlowContent;
     append(theme: FlowTheme | undefined, ...nodes: readonly FlowNode[]): FlowContent;
     static readonly classType: Type<FlowContent>;
-    completeUpload(id: string, url: string): FlowContent;
+    completeUpload(id: string, url: string, supplementary?: ReadonlyMap<string, string>): FlowContent;
     copy(range: FlowRange): FlowContent;
     // (undocumented)
     static get defaultHashFunc(): FlowContentHashFunc;
@@ -733,7 +735,7 @@ export const FlowImageScaleType: Type<number>;
 export abstract class FlowNode {
     abstract accept<T>(visitor: GenericFlowNodeVisitor<T>): T;
     static readonly baseType: Type<FlowNode>;
-    abstract completeUpload(id: string, url: string): FlowNode;
+    abstract completeUpload(id: string, url: string, supplementary?: ReadonlyMap<string, string>): FlowNode;
     abstract formatBox(style: BoxStyle, theme?: FlowTheme): FlowNode;
     abstract formatParagraph(style: ParagraphStyle, theme?: FlowTheme): FlowNode;
     abstract formatText(style: TextStyle, theme?: FlowTheme): FlowNode;
@@ -1070,7 +1072,7 @@ export const FlowSyncSnapshotType: RecordType<FlowSyncSnapshot>;
 export class FlowTable extends FlowTableBase {
     accept<T>(visitor: GenericFlowNodeVisitor<T>): T;
     static readonly classType: Type<FlowTable>;
-    completeUpload(id: string, url: string): FlowNode;
+    completeUpload(id: string, url: string, supplementary?: ReadonlyMap<string, string>): FlowNode;
     formatBox(): this;
     // (undocumented)
     formatColumn(index: number, style: TableColumnStyle): FlowTable;
@@ -1357,7 +1359,7 @@ export class FlowVideo extends FlowVideoBase implements FlowVideoProps {
     accept<T>(visitor: GenericFlowNodeVisitor<T>): T;
     static readonly classType: Type<FlowVideo>;
     // @override
-    completeUpload(id: string, url: string): FlowNode;
+    completeUpload(id: string, url: string, supplementary?: ReadonlyMap<string, string>): FlowNode;
     static fromData(data: FlowVideoData): FlowVideo;
     readonly size = 1;
 }

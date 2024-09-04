@@ -17,5 +17,6 @@ export interface CompleteUploadData
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [complete\_upload](./scribing.completeuploaddata.complete_upload.md) |  | string | Identifies the completed upload operation |
+|  [supplementary?](./scribing.completeuploaddata.supplementary.md) |  | Map&lt;string, string&gt; | _(Optional)_ URL for the uploaded content |
 |  [url](./scribing.completeuploaddata.url.md) |  | string | URL for the uploaded content |
 

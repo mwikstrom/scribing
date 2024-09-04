@@ -10,7 +10,7 @@ Marks the specified upload as completed
 
 ```typescript
 /** @override */
-completeUpload(id: string, url: string): FlowNode;
+completeUpload(id: string, url: string, supplementary?: ReadonlyMap<string, string>): FlowNode;
 ```
 
 ## Parameters
@@ -19,6 +19,7 @@ completeUpload(id: string, url: string): FlowNode;
 |  --- | --- | --- |
 |  id | string | Identifies the completed upload |
 |  url | string | URL of the uploaded resource |
+|  supplementary | ReadonlyMap&lt;string, string&gt; | _(Optional)_ A map of supplementary resources |
 
 **Returns:**
 
