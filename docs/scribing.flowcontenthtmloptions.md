@@ -17,8 +17,9 @@ export interface FlowContentHtmlOptions
 |  --- | --- | --- | --- |
 |  [classes?](./scribing.flowcontenthtmloptions.classes.md) |  | Partial&lt;Record&lt;[FlowContentHtmlClassKey](./scribing.flowcontenthtmlclasskey.md)<!-- -->, string&gt;&gt; | _(Optional)_ |
 |  [getElementId?](./scribing.flowcontenthtmloptions.getelementid.md) |  | (this: void, prefix: string) =&gt; string | _(Optional)_ |
-|  [getImageUrl?](./scribing.flowcontenthtmloptions.getimageurl.md) |  | (this: void, source: [ImageSource](./scribing.imagesource.md)<!-- -->, scale: number) =&gt; string | _(Optional)_ |
+|  [getImageUrl?](./scribing.flowcontenthtmloptions.getimageurl.md) |  | (this: void, source: [ImageSource](./scribing.imagesource.md)<!-- -->, scale: number) =&gt; string \| Promise&lt;string&gt; | _(Optional)_ |
 |  [getLinkHref?](./scribing.flowcontenthtmloptions.getlinkhref.md) |  | (this: void, url: string) =&gt; string | _(Optional)_ |
+|  [getVideoUrl?](./scribing.flowcontenthtmloptions.getvideourl.md) |  | (this: void, source: [VideoSource](./scribing.videosource.md)<!-- -->, scale: number) =&gt; string \| Promise&lt;string&gt; | _(Optional)_ |
 |  [registerDataSource?](./scribing.flowcontenthtmloptions.registerdatasource.md) |  | (this: void, elementId: string, script: [Script](./scribing.script.md)<!-- -->) =&gt; void | _(Optional)_ |
 |  [registerDynamicText?](./scribing.flowcontenthtmloptions.registerdynamictext.md) |  | (this: void, elementId: string, expression: [Script](./scribing.script.md)<!-- -->, style: [TextStyle](./scribing.textstyle.md)<!-- -->) =&gt; void | _(Optional)_ |
 |  [registerScriptInteraction?](./scribing.flowcontenthtmloptions.registerscriptinteraction.md) |  | (this: void, elementId: string, script: [Script](./scribing.script.md)<!-- -->) =&gt; void | _(Optional)_ |

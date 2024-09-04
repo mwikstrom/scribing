@@ -14,10 +14,10 @@ export interface ImageSourceProps {
     /** URL to the image */
     url: string;
 
-    /** Preferred image width (in pixels) */
+    /** Image width (in pixels) */
     width: number;
 
-    /** Preferred image height (in pixels) */
+    /** Image height (in pixels) */
     height: number;
 
     /** Placeholder bitmap data (base64 encoded) */

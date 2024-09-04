@@ -4,7 +4,7 @@
 
 ## SetImageScale class
 
-Represents an operation that sets the source of an image
+Represents an operation that sets the scale of an image or a video
 
 **Signature:**
 

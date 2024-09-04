@@ -60,6 +60,7 @@ export declare abstract class NestedFlowSelection extends FlowSelection
 |  [setInnerSelection(value)](./scribing.nestedflowselection.setinnerselection.md) | <p><code>protected</code></p><p><code>abstract</code></p> | Returns a copy of this selection with the specified inner selection merged in |
 |  [setMarkupAttr(content, key, value)](./scribing.nestedflowselection.setmarkupattr.md) |  | Creates an operation that sets the specified markup attribute in the current selection |
 |  [setMarkupTag(content, tag)](./scribing.nestedflowselection.setmarkuptag.md) |  | Creates an operation that sets the specified markup tag in the current selection |
+|  [setVideoSource(content, source)](./scribing.nestedflowselection.setvideosource.md) |  | Creates an operation that sets the specified video source in the current selection |
 |  [splitTableCell(content)](./scribing.nestedflowselection.splittablecell.md) |  | Creates an operation that splits the selected table cells (given that it is a merged cell) |
 |  [transformRanges(transform, options)](./scribing.nestedflowselection.transformranges.md) |  | Transforms all ranges in the current selection |
 |  [unformatBox(style, options)](./scribing.nestedflowselection.unformatbox.md) |  | Creates an operation that unapplies the specified box style on the current selection |

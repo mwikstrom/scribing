@@ -47,6 +47,9 @@ import { EndMarkup } from "../nodes/EndMarkup";
 import { SetMarkupTag } from "../operations/SetMarkupTag";
 import { Script } from "../structure/Script";
 import { SetImageScale } from "../operations/SetImageScale";
+import { FlowVideo } from "../nodes/FlowVideo";
+import { VideoSource } from "../structure/VideoSource";
+import { SetVideoSource } from "../operations/SetVideoSource";
 
 const Props = {
     range: lazyType(() => FlowRange.classType),
@@ -468,6 +471,31 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     }
 
     /**
+     * {@inheritDoc FlowSelection.setVideoSource}
+     * @override
+     */
+    public setVideoSource(content: FlowContent, source: VideoSource): FlowOperation | null {
+        const { range } = this;
+        const operations: SetVideoSource[] = [];
+
+        for (
+            let cursor: FlowCursor | null = content.peek(range.first);
+            cursor?.node && cursor.position < range.last;
+            cursor = cursor.moveToStartOfNextNode()
+        ) {
+            const { node, position, offset } = cursor;
+            if (node instanceof FlowVideo) {
+                operations.push(new SetVideoSource({
+                    position: position - offset,
+                    value: source,
+                }));
+            }
+        }
+
+        return FlowBatch.fromArray(operations);
+    }
+
+    /**
      * {@inheritDoc FlowSelection.setImageScale}
      * @override
      */
@@ -481,7 +509,7 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
             cursor = cursor.moveToStartOfNextNode()
         ) {
             const { node, position, offset } = cursor;
-            if (node instanceof FlowImage) {
+            if (node instanceof FlowImage || node instanceof FlowVideo) {
                 operations.push(new SetImageScale({
                     position: position - offset,
                     value: scale,

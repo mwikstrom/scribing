@@ -9,6 +9,7 @@ import { FlowIcon } from "../nodes/FlowIcon";
 import { FlowImage } from "../nodes/FlowImage";
 import { FlowNode } from "../nodes/FlowNode";
 import { FlowTable } from "../nodes/FlowTable";
+import { FlowVideo } from "../nodes/FlowVideo";
 import { InlineNode } from "../nodes/InlineNode";
 import { LineBreak } from "../nodes/LineBreak";
 import { ParagraphBreak } from "../nodes/ParagraphBreak";
@@ -92,6 +93,10 @@ export class AsyncFlowNodeVisitor implements GenericFlowNodeVisitor<Promise<Flow
     }
 
     async visitImage(node: FlowImage): Promise<FlowNode> {
+        return await this.visitInline(node);
+    }
+
+    async visitVideo(node: FlowVideo): Promise<FlowNode> {
         return await this.visitInline(node);
     }
 

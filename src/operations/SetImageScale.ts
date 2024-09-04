@@ -13,6 +13,7 @@ import { FlowRange } from "../selection/FlowRange";
 import { FlowSelection } from "../selection/FlowSelection";
 import { FlowOperationRegistry } from "../internal/class-registry";
 import { getRangeAfterInsertion, getRangeAfterRemoval } from "../internal/transform-helpers";
+import { FlowVideo } from "../nodes/FlowVideo";
 
 const Props = {
     position: nonNegativeIntegerType,
@@ -59,15 +60,15 @@ export interface SetImageScaleData {
     /** Data discriminator */
     set: "image_scale";
 
-    /** {@inheritdoc SetImageSourceProps.position} */
+    /** {@inheritdoc SetImageScaleProps.position} */
     at: number;
 
-    /** {@inheritdoc SetImageSourceProps.value} */
+    /** {@inheritdoc SetImageScaleProps.value} */
     value: number;
 }
 
 /**
- * Represents an operation that sets the source of an image
+ * Represents an operation that sets the scale of an image or a video
  * @public
  * @sealed
  */
@@ -90,7 +91,7 @@ export class SetImageScale extends SetImageScaleBase implements SetImageScalePro
     invert(content: FlowContent): FlowOperation | null {
         const { position } = this;
         const { node } = content.peek(position);
-        if (node instanceof FlowImage) {
+        if (node instanceof FlowImage || node instanceof FlowVideo) {
             const { scale } = node;
             return new SetImageScale({ position, value: scale });
         } else {
@@ -126,6 +127,11 @@ export class SetImageScale extends SetImageScaleBase implements SetImageScalePro
         const { position, value } = this;
         const { node } = content.peek(position);
         if (node instanceof FlowImage) {
+            return content.replace(
+                FlowRange.at(position, node.size),
+                node.set("scale", value)
+            );
+        } else if (node instanceof FlowVideo) {
             return content.replace(
                 FlowRange.at(position, node.size),
                 node.set("scale", value)

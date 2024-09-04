@@ -39,6 +39,7 @@ import { FlowTableCellSelection } from "./FlowTableCellSelection";
 import { RemoveRange } from "../operations/RemoveRange";
 import { InsertContent } from "../operations/InsertContent";
 import { Script } from "../structure/Script";
+import { VideoSource } from "../structure/VideoSource";
 
 const Props = {
     position: nonNegativeIntegerType,
@@ -274,6 +275,16 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     public setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null {
         return this.#updateAllCellContent(content, undefined, cellContent => (
             selectAll(cellContent).setImageSource(cellContent, source)
+        ));
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.setVideoSource}
+     * @override
+     */
+    public setVideoSource(content: FlowContent, source: VideoSource): FlowOperation | null {
+        return this.#updateAllCellContent(content, undefined, cellContent => (
+            selectAll(cellContent).setVideoSource(cellContent, source)
         ));
     }
 

@@ -41,6 +41,7 @@ export * from "./structure/is-empty-content";
 
 // Media sources
 export * from "./structure/ImageSource";
+export * from "./structure/VideoSource";
 
 // Table structure
 export * from "./structure/FlowTableCell";
@@ -56,6 +57,7 @@ export * from "./nodes/FlowBox";
 export * from "./nodes/DynamicText";
 export * from "./nodes/FlowIcon";
 export * from "./nodes/FlowImage";
+export * from "./nodes/FlowVideo";
 export * from "./nodes/FlowTable";
 export * from "./nodes/AttrValue";
 export * from "./nodes/StartMarkup";
@@ -83,6 +85,7 @@ export * from "./operations/NestedFlowOperation";
 export * from "./operations/EditBox";
 export * from "./operations/SetDynamicTextExpression";
 export * from "./operations/SetImageSource";
+export * from "./operations/SetVideoSource";
 export * from "./operations/SetImageScale";
 export * from "./operations/SetIcon";
 export * from "./operations/CompleteUpload";

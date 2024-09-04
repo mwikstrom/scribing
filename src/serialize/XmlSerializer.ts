@@ -30,6 +30,8 @@ import { serializeMessage } from "../internal/serialize-message-format";
 import { AttrValue } from "../nodes/AttrValue";
 import { EndScopeFunc, XmlWriter } from "./XmlWriter";
 import { ThemeManager } from "./ThemeManager";
+import { FlowVideo } from "../nodes/FlowVideo";
+import { VideoSource } from "../structure/VideoSource";
 
 /** @internal */
 export class XmlSerializer extends FlowNodeVisitor {
@@ -37,29 +39,38 @@ export class XmlSerializer extends FlowNodeVisitor {
     readonly #writer = new XmlWriter();
     readonly #scripts = new Map<Script, XmlElem>();
     readonly #imageSources = new Map<ImageSource, XmlElem>();
+    readonly #videoSources = new Map<VideoSource, XmlElem>();
     readonly #textStyles = new Map<TextStyle, XmlElem>();
     readonly #paraStyles = new Map<ParagraphStyle, XmlElem>();
     readonly #boxStyles = new Map<BoxStyle, XmlElem>();
     readonly #tableStyles = new Map<TableStyle, XmlElem>();
     readonly #endBody: EndScopeFunc;
     readonly #endDoc: EndScopeFunc;
+    #schemaVersion: number;
 
-    constructor(theme?: FlowTheme) {
+    constructor(theme?: FlowTheme, minSchemaVersion = 1) {
         super();
         this.#theme = new ThemeManager(theme);
-        this.#endDoc = this.#writer.start("flowdoc", { xmlns: "https://cdn.dforigo.com/schemas/scribing-flowdoc-v1" });
+        this.#endDoc = this.#writer.start("flowdoc");
         this.#endBody = this.#writer.start("body");
+        this.#schemaVersion = minSchemaVersion;
     }
         
     getResult(): string {
         this.#endBody();
+
         this.#writer.append(...this.#scripts.values());
         this.#writer.append(...this.#imageSources.values());
+        this.#writer.append(...this.#videoSources.values());
         this.#writer.append(...this.#textStyles.values());
         this.#writer.append(...this.#paraStyles.values());
         this.#writer.append(...this.#boxStyles.values());
         this.#writer.append(...this.#tableStyles.values());
+
         this.#endDoc();
+        const xmlns = `https://cdn.dforigo.com/schemas/scribing-flowdoc-v${this.#schemaVersion.toFixed(0)}`;
+        this.#writer.setRootNamespace(xmlns);
+
         const result = this.#writer.toString();
         this.#writer.reset();
         return result;
@@ -160,6 +171,17 @@ export class XmlSerializer extends FlowNodeVisitor {
         return node;
     }
 
+    visitVideo(node: FlowVideo): FlowNode {
+        const { source, style, scale } = node;
+        this.#requireSchemaVersion(2);
+        this.#writer.elem("video", {
+            source: this.#getVideoSourceId(source),
+            style: this.#getTextStyleId(style),
+            scale: scale !== 1 ? scale : undefined,
+        });
+        return node;
+    }
+
     visitTable(node: FlowTable): FlowNode {
         const { columns, style, content } = node;
         const endTable = this.#writer.start("table", {
@@ -227,6 +249,10 @@ export class XmlSerializer extends FlowNodeVisitor {
 
     #getImageSourceId(source: ImageSource): string {
         return getAllocatedId("image", this.#imageSources, source, serializeImageSource);
+    }
+
+    #getVideoSourceId(source: VideoSource): string {
+        return getAllocatedId("video", this.#videoSources, source, serializeVideoSource);
     }
 
     #getParaStyleId(style: ParagraphStyle): string | undefined {
@@ -371,6 +397,10 @@ export class XmlSerializer extends FlowNodeVisitor {
             throw new Error(`Don't know how to serialize attribute value: ${value}`);
         }
     });
+
+    #requireSchemaVersion(minVersion: number): void {
+        this.#schemaVersion = Math.max(this.#schemaVersion, minVersion);
+    }
 }
 
 const getAllocatedId = <T extends Equatable>(
@@ -430,6 +460,30 @@ const serializeImageSource = (id: string, source: ImageSource): XmlElem => {
             url,
             width,
             height,
+            placeholder,
+            upload,
+        },
+    };
+};
+
+const serializeVideoSource = (id: string, source: VideoSource): XmlElem => {
+    const {
+        url,
+        width,
+        height,
+        poster,
+        placeholder,
+        upload,
+    } = source;
+    return {
+        type: "element",
+        name: "video-source",
+        attributes: {
+            id,
+            url,
+            width,
+            height,
+            poster,
             placeholder,
             upload,
         },

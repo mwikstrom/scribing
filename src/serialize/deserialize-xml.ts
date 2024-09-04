@@ -1,5 +1,4 @@
 import { xml2js, Element as XmlElem } from "xml-js";
-import { OpenUrl, RunScript } from "..";
 import { Interaction } from "../interaction/Interaction";
 import { AttrValue } from "../nodes/AttrValue";
 import { DynamicText } from "../nodes/DynamicText";
@@ -33,6 +32,10 @@ import {
 import { TableColumnStyle } from "../styles/TableColumnStyle";
 import { TableStyle } from "../styles/TableStyle";
 import { BASELINE_OFFSETS, FONT_FAMILIES, TextStyle } from "../styles/TextStyle";
+import { FlowVideo } from "../nodes/FlowVideo";
+import { VideoSource } from "../structure/VideoSource";
+import { RunScript } from "../interaction/RunScript";
+import { OpenUrl } from "../interaction/OpenUrl";
 
 interface XmlElemWithParent extends XmlElem {
     parent: XmlElem;
@@ -56,7 +59,8 @@ export function deserializeFlowContentFromXml(
 
     const root = rootElems[0];
     if (!hasFlowDocName(root, "flowdoc")) {
-        throw new Error(`XML root must be named 'flowdoc' in namespace <${FLOWDOCNS}>`);
+        const supportedNs = SUPPORTEDNS.map(ns => `<${ns}>`).join(" or ");
+        throw new Error(`XML root must be named 'flowdoc' in namespace ${supportedNs}`);
     }
     
     let content = FlowContent.empty;
@@ -126,6 +130,8 @@ const deserializeNode = (elem: XmlElem): FlowNode | undefined => {
         return deserializeIcon(elem);
     } else if (hasFlowDocName(elem, "image")) {
         return deserializeImage(elem);
+    } else if (hasFlowDocName(elem, "video")) {
+        return deserializeVideo(elem);
     } else if (hasFlowDocName(elem, "table")) {
         return deserializeTable(elem);
     } else if (hasFlowDocName(elem, "br")) {
@@ -204,6 +210,13 @@ const deserializeImage = (elem: XmlElem): FlowImage => {
     const style = getTextStyle(elem);
     const scale = getFloatXmlAttr(elem, "scale") || 1;
     return new FlowImage({ source, style, scale });
+};
+
+const deserializeVideo = (elem: XmlElem): FlowVideo => {
+    const source = getVideoSource(elem, getRequiredXmlAttr(elem, "source"));
+    const style = getTextStyle(elem);
+    const scale = getFloatXmlAttr(elem, "scale") || 1;
+    return new FlowVideo({ source, style, scale });
 };
 
 const deserializeTable = (elem: XmlElem): FlowTable => {
@@ -294,6 +307,15 @@ const getImageSource = (ctx: XmlElem, id: string): ImageSource => getDefined(
     ImageSourceCache,
     "image-source",
     deserializeImageSource,
+);
+
+const VideoSourceCache = new WeakMap<XmlElem, Map<string, VideoSource | null>>();
+const getVideoSource = (ctx: XmlElem, id: string): VideoSource => getDefined(
+    ctx,
+    id,
+    VideoSourceCache,
+    "video-source",
+    deserializeVideoSource,
 );
 
 const ScriptCache = new WeakMap<XmlElem, Map<string, Script | null>>();
@@ -436,6 +458,23 @@ const deserializeImageSource = (elem: XmlElem): ImageSource => {
         url,
         width,
         height,
+        placeholder,
+        upload,
+    });
+};
+
+const deserializeVideoSource = (elem: XmlElem): VideoSource => {
+    const url = getRequiredXmlAttr(elem, "url");
+    const width = getRequiredIntegerXmlAttr(elem, "width");
+    const height = getRequiredIntegerXmlAttr(elem, "height");
+    const poster = getXmlAttr(elem, "poster");
+    const placeholder = getXmlAttr(elem, "placeholder");
+    const upload = getXmlAttr(elem, "upload");
+    return new VideoSource({
+        url,
+        width,
+        height,
+        poster,
         placeholder,
         upload,
     });
@@ -693,7 +732,11 @@ const getTextFromElem = (elem: XmlElem): string => {
     }
 };
 
-const FLOWDOCNS = "https://cdn.dforigo.com/schemas/scribing-flowdoc-v1";
+const FLOWDOCNSV1 = "https://cdn.dforigo.com/schemas/scribing-flowdoc-v1";
+const FLOWDOCNSV2 = "https://cdn.dforigo.com/schemas/scribing-flowdoc-v2";
+const SUPPORTEDNS = [FLOWDOCNSV1, FLOWDOCNSV2];
+
+const isFlowDocXmlNs = (xmlns: string | null): boolean => typeof xmlns === "string" && SUPPORTEDNS.includes(xmlns);
 
 const getFlowDoc = (elem: XmlElem): XmlElem => {
     return getElemInfo(elem).root;
@@ -741,7 +784,7 @@ const createElemInfo = (elem: XmlElem): XmlElemInfo => {
         const m = /^(?:([^:]+):)?(.+)$/.exec(elemName);        
         if (m) {
             const xmlns = getXmlns(elem, m[1] ? `xmlns:${m[1]}` : "xmlns");
-            if (xmlns === FLOWDOCNS) {
+            if (isFlowDocXmlNs(xmlns)) {
                 flowDocName = m[2];
             }
         }

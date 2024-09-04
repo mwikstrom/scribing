@@ -54,6 +54,7 @@ export declare class FlowRangeSelection extends FlowRangeSelectionBase implement
 |  [setImageSource(content, source)](./scribing.flowrangeselection.setimagesource.md) |  | Creates an operation that sets the specified image source in the current selection |
 |  [setMarkupAttr(content, key, value)](./scribing.flowrangeselection.setmarkupattr.md) |  | Creates an operation that sets the specified markup attribute in the current selection |
 |  [setMarkupTag(content, tag)](./scribing.flowrangeselection.setmarkuptag.md) |  | Creates an operation that sets the specified markup tag in the current selection |
+|  [setVideoSource(content, source)](./scribing.flowrangeselection.setvideosource.md) |  | Creates an operation that sets the specified video source in the current selection |
 |  [splitTableCell()](./scribing.flowrangeselection.splittablecell.md) |  | Creates an operation that splits the selected table cells (given that it is a merged cell) |
 |  [transformRanges(transform, options)](./scribing.flowrangeselection.transformranges.md) |  | Transforms all ranges in the current selection |
 |  [unformatBox(style)](./scribing.flowrangeselection.unformatbox.md) |  | Creates an operation that unapplies the specified box style on the current selection |

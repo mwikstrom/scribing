@@ -13,6 +13,7 @@ import { TableColumnStyle } from "../styles/TableColumnStyle";
 import { CellRange } from "./CellRange";
 import type { NestedFlowSelection } from "./NestedFlowSelection";
 import { Script } from "../structure/Script";
+import { VideoSource } from "../structure/VideoSource";
 
 /**
  * Represents a selection of flow content
@@ -189,6 +190,15 @@ export abstract class FlowSelection {
      * `null` is returned when the operation would be a no-op or not applicable on the current selection.
      */
     public abstract setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
+
+    /**
+     * Creates an operation that sets the specified video source in the current selection
+     * @param content - The selected content
+     * @param source - The video source to set
+     * @remarks
+     * `null` is returned when the operation would be a no-op or not applicable on the current selection.
+     */
+    public abstract setVideoSource(content: FlowContent, source: VideoSource): FlowOperation | null;
 
     /**
      * Creates an operation that sets the specified image scale factor in the current selection

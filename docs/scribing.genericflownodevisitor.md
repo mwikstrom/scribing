@@ -28,4 +28,5 @@ export interface GenericFlowNodeVisitor<T>
 |  [visitStartMarkup(node)](./scribing.genericflownodevisitor.visitstartmarkup.md) |  |
 |  [visitTable(node)](./scribing.genericflownodevisitor.visittable.md) |  |
 |  [visitTextRun(node)](./scribing.genericflownodevisitor.visittextrun.md) |  |
+|  [visitVideo(node)](./scribing.genericflownodevisitor.visitvideo.md) |  |
 

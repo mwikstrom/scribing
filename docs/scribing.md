@@ -36,6 +36,7 @@ Model for collaborative rich text editing
 |  [FlowTableCellSelection](./scribing.flowtablecellselection.md) | Represents a selection inside a flow table cell |
 |  [FlowTableContent](./scribing.flowtablecontent.md) |  |
 |  [FlowTableSelection](./scribing.flowtableselection.md) | Represents a selection of cells in a flow table cell |
+|  [FlowVideo](./scribing.flowvideo.md) | Represents a dynamic text. |
 |  [FormatBox](./scribing.formatbox.md) | Represents an operation that applies a box style to a range of flow content. |
 |  [FormatParagraph](./scribing.formatparagraph.md) | Represents an operation that applies a paragraph style to a range of flow content. |
 |  [FormatTable](./scribing.formattable.md) | Represents an operation that applies a table style |
@@ -59,10 +60,11 @@ Model for collaborative rich text editing
 |  [Script](./scribing.script.md) | A script |
 |  [SetDynamicTextExpression](./scribing.setdynamictextexpression.md) | Represents an operation that sets the expression of dynamic text |
 |  [SetIcon](./scribing.seticon.md) | Represents an operation that sets the path data of an icon |
-|  [SetImageScale](./scribing.setimagescale.md) | Represents an operation that sets the source of an image |
+|  [SetImageScale](./scribing.setimagescale.md) | Represents an operation that sets the scale of an image or a video |
 |  [SetImageSource](./scribing.setimagesource.md) | Represents an operation that sets the source of an image |
 |  [SetMarkupAttr](./scribing.setmarkupattr.md) | Represents an operation that sets a markup tag |
 |  [SetMarkupTag](./scribing.setmarkuptag.md) | Represents an operation that sets a markup tag |
+|  [SetVideoSource](./scribing.setvideosource.md) | Represents an operation that sets the source of a video |
 |  [SplitTableCell](./scribing.splittablecell.md) | Represents an operation that splits a merged table cell |
 |  [StartMarkup](./scribing.startmarkup.md) | Represents a line break. |
 |  [TableColumnStyle](./scribing.tablecolumnstyle.md) | Represents the styling that is applied to a flow table column |
@@ -75,6 +77,7 @@ Model for collaborative rich text editing
 |  [UnformatTableColumn](./scribing.unformattablecolumn.md) | Represents an operation that unapplies a table column style |
 |  [UnformatText](./scribing.unformattext.md) | Represents an operation that unapplies a text style to a range of flow content. |
 |  [UnsetMarkupAttr](./scribing.unsetmarkupattr.md) | Represents an operation that sets a markup tag |
+|  [VideoSource](./scribing.videosource.md) | Represents the source of a [FlowVideo](./scribing.flowvideo.md) |
 
 ## Abstract Classes
 
@@ -153,6 +156,8 @@ Model for collaborative rich text editing
 |  [FlowTableProps](./scribing.flowtableprops.md) | Properties of [FlowTable](./scribing.flowtable.md) |
 |  [FlowTableSelectionData](./scribing.flowtableselectiondata.md) | Data of [FlowTableSelection](./scribing.flowtableselection.md) |
 |  [FlowTableSelectionProps](./scribing.flowtableselectionprops.md) | Properties of [FlowTableSelection](./scribing.flowtableselection.md) |
+|  [FlowVideoData](./scribing.flowvideodata.md) | Data of line break nodes |
+|  [FlowVideoProps](./scribing.flowvideoprops.md) | Properties of [FlowVideo](./scribing.flowvideo.md) |
 |  [FormatBoxData](./scribing.formatboxdata.md) | Data of format box operations |
 |  [FormatBoxProps](./scribing.formatboxprops.md) | Properties of format box operations |
 |  [FormatParagraphData](./scribing.formatparagraphdata.md) | Data of format paragraph operations |
@@ -206,6 +211,8 @@ Model for collaborative rich text editing
 |  [SetMarkupAttrProps](./scribing.setmarkupattrprops.md) | Properties of [SetMarkupAttr](./scribing.setmarkupattr.md) |
 |  [SetMarkupTagData](./scribing.setmarkuptagdata.md) | Data of [SetMarkupTag](./scribing.setmarkuptag.md) |
 |  [SetMarkupTagProps](./scribing.setmarkuptagprops.md) | Properties of [SetMarkupTag](./scribing.setmarkuptag.md) |
+|  [SetVideoSourceData](./scribing.setvideosourcedata.md) | Data of [SetVideoSource](./scribing.setvideosource.md) |
+|  [SetVideoSourceProps](./scribing.setvideosourceprops.md) | Properties of [SetVideoSource](./scribing.setvideosource.md) |
 |  [SplitTableCellData](./scribing.splittablecelldata.md) | Data of [SplitTableCell](./scribing.splittablecell.md) |
 |  [SplitTableCellProps](./scribing.splittablecellprops.md) | Properties of [SplitTableCell](./scribing.splittablecell.md) |
 |  [StartMarkupData](./scribing.startmarkupdata.md) | Data of [StartMarkup](./scribing.startmarkup.md) |
@@ -227,6 +234,7 @@ Model for collaborative rich text editing
 |  [UnformatTextProps](./scribing.unformattextprops.md) | Properties of unformat text operations |
 |  [UnsetMarkupAttrData](./scribing.unsetmarkupattrdata.md) | Data of [UnsetMarkupAttr](./scribing.unsetmarkupattr.md) |
 |  [UnsetMarkupAttrProps](./scribing.unsetmarkupattrprops.md) | Properties of [UnsetMarkupAttr](./scribing.unsetmarkupattr.md) |
+|  [VideoSourceProps](./scribing.videosourceprops.md) | Properties of [VideoSource](./scribing.videosource.md) |
 |  [VisitRangeOptions](./scribing.visitrangeoptions.md) | Options for [FlowSelection.visitRanges()](./scribing.flowselection.visitranges.md) |
 
 ## Variables
@@ -267,6 +275,7 @@ Model for collaborative rich text editing
 |  [FlowTableCellBase](./scribing.flowtablecellbase.md) | The base record class for [FlowTableCell](./scribing.flowtablecell.md) |
 |  [FlowTableCellSelectionBase](./scribing.flowtablecellselectionbase.md) | The base record class for [FlowTableCellSelection](./scribing.flowtablecellselection.md) |
 |  [FlowTableSelectionBase](./scribing.flowtableselectionbase.md) | The base record class for [FlowTableSelection](./scribing.flowtableselection.md) |
+|  [FlowVideoBase](./scribing.flowvideobase.md) | The base record class for [FlowVideo](./scribing.flowvideo.md) |
 |  [FONT\_FAMILIES](./scribing.font_families.md) | Read-only array that contains all font families |
 |  [FormatBoxBase](./scribing.formatboxbase.md) | The base record class for [FormatBox](./scribing.formatbox.md) |
 |  [FormatParagraphBase](./scribing.formatparagraphbase.md) | The base record class for [FormatParagraph](./scribing.formatparagraph.md) |
@@ -306,6 +315,7 @@ Model for collaborative rich text editing
 |  [SetImageSourceBase](./scribing.setimagesourcebase.md) | The base record class for [SetImageSource](./scribing.setimagesource.md) |
 |  [SetMarkupAttrBase](./scribing.setmarkupattrbase.md) | The base record class for [SetMarkupAttr](./scribing.setmarkupattr.md) |
 |  [SetMarkupTagBase](./scribing.setmarkuptagbase.md) | The base record class for [SetMarkupTag](./scribing.setmarkuptag.md) |
+|  [SetVideoSourceBase](./scribing.setvideosourcebase.md) | The base record class for [SetVideoSource](./scribing.setvideosource.md) |
 |  [SplitTableCellBase](./scribing.splittablecellbase.md) | The base record class for [SplitTableCell](./scribing.splittablecell.md) |
 |  [StartMarkupBase](./scribing.startmarkupbase.md) | The base record class for [StartMarkup](./scribing.startmarkup.md) |
 |  [TableColumnStyleBase](./scribing.tablecolumnstylebase.md) | The base record class for [TableColumnStyle](./scribing.tablecolumnstyle.md) |
@@ -320,6 +330,7 @@ Model for collaborative rich text editing
 |  [UNORDERED\_LIST\_MARKER\_KINDS](./scribing.unordered_list_marker_kinds.md) | Read-only array that contains unordered list marker styles |
 |  [UnorderedListMarkerKindType](./scribing.unorderedlistmarkerkindtype.md) | The run-time type that matches unordered list marker style values |
 |  [UnsetMarkupAttrBase](./scribing.unsetmarkupattrbase.md) | The base record class for [UnsetMarkupAttr](./scribing.unsetmarkupattr.md) |
+|  [VideoSourceBase](./scribing.videosourcebase.md) | The base record class for [VideoSource](./scribing.videosource.md) |
 
 ## Type Aliases
 

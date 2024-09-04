@@ -53,6 +53,7 @@ export declare class FlowTableSelection extends FlowTableSelectionBase
 |  [setImageSource(content, source)](./scribing.flowtableselection.setimagesource.md) |  | Creates an operation that sets the specified image source in the current selection |
 |  [setMarkupAttr(content, key, value)](./scribing.flowtableselection.setmarkupattr.md) |  | Creates an operation that sets the specified markup attribute in the current selection |
 |  [setMarkupTag(content, tag)](./scribing.flowtableselection.setmarkuptag.md) |  | Creates an operation that sets the specified markup tag in the current selection |
+|  [setVideoSource(content, source)](./scribing.flowtableselection.setvideosource.md) |  | Creates an operation that sets the specified video source in the current selection |
 |  [splitTableCell()](./scribing.flowtableselection.splittablecell.md) |  | Creates an operation that splits the selected table cells (given that it is a merged cell) |
 |  [transformRanges(transform, options)](./scribing.flowtableselection.transformranges.md) |  | Transforms all ranges in the current selection |
 |  [unformatBox(style, options)](./scribing.flowtableselection.unformatbox.md) |  | Creates an operation that unapplies the specified box style on the current selection |

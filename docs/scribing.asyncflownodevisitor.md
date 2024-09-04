@@ -38,4 +38,5 @@ export declare class AsyncFlowNodeVisitor implements GenericFlowNodeVisitor<Prom
 |  [visitTableContent(content)](./scribing.asyncflownodevisitor.visittablecontent.md) |  |  |
 |  [visitTextRun(node)](./scribing.asyncflownodevisitor.visittextrun.md) |  |  |
 |  [visitTextStyle(style)](./scribing.asyncflownodevisitor.visittextstyle.md) |  |  |
+|  [visitVideo(node)](./scribing.asyncflownodevisitor.visitvideo.md) |  |  |
 

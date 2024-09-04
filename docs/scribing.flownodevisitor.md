@@ -38,4 +38,5 @@ export declare class FlowNodeVisitor implements GenericFlowNodeVisitor<FlowNode>
 |  [visitTableContent(content)](./scribing.flownodevisitor.visittablecontent.md) |  |  |
 |  [visitTextRun(node)](./scribing.flownodevisitor.visittextrun.md) |  |  |
 |  [visitTextStyle(style)](./scribing.flownodevisitor.visittextstyle.md) |  |  |
+|  [visitVideo(node)](./scribing.flownodevisitor.visitvideo.md) |  |  |
 

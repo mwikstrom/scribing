@@ -30,6 +30,9 @@ import { RunScript } from "../interaction/RunScript";
 import { BoxStyle } from "../styles/BoxStyle";
 import { getTableColumnWidths } from "../structure/getTableColumnWidths";
 import { CellPosition } from "../selection/CellPosition";
+import { FlowVideo } from "../nodes/FlowVideo";
+import { VideoSource } from "../structure/VideoSource";
+import { ImageSource } from "../structure/ImageSource";
 
 /** @internal */
 export class HtmlSerializer extends AsyncFlowNodeVisitor {
@@ -39,6 +42,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
     readonly #getElementId: Exclude<FlowContentHtmlOptions["getElementId"], undefined>;
     readonly #getLinkHref: Exclude<FlowContentHtmlOptions["getLinkHref"], undefined>;
     readonly #getImageUrl: Exclude<FlowContentHtmlOptions["getImageUrl"], undefined>;
+    readonly #getVideoUrl: Exclude<FlowContentHtmlOptions["getVideoUrl"], undefined>;
     readonly #registerScriptInteraction: Exclude<FlowContentHtmlOptions["registerScriptInteraction"], undefined>;
     readonly #registerDynamicText: Exclude<FlowContentHtmlOptions["registerDynamicText"], undefined>;
     readonly #registerDataSource: Exclude<FlowContentHtmlOptions["registerDataSource"], undefined>;
@@ -60,6 +64,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
         this.#getElementId = options.getElementId || makeDefaultElementIdGenerator();
         this.#getLinkHref = options.getLinkHref || (url => url);
         this.#getImageUrl = options.getImageUrl || (src => src.url);
+        this.#getVideoUrl = options.getVideoUrl || (src => src.url);
         this.#registerScriptInteraction = options.registerScriptInteraction || (() => void 0);
         this.#registerDynamicText = options.registerDynamicText || (() => void 0);
         this.#registerDataSource = options.registerDataSource || (() => void 0);
@@ -254,8 +259,18 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
         const { source, scale } = node;
         const width = Math.round(source.width * scale);
         const height = Math.round(source.height * scale);
-        const src = this.#getImageUrl(source, scale);
+        const src = await this.#getImageUrl(source, scale);
         this.#writer.elem("img", { src, width, height });
+        return node;
+    }
+
+    async visitVideo(node: FlowVideo): Promise<FlowNode> {
+        const { source, scale } = node;
+        const width = Math.round(source.width * scale);
+        const height = Math.round(source.height * scale);
+        const src = await this.#getVideoUrl(source, scale);
+        const poster = await this.#getVideoPoster(source, scale);
+        this.#writer.elem("video", { src, width, height, poster, preload: poster ? "metadata" : "auto", controls: 1 });
         return node;
     }
 
@@ -646,6 +661,14 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
             await this.#writeHtmlContent(content);
         }
         end();
+    }
+
+    async #getVideoPoster(src: VideoSource, scale: number): Promise<string | undefined> {
+        const { poster, width, height } = src;
+        if (poster) {
+            const posterSource = new ImageSource({ url: poster, width, height });
+            return await this.#getImageUrl(posterSource, scale);
+        }
     }
 }
 

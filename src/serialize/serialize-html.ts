@@ -4,6 +4,7 @@ import { PredefinedIcon } from "../nodes/FlowIcon";
 import { FlowContent } from "../structure/FlowContent";
 import { ImageSource } from "../structure/ImageSource";
 import { Script } from "../structure/Script";
+import { VideoSource } from "../structure/VideoSource";
 import { BoxVariant } from "../styles/BoxStyle";
 import { FlowColor } from "../styles/FlowColor";
 import { FlowTheme } from "../styles/FlowTheme";
@@ -17,7 +18,8 @@ export interface FlowContentHtmlOptions {
     classes?: Partial<Record<FlowContentHtmlClassKey, string>>;
     getElementId?: (this: void, prefix: string) => string;
     getLinkHref?: (this: void, url: string) => string;
-    getImageUrl?: (this: void, source: ImageSource, scale: number) => string;
+    getImageUrl?: (this: void, source: ImageSource, scale: number) => string | Promise<string>
+    getVideoUrl?: (this: void, source: VideoSource, scale: number) => string | Promise<string>;
     registerScriptInteraction?: (this: void, elementId: string, script: Script) => void;
     registerDynamicText?: (this: void, elementId: string, expression: Script, style: TextStyle) => void;
     registerDataSource?: (this: void, elementId: string, script: Script) => void;

@@ -1,0 +1,555 @@
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="https://cdn.dforigo.com/schemas/scribing-flowdoc-v2"
+    xmlns="https://cdn.dforigo.com/schemas/scribing-flowdoc-v2"
+    elementFormDefault="qualified"
+>
+    <xs:element name="flowdoc" type="document">
+        <xs:key name="script-id">
+            <xs:selector xpath="script"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+        <xs:keyref name="box-source-ref" refer="script-id">
+            <xs:selector xpath="box-style"/>
+            <xs:field xpath="@source"/>
+        </xs:keyref>
+        <xs:keyref name="run-script-ref" refer="script-id">
+            <xs:selector xpath="run-script"/>
+            <xs:field xpath="@ref"/>
+        </xs:keyref>
+        <xs:keyref name="dynamic-script-ref" refer="script-id">
+            <xs:selector xpath="dynamic"/>
+            <xs:field xpath="@expression"/>
+        </xs:keyref>
+        <xs:key name="image-source-id">
+            <xs:selector xpath="image-source"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+        <xs:keyref name="image-source-ref" refer="image-source-id">
+            <xs:selector xpath="image"/>
+            <xs:field xpath="@source"/>
+        </xs:keyref>
+        <xs:key name="video-source-id">
+            <xs:selector xpath="video-source"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+        <xs:keyref name="video-source-ref" refer="video-source-id">
+            <xs:selector xpath="video"/>
+            <xs:field xpath="@source"/>
+        </xs:keyref>
+        <xs:key name="text-style-id">
+            <xs:selector xpath="text-style"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+        <xs:keyref name="text-style-ref" refer="text-style-id">
+            <xs:selector xpath="t|c|dynamic|markup|start-markup|end-markup|icon|image|video|br"/>
+            <xs:field xpath="@style"/>
+        </xs:keyref>
+        <xs:key name="box-style-id">
+            <xs:selector xpath="box-style"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+        <xs:keyref name="box-style-ref" refer="box-style-id">
+            <xs:selector xpath="box"/>
+            <xs:field xpath="@style"/>
+        </xs:keyref>
+        <xs:key name="para-style-id">
+            <xs:selector xpath="para-style"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+        <xs:keyref name="para-style-ref" refer="para-style-id">
+            <xs:selector xpath="p"/>
+            <xs:field xpath="@style"/>
+        </xs:keyref>
+        <xs:key name="table-style-id">
+            <xs:selector xpath="table-style"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+        <xs:keyref name="table-style-ref" refer="table-style-id">
+            <xs:selector xpath="table"/>
+            <xs:field xpath="@style"/>
+        </xs:keyref>
+    </xs:element>
+
+    <xs:complexType name="document">
+        <xs:sequence>
+            <xs:element name="body" type="flow" minOccurs="1" maxOccurs="1"/>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="script" type="script">
+                    <xs:unique name="message-key">
+                        <xs:selector xpath="message"/>
+                        <xs:field xpath="@key"/>
+                    </xs:unique>
+                </xs:element>
+                <xs:element name="image-source" type="image-source"/>
+                <xs:element name="video-source" type="video-source"/>
+                <xs:element name="text-style" type="text-style"/>
+                <xs:element name="box-style" type="box-style"/>
+                <xs:element name="para-style" type="para-style"/>
+                <xs:element name="table-style" type="table-style"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="flow">
+        <xs:sequence>
+            <xs:element name="p" type="p" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:group ref="phrasing-content" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="p">
+        <xs:group ref="phrasing-content" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:attribute name="style" use="optional" type="xs:IDREF"/>
+    </xs:complexType>
+
+    <xs:group name="phrasing-content">
+        <xs:choice>
+            <xs:element name="t" type="t"/>
+            <xs:element name="c" type="t"/>
+            <xs:element name="dynamic" type="dynamic"/>
+            <xs:element name="markup" type="markup"/>
+            <xs:element name="start-markup" type="markup"/>
+            <xs:element name="end-markup" type="end-markup"/>
+            <xs:element name="box" type="box"/>
+            <xs:element name="icon" type="icon"/>
+            <xs:element name="image" type="image"/>
+            <xs:element name="video" type="video"/>
+            <xs:element name="table" type="table">
+                <xs:unique name="column-key">
+                    <xs:selector xpath="col"/>
+                    <xs:field xpath="@key"/>
+                </xs:unique>
+                <xs:unique name="cell-key">
+                    <xs:selector xpath="cell"/>
+                    <xs:field xpath="@key"/>
+                </xs:unique>
+            </xs:element>
+            <xs:element name="br" type="br"/>
+        </xs:choice>
+    </xs:group>
+
+    <xs:complexType name="t">
+        <xs:simpleContent>
+            <xs:extension base="preserve-ws">
+                <xs:attribute name="style" use="optional" type="xs:IDREF"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="dynamic">
+        <xs:attribute name="expression" use="required" type="xs:IDREF"/>
+        <xs:attribute name="style" use="optional" type="xs:IDREF"/>
+    </xs:complexType>
+
+    <xs:complexType name="markup">
+        <xs:complexContent>
+            <xs:extension base="end-markup">
+                <xs:sequence>
+                    <xs:element name="attr" type="attr" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="end-markup">
+        <xs:attribute name="tag" use="required" type="xs:string"/>
+        <xs:attribute name="style" use="optional" type="xs:IDREF"/>
+    </xs:complexType>
+
+    <xs:complexType name="attr">
+        <xs:attribute name="key" use="required" type="xs:string"/>
+        <xs:attribute name="value" use="optional" type="xs:string"/>
+        <xs:attribute name="script" use="optional" type="xs:IDREF"/>
+    </xs:complexType>
+
+    <xs:complexType name="box">
+        <xs:complexContent>
+            <xs:extension base="flow">
+                <xs:attribute name="style" use="optional" type="xs:IDREF"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="icon">
+        <xs:attribute name="data" use="required" type="xs:string"/>
+        <xs:attribute name="style" use="optional" type="xs:IDREF"/>
+    </xs:complexType>
+
+    <xs:complexType name="image">
+        <xs:attribute name="source" use="required" type="xs:IDREF"/>
+        <xs:attribute name="style" use="optional" type="xs:IDREF"/>
+        <xs:attribute name="scale" use="optional" type="image-scale"/>
+    </xs:complexType>
+
+    <xs:complexType name="video">
+        <xs:attribute name="source" use="required" type="xs:IDREF"/>
+        <xs:attribute name="style" use="optional" type="xs:IDREF"/>
+        <xs:attribute name="scale" use="optional" type="image-scale"/>
+    </xs:complexType>
+
+    <xs:complexType name="table">
+        <xs:sequence>
+            <xs:element name="col" type="table-col" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="cell" type="table-cell" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="style" use="optional" type="xs:IDREF"/>
+    </xs:complexType>
+
+    <xs:complexType name="table-col">
+        <xs:attribute name="key" use="required" type="table-col-key"/>
+        <xs:attribute name="width" use="optional" type="relative-size"/>
+    </xs:complexType>
+
+    <xs:complexType name="table-cell">
+        <xs:complexContent>
+            <xs:extension base="flow">
+                <xs:attribute name="key" use="required" type="table-cell-key"/>
+                <xs:attribute name="colspan" use="optional" type="xs:positiveInteger"/>
+                <xs:attribute name="rowspan" use="optional" type="xs:positiveInteger"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="br">
+        <xs:attribute name="style" use="optional" type="xs:IDREF"/>
+    </xs:complexType>
+
+    <xs:complexType name="script">
+        <xs:sequence>
+            <xs:element name="code" type="preserve-ws" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="message" type="message" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="id" use="required" type="xs:ID"/>
+    </xs:complexType>
+
+    <xs:complexType name="image-source">        
+        <xs:attribute name="id" use="required" type="xs:ID"/>
+        <xs:attribute name="url" use="required" type="xs:anyURI"/>
+        <xs:attribute name="width" use="required" type="xs:positiveInteger"/>
+        <xs:attribute name="height" use="required" type="xs:positiveInteger"/>
+        <xs:attribute name="placeholder" use="optional" type="xs:base64Binary"/>
+        <xs:attribute name="upload" use="optional" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="video-source">        
+        <xs:attribute name="id" use="required" type="xs:ID"/>
+        <xs:attribute name="url" use="required" type="xs:anyURI"/>
+        <xs:attribute name="width" use="required" type="xs:positiveInteger"/>
+        <xs:attribute name="height" use="required" type="xs:positiveInteger"/>
+        <xs:attribute name="poster" use="optional" type="xs:anyURI"/>
+        <xs:attribute name="placeholder" use="optional" type="xs:base64Binary"/>
+        <xs:attribute name="upload" use="optional" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="text-style">
+        <xs:sequence>
+            <xs:element name="link" type="interaction" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="id" use="required" type="xs:ID"/>
+        <xs:attribute name="bold" use="optional" type="xs:boolean"/>
+        <xs:attribute name="italic" use="optional" type="xs:boolean"/>
+        <xs:attribute name="underline" use="optional" type="xs:boolean"/>
+        <xs:attribute name="strike" use="optional" type="xs:boolean"/>
+        <xs:attribute name="baseline" use="optional" type="baseline-offset"/>
+        <xs:attribute name="font-family" use="optional" type="font-family"/>
+        <xs:attribute name="font-size" use="optional" type="percentage-10-to-1000"/>
+        <xs:attribute name="color" use="optional" type="color"/>
+        <xs:attribute name="spellcheck" use="optional" type="xs:boolean"/>
+        <xs:attribute name="translate" use="optional" type="xs:boolean"/>
+        <xs:attribute name="lang" use="optional" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="box-style">
+        <xs:sequence>
+            <xs:element name="interaction" type="interaction" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="id" use="required" type="xs:ID"/>
+        <xs:attribute name="variant" use="optional" type="box-variant"/>
+        <xs:attribute name="color" use="optional" type="color"/>
+        <xs:attribute name="inline" use="optional" type="xs:boolean"/>
+        <xs:attribute name="source" use="optional" type="xs:IDREF"/>
+    </xs:complexType>
+
+    <xs:complexType name="para-style">
+        <xs:attribute name="id" use="required" type="xs:ID"/>
+        <xs:attribute name="alignment" use="optional" type="horizontal-alignment"/>
+        <xs:attribute name="direction" use="optional" type="reading-direction"/>
+        <xs:attribute name="variant" use="optional" type="para-variant"/>
+        <xs:attribute name="line-spacing" use="optional" type="percentage-10-to-1000"/>
+        <xs:attribute name="space-before" use="optional" type="percentage-10-to-1000"/>
+        <xs:attribute name="space-after" use="optional" type="percentage-10-to-1000"/>
+        <xs:attribute name="list-level" use="optional" type="list-level"/>
+        <xs:attribute name="list-marker" use="optional" type="list-marker"/>
+        <xs:attribute name="hide-list-marker" use="optional" type="xs:boolean"/>
+        <xs:attribute name="list-counter" use="optional" type="list-counter"/>
+        <xs:attribute name="list-counter-prefix" use="optional" type="list-counter-text"/>
+        <xs:attribute name="list-counter-suffix" use="optional" type="list-counter-text"/>
+    </xs:complexType>
+
+    <xs:complexType name="table-style">
+        <xs:attribute name="id" use="required" type="xs:ID"/>
+        <xs:attribute name="inline" use="optional" type="xs:boolean"/>
+        <xs:attribute name="head" use="optional" type="xs:nonNegativeInteger"/>
+    </xs:complexType>
+
+    <xs:complexType name="interaction">
+        <xs:choice>
+            <xs:element name="run-script" type="run-script"/>
+            <xs:element name="open-url" type="open-url"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="run-script">
+        <xs:attribute name="ref" use="required" type="xs:IDREF"/>
+    </xs:complexType>
+
+    <xs:complexType name="open-url">
+        <xs:attribute name="href" use="required" type="xs:anyURI"/>
+    </xs:complexType>
+
+    <xs:complexType name="message">
+        <xs:complexContent>
+            <xs:extension base="message-body">
+                <xs:attribute name="key" use="required" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>        
+    </xs:complexType>
+
+    <xs:complexType name="message-body">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="message-body"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:group name="message-body">
+        <xs:choice>
+            <xs:element name="t" type="preserve-ws"/>
+            <xs:element name="c" type="preserve-ws"/>
+            <xs:element name="value" type="message-value"/>
+            <xs:element name="choose" type="message-choose"/>
+            <xs:element name="plural" type="message-plural"/>
+        </xs:choice>
+    </xs:group>
+
+    <xs:complexType name="message-value">
+        <xs:attribute name="var" use="required" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="message-choose">
+        <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="when" type="message-when" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="other" type="message-body" minOccurs="1" maxOccurs="1"/>
+        </xs:choice>
+        <xs:attribute name="var" use="required" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="message-plural">
+        <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="zero" type="message-plural-body" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="one" type="message-plural-body" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="two" type="message-plural-body" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="few" type="message-plural-body" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="many" type="message-plural-body" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="exact" type="message-plural-when" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="other" type="message-plural-body" minOccurs="1" maxOccurs="1"/>
+        </xs:choice>
+        <xs:attribute name="var" use="required" type="xs:string"/>
+        <xs:attribute name="offset" use="optional" type="xs:integer"/>
+        <xs:attribute name="mode" use="optional" type="message-plural-mode"/>
+    </xs:complexType>
+
+    <xs:simpleType name="message-plural-mode">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="cardinal"/>
+            <xs:enumeration value="ordinal"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="message-plural-body">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="message-body"/>
+            <xs:element name="count" type="empty"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="empty"/>
+
+    <xs:complexType name="message-when">
+        <xs:complexContent>
+            <xs:extension base="message-body">
+                <xs:attribute name="eq" use="required" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>        
+    </xs:complexType>
+
+    <xs:complexType name="message-plural-when">
+        <xs:complexContent>
+            <xs:extension base="message-plural-body">
+                <xs:attribute name="eq" use="required" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>        
+    </xs:complexType>
+
+    <xs:simpleType name="horizontal-alignment">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="start"/>
+            <xs:enumeration value="center"/>
+            <xs:enumeration value="end"/>
+            <xs:enumeration value="justify"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="reading-direction">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ltr"/>
+            <xs:enumeration value="rtl"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="para-variant">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="normal"/>
+            <xs:enumeration value="h1"/>
+            <xs:enumeration value="h2"/>
+            <xs:enumeration value="h3"/>
+            <xs:enumeration value="h4"/>
+            <xs:enumeration value="h5"/>
+            <xs:enumeration value="h6"/>
+            <xs:enumeration value="title"/>
+            <xs:enumeration value="subtitle"/>
+            <xs:enumeration value="preamble"/>
+            <xs:enumeration value="code"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="list-level">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="9"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="list-marker">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ordered"/>
+            <xs:enumeration value="decimal"/>
+            <xs:enumeration value="lower-alpha"/>
+            <xs:enumeration value="upper-alpha"/>
+            <xs:enumeration value="lower-roman"/>
+            <xs:enumeration value="upper-roman"/>
+            <xs:enumeration value="unordered"/>
+            <xs:enumeration value="disc"/>
+            <xs:enumeration value="circle"/>
+            <xs:enumeration value="square"/>
+            <xs:enumeration value="dash"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="list-counter">
+        <xs:union memberTypes="xs:integer list-counter-action"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="list-counter-action">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="auto"/>
+            <xs:enumeration value="reset"/>
+            <xs:enumeration value="resume"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="list-counter-text">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-zA-Z0-9. ()_-]{0,10}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="box-variant">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="basic"/>
+            <xs:enumeration value="contained"/>
+            <xs:enumeration value="outlined"/>
+            <xs:enumeration value="alert"/>
+            <xs:enumeration value="quote"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="baseline-offset">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="normal"/>
+            <xs:enumeration value="sub"/>
+            <xs:enumeration value="super"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="font-family">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="body"/>
+            <xs:enumeration value="heading"/>
+            <xs:enumeration value="monospace"/>
+            <xs:enumeration value="cursive"/>
+            <xs:enumeration value="decorative"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="image-scale">        
+        <xs:restriction base="xs:float">
+            <xs:minExclusive value="0"/>
+            <xs:maxInclusive value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="relative-size">
+        <xs:restriction base="xs:float">
+            <xs:minExclusive value="0"/>
+            <xs:maxInclusive value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="percentage-10-to-1000">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="10"/>
+            <xs:maxInclusive value="1000"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="color">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="default"/>
+            <xs:enumeration value="subtle"/>
+            <xs:enumeration value="primary"/>
+            <xs:enumeration value="secondary"/>
+            <xs:enumeration value="information"/>
+            <xs:enumeration value="success"/>
+            <xs:enumeration value="warning"/>
+            <xs:enumeration value="error"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="table-col-key">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="table-cell-key">
+        <xs:union>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="[A-Z]+[1-9][0-9]*"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="default"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="preserve-ws">
+        <xs:restriction base="xs:string">
+            <xs:whiteSpace value="preserve"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

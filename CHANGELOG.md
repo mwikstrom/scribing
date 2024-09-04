@@ -1,3 +1,9 @@
+## 1.8.0 - 2024-09-04
+
+- Add support for video in flow content
+- Let `FlowContentHtmlOptions.getImageUrl` return a promise
+- New XML schema version `https://cdn.dforigo.com/schemas/scribing-flowdoc-v2`
+
 ## 1.7.3 - 2024-03-26
 
 - Fix: Keep list marker style when transcluding into start of list item paragraph

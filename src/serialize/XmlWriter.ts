@@ -27,6 +27,16 @@ export class XmlWriter {
         this.#root = [];
     }
 
+    public setRootNamespace(xmlns: string): void {
+        for (const root of this.#root) {
+            let { attributes } = root;
+            if (!attributes) {
+                root.attributes = attributes = {};
+            }
+            attributes.xmlns = xmlns;
+        }
+    }
+
     public start(name: string, attributes?: XmlAttr): EndScopeFunc {
         const elem: XmlElem = { type: "element", name, attributes };
         this.append(elem);

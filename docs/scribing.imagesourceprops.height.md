@@ -4,7 +4,7 @@
 
 ## ImageSourceProps.height property
 
-Preferred image height (in pixels)
+Image height (in pixels)
 
 **Signature:**
 

@@ -50,6 +50,7 @@ export declare abstract class FlowSelection
 |  [setImageSource(content, source)](./scribing.flowselection.setimagesource.md) | <code>abstract</code> | Creates an operation that sets the specified image source in the current selection |
 |  [setMarkupAttr(content, key, value)](./scribing.flowselection.setmarkupattr.md) | <code>abstract</code> | Creates an operation that sets the specified markup attribute in the current selection |
 |  [setMarkupTag(content, tag)](./scribing.flowselection.setmarkuptag.md) | <code>abstract</code> | Creates an operation that sets the specified markup tag in the current selection |
+|  [setVideoSource(content, source)](./scribing.flowselection.setvideosource.md) | <code>abstract</code> | Creates an operation that sets the specified video source in the current selection |
 |  [splitTableCell(content)](./scribing.flowselection.splittablecell.md) | <code>abstract</code> | Creates an operation that splits the selected table cells (given that it is a merged cell) |
 |  [toJsonValue()](./scribing.flowselection.tojsonvalue.md) |  | Converts the current selection to a JSON value |
 |  [transformRanges(transform, options)](./scribing.flowselection.transformranges.md) | <code>abstract</code> | Transforms all ranges in the current selection |

@@ -59,6 +59,8 @@ export class AsyncFlowNodeVisitor implements GenericFlowNodeVisitor<Promise<Flow
     visitTextRun(node: TextRun): Promise<FlowNode>;
     // (undocumented)
     visitTextStyle(style: TextStyle): Promise<TextStyle>;
+    // (undocumented)
+    visitVideo(node: FlowVideo): Promise<FlowNode>;
 }
 
 // @public (undocumented)
@@ -615,9 +617,11 @@ export interface FlowContentHtmlOptions {
     // (undocumented)
     getElementId?: (this: void, prefix: string) => string;
     // (undocumented)
-    getImageUrl?: (this: void, source: ImageSource, scale: number) => string;
+    getImageUrl?: (this: void, source: ImageSource, scale: number) => string | Promise<string>;
     // (undocumented)
     getLinkHref?: (this: void, url: string) => string;
+    // (undocumented)
+    getVideoUrl?: (this: void, source: VideoSource, scale: number) => string | Promise<string>;
     // (undocumented)
     registerDataSource?: (this: void, elementId: string, script: Script) => void;
     // (undocumented)
@@ -789,6 +793,8 @@ export class FlowNodeVisitor implements GenericFlowNodeVisitor<FlowNode> {
     visitTextRun(node: TextRun): FlowNode;
     // (undocumented)
     visitTextStyle(style: TextStyle): TextStyle;
+    // (undocumented)
+    visitVideo(node: FlowVideo): FlowNode;
 }
 
 // @public
@@ -913,6 +919,8 @@ export class FlowRangeSelection extends FlowRangeSelectionBase implements Readon
     // @override
     setMarkupTag(content: FlowContent, tag: string): FlowOperation | null;
     // @override
+    setVideoSource(content: FlowContent, source: VideoSource): FlowOperation | null;
+    // @override
     splitTableCell(): FlowOperation | null;
     // @override
     transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;
@@ -982,6 +990,7 @@ export abstract class FlowSelection {
     abstract setImageSource(content: FlowContent, source: ImageSource): FlowOperation | null;
     abstract setMarkupAttr(content: FlowContent, key: string, value: string | Script): FlowOperation | null;
     abstract setMarkupTag(content: FlowContent, tag: string): FlowOperation | null;
+    abstract setVideoSource(content: FlowContent, source: VideoSource): FlowOperation | null;
     abstract splitTableCell(content: FlowContent): FlowOperation | null;
     toJsonValue(): JsonValue;
     abstract transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;
@@ -1292,6 +1301,8 @@ export class FlowTableSelection extends FlowTableSelectionBase {
     // @override
     setMarkupTag(content: FlowContent, tag: string): FlowOperation | null;
     // @override
+    setVideoSource(content: FlowContent, source: VideoSource): FlowOperation | null;
+    // @override
     splitTableCell(): FlowOperation | null;
     // @override
     transformRanges(transform: (range: FlowRange, options?: TargetOptions) => FlowRange | null, options?: TargetOptions): FlowSelection | null;
@@ -1339,6 +1350,33 @@ export abstract class FlowTheme {
     getTableBodyTheme(): FlowTheme;
     getTableHeadingTheme(): FlowTheme;
     toJsonValue(): JsonValue;
+}
+
+// @public @sealed
+export class FlowVideo extends FlowVideoBase implements FlowVideoProps {
+    accept<T>(visitor: GenericFlowNodeVisitor<T>): T;
+    static readonly classType: Type<FlowVideo>;
+    // @override
+    completeUpload(id: string, url: string): FlowNode;
+    static fromData(data: FlowVideoData): FlowVideo;
+    readonly size = 1;
+}
+
+// @public
+export const FlowVideoBase: RecordConstructor<FlowVideoProps, InlineNode, FlowVideoData>;
+
+// @public
+export interface FlowVideoData {
+    scale?: number;
+    style?: TextStyle;
+    video: VideoSource;
+}
+
+// @public
+export interface FlowVideoProps {
+    scale: number;
+    source: VideoSource;
+    style: TextStyle;
 }
 
 // @public
@@ -1548,6 +1586,8 @@ export interface GenericFlowNodeVisitor<T> {
     visitTable(node: FlowTable): T;
     // (undocumented)
     visitTextRun(node: TextRun): T;
+    // (undocumented)
+    visitVideo(node: FlowVideo): T;
 }
 
 // @public (undocumented)
@@ -2032,6 +2072,8 @@ export abstract class NestedFlowSelection extends FlowSelection {
     setMarkupAttr(content: FlowContent, key: string, value: string | Script): FlowOperation | null;
     // @override
     setMarkupTag(content: FlowContent, tag: string): FlowOperation | null;
+    // @override
+    setVideoSource(content: FlowContent, source: VideoSource): FlowOperation | null;
     // @override
     splitTableCell(content: FlowContent): FlowOperation | null;
     // @override
@@ -2644,6 +2686,39 @@ export interface SetMarkupTagProps {
 }
 
 // @public @sealed
+export class SetVideoSource extends SetVideoSourceBase implements SetVideoSourceProps {
+    afterInsertFlow(range: FlowRange): FlowOperation | null;
+    afterRemoveFlow(range: FlowRange): FlowOperation | null;
+    // @override
+    applyToContent(content: FlowContent): FlowContent;
+    // @override
+    applyToSelection(selection: FlowSelection): FlowSelection;
+    static readonly classType: Type<SetVideoSource>;
+    static fromData(data: SetVideoSourceData): SetVideoSource;
+    // @override
+    invert(content: FlowContent): FlowOperation | null;
+    mergeNext(next: FlowOperation): FlowOperation | null;
+    // @override
+    transform(other: FlowOperation): FlowOperation | null;
+}
+
+// @public
+export const SetVideoSourceBase: RecordConstructor<SetVideoSourceProps, FlowOperation, SetVideoSourceData>;
+
+// @public
+export interface SetVideoSourceData {
+    at: number;
+    set: "video_source";
+    value: VideoSource;
+}
+
+// @public
+export interface SetVideoSourceProps {
+    position: number;
+    value: VideoSource;
+}
+
+// @public @sealed
 export class SplitTableCell extends SplitTableCellBase implements SplitTableCellProps {
     // (undocumented)
     afterInsertAxis(axis: "row" | "column", index: number, count: number): TableOperation | null;
@@ -3159,6 +3234,94 @@ export interface UnsetMarkupAttrProps {
     // (undocumented)
     key: string;
     position: number;
+}
+
+// @public @sealed
+export class VideoSource extends VideoSourceBase implements Readonly<VideoSourceProps> {
+    static readonly classType: Type<RecordObject<Omit<{
+    url: string;
+    poster: string;
+    width: number;
+    height: number;
+    placeholder: string;
+    upload: string;
+    }, "placeholder" | "upload" | "poster"> & Partial<Pick<{
+    url: string;
+    poster: string;
+    width: number;
+    height: number;
+    placeholder: string;
+    upload: string;
+    }, "placeholder" | "upload" | "poster">>, Omit<{
+    url: string;
+    poster: string;
+    width: number;
+    height: number;
+    placeholder: string;
+    upload: string;
+    }, "placeholder" | "upload" | "poster"> & Partial<Pick<{
+    url: string;
+    poster: string;
+    width: number;
+    height: number;
+    placeholder: string;
+    upload: string;
+    }, "placeholder" | "upload" | "poster">>> & Equatable & Readonly<Omit<{
+    url: string;
+    poster: string;
+    width: number;
+    height: number;
+    placeholder: string;
+    upload: string;
+    }, "placeholder" | "upload" | "poster"> & Partial<Pick<{
+    url: string;
+    poster: string;
+    width: number;
+    height: number;
+    placeholder: string;
+    upload: string;
+    }, "placeholder" | "upload" | "poster">>> & VideoSource>;
+}
+
+// @public
+export const VideoSourceBase: RecordConstructor<Omit<{
+url: string;
+poster: string;
+width: number;
+height: number;
+placeholder: string;
+upload: string;
+}, "placeholder" | "upload" | "poster"> & Partial<Pick<{
+url: string;
+poster: string;
+width: number;
+height: number;
+placeholder: string;
+upload: string;
+}, "placeholder" | "upload" | "poster">>, Object, Omit<{
+url: string;
+poster: string;
+width: number;
+height: number;
+placeholder: string;
+upload: string;
+}, "placeholder" | "upload" | "poster"> & Partial<Pick<{
+url: string;
+poster: string;
+width: number;
+height: number;
+placeholder: string;
+upload: string;
+}, "placeholder" | "upload" | "poster">>>;
+
+// @public
+export interface VideoSourceProps {
+    height: number;
+    placeholder?: string;
+    poster?: string;
+    upload?: string;
+    url: string;
+    width: number;
 }
 
 // @public

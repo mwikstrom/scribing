@@ -13,6 +13,7 @@ import { TableStyle } from "../styles/TableStyle";
 import { TableColumnStyle } from "../styles/TableColumnStyle";
 import { CellRange } from "./CellRange";
 import { Script } from "../structure/Script";
+import { VideoSource } from "../structure/VideoSource";
 
 /**
  * A nested selection at a specific flow position
@@ -294,6 +295,20 @@ export abstract class NestedFlowSelection extends FlowSelection {
             return null;
         }
         const innerOperation = innerSelection.setImageSource(innerContent, source);
+        return this.#wrapOperation(innerOperation);
+    }
+
+    /**
+     * {@inheritDoc FlowSelection.setVideoSource}
+     * @override
+     */
+    public setVideoSource(content: FlowContent, source: VideoSource): FlowOperation | null {
+        const innerSelection = this.getInnerSelection();
+        const innerContent = this.getInnerContent(content);
+        if (!innerContent) {
+            return null;
+        }
+        const innerOperation = innerSelection.setVideoSource(innerContent, source);
         return this.#wrapOperation(innerOperation);
     }
 

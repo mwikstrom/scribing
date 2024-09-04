@@ -6,6 +6,7 @@ import { FlowIcon } from "../nodes/FlowIcon";
 import { FlowImage } from "../nodes/FlowImage";
 import { FlowNode } from "../nodes/FlowNode";
 import { FlowTable } from "../nodes/FlowTable";
+import { FlowVideo } from "../nodes/FlowVideo";
 import { LineBreak } from "../nodes/LineBreak";
 import { ParagraphBreak } from "../nodes/ParagraphBreak";
 import { StartMarkup } from "../nodes/StartMarkup";
@@ -29,6 +30,8 @@ export interface GenericFlowNodeVisitor<T> {
     visitIcon(node: FlowIcon): T;
 
     visitImage(node: FlowImage): T;
+
+    visitVideo(node: FlowVideo): T;
 
     visitTable(node: FlowTable): T;
 
