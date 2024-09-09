@@ -1,4 +1,4 @@
-## 1.8.0 - 2024-09-04
+## 1.8.0 - 2024-09-09
 
 - Add support for video in flow content
 - Let `FlowContentHtmlOptions.getImageUrl` return a promise
