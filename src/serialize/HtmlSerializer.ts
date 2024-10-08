@@ -20,7 +20,8 @@ import type {
     FlowContentHtmlOptions,
     HtmlContent,
     HtmlElem,
-    HtmlNode
+    HtmlNode,
+    PosterImageUsage
 } from "./serialize-html";
 import { Attributes, Element as XmlElem } from "xml-js";
 import { InlineNode } from "../nodes/InlineNode";
@@ -259,7 +260,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
         const { source, scale } = node;
         const width = Math.round(source.width * scale);
         const height = Math.round(source.height * scale);
-        const src = await this.#getImageUrl(source, scale);
+        const src = await this.#getImageUrl(source, scale, { mode: "standard" });
         this.#writer.elem("img", { src, width, height });
         return node;
     }
@@ -269,7 +270,7 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
         const width = Math.round(source.width * scale);
         const height = Math.round(source.height * scale);
         const src = await this.#getVideoUrl(source, scale);
-        const poster = await this.#getVideoPoster(source, scale);
+        const poster = await this.#getVideoPoster(source, scale, src);
         this.#writer.elem("video", { src, width, height, poster, preload: poster ? "metadata" : "auto", controls: 1 });
         return node;
     }
@@ -663,11 +664,16 @@ export class HtmlSerializer extends AsyncFlowNodeVisitor {
         end();
     }
 
-    async #getVideoPoster(src: VideoSource, scale: number): Promise<string | undefined> {
+    async #getVideoPoster(src: VideoSource, scale: number, videoUrl: string): Promise<string | undefined> {
         const { poster, width, height } = src;
         if (poster) {
             const posterSource = new ImageSource({ url: poster, width, height });
-            return await this.#getImageUrl(posterSource, scale);
+            const usage: PosterImageUsage = {
+                mode: "poster",
+                videoUrl,
+                originalVideoUrl: src.url,
+            };
+            return await this.#getImageUrl(posterSource, scale, usage);
         }
     }
 }

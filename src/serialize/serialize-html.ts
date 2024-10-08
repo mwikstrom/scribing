@@ -18,12 +18,29 @@ export interface FlowContentHtmlOptions {
     classes?: Partial<Record<FlowContentHtmlClassKey, string>>;
     getElementId?: (this: void, prefix: string) => string;
     getLinkHref?: (this: void, url: string) => string;
-    getImageUrl?: (this: void, source: ImageSource, scale: number) => string | Promise<string>
+    getImageUrl?: (this: void, source: ImageSource, scale: number, usage: ImageUsage) => string | Promise<string>
     getVideoUrl?: (this: void, source: VideoSource, scale: number) => string | Promise<string>;
     registerScriptInteraction?: (this: void, elementId: string, script: Script) => void;
     registerDynamicText?: (this: void, elementId: string, expression: Script, style: TextStyle) => void;
     registerDataSource?: (this: void, elementId: string, script: Script) => void;
     rewriteMarkup?: MarkupHandler<HtmlContent>;
+}
+
+/** @public */
+export type ImageUsage = StandardImageUsage | PosterImageUsage;
+
+/** @public */
+export interface AbstractImageUsage<T extends string> {
+    mode: T;
+}
+
+/** @public */
+export type StandardImageUsage = AbstractImageUsage<"standard">;
+
+/** @public */
+export interface PosterImageUsage extends AbstractImageUsage<"poster"> {
+    originalVideoUrl: string;
+    videoUrl: string;
 }
 
 /** @public */

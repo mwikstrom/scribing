@@ -113,6 +113,7 @@ Model for collaborative rich text editing
 
 |  Interface | Description |
 |  --- | --- |
+|  [AbstractImageUsage](./scribing.abstractimageusage.md) |  |
 |  [BasicRequestInit](./scribing.basicrequestinit.md) |  |
 |  [BoxStyleProps](./scribing.boxstyleprops.md) | Style properties for box content |
 |  [CellPositionProps](./scribing.cellpositionprops.md) | Non-computed properties of a [CellPosition](./scribing.cellposition.md) |
@@ -188,6 +189,7 @@ Model for collaborative rich text editing
 |  [ParagraphBreakData](./scribing.paragraphbreakdata.md) | Data of paragraph break nodes |
 |  [ParagraphBreakProps](./scribing.paragraphbreakprops.md) | Properties of paragraph break nodes |
 |  [ParagraphStyleProps](./scribing.paragraphstyleprops.md) | Style properties for paragraph content |
+|  [PosterImageUsage](./scribing.posterimageusage.md) |  |
 |  [RemoveFlowSelectionOptions](./scribing.removeflowselectionoptions.md) | Options for [FlowSelection.remove()](./scribing.flowselection.remove.md) |
 |  [RemoveRangeData](./scribing.removerangedata.md) | Data of remove range operations |
 |  [RemoveRangeProps](./scribing.removerangeprops.md) | Properties of remove range opertions |
@@ -354,6 +356,7 @@ Model for collaborative rich text editing
 |  [HorizontalAlignment](./scribing.horizontalalignment.md) | Horizontal alignment |
 |  [HtmlContent](./scribing.htmlcontent.md) |  |
 |  [HtmlNode](./scribing.htmlnode.md) |  |
+|  [ImageUsage](./scribing.imageusage.md) |  |
 |  [ListCounterAction](./scribing.listcounteraction.md) | List counter action |
 |  [ListMarkerKind](./scribing.listmarkerkind.md) | List marker styles |
 |  [MarkupHandler](./scribing.markuphandler.md) |  |
@@ -364,6 +367,7 @@ Model for collaborative rich text editing
 |  [PredefinedIcon](./scribing.predefinedicon.md) | Predefined icon |
 |  [ReadingDirection](./scribing.readingdirection.md) | Reading direction |
 |  [ScriptData](./scribing.scriptdata.md) | Data contract for a script |
+|  [StandardImageUsage](./scribing.standardimageusage.md) |  |
 |  [TextRunData](./scribing.textrundata.md) | Data contract for a text run |
 |  [UnorderedListMarkerKind](./scribing.unorderedlistmarkerkind.md) | Unordered list marker styles |
 

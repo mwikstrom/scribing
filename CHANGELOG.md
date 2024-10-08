@@ -1,3 +1,7 @@
+## 1.9.0 - 2024-10-08
+
+- Add `ImageUsage` parameter to `FlowContentHtmlOptions.getImageUrl(...)`
+
 ## 1.8.0 - 2024-09-09
 
 - Add support for video in flow content

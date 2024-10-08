@@ -15,6 +15,12 @@ import { RecordObject } from 'paratype';
 import { RecordType } from 'paratype';
 import { Type } from 'paratype';
 
+// @public (undocumented)
+export interface AbstractImageUsage<T extends string> {
+    // (undocumented)
+    mode: T;
+}
+
 // @public
 export class AsyncFlowNodeVisitor implements GenericFlowNodeVisitor<Promise<FlowNode>> {
     // (undocumented)
@@ -619,7 +625,7 @@ export interface FlowContentHtmlOptions {
     // (undocumented)
     getElementId?: (this: void, prefix: string) => string;
     // (undocumented)
-    getImageUrl?: (this: void, source: ImageSource, scale: number) => string | Promise<string>;
+    getImageUrl?: (this: void, source: ImageSource, scale: number, usage: ImageUsage) => string | Promise<string>;
     // (undocumented)
     getLinkHref?: (this: void, url: string) => string;
     // (undocumented)
@@ -1707,6 +1713,9 @@ export interface ImageSourceProps {
     width: number;
 }
 
+// @public (undocumented)
+export type ImageUsage = StandardImageUsage | PosterImageUsage;
+
 // @public
 export abstract class InlineNode extends FlowNode {
     completeUpload(id: string, url: string): FlowNode;
@@ -2269,6 +2278,14 @@ export type ParagraphVariant = (typeof PARAGRAPH_VARIANTS)[number];
 // @public
 export const ParagraphVariantType: Type<ParagraphVariant>;
 
+// @public (undocumented)
+export interface PosterImageUsage extends AbstractImageUsage<"poster"> {
+    // (undocumented)
+    originalVideoUrl: string;
+    // (undocumented)
+    videoUrl: string;
+}
+
 // @public
 export const PREDEFINED_ICONS: readonly ["information", "success", "warning", "error"];
 
@@ -2763,6 +2780,9 @@ export interface SplitTableCellProps {
     cell: CellPosition;
     position: number;
 }
+
+// @public (undocumented)
+export type StandardImageUsage = AbstractImageUsage<"standard">;
 
 // @public @sealed
 export class StartMarkup extends StartMarkupBase implements StartMarkupProps {

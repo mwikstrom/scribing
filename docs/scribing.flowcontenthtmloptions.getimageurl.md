@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-getImageUrl?: (this: void, source: ImageSource, scale: number) => string | Promise<string>;
+getImageUrl?: (this: void, source: ImageSource, scale: number, usage: ImageUsage) => string | Promise<string>;
 ```
